@@ -1,0 +1,225 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Login",
+    "line": 2,
+    "id": "login",
+    "tags": [
+      {
+        "name": "@LogIn",
+        "line": 1
+      }
+    ],
+    "uri": "Features\\LogIn.feature",
+    "elements": [
+      {
+        "id": "login;successful-login-with-itops-roles",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Successful Login with ITOPS roles",
+        "tags": [
+          {
+            "name": "@LogIn",
+            "line": 1
+          },
+          {
+            "name": "@LoginTo_IE_Role",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "hook.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 265000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "User with ITOps role is available \"<url>\"",
+            "match": {
+              "location": "Step_Definitions\\StepDef.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2683000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "enter Username and Password \"Itops_IE\", \"qa123\"",
+            "match": {
+              "location": "Step_Definitions\\StepDef.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1358000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "click on Login button",
+            "match": {
+              "location": "Step_Definitions\\StepDef.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1266000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "ITOps home page is displayed",
+            "match": {
+              "location": "Step_Definitions\\StepDef.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7048000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "hook.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "login;login-page---non_itops-user",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Login page - non_ITOPS user",
+        "tags": [
+          {
+            "name": "@LogIn",
+            "line": 1
+          },
+          {
+            "name": "@LoginTo_Skilluser_Role",
+            "line": 12
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "hook.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 15,
+            "name": "User with ITOps role is available \"<url>\"",
+            "match": {
+              "location": "Step_Definitions\\StepDef.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 785000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "enter Username and Password \"Skilluser\", \"admin123\"",
+            "match": {
+              "location": "Step_Definitions\\StepDef.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 147000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "click on Login button",
+            "match": {
+              "location": "Step_Definitions\\StepDef.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 882000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "Blank Home screen with only greeting should be displayed",
+            "match": {
+              "location": "Step_Definitions\\StepDef.ts:55"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 221000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "hook.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "node_modules\\protractor-cucumber-framework\\lib\\resultsCapturer.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
