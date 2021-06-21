@@ -4,8 +4,8 @@
   "description": "Initial Framework setup for cucumber",
   "main": "index.js",
   "scripts": {
-    "test": "protractor JSFiles/Configuration.js",
-    "pretest": "tsc",
+    "itopsautomation": "protractor JSFiles/Configuration.js",
+    "preitopsautomation": "tsc",
     "protractor": "./node_modules/protractor/built/cli.js",
     "webdriver-update": "./node_modules/.bin/webdriver-manager update"
   },

@@ -5,6 +5,7 @@ var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/data.properties');
 
 
+//screenshots for scenarios
 Before( async function () {
   browser.waitForAngularEnabled(false);
 await browser.manage().window().maximize();
