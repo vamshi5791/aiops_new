@@ -14,22 +14,24 @@ Feature: Project Installation- Installation_Engineer
          Then user is taken to the project configuration
     Examples: 
             | UserName | Password | projectname | description |
-            | Itops_admin | qa123 | ProjectUSTIB | Release1.4Project | 
+            | Itops_admin | qa123 | ProjectUSTSIB | Release1.4Project | 
 @GeneralConfiguration
 Scenario Outline: General Configuration
           When enter ConfigDetails "<ServiceNowHost>", "<ServicenowUserName>", "<ServicenowPassworde>", "<ThresholdCount>", "<TestITSM>", "<ITSMversion>"
+          And select ITSM TimeZone "<ITSMTimeZone>"
+          And select ITOps Flavor "<ITOpsFlavor>"
           And click save general config button
           Then Success message for General Configuration must be shown as a toaster
           Examples:
-           | ServiceNowHost | ServicenowUserName | ServicenowPassworde | ThresholdCount | TestITSM | ITSMversion |
-           | https://ustglobaldev.service-now.com | ustglobal | 1234 | 01.00 | USTTestITSM | 1.01 |   
+           | ServiceNowHost | ServicenowUserName | ServicenowPassworde | ThresholdCount | TestITSM | ITSMversion | ITSMTimeZone | ITOpsFlavor |
+           | https://ustglobaldev.service-now.com | ustglobal | 1234 | 01.00 | USTTestITSM | 1.01 | IST | Smart NOC |
 @Schedularconfiguration
 Scenario: Schedular configuration
            When click on Schedular configuration
-        And select correlation interval duration
-        And select cluster interval duration
-        And select analytics duration
-        And select prediction duration
+        And select correlation interval duration "Every 6 months"
+        And select cluster interval duration "Every 6 months"
+        And select analytics duration "Every 6 months"
+        And select prediction duration "Every 6 months"
         And click save schedule config button
         Then Success message for Schedular Configuration must be shown as a toaster
 @ResponceConfiguration
@@ -58,9 +60,9 @@ Scenario: TicketDum
 Scenario Outline: Channel Configuration
         When Click on Channel Configuration
         And Click on create new Channel
-        And Enter channel name "UST Channel"
-        And Click on Select channel type
-        And click on EMAIL
+        And Enter channel name "<UST Channel>"
+        And Click on Select channel type "<ChannelType>"
+        And Select channel integration type "<ChannelIntegration>"
         And enter Email Id "<Email Id>"
         And enter Client Id "<Client ID>"
         And enter Client secret Id "<Client secret>"
@@ -70,16 +72,19 @@ Scenario Outline: Channel Configuration
         And Enter lIst size "<ListSize>"
         And Click on save and configure button
         Examples:
-         | ChannelName | Email Id | Client ID | Client secret | Tenant ID | Automation story |ListSize |
-         | UST Channel | ustib@gmail.com  | 1234 | 1234 | 1234 | UST | 2 |
+         | ChannelName | ChannelType | ChannelIntegration | Email Id | Client ID | Client secret | Tenant ID | Automation story |ListSize |
+         | UST Channel | EMAIL | outlook | ustib123@gmail.com  | 1234 | 1234 | 1234 | UST | 2 |
 @AddUser
-Scenario: Add User
+Scenario Outline: Add User
         When click on Add User
-        And Click on Select User
+        And Click on Select User "<UserName>"
         And select role
         And Add user details 
         And click on Add User
         Then User must be added and listed in the below list
+        Examples:
+            | UserName | 
+            | Kishor Macharla |
 @ProjectInstallation
 Scenario: Project Installation
         When Click on Install

@@ -2,22 +2,18 @@ import { Given, When, Then, Before, After, Status } from "cucumber"
 import { browser, element, by, ExpectedConditions, WebElement } from "protractor"
 import chai from "chai";
 import { LogIn } from '../../PageObjects/LogIn';
-import { Projestcreation } from '../../PageObjects/Projectcreation'
-import { AddUser } from "../../PageObjects/AddUser";
-import { scheduleconfig } from "../../PageObjects/ProjectConfiuration";
-import { channelConfiguration } from "../../PageObjects/ChannelConfiguration";
-
+import { ProjestListing } from '../../PageObjects/ProjectListing'
+import { ProjectConfig } from "../../PageObjects/ProjectConfiuration";
+import { dropdowns } from "../../support/dropdown";
 var PropertiesReader = require('properties-reader');
-var properties = PropertiesReader('./PropertyFile/data.properties');
+var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = browser.ExpectedConditions;
 var fs = require('fs');
 var expect = chai.expect;
 
 let objLogIn = new LogIn();
-let objCreateProject = new Projestcreation();
-let ObjAddUser = new AddUser();
-let objConfiguration = new scheduleconfig();
-let objChannelConfiguration = new channelConfiguration();
+let objProjectList = new ProjestListing();
+let objConfiguration = new ProjectConfig();
 
 
 Given('LogIn with ITOps role is available {string}', async function (url) {
@@ -34,25 +30,25 @@ When('enter Username, Password and click on login button {string}, {string}', as
 //Project creation 
 
 When('click on create project', async function () {
-    await objCreateProject.clickOnCreateProject.click();
+    await objProjectList.clickOnCreateProject.click();
 });
   
   When('Enter project name {string}', async function (projectname) {
-    await objCreateProject.projectname.sendKeys(projectname);
+    await objConfiguration.projectname.sendKeys(projectname);
   });
 
   When('Enter description {string}', async function (description) {
-    await objCreateProject.description.sendKeys(description);   
+    await objConfiguration.description.sendKeys(description);   
   });
 
   When('Click on create button', async function () {
-    await objCreateProject.btnCreate.click();
+    await objConfiguration.btnCreate.click();
   });
   
   Then('user is taken to the project configuration page', async function () {
    await browser.wait(EC.invisibilityOf(element(by.className("smo-progress-spinner-circle"))), 100000);
       await  browser.element(by.className("smo smo-expand-more-alt text-black-50 text-right pt-2")).click();
-       await objLogIn.btnLogOut.click();
+       await objProjectList.btnLogOut.click();
   });
   Then('user is taken to the project configuration', async function () {
     await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="Project Created Succesfully"]'))), 100000);
@@ -88,23 +84,23 @@ When('click on create project', async function () {
         })
     });
 
-    When('click timezone', async function () {
+    When('select ITSM TimeZone {string}', async function (ITSMTimeZone) {
       await browser.executeScript('window.scrollTo(0,200);').then(function () {
       })
-      await objConfiguration.drpTimeZone.click();
+ 
 
+      var drp = new dropdowns(objConfiguration.drpTimeZone);
+      await drp.selectByVisibleText(ITSMTimeZone)
+   
     });
-      
-      When('select timezone', async function () {
-      await objConfiguration.drpTimeoneselect.click()
-      });
-      
-      When('click ITOPsflavour', async function () {
-      await objConfiguration.drpITOPsflavour.click();
-      });
-      When('select ITOPsflavour', async function () {
-      await objConfiguration.drpITOPsflavourSelect.click();
-      });
+  
+    When('select ITOps Flavor {string}', async function (ITOpsFlavor) {
+      await browser.executeScript('window.scrollTo(0,200);').then(function () {
+      })
+      var drp = new dropdowns(objConfiguration.drpITOPsflavour);
+      await drp.selectByVisibleText(ITOpsFlavor)
+    });
+
   When('click save general config button', async function () {
     await browser.executeScript('window.scrollTo(0,200);').then(function () {
    }) 
@@ -123,33 +119,34 @@ Then('verify Success message for General Configuration must be shown as a toaste
 
  When('click on Schedular configuration', async function () {
    await objConfiguration.lnkSchedularConfiguration.click();
-   await objConfiguration.correlationInterval.click();
-});
-When('select correlation interval duration', async function () {
-  await objConfiguration.correlationIntervalDuration.click();
   
 });
-When('select cluster interval duration', async function () {
+When('select correlation interval duration {string}', async function (Correlation) {
+  var drp = new dropdowns(objConfiguration.correlationInterval);
+      await drp.selectByVisibleText(Correlation)
+  
+});
+When('select cluster interval duration {string}', async function (AutoClosure) {
     await browser.executeScript('window.scrollTo(0,450);').then(async function () {
-   
-   await objConfiguration.clusterInterval.click();
-      await objConfiguration.clusterDuration.click();
-      
+      var drp = new dropdowns(objConfiguration.clusterInterval);
+      await drp.selectByVisibleText(AutoClosure)
+
     })
   await browser.executeScript('window.scrollTo(0,500);').then(function () {
   })
  });
-When('select analytics duration', async function () {
+When('select analytics duration {string}', async function (AlertAnalytics) {
   await browser.executeScript('window.scrollTo(0,700);').then(async function () {
-   await objConfiguration.analyticsInterval.click();
-  await objConfiguration.analyticsDuration.click();
-  
+    var drp = new dropdowns(objConfiguration.analyticsInterval);
+    await drp.selectByVisibleText(AlertAnalytics)
+
+ 
   })
  });
-When('select prediction duration', async function () {
-  await browser.executeScript('window.scrollTo(0,800);').then(async function () {  
-     await objConfiguration.predictionInterval.click();
-  await objConfiguration.predictionDuration.click();
+When('select prediction duration {string}', async function (BatchPrediction) {
+  await browser.executeScript('window.scrollTo(0,800);').then(async function () {
+    var drp = new dropdowns(objConfiguration.predictionInterval);
+    await drp.selectByVisibleText(BatchPrediction)
   
   })
   await browser.executeScript('window.scrollTo(0,1000);').then(async function () {
@@ -284,71 +281,63 @@ Then('Success message for Ticket Dump Configuration must be shown as a toaster',
      
      });
      await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Channel Configuration"]'))), 100000);
-          await objChannelConfiguration.channelConfiguration.click(); 
+          await objConfiguration.channelConfiguration.click(); 
          });
 
    
          When('Click on create new Channel', async function () {
-          await objChannelConfiguration.createNewChannel.click();
+          await objConfiguration.createNewChannel.click();
          });
 
   
          When('Enter channel name {string}', async function (channelName) {
-          await objChannelConfiguration.channelName.sendKeys(channelName);
+          await objConfiguration.channelName.sendKeys(channelName);
          });
 
    
-
-         When('Click on Select channel type', async function () {
-          await objChannelConfiguration.channelType.click();  
+         When('Click on Select channel type {string}', async function (ChannelType) {
+           var drp = new dropdowns(objConfiguration.channelType);
+           await drp.selectByVisibleText(ChannelType)
          });
 
-   
-         When('click on EMAIL', async function () {
-          await objChannelConfiguration.selectEmail.click();
-         });
-
-  
-         When('Channel Integration Type', async function () {
-          await objChannelConfiguration.channelIntegrationType.click(); 
-         });
-         When('Select channel integration type', async function () {
-          await objChannelConfiguration.selectOutlook.click();
+         When('Select channel integration type {string}', async function (ChannelIntegration) {
+           var drp = new dropdowns(objConfiguration.channelIntegrationType);
+           await drp.selectByVisibleText(ChannelIntegration)
          })
    
 
          When('enter Email Id {string}', async function (EmailId) {
-           await objChannelConfiguration.emailId.sendKeys(EmailId);
+           await objConfiguration.emailId.sendKeys(EmailId);
          });
-         When('enter Client Id {string}', async function (EmailId) {
-          await objChannelConfiguration.emailId.sendKeys(EmailId);
+         When('enter Client Id {string}', async function (ClientId) {
+          await objConfiguration.clientId.sendKeys(ClientId);
          });
-         When('enter secret Id {string}', async function (EmailId) {
-          await objChannelConfiguration.emailId.sendKeys(EmailId);
+         When('enter secret Id {string}', async function (secretId) {
+          await objConfiguration.clientSecret.sendKeys(secretId);
          });
-         When('enter tenet Id {string}', async function (EmailId) {
-          await objChannelConfiguration.emailId.sendKeys(EmailId);
+         When('enter tenet Id {string}', async function (tenetId) {
+          await objConfiguration.tenantId.sendKeys(tenetId);
         });
          When('Enter Automation story {string}', async function (AutomationStorty) {
-          await objChannelConfiguration.automationStory.sendKeys(AutomationStorty);
+          await objConfiguration.automationStory.sendKeys(AutomationStorty);
          });
 
    
          When('click on check box', async function () {
-          await objChannelConfiguration.checkProcessListAsList.click(); 
+          await objConfiguration.checkProcessListAsList.click(); 
          });
 
          When('Enter lIst size {string}', async function (ListSize) {
-          await objChannelConfiguration.enterListSize.sendKeys(ListSize);
+          await objConfiguration.enterListSize.sendKeys(ListSize);
          });
 
 
          When('Click on save and configure button', async function () {
-          await objChannelConfiguration.saveAndConfigure.click();
+          await objConfiguration.saveAndConfigure.click();
          });
 
 Then('Channel created successfully is shown', async function () {
-  await browser.wait(EC.elementToBeClickable(element(by.xpath('//div[text()=""]'))), 100000);
+  await browser.wait(EC.elementToBeClickable(element(by.xpath('//div[text()="Project Configurations Updated"]'))), 100000);
   await element(by.xpath('//div[text()="Project Configurations Updated"]')).getText().then(function (text) {
     console.log(text);
     expect(text).to.include('Project Configurations Updated');
@@ -360,21 +349,21 @@ Then('Channel created successfully is shown', async function () {
 When('click on Add User', async function () {
   await browser.executeScript('window.scrollTo(0,0);').then(async function(){
   });
-        await ObjAddUser.btnAddUser.click();
+        await objConfiguration.btnAddUser.click();
        });
  
-  When('Click on Select User', async function () {
-         await ObjAddUser.LstSelectUser.click(); 
-         await element(by.className("ng-tns-c18-13 smo-dropdown-filter smo-inputtext smo-widget smo-state-default pl-1")).sendKeys('Kishor Macharla');
-         await element(by.xpath('//span[text()="Kishor Macharla(UST,I..."]')).click();
+  When('Click on Select User {string}', async function (UserName) {
+         await objConfiguration.LstSelectUser.click(); 
+         await element(by.className("ng-tns-c18-13 smo-dropdown-filter smo-inputtext smo-widget smo-state-default pl-1")).sendKeys(UserName);
+    await element(by.xpath('//span[text()="Kishor Macharla(UST,I..."]')).click();
        });
  
   When('select role', async function () {
-       await  ObjAddUser.rdoSelectRole.click();
+       await  objConfiguration.rdoSelectRole.click();
        });
  
  When('Add user details', async function () {
-        await ObjAddUser.btnAddUserDetails.click();
+        await objConfiguration.btnAddUserDetails.click();
        });
  
 Then('User must be added and listed in the below list', async function () {
@@ -391,11 +380,11 @@ Then('User must be added and listed in the below list', async function () {
      
   })
    
-   await ObjAddUser.btnInstall.click();
+   await objConfiguration.btnInstall.click();
    
  })
 
 Then('Project must be installed', async function () {
   await  browser.element(by.className("smo smo-expand-more-alt text-black-50 text-right pt-2")).click();
-       await browser.objLogIn.btnLogOut.click();
+       await objProjectList.btnLogOut.click();
  })

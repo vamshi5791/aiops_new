@@ -3,7 +3,7 @@ import {Config, browser} from "protractor";
 import * as reporter from "cucumber-html-reporter";
 
 var PropertiesReader = require('properties-reader');
-var properties = PropertiesReader('./PropertyFile/data.properties');
+var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 
 export let config: Config = {
    directConnect:true,
@@ -16,7 +16,7 @@ export let config: Config = {
     
   specs: [
    
-    '../Features/LogIn/LogIn_Roles.feature',
+    //'../Features/LogIn/LogIn_Roles.feature',
     '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
    '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
     

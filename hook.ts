@@ -2,16 +2,16 @@
 import {After,AfterAll,Before, BeforeAll, Status} from "cucumber";
 import { browser } from "protractor";
 var PropertiesReader = require('properties-reader');
-var properties = PropertiesReader('./PropertyFile/data.properties');
+var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 
 
-//screenshots for scenarios
+
 Before( async function () {
   browser.waitForAngularEnabled(false);
 await browser.manage().window().maximize();
 });
 
-
+//screenshots for scenarios
 
 After(async function(scenario) {
   

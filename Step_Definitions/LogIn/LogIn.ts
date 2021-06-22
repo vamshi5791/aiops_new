@@ -4,7 +4,7 @@ import chai from "chai";
 import { LogIn } from '../../PageObjects/LogIn';
 
 var PropertiesReader = require('properties-reader');
-var properties = PropertiesReader('./PropertyFile/data.properties');
+var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = browser.ExpectedConditions;
 var fs = require('fs');
 var expect = chai.expect;
