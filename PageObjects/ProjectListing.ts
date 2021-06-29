@@ -1,13 +1,21 @@
-import { ElementFinder, element, by } from "protractor";
+import { ElementFinder, element, by, promise, browser } from "protractor";
+var EC = browser.ExpectedConditions;
+var fs = require('fs');
 
-export class ProjestListing {
-  clickOnCreateProject: ElementFinder;
-  btnLogOut: ElementFinder;
+export class ProjectListingPage {
 
-  constructor() {
-      
-    this.clickOnCreateProject = element(by.xpath('//span[text()="Create New Project"]'));
-    this.btnLogOut = element(by.xpath('//span[text()="Logout"]'));
-
+   btnClickOnCreateProject = element(by.xpath('//span[text()="Create New Project"]'));
+   btnProfile = element(by.className("smo smo-expand-more-alt text-black-50 text-right pt-2"));
+   btnLogOut = element(by.xpath('//span[text()="Logout"]'));
+   
+     async ClickOnProjectCreateButton() { 
+       await this.btnClickOnCreateProject.click();
+     }
+     async ClickOnProfile() { 
+      await this.btnProfile.click();
     }
+     async LogOut() {
+       await this.btnLogOut.click();  
+     }
 }
+       

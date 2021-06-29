@@ -2,6 +2,8 @@ import { Given, When, Then, Before, After, Status } from "cucumber"
 import { browser, element, by, ExpectedConditions, WebElement } from "protractor"
 import chai from "chai";
 import { LogIn } from '../../PageObjects/LogIn';
+import { ProjectListingPage } from "../../PageObjects/ProjectListing";
+
 
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
@@ -10,26 +12,28 @@ var fs = require('fs');
 var expect = chai.expect;
 
 let objLogIn = new LogIn();
+let ProjectListing = new ProjectListingPage();
 
-Given('User with ITOps role is available {string}', async function (url) {
-    await browser.get(properties.get('main.url')).then(async function () {
-    })
-})
 
-When('enter Username and Password {string}, {string}', async function (usernameData, passwordData) {
-    await objLogIn.txtUserName.sendKeys(usernameData);
-    await objLogIn.txtPassword.sendKeys(passwordData);
-});
+         Given('User with ITOps role renders the URL', async function () {
+          await browser.manage().window().maximize();
+           await browser.get(properties.get('main.url')).then(async function () {
+         })
+         })
 
-When('click on Login button', async function () {
-    await objLogIn.btnClickOnSignIn.click();
-});
+        When('user enters Username, Password and click on Login button {string}, {string}', async function (UserName, Password) { 
+         await objLogIn.LogIn_Details(UserName, Password);
+        });
 
-Then('ITOps home page is displayed', async function () {
-     browser.getTitle().then(function (txtTitle) {
-        console.log("Page Title: "+txtTitle);
+
+
+        Then('ITOps home page is displayed', async function () {
+        browser.getTitle().then(function (txtTitle) {
          expect(txtTitle).to.include('Itops');
         });  
-      await  browser.element(by.className("smo smo-expand-more-alt text-black-50 text-right pt-2")).click();
-       await browser.element(by.xpath('//span[text()="Logout"]')).click();
-})
+        })
+        
+When('click on logout button', async function () {
+          await ProjectListing.ClickOnProfile()
+        await ProjectListing.LogOut();  
+        })

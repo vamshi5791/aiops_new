@@ -15,13 +15,15 @@ const cucumber_1 = require("cucumber");
 const protractor_1 = require("protractor");
 const chai_1 = __importDefault(require("chai"));
 const LogIn_1 = require("../../PageObjects/LogIn");
+const ProjectListing_1 = require("../../PageObjects/ProjectListing");
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = protractor_1.browser.ExpectedConditions;
 var fs = require('fs');
 var expect = chai_1.default.expect;
 let objLogIn = new LogIn_1.LogIn();
-cucumber_1.Given('User with ITOps role is available {string}', function (url) {
+let ProjectListing = new ProjectListing_1.ProjectListingPage();
+cucumber_1.Given('Given User with ITOps role renders the URL', function () {
     return __awaiter(this, void 0, void 0, function* () {
         yield protractor_1.browser.get(properties.get('main.url')).then(function () {
             return __awaiter(this, void 0, void 0, function* () {
@@ -29,25 +31,22 @@ cucumber_1.Given('User with ITOps role is available {string}', function (url) {
         });
     });
 });
-cucumber_1.When('enter Username and Password {string}, {string}', function (usernameData, passwordData) {
+cucumber_1.When('enters Username, Password and click on Login button {string}, {string}', function (UserName, Password) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield objLogIn.txtUserName.sendKeys(usernameData);
-        yield objLogIn.txtPassword.sendKeys(passwordData);
-    });
-});
-cucumber_1.When('click on Login button', function () {
-    return __awaiter(this, void 0, void 0, function* () {
-        yield objLogIn.btnClickOnSignIn.click();
+        yield objLogIn.LogIn_Details(UserName, Password);
     });
 });
 cucumber_1.Then('ITOps home page is displayed', function () {
     return __awaiter(this, void 0, void 0, function* () {
         protractor_1.browser.getTitle().then(function (txtTitle) {
-            console.log("Page Title: " + txtTitle);
             expect(txtTitle).to.include('Itops');
         });
-        yield protractor_1.browser.element(protractor_1.by.className("smo smo-expand-more-alt text-black-50 text-right pt-2")).click();
-        yield protractor_1.browser.element(protractor_1.by.xpath('//span[text()="Logout"]')).click();
     });
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTG9nSW4uanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi9TdGVwX0RlZmluaXRpb25zL0xvZ0luL0xvZ0luLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7QUFBQSx1Q0FBbUU7QUFDbkUsMkNBQWlGO0FBQ2pGLGdEQUF3QjtBQUN4QixtREFBZ0Q7QUFFaEQsSUFBSSxnQkFBZ0IsR0FBRyxPQUFPLENBQUMsbUJBQW1CLENBQUMsQ0FBQztBQUNwRCxJQUFJLFVBQVUsR0FBRyxnQkFBZ0IsQ0FBQyx1Q0FBdUMsQ0FBQyxDQUFDO0FBQzNFLElBQUksRUFBRSxHQUFHLG9CQUFPLENBQUMsa0JBQWtCLENBQUM7QUFDcEMsSUFBSSxFQUFFLEdBQUcsT0FBTyxDQUFDLElBQUksQ0FBQyxDQUFDO0FBQ3ZCLElBQUksTUFBTSxHQUFHLGNBQUksQ0FBQyxNQUFNLENBQUM7QUFFekIsSUFBSSxRQUFRLEdBQUcsSUFBSSxhQUFLLEVBQUUsQ0FBQztBQUUzQixnQkFBSyxDQUFDLDRDQUE0QyxFQUFFLFVBQWdCLEdBQUc7O1FBQ25FLE1BQU0sb0JBQU8sQ0FBQyxHQUFHLENBQUMsVUFBVSxDQUFDLEdBQUcsQ0FBQyxVQUFVLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQzs7WUFDbkQsQ0FBQztTQUFBLENBQUMsQ0FBQTtJQUNOLENBQUM7Q0FBQSxDQUFDLENBQUE7QUFFRixlQUFJLENBQUMsZ0RBQWdELEVBQUUsVUFBZ0IsWUFBWSxFQUFFLFlBQVk7O1FBQzdGLE1BQU0sUUFBUSxDQUFDLFdBQVcsQ0FBQyxRQUFRLENBQUMsWUFBWSxDQUFDLENBQUM7UUFDbEQsTUFBTSxRQUFRLENBQUMsV0FBVyxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsQ0FBQztJQUN0RCxDQUFDO0NBQUEsQ0FBQyxDQUFDO0FBRUgsZUFBSSxDQUFDLHVCQUF1QixFQUFFOztRQUMxQixNQUFNLFFBQVEsQ0FBQyxnQkFBZ0IsQ0FBQyxLQUFLLEVBQUUsQ0FBQztJQUM1QyxDQUFDO0NBQUEsQ0FBQyxDQUFDO0FBRUgsZUFBSSxDQUFDLDhCQUE4QixFQUFFOztRQUNoQyxvQkFBTyxDQUFDLFFBQVEsRUFBRSxDQUFDLElBQUksQ0FBQyxVQUFVLFFBQVE7WUFDdkMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxjQUFjLEdBQUMsUUFBUSxDQUFDLENBQUM7WUFDcEMsTUFBTSxDQUFDLFFBQVEsQ0FBQyxDQUFDLEVBQUUsQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLENBQUM7UUFDdEMsQ0FBQyxDQUFDLENBQUM7UUFDTCxNQUFPLG9CQUFPLENBQUMsT0FBTyxDQUFDLGVBQUUsQ0FBQyxTQUFTLENBQUMsdURBQXVELENBQUMsQ0FBQyxDQUFDLEtBQUssRUFBRSxDQUFDO1FBQ3JHLE1BQU0sb0JBQU8sQ0FBQyxPQUFPLENBQUMsZUFBRSxDQUFDLEtBQUssQ0FBQyx5QkFBeUIsQ0FBQyxDQUFDLENBQUMsS0FBSyxFQUFFLENBQUM7SUFDMUUsQ0FBQztDQUFBLENBQUMsQ0FBQSJ9
+cucumber_1.When('click on logout button', function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield ProjectListing.ClickOnProfile();
+        yield ProjectListing.LogOut();
+    });
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTG9nSW4uanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi9TdGVwX0RlZmluaXRpb25zL0xvZ0luL0xvZ0luLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7QUFBQSx1Q0FBbUU7QUFDbkUsMkNBQWlGO0FBQ2pGLGdEQUF3QjtBQUN4QixtREFBZ0Q7QUFDaEQscUVBQXNFO0FBR3RFLElBQUksZ0JBQWdCLEdBQUcsT0FBTyxDQUFDLG1CQUFtQixDQUFDLENBQUM7QUFDcEQsSUFBSSxVQUFVLEdBQUcsZ0JBQWdCLENBQUMsdUNBQXVDLENBQUMsQ0FBQztBQUMzRSxJQUFJLEVBQUUsR0FBRyxvQkFBTyxDQUFDLGtCQUFrQixDQUFDO0FBQ3BDLElBQUksRUFBRSxHQUFHLE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQztBQUN2QixJQUFJLE1BQU0sR0FBRyxjQUFJLENBQUMsTUFBTSxDQUFDO0FBRXpCLElBQUksUUFBUSxHQUFHLElBQUksYUFBSyxFQUFFLENBQUM7QUFDM0IsSUFBSSxjQUFjLEdBQUcsSUFBSSxtQ0FBa0IsRUFBRSxDQUFDO0FBR3JDLGdCQUFLLENBQUMsNENBQTRDLEVBQUU7O1FBQ3BELE1BQU0sb0JBQU8sQ0FBQyxHQUFHLENBQUMsVUFBVSxDQUFDLEdBQUcsQ0FBQyxVQUFVLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQzs7WUFDbkQsQ0FBQztTQUFBLENBQUMsQ0FBQTtJQUNGLENBQUM7Q0FBQSxDQUFDLENBQUE7QUFFSCxlQUFJLENBQUMsd0VBQXdFLEVBQUUsVUFBZ0IsUUFBUSxFQUFFLFFBQVE7O1FBQ2hILE1BQU0sUUFBUSxDQUFDLGFBQWEsQ0FBQyxRQUFRLEVBQUUsUUFBUSxDQUFDLENBQUM7SUFDbEQsQ0FBQztDQUFBLENBQUMsQ0FBQztBQUlILGVBQUksQ0FBQyw4QkFBOEIsRUFBRTs7UUFDckMsb0JBQU8sQ0FBQyxRQUFRLEVBQUUsQ0FBQyxJQUFJLENBQUMsVUFBVSxRQUFRO1lBQ3pDLE1BQU0sQ0FBQyxRQUFRLENBQUMsQ0FBQyxFQUFFLENBQUMsT0FBTyxDQUFDLE9BQU8sQ0FBQyxDQUFDO1FBQ3RDLENBQUMsQ0FBQyxDQUFDO0lBQ0gsQ0FBQztDQUFBLENBQUMsQ0FBQTtBQUVWLGVBQUksQ0FBQyx3QkFBd0IsRUFBRTs7UUFDckIsTUFBTSxjQUFjLENBQUMsY0FBYyxFQUFFLENBQUE7UUFDdkMsTUFBTSxjQUFjLENBQUMsTUFBTSxFQUFFLENBQUM7SUFDOUIsQ0FBQztDQUFBLENBQUMsQ0FBQSJ9

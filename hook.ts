@@ -8,7 +8,6 @@ var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 
 Before( async function () {
   browser.waitForAngularEnabled(false);
-await browser.manage().window().maximize();
 });
 
 //screenshots for scenarios

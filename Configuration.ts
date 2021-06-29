@@ -13,12 +13,12 @@ export let config: Config = {
     capabilities: {
       'browserName': properties.get('main.browserName'),
   },
-    
+  
   specs: [
    
-    //'../Features/LogIn/LogIn_Roles.feature',
-    '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
-   '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
+    '../Features/LogIn/LogIn_Roles.feature',
+    '../Features/ProjectInstallation/ProjectInstallation_admin.feature',
+    '../Features/ProjectInstallation/ProjectInstallation_IE.feature'
     
   ],
     cucumberOpts: {
@@ -26,8 +26,9 @@ export let config: Config = {
         format:'json:./Reports/cucumberreport.json',
       // tags: "@ProjectCreation",
         require: [
-          '../JSFiles/Step_Definitions/LogIn/LogIn.js',
-         '../JSFiles/Step_Definitions/ProjectInstallation/ProjectInstallation.js',
+           '../JSFiles/Step_Definitions/LogIn/LogIn.js',
+          '../JSFiles/Step_Definitions/ProjectInstallation/ProjectInstallation_IE.js',
+         '../JSFiles/Step_Definitions/ProjectInstallation/ProjectInstallation_admin.js',
           '../JSFiles/hook.js',
           '../support/timeout.js'
         ]
@@ -40,7 +41,7 @@ export let config: Config = {
         var options = {
           theme: 'bootstrap',
           jsonFile:'./Reports/cucumberreport.json',
-          output:'./Reports/cucumber_report.html' ,
+          output:'./Reports/Test_Report_.html' ,
           reportSuiteAsScenarios: true,
           launchReport: true,
           metadata: {
