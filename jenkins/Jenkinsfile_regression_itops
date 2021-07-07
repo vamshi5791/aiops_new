@@ -44,6 +44,7 @@ pipeline {
                 npm install
                 npm run webdriver-update
                 npm install -g typescript
+                npm install -g protractor
                 /home/smartops-jenkins/.npm-packages/lib/node_modules/typescript/bin/tsc
                 """
                 
@@ -53,7 +54,7 @@ pipeline {
             steps {
                 echo "[INFO] Executing Regression Test"
                 sh """                
-                  protractor JSFiles/Configuration.js --params.baseUrl ${Environment} --browser=${Browser}  --Options=${BrowserMode}
+                  /home/smartops-jenkins/.npm-packages/lib/node_modules/typescript/bin/protractor JSFiles/Configuration.js --params.baseUrl ${Environment} --browser=${Browser}  --Options=${BrowserMode}
                 """
                 
             }   
