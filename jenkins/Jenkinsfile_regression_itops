@@ -32,7 +32,7 @@ pipeline {
 
         stage('Checkout') {
              steps {
-                 git branch: "${Branch}", credentialsId: 'smartops_devops', url: '${GIT_URL}/itops-automation'
+                 git branch: "${Branch}", credentialsId: 'smartops_devops', url: 'https://USTInnovationEngineering@dev.azure.com/USTInnovationEngineering/USTP-SMOP-BU-00_SmartOpsQAAutomation/_git/itops-automation'
                  }
          }
 
