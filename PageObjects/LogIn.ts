@@ -6,7 +6,7 @@ export class LogIn {
     txtUserName = element(by.name("username"))
     txtPassword = element(by.name("password"))
     btnClickOnSignIn = element(by.xpath('//input[@name="login"]'))
-     
+
     async LogIn_Details(UserName: string, Password: string) {
         await this.txtUserName.sendKeys(UserName)
         await this.txtPassword.sendKeys(Password)
@@ -14,4 +14,3 @@ export class LogIn {
     }
 
 }
-       
