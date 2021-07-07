@@ -1,0 +1,79 @@
+pipeline {
+    environment{
+        IMAGE_NAME = 'smartops/regression'
+    }
+ 
+ agent { label "${NODE_LABEL}" }
+
+  options {
+    skipDefaultCheckout(true)
+  }
+
+  tools {
+        maven 'jenkins-maven'  
+    }
+
+  stages {
+        
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+         }
+
+	    stage('clean workspace') {
+             steps {
+                 cleanWs()            
+                 }
+	     }
+
+        stage('Checkout') {
+             steps {
+                 git branch: "${Branch}", credentialsId: 'smartops_devops', url: 'https://USTInnovationEngineering@dev.azure.com/USTInnovationEngineering/USTP-SMOP-BU-00_SmartOpsQAAutomation/_git/itops-automation'
+                 }
+         }
+
+
+        stage('Test Setup') {
+            steps {
+                echo "[INFO] Executing npm install, webdriver update and tsc"
+                sh """
+                npm install
+                npm run webdriver-update
+                npm install -g typescript
+                /home/smartops-jenkins/.npm-packages/lib/node_modules/typescript/bin/tsc
+                """
+                
+            }   
+        }
+        stage('ITOPS Regression Test') {
+            steps {
+                echo "[INFO] Executing Regression Test"
+                sh """                
+                  protractor JSFiles/Configuration.js --params.baseUrl ${Environment} --browser=${Browser}  --Options=${BrowserMode}
+                """
+                
+            }   
+        }
+
+  }
+  post {
+        always {
+            emailext (
+                  subject: "Job '${env.JOB_NAME} Result . Build No ${env.BUILD_NUMBER}'",
+                  body: """Please see the attachment for regression test result""",
+                  to: "SreejithSivankutty.Nair@ust-global.com,Binu.Rajagopal@ust-global.com,Pillaikrishnanunni.Unnikrishna@ust-global.com",
+                  from: "noreplysmartopssvc@ust-global.com",
+                  mimeType: 'text/plain',
+                  attachmentsPattern: 'SmartOps/*.pdf'
+             ) 
+
+
+        }
+}
+   
+}
+
