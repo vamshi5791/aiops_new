@@ -44,7 +44,7 @@ pipeline {
                 npm install
                 npm run webdriver-update
                 npm install -g typescript
-                /bin/tsc
+                /home/smartops-jenkins/.npm-packages/lib/node_modules/typescript/bin/tsc
                 """
                 
             }   
