@@ -32,7 +32,7 @@ pipeline {
 
         stage('Checkout') {
              steps {
-                 git branch: "jenkins_integration", credentialsId: 'smartops_devops', url: '${GIT_URL}/${REPO_NAME}/'
+                 git branch: "${Branch}", credentialsId: 'smartops_devops', url: '${GIT_URL}/itops-automation'
                  }
          }
 
