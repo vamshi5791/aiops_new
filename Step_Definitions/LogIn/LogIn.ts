@@ -15,25 +15,25 @@ let objLogIn = new LogIn();
 let ProjectListing = new ProjectListingPage();
 
 
-         Given('User with ITOps role renders the URL', async function () {
-          await browser.manage().window().maximize();
-           await browser.get(properties.get('main.url')).then(async function () {
-         })
-         })
+Given('User with ITOps role renders the URL', async function () {
+  await browser.get(browser.params.url);
+})
 
-        When('user enters Username, Password and click on Login button {string}, {string}', async function (UserName, Password) { 
-         await objLogIn.LogIn_Details(UserName, Password);
-        });
+When('user enters Username, Password and click on Login button {string}, {string}', async function (UserName, Password) {
+  await objLogIn.LogIn_Details(UserName, Password);
+});
 
 
 
-        Then('ITOps home page is displayed', async function () {
-        browser.getTitle().then(function (txtTitle) {
-         expect(txtTitle).to.include('Itops');
-        });  
-        })
-        
+Then('ITOps home page is displayed', async function () {
+  await browser.getTitle().then(async function (txtTitle) {
+    await  expect(txtTitle).to.include('Itops');
+  });
+ // await browser.close();
+})
+
 When('click on logout button', async function () {
-          await ProjectListing.ClickOnProfile()
-        await ProjectListing.LogOut();  
-        })
+  await ProjectListing.ClickOnProfile()
+  await ProjectListing.LogOut();
+  //await browser.close();
+})

@@ -8,7 +8,7 @@ export class ProjectConfiguration {
     txtProjectname = element(by.xpath('//input[@name="pjctName"]'));
     txtDescription = element(by.xpath('//legend[text()="Project Description"]//following::textarea'));
     btnCreate = element(by.xpath('//span[text()="Create"]'));
-    
+
     //General configuration            
     txtServiceNowHost = element(by.xpath('//legend[text()="Servicenow Host"]//following-sibling::input'));
     txtServiceUsername = element(by.xpath('//legend[text()="Servicenow Username"]//following-sibling::input'));
@@ -27,14 +27,14 @@ export class ProjectConfiguration {
     drpAnalyticsInterval = element(by.xpath('//label[text()="Scheduler Interval for alert analytics"]//following-sibling::section//fieldset//span'));
     drpPredictionInterval = element(by.xpath('//label[text()="Scheduled interval for Batch Prediction"]//following-sibling::section//fieldset//span'));
     btnSaveSchedularConfig = element(by.xpath("//span[text()='Scheduler Configurations ']/ancestor::div[contains(@class, 'smo-accordion-header ')]//following-sibling::div//span[text()='Save']"));
-              
+
     //Error response ocnfiguration          
     lnkErrorConfiguration = element(by.xpath('//span[text()="Error response configurations "]'));
     txtFromEmail = element(by.xpath('//legend[text()="From Email Account"]//following-sibling::input'));
     pwdFromEmail = element(by.xpath('//legend[text()="From Email Account Password"]//following-sibling::input'));
     txtToEmail = element(by.xpath('//legend[text()="To Email Address"]//following-sibling::input'));
     btnSaveErrorConfig = element(by.xpath("//span[text()='Error response configurations ']/ancestor::div[contains(@class, 'smo-accordion-header ')]//following-sibling::div//span[text()='Save']"));
-  
+
     //Surge Configuration
     lnkSurgeConfiguration = element(by.xpath('//span[text()="Surge Configurations "]'));
     txtSurgeStartPercentile = element(by.xpath('//legend[text()="Surge Start Percentile"]//following-sibling::input'));
@@ -61,10 +61,10 @@ export class ProjectConfiguration {
     txtSubCategoryColumnNameInDumpFile = element(by.xpath('//legend[text()="Sub Category column name in dump file"]//following-sibling::input'));
     txtLongDescriptionColumnName = element(by.xpath('//legend[text()="Long Description column name in dump file"]//following-sibling::input'));
     btnSaveTicketConfig = element(by.xpath("//span[text()='Ticket Dump Configurations ']/ancestor::div[contains(@class, 'smo-accordion-header ')]//following-sibling::div//span[text()='Save']"));
-    
-    
+
+
     //Channel Configuration
-            
+
     lnkChannelConfiguration = element(by.xpath('//span[text()="Channel Configuration"]'));
     btnCreateNewChannel = element(by.xpath('//span[text()="Create New Channel"]'));
     txtChannelName = element(by.name('cname'));
@@ -78,29 +78,40 @@ export class ProjectConfiguration {
     checkProcessListAsList = element(by.xpath('//input[@label="Automation Story"]//following::label[text()="Process request as list"]'));
     txtEnterListSize = element(by.name("listsize"));
     btnSaveAndConfigure = element(by.xpath('//input[@label="Automation Story"]//following::span[text()="Save & Configure"]'));
-    
+
+
+    //Channel Authontication
+    lnkauthenticate = element(by.xpath('//span[text()="Authenticate"]'));
+    txtMailId = element(by.name("loginfmt"));
+    btnclickNext = element(by.id("idSIButton9"));
+    txtPassword = element(by.name("Password"));
+    txtSignIn = element(by.xpath('//span[text()="Sign in"]'))
+
     //Add User
-             
+
     lnkAddUser = element(by.xpath('//span[text()="Add User"]'));
     LstSelectUser = element(by.className("smo-dropdown-trigger-icon smo-clickable smo smo-expand-more-alt chevron-icon"));
-    txtUserName = element(by.className("ng-tns-c18-13 smo-dropdown-filter smo-inputtext smo-widget smo-state-default pl-1"));
+    txtUserName = element(by.className('ng-tns-c18-13 smo-dropdown-filter smo-inputtext smo-widget smo-state-default pl-1'));
     drpSelectUser = element(by.xpath('//h3[text()="Add User"]//following::smo-dropdownitem//span'));
     chkRole = element(by.xpath('//label[text()="itops_admin"]'));
     btnAddUserDetails = element(by.xpath('//label[text()="itops_admin"]//following::span[text()="Add User"]'));
     btnInstall = element(by.xpath('//span[text()="INSTALL"]'));
-          
+
+
+
+
     async Projectname(ProjectName: string) {
         await this.txtProjectname.sendKeys(ProjectName)
     }
     async ProjectDescription(Description: string) {
         await this.txtDescription.sendKeys(Description)
     }
-          
+
     async Create() {
         await this.btnCreate.click()
     }
-  
-// General Configuration
+
+    // General Configuration
     async ServiceNowHost(ServiceNowHost: string) {
         await this.txtServiceNowHost.sendKeys(ServiceNowHost)
     }
@@ -119,7 +130,7 @@ export class ProjectConfiguration {
     async ITSMversion(ITSMversion: string) {
         await this.txtITSMversion.sendKeys(ITSMversion)
     }
-    
+
     async TimeZone(ITSMTimeZone: string) {
         await this.drpTimeZone.click()
         await drp.selectByVisibleText(ITSMTimeZone)
@@ -131,7 +142,7 @@ export class ProjectConfiguration {
     async SaveGeneralConfig() {
         await this.btn_saveGeneralConfig.click()
     }
-   //Schedular Configuration
+    //Schedular Configuration
     async SchedularConfiguration() {
         await this.lnkSchedularConfiguration.click()
     }
@@ -155,7 +166,7 @@ export class ProjectConfiguration {
         await this.btnSaveSchedularConfig.click()
     }
 
-//Error Response Configuration
+    //Error Response Configuration
     async ErrorResponseConfiguration() {
         await this.lnkErrorConfiguration.click()
     }
@@ -172,42 +183,42 @@ export class ProjectConfiguration {
     async SaveErrorConfig() {
         await this.btnSaveErrorConfig.click()
     }
-// Surge Configuration
-    
+    // Surge Configuration
+
     async SurgeConfiguration() {
         await this.lnkSurgeConfiguration.click()
     }
     async SurgeStartPercentile(SurgeStartPercentile: string) {
         await this.txtSurgeStartPercentile.sendKeys(SurgeStartPercentile)
-        }
-        async SurgeStartPercentileThreshold(SurgeStartPercentileThreshold: string) {
+    }
+    async SurgeStartPercentileThreshold(SurgeStartPercentileThreshold: string) {
         await this.txtSurgeStartPercentileThreshold.sendKeys(SurgeStartPercentileThreshold)
-        }
-        async SurgeEndPercentile(SurgeEndPercentile: string) {
+    }
+    async SurgeEndPercentile(SurgeEndPercentile: string) {
         await this.txtSurgeEndPercentile.sendKeys(SurgeEndPercentile)
-        }
-        async SurgeEndPercentileThreshold(SurgeEndPercentileThreshold: string) {
+    }
+    async SurgeEndPercentileThreshold(SurgeEndPercentileThreshold: string) {
         await this.txtSurgeEndPercentileThreshold.sendKeys(SurgeEndPercentileThreshold)
-        }
-        async SurgePatterns(SurgePatterns: string) {
+    }
+    async SurgePatterns(SurgePatterns: string) {
         await this.txtSurgePatterns.sendKeys(SurgePatterns)
-        }
-        async SurgePatternMatchThreshold(SurgePatternMatchThreshold: string) {
+    }
+    async SurgePatternMatchThreshold(SurgePatternMatchThreshold: string) {
         await this.txtSurgePatternMatchThreshold.sendKeys(SurgePatternMatchThreshold)
-        }
-        async SurgeAnalyticsInterval(SurgeAnalyticsInterval: string) {
+    }
+    async SurgeAnalyticsInterval(SurgeAnalyticsInterval: string) {
         await this.txtSurgeAnalyticsInterval.sendKeys(SurgeAnalyticsInterval)
-        }
-        async SurgeFirstRunCount(SurgeFirstRunCount: string) {
+    }
+    async SurgeFirstRunCount(SurgeFirstRunCount: string) {
         await this.txtSurgeFirstRunCount.sendKeys(SurgeFirstRunCount)
-        }
-        async SurgeFirstRunCountInterval(SurgeFirstRunCountInterval: string) {
+    }
+    async SurgeFirstRunCountInterval(SurgeFirstRunCountInterval: string) {
         await this.txtSurgeFirstRunCountInterval.sendKeys(SurgeFirstRunCountInterval)
-         }
-        async SaveSurgeConfiguration() {
+    }
+    async SaveSurgeConfiguration() {
         await this.btnSaveSurgeConfig.click()
-        }
-  //Ticket Dump Configuration 
+    }
+    //Ticket Dump Configuration 
     async TicketDumpConfiguration() {
         await this.lnkTicketDumpConfiguration.click()
     }
@@ -248,8 +259,8 @@ export class ProjectConfiguration {
     }
 
 
-     
-   //channel Configuration 
+
+    //channel Configuration 
     async channelConfiguration() {
         await this.lnkChannelConfiguration.click()
     }
@@ -296,17 +307,33 @@ export class ProjectConfiguration {
     async SaveAndConfigure() {
         await this.btnSaveAndConfigure.click()
     }
+    //Channel Authontication  
+    async ClickOnAuthenticate() {
+        await this.lnkauthenticate.click()
+    }
+    async EnterMailId(MailId: string) {
+        await this.txtMailId.sendKeys(MailId)
+    }
+    async ClickNext() {
+        await this.btnclickNext.click()
+    }
+    async EnterPassword(Password: string) {
+        await this.txtPassword.sendKeys(Password)
+    }
+    async SignIn() {
+        await this.txtSignIn.click()
+    }
 
-  //Add User
+    //Add User
     async AddUser() {
         await this.lnkAddUser.click()
     }
     async SelectUser(UserName) {
         await this.LstSelectUser.click()
-        await this.txtUserName.sendKeys(UserName)
-        await this.drpSelectUser.click();
+       // await this.txtUserName.sendKeys(UserName)
+       // await this.drpSelectUser.click();
     }
-    
+
     async Role(Role) {
         await drp.CheckBox(Role)
     }
@@ -316,6 +343,5 @@ export class ProjectConfiguration {
     async Install() {
         await this.btnInstall.click()
     }
-   
+
 }
-       
