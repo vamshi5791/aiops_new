@@ -1,0 +1,78 @@
+pipeline {
+    environment{
+        IMAGE_NAME = 'smartops/regression'
+    }
+ 
+ agent { label "${NODE_LABEL}" }
+
+  options {
+    skipDefaultCheckout(true)
+  }
+
+  tools {
+        maven 'jenkins-maven'  
+    }
+
+  stages {
+        
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+         }
+
+	    stage('clean workspace') {
+             steps {
+                 cleanWs()            
+                 }
+	     }
+
+        stage('Checkout') {
+             steps {
+                 git branch: "jenkins_integration", credentialsId: 'smartops_devops', url: '${GIT_URL}/${REPO_NAME}/'
+                 }
+         }
+
+
+        stage('Initialize') {
+            steps {
+                echo "[INFO] Executing Regression Test"
+                sh """
+                npm install
+                npm run webdriver-update
+                tsc
+                """
+                
+            }   
+        }
+        stage('ITOPS REgression Test') {
+            steps {
+                echo "[INFO] Executing Regression Test"
+                sh """                
+                  protractor JSFiles/Configuration.js --params.baseUrl ${Environment} --browser=${Browser}  --Options=${BrowserMode}
+                """
+                
+            }   
+        }
+
+  }
+  post {
+        always {
+            emailext (
+                  subject: "Job '${env.JOB_NAME} Result . Build No ${env.BUILD_NUMBER}'",
+                  body: """Please see the attachment for regression test result""",
+                  to: "SreejithSivankutty.Nair@ust-global.com,Binu.Rajagopal@ust-global.com,Pillaikrishnanunni.Unnikrishna@ust-global.com",
+                  from: "noreplysmartopssvc@ust-global.com",
+                  mimeType: 'text/plain',
+                  attachmentsPattern: 'SmartOps/*.pdf'
+             ) 
+
+
+        }
+}
+   
+}
+
