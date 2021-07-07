@@ -44,7 +44,7 @@ pipeline {
                 npm install
                 npm run webdriver-update
                 npm install -g typescript
-                tsc
+                /bin/tsc
                 """
                 
             }   
