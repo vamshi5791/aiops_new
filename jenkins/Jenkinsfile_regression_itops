@@ -37,9 +37,9 @@ pipeline {
          }
 
 
-        stage('Initialize') {
+        stage('Test Setup') {
             steps {
-                echo "[INFO] Executing Regression Test"
+                echo "[INFO] Executing npm install, webdriver update and tsc"
                 sh """
                 npm install
                 npm run webdriver-update
@@ -48,7 +48,7 @@ pipeline {
                 
             }   
         }
-        stage('ITOPS REgression Test') {
+        stage('ITOPS Regression Test') {
             steps {
                 echo "[INFO] Executing Regression Test"
                 sh """                
