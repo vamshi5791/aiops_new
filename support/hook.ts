@@ -10,9 +10,7 @@ Before(async function () {
   browser.waitForAngularEnabled(false);
   
 });
-BeforeAll(async function () {
-  //await browser.restart();
-});
+
 //screenshots for scenarios
 
 After(async function (scenario) {

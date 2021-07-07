@@ -12,7 +12,7 @@ Feature: Project Installation with Itops Admin role
                 And admin enters project name as "<ProjectName>"
                 And admin enters description as "<Description>"
                 And admin clicks on create button
-                Then user is taken to the project configuration page "<Toaster"
+                Then user is taken to the project configuration page "<Toaster>"
                 Examples:
                         | UserName    | Password | ProjectName  | Description       | Toaster                    |
                         | Itops_admin | qa123    | ProTestTestTSIV | Release1.4Project | Project Saved Successfully |
