@@ -54,7 +54,7 @@ pipeline {
             steps {
                 echo "[INFO] Executing Regression Test"
                 sh """                
-                  /home/smartops-jenkins/.npm-packages/lib/node_modules/protractor/bin/protractor JSFiles/Configuration.js --params.baseUrl '${Environment_Name}' --browser=${Browser}  --Options=${BrowserMode}
+                  /home/smartops-jenkins/.npm-packages/lib/node_modules/protractor/bin/protractor JSFiles/Configuration.js --params.baseUrl \'${Environment_Name}\' --browser=${Browser}  --Options=${BrowserMode}
                 """
                 
             }   
