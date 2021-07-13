@@ -73,7 +73,7 @@ pipeline {
             emailext (
                   subject: "Job '${env.JOB_NAME} Result . Build No ${env.BUILD_NUMBER}'",
                   body: """Please see the attachment for regression test result""",
-                  to: "SreejithSivankutty.Nair@ust-global.com",
+                  to: "SreejithSivankutty.Nair@ust-global.com,Binu.Rajagopal@ust-global.com,Pillaikrishnanunni.Unnikrishna@ust-global.com",
                   from: "noreplysmartopssvc@ust-global.com",
                   mimeType: 'text/plain',
                   attachmentsPattern: 'Reports/*.*'
