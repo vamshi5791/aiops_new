@@ -41,12 +41,8 @@ pipeline {
             steps {
                 echo "[INFO] Executing npm install, webdriver update and tsc"
                 sh """
-                npm install                
-                npm install -g typescript
-                npm install -g protractor
-                npm install -g webdriver-manager
-                npm run webdriver-update
-                /home/smartops-jenkins/.npm-packages/lib/node_modules/webdriver-manager/bin/webdriver-manager update
+               
+                node node_modules/protractor/bin/webdriver-manager update
                 /home/smartops-jenkins/.npm-packages/lib/node_modules/typescript/bin/tsc
                 """
                 
@@ -56,7 +52,7 @@ pipeline {
             steps {
                 echo "[INFO] Executing Regression Test"
                 sh """                
-                  /home/smartops-jenkins/.npm-packages/lib/node_modules/protractor/bin/protractor JSFiles/Configuration.js --params.baseUrl \'${Environment_Name}\' --browser=${Browser}  --Options=${BrowserMode}
+                  node node_modules/protractor/bin//protractor JSFiles/Configuration.js --params.baseUrl ${Environment_Name} --browser=${Browser}  --Options=${BrowserMode} --no-sandbox
                 """
                 
             }   
