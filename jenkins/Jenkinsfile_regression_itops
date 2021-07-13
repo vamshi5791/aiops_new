@@ -76,7 +76,7 @@ pipeline {
                   to: "SreejithSivankutty.Nair@ust-global.com",
                   from: "noreplysmartopssvc@ust-global.com",
                   mimeType: 'text/plain',
-                  attachmentsPattern: 'SmartOps/*.pdf'
+                  attachmentsPattern: 'Reports/*.*'
              ) 
 
 
