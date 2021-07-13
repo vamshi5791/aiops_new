@@ -49,8 +49,8 @@ pipeline {
                 npm install -g webdriver-manager
                 npm run webdriver-update
 
-                echo $UID
                 
+
                 node node_modules/protractor/bin/webdriver-manager update
                 /home/smartops-jenkins/.npm-packages/lib/node_modules/typescript/bin/tsc
                 """
