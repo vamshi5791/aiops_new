@@ -1,5 +1,5 @@
-import { Given, When, Then, Before, After, Status } from "cucumber"
-import { browser, element, by, ExpectedConditions, WebElement } from "protractor"
+import { When, Then } from "cucumber"
+import { browser, element, by, protractor } from "protractor"
 import { ProjectListingPage } from '../../PageObjects/ProjectListing';
 import { ProjectConfiguration } from "../../PageObjects/ProjectConfiguration";
 import chai from "chai";
@@ -10,9 +10,12 @@ let objProjectConfi = new ProjectConfiguration();
 var fetch = require("node-fetch");
 const { async } = require("q");
 var ChannnelNameText;
-var customMsgEnabled = true;
-When('Admin Creates Queue Channel {string}, {string}, {string}, {string}, {string}', async function (username, password, channelName, projectID, projectName) { 
+var Global_ProjectName
+
+
+When('{string} Creates Queue Channel {string}, {string}, {string}, {string}, {string}', async function (userRole, username, password, channelName, projectID, projectName) {
   ChannnelNameText = channelName;
+ 
   var userInfo =
   {
     "realm": "ustglobal",
@@ -86,8 +89,12 @@ When('Admin Creates Queue Channel {string}, {string}, {string}, {string}, {strin
   }
   await fetch(token_URL, tokenPostRequest).then(res => res.json()).then(res => {
 
-    if (true) { return Promise.resolve(res); }
-    else { return Promise.reject(res); }
+    if (true) {
+      return Promise.resolve(res);
+    }
+    else {
+      return Promise.reject(res);
+    }
   }).then(async function (userData) {
 
     var bearerToken = "Bearer " + userData.access_token;
@@ -113,44 +120,57 @@ When('Admin Creates Queue Channel {string}, {string}, {string}, {string}, {strin
     console.warn(error);
   });
 });
+ 
 
-When('admin click dotmenu icon {string}', async function (ProjectName) {
-  // await objProjectListing.DotMenu();
-  await objProjectListing.ThreeDots(ProjectName);
+When('{string} enters project name in project search feild {string}', async function (userRole, projectName) {
+  try {
+    await objProjectListing.Project_search(projectName);
+    await browser.actions().sendKeys(protractor.Key.ENTER).perform();
+    Global_ProjectName = projectName;
+  }
+  catch (error) {
+    throw "IE is unable to ener project name in project search feild"
+  }
 });
 
-When('admin click editProject', async function () {
-  await objProjectListing.EditProject()
+When('{string} click dotmenu icon', async function (userRole) {
+  try {
+    await browser.sleep(5000)
+    await objProjectListing.ThreeDots(Global_ProjectName);
+  }
+  catch (error) {
+    throw "User is not able to click Three dot menu"
+  }
 });
 
-When('admin clicks on channel configuration', async function () {
-await browser.sleep(5000)
-  //await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Channel Configuration"]'))), 100000);
-  await objProjectConfi.channelConfiguration();
+When('{string} click editProject', async function (userRole) {
+  try {
+    await objProjectListing.EditProject()
+  }
+  catch {
+    throw "User is not able to click Edit Project"
+  }
+
 });
 
-
-// Then('new Queue channel must be available in Channel configuration page {string}', async function (Toaster) {
-//   await element(by.xpath('//h3[text()="'+ChannnelNameText+'"]')).getText().then(function (text) {
-//     expect(text).to.include(ChannnelNameText);
-//   });
-// });
+When('{string} clicks on channel configuration', async function (userRole) {
+  try {
+    await browser.sleep(3000)
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Channel Configuration"]'))), 100000);
+    await objProjectConfi.channelConfiguration();
+  }
+  catch (error) {
+    throw "User is not able to click on Channel Configuration"
+  }
+});
 
 Then('new Queue channel must be available in Channel configuration page {string}', async function (Toaster) {
   try {
-  await element(by.xpath('//h3[text()="'+ChannnelNameText+'"]')).getText().then(function (text) {
-  expect(text).to.include(ChannnelNameText);
-  });
-  } 
-  catch (error) {
-  if (customMsgEnabled == true) {
-  var customError = ''
-  customError = "Newly created channel name should be displayed in list. But the new queue channel is not exist"
-  await browser.close();
-  throw customError
-  } 
-  else {
-  throw error
+    await element(by.xpath('//h3[text()="' + ChannnelNameText + '"]')).getText().then(function (text) {
+      expect(text).to.include(ChannnelNameText);
+    });
   }
+  catch (error) {
+    throw "Newly created channel name should be displayed in list. But the new queue channel is not exist"
   };
-  });
+});
