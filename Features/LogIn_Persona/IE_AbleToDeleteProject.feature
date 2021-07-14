@@ -9,7 +9,7 @@ Feature: Login Persona Functionalities
           When "IE" enters project name in project search feild "<projectName>"
           When "IE" click dotmenu icon
           And "IE" click on delete project
-          #And "IE" clicks on yes
+          And "IE" clicks on yes
           Then Success message for Project is "deleted" must be shown as a toaster "<Toaster>"
           And click on logout button
 
