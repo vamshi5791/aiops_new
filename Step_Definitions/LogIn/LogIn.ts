@@ -16,24 +16,32 @@ let ProjectListing = new ProjectListingPage();
 
 
 Given('User with ITOps role renders the URL', async function () {
-  await browser.get(browser.params.url);
+  await browser.get(properties.get("main." + globalThis.environment + "_url")).then(async function () {
+  })
 })
 
 When('user enters Username, Password and click on Login button {string}, {string}', async function (UserName, Password) {
-  await objLogIn.LogIn_Details(UserName, Password);
+  try {
+    await objLogIn.LogIn_Details(UserName, Password);
+  } catch (error) {
+    await ProjectListing.ClickOnProfile()
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Logout"]'))), 100000);
+    await ProjectListing.LogOut();
+    throw "Invalid Login credentials"
+
+  }
 });
 
 
 
 Then('ITOps home page is displayed', async function () {
   await browser.getTitle().then(async function (txtTitle) {
-    await  expect(txtTitle).to.include('Itops');
+    await expect(txtTitle).to.include('Itops');
   });
- // await browser.close();
 })
 
 When('click on logout button', async function () {
-  await ProjectListing.ClickOnProfile()
+  await ProjectListing.ClickOnProfile();
+  await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Logout"]'))), 10000);
   await ProjectListing.LogOut();
-  //await browser.close();
 })

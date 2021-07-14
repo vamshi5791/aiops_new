@@ -13,14 +13,14 @@ let objLogIn = new LogIn();
 let objProjectListing = new ProjectListingPage();
 
 
-When('ITOps Admin clicks on edit configuration button', async function () {
+When('ITOps {string} clicks on edit configuration button', async function (userRole) {
   await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))), 100000);
-    await objProjectListing.EditConfiguration();
-  });
+  await objProjectListing.EditConfiguration();
+});
 
-  Then('Admin is taken to the master configuration page {string}', async function (MasterText) {
-    await browser.wait(EC.visibilityOf(element(by.xpath('//label[text()="Master Configuration"]'))), 100000);
-    await element(by.xpath('//label[text()="Master Configuration"]')).getText().then(function (text) {
-         expect(text).to.include(MasterText);
-       });
+Then('{string} is taken to the master configuration page {string}', async function (userRole, MasterText) {
+  await browser.wait(EC.visibilityOf(element(by.xpath('//label[text()="Master Configuration"]'))), 100000);
+  await element(by.xpath('//label[text()="Master Configuration"]')).getText().then(function (text) {
+    expect(text).to.include(MasterText);
   });
+});

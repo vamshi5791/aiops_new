@@ -1,7 +1,9 @@
-@LogIn_Roles
-Feature: Login with all the roles
+@LogIn
+Feature: Login with all ITOps user roles
 
-  Scenario Outline: Successful Login with ITOPS roles
+  Feature Description : Verifying LogIn functionality for all ITOps user roles
+
+  Scenario Outline: Successful Login with ITOps user roles
 
     Given User with ITOps role renders the URL
     When user enters Username, Password and click on Login button "<UserName>", "<Password>"
@@ -16,4 +18,3 @@ Feature: Login with all the roles
       | Itops_displayuser | qa123    |
       | Itops_engineer    | qa123    |
 
- 

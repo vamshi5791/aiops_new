@@ -5,77 +5,50 @@ var moment = require("moment");
 var fse = require("fs-extra");
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
-
+declare var environment: string;
 export let config: Config = {
   directConnect: true,
   framework: 'custom',
   frameworkPath: require.resolve('protractor-cucumber-framework'),
 
- capabilities: {
- 
-   'browserName': args.browser,
-   chromeOptions:
-   
-   {
+  capabilities: {
+
+    'browserName': args.browser,
+    chromeOptions:
+
+    {
       args: [args.Options]
-     },
     },
+  },
 
   params: {
-    baseUrl: "",
+    env: "",
     url: ""
-},
-  onPrepare: function () {
-     browser.manage().window().maximize();
-    browser.manage().timeouts().implicitlyWait(100000);
-    switch(browser.params.baseUrl){
-      case 'qa':
-        browser.params.url = properties.get('main.QA_url');
-        break;
-      case 'staging':
-        browser.params.url = properties.get('main.staging_URL');
-        break;
-      default:
-        browser.params.url = properties.get('main.QA_url');
- }
-},
+  },
+  onPrepare: async function () {
+    await browser.waitForAngularEnabled(false);
+    await browser.manage().window().maximize();
+    await browser.manage().timeouts().implicitlyWait(100000);
+    globalThis.environment = browser.params.env;
+  },
   specs: [
-    '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
-    '../Features/ProjectInstallation/ProjectInstallation_admin.feature',
-    '../Features/LogIn/LogIn_Roles.feature',
-    '../Features/LogIn_Persona/IE_AccessToMasterConfiguration.feature',
-    '../Features/Login_Persona/ITOpsAdmin_AccessToMasterConfiguration.feature',
-    '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
-    '../Features/QueueChannel/CreateQueqeChannel_IE.feature',
-     '../Features/Pushing_Alerts/PushingAlerts.feature',
-    '../Features/LogIn_Persona/IE_AbleToDeleteProject.feature',
-    '../Features/LogIn_Persona/IE_AbleToDisableProject.feature',
-     
+    '../Features/*/*.feature',
   ],
   cucumberOpts: {
 
     format: 'json:./Reports/cucumberreport.json',
-     tags: "",
+    tags: "",
     require: [
-      '../JSFiles/Step_Definitions/LogIn/LogIn.js',
-      '../JSFiles/Step_Definitions/ProjectInstallation/ProjectInstallation_IE.js',
-      '../JSFiles/Step_Definitions/ProjectInstallation/ProjectInstallation_admin.js',
-      '../JSFiles/Step_Definitions/QueueChannel/CreateQueueChannel_admin.js',
-      '../JSFiles/Step_Definitions/QueueChannel/CreateQueueChannel_IE.js',
-      '../JSFiles/Step_Definitions/LogIn_Persona/IE_AccessToMasterConfiguration.js',
-      '../JSFiles/Step_Definitions/LogIn_Persona/ITOpsAdmin_AccessToMasterConfiguration.js',
-      '../JSFiles/Step_Definitions/Login_Persona/IE_AbleToDeleteProject.js',
-      '../JSFiles/Step_Definitions/Login_Persona/IE_AbleToDisableProject.js',
-      '../JSFiles/Step_Definitions/Pushing_Alerts/PushingAlerts.js',
+      '../JSFiles/Step_Definitions/*/*.js',
       '../JSFiles/support/hook.js',
       '../support/timeout.js'
     ]
   },
 
- 
+
   onComplete: () => {
     var options = {
-      brandTitle:'Ideabytes',
+      brandTitle: 'Ideabytes',
       name: 'Automation Test Report',
       theme: 'bootstrap',
       jsonFile: './Reports/cucumberreport.json',
@@ -95,18 +68,18 @@ export let config: Config = {
     reporter.generate(options);
     var reportDir = "./Reports"
     if (fse.existsSync(reportDir)) {
-      
-      fse.copySync(reportDir, 
+
+      fse.copySync(reportDir,
         reportDir + "_" + moment().format("YYYYMMDD_HHmmss"), { overwrite: true }, function (err) {
-        if (err) {                 
-          console.error(err);     
-        } else {
-          console.log("success!");
-        }
-      });
-      
-  }
-  fse.mkdirsSync(reportDir);
+          if (err) {
+            console.error(err);
+          } else {
+            console.log("success!");
+          }
+        });
+
+    }
+    fse.mkdirsSync(reportDir);
 
   },
   jasmineNodeOpts: {

@@ -12,23 +12,6 @@ var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 let objLogIn = new LogIn();
 let objProjectListing = new ProjectListingPage();
 
-
-When('IE click on three dots of a project {string}', async function (ProjectName) {
-    await objProjectListing.ThreeDots(ProjectName);
-  });
-
-  When('IE click on delete project', async function () {
-    await objProjectListing.DeleteProject();
-  });
-
-  When('IE click on yes', async function () {
-    await objProjectListing.ClickOnYes();
-  });
-  Then('Success message for Project is deleted must be shown as a toaster {string}', async function (Toaster) {
-    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-  
-    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-         expect(text).to.include(Toaster);
-    });
-    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-  });
+When('{string} click on delete project', async function (userRole) {
+  await objProjectListing.DeleteProject();
+});

@@ -330,8 +330,8 @@ export class ProjectConfiguration {
     }
     async SelectUser(UserName) {
         await this.LstSelectUser.click()
-       // await this.txtUserName.sendKeys(UserName)
-       // await this.drpSelectUser.click();
+        await this.txtUserName.sendKeys(UserName)
+        await this.drpSelectUser.click();
     }
 
     async Role(Role) {

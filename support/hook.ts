@@ -1,24 +1,23 @@
 
 import { After, AfterAll, Before, BeforeAll, Status } from "cucumber";
-import { browser } from "protractor";
+// import { browser } from "protractor";
+import { browser, element, by, ExpectedConditions, WebElement } from "protractor"
+import { ProjectListingPage } from "../PageObjects/ProjectListing";
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
+var EC = browser.ExpectedConditions;
+let ProjectListing = new ProjectListingPage();
 
-
-
-Before(async function () {
-  browser.waitForAngularEnabled(false);
-  
-});
 
 //screenshots for scenarios
 
 After(async function (scenario) {
-
+  
   if (scenario.result.status === Status.FAILED) {
     const screenshot = await browser.takeScreenshot();
 
     this.attach(screenshot, "image/png");
+    
   }
   else
     if (scenario.result.status === Status.PASSED) {
@@ -28,16 +27,14 @@ After(async function (scenario) {
         this.attach(screenshot, "image/png");
       }
     }
-
+    if (scenario.result.status === Status.FAILED) {
+      await ProjectListing.ClickOnProfile();
+  await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Logout"]'))), 10000);
+  await ProjectListing.LogOut();
+    }
 
 });
-// After(async function (feature) {
-//   await browser.close();
-// });
 
-// AfterAll(async function () {
-//   await browser.close();
-// });
 
 
 
