@@ -9,7 +9,7 @@ Feature:Login Persona Functionalities
         When "IE" enters project name in project search feild "<ProjectName>"
         When "IE" click dotmenu icon
         When "IE" clicks on deactivate project
-        #When "IE" clicks on yes
+        When "IE" clicks on yes
         Then Success message for Project is "disabled" must be shown as a toaster "<Toaster>"
         And click on logout button
 
