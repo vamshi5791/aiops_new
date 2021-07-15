@@ -201,10 +201,11 @@ When('{string} selects Schedule Interval for Correlation as {string}', async fun
 
 When('{string} selects Scheduler Interval for auto closure of flap clusters as {string}', async function (userRole, AutoClosure) {
   try {
-    await browser.executeScript('window.scrollTo(0,800);').then(async function () {
+    var myElement = element(by.xpath('//span[text()="Concurrency"]'));
+    await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
       await browser.wait(EC.visibilityOf(objProjectConfi.drpClusterInterval), 100000);
       await objProjectConfi.ClusterInterval(AutoClosure)
-    });
+
   }
   catch (error) {
     throw "User is not able to select Schedular Interval for auto closure of flap clusters"
