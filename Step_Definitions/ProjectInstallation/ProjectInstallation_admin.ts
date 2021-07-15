@@ -821,7 +821,6 @@ Then('Project must be in ready state in Project Listring Page {string}', async f
     await browser.wait(EC.visibilityOf(element(by.className('smo smo-bookmark-outline bookmark-outline-icon'))), 100000);
     await element(by.className("smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm")).getText().then(async function (text) {
       await expect(text).to.include(ProjectStatus);
-      await console.log(text);
     });
   }
   catch (error) {
