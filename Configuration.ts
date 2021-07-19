@@ -36,7 +36,7 @@ export let config: Config = {
   ],
   cucumberOpts: {
 
-    format: 'json:./Reports/cucumberreport.json',
+    format: 'json:./TestReport/cucumberreport.json',
     tags: "",
     require: [
       '../JSFiles/Step_Definitions/*/*.js',
@@ -51,8 +51,8 @@ export let config: Config = {
       brandTitle: 'Ideabytes',
       name: 'Automation Test Report',
       theme: 'bootstrap',
-      jsonFile: './Reports/cucumberreport.json',
-      output: './Reports/Test_Report.html',
+      jsonFile: './TestReport/cucumberreport.json',
+      output: './TestReport/Test_Report.html',
       reportSuiteAsScenarios: true,
       launchReport: true,
       metadata: {
@@ -66,7 +66,7 @@ export let config: Config = {
     };
 
     reporter.generate(options);
-    var reportDir = "./Reports"
+    var reportDir = "./TestReport"
     if (fse.existsSync(reportDir)) {
 
       fse.copySync(reportDir,
