@@ -1,4 +1,4 @@
-@LogIn
+@LogIn @ITOps_Milestone_1
 Feature: Login with all ITOps user roles
 
   Feature Description : Verifying LogIn functionality for all ITOps user roles
