@@ -203,8 +203,8 @@ When('{string} selects Scheduler Interval for auto closure of flap clusters as {
   try {
     var myElement = element(by.xpath('//span[text()="Concurrency"]'));
     await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
-      await browser.wait(EC.visibilityOf(objProjectConfi.drpClusterInterval), 100000);
-      await objProjectConfi.ClusterInterval(AutoClosure)
+    await browser.wait(EC.visibilityOf(objProjectConfi.drpClusterInterval), 100000);
+    await objProjectConfi.ClusterInterval(AutoClosure)
 
   }
   catch (error) {
@@ -257,7 +257,9 @@ Then('Success message for Scheduler Configuration must be shown as a toaster {st
 When('{string} clicks on Error Response Configuration', async function (userRole) {
   try {
     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-    await objProjectConfi.ErrorResponseConfiguration()
+    await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(async function () {
+      await objProjectConfi.ErrorResponseConfiguration()
+    })
   }
   catch (error) {
     throw "User is not able to click on Error Response Configuration"
