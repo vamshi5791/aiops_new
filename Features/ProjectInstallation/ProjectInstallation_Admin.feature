@@ -132,8 +132,8 @@ Feature: Project Installation with ITOps Admin role
                 And "Admin" clicks on Add User button
                 Then User must be added and listed in the below list with a toaster "<Toaster>"
                 Examples:
-                        | UserName        | Role        | Toaster     |
-                        | Kishor Macharla | itops_admin | User added. |
+                        | UserName        | Role           | Toaster     |
+                        | Kishor Macharla | itops_engineer | User added. |
         @ProjectInstallation
         Scenario Outline: Project Installation
                 When "Admin" clicks on Install button
