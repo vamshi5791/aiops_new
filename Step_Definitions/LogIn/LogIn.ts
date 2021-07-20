@@ -44,4 +44,5 @@ When('click on logout button', async function () {
   await ProjectListing.ClickOnProfile();
   await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Logout"]'))), 10000);
   await ProjectListing.LogOut();
+  await browser.wait(EC.visibilityOf(element(by.xpath('//input[@name="login"]'))), 10000);
 })
