@@ -94,7 +94,7 @@ export class ProjectConfiguration {
     txtUserName = element(by.xpath("//input[contains(@class, 'smo-dropdown-filter smo-inputtext smo-widget smo-state-default pl-1')]"));
     drpSelectUser = element(by.xpath('//h3[text()="Add User"]//following::smo-dropdownitem//span'));
     chkRole = element(by.xpath('//label[text()="itops_admin"]'));
-    btnAddUserDetails = element(by.xpath('//label[text()="itops_admin"]//following::span[text()="Add User"]'));
+    btnAddUserDetails = element(by.xpath('//h3[text()="Add User"]//following::span[text()="Add User"]'));
     btnInstall = element(by.xpath('//span[text()="INSTALL"]'));
 
 
