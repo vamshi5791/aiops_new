@@ -12,13 +12,13 @@ export let config: Config = {
   frameworkPath: require.resolve('protractor-cucumber-framework'),
 
   capabilities: {
+    'browserName': 'chrome',
+    // 'browserName': args.browser,
+    // chromeOptions:
 
-    'browserName': args.browser,
-    chromeOptions:
-
-    {
-      args: [args.Options]
-    },
+    // {
+    //   args: [args.Options]
+    // },
   },
 
   params: {
