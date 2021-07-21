@@ -1,4 +1,4 @@
-@IE_Deleting_Project
+@IE_Deleting_Project @ITOps_Milestone_1
 
 
 Feature: Login Persona Functionalities
