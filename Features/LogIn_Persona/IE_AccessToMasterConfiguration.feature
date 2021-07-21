@@ -1,4 +1,4 @@
-@IE_Accessing_Master_Configuration_Page
+@IE_Accessing_Master_Configuration_Page @ITOps_Milestone_1
 
 Feature: Login Persona Functionalities
 
