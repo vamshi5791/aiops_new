@@ -1,4 +1,4 @@
-@ProjectCreation_Admin
+@ProjectCreation_Admin @ITOps_Milestone_1
 Feature: Project Installation with ITOps Admin role
 
         Feature Description Once the login is done with ITOps_Admin role,
