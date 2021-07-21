@@ -13,6 +13,9 @@ export let config: Config = {
 
   capabilities: {
     'browserName': 'chrome',
+    'chromeOptions': {
+        'args': ['no-sandbox']
+    }
     // 'browserName': args.browser,
     // chromeOptions:
 
