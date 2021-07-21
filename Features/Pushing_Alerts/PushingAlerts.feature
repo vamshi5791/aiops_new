@@ -1,4 +1,4 @@
-@PushingAlerts
+@PushingAlerts @ITOps_Milestone_1
 
 Feature: Pushing Alerts
 
