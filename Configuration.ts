@@ -13,8 +13,8 @@ export let config: Config = {
 
   capabilities: {
     'browserName': 'chrome',
-    'chromeOptions': {
-        'args': ['no-sandbox']
+   chromeOptions: {
+      args: ['--disable-gpu', '--no-sandbox', '--disable-extensions', '--disable-dev-shm-usage']
     }
     // 'browserName': args.browser,
     // chromeOptions:
