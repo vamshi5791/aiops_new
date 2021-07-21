@@ -61,7 +61,7 @@ pipeline {
             steps {
                 echo "[INFO] Executing Regression Test"
                 sh """                
-                  node node_modules/protractor/bin//protractor JSFiles/Configuration.js --params.env ${Environment_Name} --browser=${Browser} --Options=${BrowserMode} --cucumberOpts.tags=${TEST_TAG} --no-sandbox
+                  node node_modules/protractor/bin//protractor JSFiles/Configuration.js --params.env ${Environment_Name} --browser=${Browser} --Options=${BrowserMode} --cucumberOpts.tags=${TEST_TAG} --disable-dev-shm-usage --no-sandbox
                 """
                 
             }   
