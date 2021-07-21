@@ -818,10 +818,9 @@ When('{string} clicks on Install button', async function (userRole) {
 
 Then('Project must be in ready state in Project Listring Page {string}', async function (ProjectStatus) {
   try {
-    await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))), 100000);
     await objProjectListing.Project_search(TestProjectName);
-    await browser.wait(EC.visibilityOf(element(by.className('smo smo-bookmark-outline bookmark-outline-icon'))), 100000);
-    await element(by.className("smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm")).getText().then(async function (text) {
+    await browser.sleep(2000);
+    await element(by.className("smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm")).getText().then(async function (text) {
       await expect(text).to.include(ProjectStatus);
     });
   }
