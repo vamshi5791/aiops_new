@@ -68,7 +68,7 @@ export let config: Config = {
       }
     };
 
-    reporter.generate(options);
+   // reporter.generate(options);
     var reportDir = "./TestReport"
     if (fse.existsSync(reportDir)) {
 
