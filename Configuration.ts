@@ -12,27 +12,27 @@ export let config: Config = {
   frameworkPath: require.resolve('protractor-cucumber-framework'),
 
   capabilities: {
-    'browserName': 'chrome',
-   chromeOptions: {
-      args: ['--disable-gpu', '--no-sandbox', '--disable-extensions', '--disable-dev-shm-usage']
-    }
-    // 'browserName': args.browser,
-    // chromeOptions:
+    // 'browserName': 'chrome',
+  //  chromeOptions: {
+  //     args: ['--disable-gpu', '--no-sandbox', '--disable-extensions', '--disable-dev-shm-usage']
+  //   }
+    'browserName': args.browser,
+    chromeOptions:
 
-    // {
-    //   args: [args.Options]
-    // },
+    {
+      args: [args.Options]
+    },
   },
 
   params: {
-    env: "",
+    bseUrl: "",
     url: ""
   },
   onPrepare: async function () {
     await browser.waitForAngularEnabled(false);
     await browser.manage().window().maximize();
     await browser.manage().timeouts().implicitlyWait(100000);
-    globalThis.environment = browser.params.env;
+    globalThis.environment = browser.params.bseUrl;
   },
   specs: [
     '../Features/*/*.feature',
