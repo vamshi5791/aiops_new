@@ -48,7 +48,7 @@ pipeline {
                 npm install -g protractor        
                 npm install -g webdriver-manager
                 npm run webdriver-update
-                
+                webdriver-manager update --standalone --versions.standalone=3.8.0 --chrome --versions.chrome=92.0.4515.107 
                 node node_modules/protractor/bin/webdriver-manager update
                 /home/smartops-jenkins/.npm-packages/lib/node_modules/typescript/bin/tsc
                 """
