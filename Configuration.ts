@@ -12,7 +12,7 @@ export let config: Config = {
   frameworkPath: require.resolve('protractor-cucumber-framework'),
 
   capabilities: {
-     'browserName': 'firefox',
+     'browserName': 'chrome',
   //  chromeOptions: {
   //     args: ['--disable-gpu', '--no-sandbox', '--disable-extensions', '--disable-dev-shm-usage']
   //   }
