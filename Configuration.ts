@@ -25,14 +25,14 @@ export let config: Config = {
   },
 
   params: {
-    baseUrl: "",
+    env: "",
     url: ""
   },
   onPrepare: async function () {
     await browser.waitForAngularEnabled(false);
     await browser.manage().window().maximize();
     await browser.manage().timeouts().implicitlyWait(100000);
-    globalThis.environment = browser.params.baseUrl;
+    globalThis.environment = browser.params.env;
   },
   specs: [
     '../Features/*/*.feature',
