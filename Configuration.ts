@@ -32,7 +32,7 @@ export let config: Config = {
     await browser.waitForAngularEnabled(false);
     await browser.manage().window().maximize();
     await browser.manage().timeouts().implicitlyWait(100000);
-    globalThis.environment = browser.params.bseUrl;
+    globalThis.environment = browser.params.baseUrl;
   },
   specs: [
     '../Features/*/*.feature',
