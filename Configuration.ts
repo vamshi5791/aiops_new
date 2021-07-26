@@ -25,7 +25,7 @@ export let config: Config = {
   },
 
   params: {
-    bseUrl: "",
+    baseUrl: "",
     url: ""
   },
   onPrepare: async function () {
