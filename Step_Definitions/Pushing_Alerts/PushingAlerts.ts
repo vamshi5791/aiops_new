@@ -1,5 +1,5 @@
-import { Given, When, Then, Before, After, Status } from "cucumber"
-import { browser, element, by, ExpectedConditions, WebElement, protractor } from "protractor"
+import { Given, When, Then } from "cucumber"
+import { browser, element, by } from "protractor"
 import chai from "chai";
 import { LogIn } from "../../PageObjects/LogIn";
 import { PushingAlerts } from "../../PageObjects/RabbitMQ";
@@ -8,7 +8,6 @@ import { ProjectListingPage } from "../../PageObjects/ProjectListing";
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = browser.ExpectedConditions;
-var fs = require('fs');
 var expect = chai.expect;
 let objLogIn = new LogIn();
 let objFilter = new PushingAlerts();

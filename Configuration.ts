@@ -1,25 +1,21 @@
 const args = require('minimist')(process.argv.slice(2));
 import { Config, browser } from "protractor";
 import * as reporter from "cucumber-html-reporter";
+import {​​​ GenerateCustomReport }​​​ from'./TestReport/GenerateCustomReport'
+
 var moment = require("moment");
 var fse = require("fs-extra");
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
-//  declare var environment: string;
-// var environment: string;
-// declare global {
-//   var environment: string;
-// }
+declare var environment: string;
+
 export let config: Config = {
   directConnect: true,
   framework: 'custom',
   frameworkPath: require.resolve('protractor-cucumber-framework'),
 
   capabilities: {
-    // 'browserName': 'chrome',
-  //  chromeOptions: {
-  //     args: ['--disable-gpu', '--no-sandbox', '--disable-extensions', '--disable-dev-shm-usage']
-  //   }
+
     'browserName': args.browser,
     chromeOptions:
 
@@ -71,22 +67,9 @@ export let config: Config = {
         "Executed": "Remote"
       }
     };
-
-   // reporter.generate(options);
-    var reportDir = "./TestReport"
-    if (fse.existsSync(reportDir)) {
-
-      fse.copySync(reportDir,
-        reportDir + "_" + moment().format("YYYYMMDD_HHmmss"), { overwrite: true }, function (err) {
-          if (err) {
-            console.error(err);
-          } else {
-            console.log("success!");
-          }
-        });
-
-    }
-    fse.mkdirsSync(reportDir);
+    
+    let generateCustomReport = new GenerateCustomReport();
+    generateCustomReport.readJson();
 
   },
   jasmineNodeOpts: {

@@ -11,7 +11,7 @@ Feature: Create Queue Channel Itops Admin role
 
     Scenario Outline: Verify Queue Channel creation
         Given ITOps "Admin" is in the home page, "<UserName>", "<Password>"
-        When "Admin" enters project name in project search feild "<projectName>"
+        When "Admin" enters project name in project search box "<projectName>"
         When "Admin" click dotmenu icon
         When "Admin" click editProject
         When "Admin" clicks on channel configuration
