@@ -156,7 +156,7 @@ When('{string} selects project and open alerts', async function (userRole) {
 Then('Success message for alerts displayed in Alerts console {string} {string}', async function (Alerts, alertName) {
   try {
     await objAlerts.Alert_Search(alertName);
-    await element(by.xpath('//span[text()="Alert Name"]//following::td[6]//span')).getText().then(function (text) {
+    await element(by.xpath('//span[text()="Alert Name"]//following::td[6]')).getText().then(function (text) {
       expect(text).to.include(Alerts);
     });
   } catch (error) {
