@@ -5,8 +5,11 @@ var moment = require("moment");
 var fse = require("fs-extra");
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
- declare var environment: string;
-var environment: string;
+//  declare var environment: string;
+// var environment: string;
+declare global {
+  var environment: string;
+}
 export let config: Config = {
   directConnect: true,
   framework: 'custom',
