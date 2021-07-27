@@ -46,7 +46,7 @@ pipeline {
                 npm install     
                 npm install -g typescript
                 npm install -g protractor        
-                npm install -g webdriver-manager
+                npm install -g webdriver-manager --force
                 npm run webdriver-update
 
                 node node_modules/protractor/bin/webdriver-manager update
