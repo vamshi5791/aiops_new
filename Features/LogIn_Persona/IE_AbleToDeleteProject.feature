@@ -16,7 +16,7 @@ Feature: Login Persona Functionalities
 
           Examples:
                | UserName | Password | projectName      | Toaster                      |
-               | Itops_IE | qa123    | Automation_IB_01 | Project Deleted Successfully |
+               | Itops_IE | qa123    | Automation_IB_04 | Project Deleted Successfully |
 
 
 
