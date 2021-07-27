@@ -15,7 +15,7 @@ Feature: Project Installation with Itops Admin role
                 Then user is taken to the project configuration page "<Toaster"
                 Examples:
                         | UserName | Password | ProjectName   | Description       | Toaster                      |
-                        | Itops_IE | qa123    | Automation_15 | Release1.4Project | Project Created Successfully |
+                        | Itops_IE | qa123    | Automation_03 | Release1.4Project | Project Created Successfully |
         @GeneralConfiguration
         Scenario Outline: General Configuration
                 When "Installation Engineer" enters Service now hostname as "<ServiceNowHost>"
