@@ -6,7 +6,7 @@ Feature:Login Persona Functionalities
     Scenario Outline: Installation Engineer is able to disable the project
 
         Given ITOps "Installation Engineer" is in the home page, "<UserName>", "<Password>"
-        When "IE" enters project name in project search feild "<ProjectName>"
+        When "IE" enters project name in project search box "<ProjectName>"
         When "IE" click dotmenu icon
         When "IE" clicks on deactivate project
         When "IE" clicks on yes
