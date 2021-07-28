@@ -58,6 +58,8 @@ pipeline {
                 echo "[INFO] Executing Regression Test"
                 sh """                
                   node node_modules/protractor/bin//protractor JSFiles/Configuration.js --params.env ${Environment_Name} --browser=${Browser} --Options=${BrowserMode} --cucumberOpts.tags=${TEST_TAG} --no-sandbox
+                tar cvf TestReport.tar TestReport
+
                 """
                 
             }   
@@ -73,7 +75,7 @@ pipeline {
                   to: "SreejithSivankutty.Nair@ust-global.com,Binu.Rajagopal@ust-global.com",
                   from: "noreplysmartopssvc@ust-global.com",
                   mimeType: 'text/plain',
-                  attachmentsPattern: 'TestReport/*'
+                  attachmentsPattern: 'TestReport.tar'
              ) 
 
 
