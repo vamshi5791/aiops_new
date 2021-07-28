@@ -6,7 +6,7 @@ Feature: Login Persona Functionalities
         Scenario Outline: Installation Engineer is able to delete the project
 
             Given ITOps "Installation Engineer" is in the home page, "<UserName>", "<Password>"
-             When "IE" enters project name in project search feild "<projectName>"
+             When "IE" enters project name in project search box "<projectName>"
              When "IE" click dotmenu icon
               And "IE" click on delete project
               And "IE" clicks on yes
