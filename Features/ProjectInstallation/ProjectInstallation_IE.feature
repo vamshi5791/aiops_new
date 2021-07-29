@@ -1,5 +1,5 @@
 @ProjectCreation_IE @ITOps_Milestone_1
-Feature: Project Installation with Itops Admin role
+Feature: Project Installation with Itops IE role
 
 Feature Description Once the login is done with ITOPS_Admin role,
               Admin must be able to create the project and install it.
