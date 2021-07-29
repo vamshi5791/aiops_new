@@ -280,7 +280,7 @@ When('{string} enters From Email Acount Password as {string}', async function (u
     await objProjectConfi.PasswordFromEmail(FromEmailAcountPassword)
   }
   catch (error) {
-    throw "User is not able to enter From Emai Account Password"
+    throw "User is not able to enter From Email Account Password"
   }
 });
 
