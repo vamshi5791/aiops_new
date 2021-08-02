@@ -136,6 +136,7 @@ Feature Description Once the login is done with ITOps_Admin role,
         Scenario Outline: Project Installation
              When "Admin" clicks on Install button
              Then Project must be in ready state in Project Listring Page "<ProjectStatus>"
+              And click on logout button
         Examples:
                   | ProjectStatus |
                   | Ready         |
