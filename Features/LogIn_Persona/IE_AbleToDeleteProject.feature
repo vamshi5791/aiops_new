@@ -1,7 +1,7 @@
 @IE_Deleting_Project @ITOps_Milestone_1
 
 
-Feature: Installation Engineer is able to delete the project
+Feature: IE able to delete the project
 
         Scenario Outline: Installation Engineer is able to delete the project
 
