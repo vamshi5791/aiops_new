@@ -15,7 +15,7 @@ Feature: IE able to disable the Project
 
         Examples:
                   | UserName | Password | ProjectName      | Toaster                          |
-                  | Itops_IE | qa123    | Automation_IB_01 | Project Deactivated Successfully |
+                  | Itops_IE | qa123    | Automation_IB_12 | Project Deactivated Successfully |
 
 
 
