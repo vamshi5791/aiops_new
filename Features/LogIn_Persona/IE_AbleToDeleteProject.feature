@@ -16,7 +16,7 @@ Feature: Installation Engineer is able to delete the project
 
         Examples:
                   | UserName | Password | projectName      | Toaster                      |
-                  | Itops_IE | qa123    | Automation_IB_01 | Project Deleted Successfully |
+                  | Itops_IE | qa123    | Automation_IB_12 | Project Deleted Successfully |
 
 
 
