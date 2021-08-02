@@ -110,7 +110,7 @@ When('{string} Creates Queue Channel {string}, {string}, {string}, {string}, {st
         'user': 'Itops_admin_new',
         'organization-name': 'ustglobal',
       }
-    }; 
+    };
     await fetch(chennalCreation_URL, channelCreationPosrRequest)
       .then(response => response.json()).then(data => {
       }).catch((error) => {
@@ -122,14 +122,14 @@ When('{string} Creates Queue Channel {string}, {string}, {string}, {string}, {st
 });
  
 
-When('{string} enters project name in project search box {string}', async function (userRole, projectName) {
+When('{string} enters project name in project search feild {string}', async function (userRole, projectName) {
   try {
     await objProjectListing.Project_search(projectName);
     await browser.actions().sendKeys(protractor.Key.ENTER).perform();
     Global_ProjectName = projectName;
   }
   catch (error) {
-    throw "IE is unable to ener project name in project search field"
+    throw "IE is unable to ener project name in project search feild"
   }
 });
 

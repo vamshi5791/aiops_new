@@ -3,12 +3,10 @@ import { browser, element, by, ExpectedConditions, WebElement } from "protractor
 import chai from "chai";
 import { LogIn } from '../../PageObjects/LogIn';
 import { ProjectListingPage } from "../../PageObjects/ProjectListing";
-
-
+ 
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = browser.ExpectedConditions;
-var fs = require('fs');
 var expect = chai.expect;
 
 let objLogIn = new LogIn();
@@ -22,11 +20,11 @@ Given('User with ITOps role renders the URL', async function () {
 
 When('user enters Username, Password and click on Login button {string}, {string}', async function (UserName, Password) {
   try {
-    await objLogIn.LogIn_Details(UserName, Password);
+    await objLogIn.enterUserName(UserName);
+    await objLogIn.enterPassword(Password);
+    await objLogIn.clickOnLogInButton();
+    
   } catch (error) {
-    await ProjectListing.ClickOnProfile()
-    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Logout"]'))), 100000);
-    await ProjectListing.LogOut();
     throw "Invalid Login credentials"
 
   }

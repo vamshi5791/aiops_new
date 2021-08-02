@@ -12,5 +12,17 @@ export class LogIn {
         await this.txtPassword.sendKeys(Password)
         await this.btnClickOnSignIn.click();
     }
+    async enterUserName(UserName: string) {
+        await this.txtUserName.sendKeys(UserName)
+       
+    }
+    async enterPassword(Password: string) {
+       
+        await this.txtPassword.sendKeys(Password)
+       
+    }
+    async clickOnLogInButton() {
 
+        await this.btnClickOnSignIn.click();
+    }
 }

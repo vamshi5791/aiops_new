@@ -1,12 +1,12 @@
 @IE_Deleting_Project @ITOps_Milestone_1
 
 
-Feature: Login Persona Functionalities
+Feature: Installation Engineer is able to delete the project
 
         Scenario Outline: Installation Engineer is able to delete the project
 
             Given ITOps "Installation Engineer" is in the home page, "<UserName>", "<Password>"
-             When "IE" enters project name in project search box "<projectName>"
+             When "IE" enters project name in project search feild "<projectName>"
              When "IE" click dotmenu icon
               And "IE" click on delete project
               And "IE" clicks on yes
@@ -16,7 +16,7 @@ Feature: Login Persona Functionalities
 
         Examples:
                   | UserName | Password | projectName      | Toaster                      |
-                  | Itops_IE | qa123    | Automation_06 | Project Deleted Successfully |
+                  | Itops_IE | qa123    | Automation_IB_20 | Project Deleted Successfully |
 
 
 
