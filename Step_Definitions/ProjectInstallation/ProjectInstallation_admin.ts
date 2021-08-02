@@ -81,7 +81,7 @@ Then('user is taken to the project configuration page {string}', async function 
     });
   }
   catch (error) {
-    throw "User is unable to proceed with project configuration"
+    throw "Incorrect toast message"
   };
 });
 
@@ -263,6 +263,7 @@ Then('Success message for Scheduler Configuration must be shown as a toaster {st
 
 When('{string} clicks on Error Response Configuration', async function (userRole) {
   try {
+    await browser.sleep(60000)
     await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(async function () {
       await objProjectConfi.ErrorResponseConfiguration()
     })
