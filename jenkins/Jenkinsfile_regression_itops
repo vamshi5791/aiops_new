@@ -3,7 +3,7 @@ pipeline {
         IMAGE_NAME = 'smartops/regression'
     }
  
- agent { label "${NODE_LABEL}" }
+ agent { label "smartops-jenkins-reg-test-node" }
 
   options {
     skipDefaultCheckout(true)
