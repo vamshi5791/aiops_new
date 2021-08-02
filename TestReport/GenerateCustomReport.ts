@@ -1,6 +1,9 @@
 import { join } from 'path';
 import { browser } from 'protractor';
 
+
+
+
 var fs = require('fs');
 var moment = require("moment");
 var fse = require("fs-extra");
@@ -25,9 +28,9 @@ export class GenerateCustomReport {
       if (err) {
         return console.error(err);
       }
-
+      //debugger
       var templateData = tdata.toString();
-      // console.log("Html template data: " + templateData);
+
 
       var re = /jsondatabinding/gi;
       this.finalhtmlstring = templateData.replace(re, JSON.stringify(this.jsonData));
@@ -35,6 +38,10 @@ export class GenerateCustomReport {
       this.createReportFile()
     });
   }
+
+
+  
+
 
   createReportFile() {
     var html = '<h1>Hello</h1>'
@@ -61,7 +68,7 @@ export class GenerateCustomReport {
         }
 
       }
-      // console.log("File created!");
+      console.log("File created!");
 
       //const url = './Reports/Custome_Test_Report.html';
       //browser.get(url);

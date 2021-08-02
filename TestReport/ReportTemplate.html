@@ -52,7 +52,7 @@
                     _divFeatures += "</div>";
 
                     _divFeatures += "<div class='col-md-12'>";
-                    _divFeatures += '<div style="font-size:16px;">No.of Scenarios ' + element.length + ' <i class="fa fa-arrow-circle-right" title="Click to Raise Bug" onclick="filterScenarios(\'' + _area + '\')" style="color:#038ba0;cursor:pointer;"></i></div>';
+                    _divFeatures += '<div style="font-size:16px;">No.of Scenarios ' + element.length + ' <i class="fa fa-arrow-circle-right" title="Click to View Scenarios" onclick="filterScenarios(\'' + _area + '\')" style="color:#038ba0;cursor:pointer;"></i></div>';
 
                     _divFeatures += "</div>";
 
@@ -109,8 +109,15 @@
 
                                     }
                                     if (stp.result.status.toLowerCase() == "failed") {
+
+                                        var errorM = stp.result.error_message;//
+                                        errorM = errorM.replaceAll('\n', '');
+                                        errorM = errorM.replaceAll('\\', '//');
+                                        errorM = errorM.replaceAll('\'', '');
+
+
                                         _divField += "<div class='col-md-12'>";
-                                        _divField += '<div style="font-size:16px;"><i class="fa fa-window-close" style="color:red;padding-right:1%" ></i>' + _Scenario + '  <i class="fa fa-bug" title="Click to Raise Bug" onclick="fillArea(\'' + repo_steps + '\',\'' + screenshotbase64 + '\')" style="color:red;cursor:pointer;"></i></div>';
+                                        _divField += '<div style="font-size:16px;"><i class="fa fa-window-close" style="color:red;padding-right:1%" ></i>' + _Scenario + '  <i class="fa fa-bug" title="Click to Raise Bug" onclick="fillArea(\'' + repo_steps + '\',\'' + screenshotbase64 + '\')" style="color:red;cursor:pointer;"></i>  <i class="fa fa-eye" title="Click to View Error Message" onclick="errorMsg(\'' + errorM + '\')" style="color:red;cursor:pointer;"></i></div>';
                                         _divField += "</div>";
                                         failed += 1;
                                         isFailed = 1;
@@ -336,317 +343,9 @@
                 closeBugRaiseDiv();
                 closeScreenshotDiv();
 
-                //});
+
             }
         });
-
-        function getFile() {
-
-            var JData = document.getElementById('ipFile').files[0];
-
-            let reader = new FileReader();
-
-            reader.readAsText(JData);
-
-            reader.onload = function () {
-
-
-
-                var json = JSON.parse(reader.result);
-
-                document.getElementById('divTiles').style.display = 'block';
-                document.getElementById('divWork').style.display = 'block';
-                document.getElementById('divHome').style.display = 'none';
-
-
-
-                var Divscenario = ""
-                var total = 0
-                var failed = 0
-                var passed = 0
-                var divArry = [];
-                var featureStatusArry = [];
-                ;
-                var _divFeatures = "";//= "<div class='row'>";
-
-
-                var JsonData = JSON.stringify(json);
-
-                var _lblJsonData = document.getElementById('lblJsonData');
-                _lblJsonData.value = JsonData;
-
-                for (let i = 0; i < json.length; i++) {
-                    const element = json[i].elements;
-                    var _area = json[i].name;
-                    var _divField = "";
-
-
-                    var isFailed = 0;
-                    _divFeatures += "<div class='row' style='border:solid 0.5px #dfdaef;border-radius:5px;margin-bottom:1%;'>";
-
-                    _divFeatures += "<div class='col-md-12' style='font-size:19px;background-color:#dfdaef;'>";
-                    _divFeatures += _area;
-                    _divFeatures += "</div>";
-
-                    _divFeatures += "<div class='col-md-12'>";
-                    _divFeatures += '<div style="font-size:16px;">No.of Scenarios ' + element.length + ' <i class="fa fa-arrow-circle-right" title="Click to Raise Bug" onclick="filterScenarios(\'' + _area + '\')" style="color:#038ba0;cursor:pointer;"></i></div>';
-
-                    _divFeatures += "</div>";
-
-                    _divFeatures += "</div>";
-
-                    for (let ei = 0; ei < element.length; ei++) {
-                        const stps = element[ei].steps;
-
-                        _divField += "<div class='row' style='border:solid 0.5px #dfdaef;border-radius:5px;margin-bottom:1%;'>";
-
-                        _divField += "<div class='col-md-12' style='font-size:19px;background-color:#dfdaef;'>";
-                        _divField += element[ei].name;
-                        _divField += "</div>";
-
-                        let repo_steps = ""
-
-                        total += 1;
-
-                        var screenshotbase64 = "";
-
-                        for (let si = 0; si < stps.length; si++) {
-                            try {
-                                const stp = stps[si];
-                                let _Scenario = stp.name;
-
-                                if (stp.keyword.toLowerCase().replaceAll(" ", "") == "after") {
-
-                                    if (stp.embeddings[0].data.toLowerCase() != undefined) {
-
-                                        screenshotbase64 = stp.embeddings[0].data;
-                                    }
-                                }
-                            } catch (ex) {
-                                ex = null;
-                            }
-                        }
-                        for (let si = 0; si < stps.length; si++) {
-                            try {
-                                const stp = stps[si];
-                                let _Scenario = stp.name;
-
-
-
-                                if (_Scenario !== undefined) {
-
-                                    _Scenario = stp.keyword + " " + _Scenario.replaceAll("\"", "");
-
-                                    repo_steps += si + " " + _Scenario + ", ";
-
-                                    if (stp.result.status.toLowerCase() == "passed") {
-                                        _divField += "<div class='col-md-12'>";
-                                        _divField += "<div style='font-size:16px;'><i class='fa fa-check-square' style='color:green;padding-right:1%' ></i>" + _Scenario + "</div>";
-                                        _divField += "</div>";
-
-                                    }
-                                    if (stp.result.status.toLowerCase() == "failed") {
-                                        _divField += "<div class='col-md-12'>";
-                                        _divField += '<div style="font-size:16px;"><i class="fa fa-window-close" style="color:red;padding-right:1%" ></i>' + _Scenario + '  <i class="fa fa-bug" title="Click to Raise Bug" onclick="fillArea(\'' + repo_steps + '\',\'' + screenshotbase64 + '\')" style="color:red;cursor:pointer;"></i></div>';
-                                        _divField += "</div>";
-                                        failed += 1;
-                                        isFailed = 1;
-                                    }
-                                    if (stp.result.status.toLowerCase() == "skipped") {
-                                        _divField += "<div class='col-md-12'>";
-                                        _divField += "<div style='font-size:16px;'><i class='fa fa-minus-square' style='color:orange;padding-right:1%' ></i>" + _Scenario + "</div>";
-                                        _divField += "</div>";
-                                    }
-
-                                }
-
-                                if (stp.keyword.toLowerCase().replaceAll(" ", "") == "after") {
-
-                                    if (stp.embeddings[0].data.toLowerCase() != undefined) {
-                                        _divField += "<div class='col-md-12'>";
-                                        _divField += '<div style="font-size:16px;"> screenshot <i class="fa fa-camera" style="color:#a85cce;" onclick="screenShot(\'' + screenshotbase64 + '\')"></i></div>';
-                                        _divField += "</div>";
-                                    }
-                                }
-
-
-
-                            } catch (ex) {
-                                ex = null;
-                            }
-
-                        }
-
-                        _divField += "</div>";
-                        _divField += "</div>";
-
-
-                    }
-
-                    if (isFailed == 1) {
-                        featureStatusArry.push(1);
-                    }
-                    else {
-                        featureStatusArry.push(0);
-                    }
-                    // _divField += "</div>";
-
-                    divArry.push(_divField);
-                    // Divscenario += _divField;
-                }
-
-                Divscenario = "";
-
-                for (let di = 0; di < divArry.length; di++) {
-                    Divscenario += divArry[di];
-                }
-
-
-
-                var dfParent = document.getElementById('features');
-                dfParent.innerHTML = _divFeatures;
-
-
-                var daParent = document.getElementById('scenarios');
-                daParent.innerHTML = Divscenario;
-
-                var _total = document.getElementById('spTotal');
-                _total.innerHTML = total;
-                var _total2 = document.getElementById('spTotal2');
-                _total2.innerHTML = total;
-
-
-                var _failed = document.getElementById('spFailed');
-                _failed.innerHTML = failed + " | " + Math.round((failed / total) * 100, 1) + "%";
-                var _failed2 = document.getElementById('spFailed2');
-                _failed2.innerHTML = failed;
-
-                passed = total - failed;
-
-                var _Passed = document.getElementById('spPassed');
-                _Passed.innerHTML = passed + " | " + Math.round((passed / total) * 100, 1) + "%";
-                var _Passed2 = document.getElementById('spPassed2');
-                _Passed2.innerHTML = passed;
-
-
-                var _Features = document.getElementById('spTotalFeatures');
-                _Features.innerHTML = featureStatusArry.length;
-
-                let FPassed = 0;
-                let FFailed = 0;
-
-                for (let fi = 0; fi < featureStatusArry.length; fi++) {
-                    if (featureStatusArry[fi] == 1) {
-                        FFailed += 1;
-                    }
-                    else { FPassed += 1; }
-                }
-
-                var _FPassed = document.getElementById('spFPassed');
-                _FPassed.innerHTML = FPassed + " | " + Math.round((FPassed / (FPassed + FFailed)) * 100, 1) + "%";
-
-
-                var _FFailed = document.getElementById('spFFailed');
-                _FFailed.innerHTML = FFailed + " | " + Math.round((FFailed / (FPassed + FFailed)) * 100, 1) + "%";
-
-
-
-                //chart
-                var options = {
-                    series: [passed, failed],
-                    labels: ['Passed', 'Failed'],
-                    chart: {
-                        width: 200,
-                        type: 'donut',
-                        height: 235
-                    },
-                    plotOptions: {
-                        pie: {
-                            startAngle: -90,
-                            endAngle: 270,
-                            donut: {
-                                size: '70%',
-                                background: 'transparent',
-                            }
-                        }
-                    },
-                    dataLabels: {
-                        enabled: true,
-                    },
-                    fill: {
-                        type: 'gradient',
-                        colors: ['#3dcc60', '#f94a4a']
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    responsive: [{
-                        breakpoint: 480,
-                        options: {
-                            chart: {
-                                width: 200
-                            },
-                            legend: {
-                                position: 'bottom'
-                            }
-                        }
-                    }]
-                };
-
-                var chart = new ApexCharts(document.querySelector("#divchart"), options);
-                chart.render();
-
-
-                var options = {
-                    series: [FPassed, FFailed],
-                    labels: ['Passed', 'Failed'],
-                    chart: {
-                        width: 200,
-                        type: 'donut',
-                        height: 235
-                    },
-                    plotOptions: {
-                        pie: {
-                            startAngle: -90,
-                            endAngle: 270,
-                            donut: {
-                                size: '70%',
-                                background: 'transparent',
-                            }
-                        }
-                    },
-                    dataLabels: {
-                        enabled: true,
-                    },
-                    fill: {
-                        type: 'gradient',
-                        colors: ['#3dcc60', '#f94a4a']
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    responsive: [{
-                        breakpoint: 480,
-                        options: {
-                            chart: {
-                                width: 200
-                            },
-                            legend: {
-                                position: 'bottom'
-                            }
-                        }
-                    }]
-                };
-
-                var chart = new ApexCharts(document.querySelector("#divFchart"), options);
-                chart.render();
-
-
-                closeBugRaiseDiv();
-                closeScreenshotDiv();
-            };
-
-        }
 
         function filterScenarios(featureName) {
 
@@ -729,8 +428,14 @@
 
                                     }
                                     if (stp.result.status.toLowerCase() == "failed") {
+
+                                        var errorM = stp.result.error_message;//
+                                        errorM = errorM.replaceAll('\n', '');
+                                        errorM = errorM.replaceAll('\\', '//');
+                                        errorM = errorM.replaceAll('\'', '');
+
                                         _divField += "<div class='col-md-12'>";
-                                        _divField += '<div style="font-size:16px;"><i class="fa fa-window-close" style="color:red;padding-right:1%" ></i>' + _Scenario + '  <i class="fa fa-bug" title="Click to Raise Bug" onclick="fillArea(\'' + repo_steps + '\',\'' + screenshotbase64 + '\')" style="color:red;cursor:pointer;"></i></div>';
+                                        _divField += '<div style="font-size:16px;"><i class="fa fa-window-close" style="color:red;padding-right:1%" ></i>' + _Scenario + '  <i class="fa fa-bug" title="Click to Raise Bug" onclick="fillArea(\'' + repo_steps + '\',\'' + screenshotbase64 + '\')" style="color:red;cursor:pointer;"></i>  <i class="fa fa-eye" title="Click to View Error Message" onclick="errorMsg(\'' + errorM + '\')" style="color:red;cursor:pointer;"></i></div>';
                                         _divField += "</div>";
                                         failed += 1;
                                         isFailed = 1;
@@ -799,8 +504,8 @@
             var Area = document.getElementById("txtArea");
             var Iteration = document.getElementById("txtIteration");
             var Steps = document.getElementById("txtSteps");
-            var Priority = document.getElementById("txtPriority");
-            // var Svrty = document.getElementById("txtSvrty");
+            var Priority = document.getElementById("ddlPriority").value;
+            var Svrty = document.getElementById("ddlSeverity").value;
             var pat = document.getElementById("txtPAT");
 
             /////call TFS
@@ -849,7 +554,16 @@
             bugArr.push(myBug)
             myBug = {
                 'op': 'add', 'path': '/fields/Microsoft.VSTS.Common.Priority',
-                'value': Priority.value
+                'value': Priority
+            }
+
+            bugArr.push(myBug)
+
+            debugger
+
+            myBug = {
+                'op': 'add', 'path': '/fields/Microsoft.VSTS.Common.Severity',
+                'value': Svrty
             }
 
             bugArr.push(myBug)
@@ -868,6 +582,7 @@
                 if (this.readyState == 4 && this.status == 200) {
                     debugger
 
+                    document.getElementById('imgloader').style.display = 'none';
 
                     var result = JSON.parse(this.responseText);
 
@@ -937,12 +652,13 @@
                         if (this.readyState == 4 && this.status == 200) {
                             var resp = JSON.parse(this.responseText);
 
+                            document.getElementById('imgloader').style.display = 'none';
+
                             if (resp.id == bugId) {
-                                alert('success');
+                                alert('Bug creation successful in TFS');
                             }
 
 
-                            document.getElementById('imgloader').style.display = 'none';
                         }
                     };
                     xhttp.open("PATCH", "https://dev.azure.com/USTInnovationEngineering/_apis/wit/workitems/" + bugId + "?api-version=6.0", true);
@@ -971,6 +687,13 @@
 
         }
 
+        function errorMsg(ErrorMsg) {
+
+            openErrormsgDiv();
+            document.getElementById("divErrorMsg").innerHTML = ErrorMsg;
+
+        }
+
         function refresh() {
             window.location.reload();
 
@@ -991,6 +714,14 @@
 
         function closeScreenshotDiv() {
             document.getElementById("divBugScreen").style.display = 'none';
+        }
+
+        function openErrormsgDiv() {
+            document.getElementById("divBugErrorMsg").style.display = 'block';
+        }
+
+        function closeErrormsgDiv() {
+            document.getElementById("divBugErrorMsg").style.display = 'none';
         }
 
         function html2pdf() {
@@ -1318,60 +1049,72 @@
                 </div>
                 <div class="row" style="padding-top: 2%;
             padding-left: 2%;  margin-left: 0px;
-    margin-right: 0px;height: 400px;">
+    margin-right: 0px;height: 430px;">
                     <div class="col-md-5">
-                        <div class="row">
+                        <div class="row" style="padding-bottom: 1%;">
                             <div class="col-md-3">Defect Title</div>
                             <div class="col-md-9">
                                 <input type="text" style="width:100%" id="txtDfTitle">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding-bottom: 1%;">
                             <div class="col-md-3">Assigned To</div>
                             <div class="col-md-9">
                                 <input type="text" style="width:100%" id="txtAssigned" value="Binu Rajagopal">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding-bottom: 1%;">
                             <div class="col-md-3">Tag</div>
                             <div class="col-md-9">
                                 <input type="text" style="width:100%" id="txtTag" value="Automation Defect">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding-bottom: 1%;">
                             <div class="col-md-3">Area</div>
                             <div class="col-md-9">
                                 <input type="text" style="width:100%" id="txtArea"
                                     value="USTP-SMOP-BU-00_SmartOpsQAAutomation">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding-bottom: 1%;">
                             <div class="col-md-3">Iteration</div>
                             <div class="col-md-9">
                                 <input type="text" style="width:100%" id="txtIteration"
                                     value="USTP-SMOP-BU-00_SmartOpsQAAutomation">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding-bottom: 1%;">
                             <div class="col-md-3">Steps to reproduce</div>
                             <div class="col-md-9">
                                 <!-- <input type="text" rows="4" cols="50"  id="txtSteps"> -->
                                 <textarea id="txtSteps" style="width:100%" rows="4" cols="50"></textarea>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding-bottom: 1%;">
                             <div class="col-md-3">Priority</div>
                             <div class="col-md-9">
-                                <input type="text" style="width:100%" id="txtPriority">
+                                <!-- <input type="text" style="width:100%" id="txtPriority"> -->
+                                <select name="ddlpri" id="ddlPriority" style="    width: 50%;">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding-bottom: 1%;">
                             <div class="col-md-3">Severity</div>
                             <div class="col-md-9">
-                                <input type="text" style="width:100%" id="txtSvrty">
+                                <!-- <input type="text" style="width:100%" id="txtSvrty"> -->
+                                <select name="ddlSev" id="ddlSeverity" style="    width: 50%;">
+                                    <option value="1 - Critical">1 - Critical</option>
+                                    <option value="2 - High">2 - High</option>
+                                    <option value="3 - Medium">3 - Medium</option>
+                                    <option value="4 - Low">4 - Low</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding-bottom: 1%;">
                             <div class="col-md-3">PAT</div>
                             <div class="col-md-9">
                                 <input type="text" style="width:100%"
@@ -1392,6 +1135,7 @@
                             height="300px" alt="screen shot" />
                     </div>
                 </div>
+
             </div>
             <div id="divBugScreen" style="z-index: 9;
         position: absolute;
@@ -1409,6 +1153,34 @@
                 <div class="row">
                     <div class="col-md-12" style="text-align: center;">
                         <img id="imgBugScreen" src="../Images/Screenshot.png" height="400px" alt="screen shot" />
+                    </div>
+                </div>
+            </div>
+
+            <div id="divBugErrorMsg" style="z-index: 9;
+            position: absolute;
+            background-color: #f3f5f7;
+            margin-top: -15%;
+        margin-left: 10%;
+        margin-right: 10%;
+            border-radius: 5px;  box-shadow: 0px 0px 90px #0c0c0c;display: none;">
+                <div class="row"
+                    style=" margin-left: 0px;
+                margin-right: 0px;padding-top: 0.5%;border-radius: 5px 5px 0px 0px;   background-color: #5B5B5B;height: 30px;color: #fff;">
+                    <div class="col-md-2">
+                        Error Message
+                    </div>
+                    <div class="col-md-10" style="text-align: right;">
+                        <i class="fa fa-times" style="cursor: pointer;" onclick="closeErrormsgDiv()"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="    height: 250px;
+                    padding-left: 2%;
+                    padding-top: 1%;
+                    padding-right: 2%;height: 250px;overflow-y: auto;">
+                        <div id="divErrorMsg"></div>
+
                     </div>
                 </div>
             </div>

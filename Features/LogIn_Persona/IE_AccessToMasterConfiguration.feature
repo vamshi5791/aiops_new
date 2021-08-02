@@ -1,6 +1,6 @@
-@IE_Accessing_Master_Configuration_Page @ITOps_Milestone_1
+@IE_Accessing_Master_Configuration_Page @ITOps_Milestone_1 @MasterConfiguration
 
-Feature: Login Persona Functionalities
+Feature: Installation Engineer is able to access the master configuration page
 
     Scenario Outline:   Installation Engineer is able to access the master configuration page
 

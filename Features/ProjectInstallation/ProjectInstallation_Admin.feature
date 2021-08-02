@@ -3,10 +3,8 @@ Feature: Project Installation with ITOps Admin role
 
 Feature Description Once the login is done with ITOps_Admin role,
               Admin must be able to create the project and install it.
-        Project must be in ready state in Project Listing page.
-
-
-
+     Project must be in ready state in Project Listing page.
+ 
         @CreateProject
         Scenario Outline: Project Creation
             Given ITOps "Admin" is in the home page, "<UserName>", "<Password>"
@@ -16,8 +14,8 @@ Feature Description Once the login is done with ITOps_Admin role,
               And "Admin" clicks on create button
              Then user is taken to the project configuration page "<Toaster>"
         Examples:
-                  | UserName    | Password | ProjectName   | Description       | Toaster                      |
-                  | Itops_admin | qa123    | Automation_IB_20 | Release1.4Project | Project Created Successfully |
+                  | UserName    | Password | ProjectName      | Description       | Toaster                      |
+                  | Itops_admin | qa123    | Automation_IB_12 | Release1.4Project | Project Created Successfully |
         @GeneralConfiguration
         Scenario Outline: General Configuration
              When "Admin" enters Service now hostname as "<ServiceNowHost>"
@@ -110,8 +108,8 @@ Feature Description Once the login is done with ITOps_Admin role,
               And "Admin" clicks on Save and Configure button
              Then Success message for Channel Configuration must be shown as a toaster "<Toaster>"
         Examples:
-                  | ChannelName | ChannelType | ChannelIntegration | EmailId            | ClientID                             | ClientSecret | TenantID                             | AutomationStory | ListSize | Toaster                      |
-                  | UST Channel | EMAIL       | outlook            | ustib123@gmail.com | b73e5fe3-e49a-4d49-9ada-1e8741a6e034 | 1234         | a4431f4b-c207-4733-9530-34c08a9b2b8d | UST             | 2        | Channel created Successfully |
+                  | ChannelName | ChannelType | ChannelIntegration | EmailId                        | ClientID                             | ClientSecret                       | TenantID                             | AutomationStory | ListSize | Toaster                      |
+                  | UST Channel | EMAIL       | outlook            | smartopsautosvc@ust-global.com | b73e5fe3-e49a-4d49-9ada-1e8741a6e034 | _1NdG.t_JC.~DM39Y04XZhr1ifKPcGxT2y | a4431f4b-c207-4733-9530-34c08a9b2b8d | UST             | 2        | Channel created Successfully |
 
         @EmailChannelAuthentication
         Scenario Outline: Successful Authentication of email channel
@@ -122,8 +120,8 @@ Feature Description Once the login is done with ITOps_Admin role,
               And "Admin" clicks on sign in
              Then Success message for OAuth authentication must be shown as a toaster "<Toaster>"
         Examples:
-                  | MailId                         | Password      | Toaster                |
-                  | smartopsautosvc@ust-global.com | Support@12334 | Channel Authentication |
+                  | MailId                         | Password      | Toaster                      |
+                  | smartopsautosvc@ust-global.com | Support@12334 | OAuth authentication success |
         @AddUser
         Scenario Outline: Add User
              When "Admin" is in Add User page

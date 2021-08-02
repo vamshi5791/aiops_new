@@ -14,7 +14,9 @@ let objProjectListing = new ProjectListingPage();
 
 
 When('{string} clicks on edit configuration button', async function (userRole) {
-  await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))), 100000);
+  await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))), 100000); 
+  await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Create New Project"]'))), 100000);
+   await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Edit Configuration"]'))), 100000);
   await objProjectListing.EditConfiguration();
 });
 

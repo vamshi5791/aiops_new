@@ -1,7 +1,7 @@
 @ProjectCreation_IE @ITOps_Milestone_1
-Feature: Project Installation with Itops IE role
+Feature: Project Installation with Itops Admin role
 
-Feature Description Once the login is done with ITOPS_IE role,
+Feature Description Once the login is done with ITOPS_Admin role,
               Admin must be able to create the project and install it.
         Project must be in ready state in Project Listing page.
 
@@ -14,7 +14,7 @@ Feature Description Once the login is done with ITOPS_IE role,
               And "Installation Engineer" clicks on create button
              Then user is taken to the project configuration page "<Toaster"
         Examples:
-                  | UserName | Password | ProjectName   | Description       | Toaster                      |
+                  | UserName | Password | ProjectName      | Description       | Toaster                      |
                   | Itops_IE | qa123    | Automation_IB_21 | Release1.4Project | Project Created Successfully |
         @GeneralConfiguration
         Scenario Outline: General Configuration
@@ -108,8 +108,8 @@ Feature Description Once the login is done with ITOPS_IE role,
               And "Installation Engineer" clicks on Save and Configure button
              Then Success message for Channel Configuration must be shown as a toaster "<Toaster>"
         Examples:
-                  | ChannelName | ChannelType | ChannelIntegration | EmailId            | ClientID                             | ClientSecret | TenantID                             | AutomationStory | ListSize | Toaster                      |
-                  | UST Channel | EMAIL       | outlook            | ustib123@gmail.com | b73e5fe3-e49a-4d49-9ada-1e8741a6e034 | 1234         | a4431f4b-c207-4733-9530-34c08a9b2b8d | UST             | 2        | Channel created Successfully |
+                  | ChannelName | ChannelType | ChannelIntegration | EmailId                        | ClientID                             | ClientSecret                       | TenantID                             | AutomationStory | ListSize | Toaster                      |
+                  | UST Channel | EMAIL       | outlook            | smartopsautosvc@ust-global.com | b73e5fe3-e49a-4d49-9ada-1e8741a6e034 | _1NdG.t_JC.~DM39Y04XZhr1ifKPcGxT2y | a4431f4b-c207-4733-9530-34c08a9b2b8d | UST             | 2        | Channel created Successfully |
 
         @EmailChannelAuthentication
         Scenario Outline: Successful Authentication of email channel
@@ -120,8 +120,8 @@ Feature Description Once the login is done with ITOPS_IE role,
               And "Installation Engineer" clicks on sign in
              Then Success message for OAuth authentication must be shown as a toaster "<Toaster>"
         Examples:
-                  | MailId                         | Password      | Toaster                |
-                  | smartopsautosvc@ust-global.com | Support@12334 | Channel Authentication |
+                  | MailId                         | Password      | Toaster                      |
+                  | smartopsautosvc@ust-global.com | Support@12334 | OAuth authentication success |
         @AddUser
         Scenario Outline: Add User
              When "Installation Engineer" is in Add User page

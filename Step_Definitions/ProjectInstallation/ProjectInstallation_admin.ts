@@ -15,11 +15,18 @@ let objProjectConfi = new ProjectConfiguration();
 var customMsgEnabled = true;
 var TestProjectName;
 
-Given('ITOps {string} is in the home page, {string}, {string}', async function (userRole, usernameData, passwordData) {
+Given('ITOps {string} is in the home page, {string}, {string}', async function (userRole, UserName, Password) {
   try {
     await browser.get(properties.get("main." + globalThis.environment + "_url")).then(async function () {
     })
-    await objLogIn.LogIn_Details(usernameData, passwordData)
+    await objLogIn.enterUserName(UserName);
+    await objLogIn.enterPassword(Password);
+    await objLogIn.clickOnLogInButton();
+    await browser.sleep(5000)
+  
+        await element(by.className('smo smo-close-black-alt')).click();
+   
+        await browser.sleep(5000)
   }
   catch (error) {
     throw "User is not taken to ITops home page"
@@ -74,7 +81,7 @@ Then('user is taken to the project configuration page {string}', async function 
     });
   }
   catch (error) {
-    throw "Once user clicks on create button, user must be taken to project configuration page but it is not taking to Project Configuration Page"
+    throw "User is unable to proceed with project configuration"
   };
 });
 
@@ -82,6 +89,7 @@ Then('user is taken to the project configuration page {string}', async function 
 
 When('{string} enters Service now hostname as {string}', async function (userRole, ServiceNowHost) {
   try {
+    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await objProjectConfi.ServiceNowHost(ServiceNowHost)
   }
   catch (error) {
@@ -162,12 +170,12 @@ When('{string} clicks on Save button in General Configuration page', async funct
   }
 });
 
-Then('Success message for General Configuration must be shown  as a toaster {string}', async function (Toster) {
+Then('Success message for General Configuration must be shown  as a toaster {string}', async function (Toaster) {
   try {
     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
 
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toster);
+      expect(text).to.include(Toaster);
     });
   }
   catch (error) {
@@ -178,8 +186,7 @@ Then('Success message for General Configuration must be shown  as a toaster {str
 // Schedular configuration
 
 When('{string} clicks on Schedular configuration', async function (userRole) {
-  try {
-    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+ try {
     var myElement = objProjectConfi.lnkSchedularConfiguration;
     await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
     await objProjectConfi.SchedularConfiguration()
@@ -241,25 +248,25 @@ When('{string} clicks on Save button in Scheduler Configuration page', async fun
   }
 });
 
-Then('Success message for Scheduler Configuration must be shown as a toaster {string}', async function (Toster) {
+Then('Success message for Scheduler Configuration must be shown as a toaster {string}', async function (Toaster) {
   try {
     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
 
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toster);
+      expect(text).to.include(Toaster);
     });
   } catch (error) {
     throw "Once user clicks save button it should display Project Configurations Updated. But it is not displaying the message"
   };
 });
-// Error Response Configuration
+//  Error Response Configuration
 
 When('{string} clicks on Error Response Configuration', async function (userRole) {
   try {
-    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(async function () {
       await objProjectConfi.ErrorResponseConfiguration()
     })
+
   }
   catch (error) {
     throw "User is not able to click on Error Response Configuration"
@@ -318,13 +325,14 @@ Then('Success message for Error Response Configuration must be shown as a toaste
 // Surge Configuration
 
 When('{string} clicks on Surge Configuration', async function (userRole) {
-  try {
+ try {
     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+   
     await objProjectConfi.SurgeConfiguration()
-  }
-  catch (error) {
+ }
+ catch (error) {
     throw "User is not able to click on Surge Configuration"
-  }
+ }
 });
 
 When('{string} enters Surge Start Percentile as {string}', async function (userRole, StartPercentile) {
@@ -754,10 +762,6 @@ When('{string} is in Add User page', async function (userRole) {
   try {
     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await objProjectConfi.AddUser();
-
-    // await element(by.className("smo-dropdown-trigger-icon smo-clickable smo smo-expand-more-alt chevron-icon")).click();
-    // await element(by.className('ng-tns-c18-13 smo-dropdown-filter smo-inputtext smo-widget smo-state-default pl-1')).sendKeys("Kishor Mac");
-    // await element(by.xpath('//h3[text()="Add User"]//following::smo-dropdownitem//span')).click();
   }
   catch (error) {
     throw "User should taken to Add User page"
@@ -822,6 +826,7 @@ Then('Project must be in ready state in Project Listring Page {string}', async f
     await browser.sleep(2000);
     await element(by.className("smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm")).getText().then(async function (text) {
       await expect(text).to.include(ProjectStatus);
+      await console.log(text);
     });
   }
   catch (error) {

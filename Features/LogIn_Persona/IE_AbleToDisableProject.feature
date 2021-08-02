@@ -1,21 +1,21 @@
 @IE_Disabling_Project @ITOps_Milestone_1
 
 
-Feature:Login Persona Functionalities
+Feature: IE able to disable the Project
 
-    Scenario Outline: Installation Engineer is able to disable the project
+        Scenario Outline: Installation Engineer is able to disable the project
 
-        Given ITOps "Installation Engineer" is in the home page, "<UserName>", "<Password>"
-        When "IE" enters project name in project search box "<ProjectName>"
-        When "IE" click dotmenu icon
-        When "IE" clicks on deactivate project
-        When "IE" clicks on yes
-        Then Success message for Project is "disabled" must be shown as a toaster "<Toaster>"
-        And click on logout button
+            Given ITOps "Installation Engineer" is in the home page, "<UserName>", "<Password>"
+             When "IE" enters project name in project search feild "<ProjectName>"
+             When "IE" click dotmenu icon
+             When "IE" clicks on deactivate project
+             When "IE" clicks on yes
+             Then Success message for Project is "disabled" must be shown as a toaster "<Toaster>"
+              And click on logout button
 
         Examples:
-            | UserName | Password | ProjectName   | Toaster                          |
-            | Itops_IE | qa123    | Automation_IB_09 | Project Deactivated Successfully |
+                  | UserName | Password | ProjectName      | Toaster                          |
+                  | Itops_IE | qa123    | Automation_IB_01 | Project Deactivated Successfully |
 
 
 

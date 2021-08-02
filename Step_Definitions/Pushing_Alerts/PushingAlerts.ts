@@ -1,5 +1,5 @@
-import { Given, When, Then } from "cucumber"
-import { browser, element, by } from "protractor"
+import { Given, When, Then, Before, After, Status } from "cucumber"
+import { browser, element, by, ExpectedConditions, WebElement, protractor } from "protractor"
 import chai from "chai";
 import { LogIn } from "../../PageObjects/LogIn";
 import { PushingAlerts } from "../../PageObjects/RabbitMQ";
@@ -8,6 +8,7 @@ import { ProjectListingPage } from "../../PageObjects/ProjectListing";
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = browser.ExpectedConditions;
+var fs = require('fs');
 var expect = chai.expect;
 let objLogIn = new LogIn();
 let objFilter = new PushingAlerts();
@@ -28,7 +29,7 @@ Given('User opens rabbitMQ', async function () {
   }
 })
 
-When('user enters Username and Password {string}, {string}', async function (rabbitMQ_User, rabbitMQ_Password) {
+When('user enters RabbitMQ_Username and RabbitMQ_Password {string}, {string}', async function (rabbitMQ_User, rabbitMQ_Password) {
   try {
     await objFilter.LogIn_Details2(rabbitMQ_User, rabbitMQ_Password);
   }
@@ -134,20 +135,22 @@ When('user opens itops application', async function () {
   }
 });
 
-When('{string} enters Username, Password and click on Login button {string}, {string}', async function (userRole, UserName, Password) {
-  await objLogIn.LogIn_Details(UserName, Password);
-});
-
 When('{string} selects project and open alerts', async function (userRole) {
 
   try {
-    await objProjectListing.Project_search(Global_ProjectName);
-    await browser.wait(EC.visibilityOf(element(by.xpath('//h3[text()=" ' + Global_ProjectName + ' "]'))), 100000);
-    await objProjectListing.selectProject(Global_ProjectName);
-    await browser.wait(EC.visibilityOf(element(by.xpath('//a[text()="Alerts"]'))), 100000);
-    await objAlerts.selectAlerts();
+    
+        await objProjectListing.Project_search(Global_ProjectName);
+        await browser.sleep(3000);
+        await browser.wait(EC.visibilityOf(element(by.xpath('//h3[text()=" ' + Global_ProjectName + ' "]'))), 100000);
+        await objProjectListing.selectProject(Global_ProjectName);
+
+        await browser.wait(EC.visibilityOf(element(by.xpath('//a[text()="Alerts"]'))), 100000);
+        await objAlerts.selectAlerts();
+     
   }
   catch (error) {
+await console.error(error);
+throw error;
     throw "Admin is not able to open the alerts page in the dashboard"
   }
 })
@@ -159,6 +162,7 @@ Then('Success message for alerts displayed in Alerts console {string} {string}',
       expect(text).to.include(Alerts);
     });
   } catch (error) {
+   await console.error(error);
     throw "Unable to find the pushed alert"
   };
 });
