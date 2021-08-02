@@ -1,6 +1,6 @@
 @PushingAlerts @ITOps_Milestone_1
 
-Feature: Pushing Alerts
+Feature: Alerts pushing through RabbitMQ
 
         Scenario Outline: Alerts pushing through RabbitMQ
 
