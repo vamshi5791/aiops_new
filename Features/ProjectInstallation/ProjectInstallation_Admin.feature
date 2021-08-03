@@ -15,7 +15,7 @@ Feature Description Once the login is done with ITOps_Admin role,
              Then user is taken to the project configuration page "<Toaster>"
         Examples:
                   | UserName    | Password | ProjectName      | Description       | Toaster                      |
-                  | Itops_admin | qa123    | Automation_IB_14 | Release1.4Project | Project Created Successfully |
+                  | Itops_admin | qa123    | Automation_IB_03 | Release1.4Project | Project Created Successfully |
         @GeneralConfiguration
         Scenario Outline: General Configuration
              When "Admin" enters Service now hostname as "<ServiceNowHost>"
