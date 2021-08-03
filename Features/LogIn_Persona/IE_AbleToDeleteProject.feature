@@ -16,7 +16,7 @@ Feature: IE able to delete the project
 
         Examples:
                   | UserName | Password | projectName      | Toaster                      |
-                  | Itops_IE | qa123    | Automation_IB_12 | Project Deleted Successfully |
+                  | Itops_IE | qa123    | Automation_IB_11 | Project Deleted Successfully |
 
 
 
