@@ -15,7 +15,7 @@ Feature Description Once the login is done with ITOps_IE role,
              Then user is taken to the project configuration page "<Toaster"
         Examples:
                   | UserName | Password | ProjectName      | Description       | Toaster                      |
-                  | Itops_IE | qa123    | Automation_IB_13 | Release1.4Project | Project Created Successfully |
+                  | Itops_IE | qa123    | Automation_IB_04 | Release1.4Project | Project Created Successfully |
         @GeneralConfiguration
         Scenario Outline: General Configuration
              When "Installation Engineer" enters Service now hostname as "<ServiceNowHost>"
