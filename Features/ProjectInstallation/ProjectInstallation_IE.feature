@@ -7,7 +7,7 @@ Feature Description Once the login is done with ITOps_IE role,
 
         @CreateProject
         Scenario Outline: Project Creation
-            Given ITOps "Installation Engineer" is in the home page, "<UserName>", "<Password>"
+            Given ITOps "Installation Engineer" with username and password as "<UserName>", "<Password>" is in the home page
              When "Installation Engineer" clicks on create project button
               And "Installation Engineer" enters project name as "<ProjectName>"
               And "Installation Engineer" enters description as "<Description>"
@@ -135,8 +135,8 @@ Feature Description Once the login is done with ITOps_IE role,
         @ProjectInstallation
         Scenario Outline: Project Installation
              When "Installation Engineer" clicks on Install button
-             Then Project must be in ready state in Project Listring Page "<ProjectStatus>"
-              And click on logout button
+             Then Project must be in ready state in Project Listing Page "<ProjectStatus>"
+              And "Installation Engineer" clicks on logout button
         Examples:
                   | ProjectStatus |
                   | Ready         |

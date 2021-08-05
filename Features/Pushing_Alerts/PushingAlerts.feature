@@ -15,10 +15,10 @@ Feature: Alerts pushing through RabbitMQ
               And user enters the payload
               And user clicks on publish
               And user opens itops application
-              And ITOps "Admin" is in the home page, "<Itops_UserName>", "<Itops_Password>"
+            Given ITOps "admin" with username and password as "<Itops_UserName>", "<Itops_Password>" is in the home page
               And "admin" selects project and open alerts
              Then Success message for alerts displayed in Alerts console "<Alerts>" "<alertName>"
-              And click on logout button
+              And "admin" clicks on logout button
 
 
         Examples:

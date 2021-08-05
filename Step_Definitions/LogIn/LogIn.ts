@@ -1,14 +1,13 @@
-import { Given, When, Then, Before, After, Status } from "cucumber"
-import { browser, element, by, ExpectedConditions, WebElement } from "protractor"
+import { Given, When, Then } from "cucumber"
+import { browser, element, by } from "protractor"
 import chai from "chai";
 import { LogIn } from '../../PageObjects/LogIn';
 import { ProjectListingPage } from "../../PageObjects/ProjectListing";
- 
+
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
-
 let objLogIn = new LogIn();
 let ProjectListing = new ProjectListingPage();
 
@@ -18,16 +17,16 @@ Given('User with ITOps role renders the URL', async function () {
   })
 })
 
-When('user enters Username, Password and click on Login button {string}, {string}', async function (UserName, Password) {
+When('user enters Username as {string}, Password as {string} and clicks on Login button', async function (UserName, Password) {
   try {
     await objLogIn.enterUserName(UserName);
     await objLogIn.enterPassword(Password);
     await objLogIn.clickOnLogInButton();
-    
-  } catch (error) {
-    throw "Invalid Login credentials"
 
+  } catch (error) {
+     throw "Invalid Login credentials"
   }
+
 });
 
 
@@ -38,7 +37,7 @@ Then('ITOps home page is displayed', async function () {
   });
 })
 
-When('click on logout button', async function () {
+When('{string} clicks on logout button', async function (string) {
   await ProjectListing.ClickOnProfile();
   await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Logout"]'))), 10000);
   await ProjectListing.LogOut();

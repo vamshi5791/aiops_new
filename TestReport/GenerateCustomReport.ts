@@ -69,11 +69,8 @@ export class GenerateCustomReport {
 
       }
       console.log("File created!");
+      require("openurl").open("file:///C:/Users/admin/Desktop/Milestone_1/itops-automation/TestReport/Custom_Test_Report.html")
 
-      //const url = './Reports/Custome_Test_Report.html';
-      //browser.get(url);
-      //browser.navigate();
-      // window.open("https://www.google.co.in/")
 
     });
   }

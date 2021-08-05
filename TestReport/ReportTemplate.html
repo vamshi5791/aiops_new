@@ -17,9 +17,6 @@
             json = jsondatabinding;
             if (json != null) {
 
-
-
-
                 // $.getJSON("http://localhost:3000/", function (json) {
 
 
@@ -29,7 +26,7 @@
                 var passed = 0
                 var divArry = [];
                 var featureStatusArry = [];
-                ;
+
                 var _divFeatures = "";//= "<div class='row'>";
 
 
@@ -38,6 +35,7 @@
                 var _lblJsonData = document.getElementById('lblJsonData');
                 _lblJsonData.value = JsonData;
 
+
                 for (let i = 0; i < json.length; i++) {
                     const element = json[i].elements;
                     var _area = json[i].name;
@@ -45,33 +43,20 @@
 
 
                     var isFailed = 0;
-                    _divFeatures += "<div class='row' style='border:solid 0.5px #dfdaef;border-radius:5px;margin-bottom:3%;'>";
 
-                    _divFeatures += "<div class='col-md-12' style='font-size:19px;background-color:#dfdaef;'>";
-                    _divFeatures += _area;
-                    _divFeatures += "</div>";
 
-                    _divFeatures += "<div class='col-md-12'>";
-                    _divFeatures += '<div style="font-size:16px;">No.of Scenarios ' + element.length + ' <i class="fa fa-arrow-circle-right" title="Click to View Scenarios" onclick="filterScenarios(\'' + _area + '\')" style="color:#038ba0;cursor:pointer;"></i></div>';
-
-                    _divFeatures += "</div>";
-
-                    _divFeatures += "</div>";
+                    var FePassedCnt = 0
+                    var FeFailedCnt = 0
 
                     for (let ei = 0; ei < element.length; ei++) {
                         const stps = element[ei].steps;
 
-                        _divField += "<div class='row' style='border:solid 0.5px #dfdaef;border-radius:5px;margin-bottom:1%;'>";
-
-                        _divField += "<div class='col-md-12' style='font-size:19px;background-color:#dfdaef;'>";
-                        _divField += element[ei].name;
-                        _divField += "</div>";
-
-                        let repo_steps = ""
-
-                        total += 1;
-
                         var screenshotbase64 = "";
+
+                        var SCPassedCnt = 0
+                        var SCFailedCnt = 0
+                        var SCSkippedCnt = 0
+                        var SCundefined = 0
 
                         for (let si = 0; si < stps.length; si++) {
                             try {
@@ -85,16 +70,57 @@
                                         screenshotbase64 = stp.embeddings[0].data;
                                     }
                                 }
+
+                                if (_Scenario !== undefined) {
+                                    if (stp.result.status.toLowerCase() == "passed") {
+                                        SCPassedCnt += 1;
+                                    }
+                                    if (stp.result.status.toLowerCase() == "failed") {
+                                        SCFailedCnt += 1;
+                                    }
+                                    if (stp.result.status.toLowerCase() == "skipped") {
+                                        SCSkippedCnt += 1;
+                                    }
+                                    if (stp.result.status.toLowerCase() == "undefined") {
+                                        SCundefined += 1;
+                                    }
+                                }
+
+
                             } catch (ex) {
                                 ex = null;
                             }
                         }
+
+
+                        if (SCFailedCnt > 0) {
+                            FeFailedCnt += 1;
+                            FePassedCnt += 0;
+                        }
+                        else {
+                            FeFailedCnt += 0;
+                            FePassedCnt += 1;
+                        }
+
+
+                        _divField += "<div class='row' style='border:solid 0.5px #dfdaef;border-radius:5px;margin-bottom:1%;'>";
+
+                        _divField += "<div class='col-md-12' style='font-size:19px;background-color:#dfdaef;'>";
+                        _divField += element[ei].name + "<span style=' margin-left: 5px;background-color: green;color: #fff;font-size: 14px;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;border-radius: 3px;background-color:green;'>" + SCPassedCnt + "</span> <span style='background-color: green;color: #fff;font-size: 14px;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;border-radius: 3px;background-color:red;'>" + SCFailedCnt + "</span> <span style='background-color: green;color: #fff;font-size: 14px;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;border-radius: 3px;background-color:orange;'>" + SCSkippedCnt + "</span> <span style='background-color: green;color: #fff;font-size: 14px;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;border-radius: 3px;background-color:#00b8ff;'>" + SCundefined + "</span>";
+                        _divField += "</div>";
+
+
+                        let repo_steps = ""
+
+                        total += 1;
+
+
+
+
                         for (let si = 0; si < stps.length; si++) {
                             try {
                                 const stp = stps[si];
                                 let _Scenario = stp.name;
-
-
 
                                 if (_Scenario !== undefined) {
 
@@ -127,6 +153,11 @@
                                         _divField += "<div style='font-size:16px;'><i class='fa fa-minus-square' style='color:orange;padding-right:1%' ></i>" + _Scenario + "</div>";
                                         _divField += "</div>";
                                     }
+                                    if (stp.result.status.toLowerCase() == "undefined") {
+                                        _divField += "<div class='col-md-12'>";
+                                        _divField += "<div style='font-size:16px;'><i class='fa fa-question-circle' style='color:#00b8ff;padding-right:1%' ></i>" + _Scenario + "</div>";
+                                        _divField += "</div>";
+                                    }
 
                                 }
 
@@ -153,6 +184,21 @@
 
                     }
 
+
+                    _divFeatures += "<div class='row' style='border:solid 0.5px #dfdaef;border-radius:5px;margin-bottom:3%;'>";
+
+                    _divFeatures += "<div class='col-md-12' style='font-size:19px;background-color:#dfdaef;'>";
+                    _divFeatures += _area;
+                    _divFeatures += "</div>";
+
+                    _divFeatures += "<div class='col-md-12'>";
+                    _divFeatures += '<div style="font-size:16px;">No.of Scenarios ' + element.length +
+                        '<span style="margin-left: 5px;background-color: green;color: #fff;font-size: 14px;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;border-radius: 3px;background-color:green;">' + FePassedCnt + '</span> <span style="background-color: green;color: #fff;font-size: 14px;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;border-radius: 3px;background-color:red;">' + FeFailedCnt + '</span> <i class="fa fa-arrow-circle-right" title="Click to View Scenarios" onclick="filterScenarios(\'' + _area + '\')" style="color:#038ba0;cursor:pointer;"></i></div>';
+
+                    _divFeatures += "</div>";
+
+                    _divFeatures += "</div>";
+
                     if (isFailed == 1) {
                         featureStatusArry.push(1);
                     }
@@ -164,6 +210,7 @@
                     divArry.push(_divField);
                     // Divscenario += _divField;
                 }
+
 
                 Divscenario = "";
 
@@ -344,8 +391,14 @@
                 closeScreenshotDiv();
 
 
+                setTimeout(function () {
+                    html2pdf();
+                }, 1500);
+
+
             }
         });
+
 
         function filterScenarios(featureName) {
 
@@ -380,17 +433,12 @@
                     for (let ei = 0; ei < element.length; ei++) {
                         const stps = element[ei].steps;
 
-                        _divField += "<div class='row' style='border:solid 0.5px #dfdaef;border-radius:5px;margin-bottom:1%;'>";
-
-                        _divField += "<div class='col-md-12' style='font-size:19px;background-color:#dfdaef;'>";
-                        _divField += element[ei].name;
-                        _divField += "</div>";
-
-                        let repo_steps = ""
-
-                        total += 1;
-
                         var screenshotbase64 = "";
+
+                        var SCPassedCnt = 0
+                        var SCFailedCnt = 0
+                        var SCSkippedCnt = 0
+                        var SCundefined = 0
 
                         for (let si = 0; si < stps.length; si++) {
                             try {
@@ -404,16 +452,47 @@
                                         screenshotbase64 = stp.embeddings[0].data;
                                     }
                                 }
+
+                                if (_Scenario !== undefined) {
+                                    if (stp.result.status.toLowerCase() == "passed") {
+                                        SCPassedCnt += 1;
+                                    }
+                                    if (stp.result.status.toLowerCase() == "failed") {
+                                        SCFailedCnt += 1;
+                                    }
+                                    if (stp.result.status.toLowerCase() == "skipped") {
+                                        SCSkippedCnt += 1;
+                                    }
+                                    if (stp.result.status.toLowerCase() == "undefined") {
+                                        SCundefined += 1;
+                                    }
+                                }
+
+
                             } catch (ex) {
                                 ex = null;
                             }
                         }
+
+
+                        _divField += "<div class='row' style='border:solid 0.5px #dfdaef;border-radius:5px;margin-bottom:1%;'>";
+
+                        _divField += "<div class='col-md-12' style='font-size:19px;background-color:#dfdaef;'>";
+                        _divField += element[ei].name + "<span style=' margin-left: 5px;background-color: green;color: #fff;font-size: 14px;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;border-radius: 3px;background-color:green;'>" + SCPassedCnt + "</span> <span style='background-color: green;color: #fff;font-size: 14px;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;border-radius: 3px;background-color:red;'>" + SCFailedCnt + "</span> <span style='background-color: green;color: #fff;font-size: 14px;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;border-radius: 3px;background-color:orange;'>" + SCSkippedCnt + "</span> <span style='background-color: green;color: #fff;font-size: 14px;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;border-radius: 3px;background-color:#00b8ff;'>" + SCundefined + "</span>";
+                        _divField += "</div>";
+
+
+                        let repo_steps = ""
+
+                        total += 1;
+
+
+
+
                         for (let si = 0; si < stps.length; si++) {
                             try {
                                 const stp = stps[si];
                                 let _Scenario = stp.name;
-
-
 
                                 if (_Scenario !== undefined) {
 
@@ -434,6 +513,7 @@
                                         errorM = errorM.replaceAll('\\', '//');
                                         errorM = errorM.replaceAll('\'', '');
 
+
                                         _divField += "<div class='col-md-12'>";
                                         _divField += '<div style="font-size:16px;"><i class="fa fa-window-close" style="color:red;padding-right:1%" ></i>' + _Scenario + '  <i class="fa fa-bug" title="Click to Raise Bug" onclick="fillArea(\'' + repo_steps + '\',\'' + screenshotbase64 + '\')" style="color:red;cursor:pointer;"></i>  <i class="fa fa-eye" title="Click to View Error Message" onclick="errorMsg(\'' + errorM + '\')" style="color:red;cursor:pointer;"></i></div>';
                                         _divField += "</div>";
@@ -443,6 +523,11 @@
                                     if (stp.result.status.toLowerCase() == "skipped") {
                                         _divField += "<div class='col-md-12'>";
                                         _divField += "<div style='font-size:16px;'><i class='fa fa-minus-square' style='color:orange;padding-right:1%' ></i>" + _Scenario + "</div>";
+                                        _divField += "</div>";
+                                    }
+                                    if (stp.result.status.toLowerCase() == "undefined") {
+                                        _divField += "<div class='col-md-12'>";
+                                        _divField += "<div style='font-size:16px;'><i class='fa fa-question-circle' style='color:#00b8ff;padding-right:1%' ></i>" + _Scenario + "</div>";
                                         _divField += "</div>";
                                     }
 
@@ -471,6 +556,8 @@
 
                     }
 
+
+
                     if (isFailed == 1) {
                         featureStatusArry.push(1);
                     }
@@ -494,6 +581,7 @@
                     daParent.innerHTML = Divscenario;
                 }
             }
+
         }
 
         function callAPI() {
@@ -725,6 +813,8 @@
         }
 
         function html2pdf() {
+
+
 
             document.getElementById('imgloader').style.display = 'block';
 

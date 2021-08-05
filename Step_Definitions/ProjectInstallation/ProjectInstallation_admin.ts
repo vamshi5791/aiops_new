@@ -15,18 +15,20 @@ let objProjectConfi = new ProjectConfiguration();
 var customMsgEnabled = true;
 var TestProjectName;
 
-Given('ITOps {string} is in the home page, {string}, {string}', async function (userRole, UserName, Password) {
+Given('ITOps {string} with username and password as {string}, {string} is in the home page', async function (userRole, UserName, Password) {
   try {
     await browser.get(properties.get("main." + globalThis.environment + "_url")).then(async function () {
     })
     await objLogIn.enterUserName(UserName);
     await objLogIn.enterPassword(Password);
     await objLogIn.clickOnLogInButton();
-    await browser.sleep(5000)
-  
+
+    var myElement = element(by.className('smo smo-close-black-alt'));
+    myElement.isPresent().then(async function (elm) {
+      if (elm) {
         await element(by.className('smo smo-close-black-alt')).click();
-   
-        await browser.sleep(5000)
+      } 
+    });
   }
   catch (error) {
     throw "User is not taken to ITops home page"
@@ -263,7 +265,6 @@ Then('Success message for Scheduler Configuration must be shown as a toaster {st
 
 When('{string} clicks on Error Response Configuration', async function (userRole) {
   try {
-    await browser.sleep(60000)
     await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(async function () {
       await objProjectConfi.ErrorResponseConfiguration()
     })
@@ -283,9 +284,9 @@ When('{string} enters From Email Account as {string}', async function (userRole,
   }
 });
 
-When('{string} enters From Email Acount Password as {string}', async function (userRole, FromEmailAcountPassword) {
+When('{string} enters From Email Acount Password as {string}', async function (userRole, FromEmailAccountPassword) {
   try {
-    await objProjectConfi.PasswordFromEmail(FromEmailAcountPassword)
+    await objProjectConfi.PasswordFromEmail(FromEmailAccountPassword)
   }
   catch (error) {
     throw "User is not able to enter From Email Account Password"
@@ -312,11 +313,11 @@ When('{string} clicks on Save button in Error Response Configuration page', asyn
   }
 });
 
-Then('Success message for Error Response Configuration must be shown as a toaster {string}', async function (Toster) {
+Then('Success message for Error Response Configuration must be shown as a toaster {string}', async function (Toaster) {
   try {
     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toster);
+      expect(text).to.include(Toaster);
     });
   } catch (error) {
     throw "Once user clicks save button it should display Project Configurations Updated. But it is not displaying the message"
@@ -555,11 +556,11 @@ When('{string} clicks on Save button in Ticket Dump Configuration page', async f
   }
 });
 
-Then('Success message for Ticket Dump Configuration must be shown as a toaster {string}', async function (Toster) {
+Then('Success message for Ticket Dump Configuration must be shown as a toaster {string}', async function (Toaster) {
   try {
     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toster);
+      expect(text).to.include(Toaster);
     });
   } catch (error) {
     throw "Once user clicks save button it should display Project Configurations Updated. But it is not displaying the message"
@@ -688,11 +689,11 @@ When('{string} clicks on Save and Configure button', async function (userRole) {
   }
 });
 
-Then('Success message for Channel Configuration must be shown as a toaster {string}', async function (Toster) {
+Then('Success message for Channel Configuration must be shown as a toaster {string}', async function (Toaster) {
   try {
     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toster);
+      expect(text).to.include(Toaster);
     });
   } catch (error) {
     throw "Success message for authentication Channel popup is not displaying"
@@ -746,11 +747,11 @@ When('{string} clicks on sign in', async function (userRole) {
   }
 });
 
-Then('Success message for OAuth authentication must be shown as a toaster {string}', async function (Toster) {
+Then('Success message for OAuth authentication must be shown as a toaster {string}', async function (Toaster) {
   try {
     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toster);
+      expect(text).to.include(Toaster);
     });
   } catch (error) {
     throw "Success message for OAuth authentication is not displaying"
@@ -796,11 +797,11 @@ When('{string} clicks on Add User button', async function (userRole) {
   }
 });
 
-Then('User must be added and listed in the below list with a toaster {string}', async function (Toster) {
+Then('User must be added and listed in the below list with a toaster {string}', async function (Toaster) {
   try {
     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toster);
+      expect(text).to.include(Toaster);
     });
   } catch (error) {
     throw "Once user clicks Add User button it should display selected user name in the list. But it is not displaying in the list"
@@ -821,7 +822,7 @@ When('{string} clicks on Install button', async function (userRole) {
   }
 });
 
-Then('Project must be in ready state in Project Listring Page {string}', async function (ProjectStatus) {
+Then('Project must be in ready state in Project Listing Page {string}', async function (ProjectStatus) {
   try {
     await objProjectListing.Project_search(TestProjectName);
     await browser.sleep(2000);

@@ -7,7 +7,7 @@ Feature Description Once the login is done with ITOps_Admin role,
  
         @CreateProject
         Scenario Outline: Project Creation
-            Given ITOps "Admin" is in the home page, "<UserName>", "<Password>"
+            Given ITOps "Admin" with username and password as "<UserName>", "<Password>" is in the home page
              When "Admin" clicks on create project button
               And "Admin" enters project name as "<ProjectName>"
               And "Admin" enters description as "<Description>"
@@ -135,8 +135,8 @@ Feature Description Once the login is done with ITOps_Admin role,
         @ProjectInstallation
         Scenario Outline: Project Installation
              When "Admin" clicks on Install button
-             Then Project must be in ready state in Project Listring Page "<ProjectStatus>"
-              And click on logout button
+             Then Project must be in ready state in Project Listing Page "<ProjectStatus>"
+              And "Admin" clicks on logout button
         Examples:
                   | ProjectStatus |
                   | Ready         |

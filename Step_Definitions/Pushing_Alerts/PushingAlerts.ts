@@ -18,10 +18,9 @@ var JsonAlert;
 var StringifiedJsonAlert;
 var Global_ProjectName;
 
-
 Given('User opens rabbitMQ', async function () {
   try {
-    await browser.get(properties.get("main." + globalThis.environment + "_rabit_MQ_URL")).then(async function () {
+    await browser.get(properties.get("main." + globalThis.environment + "_rabbit_MQ_URL")).then(async function () {
     })
   }
   catch (error) {

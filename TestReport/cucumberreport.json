@@ -1,9 +1,9 @@
 [
   {
     "keyword": "Feature",
-    "name": "Pushing Alerts",
+    "name": "Alerts pushing through RabbitMQ",
     "line": 3,
-    "id": "pushing-alerts",
+    "id": "alerts-pushing-through-rabbitmq",
     "tags": [
       {
         "name": "@PushingAlerts",
@@ -17,7 +17,7 @@
     "uri": "Features\\Pushing_Alerts\\PushingAlerts.feature",
     "elements": [
       {
-        "id": "pushing-alerts;alerts-pushing-through-rabbitmq",
+        "id": "alerts-pushing-through-rabbitmq;alerts-pushing-through-rabbitmq",
         "keyword": "Scenario",
         "line": 26,
         "name": "Alerts pushing through RabbitMQ",
@@ -39,11 +39,11 @@
             "line": 8,
             "name": "User opens rabbitMQ",
             "match": {
-              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:22"
+              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 2048000000
+              "duration": 2247000000
             }
           },
           {
@@ -52,11 +52,11 @@
             "line": 9,
             "name": "user enters RabbitMQ_Username and RabbitMQ_Password \"admin\", \"j5c6ym6nFm8M2Yia\"",
             "match": {
-              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:32"
+              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:31"
             },
             "result": {
               "status": "passed",
-              "duration": 150000000
+              "duration": 442000000
             }
           },
           {
@@ -65,11 +65,11 @@
             "line": 10,
             "name": "user clicks on Login button",
             "match": {
-              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:41"
+              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:40"
             },
             "result": {
               "status": "passed",
-              "duration": 1811000000
+              "duration": 2136000000
             }
           },
           {
@@ -78,11 +78,11 @@
             "line": 11,
             "name": "user clicks on the project \"Automation_02\" \"1.978.Automation_02.exchange\"",
             "match": {
-              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:50"
+              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:49"
             },
             "result": {
               "status": "passed",
-              "duration": 1908000000
+              "duration": 2244000000
             }
           },
           {
@@ -91,11 +91,11 @@
             "line": 12,
             "name": "user enters to the queue \"1.978.Automation_008.queue\"",
             "match": {
-              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:62"
+              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:61"
             },
             "result": {
               "status": "passed",
-              "duration": 1916000000
+              "duration": 2070000000
             }
           },
           {
@@ -104,11 +104,11 @@
             "line": 13,
             "name": "user enters the routing key \"1.978.Automation_008.queue\"",
             "match": {
-              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:75"
+              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:74"
             },
             "result": {
               "status": "passed",
-              "duration": 147000000
+              "duration": 295000000
             }
           },
           {
@@ -117,11 +117,11 @@
             "line": 14,
             "name": "datatojson \"NewSolarWindAlert1\" \"Demo\" \"Sample\"",
             "match": {
-              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:85"
+              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:84"
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 2000000
             }
           },
           {
@@ -130,11 +130,11 @@
             "line": 15,
             "name": "user enters the payload",
             "match": {
-              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:109"
+              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:108"
             },
             "result": {
               "status": "passed",
-              "duration": 556000000
+              "duration": 550000000
             }
           },
           {
@@ -143,11 +143,11 @@
             "line": 16,
             "name": "user clicks on publish",
             "match": {
-              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:119"
+              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:118"
             },
             "result": {
               "status": "passed",
-              "duration": 67000000
+              "duration": 62000000
             }
           },
           {
@@ -156,24 +156,24 @@
             "line": 17,
             "name": "user opens itops application",
             "match": {
-              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:128"
+              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:127"
             },
             "result": {
               "status": "passed",
-              "duration": 1445000000
+              "duration": 1595000000
             }
           },
           {
             "arguments": [],
-            "keyword": "And ",
+            "keyword": "Given ",
             "line": 18,
-            "name": "ITOps \"Admin\" is in the home page, \"Itops_admin\", \"qa123\"",
+            "name": "ITOps \"admin\" with username and password as \"Itops_admin\", \"qa123\" is in the home page",
             "match": {
               "location": "Step_Definitions\\ProjectInstallation\\ProjectInstallation_admin.ts:18"
             },
             "result": {
               "status": "passed",
-              "duration": 12016000000
+              "duration": 3001000000
             }
           },
           {
@@ -182,11 +182,11 @@
             "line": 19,
             "name": "\"admin\" selects project and open alerts",
             "match": {
-              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:138"
+              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:137"
             },
             "result": {
               "status": "passed",
-              "duration": 22117000000
+              "duration": 21808000000
             }
           },
           {
@@ -195,24 +195,24 @@
             "line": 20,
             "name": "Success message for alerts displayed in Alerts console \"NewSolarWindAlert1\" \"NewSolarWindAlert1\"",
             "match": {
-              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:158"
+              "location": "Step_Definitions\\Pushing_Alerts\\PushingAlerts.ts:157"
             },
             "result": {
               "status": "passed",
-              "duration": 3209000000
+              "duration": 4248000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 21,
-            "name": "click on logout button",
+            "name": "\"admin\" clicks on logout button",
             "match": {
-              "location": "Step_Definitions\\LogIn\\LogIn.ts:41"
+              "location": "Step_Definitions\\LogIn\\LogIn.ts:40"
             },
             "result": {
               "status": "passed",
-              "duration": 17737000000
+              "duration": 2012000000
             }
           },
           {
@@ -223,7 +223,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 119000000
+              "duration": 193000000
             },
             "embeddings": [
               {
@@ -240,7 +240,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 1000000
             }
           }
         ]

@@ -120,20 +120,20 @@ When('{string} Creates Queue Channel {string}, {string}, {string}, {string}, {st
     console.warn(error);
   });
 });
- 
+  
 
-When('{string} enters project name in project search feild {string}', async function (userRole, projectName) {
+When('{string} enters project name as {string} in the search field', async function (userRole, projectName) {
   try {
     await objProjectListing.Project_search(projectName);
     await browser.actions().sendKeys(protractor.Key.ENTER).perform();
     Global_ProjectName = projectName;
   }
   catch (error) {
-    throw "IE is unable to ener project name in project search feild"
+    throw "IE is unable to enter project name in project search field"
   }
 });
 
-When('{string} click dotmenu icon', async function (userRole) {
+When('{string} clicks dot menu icon', async function (userRole) {
   try {
     await browser.sleep(5000)
     await objProjectListing.ThreeDots(Global_ProjectName);
@@ -143,7 +143,7 @@ When('{string} click dotmenu icon', async function (userRole) {
   }
 });
 
-When('{string} click editProject', async function (userRole) {
+When('{string} clicks edit Project', async function (userRole) {
   try {
     await objProjectListing.EditProject()
   }

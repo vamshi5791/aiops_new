@@ -13,7 +13,7 @@ let objLogIn = new LogIn();
 let objProjectListing = new ProjectListingPage();
 var Global_ProjectName;
 
-When('{string} click on three dots of a project', async function (userRole, string) {
+When('{string} clicks on three dots of a project', async function (userRole, string) {
   await objProjectListing.ThreeDots(Global_ProjectName);
 });
 
@@ -25,7 +25,7 @@ When('{string} clicks on deactivate project', async function (userRole) {
 When('{string} clicks on yes', async function (userRole) {
   await objProjectListing.ClickOnYes();
 });
-Then('Success message for Project is {string} must be shown as a toaster {string}', async function (userRole, Toaster) {
+Then('Success message must be shown as {string} once project is {string}', async function (Toaster, userRole) {
   await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
 
   await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
