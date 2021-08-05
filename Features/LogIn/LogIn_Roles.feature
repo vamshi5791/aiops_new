@@ -6,9 +6,9 @@ Feature Description : Verifying Login functionality for all ITOps user roles
         Scenario Outline: Successful Login with ITOps user roles
 
             Given User with ITOps role renders the URL
-             When user enters Username as "<UserName>", Password as "<Password>" and clicks on Login button
-             Then ITOps home page is displayed
-              And "user" clicks on logout button
+            When user enters Username as "<UserName>", Password as "<Password>" and clicks on Login button
+            Then ITOps home page is displayed
+            And "user" clicks on logout button
 
         Examples:
                   | UserName | Password |

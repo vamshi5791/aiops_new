@@ -13,7 +13,7 @@ let objLogIn = new LogIn();
 let objProjectListing = new ProjectListingPage();
 var Global_ProjectName;
 
-When('{string} clicks on three dots of a project', async function (userRole, string) {
+When('{string} clicks on three dots of a project', async function (userRole) {
   await objProjectListing.ThreeDots(Global_ProjectName);
 });
 

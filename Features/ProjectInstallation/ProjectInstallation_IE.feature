@@ -15,7 +15,7 @@ Feature Description Once the login is done with ITOps_IE role,
              Then user is taken to the project configuration page "<Toaster"
         Examples:
                   | UserName | Password | ProjectName      | Description       | Toaster                      |
-                  | Itops_IE | qa123    | Automation_IB_04 | Release1.4Project | Project Created Successfully |
+                  | Itops_IE | qa123    | Automation_IB_17 | Release1.4Project | Project Created Successfully |
         @GeneralConfiguration
         Scenario Outline: General Configuration
              When "Installation Engineer" enters Service now hostname as "<ServiceNowHost>"
@@ -109,7 +109,7 @@ Feature Description Once the login is done with ITOps_IE role,
              Then Success message for Channel Configuration must be shown as a toaster "<Toaster>"
         Examples:
                   | ChannelName | ChannelType | ChannelIntegration | EmailId                        | ClientID                             | ClientSecret                       | TenantID                             | AutomationStory | ListSize | Toaster                      |
-                  | UST Channel | EMAIL       | outlook            | smartopsautosvc@ust-global.com | b73e5fe3-e49a-4d49-9ada-1e8741a6e034 | _1NdG.t_JC.~DM39Y04XZhr1ifKPcGxT2y | a4431f4b-c207-4733-9530-34c08a9b2b8d | UST             | 2        | Channel created Successfully |
+                  | UST Channel | EMAIL       | outlook            | smartops@ust-global.com | b73e5fe3-e49a-4d49-9ada-1e8741a6e034 | _1NdG.t_JC.~DM39Y04XZhr1ifKPcGxT2y | a4431f4b-c207-4733-9530-34c08a9b2b8d | UST             | 2        | Channel created Successfully |
 
         @EmailChannelAuthentication
         Scenario Outline: Successful Authentication of email channel
