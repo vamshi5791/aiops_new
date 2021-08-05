@@ -1,5 +1,5 @@
 @CreateQueueChannel_Admin @ITOps_Milestone_1 @QueueChannel
-Feature: Create Queue Channel Itops Admin role
+Feature: Create Queue Channel with Itops Admin role
 
 Feature Description Using post method to API we generate Bearer Token
 
