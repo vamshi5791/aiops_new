@@ -1,4 +1,4 @@
-@IE_Deleting_Project @ITOps_Milestone_1
+@IE_Deleting_Project @ITOps_Milestone_
 
 
 Feature: IE able to delete the project
