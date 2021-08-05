@@ -1,5 +1,5 @@
 @CreateQueueChannel_IE @ITOps_Milestone_1 @QueueChannel
-Feature: Create Queue Channel Itops IE role
+Feature: Create Queue Channel with Itops IE role
 
 Feature Description Using post method to API we generate Bearer Token
 
