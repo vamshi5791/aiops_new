@@ -13,8 +13,8 @@ Feature Description : Verifying Login functionality for all ITOps user roles
         Examples:
                   | UserName | Password |
                   | Itops_IE | qa123    |
-                  #| Itops_admin_new   | qa123    |
-                  #| Itops_visitor     | qa123    |
-                  #| Itops_displayuser | qa123    |
-                  #| Itops_engineer    | qa123    |
+                  | Itops_admin_new   | qa123    |
+                  | Itops_visitor     | qa123    |
+                  | Itops_displayuser | qa123    |
+                  | Itops_engineer    | qa123    |
 
