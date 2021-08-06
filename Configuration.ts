@@ -32,6 +32,7 @@ export let config: Config = {
     await browser.manage().window().maximize();
     await browser.manage().timeouts().implicitlyWait(100000);
     globalThis.environment = browser.params.env;
+    globalThis.BrowserMode = args.Options;
   },
   specs: [
     '../Features/*/*.feature',
