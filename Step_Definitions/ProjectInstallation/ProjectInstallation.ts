@@ -1,5 +1,5 @@
-import { Given, When, Then, Before, After, Status } from "cucumber"
-import { browser, element, by, ExpectedConditions, WebElement, protractor } from "protractor"
+import { Given, When, Then } from "cucumber"
+import { browser, element, by } from "protractor"
 import chai from "chai";
 import { LogIn } from '../../PageObjects/LogIn';
 import { ProjectListingPage } from '../../PageObjects/ProjectListing';
@@ -12,9 +12,8 @@ var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 let objLogIn = new LogIn();
 let objProjectListing = new ProjectListingPage();
 let objProjectConfi = new ProjectConfiguration();
-var customMsgEnabled = true;
 var TestProjectName;
-
+var userName;
 Given('ITOps {string} with username and password as {string}, {string} is in the home page', async function (userRole, UserName, Password) {
   try {
     await browser.get(properties.get("main." + globalThis.environment + "_url")).then(async function () {
@@ -22,16 +21,16 @@ Given('ITOps {string} with username and password as {string}, {string} is in the
     await objLogIn.enterUserName(UserName);
     await objLogIn.enterPassword(Password);
     await objLogIn.clickOnLogInButton();
-
-    var myElement = element(by.className('smo smo-close-black-alt'));
-    myElement.isPresent().then(async function (elm) {
-      if (elm) {
-        await element(by.className('smo smo-close-black-alt')).click();
-      } 
-    });
+    userName = UserName;
+    if (globalThis.BrowserMode == "headless") {
+      await element(by.className('smo smo-close-black-alt')).click();
+    }
   }
   catch (error) {
-    throw "User is not taken to ITops home page"
+
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Creation")
+    await console.log(error)
+    throw "User is not able to navigate to ITOps home page"
   }
 });
 
@@ -40,8 +39,11 @@ Given('ITOps {string} with username and password as {string}, {string} is in the
 When('{string} clicks on create project button', async function (userRole) {
   try {
     await objProjectListing.ClickOnProjectCreateButton();
+
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Creation")
+    await console.log(error)
     throw "User is not able to click on Create Project Button"
   }
 });
@@ -53,6 +55,8 @@ When('{string} enters project name as {string}', async function (userRole, Proje
 
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Creation")
+    await console.log(error)
     throw "User is not able to enter Project Name"
   }
 });
@@ -62,6 +66,8 @@ When('{string} enters description as {string}', async function (userRole, Descri
     await objProjectConfi.ProjectDescription(Description)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Creation")
+    await console.log(error)
     throw "User is not able to enter Project Description"
   }
 });
@@ -71,11 +77,13 @@ When('{string} clicks on create button', async function (userRole) {
     await objProjectConfi.Create()
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Creation")
+    await console.log(error)
     throw "User is not able to click on create button"
   }
 });
 
-Then('user is taken to the project configuration page {string}', async function (Toaster) {
+Then('{string} message should be displayed and {string} should navigate to project configuration page', async function (Toaster, string) {
   try {
     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
@@ -83,6 +91,8 @@ Then('user is taken to the project configuration page {string}', async function 
     });
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Creation")
+    await console.log(error)
     throw "Incorrect toast message"
   };
 });
@@ -91,10 +101,11 @@ Then('user is taken to the project configuration page {string}', async function 
 
 When('{string} enters Service now hostname as {string}', async function (userRole, ServiceNowHost) {
   try {
-    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await objProjectConfi.ServiceNowHost(ServiceNowHost)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : General Configuration")
+    await console.log(error)
     throw "User is not able to enter Service now Host"
   }
 });
@@ -104,6 +115,8 @@ When('{string} enters Service now Username as {string}', async function (userRol
     await objProjectConfi.ServiceUsername(ServiceNowUserName)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : General Configuration")
+    await console.log(error)
     throw "User is not able to enter Service now Username"
   }
 });
@@ -113,6 +126,8 @@ When('{string} enters Service now Password as {string}', async function (userRol
     await objProjectConfi.ServicePassword(ServicenowPassword)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : General Configuration")
+    await console.log(error)
     throw "User is not able to enter Service now Password"
   }
 });
@@ -121,6 +136,8 @@ When('{string} enters Response SLA Threshold Count as {string}', async function 
   try {
     await objProjectConfi.ThresholdCount(ThresholdCount)
   } catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : General Configuration")
+    await console.log(error)
     throw "User is not able to enter Response SLA Threshold Count"
   }
 });
@@ -130,6 +147,8 @@ When('{string} enters ITSM Name as {string}', async function (userRole, ITSMName
     await objProjectConfi.ITSMname(ITSMName)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : General Configuration")
+    await console.log(error)
     throw "User is not able to enter ITSM Name"
   }
 });
@@ -139,6 +158,8 @@ When('{string} enters ITSM Version as {string}', async function (userRole, ITSMV
     await objProjectConfi.ITSMversion(ITSMVersion)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : General Configuration")
+    await console.log(error)
     throw "User is not able to enter ITSM Version"
   }
 });
@@ -150,6 +171,8 @@ When('{string} selects ITSM TimeZone as {string}', async function (userRole, ITS
     await objProjectConfi.TimeZone(ITSMTimeZone)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : General Configuration")
+    await console.log(error)
     throw "User is not able to select ITSM TimeZone"
   }
 });
@@ -159,6 +182,8 @@ When('{string} selects ITOps Flavor as {string}', async function (userRole, ITIo
     await objProjectConfi.ITOPsflavour(ITIopsFlavor)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : General Configuration")
+    await console.log(error)
     throw "User is not able to select ITSM Flavour"
   }
 });
@@ -168,11 +193,13 @@ When('{string} clicks on Save button in General Configuration page', async funct
     await objProjectConfi.SaveGeneralConfig()
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : General Configuration")
+    await console.log(error)
     throw "User is not able to click on save Button"
   }
 });
 
-Then('Success message for General Configuration must be shown  as a toaster {string}', async function (Toaster) {
+Then('Success message {string} must be shown for {string}', async function (Toaster, Action) {
   try {
     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
 
@@ -181,20 +208,27 @@ Then('Success message for General Configuration must be shown  as a toaster {str
     });
   }
   catch (error) {
-    throw "Once user clicks save button it should display Project Configurations Updated. But it is not displaying the message"
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : " + Action + "")
+    await console.log(error)
+    throw " " + Action + " details are not updated"
   }
 });
 
-// Schedular configuration
+// Scheduler configuration
 
 When('{string} clicks on Schedular configuration', async function (userRole) {
- try {
+  try {
     var myElement = objProjectConfi.lnkSchedularConfiguration;
     await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Surge Configurations "]'))), 10000);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Ticket Dump Configurations "]'))), 10000);
+    await browser.sleep(2000)
     await objProjectConfi.SchedularConfiguration()
   }
   catch (error) {
-    throw "User is not able to click on Surgical Configuration"
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
+    await console.log(error)
+    throw "User is not able to click on Scheduler Configuration"
   }
 });
 
@@ -204,6 +238,8 @@ When('{string} selects Schedule Interval for Correlation as {string}', async fun
     await objProjectConfi.CorrelationInterval(Correlation)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
+    await console.log(error)
     throw "User is not able to select Schedule for Correlation"
   }
 });
@@ -212,12 +248,15 @@ When('{string} selects Scheduler Interval for auto closure of flap clusters as {
   try {
     var myElement = element(by.xpath('//span[text()="Concurrency"]'));
     await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+    await browser.sleep(5000)
     await browser.wait(EC.visibilityOf(objProjectConfi.drpClusterInterval), 100000);
     await objProjectConfi.ClusterInterval(AutoClosure)
 
   }
   catch (error) {
-    throw "User is not able to select Schedular Interval for auto closure of flap clusters"
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
+    await console.log(error)
+    throw "User is not able to select Scheduler Interval for auto closure of flap clusters"
   }
 });
 
@@ -227,6 +266,8 @@ When('{string} select Scheduler Interval for alert analytics as {string}', async
     await objProjectConfi.AnalyticsInterval(AlertAnalytics)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
+    await console.log(error)
     throw "User is not able to select Schedular Interval for alert analytics"
   }
 });
@@ -237,6 +278,8 @@ When('{string} select Scheduled interval for Batch Prediction as {string}', asyn
     await objProjectConfi.PredictionInterval(BatchPrediction)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
+    await console.log(error)
     throw "User is not able to select Scheduled Interval for Batch Prediction"
   }
 });
@@ -246,21 +289,12 @@ When('{string} clicks on Save button in Scheduler Configuration page', async fun
     await objProjectConfi.SaveSchedularConfig()
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
+    await console.log(error)
     throw "User is not able to click on Save button"
   }
 });
 
-Then('Success message for Scheduler Configuration must be shown as a toaster {string}', async function (Toaster) {
-  try {
-    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-
-    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toaster);
-    });
-  } catch (error) {
-    throw "Once user clicks save button it should display Project Configurations Updated. But it is not displaying the message"
-  };
-});
 //  Error Response Configuration
 
 When('{string} clicks on Error Response Configuration', async function (userRole) {
@@ -271,6 +305,8 @@ When('{string} clicks on Error Response Configuration', async function (userRole
 
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Error Response Configuration")
+    await console.log(error)
     throw "User is not able to click on Error Response Configuration"
   }
 });
@@ -280,15 +316,19 @@ When('{string} enters From Email Account as {string}', async function (userRole,
     await objProjectConfi.FromEmail(FromEmail)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Error Response Configuration")
+    await console.log(error)
     throw "User is not able to enter From Email Account"
   }
 });
 
-When('{string} enters From Email Acount Password as {string}', async function (userRole, FromEmailAccountPassword) {
+When('{string} enters From Email Account Password as {string}', async function (userRole, FromEmailAccountPassword) {
   try {
     await objProjectConfi.PasswordFromEmail(FromEmailAccountPassword)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Error Response Configuration")
+    await console.log(error)
     throw "User is not able to enter From Email Account Password"
   }
 });
@@ -298,6 +338,8 @@ When('{string} enters To Email Address as {string}', async function (userRole, T
     await objProjectConfi.ToEmail(ToEmail)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Error Response Configuration")
+    await console.log(error)
     throw "User is not able to enter To Email Address"
   }
 });
@@ -309,32 +351,24 @@ When('{string} clicks on Save button in Error Response Configuration page', asyn
     })
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Error Response Configuration")
+    await console.log(error)
     throw "User is not able to click on Save Button"
   }
 });
 
-Then('Success message for Error Response Configuration must be shown as a toaster {string}', async function (Toaster) {
-  try {
-    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toaster);
-    });
-  } catch (error) {
-    throw "Once user clicks save button it should display Project Configurations Updated. But it is not displaying the message"
-  };
-});
 
 // Surge Configuration
 
 When('{string} clicks on Surge Configuration', async function (userRole) {
- try {
-    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-   
+  try {
     await objProjectConfi.SurgeConfiguration()
- }
- catch (error) {
+  }
+  catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
+    await console.log(error)
     throw "User is not able to click on Surge Configuration"
- }
+  }
 });
 
 When('{string} enters Surge Start Percentile as {string}', async function (userRole, StartPercentile) {
@@ -344,6 +378,8 @@ When('{string} enters Surge Start Percentile as {string}', async function (userR
     })
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
+    await console.log(error)
     throw "User is not able to enter Surge Start Percentile"
   }
 });
@@ -353,6 +389,8 @@ When('{string} enters Surge Start Percentile Threshold as {string}', async funct
     await objProjectConfi.SurgeStartPercentileThreshold(StartPercentileThreshold)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
+    await console.log(error)
     throw "User is not able to enter Surge Start Percentile Threshold"
   }
 });
@@ -362,6 +400,8 @@ When('{string} enters Surge End Percentile as {string}', async function (userRol
     await objProjectConfi.SurgeEndPercentile(EndPercentile)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
+    await console.log(error)
     throw "User is not able to enter Surge End Percentile"
   }
 });
@@ -371,6 +411,8 @@ When('{string} enters Surge End Percentile Threshold as {string}', async functio
     await objProjectConfi.SurgeEndPercentileThreshold(EndPercentileThreshold)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
+    await console.log(error)
     throw "User is not able to enter Surge End Percentile Threshold"
   }
 });
@@ -380,6 +422,8 @@ When('{string} enters Surge Patterns as {string}', async function (userRole, Sur
     await objProjectConfi.SurgePatterns(SurgePatterns)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
+    await console.log(error)
     throw "User is not able to enter Surge Patterns"
   }
 });
@@ -389,6 +433,8 @@ When('{string} enters Surge Pattern Match Threshold as {string}', async function
     await objProjectConfi.SurgePatternMatchThreshold(SurgePatternMatchThreshold)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
+    await console.log(error)
     throw "User is not able to enter Surge Patterns Match Threshold"
   }
 });
@@ -398,6 +444,8 @@ When('{string} enters Surge Analytics Interval as {string}', async function (use
     await objProjectConfi.SurgeAnalyticsInterval(SurgeAnalyticsInterval)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
+    await console.log(error)
     throw "User is not able to enter Surge Analytics Interval"
   }
 });
@@ -407,6 +455,8 @@ When('{string} enters Surge First Run Count as {string}', async function (userRo
     await objProjectConfi.SurgeFirstRunCount(SurgeFirstRunCount)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
+    await console.log(error)
     throw "User is not able to enter Surge First Run Count"
   }
 });
@@ -416,6 +466,8 @@ When('{string} enters Surge First Run Count Interval as {string}', async functio
     await objProjectConfi.SurgeFirstRunCountInterval(SurgeFirstRunCountInterval)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
+    await console.log(error)
     throw "User is not able to enter Surge First Run Count Interval"
   }
 });
@@ -425,30 +477,22 @@ When('{string} clicks on Save button in Surge Configuration page', async functio
     await objProjectConfi.SaveSurgeConfiguration()
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
+    await console.log(error)
     throw "User is not able to enter Save Button"
   }
 });
 
-Then('Success message for Surge Configuration must be shown as a toaster {string}', async function (Toster) {
-  try {
-    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-
-    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toster);
-    });
-  } catch (error) {
-    throw "Once user clicks save button it should display Project Configurations Updated. But it is not displaying the message"
-  }
-});
 
 // Ticket Dump Configuration
 
 When('{string} clicks on Ticket Dump Configuration', async function (userRole) {
   try {
-    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await objProjectConfi.TicketDumpConfiguration()
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Ticket Dump Configuration")
+    await console.log(error)
     throw "User is not able to click on Ticket Dump Configuration"
   }
 });
@@ -460,6 +504,8 @@ When('{string} enters Ticket Dump Source Hostname as {string}', async function (
     })
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Ticket Dump Configuration")
+    await console.log(error)
     throw "User is not able to enter Ticket Dump Source Hostname"
   }
 });
@@ -469,6 +515,8 @@ When('{string} enters Ticket Dump Source File Path as {string}', async function 
     await objProjectConfi.DumpSourceFilePath(FilePath)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Ticket Dump Configuration")
+    await console.log(error)
     throw "User is not able to enter Ticket Dump Source File Path"
   }
 });
@@ -478,6 +526,8 @@ When('{string} enters Source Username as {string}', async function (userRole, So
     await objProjectConfi.SourceUsername(SourceUsername)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Ticket Dump Configuration")
+    await console.log(error)
     throw "User is not able to enter Source Username"
   }
 });
@@ -487,6 +537,8 @@ When('{string} enters Source Password as {string}', async function (userRole, So
     await objProjectConfi.SourcePassword(SourcePassword)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Ticket Dump Configuration")
+    await console.log(error)
     throw "User is not able to enter Source Password"
   }
 });
@@ -496,6 +548,8 @@ When('{string} enters Ticket Number Column Name in dump file as {string}', async
     await objProjectConfi.TicketNumberColumnNameInDumpFile(TicketNumberColumnName)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Ticket Dump Configuration")
+    await console.log(error)
     throw "User is not able to enter Ticket Number Name in dump file"
   }
 });
@@ -505,6 +559,8 @@ When('{string} enters Work Notes column name in column file as {string}', async 
     await objProjectConfi.WorkNotesColumnNameInColumnFile(WorkNotesColumnName)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Ticket Dump Configuration")
+    await console.log(error)
     throw "User is not able to enter Work Notes column name in column file"
   }
 });
@@ -514,6 +570,8 @@ When('{string} enters Short Description column name in dump file as {string}', a
     await objProjectConfi.ShortDescriptionColumnNameInDumpFile(ShortDescriptionColumnName)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Ticket Dump Configuration")
+    await console.log(error)
     throw "User is not able to Short Description column name in dump file"
   }
 });
@@ -523,6 +581,8 @@ When('{string} enters Category column name in dump file as {string}', async func
     await objProjectConfi.CategoryColumnNameInDumpFile(CategoryColumnName)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Ticket Dump Configuration")
+    await console.log(error)
     throw "User is not able to enter Category column name in dump file"
   }
 });
@@ -532,6 +592,8 @@ When('{string} enters Sub Category column name in dump file as {string}', async 
     await objProjectConfi.SubCategoryColumnNameInDumpFile(SubCategoryColumnName)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Ticket Dump Configuration")
+    await console.log(error)
     throw "User is not able to enter Sub Category column name in dump file"
   }
 });
@@ -543,6 +605,8 @@ When('{string} enters Long Description column name in dump file as {string}', as
     })
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Ticket Dump Configuration")
+    await console.log(error)
     throw "User is not able to enter Long Description column name in dump file"
   }
 })
@@ -552,18 +616,9 @@ When('{string} clicks on Save button in Ticket Dump Configuration page', async f
     await objProjectConfi.SaveTicketConfig()
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Ticket Dump Configuration")
+    await console.log(error)
     throw "User is not able to click on Save button"
-  }
-});
-
-Then('Success message for Ticket Dump Configuration must be shown as a toaster {string}', async function (Toaster) {
-  try {
-    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toaster);
-    });
-  } catch (error) {
-    throw "Once user clicks save button it should display Project Configurations Updated. But it is not displaying the message"
   }
 });
 
@@ -571,12 +626,13 @@ Then('Success message for Ticket Dump Configuration must be shown as a toaster {
 
 When('{string} clicks on Channel Configuration', async function (userRole) {
   try {
-    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await browser.executeScript('window.scrollTo(0,0);').then(async function () {
     });
     await objProjectConfi.channelConfiguration()
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to click on Channel Configuration"
   }
 });
@@ -586,6 +642,8 @@ When('{string} Clicks on create new Channel', async function (userRole) {
     await objProjectConfi.CreateNewChannel()
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to click on Create New Channel button"
   }
 });
@@ -595,6 +653,8 @@ When('{string} enter Channel Name {string}', async function (userRole, ChannelNa
     await objProjectConfi.ChannelName(ChannelName)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to enter Channel Name"
   }
 });
@@ -604,6 +664,8 @@ When('{string} Selects channel type as {string}', async function (userRole, Chan
     await objProjectConfi.channelType(ChannelType)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to select channel type"
   }
 });
@@ -613,6 +675,8 @@ When('{string} selects channel integration type as {string}', async function (us
     await objProjectConfi.ChannelIntegrationType(ChannelIntegration)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to select integration type"
   }
 });
@@ -622,6 +686,8 @@ When('{string} enters Email Id as {string}', async function (userRole, EmailId) 
     await objProjectConfi.EmailId(EmailId)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to enter Email ID"
   }
 });
@@ -631,6 +697,8 @@ When('{string} enters Client Id as {string}', async function (userRole, ClientID
     await objProjectConfi.ClientId(ClientID)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to enter Client ID"
   }
 });
@@ -640,6 +708,8 @@ When('{string} enters Client secret Id as {string}', async function (userRole, C
     await objProjectConfi.ClientSecret(ClientSecret)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to enter Client secret ID"
   }
 });
@@ -649,6 +719,8 @@ When('{string} enters Tenant Id as {string}', async function (userRole, TenantID
     await objProjectConfi.TenantId(TenantID)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to enter Tenant ID"
   }
 });
@@ -658,6 +730,8 @@ When('{string} Enters Automation story as {string}', async function (userRole, A
     await objProjectConfi.AutomationStory(AutomationStory)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to enter Automation Story"
   }
 });
@@ -667,6 +741,8 @@ When('{string} clicks on check box', async function (userRole) {
     await objProjectConfi.CheckProcessListAsList()
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to click the check box"
   }
 });
@@ -676,6 +752,8 @@ When('{string} enters lIst size as {string}', async function (userRole, ListSize
     await objProjectConfi.EnterListSize(ListSize)
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to enter List size"
   }
 });
@@ -685,27 +763,21 @@ When('{string} clicks on Save and Configure button', async function (userRole) {
     await objProjectConfi.SaveAndConfigure()
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Channel Configuration")
+    await console.log(error)
     throw "User is not able to click on save button"
   }
 });
 
-Then('Success message for Channel Configuration must be shown as a toaster {string}', async function (Toaster) {
-  try {
-    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toaster);
-    });
-  } catch (error) {
-    throw "Success message for authentication Channel popup is not displaying"
-  }
-});
+// Email Channel Authentication
 
 When('{string} clicks on authenticate', async function (userRole) {
   try {
-    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await objProjectConfi.ClickOnAuthenticate();
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Email Channel Authentication")
+    await console.log(error)
     throw "User is not able to click on Authenticate button"
   }
 });
@@ -715,6 +787,8 @@ When('{string} selects account {string}', async function (userRole, EmailId) {
     await objProjectConfi.EnterMailId(EmailId);
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Email Channel Authentication")
+    await console.log(error)
     throw "User is not able to select account"
   }
 });
@@ -724,6 +798,8 @@ When('{string} clicks next', async function (userRole) {
     await objProjectConfi.ClickNext();
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Email Channel Authentication")
+    await console.log(error)
     throw "User is not able to click on Next button"
   }
 });
@@ -734,6 +810,8 @@ When('{string} enters Password {string}', async function (userRole, Password) {
     await objProjectConfi.EnterPassword(Password);
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Email Channel Authentication")
+    await console.log(error)
     throw "User is not able to enter password"
   }
 });
@@ -743,22 +821,13 @@ When('{string} clicks on sign in', async function (userRole) {
     await objProjectConfi.SignIn();
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Email Channel Authentication")
+    await console.log(error)
     throw "User is not able to click on sign in button"
   }
 });
 
-Then('Success message for OAuth authentication must be shown as a toaster {string}', async function (Toaster) {
-  try {
-    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-      expect(text).to.include(Toaster);
-    });
-  } catch (error) {
-    throw "Success message for OAuth authentication is not displaying"
-  }
-});
-
-//AddUser
+//Add User
 
 When('{string} is in Add User page', async function (userRole) {
   try {
@@ -766,6 +835,8 @@ When('{string} is in Add User page', async function (userRole) {
     await objProjectConfi.AddUser();
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Add User")
+    await console.log(error)
     throw "User should taken to Add User page"
   }
 });
@@ -775,6 +846,8 @@ When('{string} selects user as {string}', async function (userRole, UserName) {
     await objProjectConfi.SelectUser(UserName);
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Add User")
+    await console.log(error)
     throw "User is not able to select user"
   }
 });
@@ -784,6 +857,8 @@ When('{string} selects role as {string}', async function (userRole, Role) {
     await objProjectConfi.Role(Role);
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Add User")
+    await console.log(error)
     throw "User is not able to select role"
   }
 });
@@ -793,36 +868,42 @@ When('{string} clicks on Add User button', async function (userRole) {
     await objProjectConfi.AddUserDetails();
   }
   catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Add User")
+    await console.log(error)
     throw "User is not able to click on Add User Button"
   }
 });
 
-Then('User must be added and listed in the below list with a toaster {string}', async function (Toaster) {
+Then('User must be added and listed in the below list and success message {string} must be shown', async function (Toaster) {
   try {
-    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
       expect(text).to.include(Toaster);
     });
+
   } catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Add User")
+    await console.log(error)
     throw "Once user clicks Add User button it should display selected user name in the list. But it is not displaying in the list"
   }
 });
 
-//ProjectInstallation
+//Project Installation
 
 When('{string} clicks on Install button', async function (userRole) {
   try {
-    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(async function () {
       await objProjectConfi.Install()
     })
   }
   catch (error) {
+    await objLogIn.logOutUser();
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Installation")
+    await console.log(error)
     throw "User is not able to click on Install Button"
   }
 });
 
-Then('Project must be in ready state in Project Listing Page {string}', async function (ProjectStatus) {
+Then('Project must be in {string} state in Project Listing Page', async function (ProjectStatus) {
   try {
     await objProjectListing.Project_search(TestProjectName);
     await browser.sleep(2000);
@@ -832,6 +913,9 @@ Then('Project must be in ready state in Project Listing Page {string}', async fu
     });
   }
   catch (error) {
+    await objLogIn.logOutUser();
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Installation")
+    await console.log(error)
     throw "Once project is installed, Ready should be display as status opposite to project name in the list. But it is not displaying in the list"
   }
 });
