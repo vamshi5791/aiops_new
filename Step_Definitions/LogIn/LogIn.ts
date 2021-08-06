@@ -51,7 +51,7 @@ Then('ITOps home page is displayed', async function () {
 })
 
 When('{string} clicks on logout button', async function (string) {
-  
+
   try {
     await browser.sleep(3000)
     await ProjectListing.ClickOnProfile();

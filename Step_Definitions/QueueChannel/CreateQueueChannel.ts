@@ -16,7 +16,7 @@ var Global_ProjectName
 
 When('{string} with Username as {string}, Password as {string}, Creates Queue Channel with channelName as {string}, for the project {string} with projectId {string}', async function (userRole, username, password, channelName, projectName, projectID) {
   ChannnelNameText = channelName;
- 
+
   var userInfo =
   {
     "realm": "ustglobal",
@@ -119,10 +119,10 @@ When('{string} with Username as {string}, Password as {string}, Creates Queue Ch
       });
   }).catch(function (error) {
     console.warn(error);
-  }); 
-         });
-  
- 
+  });
+});
+
+
 When('{string} enters project name as {string} in the search field', async function (userRole, projectName) {
   try {
     await objProjectListing.Project_search(projectName);
@@ -135,7 +135,7 @@ When('{string} enters project name as {string} in the search field', async funct
     throw "IE is unable to enter project name in project search field"
   }
 });
- 
+
 When('{string} clicks dot menu icon', async function (userRole) {
   try {
     await browser.sleep(3000)
@@ -153,7 +153,7 @@ When('{string} clicks edit Project', async function (userRole) {
   try {
     await objProjectListing.EditProject()
   }
-  catch (error){
+  catch (error) {
     await objLogIn.logOutUser();
     await console.log(error)
     throw "User is not able to click Edit Project"

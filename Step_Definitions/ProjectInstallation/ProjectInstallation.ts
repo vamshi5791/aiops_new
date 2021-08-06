@@ -23,11 +23,11 @@ Given('ITOps {string} with username and password as {string}, {string} is in the
     await objLogIn.clickOnLogInButton();
     userName = UserName;
     if (globalThis.BrowserMode == "headless") {
-          await element(by.className('smo smo-close-black-alt')).click();
+      await element(by.className('smo smo-close-black-alt')).click();
     }
   }
   catch (error) {
-   
+
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Creation")
     await console.log(error)
     throw "User is not able to navigate to ITOps home page"
@@ -39,7 +39,7 @@ Given('ITOps {string} with username and password as {string}, {string} is in the
 When('{string} clicks on create project button', async function (userRole) {
   try {
     await objProjectListing.ClickOnProjectCreateButton();
-   
+
   }
   catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Creation")
@@ -67,7 +67,7 @@ When('{string} enters description as {string}', async function (userRole, Descri
   }
   catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Creation")
-    await  console.log(error)
+    await console.log(error)
     throw "User is not able to enter Project Description"
   }
 });
@@ -209,7 +209,7 @@ Then('Success message {string} must be shown for {string}', async function (Toas
   }
   catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : " + Action + "")
-  await console.log(error)
+    await console.log(error)
     throw " " + Action + " details are not updated"
   }
 });
@@ -217,17 +217,17 @@ Then('Success message {string} must be shown for {string}', async function (Toas
 // Scheduler configuration
 
 When('{string} clicks on Schedular configuration', async function (userRole) {
- try {
+  try {
     var myElement = objProjectConfi.lnkSchedularConfiguration;
-   await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
-   await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Surge Configurations "]'))), 10000);
-   await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Ticket Dump Configurations "]'))), 10000);
-   await browser.sleep(2000)
+    await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Surge Configurations "]'))), 10000);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Ticket Dump Configurations "]'))), 10000);
+    await browser.sleep(2000)
     await objProjectConfi.SchedularConfiguration()
   }
- catch (error) {
-  await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
-  await console.log(error)
+  catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
+    await console.log(error)
     throw "User is not able to click on Scheduler Configuration"
   }
 });
@@ -239,7 +239,7 @@ When('{string} selects Schedule Interval for Correlation as {string}', async fun
   }
   catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
-  await console.log(error)
+    await console.log(error)
     throw "User is not able to select Schedule for Correlation"
   }
 });
@@ -255,7 +255,7 @@ When('{string} selects Scheduler Interval for auto closure of flap clusters as {
   }
   catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
-  await console.log(error)
+    await console.log(error)
     throw "User is not able to select Scheduler Interval for auto closure of flap clusters"
   }
 });
@@ -267,7 +267,7 @@ When('{string} select Scheduler Interval for alert analytics as {string}', async
   }
   catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
-  await console.log(error)
+    await console.log(error)
     throw "User is not able to select Schedular Interval for alert analytics"
   }
 });
@@ -279,7 +279,7 @@ When('{string} select Scheduled interval for Batch Prediction as {string}', asyn
   }
   catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
-  await console.log(error)
+    await console.log(error)
     throw "User is not able to select Scheduled Interval for Batch Prediction"
   }
 });
@@ -290,7 +290,7 @@ When('{string} clicks on Save button in Scheduler Configuration page', async fun
   }
   catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
-  await console.log(error)
+    await console.log(error)
     throw "User is not able to click on Save button"
   }
 });
@@ -306,7 +306,7 @@ When('{string} clicks on Error Response Configuration', async function (userRole
   }
   catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Error Response Configuration")
-  await console.log(error)
+    await console.log(error)
     throw "User is not able to click on Error Response Configuration"
   }
 });
@@ -361,14 +361,14 @@ When('{string} clicks on Save button in Error Response Configuration page', asyn
 // Surge Configuration
 
 When('{string} clicks on Surge Configuration', async function (userRole) {
- try {
+  try {
     await objProjectConfi.SurgeConfiguration()
- }
- catch (error) {
-  await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
-  await console.log(error)
+  }
+  catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Surge Configuration")
+    await console.log(error)
     throw "User is not able to click on Surge Configuration"
- }
+  }
 });
 
 When('{string} enters Surge Start Percentile as {string}', async function (userRole, StartPercentile) {
@@ -879,7 +879,7 @@ Then('User must be added and listed in the below list and success message {strin
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
       expect(text).to.include(Toaster);
     });
-    
+
   } catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Add User")
     await console.log(error)
