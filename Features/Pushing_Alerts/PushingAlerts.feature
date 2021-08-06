@@ -1,25 +1,21 @@
 @PushingAlerts @ITOps_Milestone_1
 
-Feature: Alerts pushing through RabbitMQ
+Feature: Pushing Alerts through RabbitMQ
 
-        Scenario Outline: Alerts pushing through RabbitMQ
+        Scenario Outline: Pushing Alerts through RabbitMQ
 
 
-            Given User opens rabbitMQ
-             When user enters RabbitMQ_Username and RabbitMQ_Password "<rabbitMQ_User>", "<rabbitMQ_Password>"
-              And user clicks on Login button
-              And user clicks on the project "<ProjectName>" "<ProjectNameForAlert>"
-              And user enters to the queue "<ToQueue>"
-              And user enters the routing key "<RouteKey>"
-             When datatojson "<AlertName>" "<NodeIPAddress>" "<ObjectName>"
-              And user enters the payload
-              And user clicks on publish
-              And user opens itops application
-            Given ITOps "admin" with username and password as "<Itops_UserName>", "<Itops_Password>" is in the home page
+             When User renders the RabbitMQ URL
+              And user enters RabbitMQ_Username as "<rabbitMQ_User>", RabbitMQ_Password as "<rabbitMQ_Password>" and clicks on login button
+              And clicks on the project "<ProjectName>" "<ProjectNameForAlert>"
+              And enters queue name as "<ToQueue>" and routing key as "<RouteKey>"
+              And enters AlertName as "<AlertName>", NodeIPAddress as, "<NodeIPAddress>" and ObjectName as "<ObjectName>"
+              And enters the payload data and clicks on publish
+            Given User with ITOps role renders the URL
+             When ITOps "admin" with username and password as "<Itops_UserName>", "<Itops_Password>" is in the home page
               And "admin" selects project and open alerts
-             Then Success message for alerts displayed in Alerts console "<Alerts>" "<alertName>"
+             Then enter alertname in search box and verify alert details "<Alerts>" "<alertName>"
               And "admin" clicks on logout button
-
 
         Examples:
                   | rabbitMQ_User | rabbitMQ_Password | Itops_UserName | Itops_Password | Alerts             | ProjectName   | ProjectNameForAlert          | ToQueue                    | RouteKey                   | alertName          | AlertName          | NodeIPAddress | ObjectName |

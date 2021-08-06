@@ -1,5 +1,5 @@
-import { Given, When, Then, Before, After, Status } from "cucumber"
-import { browser, element, by, ExpectedConditions, WebElement, protractor } from "protractor"
+import { Given, When, Then } from "cucumber"
+import { browser, element, by } from "protractor"
 import chai from "chai";
 import { LogIn } from "../../PageObjects/LogIn";
 import { PushingAlerts } from "../../PageObjects/RabbitMQ";
@@ -17,36 +17,35 @@ let objProjectListing = new ProjectListingPage();
 var JsonAlert;
 var StringifiedJsonAlert;
 var Global_ProjectName;
-
-Given('User opens rabbitMQ', async function () {
+var userName;
+Given('User renders the RabbitMQ URL', async function () {
   try {
     await browser.get(properties.get("main." + globalThis.environment + "_rabbit_MQ_URL")).then(async function () {
     })
+
   }
   catch (error) {
-    throw "User is unable to open rabbitMQ page"
+    await console.log("Feature name : Pushing Alerts through RabbitMQ Admin and Scenario name : Pushing Alerts")
+    await console.log(error)
+    throw "User is unable to renders rabbitMQ url"
   }
 })
 
-When('user enters RabbitMQ_Username and RabbitMQ_Password {string}, {string}', async function (rabbitMQ_User, rabbitMQ_Password) {
+When('user enters RabbitMQ_Username as {string}, RabbitMQ_Password as {string} and clicks on login button', async function (rabbitMQ_User, rabbitMQ_Password) {
   try {
     await objFilter.LogIn_Details2(rabbitMQ_User, rabbitMQ_Password);
-  }
-  catch (error) {
-    throw "user is unable to enter Username and Password"
-  }
-});
-
-When('user clicks on Login button', async function () {
-  try {
     await objFilter.ClickOnRabbitMQSignIn();
+    userName = rabbitMQ_User;
   }
   catch (error) {
-    throw "User is not able to login into the rabbitMQ page"
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log(error)
+    throw "user is unable to Login"
   }
 });
 
-When('user clicks on the project {string} {string}', async function (ProjectName, ProjectNameForAlert) {
+
+When('clicks on the project {string} {string}', async function (ProjectName, ProjectNameForAlert) {
   try {
     await objFilter.filter(ProjectName);
     Global_ProjectName = ProjectName;
@@ -54,34 +53,31 @@ When('user clicks on the project {string} {string}', async function (ProjectName
     await objFilter.clickOnProject(ProjectNameForAlert);
   }
   catch (error) {
-    throw "User is not able to select the project to push the alert"
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log(error)
+    throw new Error("Invalid login details")
   }
 });
 
-When('user enters to the queue {string}', async function (ToQueue) {
+When('enters queue name as {string} and routing key as {string}', async function (ToQueue, RouteKey) {
 
   try {
     await browser.executeScript('window.scrollTo(0,800);').then(async function () {
     });
     await objFilter.clickOnBindings();
     await objFilter.enterToQueue(ToQueue);
-  }
-  catch (error) {
-    throw "User is not able to enter the channel name in to queue"
-  }
-});
 
-When('user enters the routing key {string}', async function (RouteKey) {
-  try {
     await objFilter.clickOnPublishMessage();
     await objFilter.enterRoutingKey(RouteKey);
   }
   catch (error) {
-    throw "User is not able to enter the channel name in to routing key"
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log(error)
+    throw "incorrect Queue and Route key"
   }
 });
 
-When('datatojson {string} {string} {string}', async function (AlertName, NodeIPAddress, ObjectName) {
+When('enters AlertName as {string}, NodeIPAddress as, {string} and ObjectName as {string}', async function (AlertName, NodeIPAddress, ObjectName) {
   try {
     JsonAlert = {
       "Alert Name": AlertName,
@@ -100,68 +96,58 @@ When('datatojson {string} {string} {string}', async function (AlertName, NodeIPA
     StringifiedJsonAlert = JSON.stringify(JsonAlert);
   }
   catch (error) {
-    throw "User is not able to chnage json to string"
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log(error)
+    throw "incorrect payload data"
   }
 
 });
 
-When('user enters the payload', async function () {
+
+When('enters the payload data and clicks on publish', async function () {
   try {
     await objFilter.enterPayLoad(StringifiedJsonAlert);
-  }
-  catch (error) {
-    throw "User is not able to enter the json alert into the payload"
-  }
-
-});
-
-When('user clicks on publish', async function () {
-  try {
     await objFilter.clickOnPublish();
   }
   catch (error) {
-    throw "User is not able to publish the message"
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log(error)
+    throw "unable to publish payload data from RabbitMQ"
   }
 });
 
-When('user opens itops application', async function () {
-  try {
-    await browser.get(properties.get("main." + globalThis.environment + "_url")).then(async function () {
-    })
-  }
-  catch (error) {
-    throw "User is not able to to open the ITOps URL"
-  }
-});
 
 When('{string} selects project and open alerts', async function (userRole) {
 
   try {
-    
-        await objProjectListing.Project_search(Global_ProjectName);
-        await browser.sleep(3000);
-        await browser.wait(EC.visibilityOf(element(by.xpath('//h3[text()=" ' + Global_ProjectName + ' "]'))), 100000);
-        await objProjectListing.selectProject(Global_ProjectName);
 
-        await browser.wait(EC.visibilityOf(element(by.xpath('//a[text()="Alerts"]'))), 100000);
-        await objAlerts.selectAlerts();
-     
+    await objProjectListing.Project_search(Global_ProjectName);
+    await browser.sleep(3000);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//h3[text()=" ' + Global_ProjectName + ' "]'))), 100000);
+    await objProjectListing.selectProject(Global_ProjectName);
+
+    await browser.wait(EC.visibilityOf(element(by.xpath('//a[text()="Alerts"]'))), 100000);
+    await objAlerts.selectAlerts();
+
   }
   catch (error) {
-await console.error(error);
-throw error;
-    throw "Admin is not able to open the alerts page in the dashboard"
+    await objLogIn.logOutUser();
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log(error)
+    throw "Project doesn't exist"
   }
 })
 
-Then('Success message for alerts displayed in Alerts console {string} {string}', async function (Alerts, alertName) {
+Then('enter alertname in search box and verify alert details {string} {string}', async function (Alerts, alertName) {
   try {
     await objAlerts.Alert_Search(alertName);
     await element(by.xpath('//span[text()="Alert Name"]//following::td[6]')).getText().then(function (text) {
       expect(text).to.include(Alerts);
     });
   } catch (error) {
-   await console.error(error);
-    throw "Unable to find the pushed alert"
+    await objLogIn.logOutUser();
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log(error)
+    throw "Alert not found"
   };
 });

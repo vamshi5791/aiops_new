@@ -1,10 +1,10 @@
-@ProjectCreation_Admin @ITOps_Milestone_1
+@ProjectCreation @ITOps_Milestone_1
 Feature: Project Installation with ITOps Admin role
 
-Feature Description Once the login is done with ITOps_Admin role,
+Feature Description : Once the login is done with ITOps_Admin role,
               Admin must be able to create the project and install it.
      Project must be in ready state in Project Listing page.
- 
+
         @CreateProject
         Scenario Outline: Project Creation
             Given ITOps "Admin" with username and password as "<UserName>", "<Password>" is in the home page
@@ -12,10 +12,10 @@ Feature Description Once the login is done with ITOps_Admin role,
               And "Admin" enters project name as "<ProjectName>"
               And "Admin" enters description as "<Description>"
               And "Admin" clicks on create button
-             Then user is taken to the project configuration page "<Toaster>"
+             Then "<Toaster>" message should be displayed and "Admin" should navigate to project configuration page
         Examples:
                   | UserName    | Password | ProjectName      | Description       | Toaster                      |
-                  | Itops_admin | qa123    | Automation_IB_16 | Release1.4Project | Project Created Successfully |
+                  | Itops_admin | qa123    | Automation_IB_44 | Release1.4Project | Project Created Successfully |
         @GeneralConfiguration
         Scenario Outline: General Configuration
              When "Admin" enters Service now hostname as "<ServiceNowHost>"
@@ -27,7 +27,7 @@ Feature Description Once the login is done with ITOps_Admin role,
               And "Admin" selects ITSM TimeZone as "<ITSMTimeZone>"
               And "Admin" selects ITOps Flavor as "<ITopsFlavor>"
               And "Admin" clicks on Save button in General Configuration page
-             Then Success message for General Configuration must be shown  as a toaster "<Toaster>"
+             Then Success message "<Toaster>" must be shown for "General Configuration"
         Examples:
                   | ServiceNowHost                       | ServiceNowUserName | ServiceNowPassworde | ThresholdCount | ITSMName    | ITSMVersion | ITSMTimeZone | ITopsFlavor | Toaster                        |
                   | https://ustglobaldev.service-now.com | ustglobal          | 1234                | 01.00          | USTTestITSM | 1.01        | IST          | Smart NOC   | Project Configurations Updated |
@@ -39,7 +39,7 @@ Feature Description Once the login is done with ITOps_Admin role,
               And "Admin" select Scheduler Interval for alert analytics as "<AlertAnalytics>"
               And "Admin" select Scheduled interval for Batch Prediction as "<BatchPrediction>"
               And "Admin" clicks on Save button in Scheduler Configuration page
-             Then Success message for Scheduler Configuration must be shown as a toaster "<Toaster>"
+             Then Success message "<Toaster>" must be shown for "Scheduler Configuration"
         Examples:
                   | Correlation    | AutoClosure    | AlertAnalytics | BatchPrediction | Toaster                        |
                   | Every 4 months | Every 3 months | Every 4 months | Every 6 months  | Project Configurations Updated |
@@ -48,10 +48,10 @@ Feature Description Once the login is done with ITOps_Admin role,
         Scenario Outline: Error Response Configuration
              When "Admin" clicks on Error Response Configuration
               And "Admin" enters From Email Account as "<FromEmail>"
-              And "Admin" enters From Email Acount Password as "<FromEmailAcountPassword>"
+              And "Admin" enters From Email Account Password as "<FromEmailAcountPassword>"
               And "Admin" enters To Email Address as "<ToEmailAddress>"
               And "Admin" clicks on Save button in Error Response Configuration page
-             Then Success message for Error Response Configuration must be shown as a toaster "<Toaster>"
+             Then Success message "<Toaster>" must be shown for "Error Response Configuration"
         Examples:
                   | FromEmail  | Password | ToEmailAddress | Toaster                        |
                   | abc@ib.com | 1234     | def@ib.com     | Project Configurations Updated |
@@ -68,7 +68,7 @@ Feature Description Once the login is done with ITOps_Admin role,
               And "Admin" enters Surge First Run Count as "<SurgeFirstRunCount>"
               And "Admin" enters Surge First Run Count Interval as "<SurgeFirstRunCountInterval>"
               And "Admin" clicks on Save button in Surge Configuration page
-             Then Success message for Surge Configuration must be shown as a toaster "<Toaster>"
+             Then Success message "<Toaster>" must be shown for "Surge Configuration"
         Examples:
                   | StartPercentile | StartPercentileThreshold | EndPercentile | EndPercentileThreshold | SurgePatterns | SurgePatternMatchThreshold | SurgeAnalyticsInterval | SurgeFirstRunCount | SurgeFirstRunCountInterval | Toaster                        |
                   | 50              | 50                       | 50            | 50                     | 50            | 50                         | 50                     | 50                 | 50                         | Project Configurations Updated |
@@ -87,7 +87,7 @@ Feature Description Once the login is done with ITOps_Admin role,
               And "Admin" enters Sub Category column name in dump file as "<SubCategoryColumnName>"
               And "Admin" enters Long Description column name in dump file as "<LongDescription>"
               And "Admin" clicks on Save button in Ticket Dump Configuration page
-             Then Success message for Ticket Dump Configuration must be shown as a toaster "<Toaster>"
+             Then Success message "<Toaster>" must be shown for "Ticket Dump Configuration"
         Examples:
                   | Hostname | FilePath | SourceUserName | SourcePassword | TicketNumberColumnName | WorkNotesColumnName | ShortDescriptionColumnName | CategoryColumnName | SubCategoryColumnName | LongDescription | Toaster                        |
                   | Value1   | Value2   | Value3         | Value1         | Value 2                | Value 3             | Value 1                    | Value 2            | Value 3               | Value           | Project Configurations Updated |
@@ -106,7 +106,7 @@ Feature Description Once the login is done with ITOps_Admin role,
               And "Admin" clicks on check box
               And "Admin" enters lIst size as "<ListSize>"
               And "Admin" clicks on Save and Configure button
-             Then Success message for Channel Configuration must be shown as a toaster "<Toaster>"
+             Then Success message "<Toaster>" must be shown for "Channel Configuration"
         Examples:
                   | ChannelName | ChannelType | ChannelIntegration | EmailId                        | ClientID                             | ClientSecret                       | TenantID                             | AutomationStory | ListSize | Toaster                      |
                   | UST Channel | EMAIL       | outlook            | smartopsautosvc@ust-global.com | b73e5fe3-e49a-4d49-9ada-1e8741a6e034 | _1NdG.t_JC.~DM39Y04XZhr1ifKPcGxT2y | a4431f4b-c207-4733-9530-34c08a9b2b8d | UST             | 2        | Channel created Successfully |
@@ -118,7 +118,7 @@ Feature Description Once the login is done with ITOps_Admin role,
               And "Admin" clicks next
               And "Admin" enters Password "<Password>"
               And "Admin" clicks on sign in
-             Then Success message for OAuth authentication must be shown as a toaster "<Toaster>"
+             Then Success message "<Toaster>" must be shown for "Email Channel Authentication"
         Examples:
                   | MailId                         | Password      | Toaster                      |
                   | smartopsautosvc@ust-global.com | Support@12334 | OAuth authentication success |
@@ -128,14 +128,14 @@ Feature Description Once the login is done with ITOps_Admin role,
               And "Admin" selects user as "<UserName>"
               And "Admin" selects role as "<Role>"
               And "Admin" clicks on Add User button
-             Then User must be added and listed in the below list with a toaster "<Toaster>"
+             Then User must be added and listed in the below list and success message "<Toaster>" must be shown
         Examples:
                   | UserName        | Role           | Toaster     |
                   | Kishor Macharla | itops_engineer | User added. |
         @ProjectInstallation
         Scenario Outline: Project Installation
              When "Admin" clicks on Install button
-             Then Project must be in ready state in Project Listing Page "<ProjectStatus>"
+             Then Project must be in "<ProjectStatus>" state in Project Listing Page
               And "Admin" clicks on logout button
         Examples:
                   | ProjectStatus |
