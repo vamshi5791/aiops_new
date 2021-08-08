@@ -836,7 +836,7 @@ When('{string} clicks on sign in', async function (userRole) {
   catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Email Channel Authentication")
     await console.log(error)
-    throw "User is not able to click on sign in button"
+    throw "Incorrect user ID or password"
   }
 });
 
