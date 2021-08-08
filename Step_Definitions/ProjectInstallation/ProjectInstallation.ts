@@ -889,10 +889,11 @@ When('{string} clicks on Add User button', async function (userRole) {
 
 Then('User must be added and listed in the below list and success message {string} must be shown', async function (Toaster) {
   try {
+     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
       expect(text).to.include(Toaster);
     });
-
+     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
   } catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Add User")
     await console.log(error)
@@ -905,7 +906,6 @@ Then('User must be added and listed in the below list and success message {strin
 When('{string} clicks on Install button', async function (userRole) {
   try {
     await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(async function () {
-      await browser.sleep(2000)
       await objProjectConfi.Install()
     })
   }
