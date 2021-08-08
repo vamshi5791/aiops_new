@@ -299,6 +299,7 @@ When('{string} clicks on Save button in Scheduler Configuration page', async fun
 
 When('{string} clicks on Error Response Configuration', async function (userRole) {
   try {
+     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
     await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(async function () {
       await objProjectConfi.ErrorResponseConfiguration()
     })
@@ -362,6 +363,7 @@ When('{string} clicks on Save button in Error Response Configuration page', asyn
 
 When('{string} clicks on Surge Configuration', async function (userRole) {
   try {
+     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
     await objProjectConfi.SurgeConfiguration()
   }
   catch (error) {
@@ -488,6 +490,7 @@ When('{string} clicks on Save button in Surge Configuration page', async functio
 
 When('{string} clicks on Ticket Dump Configuration', async function (userRole) {
   try {
+     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
     await objProjectConfi.TicketDumpConfiguration()
   }
   catch (error) {
@@ -626,6 +629,7 @@ When('{string} clicks on Save button in Ticket Dump Configuration page', async f
 
 When('{string} clicks on Channel Configuration', async function (userRole) {
   try {
+     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
     await browser.executeScript('window.scrollTo(0,0);').then(async function () {
     });
     await objProjectConfi.channelConfiguration()
@@ -773,6 +777,7 @@ When('{string} clicks on Save and Configure button', async function (userRole) {
 
 When('{string} clicks on authenticate', async function (userRole) {
   try {
+     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
     await objProjectConfi.ClickOnAuthenticate();
   }
   catch (error) {
@@ -892,6 +897,7 @@ Then('User must be added and listed in the below list and success message {strin
 When('{string} clicks on Install button', async function (userRole) {
   try {
     await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(async function () {
+      await browser.sleep(2000)
       await objProjectConfi.Install()
     })
   }
