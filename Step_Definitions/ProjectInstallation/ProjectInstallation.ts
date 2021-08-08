@@ -896,7 +896,7 @@ Then('User must be added and listed in the below list and success message {strin
   } catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Add User")
     await console.log(error)
-    throw "Once user clicks Add User button it should display selected user name in the list. But it is not displaying in the list"
+    throw "User is not added in the list"
   }
 });
 
