@@ -2,7 +2,7 @@
 Feature:  Display Configuration
 
 Feature Description : Verifying Display Configuration functionalities
-        @Data
+       
         Scenario Outline: Verify whether itops_admin is able to view display configuration settings
          
             Given ITOps "admin" with username and password as "<UserName>", "<Password>" is in the home page
@@ -89,10 +89,10 @@ Feature Description : Verifying Display Configuration functionalities
                   | resourceGroup | connectedTo | region      | site        | portNumber  | resourceType | The maximum number of columns that can be added as primary column is 16 |
      
         Scenario Outline: Verify user is not able to change display configurations
-            Given user opens itops application
-              And "Itops_engineer" enters Username, Password and click on Login button "<UserName>", "<Password>"
-              And "Itops_engineer" enters project name in project search feild "<ProjectName>"
-              And "Itops_engineer" clicks on project name "<ProjectName>"
+           
+            Given ITOps "admin" with username and password as "<UserName>", "<Password>" is in the home page
+             When "Admin" enters project name as "<ProjectName>" in the search field
+              And "admin" clicks on project name "<ProjectName>"
               And "Itops_engineer" navigate to Configuration section
               And "Itops_engineer" clicks on Alert Console Display Configuration from LHS menu Settings
              Then "Itops_engineer" verifies that Primary and secondary sections are present

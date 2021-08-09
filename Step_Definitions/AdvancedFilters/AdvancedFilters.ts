@@ -14,12 +14,6 @@ var testSource;
 
 When('{string} clicks on Alerts page', async function (userName) {
   try {
-    var myElement = element(by.className('smo smo-close-black-alt'));
-    myElement.isPresent().then(async function (elm) {
-      if (elm) {
-        await element(by.className('smo smo-close-black-alt')).click();
-      } 
-    });
     await objAlerts.selectAlerts();
   }
   catch (error) {
