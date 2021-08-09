@@ -38,9 +38,8 @@ When('{string} clicks on yes', async function (userRole) {
 Then('Success message {string} must be shown once project is {string}', async function (Toaster, Action) {
 
   try {
-        await browser.sleep(100000);
 
-    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 180000);
 
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
       expect(text).to.include(Toaster);
