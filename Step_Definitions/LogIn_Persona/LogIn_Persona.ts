@@ -38,13 +38,17 @@ When('{string} clicks on yes', async function (userRole) {
 Then('Success message {string} must be shown once project is {string}', async function (Toaster, Action) {
 
   try {
+        await browser.sleep(100000);
+
     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
 
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
       expect(text).to.include(Toaster);
     });
-    await objProjectListing.clickOnClosePopUpButton();
+    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+
   } catch (error) {
+    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await objLogIn.logOutUser();
     await console.log("Feature name : Login Persona and Scenario name : " + Action + " the Project")
     await console.log(error)
