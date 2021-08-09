@@ -58,7 +58,7 @@ pipeline {
                 echo "[INFO] Executing Regression Test"
                 sh """                
                   node node_modules/protractor/bin//protractor JSFiles/Configuration.js --params.env ${Environment_Name} --browser=${Browser} --Options=${BrowserMode} --cucumberOpts.tags=${TEST_TAG} --no-sandbox
-                tar cvf TestReport.tar TestReport
+                
 
                 """
                 
@@ -69,18 +69,14 @@ pipeline {
    
   post {
         always {
-            script{
-                sh """
-                tar cvf TestReport.tar TestReport
-                """
-            }
+
             emailext (
                   subject: "Regression Test results for itops . Job '${env.JOB_NAME} . Build No ${env.BUILD_NUMBER}'",
                   body: """Please see the attachment for regression test result""",
                   to: "SreejithSivankutty.Nair@ust-global.com,sravanthi.thumma@ust.com,Binu.Rajagopal@ust-global.com",
                   from: "noreplysmartopssvc@ust-global.com",
                   mimeType: 'text/plain',
-                  attachmentsPattern: 'TestReport.tar'
+                  attachmentsPattern: 'TestReport/Custom_Test_Report.html'
              ) 
 
 
