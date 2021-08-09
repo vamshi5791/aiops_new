@@ -233,6 +233,15 @@
                 var daParentPDF = document.getElementById('scenariosPDF');
                 daParentPDF.innerHTML = Divscenario;
 
+                var ti = new Date();
+
+                var tms = AddZero(ti.getDay() + 1) + '-' + AddZero((ti.getMonth() + 1)) + '-' + ti.getFullYear() + ' ' + AddZero(ti.getHours()) + ':' + AddZero(ti.getMinutes());
+
+
+
+                document.getElementById('spTimeStamp').innerHTML = tms;
+                document.getElementById('spTimeStampPDF').innerHTML = tms;
+
 
                 var _total = document.getElementById('spTotalScenarios');
                 _total.innerHTML = total;
@@ -391,14 +400,17 @@
                 closeScreenshotDiv();
 
 
-                setTimeout(function () {
-                    html2pdf();
-                }, 1500);
+                // setTimeout(function () {
+                //     html2pdf();
+                // }, 1500);
 
 
             }
         });
 
+        function AddZero(num) {
+            return (num >= 0 && num < 10) ? "0" + num : num + "";
+        }
 
         function filterScenarios(featureName) {
 
@@ -822,7 +834,6 @@
 
             document.getElementById('workAreaPDF').style.display = 'block';
 
-
             var quotes = document.getElementById('workAreaPDF');
             html2canvas(quotes)
                 .then((canvas) => {
@@ -869,11 +880,12 @@
                         pdf.addImage(canvasDataURL, 'PNG', 20, 40, (width * .62), (height * .62));
 
                     }
+                    document.getElementById('imgloader').style.display = 'none';
+
                     //! after the for loop is finished running, we save the pdf.
-                    pdf.save('Report.pdf');
+                    pdf.save('ITOpsAutomation_Report.pdf');
 
                     document.getElementById('workAreaPDF').style.display = 'none';
-                    document.getElementById('imgloader').style.display = 'none';
 
                 });
 
@@ -906,7 +918,7 @@
                 text-align: center;
                 font-size: x-large;
                 color: #fff;padding-left: 0%;    margin-left: -30px;">
-                    UST SmartOps Regression Automation - Test Results Summary
+                    UST ITOps Regression Automation - Test Results Summary
                 </div>
                 <div class="col-md-1" style="font-size: 20px; text-align: center;   
                 color: #fff;padding-left: 3%;    padding-top: 10px;">
@@ -926,12 +938,6 @@
 
     </div>
     <div id="workArea">
-        <div id="divHome" style="    text-align: center;
-    font-size: xx-large;
-    color: #11afb7;
-    padding-top: 2%;display: none;">
-            <img id="imgAuto" src="../Images/automation.svg" height="400px" alt="Automation" />
-        </div>
         <div class="row" id="divTiles" style="margin-right: 0px;">
             <div class="col-md-12" style="    padding-left: 2%;
     padding-right: 2%;
@@ -946,13 +952,19 @@
                 border-top: 1px solid #504e4e ;" />
                                 <div class="row" style="padding-bottom: 1%;">
                                     <div class="col-md-5">Project Name</div>
-                                    <div class="col-md-7" style=" padding-left: 0px; padding-right: 0px;">UST SmartOps
+                                    <div class="col-md-7" style=" padding-left: 0px; padding-right: 0px;">UST ITOps
                                         Regression Automation</div>
                                 </div>
                                 <div class="row" style="padding-bottom: 1%;">
+                                    <div class="col-md-5">Executed on</div>
+                                    <div class="col-md-7" style=" padding-left: 0px; padding-right: 0px;">
+                                        <span id="spTimeStamp"></span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-bottom: 1%;">
                                     <div class="col-md-5">No. of Test Cases</div>
-                                    <div class="col-md-7" style=" padding-left: 0px; padding-right: 0px;"><span
-                                            id="spTotal2">spTotalFromJson</span>
+                                    <div class="col-md-7" style=" padding-left: 0px; padding-right: 0px;">
+                                        <span id="spTotal2"></span>
                                     </div>
                                 </div>
                                 <div class="row" style="padding-bottom: 1%;">
@@ -1290,7 +1302,7 @@
                     <div class="col-md-12" style="padding-top: 7.5px;
                     font-size: x-large;
                     color: #fff;padding-left: 10%;">
-                        UST SmartOps Regression Automation - Test Results Summary
+                        UST ITOps Regression Automation - Test Results Summary
                     </div>
                 </div>
             </div>
@@ -1303,7 +1315,7 @@
                     <div class="col-md-8">
                         <div class="row" style="padding-left:1.3%;margin-bottom: 1%;">
                             <div class="col-md-12"
-                                style="height: 170px;background-color: #f4f6f7;    padding-bottom: 10px;">
+                                style="height: 200px;background-color: #f4f6f7;    padding-bottom: 10px;">
                                 <p style="margin-bottom: -15px;    font-size: 20px;font-weight: bold;">Summary
                                 </p>
                                 <hr style="border: 0;
@@ -1311,8 +1323,14 @@
                                 <div class="row" style="padding-bottom: 1%;font-weight: bold;">
                                     <div class="col-md-5">Project Name</div>
                                     <div class="col-md-7" style=" padding-left: 0px; padding-right: 0px;">UST
-                                        SmartOps
+                                        ITOps
                                         Regression Automation</div>
+                                </div>
+                                <div class="row" style="padding-bottom: 1%;">
+                                    <div class="col-md-5" style="font-weight: bold;">Executed on</div>
+                                    <div class="col-md-7" style=" padding-left: 0px; padding-right: 0px;"><span
+                                            id="spTimeStampPDF"></span>
+                                    </div>
                                 </div>
                                 <div class="row" style="padding-bottom: 1%;">
                                     <div class="col-md-5" style="font-weight: bold;">No. of Test Cases</div>
