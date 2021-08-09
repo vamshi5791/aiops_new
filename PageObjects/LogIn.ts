@@ -1,7 +1,6 @@
 import { ElementFinder, element, by, promise, browser } from "protractor";
 var EC = browser.ExpectedConditions;
 var fs = require('fs');
-
 export class LogIn {
     txtUserName = element(by.name("username"))
     txtPassword = element(by.name("password"))
