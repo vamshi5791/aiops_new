@@ -45,6 +45,43 @@ export class AlertsPage {
   btnAutoRefreshInEveryRightButton = element(by.className('smo-btn-icon-col d-flex align-items-center smo smo-check-black-alt smo-clickable ng-star-inserted'));
   txtSpinner = element(by.className('smo-progress-spinner-svg'));
 
+
+  // btnSelectAlerts = element(by.xpath('//a[text()="Alerts"]'));
+  // btnSearch = element(by.xpath('//input[@placeholder="Search"]'))
+  // txtInLast = element(by.name('inLast'));
+  // drpSelectDurationType =  element(by.xpath('//label[text()="Select"]'));
+  // drpSavedFilter = element(by.xpath('//label[text()="Saved Filter"]'));
+  // btnRemoveSourceCondition = element(by.xpath('//span[text()="State"]//preceding::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
+  // btnRemoveStateCondition = element(by.xpath('//span[text()="State"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
+  // btnRemoveOkCondition = element(by.xpath('//span[text()="Ok"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
+  // btnRemoveWarningCondition = element(by.xpath('//span[text()="Ok"]//preceding::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
+  // chkMakeAsDefault = element(by.xpath('//span[text()="Make As Default"]//preceding::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'));
+  // btnEditSavedFilter = element(by.className('mr-3 smo smo-edit ng-star-inserted'));
+  // btnDeleteSavedFilter = element(by.className('smo smo-trash-alt-regular ng-star-inserted'));
+  // btnSavedFilter = element(by.xpath('//span[text()="IB"]'));  
+  //  btnApply = element(by.xpath('//span[text()="Apply"]'));
+  // btnUpdateAndApply = element(by.xpath('//span[text()="Update and Apply"]'));
+  // btnYesConfirmation = element(by.xpath('//span[text()="Yes"]'));
+  // txtNoDataAvailable = element(by.xpath('//span[text()="No data available"]'));
+  // txtPopUp = element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'));
+  // btnCancel = element(by.xpath('//span[text()="Cancel"]'));
+  // btnCloseChip = element(by.className('smo smo-close-black-alt filter-result-icon-sm'));
+  // drpFilterBySeverity = element(by.xpath('//span[@class="filter smo smo-filter"]//preceding::span[@class="smo-multiselect-trigger-icon smo-clickable smo smo-expand-more-alt chevron-icon"]'));
+  // txtOkFilterBySeverity = element(by.xpath('//span[text()="Ok"]'));
+  // txtWarningFilterBySeverity = element(by.xpath('//span[text()="Warning"]'));
+  // txtMinorFilterBySeverity = element(by.xpath('//span[text()="Minor"]'));
+  // txtMajorFilterBySeverity = element(by.xpath('//span[text()="Major"]'));
+  // txtInformationFilterBySeverity = element(by.xpath('//span[text()="Information"]'));
+  // txtCriticalFilterBySeverity = element(by.xpath('//span[text()="Critical"]'));
+  // txtAutoRefreshInEvery = element(by.xpath('//span[text()=" Auto-refresh in every "]//following::input'));
+  // btnAutoRefreshInEveryRightButton = element(by.className('smo-btn-icon-col d-flex align-items-center smo smo-check-black-alt smo-clickable ng-star-inserted'));
+  // txtSpinner = element(by.className('smo-progress-spinner-svg'));
+  txtRowsPerPage = element(by.xpath('//span[text()="Rows per page"]'));
+  txtAdvancedFilters = element(by.xpath('//h3[text()="Advanced Filters"]'));
+  txtSourceAndResources = element(by.xpath('//h4[text()="Source and Resources"]'));
+  txtStateAndStatus = element(by.xpath('//h4[text()="State and Status"]'));
+  txtDateAndTime = element(by.xpath('//h4[text()="Date and Time"]'));
+
   async clickOnRemoveOkCondition() {
     await this.btnRemoveOkCondition.click();
   }
@@ -199,4 +236,8 @@ export class AlertsPage {
       await expect(text).to.include(ToastMessage);
     }); 
   }
+
+
+  
 }
+

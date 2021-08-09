@@ -1,0 +1,369 @@
+import { Given, When, Then} from "cucumber"
+import { browser, element, by} from "protractor"
+import { AlertsPage } from "../../PageObjects/AlertsPage";
+var EC = browser.ExpectedConditions;
+let objAlerts = new AlertsPage();
+
+import chai from "chai";
+ 
+var EC = browser.ExpectedConditions;
+var expect = chai.expect;
+var testAlertState;
+var testSource;
+
+
+When('{string} clicks on Alerts page', async function (userName) {
+  try {
+    var myElement = element(by.className('smo smo-close-black-alt'));
+    myElement.isPresent().then(async function (elm) {
+      if (elm) {
+        await element(by.className('smo smo-close-black-alt')).click();
+      } 
+    });
+    await objAlerts.selectAlerts();
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having 3 sections")
+    await console.log(error)
+    throw "User is not able to click on Alerts page"
+  }
+
+});
+
+//Gopi 
+
+//Verify the advanced filter having 3 sections
+
+Then('{string} verifies heading as {string}', async function (userName, AdvancedFilters) {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having 3 sections")
+    await console.log(error)
+    throw "Advanced Filter section is not available in the advanced filter page"
+  }
+  
+});
+
+
+Then('{string} verifies Source and Resource section heading as {string}', async function (userName, SourceAndResource) {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
+  
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having 3 sections")
+    await console.log(error)
+    throw "Source and Resource section is not available in the advanced filter page"
+  }
+  
+});
+
+
+
+Then('{string} verifies State and Status,Date and Time sections heading as {string} and {string}', async function (userName, StateAndStatus, DataAndTime) {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.txtStateAndStatus));
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having 3 sections")
+    await console.log(error)
+    throw "State and Status section is not present in the advanced filter page"
+  }
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.txtDateAndTime));
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having 3 sections")
+    await console.log(error)
+    throw "Date and Time section is not present in the advanced filter page"
+  }
+ 
+});
+
+
+//Verifying ITOps admin is able to apply the saved filter again
+
+Then('{string} verifies user redirects to alert console', async function (userName) {
+  try {
+    await browser.wait(EC.visibilityOf(element(by.className('filter smo smo-filter'))), 50000);
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  Apply the saved filter")
+    await console.log(error)
+    throw "User is not redirecting to alert console"
+  }
+ 
+});
+
+When('{string} clicks on apply button', async function (userName) {
+  try {
+    await objAlerts.Apply();
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  Apply the saved filter")
+    await console.log(error)
+    throw "User is not able to click on apply button"
+  }
+ 
+});
+
+Then('{string} verifies the Data shown is solarwinds and ticketed alerts only', async function (userName) {
+  try {
+    var myElement = objAlerts.txtNoDataAvailable;
+    myElement.isPresent().then(async function (elm) {
+      if (elm == false) {
+        await objAlerts.Alert_Search(testSource);
+        await objAlerts.getTestSource(testSource)
+        await objAlerts.getTicketNumber(testAlertState)
+      } 
+    });
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  Apply the saved filter")
+    await console.log(error)
+    throw "Data shown is not based on the solar winds and ticketed alerts"
+  }
+ 
+
+});
+ 
+//Verify date time filter
+
+When('{string} enters in last fields as {string} and select Duration type {string}', async function (userName, InLast, DurationType) {
+  try {
+    await objAlerts.enterInLastNumber(InLast);
+    await objAlerts.selectDurationType(DurationType);
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  Date time filter")
+    await console.log(error)
+    throw "User is not able to select duration type"
+  }
+
+});
+
+
+
+Then('{string} verifies last {string} Days alerts are displayed in the console', async function (userName, NumberOfDays) {
+  try {
+    var myElement = objAlerts.txtNoDataAvailable;
+    myElement.isPresent().then(async function (elm) {
+      if (elm == false) {
+        await objAlerts.getTicketNumber(NumberOfDays)
+      }
+    });
+  
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  Date time filter")
+    await console.log(error)
+    throw "Data shown is not based on the mentioned days "
+  }
+  
+});
+
+
+
+When('{string} clicks on Make as default checkbox', async function (userName) {
+  try {
+    await objAlerts.clickOnMakeAsDefault();
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  Date time filter")
+    await console.log(error)
+    throw "User not able to click on Make as default checkbox"
+  }
+ 
+});
+
+
+
+Then('verify alert console should show results based on default filter applied', async function () {
+  try {
+    var myElement = objAlerts.txtNoDataAvailable;
+    myElement.isPresent().then(async function (elm) {
+      if (elm == false) {
+        await objAlerts.Alert_Search(testSource);
+        await objAlerts.getTestSource(testSource)
+        await objAlerts.getTicketNumber(testAlertState)
+      } 
+    });
+  } catch (error) {
+    throw "Data shown is not based on the default filter applied"
+  }
+ 
+});
+
+Then('verify alert console should not show results based on previous default filter.', function () {
+  try {
+    var myElement = objAlerts.txtNoDataAvailable;
+    myElement.isPresent().then(async function (elm) {
+      if (elm == false) {
+        await objAlerts.Alert_Search(testSource);
+        await objAlerts.getTestSource(testSource)
+      }
+    });
+  } catch (error) {
+    throw "Data shown is not based on the previous default filter applied"
+  }
+ 
+});
+
+// Verify that user is able to view edit and delete option
+
+Then('{string} verifies that edit and delete options are present', async function (userName) {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.btnEditSavedFilter));
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
+    throw "Edit option is not present in the page"
+  }
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.btnDeleteSavedFilter));
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
+    throw "Delete option is not present in the page"
+  }
+ 
+});
+
+
+
+When('{string} clicks on Edit icon for {string} filter', async function (userName, SavedFilter) {
+  try {
+  await browser.sleep(3000)
+    await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
+    await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
+    await browser.actions().mouseMove(element(by.xpath('//span[text()="'+SavedFilter+'"]'))).perform();
+    await browser.sleep(3000)
+    await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
+    await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
+    await element(by.className('mr-3 smo smo-edit ng-star-inserted')).click();
+   
+    await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
+    await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
+    throw "User not able to click on Edit icon on a saved filter"
+  }
+ 
+});
+
+
+
+
+
+When('{string} edits {string} filter criteria', async function (userName, Source) {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
+    await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
+    await objAlerts.SelectSource(Source);
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
+    throw "User not able to edit filter criteria"
+  }
+ 
+});
+
+
+When('{string} click on Update and Apply', async function (userName) {
+  try {
+    var myElement = objAlerts.btnCancel;
+    await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+    await objAlerts.clickOnUpdateAndApply();
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
+    throw "User not able to click on update and apply button"
+  }
+ 
+});
+
+
+
+When('{string} clicks on Yes on confirmation pop up', async function (userName) {
+  try {
+    await objAlerts.clickOnYes();
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
+    throw "User not able to click on Yes from confirmation pop up"
+  }
+ 
+});
+
+
+Then('{string} verifies {string} success message', async function (userName, Toaster) {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.txtPopUp));
+    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(async function (text) {
+      await expect(text).to.include(Toaster);
+      await console.log(text)
+    });
+    await browser.wait(EC.invisibilityOf(objAlerts.txtPopUp));
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
+    throw "success message is not shown"
+  }
+  
+});
+
+Then('{string} verifies data in UI', async function (userName) {
+  try {
+    var myElement = objAlerts.txtNoDataAvailable;
+    myElement.isPresent().then(async function (elm) {
+      if (elm == false) {
+        await objAlerts.Alert_Search(testSource);
+        await objAlerts.getTestSource(testSource)
+      }
+    });
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
+    throw "Data shown is not based on the previous default filter applied"
+  }
+});
+
+
+When('{string} clicks on Delete icon for {string} filter', async function (userName, SavedFilter) {
+  try {
+    await browser.sleep(3000)
+    await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
+    await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
+    await browser.actions().mouseMove(element(by.xpath('//span[text()="' + SavedFilter + '"]'))).perform();
+    await browser.sleep(3000)
+    await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
+    await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
+    await element(by.className('smo smo-trash-alt-regular ng-star-inserted')).click();
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
+    throw "User not able to click on Edit icon on a saved filter"
+  }
+});
+
+
+
+Then('{string} verifies {string} shown', async function (userName, Toaster) {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.txtPopUp));
+    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(async function (text) {
+      await expect(text).to.include(Toaster);
+      await console.log(text)
+    });
+    await browser.wait(EC.invisibilityOf(objAlerts.txtPopUp));
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
+    throw "success message is not shown"
+  }
+});
+Then('{string} verifies deleted {string} filter is removed from the filter dropdown in console', async function (userName, SavedFilter) {
+  try {
+    await objAlerts.drpSavedFilter.click();
+    await browser.wait(EC.invisibilityOf(element(by.xpath('//span[text()="Automation"]'))), 5000);
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
+    
+   }
+ })
+
+
