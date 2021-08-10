@@ -23,7 +23,228 @@ When('{string} clicks on Alerts page', async function (userName) {
   }
 
 });
+// Ajay 
 
+
+When('{string} selects alert severity dropdown', async function (userRole) {
+  try {
+    await browser.sleep(3000)
+    await objAlerts.AlertSeverityDpn();
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name :  Verify that Itops_admin is able to Verify severity drop down severity conditions")
+    await console.log(error)
+    throw "User is not able to select alert severity dropdown"
+  }
+
+});
+
+When('{string} selects Warning', async function (userRole) {
+  try {
+    await objAlerts.SelectWarning();
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name :  Verify that Itops_admin is able to Verify severity drop down severity conditions")
+    await console.log(error)
+    throw "User is not able to select Warning"
+  }
+
+});
+
+
+Then('verifies severity condition in severity dropdown {string}', async function (string) {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.btnSelectWarning), 100000);
+
+
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters and Scenario name :  Verify that Itops_admin is able to Verify severity drop down severity conditions")
+    await console.log(error)
+    throw "User is not able to verify severity condition in severity dropdown"
+  }
+
+});
+
+// Verify that Itops_admin is able to add some more severity conditions
+
+
+When('{string} selects Ok', async function (userRole) {
+  try {
+    await objAlerts.Ok();
+
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to add some more severity conditions")
+    await console.log(error)
+    throw "User is not able to select Ok"
+  }
+
+});
+
+Then('{string} deletes the warning severity condition from alert console', async function (userRole) {
+  try {
+    await objAlerts.RemoveWarningSeverity();
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to add some more severity conditions")
+    await console.log(error)
+    throw "User is not able to delete the warning severity condition from alert console"
+  }
+
+});
+
+Then('{string} deletes the ok severity condition from alert console', async function (userRole) {
+  try {
+    await objAlerts.RemoveOkSeverity();
+
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to add some more severity conditions")
+    await console.log(error)
+    throw "User is not able to delete the ok severity condition from alert console"
+  }
+
+});
+
+// Verify that Itops_admin is able to remove severity conditions from saved filters
+
+When('{string} selects saved filter {string}', async function (userRole, SavedFilter) {
+  try {
+    await objAlerts.SavedFilter(SavedFilter);
+
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to remove severity conditions from saved filters")
+    await console.log(error)
+    throw "User is not able to selects saved filter"
+  }
+
+
+});
+ 
+When('{string} deletes the solarwinds condition from alert console', async function (userRole) {
+  try {
+    await objAlerts.RemoveSolarwinds();
+
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to remove severity conditions from saved filters")
+    await console.log(error)
+    throw "User is not able to deletes the solarwinds condition from alert console"
+  }
+
+});
+
+Then('{string} verifies solarwinds filter is not visible', async function (userRole) {
+  try {
+    await browser.wait(EC.invisibilityOf(objAlerts.btnRemoveSolarwinds), 1000);
+
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to remove severity conditions from saved filters")
+    await console.log(error)
+    throw "User is not able to verify solarwinds filter is not visible"
+  }
+
+});
+
+
+
+// Verify that Itops_admin is able to add some more severity conditions
+
+
+When('{string} clicks on filter by severity dropdown', async function (userRole) {
+  try {
+    await objAlerts.FilterBySeverity();
+
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to add some more severity conditions")
+    await console.log(error)
+    throw "User is not able to clicks on filter by severity dropdown"
+  }
+
+});
+
+
+// Verify user is able to perform search operations on the filter conditions which we selected.
+
+When('{string} selects Information', async function (userRole) {
+  try {
+    await objAlerts.Information();
+
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify user is able to perform search operations on the filter conditions which we selected.")
+    await console.log(error)
+    throw "User is not able to selects Information"
+  }
+
+});
+
+When('{string} searches alert condition {string}', async function (userRole, alertName) {
+  try {
+    await objAlerts.Alert_Search(alertName)
+
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify user is able to perform search operations on the filter conditions which we selected.")
+    await console.log(error)
+    throw "User is not able to searches alert condition"
+  }
+
+});
+
+
+// Verify user is able to perform search operations on entire alert console after removing filters
+
+When('{string} clicks on remove all button', async function (userRole) {
+  try {
+    await objAlerts.selectRemoveAllConditions();
+
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify user is able to perform search operations on entire alert console after removing filters.")
+    await console.log(error)
+    throw "User is not able to clicks on remove all button"
+  }
+
+});
+
+
+//Verify when user applied Saved filter and some more severity conditions and navigated to other page and came back to alert console again, that time only saved filter exist
+
+Given('{string} clicks on Mark as default', async function (userRole) {
+  try {
+    await objAlerts.MarkAsDefault();
+
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify when user applied Saved filter and some more severity conditions and navigated to other page and came back to alert console again, that time only saved filter exist")
+    await console.log(error)
+    throw "User is not able to clicks on Mark as default"
+  }
+
+
+});
+
+Then('{string} Verifies Warning filter is not applied', async function (userRole) {
+  try {
+    await browser.wait(EC.invisibilityOf(objAlerts.btnSelectWarning), 1000);
+
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify when user applied Saved filter and some more severity conditions and navigated to other page and came back to alert console again, that time only saved filter exist")
+    await console.log(error)
+    throw "User is not able to Verifies Warning filter is not applied"
+  }
+
+});
+
+Then('{string} opens infrastructure page', async function (string) {
+  await objAlerts.Infrastructure()
+});
 //Gopi 
 
 //Verify the advanced filter having 3 sections
@@ -352,7 +573,7 @@ Then('{string} verifies {string} shown', async function (userName, Toaster) {
 Then('{string} verifies deleted {string} filter is removed from the filter dropdown in console', async function (userName, SavedFilter) {
   try {
     await objAlerts.drpSavedFilter.click();
-    await browser.wait(EC.invisibilityOf(element(by.xpath('//span[text()="Automation"]'))), 5000);
+    //await browser.wait(EC.invisibilityOf(element(by.xpath('//span[text()="Automation"]'))), 5000);
   } catch (error) {
     await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
     await console.log(error)
