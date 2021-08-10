@@ -1,4 +1,4 @@
-@AdvancedFiltersITOpsAdmin @ITOps_Milestone_
+@AdvancedFiltersITOpsAdmin @ITOps_Milestone_2
 
 Feature: Verifying Advanced Filters for Admin role
 
@@ -19,8 +19,8 @@ Feature Description : Verifying Advanced Filters for Admin role
               And "ITOps_Admin" clicks on remove all button
 
         Examples:
-                  | UserName    | Password | ProjectName      | severityCondition |
-                  | Itops_admin | qa123    | Automation_IB_16 | Warning           |
+                  | UserName    | Password | ProjectName   | severityCondition |
+                  | Itops_admin | qa123    | Automation_02 | Warning           |
 
         Scenario Outline: Verify that Itops_admin is able to add some more severity conditions
               And "ITOps_Admin" clicks on Alerts page
@@ -69,7 +69,6 @@ Feature Description : Verifying Advanced Filters for Admin role
         Scenario Outline: Verify that Itops_admin is able to remove severity conditions from saved filters
               And "ITOps_Admin" clicks on Alerts page
               And "ITOps_Admin" clicks on advanced filter icon
-
               And "ITOps_Admin" selects saved filter "<SavedFilter>"
               And "ITOps_Admin" clicks on apply button
               And "ITOps_Admin" deletes the solarwinds condition from alert console
@@ -111,7 +110,6 @@ Feature Description : Verifying Advanced Filters for Admin role
         Scenario Outline: Verify when user applied Saved filter and some more severity conditions and navigated to other page and came back, only saved filter exist
               And "ITOps_Admin" clicks on Alerts page
               And "ITOps_Admin" clicks on advanced filter icon
-
               And "ITOps_Admin" selects saved filter "<SavedFilter>"
               And "ITOps_Admin" clicks on Mark as default
              Then "ITOps_Admin" clicks on filter by severity dropdown

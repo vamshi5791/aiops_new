@@ -57,7 +57,6 @@ Feature Description :Severity Mapping
               And "Admin" clicks on SO Severity dropdown and selects Information
               And "Admin" clicks on Add Source button
              Then Error message for creating duplicate source must be shown in popup "<Error_popup>"
-
         Examples:
                   | Itops_UserName | Itops_Password | ProjectName   | SourceSeverity1 | SourceSeverity2 | Error_popup           |
                   | Itops_admin    | qa123          | Automation_02 | 23              | 34              | Source already exists |
@@ -137,8 +136,6 @@ Feature Description :Severity Mapping
              Then "ITOps_Enginner" verifies Edit icon is not available
              Then "ITOps_Enginner" verifies the Time as "<Time>"
               And "ITOps_Enginner" clicks on logout button
-
-
 
         Examples:
                   | UserName       | Password | ProjectName   | SourceSeverity1 | SourceSeverity2 | SourceSeverity  | SOSeverity  | time         | AddSeverity  | NewSource      | Time        |

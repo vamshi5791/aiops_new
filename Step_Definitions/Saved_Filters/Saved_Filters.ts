@@ -23,9 +23,14 @@ When('{string} enters project name in project search field {string}', async func
 
 
 When('{string} clicks on project name {string}', async function (userRole, TestProjectName) {
-  await browser.sleep(2000);
-  await ProjectListing.selectProject(TestProjectName);
-  
+  try {
+    await browser.sleep(3000);
+    await ProjectListing.selectProject(TestProjectName);
+    await browser.sleep(8000);
+  } catch (error) {
+    await console.log(error)
+
+  }
 });
 
 

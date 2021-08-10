@@ -22,9 +22,12 @@ Given('ITOps {string} with username and password as {string}, {string} is in the
     await objLogIn.enterPassword(Password);
     await objLogIn.clickOnLogInButton();
     userName = UserName;
+    await console.log("------------------"+globalThis.BrowserMode)
+    await browser.sleep(10000)
     if (globalThis.BrowserMode == "headless") {
       await element(by.className('smo smo-close-black-alt')).click();
     }
+    //await browser.sleep(10000)
   }
   catch (error) {
 

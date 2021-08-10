@@ -19,7 +19,7 @@ export let config: Config = {
     chromeOptions:
 
     {
-      args: [args.Options]
+      args: [args.Options, "--window-size=1920,1080"]
     },
   },
 

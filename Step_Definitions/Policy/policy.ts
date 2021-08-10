@@ -254,8 +254,8 @@ When('Admin clicks on Yes button in confirmation popup', async function () {
         await browser.wait(EC.visibilityOf(objPolicy.btnYes));
 
         await objPolicy.clickOnYesButton();
-         await browser.sleep(5000)
-        // await browser.wait(EC.invisibilityOf(objPolicy.btnYes));
+         //await browser.sleep(5000)
+         //await browser.wait(EC.invisibilityOf(objPolicy.btnYes));
 
     }
     catch (error) {
