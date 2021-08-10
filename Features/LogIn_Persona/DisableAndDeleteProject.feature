@@ -15,7 +15,7 @@ Feature: IE disable and delete the Project for IE role
  
         Examples:
                   | UserName | Password | ProjectName      | Toaster                          |
-                  | Itops_IE | qa123    | Automation_IB_18 | Project Deactivated Successfully |
+                  | Itops_IE | qa123    | Automation_IB_08 | Project Deactivated Successfully |
 
         @IE_Deleting_Project
         Scenario Outline: Installation Engineer is able to delete the project
@@ -30,7 +30,7 @@ Feature: IE disable and delete the Project for IE role
 
         Examples:
                   | UserName | Password | projectName      | Toaster                      |
-                  | Itops_IE | qa123    | Automation_IB_08 | Project Deleted Successfully |
+                  | Itops_IE | qa123    | Automation_IB_21 | Project Deleted Successfully |
 
 
 
