@@ -8,21 +8,14 @@ var expect = chai.expect;
 let objPolicy = new PolicyObjects();
 
 
-When('{string} clicks on Project {string}', async function (userrole, projectName) {
-    try {
-        await objPolicy.clickOnProject(projectName);
-    }
-    catch (error) {
-        throw userrole + " not able to click on Project";
-    }
-});
-
 When('{string} clicks on configuration tab', async function (userrole) {
     try {
         await browser.wait(EC.visibilityOf(objPolicy.lnkConfiguration));
         await objPolicy.configurationNavigation();
     }
     catch (error) {
+        await console.log("Feature name : Policies ")
+    await console.log(error)
         throw userrole + " not able to click on configuration";
     }
 });
@@ -36,6 +29,8 @@ When('{string} navigate to Alert Correlation Policy', async function (userrole) 
         await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Alert Correlation Policy"]'))), 10000);
     }
     catch (error) {
+        await console.log("Feature name : Policies ")
+        await console.log(error)
         throw userrole + " not able to click on Alert Correlation Policy";
     }
 });
@@ -47,6 +42,8 @@ When('{string} navigate to Acknowledgement Policy', async function (userrole) {
         await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Acknowledgement Policy"]'))), 10000);
     }
     catch (error) {
+        await console.log("Feature name : Policies ")
+        await console.log(error)
         throw userrole + " not able to click on Acknowledgement Policy";
     }
 });
