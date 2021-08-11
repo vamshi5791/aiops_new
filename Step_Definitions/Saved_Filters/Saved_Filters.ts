@@ -20,13 +20,15 @@ When('{string} enters project name in project search field {string}', async func
   TestProjectName = ProjectName;
 });
 
-
+When('{string} Clicks on Saved Filter from advanced filter section {string}', async function (string, FilterName) {
+ await browser.sleep(5000)
+  await objAlerts.savedFilterTitle(FilterName)
+});
 
 When('{string} clicks on project name {string}', async function (userRole, TestProjectName) {
   try {
     await browser.sleep(3000);
     await ProjectListing.selectProject(TestProjectName);
-    await browser.sleep(8000);
   } catch (error) {
     await console.log(error)
 
@@ -268,9 +270,10 @@ Then('verify all saved filters are displayed on left side {string}', async funct
 Then('verify filter name, description and Created time should be displayed {string}, {string}, {string}', async function (FilterName, Description, CreatedTime) {
   try {
     await browser.sleep(5000);
-    await objAlerts.getFilterName(FilterName);
-    await objAlerts.getDescription(Description);
-    await objAlerts.getCreatedTime(CreatedTime);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//h3[text()="Saved Filters"]//following::b'))), 10000);
+    // await objAlerts.getFilterName(FilterName);
+    // await objAlerts.getDescription(Description);
+    // await objAlerts.getCreatedTime(CreatedTime);
   } catch (error) {
     throw "filter name, description and Created time are not displayed in the page"
   }

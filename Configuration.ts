@@ -35,7 +35,20 @@ export let config: Config = {
     globalThis.BrowserMode = args.Options;
   },
   specs: [
-    '../Features/*/*.feature',
+  
+    '../Features/LogIn/LogIn_Admin.feature',
+    '../Features/LogIn_Persona/LoginPersona_ITOpsAdmin.feature',
+    '../Features/SavedFilters/SavedFilters.feature',
+    '../Features/AdvancedFilters/AdvancedFilter.feature',
+    '../Features/RefreshOption/RefreshOption.feature',
+    '../Features/SearchFuntionality/SearchFunctionality.feature',
+    '../Features/FilterBySeverityDropdown/FilterBySeverityDropdown.feature',
+    '../Features/Device_Inventory/Device_Inventory_Admin.feature',
+    '../Features/Policies/*.feature',
+     '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
+     '../Features/DisplayConfiguration/DisplayConfiguration.feature',
+     '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature'
+
   ],
   cucumberOpts: {
 

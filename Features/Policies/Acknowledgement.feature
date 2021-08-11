@@ -1,27 +1,30 @@
-@ITOps_Admin   @ITOps_Milestone_2
+@ITOps_Admin  @ITOps_Milestone_2 @Policy
 
-Feature: Verify Failure policy details
-Feature Description: User verifies Failure policy
+Feature: Verify Acknowledgement policy details
+Feature Description: User verifies Acknowledgement policy
 
-        Scenario Outline: ITOps Admin creates Failure policy
-           
-              And "ITOps_Admin" navigate to Failure Policy
-              And Admin clicks on Add "Failure" Policy
-             When Admin enters "Failure" Policy Name as "<PolicyName>"
-              And Admin enters "Failure" Precedence as "<PolicyPrecedence>"
+        Scenario Outline: ITOps Admin creates Acknowledgement policy
+         Given ITOps "Admin" with username and password as "Itops_admin", "qa123" is in the home page
+             When "Admin" enters project name as "Automation_IB_16" in the search field
+              And "admin" clicks on project name "Automation_IB_16"
+              And "Admin" clicks on configuration tab
+              And "Admin" navigate to Acknowledgement Policy
+              And Admin clicks on Add "Acknowledgement" Policy
+             When Admin enters "Acknowledgement" Policy Name as "<PolicyName>"
+              And Admin enters "Acknowledgement" Precedence as "<PolicyPrecedence>"
               And Admin selects "policy" attribute as "<policyAtttribute>"
               And Admin selects "policy" value as "<PolicyValue>"
               And Admin clicks on Save and Add Rule button
              Then verify "success" toaster "<PolicyCreatedSuccessMessage>"
 
         Examples:
-                  | ProjectName   | PolicyName    | PolicyPrecedence | policyAtttribute    | PolicyValue | PolicyCreatedSuccessMessage  |
-                  | Automation_02 | FailurePolicy | 1                | Business Time Alert | True        | Policy successfully created. |
+                  | ProjectName   | PolicyName            | PolicyPrecedence | policyAtttribute    | PolicyValue | PolicyCreatedSuccessMessage  |
+                  | Automation_02 | AcknowledgementPolicy | 1                | Business Time Alert | True        | Policy successfully created. |
 
 
-        Scenario Outline: ITOps Admin adds Failure rule
+        Scenario Outline: ITOps Admin adds Acknowledgement rule
 
-             When Admin enters "Failure" rule name as "<RuleName>"
+             When Admin enters "Acknowledgement" rule name as "<RuleName>"
               And Admin selects "rule" attribute as "<ruleAtttribute>"
               And Admin selects "rule" value as "<ruleValue>"
               And Admin clicks on Save button
@@ -36,14 +39,14 @@ Feature Description: User verifies Failure policy
                   | CorrelationRule | Business Time Alert | True      | Rule Successfully Created. |
 
 
-        Scenario Outline: ITOps Admin edits existing Failure policy from viewMode
+        Scenario Outline: ITOps Admin edits existing acknowledgement policy from viewMode
 
-              And "ITOps_Admin" navigate to Failure Policy
+              And "Admin" navigate to Acknowledgement Policy
               And "Admin" clicks on policy "<PolicyName>"
               And Admin clicks on edit policy button
               And Admin enters "Alert Correlation" Policy Name as "<UpdatedPolicyName>"
               And Admin selects "policy" attribute as "<policyAtttribute>"
-              And Admin enters "policy" value as "<PolicyValue>"
+              And Admin selects "policy" value as "<PolicyValue>"
               And Admin clicks on Update Deatils
               And Admin clicks on Yes button in confirmation popup
              When clicks on Next button
@@ -56,13 +59,13 @@ Feature Description: User verifies Failure policy
              When Admin clicks on Done button
 
         Examples:
-                  | PolicyName    | UpdatedPolicyName | policyAtttribute | PolicyValue | UpdatedRuleName        | ruleAtttribute | ruleValue |
-                  | FailurePolicy | PolicynameUpdated | Alert Name       | 22          | CorrelationRuleUpdated | Alert Source   | Forescout |
+                  | PolicyName            | UpdatedPolicyName | policyAtttribute | PolicyValue | UpdatedRuleName        | ruleAtttribute | ruleValue |
+                  | AcknowledgementPolicy | PolicynameUpdated | Alert Source     | Forescout   | CorrelationRuleUpdated | Alert Source   | Forescout |
 
-        Scenario Outline: ITOps Admin edits existing Failure policy from Listing page
+        Scenario Outline: ITOps Admin edits existing acknowledgement policy from Listing page
 
 
-              And "ITOps_Admin" navigate to Failure Policy
+              And "Admin" navigate to Acknowledgement Policy
               And "Admin" clicks on edit icon in listing page "<PolicyName>"
               And Admin enters "Alert Correlation" Policy Name as "<UpdatedPolicyName>"
               And Admin selects "policy" attribute as "<policyAtttribute>"
@@ -85,7 +88,7 @@ Feature Description: User verifies Failure policy
 
         Scenario Outline: Admin deletes the existing policy
 
-              And "ITOps_Admin" navigate to Failure Policy
+              And "Admin" navigate to Acknowledgement Policy
               And "Admin" clicks on delete icon in listing page "<PolicyName>"
               And Admin clicks on Yes button in confirmation popup
 

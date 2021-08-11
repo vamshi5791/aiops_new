@@ -1,14 +1,10 @@
-@DisplayConfiguration @ITOps_Milestone_2
+@DisplayConfiguration @ITOps_Milestone_2 @ITOps_Admin
 Feature:  Display Configuration
  
 Feature Description : Verifying Display Configuration functionalities
         @Display
         Scenario Outline: Verify whether itops_admin is able to view display configuration settings
          
-            Given ITOps "admin" with username and password as "<UserName>", "<Password>" is in the home page
-             When "Admin" enters project name as "<ProjectName>" in the search field
-              And "admin" clicks on project name "<ProjectName>"
-              And "admin" navigate to Configuration section
               And "admin" clicks on Alert Console Display Configuration from LHS menu Settings
              Then "admin" verifies that Primary and secondary sections are present
               And "admin" verifies Up and Down arrows are present in both sections
@@ -99,7 +95,7 @@ Feature Description : Verifying Display Configuration functionalities
              Then "Itops_engineer" verifies that Primary and secondary sections are present
               And "Itops_engineer" verifies Up and Down arrows are present in both sections
               And "Itops_engineer" verifies left and right arrows are present
-              And "IE" clicks on logout button
+           
 
         Examples:
                   | UserName       | Password | ProjectName      |

@@ -24,7 +24,7 @@ Given('{string} unable to access dashboard', async function (string) {
 
 Given('{string} unable to access alerts section', async function (string) {
   // try {
-    await browser.wait(EC.invisibilityOf(objAlerts.btnselectAlerts), 10000);
+    await browser.wait(EC.invisibilityOf(objAlerts.btnSelectAlerts), 10000);
 
   // } 
   // catch (error) {
@@ -66,7 +66,7 @@ Given('{string} unable to access alerts section', async function (string) {
 
   When('{string} able to access alerts section', async function (string) {
     try {
-      await browser.wait(EC.visibilityOf(objAlerts.btnselectAlerts), 10000);
+      await browser.wait(EC.visibilityOf(objAlerts.btnSelectAlerts), 10000);
     } 
     catch (error) {
     throw "User is not able to access alerts section"

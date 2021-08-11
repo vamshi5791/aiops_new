@@ -33,6 +33,7 @@ When('{string} navigate to Alert Correlation Policy', async function (userrole) 
     try {
         await browser.wait(EC.visibilityOf(objPolicy.lnkAlertCorrelationPolicy));
         await objPolicy.correlationPolicyNavigation();
+        await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Alert Correlation Policy"]'))), 10000);
     }
     catch (error) {
         throw userrole + " not able to click on Alert Correlation Policy";
@@ -41,9 +42,9 @@ When('{string} navigate to Alert Correlation Policy', async function (userrole) 
 
 When('{string} navigate to Acknowledgement Policy', async function (userrole) {
     try {
-        // await browser.wait(EC.visibilityOf(objPolicy.lnkAcknowledgementPolicy));
-        await browser.sleep(5000)
+         await browser.wait(EC.visibilityOf(objPolicy.lnkAcknowledgementPolicy));
         await objPolicy.acknowledgementPolicyNavigation();
+        await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Acknowledgement Policy"]'))), 10000);
     }
     catch (error) {
         throw userrole + " not able to click on Acknowledgement Policy";
@@ -55,6 +56,7 @@ When('{string} navigate to Failure Policy', async function (userrole) {
         await browser.wait(EC.visibilityOf(objPolicy.lnkFailurePolicy));
 
         await objPolicy.failurePolicyNavigation();
+        await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Failure Policy"]'))), 10000);
     }
     catch (error) {
         throw userrole + " not able to click on Failure Policy";
@@ -65,6 +67,7 @@ When('{string} navigate to Recovery Policy', async function (userrole) {
     try {
         await browser.wait(EC.visibilityOf(objPolicy.lnkRecoveryPolicy));
         await objPolicy.recoveryPolicyNavigation();
+        await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Recovery Policy"]'))), 10000);
     }
     catch (error) {
         throw userrole + " not able to click on Failure Policy";
@@ -241,7 +244,7 @@ When('Admin clicks on Save button', async function () {
 
 When('Admin clicks on Activate Policy toggle button', async function () {
     try {
-        // await browser.wait(EC.invisibilityOf(objPolicy.tostMessage));
+         await browser.wait(EC.visibilityOf(objPolicy.tglbtnActivePolicy), 10000);
         await objPolicy.clickActivePolicyToggleButton();
     }
     catch (error) {
@@ -394,6 +397,7 @@ When('Admin clicks Add New Rule button', async function () {
 
 When('Admin clicks on edit policy button', async function () {
     try {
+        await browser.wait(EC.visibilityOf(objPolicy.btnEditPolicy), 10000);
         await objPolicy.clickOnEditPolicy();
     }
     catch (error) {

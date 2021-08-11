@@ -4,11 +4,13 @@ import chai from "chai";
 import { DisplayConfiguration } from "../../PageObjects/DisplayConfiguration";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { LogIn } from '../../PageObjects/LogIn';
+import { PolicyObjects } from '../../PageObjects/policyObjects';
 let objAlerts = new AlertsPage();
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
 let objLogIn = new LogIn();
 let objDisplayConfig = new DisplayConfiguration();
+let objPolicy = new PolicyObjects();
 var TestSource;
  
 // 1. Verify whether ITOps_admin is able to view display configuration settings
@@ -17,6 +19,9 @@ When('{string} navigate to Configuration section', async function (userName) {
  
   try {
     await objDisplayConfig.clickOnConfigurationTab();
+    await browser.wait(EC.visibilityOf(objPolicy.lnkAlertCorrelationPolicy));
+    await browser.wait(EC.visibilityOf(objPolicy.lnkAcknowledgementPolicy));
+    await browser.wait(EC.visibilityOf(objPolicy.lnkFailurePolicy));
   } catch (error) { 
     await console.log("Feature name : Display Configuration " + userName + " and Scenario name : Verify whether itops_admin is able to view display configuration settings")
     await console.log(error)

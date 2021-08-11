@@ -8,7 +8,7 @@ export class ProjectConfiguration {
     txtProjectname = element(by.xpath('//input[@name="pjctName"]'));
     txtDescription = element(by.xpath('//legend[text()="Project Description"]//following::textarea'));
     btnCreate = element(by.xpath('//span[text()="Create"]'));
-
+    btnUpdate = element(by.xpath('//span[text()="Update"]'));
     //General configuration            
     txtServiceNowHost = element(by.xpath('//legend[text()="Servicenow Host"]//following-sibling::input'));
     txtServiceUsername = element(by.xpath('//legend[text()="Servicenow Username"]//following-sibling::input'));
@@ -103,13 +103,16 @@ export class ProjectConfiguration {
         await this.txtProjectname.sendKeys(ProjectName)
     }
     async ProjectDescription(Description: string) {
+        //await this.txtDescription.clear();
         await this.txtDescription.sendKeys(Description)
     }
 
     async Create() {
         await this.btnCreate.click()
     }
-
+    async Update() {
+        await this.btnUpdate.click()
+    }
     // General Configuration
     async ServiceNowHost(ServiceNowHost: string) {
         await this.txtServiceNowHost.sendKeys(ServiceNowHost)

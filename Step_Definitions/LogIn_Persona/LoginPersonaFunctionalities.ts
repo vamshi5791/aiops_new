@@ -12,27 +12,27 @@ let objProjectConfiguration = new ProjectConfiguration();
 
 // All Login Persona Functionalities
 
-When('{string} clicks on edit configuration button', async function (userRole) {
-  try {
-    await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))), 100000);
-    await objProjectListingPage.EditConfiguration();
-  } 
-  catch (error) {
-  throw "User is not able to click on edit configuration button"
-  }
-});
+// When('{string} clicks on edit configuration button', async function (userRole) {
+//   try {
+//     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))), 100000);
+//     await objProjectListingPage.EditConfiguration();
+//   } 
+//   catch (error) {
+//   throw "User is not able to click on edit configuration button"
+//   }
+// });
 
-Then('{string} is taken to the master configuration page {string}', async function (userRole, MasterText) {
-  try {
-    await browser.wait(EC.visibilityOf(element(by.xpath('//label[text()="Master Configuration"]'))), 100000);
-    await element(by.xpath('//label[text()="Master Configuration"]')).getText().then(function (text) {
-      expect(text).to.include(MasterText);
-    });
-  } 
-  catch (error) {
-  throw "User is not taken to the master configuration page"
-  }
-});
+// Then('{string} is taken to the master configuration page {string}', async function (userRole, MasterText) {
+//   try {
+//     await browser.wait(EC.visibilityOf(element(by.xpath('//label[text()="Master Configuration"]'))), 100000);
+//     await element(by.xpath('//label[text()="Master Configuration"]')).getText().then(function (text) {
+//       expect(text).to.include(MasterText);
+//     });
+//   } 
+//   catch (error) {
+//   throw "User is not taken to the master configuration page"
+//   }
+// });
 
 Then('{string} verifies edit configuration button is not present', async function (userRole) {
   try {
@@ -52,7 +52,17 @@ Then('{string} verifies edit configuration button is not present', async functio
     }
   });
 
-
+  When('{string} navigates to ust home page', async function (string) {
+    try {
+      await objProjectListingPage.clickOnHomePageButton();
+      await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))));
+      await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Create New Project"]'))));
+      await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Edit Configuration"]'))));
+    } 
+    catch (error) {
+    throw "User is able to create a new project"
+    }
+  });
   When('{string} clicks on Update', async function (string) {
     try {
     await objProjectConfiguration.Update();
@@ -64,9 +74,9 @@ Then('{string} verifies edit configuration button is not present', async functio
   });
 
 
-  When('{string} unable to access dot menu options', async function (string) {
-    await browser.wait(EC.visibilityOf(objProjectListingPage.btnDisable), 10000);
+  // When('{string} unable to access dot menu options', async function (string) {
+  //   await browser.wait(EC.visibilityOf(objProjectListingPage.btnDisable), 10000);
 
-  });
+  // });
 
   

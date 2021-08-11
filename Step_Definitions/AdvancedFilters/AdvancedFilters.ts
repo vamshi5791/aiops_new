@@ -242,9 +242,9 @@ Then('{string} Verifies Warning filter is not applied', async function (userRole
 
 });
 
-Then('{string} opens infrastructure page', async function (string) {
-  await objAlerts.Infrastructure()
-});
+// Then('{string} opens infrastructure page', async function (string) {
+//   await objAlerts.Infrastructure()
+// });
 //Gopi 
 
 //Verify the advanced filter having 3 sections

@@ -40,7 +40,7 @@ export class PolicyObjects {
     btnAddNewRule = element(by.xpath('//div[text()=" Add New Rule "]'));
 
 
-    tglbtnActivePolicy = element(by.xpath('//div[text()="Activate Policy"]//following::span[@class="smo-inputswitch-slider smo-inputswitch-slider-default smo-inputswitch-slider-default-sm input-switch-small"]'));
+    tglbtnActivePolicy = element(by.xpath('//div[text()="Activate Policy"]//following::smo-input-switch'));
     btnYes = element(by.xpath('//span[text()="Yes"]'));
     btnDone = element(by.xpath('//span[text()="Done"]'));
 
@@ -61,7 +61,7 @@ export class PolicyObjects {
 
     tgbbthStatus = element(by.xpath('//span[@class="smo-inputswitch-slider smo-inputswitch-slider-default smo-inputswitch-slider-default-sm input-switch-small"]'));
 
-    txtValue = element(by.xpath('//input[@placeholder="Enter a value"]'));
+    txtValue = element(by.xpath('//input[@label="Value *"]'));
 
 
 

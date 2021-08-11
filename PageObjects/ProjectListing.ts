@@ -14,12 +14,17 @@ export class ProjectListingPage {
   btnLogOut = element(by.xpath('//span[text()="Logout"]'));
   btnThreeDots = element(by.xpath('//span[@class="status-warning nowrap-space ng-star-inserted"]//following::span'));
   btnClosePopUp = element(by.xpath('//div[@class="smo-toast-message smo-shadow ng-trigger ng-trigger-messageState smo-toast-shadow-sm smo-toast-message-success-sm smo-toast-message-success"]//following::a'));
-  
+  btnHomePage = element(by.className('smartops-logo-img'));
+
   async Project_search(ProjectName: string) {
     await this.txtsearch.sendKeys(ProjectName);
     await browser.sleep(2000);
     await browser.actions().sendKeys(protractor.Key.ENTER).perform();
+    await browser.sleep(2000);
 
+  }
+  async clickOnHomePageButton() {
+    await this.btnHomePage.click();
   }
   async ClickOnProjectCreateButton() {
     await this.btnClickOnCreateProject.click();

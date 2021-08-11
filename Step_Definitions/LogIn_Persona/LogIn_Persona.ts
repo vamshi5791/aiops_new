@@ -17,7 +17,6 @@ When('{string} clicks on deactivate project', async function (userRole) {
     await browser.sleep(2000)
     await objProjectListing.Deactivate();
   } catch (error) {
-    await objLogIn.logOutUser();
     await console.log("Feature name : Login Persona with " + userRole + " and Scenario name : Disable the Project")
     await console.log(error)
     throw "user is unable to deactivate project"
@@ -29,7 +28,6 @@ When('{string} clicks on yes', async function (userRole) {
   try {
     await objProjectListing.ClickOnYes();
   } catch (error) {
-    await objLogIn.logOutUser();
     await console.log("Feature name : Login Persona with " + userRole + " and Scenario name : Disable the Project")
     await console.log(error)
     throw "user is unable to click on confirm the action"
@@ -47,8 +45,6 @@ Then('Success message {string} must be shown once project is {string}', async fu
     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
 
   } catch (error) {
-    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-    await objLogIn.logOutUser();
     await console.log("Feature name : Login Persona and Scenario name : " + Action + " the Project")
     await console.log(error)
     throw "Unable to " + Action + " project"
@@ -64,7 +60,6 @@ When('{string} clicks dot menu icon to delete project', async function (string) 
     await browser.sleep(2000)
     await objProjectListing.clickOnThreeDots();
   } catch (error) {
-    await objLogIn.logOutUser();
     await console.log("Feature name : Login Persona and Scenario name : Delete Project")
     await console.log(error)
     throw "user is unable to delete project"
@@ -75,7 +70,6 @@ When('{string} clicks on delete project', async function (userRole) {
   try {
     await objProjectListing.DeleteProject();
   } catch (error) {
-    await objLogIn.logOutUser();
     await console.log("Feature name : Login Persona with " + userRole + " and Scenario name : delete Project")
     await console.log(error)
     throw "user is unable to delete project"
@@ -93,7 +87,6 @@ When('{string} clicks on edit configuration button', async function (userRole) {
     await browser.sleep(3000)
     await objProjectListing.EditConfiguration();
   } catch (error) {
-    await objLogIn.logOutUser();
     await console.log("Feature name : Login Persona with " + userRole + " and Scenario name : master configuration")
     await console.log(error)
     throw "user is unable to click on edit configuration button"
@@ -108,7 +101,6 @@ Then('{string} is taken to the master configuration page {string}', async functi
       expect(text).to.include(MasterText);
     });
   } catch (error) {
-    await objLogIn.logOutUser();
     await console.log("Feature name : Login Persona with " + userRole + " and Scenario name : master configuration")
     await console.log(error)
     throw "user is unable to access master configuration page"
