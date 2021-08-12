@@ -44,7 +44,7 @@ Then('verify search result should contain all the alerts which has alert metric 
   } catch (error) {
     throw ""
   }
-  await browser.wait(EC.visibilityOf(objAlerts.txtRowsPerPage), 10000);
+  // await browser.wait(EC.visibilityOf(objAlerts.txtRowsPerPage), 10000);
 });
 
 //Search by alert name
@@ -60,11 +60,5 @@ Then('verify search result should contain all the alerts which has alert name ma
   } catch (error) {
     throw ""
   }
-  await browser.wait(EC.visibilityOf(objAlerts.txtRowsPerPage), 10000);
+  // await browser.wait(EC.visibilityOf(objAlerts.txtRowsPerPage), 10000);
 });
-
-
-
-
-
-

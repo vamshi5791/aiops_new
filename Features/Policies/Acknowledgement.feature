@@ -4,9 +4,7 @@ Feature: Verify Acknowledgement policy details
 Feature Description: User verifies Acknowledgement policy
 
         Scenario Outline: ITOps Admin creates Acknowledgement policy
-         Given ITOps "Admin" with username and password as "Itops_admin", "qa123" is in the home page
-             When "Admin" enters project name as "Automation_IB_16" in the search field
-              And "admin" clicks on project name "Automation_IB_16"
+
               And "Admin" clicks on configuration tab
               And "Admin" navigate to Acknowledgement Policy
               And Admin clicks on Add "Acknowledgement" Policy
