@@ -1,4 +1,5 @@
-@ProjectCreation @ITOps_Milestone_1
+@ProjectInstallation  @ITOps_InstallationEngineer @Regression
+
 Feature: Project Installation with ITOps IE role
 
 Feature Description Once the login is done with ITOps_IE role,

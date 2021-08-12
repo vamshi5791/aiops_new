@@ -1,13 +1,13 @@
-@ITOps_Admin   @ITOps_Milestone_2
+@RecoveryPolicy @ITOps_Admin @Regression
 
-Feature: Verify Recovery policy details
-Feature Description: User verifies Recovery policy
+Feature: Verify Recovery Policy details
+Feature Description: ITOps Admin verifies Recovery policy operations
 
-        Scenario Outline: ITOps Admin creates Recovery policy
+        Scenario Outline: ITOps Admin creates Recovery Policy
            
-              And "ITOps_Admin" navigate to Recovery Policy
+              When "Admin" navigate to Recovery Policy
               And Admin clicks on Add "Recovery" Policy
-             When Admin enters "Recovery" Policy Name as "<PolicyName>"
+             And Admin enters "Recovery" Policy Name as "<PolicyName>"
               And Admin enters "Recovery" Precedence as "<PolicyPrecedence>"
               And Admin selects "policy" attribute as "<policyAtttribute>"
               And Admin selects "policy" value as "<PolicyValue>"
@@ -19,7 +19,7 @@ Feature Description: User verifies Recovery policy
                   | Automation_02 | RecoveryPolicy | 1                | Business Time Alert | True        | Policy successfully created. |
 
 
-        Scenario Outline: ITOps Admin adds Recovery rule
+        Scenario Outline: ITOps Admin adds Recovery Rule
 
              When Admin enters "Recovery" rule name as "<RuleName>"
               And Admin selects "rule" attribute as "<ruleAtttribute>"
@@ -28,7 +28,7 @@ Feature Description: User verifies Recovery policy
              Then verify "success" toaster "<RuleCreatedSuccessMessage>"
              When Admin clicks on Activate Policy toggle button
               And Admin clicks on Yes button in confirmation popup
-             When Admin clicks on Done button
+             And Admin clicks on Done button
              Then verify column values in Policy listing page
 
         Examples:
@@ -36,9 +36,9 @@ Feature Description: User verifies Recovery policy
                   | CorrelationRule | Business Time Alert | True      | Rule Successfully Created. |
 
 
-        Scenario Outline: ITOps Admin edits existing Recovery policy from viewMode
+        Scenario Outline: ITOps Admin edits existing Recovery Policy from viewMode
 
-              And "ITOps_Admin" navigate to Recovery Policy
+              When "Admin" navigate to Recovery Policy
               And "Admin" clicks on policy "<PolicyName>"
               And Admin clicks on edit policy button
               And Admin enters "Alert Correlation" Policy Name as "<UpdatedPolicyName>"
@@ -46,46 +46,46 @@ Feature Description: User verifies Recovery policy
               And Admin enters "policy" value as "<PolicyValue>"
               And Admin clicks on Update Deatils
               And Admin clicks on Yes button in confirmation popup
-             When clicks on Next button
+             And clicks on Next button
               And clicks on Edit rule icon
-             When Admin enters "Alert Correlation" rule name as "<UpdatedRuleName>"
+             And Admin enters "Alert Correlation" rule name as "<UpdatedRuleName>"
               And Admin selects "rule" attribute as "<ruleAtttribute>"
               And Admin selects "rule" value as "<ruleValue>"
               And click on Update rule button
               And Admin clicks on Yes button in confirmation popup
-             When Admin clicks on Done button
+             And Admin clicks on Done button
 
         Examples:
                   | PolicyName     | UpdatedPolicyName | policyAtttribute | PolicyValue | UpdatedRuleName        | ruleAtttribute | ruleValue |
                   | RecoveryPolicy | PolicynameUpdated | Alert Name       | 22          | CorrelationRuleUpdated | Alert Source   | Forescout |
 
-        Scenario Outline: ITOps Admin edits existing Recovery policy from Listing page
+        Scenario Outline: ITOps Admin edits existing Recovery Policy from Listing page
 
 
-              And "ITOps_Admin" navigate to Recovery Policy
+              When "Admin" navigate to Recovery Policy
               And "Admin" clicks on edit icon in listing page "<PolicyName>"
               And Admin enters "Alert Correlation" Policy Name as "<UpdatedPolicyName>"
               And Admin selects "policy" attribute as "<policyAtttribute>"
               And Admin selects "policy" value as "<PolicyValue>"
               And Admin clicks on Update Deatils
               And Admin clicks on Yes button in confirmation popup
-             When clicks on Next button
+             And clicks on Next button
               And clicks on Edit rule icon
-             When Admin enters "Alert Correlation" rule name as "<UpdatedRuleName>"
+             And Admin enters "Alert Correlation" rule name as "<UpdatedRuleName>"
               And Admin selects "rule" attribute as "<ruleAtttribute>"
               And Admin selects "rule" value as "<ruleValue>"
               And click on Update rule button
               And Admin clicks on Yes button in confirmation popup
-             When Admin clicks on Done button
+             And Admin clicks on Done button
 
         Examples:
                   | PolicyName        | UpdatedPolicyName  | policyAtttribute    | PolicyValue | UpdatedRuleName         | ruleAtttribute      | ruleValue |
                   | PolicynameUpdated | PolicynameUpdated1 | Business Time Alert | False       | CorrelationRuleUpdated1 | Business Time Alert | False     |
 
 
-        Scenario Outline: Admin deletes the existing policy
+        Scenario Outline: Admin deletes the existing Recovery Policy
 
-              And "ITOps_Admin" navigate to Recovery Policy
+              When "Admin" navigate to Recovery Policy
               And "Admin" clicks on delete icon in listing page "<PolicyName>"
               And Admin clicks on Yes button in confirmation popup
 

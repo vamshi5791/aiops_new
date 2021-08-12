@@ -1,7 +1,8 @@
-@ITOps_Admin
-Feature: Login with all ITOps user roles
+@Login @ITOpsEngineer @Regression
 
-Feature Description : Verifying Login functionality for all ITOps user roles
+Feature: Login with ITOps Engineer
+
+Feature Description : Verifying Login functionality for ITOps Engineer
        
         Scenario Outline: Successful Login with ITOps user roles
 

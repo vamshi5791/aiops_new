@@ -1,4 +1,5 @@
-@ProjectCreation @ITOps_Milestone_1
+@ProjectInstallation  @ITOps_Admin @Regression
+
 Feature: Project Installation with ITOps Admin role
 
      Feature Description : Once the login is done with ITOps_Admin role,
@@ -8,7 +9,7 @@ Feature: Project Installation with ITOps Admin role
      @CreateProject
      Scenario Outline: Project Creation
      
-          When "admin" navigates to ust home page
+          When "Admin" navigates to ust home page
           When "Admin" clicks on create project button
           And "Admin" enters project name as "<ProjectName>"
           And "Admin" enters description as "<Description>"

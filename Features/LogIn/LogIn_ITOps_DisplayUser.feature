@@ -1,9 +1,10 @@
-@ITOps_Admin
-Feature: Login with all ITOps user roles
+@Login @ITOps_DisplayUser @Regression
 
-Feature Description : Verifying Login functionality for all ITOps user roles
+Feature: Login with ITOps Display User
+
+Feature Description : Verifying Login functionality for ITOps Display User
        
-        Scenario Outline: Successful Login with ITOps user roles
+        Scenario Outline: Successful Login with ITOps Display User
 
             Given User with ITOps role renders the URL
              When user enters Username as "<UserName>", Password as "<Password>" and clicks on Login button

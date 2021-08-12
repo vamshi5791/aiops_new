@@ -1,15 +1,15 @@
-@ITOps_Engineer @Regression
+@AcknowledgementPolicy @ITOps_Engineer @Regression
 
-Feature: Acknowledgement Policy
+Feature: Verify Acknowledgement Policy
       
         Scenario Outline: ITOPs Engineer should be able to check Acknowledgement Policy details
 
             
-              And "ITOPsEngineer" clicks on configuration
-              And "ITOPsEngineer" navigate to Acknowledgement Policy
-             Then "ITOPsEngineer" verifies Add policy button
-             When "ITOPsEngineer" clicks on policy "<policyname>"
-             When click on cancel button
+              When "ITOpsEngineer" clicks on configuration
+              And "ITOpsEngineer" navigate to Acknowledgement Policy
+             Then "ITOpsEngineer" verifies Add policy button
+             When "ITOpsEngineer" clicks on policy "<policyname>"
+             And click on cancel button
 
         Examples:
                   | policyname            |
