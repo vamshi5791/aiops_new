@@ -14,10 +14,11 @@ var testSource;
 
 When('{string} clicks on Alerts page', async function (userName) {
   try {
+    await browser.sleep(5000)
     await objAlerts.selectAlerts();
   }
   catch (error) {
-    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having 3 sections")
+    await console.log("Feature name : Advanced Filters " + userName + " and Action name : Clicks on Alerts page ")
     await console.log(error)
     throw "User is not able to click on Alerts page"
   }
@@ -247,15 +248,15 @@ Then('{string} Verifies Warning filter is not applied', async function (userRole
 // });
 //Gopi 
 
-//Verify the advanced filter having 3 sections
+//Verify the advanced filter having Advanced filters, Source and Resource  sections
 
 Then('{string} verifies heading as {string}', async function (userName, AdvancedFilters) {
   try {
     await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
   } catch (error) {
-    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having 3 sections")
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having  Advanced filter heading")
     await console.log(error)
-    throw "Advanced Filter section is not available in the advanced filter page"
+    throw "Advanced Filter heading is not available in the advanced filter page"
   }
   
 });
@@ -266,7 +267,7 @@ Then('{string} verifies Source and Resource section heading as {string}', async 
     await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
   
   } catch (error) {
-    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having 3 sections")
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having Source and Resource sections")
     await console.log(error)
     throw "Source and Resource section is not available in the advanced filter page"
   }
@@ -279,14 +280,14 @@ Then('{string} verifies State and Status,Date and Time sections heading as {stri
   try {
     await browser.wait(EC.visibilityOf(objAlerts.txtStateAndStatus));
   } catch (error) {
-    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having 3 sections")
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having state and status sections")
     await console.log(error)
     throw "State and Status section is not present in the advanced filter page"
   }
   try {
     await browser.wait(EC.visibilityOf(objAlerts.txtDateAndTime));
   } catch (error) {
-    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having 3 sections")
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having date and time sections")
     await console.log(error)
     throw "Date and Time section is not present in the advanced filter page"
   }

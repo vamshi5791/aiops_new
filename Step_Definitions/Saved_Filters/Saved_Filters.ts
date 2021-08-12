@@ -288,9 +288,12 @@ Then('verify closed chips should not be displayed in UI', async function () {
 
 // Saved filters availability
 
-Then('verify all saved filters are displayed on left side {string}', async function (FilterName) {
+Then('verify all saved filters are displayed on left side {string}', async function (FIlterName) {
   try {
-    await objAlerts.savedFilterTitle(FilterName);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="'+FIlterName+'"]'))), 10000);
+    await browser.sleep(5000);
+    await objAlerts.savedFilterTitle(FIlterName);
+
   } catch (error) {
     await console.log("Feature name : Saved Filters and Scenario name :  ")
     await console.log(error)

@@ -11,6 +11,7 @@ Feature Description: Admin navigates to alert page,
              Then "Admin" verifies heading as "<AdvancedFilters>"
               And "Admin" verifies Source and Resource section heading as "<SourceAndResource>"
               And "Admin" verifies State and Status,Date and Time sections heading as "<StateAndStatus>" and "<DataAndTime>"
+
         Examples:
                   | UserName    | Password | ProjectName      | AdvancedFilters  | SourceAndResource    | StateAndStatus   | DataAndTime   |
                   | Itops_admin | qa123    | Automation_IB_16 | Advanced Filters | Source and Resources | State and Status | Date and Time |

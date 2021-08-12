@@ -38,7 +38,7 @@ export let config: Config = {
 
     '../Features/LogIn/LogIn_Admin.feature',
     '../Features/LogIn_Persona/LoginPersona_ITOpsAdmin.feature',
-    '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
+    // '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
     '../Features/SavedFilters/SavedFilters.feature',
     '../Features/AdvancedFilters/AdvancedFilter.feature',
     '../Features/FilterBySeverityDropdown/FilterBySeverityDropdown.feature',
@@ -54,26 +54,26 @@ export let config: Config = {
     '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
     '../Features/Pushing_Alerts/PushingAlerts.feature',
 
-    '../Features/LogIn/LogIn_ITOps_Engineer.feature',
-    '../Features/LogIn_Persona/LoginPersona_ITOpsEngineer.feature',
-    '../Features/Device_Inventory/Device_Inventory_Engineer.feature',
-    '../Features/Policies/AlertCorrelation_Engineer.feature',
-    '../Features/Policies/Acknowledgement_Engineer.feature',
-    '../Features/Policies/Failure_Engineer.feature',
-    '../Features/Policies/Recovery_Engineer.feature',
-    '../Features/SeverityMapping/Severity_Mapping_ITOpsEngineer.feature',
-    '../Features/DisplayConfiguration/DisplayConfiguration_Engineer.feature',
-    '../Features/TicketingThreshold/TicketingThreshold_ITOpsEngineer.feature',
+    // '../Features/LogIn/LogIn_ITOps_Engineer.feature',
+    // '../Features/LogIn_Persona/LoginPersona_ITOpsEngineer.feature',
+    // '../Features/Device_Inventory/Device_Inventory_Engineer.feature',
+    // '../Features/Policies/AlertCorrelation_Engineer.feature',
+    // '../Features/Policies/Acknowledgement_Engineer.feature',
+    // '../Features/Policies/Failure_Engineer.feature',
+    // '../Features/Policies/Recovery_Engineer.feature',
+    // '../Features/SeverityMapping/Severity_Mapping_ITOpsEngineer.feature',
+    // '../Features/DisplayConfiguration/DisplayConfiguration_Engineer.feature',
+    // '../Features/TicketingThreshold/TicketingThreshold_ITOpsEngineer.feature',
 
-    '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
-    '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
+    // '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
+    // '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
 
-    '../Features/LogIn/LogIn_ITOps_Visitor.feature',
-    '../Features/LogIn_Persona/LoginPersona_ITOpsVisitor.feature',
+    // '../Features/LogIn/LogIn_ITOps_Visitor.feature',
+    // '../Features/LogIn_Persona/LoginPersona_ITOpsVisitor.feature',
 
-    '../Features/LogIn/LogIn_IE.feature',
-    '../Features/LogIn_Persona/LoginPersona_IE.feature',
-    '../Features/ProjectInstallation/ProjectInstallation_IE.feature'
+    // '../Features/LogIn/LogIn_IE.feature',
+    // '../Features/LogIn_Persona/LoginPersona_IE.feature',
+    // '../Features/ProjectInstallation/ProjectInstallation_IE.feature'
 
   ],
   cucumberOpts: {
