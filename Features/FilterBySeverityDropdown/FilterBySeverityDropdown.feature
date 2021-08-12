@@ -1,4 +1,5 @@
-@FilterBySeverityDropdown @ITOps_Milestone_2 @ITOps_Admin
+@FilterBySeverityDropdown @ITOps_Admin @Regression
+
 
 Feature: Verify filter by severity drop down
 

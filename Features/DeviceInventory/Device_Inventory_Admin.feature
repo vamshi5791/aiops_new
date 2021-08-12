@@ -1,4 +1,4 @@
-@Device_Inventory_ITOpsAdmin @ITOps_Admin @Regression
+@DeviceInventory @ITOps_Admin @Regression
 
 Feature: Device Inventory Features
 
@@ -6,9 +6,9 @@ Feature Description : Device Inventory Features
 
         Scenario Outline: Itops Admin searches the device with existing device name.
 
-             When "admin" navigates to ust home page
-             When "Admin" enters project name as "<ProjectName>" in the search field
-              And "admin" clicks on project name "<ProjectName>"
+             When "Admin" navigates to ust home page
+             And "Admin" enters project name as "<ProjectName>" in the search field
+              And "Admin" clicks on project name "<ProjectName>"
               And "ITOps_Admin" opens infrastructure page
               And "ITOps_Admin" searches device name "<DeviceName>"
              Then Device details should be displayed "<Device>"
@@ -20,7 +20,7 @@ Feature Description : Device Inventory Features
 
         Scenario Outline: Itops Admin searches the device with Non Existing device name.
 
-              And "ITOps_Admin" opens infrastructure page
+              When "ITOps_Admin" opens infrastructure page
               And "ITOps_Admin" searches device name "<DeviceName>"
              Then Device details should not be displayed "<DeviceDetails>"
 
@@ -31,7 +31,7 @@ Feature Description : Device Inventory Features
 
         Scenario Outline:  ITOps Admin view Device Details
 
-              And "ITOps_Admin" opens infrastructure page
+              When "ITOps_Admin" opens infrastructure page
               And "ITOps_Admin" searches device name "<DeviceName>"
               And "ITOps_Admin" clicks on resource name in the device inventory list "<ResourceName>"
              Then verifying the resource name is same as in previous page "<ResourceName>"
@@ -45,7 +45,7 @@ Feature Description : Device Inventory Features
 
         Scenario Outline: ITOps Admin Adds New Device To The System
 
-              And "ITOps_Admin" opens infrastructure page
+              When "ITOps_Admin" opens infrastructure page
               And "ITOps_Admin" clicks on add device option
               And "ITOps_Admin" enters resource name "<ResourceName>"
               And "ITOps_Admin" enters resource type "<ResourceType>"
@@ -62,7 +62,7 @@ Feature Description : Device Inventory Features
 
         Scenario Outline: Itops Admin updates the device in the device inventory.
 
-              And "ITOps_Admin" opens infrastructure page
+              When "ITOps_Admin" opens infrastructure page
               And "ITOps_Admin" searches device name "<DeviceName>"
               And "ITOps_Admin" clicks on resource name "<ResourceName>"
               And "ITOps_Admin" edit the resource type "<EditResourceType>"

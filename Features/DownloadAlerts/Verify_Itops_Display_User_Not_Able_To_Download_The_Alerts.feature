@@ -1,4 +1,5 @@
-@Verify_Itops_Display_User_Not_Able_To_Download_The_Alerts  @ITOps_Milestone_2
+@VerifyItopsDisplayUserNotAbleToDownloadTheAlerts  @ITOps_DisplayUser @Regression
+
 
 Feature: Verify_Itops_Display_User_Not_Able_To_Download_The_Alerts
 

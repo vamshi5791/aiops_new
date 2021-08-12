@@ -1,4 +1,4 @@
-@InfrastructureTopology_ITOpsEngineer  @ITOps_Milestone_2
+@InfrastructureTopology @ITOpsEngineer  @Regression
 Feature: Device Inventory Features
 
       Feature Description : Device Inventory Features

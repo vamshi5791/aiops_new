@@ -1,4 +1,5 @@
-@InfrastructureTopology_ITOpsAdmin @ITOps_Milestone_2
+@InfrastructureTopology @ITOpsAdmin @Regression
+
 Feature: Device Inventory Features
 
   Feature Description : Device Inventory Features
@@ -24,10 +25,10 @@ Feature: Device Inventory Features
   # | Itops_admin    | qa123          | Automation_02 | Automation_02   |
 
 
-  @ITOps_Admin_Search_With_Non_Existing_Device_Name
-  Scenario Outline: ITOps_Admin_Search_With_Non_Existing_Device_Name
+  @ITOpsAdminSearchWithNonExistingDeviceName
+  Scenario Outline: ITOpsAdminSearchWithNonExistingDeviceName
 
-    And "ITOps_Admin" clicks on Topology icon
+    When "ITOps_Admin" clicks on Topology icon
     And "ITOps_Admin" searches device name "<DeviceName>"
     Then device should not be available "<Device>"
     Then click on logout button
@@ -42,7 +43,7 @@ Feature: Device Inventory Features
 # @ITOps_Admin_Search_With_Existing_Device_Name
 # Scenario Outline: ITOps_Admin_Search_With_Existing_Device_Name
 
-# And "ITOps_Admin" clicks on Topology icon
+# When "ITOps_Admin" clicks on Topology icon
 #     And "ITOps_Admin" searches device name "<DeviceName>"
 #     Then device should be available "<Device>"
 #     Then click on logout button
@@ -57,7 +58,7 @@ Feature: Device Inventory Features
 # @Delete_Topology
 # Scenario: Delete_Topology View
 
-# And "ITOps_Admin" clicks on Topology icon
+# When "ITOps_Admin" clicks on Topology icon
 #     And "ITOps_Admin" clicks the delete topology icon
 #     And "ITOps_Admin" clicks on yes for conformation
 
