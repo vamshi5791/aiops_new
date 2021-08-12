@@ -11,12 +11,14 @@ var EC = browser.ExpectedConditions;
 
 
 
-When('{string} navigate to Ticketing Threshold', async function (userrole) {
+When('{string} navigate to Ticketing Threshold', async function (userRole) {
     try {
         await browser.sleep(2000);
         await objTicketingThreshold.clickOnTicketingThreshold();
     } 
       catch (error) {
+        await console.log("Feature name : Ticketing Threshold " + userRole + " and Scenario name : Add New Ticketing Threshold ")
+        await console.log(error)
         throw console.error
     }
 });
@@ -27,6 +29,8 @@ When('Admin enter clicks on Add New Threshold button', async function(){
         await objTicketingThreshold.clickOnAddNewThresholdButton();
     } 
       catch (error) {
+        await console.log("Feature name : Ticketing Threshold and Scenario name : Add New Ticketing Threshold ")
+        await console.log(error)
         throw console.error
     }
 });
@@ -36,6 +40,8 @@ When('Admin selects Source {string}', async function(source){
         await objTicketingThreshold.selectSource(source);
     } 
       catch (error) {
+        await console.log("Feature name : Ticketing Threshold and Scenario name : Add New Ticketing Threshold ")
+        await console.log(error)
         throw console.error
     }
 });
@@ -45,6 +51,8 @@ When('Admin enters Cluster Size {string}', async function(clusterSize){
         await objTicketingThreshold.enterCluserSize(clusterSize);
     } 
       catch (error) {
+        await console.log("Feature name : Ticketing Threshold and Scenario name : Add New Ticketing Threshold ")
+        await console.log(error)
         throw console.error
     }
 });
@@ -54,6 +62,8 @@ When('Admin enters Time Interval {string}', async function(timeinterval){
         await objTicketingThreshold.enterTimeInterval(timeinterval);
     } 
       catch (error) {
+        await console.log("Feature name : Ticketing Threshold and Scenario name : Add New Ticketing Threshold ")
+        await console.log(error)
         throw console.error
     }
 });
@@ -64,6 +74,8 @@ When('Admin clicks on Add Threshold button', async function(){
         await browser.sleep(15000);
     } 
       catch (error) {
+        await console.log("Feature name : Ticketing Threshold  and Scenario name : Add New Ticketing Threshold ")
+        await console.log(error)
         throw console.error
     }
 });
@@ -81,6 +93,8 @@ Then('Verify Add New Threshold button for ITOps Engineer', async function(){
       })
     } 
       catch (error) {
+        await console.log("Feature name : Ticketing Threshold and Scenario name : Add New Ticketing Threshold ")
+        await console.log(error)
         throw console.error
     }
 });

@@ -30,6 +30,8 @@ Then('Device details should be displayed {string}', async function (Device) {
   });
   // } 
   // catch (error) {
+    // await console.log("Feature name : Device Inventory and Scenario name :  ")
+    // await console.log(error)
   // throw "Device details are not displayed"
   // }
 });
@@ -43,6 +45,8 @@ Then('Device details should not be displayed {string}', async function (Device) 
     });
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory and Scenario name : ")
+    await console.log(error)
     throw "Device details are displayed"
   }
 });
@@ -52,6 +56,8 @@ Then('Verifies that Upload Icon is not present', async function () {
     await browser.wait(EC.invisibilityOf(element(by.xpath('//span[@class="smo smo-upload-regular"]'))), 1000);
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory and Scenario name : ")
+    await console.log(error)
     throw "Upload Icon is present"
   }
 
@@ -62,6 +68,8 @@ When('{string} clicks on resource name in the device inventory list {string}', a
     await objInfrastructurePage.ResourceName(ResourceName);
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
+    await console.log(error)
     throw "Unable to click on resource name in the device inventory list"
   }
 });
@@ -73,6 +81,8 @@ Then('verifying the resource name is same as in previous page {string}', async f
     });
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory and Scenario name : ")
+    await console.log(error)
     throw "Resource name is not same as Resource name in Device details page"
   }
 });
@@ -83,6 +93,8 @@ Then('{string} navigates back to device inventory page', async function (userRol
 
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
+    await console.log(error)
     throw "User is not able to navigate back to the Device Inventory page"
   }
 });
@@ -93,6 +105,8 @@ When('{string} clicks on add device option', async function (userRole) {
 
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
+    await console.log(error)
     throw "User is not able to click the add device option"
   }
 });
@@ -102,6 +116,8 @@ When('{string} enters resource name {string}', async function (userRole, Resourc
     await objInfrastructurePage.EnterResourceName(ResourceName);
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
+    await console.log(error)
     throw "User is not able to enter resource name feild"
   }
 });
@@ -112,6 +128,8 @@ When('{string} enters resource type {string}', async function (userRole, Resourc
 
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
+    await console.log(error)
     throw "User is not able to enter the resource type feild"
   }
 });
@@ -121,6 +139,8 @@ When('{string} enters site {string}', async function (userRole, EnterSite) {
     await objInfrastructurePage.EnterSite(EnterSite);
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
+    await console.log(error)
     throw "User is not able to enters the site feild"
   }
 });
@@ -131,6 +151,8 @@ When('{string} enters country {string}', async function (userRolestring, EnterCo
     await objInfrastructurePage.EnterCountry(EnterCountry);
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory and Scenario name : ")
+    await console.log(error)
     throw "User is not able to enter country feild"
   }
 });
@@ -140,6 +162,8 @@ When('{string} enters region {string}', async function (userRole, Region) {
     await objInfrastructurePage.EnterRegion(Region);
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
+    await console.log(error)
     throw "User is not able to enter the region"
   }
 });
@@ -149,6 +173,8 @@ When('{string} clicks on add device', async function (userRole) {
     await objInfrastructurePage.AddDeviceTOList();
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
+    await console.log(error)
     throw "User is not able to click on add device button"
   }
 });
@@ -166,6 +192,8 @@ Then('Success toaster must be shown and device must be added to the list {string
     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory and Scenario name : ")
+    await console.log(error)
     throw "Device is not added to the list"
   }
 });
@@ -176,6 +204,8 @@ Then('{string} unable to find add device option', async function (userRole) {
     await browser.wait(EC.invisibilityOf(element(by.xpath('//span[text()="Add Device"]'))), 1000);
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
+    await console.log(error)
     throw "User is not able to render the URL"
   }
 });
@@ -188,6 +218,8 @@ When('{string} clicks on resource name {string}', async function (userRole, Reso
     await objInfrastructurePage.ResourceName(ResourceName);
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
+    await console.log(error)
     throw "User is not able to click on resource name"
   }
 });
@@ -197,6 +229,8 @@ When('{string} edit the resource type {string}', async function (userRole, EditR
     await objInfrastructurePage.EditResourceType(EditResourceType);
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
+    await console.log(error)
     throw "User is not able to edit the resource type"
   }
 });
@@ -206,6 +240,8 @@ Then('{string} verifies the update button is visible', async function (userRole)
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Update Device"]'))), 100000);
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
+    await console.log(error)
     throw "Update button is not visible"
   }
 });
@@ -218,6 +254,8 @@ When('{string} unable to edit the resource type', async function (string) {
     await browser.wait(EC.invisibilityOf(element(by.xpath('//div[text()="RESOURCE TYPE"]//following::input[@type="text"]'))), 1000);
   }
   catch (error) {
+    await console.log("Feature name : Device Inventory and Scenario name : ")
+    await console.log(error)
     throw "User is not able to edit the resource type"
   }
 });

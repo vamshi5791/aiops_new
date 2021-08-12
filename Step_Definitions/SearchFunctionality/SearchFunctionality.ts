@@ -10,9 +10,9 @@ When('{string} enters {string} and clicks on enter {string}', async function (st
     await browser.wait(EC.visibilityOf(objAlerts.drpSavedFilter), 10000);
     await objAlerts.Alert_Search(SearchAlertData);
   } catch (error) {
-    console.log("Feature Name : Search Functionality : Alert Page - Entering text in search field box")
-    console.log(error);
-    throw "User not able to enter in search box field in alert page"
+    await console.log("Feature name : Search Functionality and Scenario name :  ")
+    await console.log(error)
+    throw ""
   }
  
 });
@@ -29,13 +29,13 @@ Then('verify search result should contain all the alerts from the same node name
     } 
   });
   } catch (error) {
-    console.log("Feature Name : Search Functionality : Scenario Name : Search by node name")
-    console.log(error);
-    throw "Alerts are not shown by search input(Node Name)"
+    await console.log("Feature name : Search Functionality and Scenario name :  ")
+    await console.log(error)
+    throw ""
   } 
   //await browser.wait(EC.visibilityOf(objAlerts.txtRowsPerPage), 10000);
 });
-//Search by Alert Metric
+//Search by alert metric
 
 Then('verify search result should contain all the alerts which has alert metric matching the search criteria {string}', async function (AlertMetricData) {
   try {
@@ -46,25 +46,33 @@ Then('verify search result should contain all the alerts which has alert metric 
       }
     });
   } catch (error) {
-    console.log("Feature Name : Search Functionality : Scenario Name : Search by Alert Metric")
-    console.log(error);
-    throw "Alerts are not shown by search input(Alert Metric)"
+    await console.log("Feature name : Search Functionality and Scenario name :  ")
+    await console.log(error)
+    throw ""
   }
+  await browser.wait(EC.visibilityOf(objAlerts.txtRowsPerPage), 10000);
 });
 
-//Search by Alert Name
+//Search by alert name
 
 Then('verify search result should contain all the alerts which has alert name matching the search criteria {string}', async function (AlertName) {
   try {
     var myElement = objAlerts.txtNoDataAvailable;
   myElement.isPresent().then(async function (elm) {
-    if (elm== false) {
+    if (elm) {
       objAlerts.getAlertName(AlertName);
     } 
   });
   } catch (error) {
-    console.log("Feature Name : Search Functionality : Scenario Name : Search by Alert Name")
-    console.log(error);
-    throw "Alerts are not shown by search input(Alert Name)"
+    await console.log("Feature name : Search Functionality and Scenario name :  ")
+    await console.log(error)
+    throw ""
   }
+  await browser.wait(EC.visibilityOf(objAlerts.txtRowsPerPage), 10000);
 });
+
+
+
+
+
+

@@ -30,6 +30,7 @@ When('{string} clicks on project name {string}', async function (userRole, TestP
     await browser.sleep(3000);
     await ProjectListing.selectProject(TestProjectName);
   } catch (error) {
+    await console.log("Feature name : Saved Filters " + userRole + " and Scenario name :  ")
     await console.log(error)
 
   }
@@ -69,6 +70,8 @@ When('{string} enters source as {string} and alert state as {string}', async fun
     testSource = Source;
     testAlertState = AlertState;
   } catch (error) {
+    await console.log("Feature name : Saved Filters " + userRole + " and Scenario name :  ")
+    await console.log(error)
     throw "User is not able to enter source and alert state"
   }
 });
@@ -79,6 +82,8 @@ When('{string} clicks on Save filter button', async function (userRole) {
   try {
     await objAlerts.SaveFilter();
   } catch (error) {
+    await console.log("Feature name : Saved Filters " + userRole + " and Scenario name :  ")
+    await console.log(error)
     throw "User is not able to click on save filter button"
   }
 });
@@ -92,6 +97,8 @@ When('{string} enters filter name as {string} and Description as {string}', asyn
       await objAlerts.FilterDescription(FilterDescription)
     })
   } catch (error) {
+    await console.log("Feature name : Saved Filters " + userRole + " and Scenario name :  ")
+    await console.log(error)
     throw "User is not able to enter filter name and Description"
   }
 
@@ -103,6 +110,8 @@ When('{string} clicks on save and apply button', async function (userRole) {
   try {
     await objAlerts.Save_Apply();
   } catch (error) {
+    await console.log("Feature name : Saved Filters " + userRole + " and Scenario name :  ")
+    await console.log(error)
     throw "User is not able to click on save and apply button"
   }
 });
@@ -118,6 +127,8 @@ Then('Success message should be displayed as toaster {string}', async function (
     });
     await browser.wait(EC.invisibilityOf(objAlerts.txtPopUp), 100000);
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw "Success message is not displayed "
   }
 });
@@ -131,6 +142,8 @@ Then('verify Apply and cancel buttons should be present', async function () {
       await browser.wait(EC.visibilityOf(objAlerts.btnApply));
     await browser.wait(EC.visibilityOf(objAlerts.btnCancel));
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw "Apply and cancel buttons are not present in the page"
   }
 
@@ -145,6 +158,8 @@ Then('Verify the filter conditions are retrieved and click on Apply', async func
     // await element(by.xpath('//span[text()="Save Filter "]')).click();
 
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw ""
   }
 });
@@ -171,6 +186,8 @@ When('{string} clicks on saved filters {string}', async function (string, SavedF
     await browser.sleep(10000);
     await objAlerts.selectSavedFilterFromAlertConsole(SavedFilter);
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw ""
   }
 });
@@ -180,6 +197,8 @@ Then('{string} verifies Remove all button is present', async function (string) {
   try {
     await browser.wait(EC.visibilityOf(objAlerts.btnRemoveAll), 10000);
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw ""
   }
 });
@@ -188,6 +207,8 @@ Then('Chips should have a close button', async function () {
   try {
     await browser.wait(EC.visibilityOf(objAlerts.btnCloseChip), 10000);
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw ""
   }
 })
@@ -199,6 +220,8 @@ When('{string} clicks on Remove all link next to the chips displayed from Alert 
     await browser.sleep(2000)
     await objAlerts.selectRemoveAllConditions();
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw ""
   }
 });
@@ -223,6 +246,8 @@ Then('verify All filter condition chips should be removed from UI', async functi
     await browser.wait(EC.invisibilityOf(objAlerts.btnRemoveAll), 10000);
 
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw ""
   }
 
@@ -231,6 +256,8 @@ Then('Saved filter drop down should not show the filter name', async function ()
   try {
     await browser.wait(EC.visibilityOf(objAlerts.drpSavedFilter), 10000);
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw ""
   }
 
@@ -242,6 +269,8 @@ When('{string} clicks on close button from any of the chip displayed', async fun
     await objAlerts.removeSourceCondition();
     await objAlerts.removeStateCondition();
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw ""
   }
 });
@@ -251,6 +280,8 @@ Then('verify closed chips should not be displayed in UI', async function () {
     await browser.wait(EC.invisibilityOf(objAlerts.btnCloseChip));
     await browser.sleep(10000);
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw ""
   }
 });
@@ -261,6 +292,8 @@ Then('verify all saved filters are displayed on left side {string}', async funct
   try {
     await objAlerts.savedFilterTitle(FilterName);
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw ""
   }
 });
@@ -275,6 +308,8 @@ Then('verify filter name, description and Created time should be displayed {stri
     // await objAlerts.getDescription(Description);
     // await objAlerts.getCreatedTime(CreatedTime);
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw "filter name, description and Created time are not displayed in the page"
   }
 });
@@ -285,6 +320,8 @@ Then('verify Expand button should be present for each saved filter', async funct
     await browser.wait(EC.visibilityOf(element(by.className('smo-accordion-toggle-icon smo smo-expand-less-alt chevron-icon smo-accordion-toggle-icon-sup-mon'))));
 
   } catch (error) {
+    await console.log("Feature name : Saved Filters and Scenario name :  ")
+    await console.log(error)
     throw "Expand buttons are not present for each saved filter"
   }
   var myElement = objAlerts.btnCancel;

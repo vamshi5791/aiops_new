@@ -396,12 +396,14 @@ Then('verify alert console should show results based on default filter applied',
       } 
     });
   } catch (error) {
+    await console.log("Feature name : Advanced Filters  and Scenario name : Verify creating default filter for Alert Console ")
+    await console.log(error)
     throw "Data shown is not based on the default filter applied"
   }
  
 });
 
-Then('verify alert console should not show results based on previous default filter.', function () {
+Then('verify alert console should not show results based on previous default filter.',async  function () {
   try {
     var myElement = objAlerts.txtNoDataAvailable;
     myElement.isPresent().then(async function (elm) {
@@ -411,9 +413,10 @@ Then('verify alert console should not show results based on previous default fil
       }
     });
   } catch (error) {
+    await console.log("Feature name : Advanced Filters  and Scenario name : Verify creating default filter for Alert Console ")
+    await console.log(error)
     throw "Data shown is not based on the previous default filter applied"
   }
- 
 });
 
 // Verify that user is able to view edit and delete option

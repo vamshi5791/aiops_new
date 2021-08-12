@@ -13,6 +13,8 @@ When('ITOps_DisplayUser unable to find the Download Alerts button', async functi
       
         }
         catch (error) {
+          await console.log("Feature name : and Scenario name : ")
+          await console.log(error)
           throw "User is not able to verify severity condition in severity dropdown"
         }
   });

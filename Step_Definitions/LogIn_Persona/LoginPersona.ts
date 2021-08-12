@@ -18,6 +18,8 @@ Given('{string} unable to access dashboard', async function (string) {
     await browser.wait(EC.invisibilityOf(objDashboard.btnDashboard), 10000);
   } 
   catch (error) {
+    await console.log("Feature name : and Scenario name : ")
+    await console.log(error)
   throw "User is able to access dashboard"
   }
   });
@@ -28,6 +30,8 @@ Given('{string} unable to access alerts section', async function (string) {
 
   // } 
   // catch (error) {
+    // await console.log("Feature name : and Scenario name : ")
+    // await console.log(error)
   // throw "User is able to access alerts section"
   // }
 
@@ -39,6 +43,8 @@ Given('{string} unable to access alerts section', async function (string) {
 
     } 
     catch (error) {
+      await console.log("Feature name : and Scenario name : ")
+      await console.log(error)
     throw "User is able to access configuration section"
     }
   });
@@ -48,6 +54,8 @@ Given('{string} unable to access alerts section', async function (string) {
       await browser.wait(EC.invisibilityOf(objInfrastructurePage.btnInfrastructure), 10000);
     } 
     catch (error) {
+      await console.log("Feature name : and Scenario name : ")
+      await console.log(error)
     throw "User is not to access infrastructure section"
     }
   });
@@ -60,6 +68,8 @@ Given('{string} unable to access alerts section', async function (string) {
 
     } 
     catch (error) {
+      await console.log("Feature name : and Scenario name : ")
+      await console.log(error)
     throw "User is not able to access dashboard"
     }
   });
@@ -69,6 +79,8 @@ Given('{string} unable to access alerts section', async function (string) {
       await browser.wait(EC.visibilityOf(objAlerts.btnSelectAlerts), 10000);
     } 
     catch (error) {
+      await console.log("Feature name : and Scenario name : ")
+      await console.log(error)
     throw "User is not able to access alerts section"
     }
   });
@@ -78,6 +90,8 @@ Given('{string} unable to access alerts section', async function (string) {
       await browser.wait(EC.visibilityOf(objConfiguration.btnConfiguration), 10000);
     } 
     catch (error) {
+      await console.log("Feature name : and Scenario name : ")
+      await console.log(error)
     throw "User is not able to access configuration section"
     }
   });
@@ -87,6 +101,8 @@ Given('{string} unable to access alerts section', async function (string) {
       await browser.wait(EC.visibilityOf(objInfrastructurePage.btnInfrastructure), 10000);
     } 
     catch (error) {
+      await console.log("Feature name : and Scenario name : ")
+      await console.log(error)
     throw "User is not able to access infrastructure section"
     }
   });

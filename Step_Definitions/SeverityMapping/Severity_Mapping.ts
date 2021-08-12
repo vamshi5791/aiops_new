@@ -149,6 +149,8 @@ Then('Success message for Severity Mapping must be shown in popup {string}', asy
 
    }
    catch (error) {
+    await console.log("Feature name : Severity Mapping and Scenario name : ")
+    await console.log(error)
    throw " Severity Mapping details are not inserted"
    }
 });
@@ -230,6 +232,8 @@ Then('Error message for creating duplicate source must be shown in popup {string
   }
 
   catch (error) {
+    await console.log("Feature name : Severity Mapping and Scenario name : ")
+    await console.log(error)
     throw " Severity Mapping details are inseted"
   }
 });
@@ -281,6 +285,8 @@ Then('Success message for updating Severity Mapping must be shown in popup {stri
     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
   }
   catch (error) {
+    await console.log("Feature name : Severity Mapping and Scenario name : ")
+    await console.log(error)
     throw " Severity Mapping details are not inseted"
   }
 });
@@ -319,6 +325,8 @@ Then('Success message for Verifyimg adding additional source severity within the
   await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
   } 
   catch (error) {
+    await console.log("Feature name : Severity Mapping and Scenario name : ")
+    await console.log(error)
   throw " Severity Mapping details are not inseted"
   }
 });

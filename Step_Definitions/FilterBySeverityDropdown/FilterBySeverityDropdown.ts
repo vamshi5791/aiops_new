@@ -13,6 +13,8 @@ When('{string} clicks on Filter by severity drop down', async function (string) 
     await browser.sleep(10000)
     await objAlerts.clickOnFilterBySeverity();
   } catch (error) {
+    await console.log("Feature name : Filter by Severity dropdown and Scenario name : ")
+    await console.log(error)
     throw "User unable to click on filter by severity dropdown"
   }
 });
@@ -22,11 +24,15 @@ When('{string} selects Severity - OK and Warning {string}, {string}', async func
   try {
     await objAlerts.clickOnOkFilterBySeverity();
   } catch (error) {
+    await console.log("Feature name : Filter by Severity dropdown and Scenario name : ")
+    await console.log(error)
     throw "User not able to click on 'Ok' severity from dropdown list"
   }
   try {
     await objAlerts.clickOnWarningFilterBySeverity();
   } catch (error) {
+    await console.log("Feature name : Filter by Severity dropdown and Scenario name : ")
+    await console.log(error)
     throw "User not able to click on 'Warning' severity from dropdown list"
   }
 });
@@ -38,39 +44,51 @@ Then('verify Severity drop down should have values as - Ok, Warning, Minor, Majo
   try {
     await browser.wait(EC.visibilityOf(objAlerts.txtOkFilterBySeverity));
   } catch (error) {
+    await console.log("Feature name : Filter by Severity dropdown and Scenario name : ")
+    await console.log(error)
     throw "'Ok' severity is not available in dropdown list"
   }
   try {
     await browser.wait(EC.visibilityOf(objAlerts.txtWarningFilterBySeverity));
   } catch (error) {
+    await console.log("Feature name : Filter by Severity dropdown and Scenario name : ")
+    await console.log(error)
     throw "'Warning' severity is not available in dropdown list"
   }
   try {
     await browser.wait(EC.visibilityOf(objAlerts.txtMinorFilterBySeverity));
   } catch (error) {
+    await console.log("Feature name : Filter by Severity dropdown and Scenario name : ")
+    await console.log(error)
     throw "'Minor' severity is not available in dropdown list"
   }
   try {
     await browser.wait(EC.visibilityOf(objAlerts.txtMajorFilterBySeverity));
   } catch (error) {
+    await console.log("Feature name : Filter by Severity dropdown and Scenario name : ")
+    await console.log(error)
     throw "'Major' severity is not available in dropdown list"
   }
   try {
     await browser.wait(EC.visibilityOf(objAlerts.txtInformationFilterBySeverity));
   } catch (error) {
+    await console.log("Feature name : Filter by Severity dropdown and Scenario name : ")
+    await console.log(error)
     throw "'Information' severity is not available in dropdown list"
   }
 try {
   await browser.wait(EC.visibilityOf(objAlerts.txtCriticalFilterBySeverity));
   await objAlerts.clickOnFilterBySeverity();
 } catch (error) {
+  await console.log("Feature name : Filter by Severity dropdown and Scenario name : ")
+  await console.log(error)
   throw "'Critical' severity is not available in dropdown list"
 }
 
 });
 
 
-Then('verify data should be alerts with OK and warning severity only', function () {
+Then('verify data should be alerts with OK and warning severity only', async function () {
  
   try {
     var myElement = objAlerts.txtNoDataAvailable;
@@ -82,6 +100,8 @@ Then('verify data should be alerts with OK and warning severity only', function 
       }
     });
   } catch (error) {
+    await console.log("Feature name : Filter by Severity dropdown and Scenario name : ")
+    await console.log(error)
     throw ""
   }
 });
@@ -91,11 +111,15 @@ Then('verify UI should show chips with filter condition with close option', asyn
   try {
     await browser.wait(EC.visibilityOf(objAlerts.btnRemoveWarningCondition), 10000);
   } catch (error) {
+    await console.log("Feature name : Filter by Severity dropdown and Scenario name : ")
+    await console.log(error)
     throw "Warning Chip doesn't have close button"
   }
   try {
     await browser.wait(EC.visibilityOf(objAlerts.btnRemoveOkCondition), 10000);
   } catch (error) {
+    await console.log("Feature name : Filter by Severity dropdown and Scenario name : ")
+    await console.log(error)
     throw "Ok Chip doesn't have close button"
   }
 });

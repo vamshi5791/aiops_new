@@ -13,6 +13,8 @@ When('{string} enters value {string} in auto refresh textbox', async function (s
    await browser.sleep(5000)
   await objAlerts.enterAutoRefreshInEvery(AutoRefreshValue);
   } catch (error) {
+    await console.log("Feature name : Refresh Options and Scenario name : ")
+    await console.log(error)
     throw "User unable to enter in auto refresh text box field"
   }
 });
@@ -25,6 +27,8 @@ When('{string} clicks on tick button', async function (string) {
     await browser.sleep(5000)
     await objAlerts.clickOnRefreshInEveryRightButton();
   } catch (error) {
+    await console.log("Feature name : Refresh Options and Scenario name : ")
+    await console.log(error)
     // throw "User unable to click on auto refresh text box field"
   }
 });
@@ -36,6 +40,8 @@ Then('verify a success message should be displayed {string}', async function (To
   try {
     await objAlerts.verifyToaster(Toaster);
   } catch (error) {
+    await console.log("Feature name : Refresh Options and Scenario name : ")
+    await console.log(error)
     throw ""
   }
 });
@@ -48,6 +54,8 @@ Then('verify that page gets refreshed on every {string} minutes and data got add
     await browser.wait(EC.visibilityOf(objAlerts.txtSpinner), 10000);
     await browser.sleep(5000)
   } catch (error) {
+    await console.log("Feature name : Refresh Options and Scenario name : ")
+    await console.log(error)
     throw "the page is not getting refreshed with mentioned time"
   }
 });

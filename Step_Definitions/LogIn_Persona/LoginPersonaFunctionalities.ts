@@ -18,6 +18,8 @@ let objProjectConfiguration = new ProjectConfiguration();
 //     await objProjectListingPage.EditConfiguration();
 //   } 
 //   catch (error) {
+    // await console.log("Feature name : " + userRole + " and Scenario name : ")
+    // await console.log(error)
 //   throw "User is not able to click on edit configuration button"
 //   }
 // });
@@ -30,6 +32,8 @@ let objProjectConfiguration = new ProjectConfiguration();
 //     });
 //   } 
 //   catch (error) {
+    // await console.log("Feature name : " + userRole + " and Scenario name : ")
+    // await console.log(error)
 //   throw "User is not taken to the master configuration page"
 //   }
 // });
@@ -39,6 +43,8 @@ Then('{string} verifies edit configuration button is not present', async functio
     await browser.wait(EC.invisibilityOf(objProjectListingPage.btnEditConfiguration), 1000);
   } 
   catch (error) {
+    await console.log("Feature name : " + userRole + " and Scenario name : ")
+    await console.log(error)
   throw "Edit configuration button is present"
   }
   });
@@ -48,6 +54,8 @@ Then('{string} verifies edit configuration button is not present', async functio
       await browser.wait(EC.invisibilityOf(objProjectListingPage.btnClickOnCreateProject), 10000);
     } 
     catch (error) {
+      await console.log("Feature name : and Scenario name : ")
+      await console.log(error)
     throw "User is able to create a new project"
     }
   });
@@ -60,6 +68,8 @@ Then('{string} verifies edit configuration button is not present', async functio
       await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Edit Configuration"]'))));
     } 
     catch (error) {
+      await console.log("Feature name : and Scenario name : ")
+      await console.log(error)
     throw "User is able to create a new project"
     }
   });
@@ -68,6 +78,8 @@ Then('{string} verifies edit configuration button is not present', async functio
     await objProjectConfiguration.Update();
     } 
     catch (error) {
+      await console.log("Feature name : and Scenario name : ")
+      await console.log(error)
     throw "User is not able to update the project"
     }
 
