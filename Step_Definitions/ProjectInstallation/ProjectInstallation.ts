@@ -913,7 +913,7 @@ When('{string} clicks on Install button', async function (userRole) {
     })
   }
   catch (error) {
-    await objLogIn.logOutUser();
+    // await objLogIn.logOutUser();
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Installation")
     await console.log(error)
     throw "User is not able to click on Install Button"
@@ -930,7 +930,7 @@ Then('Project must be in {string} state in Project Listing Page', async function
     });
   }
   catch (error) {
-    await objLogIn.logOutUser();
+    // await objLogIn.logOutUser();
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Installation")
     await console.log(error)
     throw "Once project is installed, Ready should be display as status opposite to project name in the list. But it is not displaying in the list"

@@ -131,7 +131,6 @@ When('{string} selects project and open alerts', async function (userRole) {
 
   }
   catch (error) {
-    await objLogIn.logOutUser();
     await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
     await console.log(error)
     throw "Project doesn't exist"
@@ -145,7 +144,7 @@ Then('enter alertname in search box and verify alert details {string} {string}',
       expect(text).to.include(Alerts);
     });
   } catch (error) {
-    await objLogIn.logOutUser();
+   
     await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
     await console.log(error)
     throw "Alert not found"

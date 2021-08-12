@@ -51,6 +51,7 @@ Feature: Login persona functionalities of Installation Engineer
         Examples:
                   | MasterText           |
                   | Master Configuration |
+
         Scenario Outline: Installation Engineer is able to disable the project
              When "Installation_Engineer" navigates to ust home page
              When "Installation_Engineer" enters project name as "<ProjectName>" in the search field
@@ -61,7 +62,7 @@ Feature: Login persona functionalities of Installation Engineer
  
         Examples:
                   | ProjectName      | Toaster                          |
-                  | Automation_IB_08 | Project Deactivated Successfully |
+                  | Automation_IB_31 | Project Deactivated Successfully |
 
         @IE_Deleting_Project
         Scenario Outline: Installation Engineer is able to delete the project
@@ -74,7 +75,7 @@ Feature: Login persona functionalities of Installation Engineer
 
         Examples:
                   | projectName      | Toaster                      |
-                  | Automation_IB_21 | Project Deleted Successfully |
+                  | ProjectAuto1427 | Project Deleted Successfully |
 
 
 

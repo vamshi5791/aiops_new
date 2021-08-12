@@ -1,4 +1,4 @@
-@ITOps_Admin
+@ITOps_Visitor
 Feature: Login with all ITOps user roles
 
 Feature Description : Verifying Login functionality for all ITOps user roles
@@ -11,4 +11,4 @@ Feature Description : Verifying Login functionality for all ITOps user roles
 
         Examples:
                   | UserName    | Password |
-                  | Itops_admin | qa123    |
+                  | Itops_visitor | qa123    |

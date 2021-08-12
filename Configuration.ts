@@ -1,7 +1,7 @@
 const args = require('minimist')(process.argv.slice(2));
 import { Config, browser } from "protractor";
 import * as reporter from "cucumber-html-reporter";
-import {​​​ GenerateCustomReport }​​​ from'./TestReport/GenerateCustomReport'
+import { GenerateCustomReport } from './TestReport/GenerateCustomReport'
 
 var moment = require("moment");
 var fse = require("fs-extra");
@@ -35,19 +35,45 @@ export let config: Config = {
     globalThis.BrowserMode = args.Options;
   },
   specs: [
-  
+
     '../Features/LogIn/LogIn_Admin.feature',
-    // '../Features/LogIn_Persona/LoginPersona_ITOpsAdmin.feature',
-    // '../Features/SavedFilters/SavedFilters.feature',
-    // '../Features/AdvancedFilters/AdvancedFilter.feature',
-    // '../Features/RefreshOption/RefreshOption.feature',
-    // '../Features/SearchFuntionality/SearchFunctionality.feature',
-    // '../Features/FilterBySeverityDropdown/FilterBySeverityDropdown.feature',
+    '../Features/LogIn_Persona/LoginPersona_ITOpsAdmin.feature',
+    '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
+    '../Features/SavedFilters/SavedFilters.feature',
+    '../Features/AdvancedFilters/AdvancedFilter.feature',
+    '../Features/FilterBySeverityDropdown/FilterBySeverityDropdown.feature',
+    '../Features/RefreshOption/RefreshOption.feature',
+    '../Features/SearchFuntionality/SearchFunctionality.feature',
     '../Features/Device_Inventory/Device_Inventory_Admin.feature',
-    '../Features/Policies/*.feature',
-     '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
-     '../Features/DisplayConfiguration/DisplayConfiguration.feature',
-     '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature'
+    '../Features/Policies/AlertCorrelation.feature',
+    '../Features/Policies/Acknowledgement.feature',
+    '../Features/Policies/Failure.feature',
+    '../Features/Policies/Recovery.feature',
+    '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
+    '../Features/DisplayConfiguration/DisplayConfiguration.feature',
+    '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
+    '../Features/Pushing_Alerts/PushingAlerts.feature',
+
+    '../Features/LogIn/LogIn_ITOps_Engineer.feature',
+    '../Features/LogIn_Persona/LoginPersona_ITOpsEngineer.feature',
+    '../Features/Device_Inventory/Device_Inventory_Engineer.feature',
+    '../Features/Policies/AlertCorrelation_Engineer.feature',
+    '../Features/Policies/Acknowledgement_Engineer.feature',
+    '../Features/Policies/Failure_Engineer.feature',
+    '../Features/Policies/Recovery_Engineer.feature',
+    '../Features/SeverityMapping/Severity_Mapping_ITOpsEngineer.feature',
+    '../Features/DisplayConfiguration/DisplayConfiguration_Engineer.feature',
+    '../Features/TicketingThreshold/TicketingThreshold_ITOpsEngineer.feature',
+
+    '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
+    '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
+
+    '../Features/LogIn/LogIn_ITOps_Visitor.feature',
+    '../Features/LogIn_Persona/LoginPersona_ITOpsVisitor.feature',
+
+    '../Features/LogIn/LogIn_IE.feature',
+    '../Features/LogIn_Persona/LoginPersona_IE.feature',
+    '../Features/ProjectInstallation/ProjectInstallation_IE.feature'
 
   ],
   cucumberOpts: {
@@ -80,7 +106,7 @@ export let config: Config = {
         "Executed": "Remote"
       }
     };
-    
+
     let generateCustomReport = new GenerateCustomReport();
     generateCustomReport.readJson();
 
