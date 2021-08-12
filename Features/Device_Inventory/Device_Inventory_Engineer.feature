@@ -1,5 +1,4 @@
-@Device_Inventory_ITOpsEngineer @ITOps_Milestone_2   @ITOps_IE
-
+@Device_Inventory_ITOpsEngineer  @ITOps_IE @Regression
 
 Feature: Device Inventory Features
 
@@ -7,10 +6,8 @@ Feature Description : Device Inventory Features
 
         @Device_Inventory_Upload
         Scenario Outline: ITOps Engineer unable to find the Upload Icon Button
-
-
-            Given ITOps "admin" with username and password as "<UserName>", "<Password>" is in the home page
-             When "Admin" enters project name as "<ProjectName>" in the search field
+             When "ITOps_Engineer" navigates to ust home page
+             When "ITOps_Engineer" enters project name as "<ProjectName>" in the search field
               And "ITOps_Engineer" opens infrastructure page
              Then Verifies that Upload Icon is not present
 

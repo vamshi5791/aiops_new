@@ -189,7 +189,7 @@ export class AlertsPage {
   }
 
   async getAlertName(AlertName) {
-    await element(by.xpath('//span[text()="Alert Name"]//following::td[6]//span')).getText().then(async function (text) {
+    await element(by.xpath('//span[text()="Alert Name"]//following::td[6]')).getText().then(async function (text) {
           await expect(text).to.include(AlertName);
         });
   }

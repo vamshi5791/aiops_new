@@ -1,39 +1,44 @@
-@LoginPersona @ITOps_Milestone_2  @LoginPersonaITOpsEngineer
+@LoginPersona @ITOps_Milestone_2 @ITOps_Engineer
 
 
-Feature: Login persona functionalities of ITOps Engineer
+Feature:Login persona functionalities of ITOps_Engineer
 
-    @Engineer_AbleToViewDashboard
 
-    Scenario: ITOps Engineer is able to  view dashboard
-        Given user opens itops application
-        And "ITOps_Engineer" enters Username, Password and click on Login button "Itops_engineer", "qa123"
-        When "ITOps_Engineer" enters project name in project search feild "Automation_02"
-        And "ITOps_Engineer" clicks on project name "Automation_02"
-        And "ITOps_Engineer" able to access dashboard
+        Scenario Outline: ITOps Engineer is able to  view dashboard
 
-    Scenario: ITOps Engineer is able to  view alerts
+             When "ITOps_Engineer" enters project name as "<ProjectName>" in the search field
+              And "ITOps_Engineer" clicks on project name "<ProjectName>"
+              And "ITOps_Engineer" able to access dashboard
+        Examples:
+                  | ProjectName      |
+                  | Automation_IB_16 |
 
-        And "ITOps_Engineer" able to access alerts section
 
-    Scenario: ITOps Engineer is able to  view configuration
+        Scenario Outline: ITOps Engineer is able to  view alerts
+              And "ITOps_Engineer" clicks on Alerts page
+              And "ITOps_Engineer" able to access alerts section
 
-        And "ITOps_Engineer" able to access configuration section
+        Scenario: ITOps Engineer is unable to  view configuration
+              And "Itops_engineer" navigate to Configuration section
+              And "ITOps_Engineer" unable to access configuration section
 
-    Scenario: ITOps Engineer is able to  view infrastructure
+        Scenario: ITOps Engineer is unable to  view infrastructure
+              And "ITOps_ITOps_Engineer" opens infrastructure page
+              And "ITOps_Engineer" unable to access infrastructure section
 
-        And "ITOps_Engineer" able to access infrastructure section
+        Scenario:   ITOps Engineer is not able to create a new project
+             When "ITOps_Engineer" navigates to ust home page
+             When "ITOps_Engineer" unable to click create new project
 
-    Scenario:   ITOps Engineer is not able to create a new project
+        Scenario: ITOps ITOps Engineer is not able to access the master configuration page
+             When "ITOps_Engineer" navigates to ust home page
+             Then "ITOps_Engineer" verifies edit configuration button is not present
 
-        When "Installation_Engineer" unable to click create new project
-
-    Scenario Outline: ITOps Engineer is not able to access the master configuration page
-
-        Then "ITOps_Engineer" verifies edit configuration button is not present
-
-    Scenario:   ITOps Engineer Unbale TO Access Three Dots
-
-        When "Itops_engineer" enters project name in project search feild "Automation_02"
-        When "Itops_engineer" click dotmenu icon
-        When "Itops_engineer" unable to access dot menu options
+        Scenario Outline:   ITOps ITOps_Engineer Unbale TO Access Three Dots
+             When "ITOps_Engineer" navigates to ust home page
+             When "ITOps_Engineer" enters project name as "<ProjectName>" in the search field
+              And "ITOps_Engineer" clicks dot menu icon
+             When "ITOps_Engineer" unable to access dot menu options
+        Examples:
+                  | ProjectName   |
+                  | Automation_02 |

@@ -1,4 +1,4 @@
-@SeverityMapping_ITOpsAdmin @ITOps_Milestone_2 @ITOps_Admin
+@SeverityMapping_ITOpsAdmin @ITOps_Milestone_2 @ITOps_Admin @Regression
 
 Feature:Severity Mapping
 

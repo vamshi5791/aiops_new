@@ -1,39 +1,43 @@
-@LoginPersona @ITOps_Milestone_2
+@LoginPersona @ITOps_Milestone_2 @ITOps_Visitor
 
 
-Feature: Login persona functionalities of ITOps Visitor
-    @Visitor_AbleToViewDashboard
+Feature:Login persona functionalities of ITOps Visitor
 
-    Scenario: ITOps Visitor is able to  view dashboard
+        Scenario Outline: ITOps Visitor is able to  view dashboard
 
-        Given user opens itops application
-        And "ITOps_Visitor" enters Username, Password and click on Login button "Itops_visitor", "qa123"
-        And "ITOps_Visitor" enters project name in project search feild "Automation_02"
-        And "ITOps_Visitor" clicks on project name "Automation_02"
-        And "ITOps_Visitor" able to access dashboard
+             When "ITOps_Visitor" enters project name as "<ProjectName>" in the search field
+              And "ITOps_Visitor" clicks on project name "<ProjectName>"
+              And "ITOps_Visitor" able to access dashboard
+        Examples:
+                  | ProjectName      |
+                  | Automation_IB_16 |
 
-    Scenario: ITOps Visitor is unable to  view alerts
+        Scenario Outline: ITOps Visitor is able to  view alerts
+              And "ITOps_Visitor" clicks on Alerts page
+              And "ITOps_Visitor" able to access alerts section
 
-        And "ITOps_Visitor" unable to access alerts section
+        Scenario: ITOps Visitor is unable to  view configuration
+              And "ITOps_Visitor" navigate to Configuration section
+              And "ITOps_Visitor" unable to access configuration section
 
-    Scenario: ITOps Visitor is unable to  view configuration
+        Scenario: ITOps Visitor is unable to  view infrastructure
+              And "ITOps_Visitor" opens infrastructure page
+              And "ITOps_Visitor" unable to access infrastructure section
 
-        And "ITOps_Visitor" able to access configuration section
+        Scenario:   ITOps Visitor is not able to create a new project
+             When "ITOps_Visitor" navigates to ust home page
+             When "ITOps_Visitor" unable to click create new project
 
-    Scenario: ITOps Visitor is unable to  view infrastructure
+        Scenario: ITOps ITOps Visitor is not able to access the master configuration page
+             When "ITOps_Visitor" navigates to ust home page
+             Then "ITOps_Visitor" verifies edit configuration button is not present
 
-        And "ITOps_Visitor" unable to access infrastructure section
-
-    Scenario:   ITOps Engineer is not able to create a new project
-
-        When "ITOps_Visitor" unable to click create new project
-
-    Scenario: ITOps Visitor is not able to access the master configuration page
-
-        Then "ITOps_Visitor" verifies edit configuration button is not present
-
-    Scenario:   ITOps Engineer Unbale TO Access Three Dots
-
-        When "ITOps_Visitor" enters project name in project search feild "Automation_02"
-        When "ITOps_Visitor" click dotmenu icon
-        When "ITOps_Visitor" unable to access dot menu options
+        Scenario Outline:   ITOps Visitor Unbale TO Access Three Dots
+             When "ITOps_Visitor" navigates to ust home page
+             When "ITOps_Visitor" enters project name as "<ProjectName>" in the search field
+              And "ITOps_Visitor" clicks dot menu icon
+             When "ITOps_Visitor" unable to access dot menu options
+              And "admin" clicks on logout button
+        Examples:
+                  | ProjectName   |
+                  | Automation_02 |

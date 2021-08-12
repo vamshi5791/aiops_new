@@ -101,10 +101,12 @@ When('{string} clicks on delete icon in listing page {string}', async function (
 
 When('Admin clicks on Add {string} Policy', async function (policy) {
     try {
+        await browser.wait(EC.visibilityOf(objPolicy.btnAddPolicy));
+        await browser.sleep(5000)
         await objPolicy.clickOnAddPolicyButton();
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies : Click on "+policy+"Add policy")
         await console.log(error)
         throw "User not able to click on Add Policy button";
     }
@@ -245,10 +247,11 @@ When('Admin clicks on Save and Add Rule button', async function () {
 Then('verify {string} toaster {string}', async function (policy, Toaster) {
     // try {
         await browser.wait(EC.visibilityOf(objPolicy.tostMessage), 10000);
-        await objPolicy.tostMessage.getText().then(function (text) {
-            expect(text).to.include(Toaster);
-            browser.wait(EC.invisibilityOf(objPolicy.tostMessage), 10000);
+        await objPolicy.tostMessage.getText().then(async function (text) {
+            await  expect(text).to.include(Toaster);
+           
         });
+        await browser.wait(EC.invisibilityOf(objPolicy.tostMessage), 10000);
     // }
     // catch (error) {
         // await console.log("Feature name : Policies ")
@@ -310,7 +313,7 @@ When('Admin clicks on Yes button in confirmation popup', async function () {
 When('Admin clicks on Done button', async function () {
     try {
         await objPolicy.clickOnDoneButton();
-        await browser.wait(EC.invisibilityOf(objPolicy.btnDone));
+        //await browser.wait(EC.invisibilityOf(objPolicy.btnDone));
 
     }
     catch (error) {

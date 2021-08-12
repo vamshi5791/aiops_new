@@ -1,4 +1,4 @@
-@PushingAlerts @ITOps_Milestone_1
+@PushingAlerts @ITOps_Milestone_1 @ITOps_Admin
 
 Feature: Pushing Alerts through RabbitMQ
 

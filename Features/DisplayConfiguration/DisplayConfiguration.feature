@@ -84,19 +84,4 @@ Feature Description : Verifying Display Configuration functionalities
                   | FiledName_1   | FiledName_2 | FiledName_3 | FiledName_4 | FiledName_5 | FiledName_6  | Toaster                                                                 |
                   | resourceGroup | connectedTo | region      | site        | portNumber  | resourceType | The maximum number of columns that can be added as primary column is 16 |
      
-        Scenario Outline: Verify user is not able to change display configurations
-           
-            Given ITOps "Itops_engineer" with username and password as "<UserName>", "<Password>" is in the home page
-             When "Itops_engineer" enters project name as "<ProjectName>" in the search field
-              And "Itops_engineer" clicks on project name "<ProjectName>"
-              And "Itops_engineer" navigate to Configuration section
-             Then "Itops_engineer" verifies if "<SuccessMessage>" message is displayed
-              And "Itops_engineer" clicks on Alert Console Display Configuration from LHS menu Settings
-             Then "Itops_engineer" verifies that Primary and secondary sections are present
-              And "Itops_engineer" verifies Up and Down arrows are present in both sections
-              And "Itops_engineer" verifies left and right arrows are present
-           
-
-        Examples:
-                  | UserName       | Password | ProjectName      |
-                  | Itops_engineer | qa123    | Automation_IB_16 |
+       

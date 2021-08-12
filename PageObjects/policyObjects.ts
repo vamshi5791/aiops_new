@@ -50,7 +50,7 @@ export class PolicyObjects {
     clmnPrecednece = element(by.xpath('//th[text()=" Precedence "]'));
     clmnStatus = element(by.xpath('//th[text()=" Status "]'));
 
-    icnEdit = element(by.xpath('//span[@class="smo smo-create-alt edit-icon cursor-pointer right-padding-20 ng-star-inserted"]'));
+    icnEdit = element(by.xpath('//span[@class="action-btns"]//following::span'));
     icnDelete = element(by.xpath('//span[@class="smo smo-delete trash-icon cursor-pointer ng-star-inserted"]'));
     btnCancel = element(by.xpath('//span[text()="Cancel"]'));
     btnEditPolicy = element(by.xpath('//div[text()=" Edit Policy "]'));
@@ -169,7 +169,7 @@ export class PolicyObjects {
     }
     async clickOnNext() {
         await this.btnNext.click();
-    }
+    } 
     async clickEditRuleIcon() {
         await this.icnEditRule.click();
     }

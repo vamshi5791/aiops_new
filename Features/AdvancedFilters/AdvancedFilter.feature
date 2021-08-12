@@ -1,4 +1,4 @@
-@AdvancedFilter @ITOps_Milestone_2 @Alerts  @ITOps_Admin
+@AdvancedFilter  @ITOps_Admin @Regression
 Feature:  Advanced Filter
 
 Feature Description: Admin navigates to alert page,

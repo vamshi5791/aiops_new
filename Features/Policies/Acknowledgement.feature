@@ -47,6 +47,7 @@ Feature Description: User verifies Acknowledgement policy
               And Admin selects "policy" value as "<PolicyValue>"
               And Admin clicks on Update Deatils
               And Admin clicks on Yes button in confirmation popup
+             Then verify "success" toaster "<PolicyUpdatedSuccessMessage>"
              When clicks on Next button
               And clicks on Edit rule icon
              When Admin enters "Alert Correlation" rule name as "<UpdatedRuleName>"
@@ -54,11 +55,12 @@ Feature Description: User verifies Acknowledgement policy
               And Admin selects "rule" value as "<ruleValue>"
               And click on Update rule button
               And Admin clicks on Yes button in confirmation popup
+             Then verify "success" toaster "<PolicyUpdatedSuccessMessage>"
              When Admin clicks on Done button
 
         Examples:
-                  | PolicyName            | UpdatedPolicyName | policyAtttribute | PolicyValue | UpdatedRuleName        | ruleAtttribute | ruleValue |
-                  | AcknowledgementPolicy | PolicynameUpdated | Alert Source     | Forescout   | CorrelationRuleUpdated | Alert Source   | Forescout |
+                  | PolicyName            | UpdatedPolicyName | policyAtttribute | PolicyValue | UpdatedRuleName        | ruleAtttribute | ruleValue | PolicyUpdatedSuccessMessage                                                               |
+                  | AcknowledgementPolicy | PolicynameUpdated | Alert Source     | Forescout   | CorrelationRuleUpdated | Alert Source   | Forescout | The acknowledgement policy change will not have any effect on any existing alert clusters |
 
         Scenario Outline: ITOps Admin edits existing acknowledgement policy from Listing page
 

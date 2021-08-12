@@ -37,12 +37,12 @@ export let config: Config = {
   specs: [
   
     '../Features/LogIn/LogIn_Admin.feature',
-    '../Features/LogIn_Persona/LoginPersona_ITOpsAdmin.feature',
-    '../Features/SavedFilters/SavedFilters.feature',
-    '../Features/AdvancedFilters/AdvancedFilter.feature',
-    '../Features/RefreshOption/RefreshOption.feature',
-    '../Features/SearchFuntionality/SearchFunctionality.feature',
-    '../Features/FilterBySeverityDropdown/FilterBySeverityDropdown.feature',
+    // '../Features/LogIn_Persona/LoginPersona_ITOpsAdmin.feature',
+    // '../Features/SavedFilters/SavedFilters.feature',
+    // '../Features/AdvancedFilters/AdvancedFilter.feature',
+    // '../Features/RefreshOption/RefreshOption.feature',
+    // '../Features/SearchFuntionality/SearchFunctionality.feature',
+    // '../Features/FilterBySeverityDropdown/FilterBySeverityDropdown.feature',
     '../Features/Device_Inventory/Device_Inventory_Admin.feature',
     '../Features/Policies/*.feature',
      '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
