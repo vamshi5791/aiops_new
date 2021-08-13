@@ -3,16 +3,16 @@
 
 Feature: Verify filter by severity drop down
 
-Feature Description : User navigates to alert console page, selects the severity from the dropdown
+Feature Description : User navigates to Alert Console page, selects the severity from the dropdown
               and results should be based on the filters
  
         Scenario Outline: Verify filter by severity drop down
-             When "admin" clicks on Alerts page
-              And "admin" clicks on Filter by severity drop down
-              And "admin" selects Severity - OK and Warning "<Ok>", "<Warning>"
+             When "Admin" clicks on Alerts page
+              And "Admin" clicks on Filter by severity drop down
+              And "Admin" selects Severity - OK and Warning "<Ok>", "<Warning>"
              Then verify Severity drop down should have values as - Ok, Warning, Minor, Major, Critical,Information
               And verify UI should show chips with filter condition with close option
-              And "admin" verifies Remove all button is present
+              And "Admin" verifies Remove all button is present
               And verify data should be alerts with OK and warning severity only
         Examples:
                   | UserName    | Password | Severity_1 | Severity_2 | Alert_State | FilterName | Description | Toaster                    | DifferentUserName |

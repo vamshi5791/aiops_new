@@ -4,7 +4,6 @@ Feature:Login persona functionalities of ITOps_Engineer
 
 
         Scenario Outline: ITOps Engineer is able to  view dashboard
-
              When "ITOpsEngineer" enters project name as "<ProjectName>" in the search field
               And "ITOpsEngineer" clicks on project name "<ProjectName>"
               And "ITOpsEngineer" able to access dashboard
@@ -28,11 +27,11 @@ Feature:Login persona functionalities of ITOps_Engineer
              When "ITOpsEngineer" navigates to ust home page
              And "ITOpsEngineer" unable to click create new project
 
-        Scenario: ITOps ITOps Engineer is not able to access the Master Configuration page
+        Scenario: ITOps Engineer is not able to access the Master Configuration page
              When "ITOpsEngineer" navigates to ust home page
              Then "ITOpsEngineer" verifies edit configuration button is not present
 
-        Scenario Outline:   ITOps ITOps_Engineer Unbale TO Access Three Dots
+        Scenario Outline:   ITOps Engineer Unbale TO Access Three Dots
              When "ITOpsEngineer" navigates to ust home page
              And "ITOpsEngineer" enters project name as "<ProjectName>" in the search field
               And "ITOpsEngineer" clicks dot menu icon

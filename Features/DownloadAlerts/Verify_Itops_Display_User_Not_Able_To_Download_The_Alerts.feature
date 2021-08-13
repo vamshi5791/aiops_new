@@ -1,15 +1,15 @@
 @VerifyItopsDisplayUserNotAbleToDownloadTheAlerts  @ITOps_DisplayUser @Regression
 
 
-Feature: Verify_Itops_Display_User_Not_Able_To_Download_The_Alerts
+Feature: Verify ITOps Display User Not Able To Download The Alerts
 
-        Scenario Outline: Verify_Itops_Display_User_Not_Able_To_Download_The_Alerts
+        Scenario Outline: Verify ITOps Display User Not Able To Download The Alerts
 
 
             # Given user opens itops application
             #   And "ITOps_DisplayUser" enters Username, Password and click on Login button "<Itops_UserName>", "<Itops_Password>"
-             When "ITOps_DisplayUser" enters project name in project search feild "<projectName>"
-              And "Admin" clicks on project name "<TestProjectName>"
+             When "ITOpsDisplayUser" enters project name in project search feild "<projectName>"
+              And "ITOpsDisplayUser" clicks on project name "<TestProjectName>"
               And ITOps_DisplayUser unable to find the Download Alerts button
               # And click on logout button
 

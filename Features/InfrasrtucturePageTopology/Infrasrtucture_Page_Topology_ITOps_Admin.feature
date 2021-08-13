@@ -26,22 +26,18 @@ Feature: Device Inventory Features
 
 
   @ITOpsAdminSearchWithNonExistingDeviceName
-  Scenario Outline: ITOpsAdminSearchWithNonExistingDeviceName
-
+  Scenario Outline: ITOpsAdmin search with non-existing Device Name
     When "ITOps_Admin" clicks on Topology icon
     And "ITOps_Admin" searches device name "<DeviceName>"
     Then device should not be available "<Device>"
     Then click on logout button
-
-
-
     Examples:
       | DeviceName      | Device          |
       | AUSYCT-28A-SBC2 | ausyct-28a-sbc1 |
 
 
 # @ITOps_Admin_Search_With_Existing_Device_Name
-# Scenario Outline: ITOps_Admin_Search_With_Existing_Device_Name
+# Scenario Outline: ITOps Admin search with existing Device Name
 
 # When "ITOps_Admin" clicks on Topology icon
 #     And "ITOps_Admin" searches device name "<DeviceName>"

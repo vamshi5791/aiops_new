@@ -7,8 +7,7 @@ Feature: Project Installation with ITOps Admin role
      Project must be in ready state in Project Listing page.
 
      @CreateProject
-     Scenario Outline: Project Creation
-     
+     Scenario Outline: Project Creation by ITOps Admin
           When "Admin" navigates to ust home page
           When "Admin" clicks on create project button
           And "Admin" enters project name as "<ProjectName>"
@@ -19,7 +18,7 @@ Feature: Project Installation with ITOps Admin role
                | UserName    | Password | ProjectName      | Description       | Toaster                      |
                | Itops_admin | qa123    | Automation_IB_30 | Release1.4Project | Project Created Successfully |
      @GeneralConfiguration
-     Scenario Outline: General Configuration
+     Scenario Outline: General Configuration by ITOps Admin
           When "Admin" enters Service now hostname as "<ServiceNowHost>"
           And "Admin" enters Service now Username as "<ServiceNowUserName>"
           And "Admin" enters Service now Password as "<ServicenowPassword>"
@@ -34,7 +33,7 @@ Feature: Project Installation with ITOps Admin role
                | ServiceNowHost                       | ServiceNowUserName | ServiceNowPassworde | ThresholdCount | ITSMName    | ITSMVersion | ITSMTimeZone | ITopsFlavor | Toaster                        |
                | https://ustglobaldev.service-now.com | ustglobal          | 1234                | 01.00          | USTTestITSM | 1.01        | IST          | Smart NOC   | Project Configurations Updated |
      @SchedulerConfiguration
-     Scenario Outline: Scheduler Configuration
+     Scenario Outline: Scheduler Configuration by ITOps Admin
           When "Admin" clicks on Schedular configuration
           And "Admin" selects Schedule Interval for Correlation as "<Correlation>"
           And "Admin" selects Scheduler Interval for auto closure of flap clusters as "<AutoClosure>"
@@ -47,7 +46,7 @@ Feature: Project Installation with ITOps Admin role
                | Every 4 months | Every 3 months | Every 4 months | Every 6 months  | Project Configurations Updated |
 
      @ErrorResponseConfiguration
-     Scenario Outline: Error Response Configuration
+     Scenario Outline: Error Response Configuration by ITOps Admin
           When "Admin" clicks on Error Response Configuration
           And "Admin" enters From Email Account as "<FromEmail>"
           And "Admin" enters From Email Account Password as "<FromEmailAcountPassword>"
@@ -58,7 +57,7 @@ Feature: Project Installation with ITOps Admin role
                | FromEmail  | Password | ToEmailAddress | Toaster                        |
                | abc@ib.com | 1234     | def@ib.com     | Project Configurations Updated |
      @SurgeConfiguration
-     Scenario Outline: Surge Configuration
+     Scenario Outline: Surge Configuration by ITOps Admin
           When "Admin" clicks on Surge Configuration
           And "Admin" enters Surge Start Percentile as "<StartPercentile>"
           And "Admin" enters Surge Start Percentile Threshold as "<StartPercentileThreshold>"
@@ -76,7 +75,7 @@ Feature: Project Installation with ITOps Admin role
                | 50              | 50                       | 50            | 50                     | 50            | 50                         | 50                     | 50                 | 50                         | Project Configurations Updated |
 
      @TicketDumpConfiguration
-     Scenario Outline: Ticket Dump Configuration
+     Scenario Outline: Ticket Dump Configuration by ITOps Admin
           When "Admin" clicks on Ticket Dump Configuration
           And "Admin" enters Ticket Dump Source Hostname as "<Hostname>"
           And "Admin" enters Ticket Dump Source File Path as "<FilePath>"
@@ -94,7 +93,7 @@ Feature: Project Installation with ITOps Admin role
                | Hostname | FilePath | SourceUserName | SourcePassword | TicketNumberColumnName | WorkNotesColumnName | ShortDescriptionColumnName | CategoryColumnName | SubCategoryColumnName | LongDescription | Toaster                        |
                | Value1   | Value2   | Value3         | Value1         | Value 2                | Value 3             | Value 1                    | Value 2            | Value 3               | Value           | Project Configurations Updated |
      @ChannelConfiguration
-     Scenario Outline: Channel Configuration
+     Scenario Outline: Channel Configuration by ITOps Admin
           When "Admin" clicks on Channel Configuration
           And "Admin" Clicks on create new Channel
           And "Admin" enter Channel Name "<ChannelName>"
@@ -125,7 +124,7 @@ Feature: Project Installation with ITOps Admin role
                | MailId                         | Password      | Toaster                      |
                | smartopsautosvc@ust-global.com | Support@12334 | OAuth authentication success |
      @AddUser
-     Scenario Outline: Add User
+     Scenario Outline: Add User by ITOps Admin
           When "Admin" is in Add User page
           And "Admin" selects user as "<UserName>"
           And "Admin" selects role as "<Role>"
@@ -135,7 +134,7 @@ Feature: Project Installation with ITOps Admin role
                | UserName        | Role           | Toaster     |
                | Kishor Macharla | itops_engineer | User added. |
      @ProjectInstallation
-     Scenario Outline: Project Installation
+     Scenario Outline: Project Installation by ITOps Admin
           When "Admin" clicks on Install button
           Then Project must be in "<ProjectStatus>" state in Project Listing Page
 

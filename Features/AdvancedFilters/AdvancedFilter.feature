@@ -3,21 +3,18 @@ Feature:  Advanced Filter
 
 Feature Description: Admin navigates to alert page,
      verifies all the sections are present
-     
-        Scenario Outline: Verify the Advanced Filter having 3 sections
-        
-              When "Admin" clicks on Alerts page
-             And "Admin" clicks on advanced filter icon
-             Then "Admin" verifies heading as "<AdvancedFilters>"
-              And "Admin" verifies Source and Resource section heading as "<SourceAndResource>"
-              And "Admin" verifies State and Status,Date and Time sections heading as "<StateAndStatus>" and "<DataAndTime>"
 
+      Scenario Outline: Verify the Advanced Filter having 3 sections
+            When "Admin" clicks on Alerts page
+            And "Admin" clicks on advanced filter icon
+            Then "Admin" verifies heading as "<AdvancedFilters>"
+            And "Admin" verifies Source and Resource section heading as "<SourceAndResource>"
+            And "Admin" verifies State and Status,Date and Time sections heading as "<StateAndStatus>" and "<DataAndTime>"
         Examples:
                   | UserName    | Password | ProjectName      | AdvancedFilters  | SourceAndResource    | StateAndStatus   | DataAndTime   |
                   | Itops_admin | qa123    | Automation_IB_16 | Advanced Filters | Source and Resources | State and Status | Date and Time |
 
-        Scenario Outline: Verifying ITOps admin is able to apply the Saved Filter again
-
+        Scenario Outline: Verifying ITOps Admin is able to apply the Saved Filter again
               When "Admin" enters source as "<Source>" and alert state as "<Alert_State>"
               And "Admin" clicks on apply button
              Then "Admin" verifies user redirects to alert console
@@ -38,8 +35,7 @@ Feature Description: Admin navigates to alert page,
                   | 10     | Days         |
        
               
-        Scenario Outline: Verify that ItopsAdmin is able to Verify severity drop down severity conditions which are selected in Advance Filter
-
+        Scenario Outline: Verify that ITOps Admin is able to Verify severity drop down severity conditions which are selected in Advance Filter
               And "ITOps_Admin" clicks on Alerts page
               And "ITOps_Admin" clicks on advanced filter icon
              When "ITOps_Admin" selects alert severity dropdown
@@ -47,15 +43,13 @@ Feature Description: Admin navigates to alert page,
               And "ITOps_Admin" clicks on apply button
              Then verifies severity condition in severity dropdown "<severityCondition>"
               And "ITOps_Admin" clicks on remove all button
-
         Examples:
                   | UserName    | Password | ProjectName   | severityCondition |
                   | Itops_admin | qa123    | Automation_02 | Warning           |
 
-        Scenario Outline: Verify that ItopsAdmin is able to add some more severity conditions
+        Scenario Outline: Verify that ITOps Admin is able to add some more severity conditions
               And "ITOps_Admin" clicks on Alerts page
               And "ITOps_Admin" clicks on advanced filter icon
-
              When "ITOps_Admin" selects alert severity dropdown
               And "ITOps_Admin" selects Warning
               And "ITOps_Admin" selects Ok
@@ -63,15 +57,13 @@ Feature Description: Admin navigates to alert page,
              Then "ITOps_Admin" clicks on filter by severity dropdown
              Then "ITOps_Admin" selects Warning
               And "ITOps_Admin" clicks on remove all button
-
         Examples:
                   | severityCondition |
                   | Warning           |
 
-        Scenario Outline: Verify that ItopsAdmin is able to remove severity conditions
+        Scenario Outline: Verify that ITOps Admin is able to remove severity conditions
               And "ITOps_Admin" clicks on Alerts page
               And "ITOps_Admin" clicks on advanced filter icon
-
              When "ITOps_Admin" selects alert severity dropdown
               And "ITOps_Admin" selects Warning
               And "ITOps_Admin" selects Ok
@@ -82,21 +74,19 @@ Feature Description: Admin navigates to alert page,
                   | severityCondition |
                   | Warning           |
 
-        Scenario Outline: Verify that ItopsAdmin is able to add some more severity conditions on top of saved filters.
+        Scenario Outline: Verify that ITOps Admin is able to add some more severity conditions on top of saved filters.
               And "ITOps_Admin" clicks on Alerts page
               And "ITOps_Admin" clicks on advanced filter icon
-
               And "ITOps_Admin" selects saved filter "<SavedFilter>"
               And "ITOps_Admin" clicks on apply button
              Then "ITOps_Admin" clicks on filter by severity dropdown
               And "ITOps_Admin" selects Warning
               And "ITOps_Admin" clicks on remove all button
-
         Examples:
                   | severityCondition | SavedFilter |
                   | Warning           | IB          |
 
-        Scenario Outline: Verify that ItopsAdmin is able to remove severity conditions from saved filters
+        Scenario Outline: Verify that ITOps Admin is able to remove severity conditions from saved filters
               And "ITOps_Admin" clicks on Alerts page
               And "ITOps_Admin" clicks on advanced filter icon
               And "ITOps_Admin" selects saved filter "<SavedFilter>"
@@ -110,29 +100,25 @@ Feature Description: Admin navigates to alert page,
         Scenario Outline: Verify user is able to perform search operations on the filter conditions which we selected
               And "ITOps_Admin" clicks on Alerts page
               And "ITOps_Admin" clicks on advanced filter icon
-
              When "ITOps_Admin" selects alert severity dropdown
               And "ITOps_Admin" selects Warning
               And "ITOps_Admin" selects Information
               And "ITOps_Admin" clicks on apply button
               And "ITOps_Admin" searches alert condition "<alertName>"
               And "ITOps_Admin" clicks on remove all button
-
         Examples:
                   | SavedFilter | alertName  |
                   | IB          | Solarwinds |
 
-        Scenario Outline: Verify user is able to perform search operations on entire alert console after removing filters
+        Scenario Outline: Verify user is able to perform search operations on entire Alert Console after removing filters
               And "ITOps_Admin" clicks on Alerts page
               And "ITOps_Admin" clicks on advanced filter icon
-
              When "ITOps_Admin" selects alert severity dropdown
               And "ITOps_Admin" selects Warning
               And "ITOps_Admin" selects Information
               And "ITOps_Admin" clicks on apply button
               And "ITOps_Admin" clicks on remove all button
               And "ITOps_Admin" searches alert condition "<alertName>"
-
         Examples:
                   | SavedFilter | alertName  |
                   | IB          | Solarwinds |
@@ -147,15 +133,11 @@ Feature Description: Admin navigates to alert page,
               And "ITOps_Admin" opens infrastructure page
               And "ITOps_Admin" clicks on Alerts page
              Then "ITOps_Admin" Verifies Warning filter is not applied
-             
- 
         Examples:
                   | SelectFilter | SavedFilter |
                   | Warning      | IB          |
 
-
-
-        Scenario Outline:Verify that user is able to view edit and delete option in Advanced Filter section
+        Scenario Outline:Verify that user is able to View Edit and Delete option in Advanced Filter section
              When "Admin" clicks on advanced filter icon
              When "Admin" clicks on Edit icon for "<SavedFilter>" filter
              Then "Admin" verifies that edit and delete options are present
@@ -173,8 +155,7 @@ Feature Description: Admin navigates to alert page,
                   | Source | Alert_State | SavedFilter | Description | ConfirmationToaster          | DifferentUserName | Toaster                      |
                   | ITSM   | Ticketed    | IB          | Value 2     | Filter updated successfully. | Itops_engineer    | Filter deleted successfully. |
         
-        Scenario Outline:Verify creating default filter for Alert Console
-           
+        Scenario Outline:Verify creating default filter for Alert Console    
               And "Admin" clicks on Alerts page
              When "Admin" clicks on advanced filter icon
               And "Admin" enters source as "<Source>" and alert state as "<Alert_State>"

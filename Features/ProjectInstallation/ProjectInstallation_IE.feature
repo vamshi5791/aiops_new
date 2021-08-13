@@ -7,9 +7,9 @@ Feature Description Once the login is done with ITOps_IE role,
      Project must be in ready state in Project Listing page.
 
         @CreateProject
-        Scenario Outline: Project Creation
-            When "admin" navigates to ust home page
-             When "Installation Engineer" clicks on create project button
+        Scenario Outline: Project Creation by Installation Engineer
+            When "Installation Engineer" navigates to ust home page
+             And "Installation Engineer" clicks on create project button
               And "Installation Engineer" enters project name as "<ProjectName>"
               And "Installation Engineer" enters description as "<Description>"
               And "Installation Engineer" clicks on create button
@@ -18,7 +18,7 @@ Feature Description Once the login is done with ITOps_IE role,
                   | UserName | Password | ProjectName      | Description       | Toaster                      |
                   | Itops_IE | qa123    | Automation_IB_31 | Release1.4Project | Project Created Successfully |
         @GeneralConfiguration
-        Scenario Outline: General Configuration
+        Scenario Outline: General Configuration by Installation Engineer
              When "Installation Engineer" enters Service now hostname as "<ServiceNowHost>"
               And "Installation Engineer" enters Service now Username as "<ServiceNowUserName>"
               And "Installation Engineer" enters Service now Password as "<ServicenowPassword>"
@@ -33,7 +33,7 @@ Feature Description Once the login is done with ITOps_IE role,
                   | ServiceNowHost                       | ServiceNowUserName | ServiceNowPassworde | ThresholdCount | ITSMName    | ITSMVersion | ITSMTimeZone | ITopsFlavor | Toaster                        |
                   | https://ustglobaldev.service-now.com | ustglobal          | 1234                | 01.00          | USTTestITSM | 1.01        | IST          | Smart NOC   | Project Configurations Updated |
         @SchedulerConfiguration
-        Scenario Outline: Scheduler Configuration
+        Scenario Outline: Scheduler Configuration by Installation Engineer
              When "Installation Engineer" clicks on Schedular configuration
               And "Installation Engineer" selects Schedule Interval for Correlation as "<Correlation>"
               And "Installation Engineer" selects Scheduler Interval for auto closure of flap clusters as "<AutoClosure>"
@@ -46,7 +46,7 @@ Feature Description Once the login is done with ITOps_IE role,
                   | Every 4 months | Every 3 months | Every 4 months | Every 6 months  | Project Configurations Updated |
 
         @ErrorResponseConfiguration
-        Scenario Outline: Error Response Configuration
+        Scenario Outline: Error Response Configuration by Installation Engineer
              When "Installation Engineer" clicks on Error Response Configuration
               And "Installation Engineer" enters From Email Account as "<FromEmail>"
               And "Installation Engineer" enters From Email Account Password as "<FromEmailAcountPassword>"
@@ -57,7 +57,7 @@ Feature Description Once the login is done with ITOps_IE role,
                   | FromEmail  | Password | ToEmailAddress | Toaster                        |
                   | abc@ib.com | 1234     | def@ib.com     | Project Configurations Updated |
         @SurgeConfiguration
-        Scenario Outline: Surge Configuration
+        Scenario Outline: Surge Configuration by Installation Engineer
              When "Installation Engineer" clicks on Surge Configuration
               And "Installation Engineer" enters Surge Start Percentile as "<StartPercentile>"
               And "Installation Engineer" enters Surge Start Percentile Threshold as "<StartPercentileThreshold>"
@@ -75,7 +75,7 @@ Feature Description Once the login is done with ITOps_IE role,
                   | 50              | 50                       | 50            | 50                     | 50            | 50                         | 50                     | 50                 | 50                         | Project Configurations Updated |
 
         @TicketDumpConfiguration
-        Scenario Outline: Ticket Dump Configuration
+        Scenario Outline: Ticket Dump Configuration by Installation Engineer
              When "Installation Engineer" clicks on Ticket Dump Configuration
               And "Installation Engineer" enters Ticket Dump Source Hostname as "<Hostname>"
               And "Installation Engineer" enters Ticket Dump Source File Path as "<FilePath>"
@@ -93,7 +93,7 @@ Feature Description Once the login is done with ITOps_IE role,
                   | Hostname | FilePath | SourceUserName | SourcePassword | TicketNumberColumnName | WorkNotesColumnName | ShortDescriptionColumnName | CategoryColumnName | SubCategoryColumnName | LongDescription | Toaster                        |
                   | Value1   | Value2   | Value3         | Value1         | Value 2                | Value 3             | Value 1                    | Value 2            | Value 3               | Value           | Project Configurations Updated |
         @ChannelConfiguration
-        Scenario Outline: Channel Configuration
+        Scenario Outline: Channel Configuration by Installation Engineer
              When "Installation Engineer" clicks on Channel Configuration
               And "Installation Engineer" Clicks on create new Channel
               And "Installation Engineer" enter Channel Name "<ChannelName>"
@@ -124,7 +124,7 @@ Feature Description Once the login is done with ITOps_IE role,
                   | MailId                         | Password      | Toaster                      |
                   | smartopsautosvc@ust-global.com | Support@12334 | OAuth authentication success |
         @AddUser
-        Scenario Outline: Add User
+        Scenario Outline: Add User by Installation Engineer
              When "Installation Engineer" is in Add User page
               And "Installation Engineer" selects user as "<UserName>"
               And "Installation Engineer" selects role as "<Role>"
@@ -134,7 +134,7 @@ Feature Description Once the login is done with ITOps_IE role,
                   | UserName        | Role        | Toaster     |
                   | Kishor Macharla | itops_admin | User added. |
         @ProjectInstallation
-        Scenario Outline: Project Installation
+        Scenario Outline: Project Installation by Installation Engineer
              When "Installation Engineer" clicks on Install button
              Then Project must be in "<ProjectStatus>" state in Project Listing Page
               And "Installation Engineer" clicks on logout button

@@ -32,18 +32,14 @@ Feature: Login persona functionalities of ITOps Admin
               And "ITOps_Admin" enters description as "<Description>"
              And "ITOps_Admin" clicks on Update
              Then "ITOps_Admin" verifies if "<SuccessMessage>" message is displayed
-            
-
         Examples:
                   | ProjectName      | Description | SuccessMessage              |
                   | Automation_IB_16 | NewSample   | Project Updated Succesfully |
 
-
         Scenario Outline: ITOps Admin is able to access the Master Configuration page
              When "ITOps_Admin" navigates to ust home page
              And "ITOps_Admin" clicks on edit configuration button
-             Then "ITOps_Admin" is taken to the master configuration page "<MasterText>"
-             
+             Then "ITOps_Admin" is taken to the master configuration page "<MasterText>"  
         Examples:
                   | MasterText           |
                   | Master Configuration |

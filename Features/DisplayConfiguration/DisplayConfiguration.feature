@@ -4,16 +4,15 @@ Feature:  Display Configuration
  
 Feature Description : Verifying Display Configuration functionalities
         @Display
-        Scenario Outline: Verify whether itops_admin is able to view Display Configuration settings
-         
+        Scenario Outline: Verify whether ITOps Admin is able to view Display Configuration settings    
               And "Admin" clicks on Alert Console Display Configuration from LHS menu Settings
              Then "Admin" verifies that Primary and secondary sections are present
               And "Admin" verifies Up and Down arrows are present in both sections
               And "Admin" verifies left and right arrows are present
-
         Examples:
                   | UserName    | Password | ProjectName      |
                   | Itops_admin | qa123    | Automation_IB_16 |
+
         Scenario: Default buttons in Display Configuration page
              Then "Admin" verifies Save configuration and cancel buttons are present
               And "Admin" verifies Save configuration button disabled by default
@@ -26,6 +25,7 @@ Feature Description : Verifying Display Configuration functionalities
         Examples:
                   | FieldName |
                   | alertID   |
+
         Scenario Outline:Verify user is able to change display name of Primary fields
              When "Admin" clicks on a field name and edits the name as "<DisplayName>" in primary section
               And "Admin" clicks on Save configuration button
@@ -38,7 +38,6 @@ Feature Description : Verifying Display Configuration functionalities
              When "Admin" clicks on a field name and edits the name as "<DisplayName>" in secondary section
               And "Admin" clicks on Save configuration button
              Then "Admin" verifies if "<SuccessMessage>" message is displayed
-
         Examples:
                   | DisplayName | SuccessMessage                            |
                   | Value       | Alert Console Settings saved Successfully |
@@ -64,7 +63,6 @@ Feature Description : Verifying Display Configuration functionalities
              Then "Admin" verifies the "<DisplayName>" present in secondary section
               And "Admin" navigate to Configuration section
               And "Admin" clicks on Alert Console Display Configuration from LHS menu Settings
-
         Examples:
                   | FieldName    | DisplayName | SuccessMessage                            |
                   | alertMessage | Test        | Alert Console Settings saved Successfully |

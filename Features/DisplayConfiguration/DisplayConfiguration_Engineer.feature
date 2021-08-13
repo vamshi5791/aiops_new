@@ -2,8 +2,7 @@
 
 Feature:  Display Configuration
         
-        Scenario: Verify user is not able to change Display Configurations
-           
+        Scenario: Verify user is not able to change Display Configurations  
              When "Itops_Engineer" navigate to Configuration section
               And "Itops_Engineer" clicks on Alert Console Display Configuration from LHS menu Settings
              Then "Itops_Egineer" verifies that Primary and secondary sections are present

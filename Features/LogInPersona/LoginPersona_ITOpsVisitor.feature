@@ -11,15 +11,15 @@ Feature:Login persona functionalities of ITOps Visitor
                   | ProjectName      |
                   | Automation_IB_16 |
 
-        Scenario Outline: ITOps Visitor is able to  view Alerts
+        Scenario Outline: ITOps Visitor is able t view Alerts
               When "ITOpsVisitor" clicks on Alerts page
               And "ITOpsVisitor" able to access alerts section
 
-        Scenario: ITOps Visitor is unable to  view Configuration
+        Scenario: ITOps Visitor is unable to view Configuration
               When "ITOpsVisitor" navigate to Configuration section
               And "ITOpsVisitor" unable to access configuration section
 
-        Scenario: ITOps Visitor is unable to  view Infrastructure
+        Scenario: ITOps Visitor is unable to view Infrastructure
               When "ITOps_Visitor" opens infrastructure page
               And "ITOps_Visitor" unable to access infrastructure section
 
