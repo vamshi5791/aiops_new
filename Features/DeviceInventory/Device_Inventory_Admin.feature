@@ -58,7 +58,7 @@ Feature Description : Device Inventory Features
 
         Examples:
                   | SuccessPopUp                     | ResourceName | ResourceType | Site   | Country | Region |
-                  | New resource added successfully! | ddgx2g3f434  | Samp3le      | Sample | Sample  | Sample |
+                  | New resource added successfully! | ddgx2g3f734  | Samp3le      | Sample | Sample  | Sample |
 
         Scenario Outline: Itops Admin updates the device in the device inventory.
 
