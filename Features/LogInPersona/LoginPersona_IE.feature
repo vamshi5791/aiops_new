@@ -61,7 +61,7 @@ Feature: Login persona functionalities of Installation Engineer
  
      #    Examples:
      #              | ProjectName      | Toaster                          |
-     #              | Automation_IB_31 | Project Deactivated Successfully |
+     #              | Automation_IB_24 | Project Deactivated Successfully |
 
      #    @IE_Deleting_Project
      #    Scenario Outline: Installation Engineer is able to delete the project
