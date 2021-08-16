@@ -69,7 +69,7 @@ export let config: Config = {
 '../Features/DeviceInventory/Device_Inventory_Engineer.feature',
 '../Features/Policies/AlertCorrelation_Engineer.feature',
 '../Features/Policies/Acknowledgement_Engineer.feature',
-'../Features/Policies/Failure_Engineer.feature',
+'../Features/Policies/Failure_Engineer.feature', 
 '../Features/Policies/Recovery_Engineer.feature',
 '../Features/SeverityMapping/Severity_Mapping_ITOpsEngineer.feature',
 '../Features/DisplayConfiguration/DisplayConfiguration_Engineer.feature',
