@@ -3,30 +3,30 @@
 Feature:Login persona functionalities of ITOps_Engineer
 
 
-      Scenario Outline: ITOps Engineer is able to  view dashboard
+        Scenario Outline: ITOps Engineer is able to  view dashboard
 
-            When "ITOpsEngineer" enters project name as "<ProjectName>" in the search field
-            And "ITOpsEngineer" clicks on project name "<ProjectName>"
-            And "ITOpsEngineer" able to access dashboard
-            Examples:
-                  | ProjectName   |
+             When "ITOpsEngineer" enters project name as "<ProjectName>" in the search field
+              And "ITOpsEngineer" clicks on project name "<ProjectName>"
+              And "ITOpsEngineer" able to access dashboard
+        Examples:
+                  | ProjectName      |
                   | Automation_IB_46 |
 
-      Scenario Outline: ITOps Engineer is able to  view Alerts
+        Scenario Outline: ITOps Engineer is able to  view Alerts
 
-            And "ITOpsEngineer" able to access alerts section
+              And "ITOpsEngineer" able to access alerts section
 
-      Scenario: ITOps Engineer is able to  view Configuration
+        Scenario: ITOps Engineer is able to  view Configuration
 
-            And "ITOpsEngineer" able to access configuration section
+              And "ITOpsEngineer" able to access configuration section
 
-      Scenario: ITOps Engineer is able to  view Infrastructure
+        Scenario: ITOps Engineer is able to  view Infrastructure
 
-            And "ITOpsEngineer" able to access infrastructure section
+              And "ITOpsEngineer" able to access infrastructure section
 
-      Scenario:   ITOps Engineer is not able to create a new project
-            When "ITOpsEngineer" navigates to ust home page
-            And "ITOpsEngineer" able to click create new project
+        Scenario:   ITOps Engineer is not able to create a new project
+             When "ITOpsEngineer" navigates to ust home page
+              And "ITOpsEngineer" unable to click create new project
 
       # Scenario: ITOps ITOps Engineer is not able to access the Master Configuration page
       #       When "ITOpsEngineer" navigates to ust home page

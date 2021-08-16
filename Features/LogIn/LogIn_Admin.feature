@@ -1,4 +1,4 @@
-@Login @ITOps_Admin @Regression
+@Login_Admin @ITOps_Admin @Regression
 
 Feature: Login with ITOpsAdmin
 

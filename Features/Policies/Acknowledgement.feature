@@ -91,7 +91,7 @@ Feature Description: User verifies Acknowledgement policy operations by ITOps Ad
              When "Admin" navigate to Acknowledgement Policy
               And "Admin" clicks on delete icon in listing page "<PolicyName>"
               And Admin clicks on Yes button in confirmation popup
-
+             Then "Admin" verifies if "<SuccessMessage>" message is displayed
         Examples:
                   | PolicyName         |
                   | PolicynameUpdated1 |

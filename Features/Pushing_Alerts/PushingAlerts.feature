@@ -17,8 +17,8 @@ Feature: Pushing Alerts through RabbitMQ
               And "admin" clicks on logout button
 
         Examples:
-                  | rabbitMQ_User | rabbitMQ_Password | Itops_UserName | Itops_Password | Alerts             | ProjectName   | ProjectNameForAlert          | ToQueue                    | RouteKey                   | alertName          | AlertName          | NodeIPAddress | ObjectName |
-                  | admin         | j5c6ym6nFm8M2Yia  | Itops_admin    | qa123          | NewSolarWindAlert1 | Automation_02 | 1.978.Automation_02.exchange | 1.978.Automation_008.queue | 1.978.Automation_008.queue | NewSolarWindAlert1 | NewSolarWindAlert1 | Demo          | Sample     |
+                  | rabbitMQ_User | rabbitMQ_Password | Itops_UserName | Itops_Password | Alerts             | ProjectName      | ProjectNameForAlert              | ToQueue          | RouteKey         | alertName          | AlertName          | NodeIPAddress | ObjectName |
+                  | admin         | j5c6ym6nFm8M2Yia  | Itops_admin    | qa123          | NewSolarWindAlert1 | Automation_IB_16 | 1.1225.Automation_IB_16.exchange | 1.1225.UST.queue | 1.1225.UST.queue | NewSolarWindAlert1 | NewSolarWindAlert1 | Demo          | Sample     |
 
 
 

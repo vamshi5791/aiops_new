@@ -91,7 +91,7 @@ Feature Description: ITOpsAdmin verifies Alert Correlation Policy operations
              When "ITOps_Admin" navigate to Alert Correlation Policy
               And "Admin" clicks on delete icon in listing page "<PolicyName>"
               And Admin clicks on Yes button in confirmation popup
-
+             Then "Admin" verifies if "<SuccessMessage>" message is displayed
         Examples:
                   | PolicyName         |
                   | PolicynameUpdated1 |

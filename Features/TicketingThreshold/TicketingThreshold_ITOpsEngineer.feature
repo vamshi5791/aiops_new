@@ -5,8 +5,7 @@ Feature Description: Engineer creats Ticketing Threshold
 
         @AddNewTicketingThresholdByITOPsEngineer
         Scenario Outline: ITOps Engineer should not be able to Add New Ticketing threshold Policy
-
-              And "ITOps Engineer" clicks on configuration
+             When "Itops_Engineer" navigate to Configuration section
               And "ITOps Engineer" navigate to Ticketing Threshold
              Then Verify Add New Threshold button for ITOps Engineer
 

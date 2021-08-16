@@ -234,9 +234,10 @@
                 daParentPDF.innerHTML = Divscenario;
 
                 var ti = new Date();
-
-                var tms = AddZero(ti.getDay() + 1) + '-' + AddZero((ti.getMonth() + 1)) + '-' + ti.getFullYear() + ' ' + AddZero(ti.getHours()) + ':' + AddZero(ti.getMinutes());
-
+// console.log("time and date========================================================"+ti);
+//                 var tms = AddZero(ti.getDay() + 1) + '-' + AddZero((ti.getMonth() + 1)) + '-' + ti.getFullYear() + ' ' + AddZero(ti.getHours()) + ':' + AddZero(ti.getMinutes());
+// var tms = ti;
+var tms = ti.toLocaleDateString("en-US") + ' ' + AddZero(ti.getHours()) + ':' + AddZero(ti.getMinutes());
 
 
                 document.getElementById('spTimeStamp').innerHTML = tms;

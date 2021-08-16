@@ -88,7 +88,7 @@ Feature Description: ITOps Admin verifies Recovery policy operations
              When "Admin" navigate to Recovery Policy
               And "Admin" clicks on delete icon in listing page "<PolicyName>"
               And Admin clicks on Yes button in confirmation popup
-
+             Then "Admin" verifies if "<SuccessMessage>" message is displayed
         Examples:
                   | PolicyName         |
                   | PolicynameUpdated1 |
