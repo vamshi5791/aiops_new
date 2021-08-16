@@ -10,5 +10,5 @@ Feature Description: Engineer creats Ticketing Threshold
              Then Verify Add New Threshold button for ITOps Engineer
               And "admin" clicks on logout button
         Examples:
-                  | UserName       | Password | projectName   |
-                  | Itops_Engineer | qa123    | Automation_02 |
+                  | UserName       | Password |
+                  | Itops_Engineer | qa123    |

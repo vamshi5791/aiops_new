@@ -9,8 +9,8 @@ Feature:Login persona functionalities of ITOps Visitor
               And "ITOps_Visitor" clicks on project name "<ProjectName>"
               And "ITOps_Visitor" able to access dashboard
         Examples:
-                  | ProjectName   |
-                  | Automation_02 |
+                  | ProjectName      |
+                  | Automation_IB_16 |
 
         Scenario: ITOps Visitor is not able to  view alerts
             

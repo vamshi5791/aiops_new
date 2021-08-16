@@ -8,8 +8,8 @@ Feature:Login persona functionalities of Display User
               And "Display_User" clicks on project name "<ProjectName>"
               And "Display_User" able to access dashboard
         Examples:
-                  | ProjectName   |
-                  | Automation_02 |
+                  | ProjectName      |
+                  | Automation_IB_16 |
 
         Scenario Outline: Display User is able to view alerts
              

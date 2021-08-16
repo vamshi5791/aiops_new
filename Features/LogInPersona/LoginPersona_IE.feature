@@ -11,7 +11,7 @@ Feature: Login persona functionalities of Installation Engineer
               And "Installation_Engineer" unable to access dashboard
         Examples:
                   | ProjectName      |
-                  | Automation_02 |
+                  | Automation_IB_16 |
 
 
         Scenario: Installation Engineer is unable to  view Alerts

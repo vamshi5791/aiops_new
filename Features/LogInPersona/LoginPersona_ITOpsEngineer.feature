@@ -10,7 +10,7 @@ Feature:Login persona functionalities of ITOps_Engineer
               And "ITOpsEngineer" able to access dashboard
         Examples:
                   | ProjectName      |
-                  | Automation_IB_46 |
+                  | Automation_IB_16 |
 
         Scenario Outline: ITOps Engineer is able to  view Alerts
 

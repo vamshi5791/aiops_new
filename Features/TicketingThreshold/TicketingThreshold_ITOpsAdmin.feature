@@ -13,8 +13,8 @@ Feature Description: Admin creats Ticketing Threshold
               And Admin clicks on Add Threshold button
             
         Examples:
-                  | projectName   | source    | clustersize | timeInterval |
-                  | Automation_02 | Forescout | 3           | 60           |
+                  | source    | clustersize | timeInterval |
+                  | Forescout | 3           | 60           |
 
 
 
