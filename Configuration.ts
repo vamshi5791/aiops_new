@@ -37,9 +37,9 @@ export let config: Config = {
   },
   specs: [
 //Admin
-    '../Features/LogIn/LogIn_Admin.feature',
+    // '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/LogInPersona/LoginPersona_ITOpsAdmin.feature',
-    '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
+    // '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
     // '../Features/DeviceInventory/Device_Inventory_Admin.feature',
     // '../Features/Policies/AlertCorrelation.feature',
     //  '../Features/Policies/Acknowledgement.feature',
@@ -54,7 +54,7 @@ export let config: Config = {
     // '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
     // '../Features/DisplayConfiguration/DisplayConfiguration.feature',
     // '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
-    '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
+    // '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
 
 //Visitor
     '../Features/LogIn/LogIn_ITOps_Visitor.feature',
