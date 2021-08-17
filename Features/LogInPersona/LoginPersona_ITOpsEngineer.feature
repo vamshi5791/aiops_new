@@ -28,16 +28,16 @@ Feature:Login persona functionalities of ITOps_Engineer
              When "ITOpsEngineer" navigates to ust home page
               And "ITOpsEngineer" unable to click create new project
 
-      # Scenario: ITOps ITOps Engineer is not able to access the Master Configuration page
-      #       When "ITOpsEngineer" navigates to ust home page
-      #       Then "ITOpsEngineer" verifies edit configuration button is not present
+        Scenario: ITOps ITOps Engineer is not able to access the Master Configuration page
+             When "ITOpsEngineer" navigates to ust home page
+             Then "ITOpsEngineer" verifies edit configuration button is not present
 
-#   Scenario Outline:   ITOps ITOps_Engineer Unbale TO Access Three Dots
-#        When "ITOpsEngineer" navigates to ust home page
-#         And "ITOpsEngineer" enters project name as "<ProjectName>" in the search field
-#         And "ITOpsEngineer" clicks dot menu icon
-#         And "ITOpsEngineer" unable to access dot menu options
-#         And "admin" clicks on logout button
-#   Examples:
-#             | ProjectName   |
-#             | Automation_02 |
+        Scenario Outline:   ITOps ITOps_Engineer Unbale TO Access Three Dots
+             When "ITOpsEngineer" navigates to ust home page
+              And "ITOpsEngineer" enters project name as "<ProjectName>" in the search field
+              And "ITOpsEngineer" clicks dot menu icon
+              And "ITOpsEngineer" unable to access dot menu options
+              #And "admin" clicks on logout button
+        Examples:
+                  | ProjectName   |
+                  | Automation_02 |

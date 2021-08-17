@@ -31,12 +31,12 @@ export let config: Config = {
   onPrepare: async function () {
     await browser.waitForAngularEnabled(false);
     await browser.manage().window().maximize();
-    await browser.manage().timeouts().implicitlyWait(120000);
+    await browser.manage().timeouts().implicitlyWait(60000);
     globalThis.environment = browser.params.env;
     globalThis.BrowserMode = args.Options;
   },
   specs: [
-//Admin
+    //Admin
     // '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/LogInPersona/LoginPersona_ITOpsAdmin.feature',
     // '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
@@ -56,29 +56,34 @@ export let config: Config = {
     // '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
     // '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
 
-//Visitor
+    //Visitor
     '../Features/LogIn/LogIn_ITOps_Visitor.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsVisitor.feature',
-    
-//Engineer
-'../Features/LogIn/LogIn_ITOps_Engineer.feature',
-'../Features/LogInPersona/LoginPersona_ITOpsEngineer.feature',
-'../Features/DeviceInventory/Device_Inventory_Engineer.feature',
-'../Features/Policies/AlertCorrelation_Engineer.feature',
-'../Features/Policies/Acknowledgement_Engineer.feature',
-'../Features/Policies/Failure_Engineer.feature', 
-'../Features/Policies/Recovery_Engineer.feature',
-'../Features/SeverityMapping/Severity_Mapping_ITOpsEngineer.feature',
-'../Features/DisplayConfiguration/DisplayConfiguration_Engineer.feature',
-'../Features/TicketingThreshold/TicketingThreshold_ITOpsEngineer.feature',
-//IE
-'../Features/LogIn/LogIn_IE.feature',
-'../Features/LogInPersona/LoginPersona_IE.feature',
-'../Features/ProjectInstallation/ProjectInstallation_IE.feature',
+    '../Features/Logout/LogOut.feature',
 
-// DisplayUser
+    //Engineer
+    '../Features/LogIn/LogIn_ITOps_Engineer.feature',
+    '../Features/LogInPersona/LoginPersona_ITOpsEngineer.feature',
+    '../Features/DeviceInventory/Device_Inventory_Engineer.feature',
+    '../Features/Policies/AlertCorrelation_Engineer.feature',
+    '../Features/Policies/Acknowledgement_Engineer.feature',
+    '../Features/Policies/Failure_Engineer.feature',
+    '../Features/Policies/Recovery_Engineer.feature',
+    '../Features/SeverityMapping/Severity_Mapping_ITOpsEngineer.feature',
+    '../Features/DisplayConfiguration/DisplayConfiguration_Engineer.feature',
+    '../Features/TicketingThreshold/TicketingThreshold_ITOpsEngineer.feature',
+    '../Features/Logout/LogOut.feature',
+
+    // DisplayUser
     '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
+    '../Features/Logout/LogOut.feature',
+
+    //IE
+    '../Features/LogIn/LogIn_IE.feature',
+    '../Features/LogInPersona/LoginPersona_IE.feature',
+    '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
+
 
   ],
   cucumberOpts: {

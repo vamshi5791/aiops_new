@@ -31,7 +31,7 @@ Feature:Login persona functionalities of ITOps Visitor
         Scenario: ITOps ITOps Visitor is not able to access the master configuration page
              When "ITOps_Visitor" navigates to ust home page
              Then "ITOps_Visitor" verifies edit configuration button is not present
-              And "admin" clicks on logout button
+             # And "admin" clicks on logout button
       #   Scenario Outline:   ITOps Visitor Unbale TO Access Three Dots
       #        When "ITOps_Visitor" navigates to ust home page
       #        When "ITOps_Visitor" enters project name as "<ProjectName>" in the search field
@@ -39,5 +39,5 @@ Feature:Login persona functionalities of ITOps Visitor
       #        When "ITOps_Visitor" unable to access dot menu options
       #         And "admin" clicks on logout button
       #   Examples:
-      #             | ProjectName   |
-      #             | Automation_02 |
+      #             | ProjectName      |
+      #             | Automation_IB_16 |

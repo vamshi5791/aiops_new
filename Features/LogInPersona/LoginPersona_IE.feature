@@ -51,30 +51,30 @@ Feature: Login persona functionalities of Installation Engineer
                   | MasterText           |
                   | Master Configuration |
 
-        Scenario Outline: Installation Engineer is able to disable the project
-             When "Installation_Engineer" navigates to ust home page
-              And "Installation_Engineer" enters project name as "<ProjectName>" in the search field
-              And "Installation_Engineer" clicks dot menu icon
-              And "Installation_Engineer" clicks on deactivate project
-              And "Installation_Engineer" clicks on yes
-             Then Success message "<Toaster>" must be shown once project is "disabled"
+     #    Scenario Outline: Installation Engineer is able to disable the project
+     #         When "Installation_Engineer" navigates to ust home page
+     #          And "Installation_Engineer" enters project name as "<ProjectName>" in the search field
+     #          And "Installation_Engineer" clicks dot menu icon
+     #          And "Installation_Engineer" clicks on deactivate project
+     #          And "Installation_Engineer" clicks on yes
+     #         Then Success message "<Toaster>" must be shown once project is "disabled"
  
-        Examples:
-                  | ProjectName      | Toaster                          |
-                  | Automation_IB_24 | Project Deactivated Successfully |
+     #    Examples:
+     #              | ProjectName      | Toaster                          |
+     #              | Automation_IB_24 | Project Deactivated Successfully |
 
-        @IE_Deleting_Project
-        Scenario Outline: Installation Engineer is able to delete the project
-             When "Installation_Engineer" navigates to ust home page
-              And "Installation_Engineer" enters project name as "<projectName>" in the search field
-              And "Installation_Engineer" clicks dot menu icon to delete project
-              And "Installation_Engineer" clicks on delete project
-              And "Installation_Engineer" clicks on yes
-             Then Success message "<Toaster>" must be shown once project is "deleted"
+     #    @IE_Deleting_Project
+     #    Scenario Outline: Installation Engineer is able to delete the project
+     #         When "Installation_Engineer" navigates to ust home page
+     #          And "Installation_Engineer" enters project name as "<projectName>" in the search field
+     #          And "Installation_Engineer" clicks dot menu icon to delete project
+     #          And "Installation_Engineer" clicks on delete project
+     #          And "Installation_Engineer" clicks on yes
+     #         Then Success message "<Toaster>" must be shown once project is "deleted"
 
-        Examples:
-                  | projectName      | Toaster                      |
-                  | Automation_IB_13 | Project Deleted Successfully |
+     #    Examples:
+     #              | projectName      | Toaster                      |
+     #              | Automation_IB_13 | Project Deleted Successfully |
 
 
 

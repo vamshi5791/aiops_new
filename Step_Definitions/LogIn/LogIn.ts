@@ -62,7 +62,9 @@ When('{string} clicks on logout button', async function (string) {
     await browser.sleep(3000)
     await ProjectListing.ClickOnProfile();
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Logout"]'))), 10000);
+    await browser.sleep(3000)
     await ProjectListing.LogOut();
+    await browser.sleep(3000)
     await browser.wait(EC.visibilityOf(element(by.xpath('//input[@name="login"]'))), 10000);
   } catch (error) {
     await console.log("Logout")
