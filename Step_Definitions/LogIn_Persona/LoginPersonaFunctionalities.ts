@@ -11,33 +11,6 @@ var expect = chai.expect;
 let objProjectConfiguration = new ProjectConfiguration();
 
 
-// All Login Persona Functionalities
-
-// When('{string} clicks on edit configuration button', async function (userRole) {
-//   try {
-//     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))), 100000);
-//     await objProjectListingPage.EditConfiguration();
-//   } 
-//   catch (error) {
-// await console.log("Feature name : " + userRole + " and Scenario name : ")
-// await console.log(error)
-//   throw "User is not able to click on edit configuration button"
-//   }
-// });
-
-// Then('{string} is taken to the master configuration page {string}', async function (userRole, MasterText) {
-//   try {
-//     await browser.wait(EC.visibilityOf(element(by.xpath('//label[text()="Master Configuration"]'))), 100000);
-//     await element(by.xpath('//label[text()="Master Configuration"]')).getText().then(function (text) {
-//       expect(text).to.include(MasterText);
-//     });
-//   } 
-//   catch (error) {
-// await console.log("Feature name : " + userRole + " and Scenario name : ")
-// await console.log(error)
-//   throw "User is not taken to the master configuration page"
-//   }
-// });
 
 Then('{string} verifies edit configuration button is not present', function (userRole) {
   try {
@@ -53,7 +26,7 @@ Then('{string} verifies edit configuration button is not present', function (use
 });
 
 When('{string} unable to click create new project', function (string) {
- 
+
   try {
     // await browser.wait(EC.invisibilityOf(objProjectListingPage.btnClickOnCreateProject), 10000);
     // expect(objProjectListingPage.btnClickOnCreateProject.isPresent()).to.eventually.equal(false);
@@ -78,16 +51,6 @@ When('{string} unable to click create new project', function (string) {
 
 When('{string} navigates to ust home page', async function (string) {
   try {
-
-    //     var myElement = element(by.className('smo smo-close-black-alt'));
-    //     myElement.isPresent().then(async function (elm) {
-    //       if (elm) {
-    //  await browser.sleep(10000)
-    //       await element(by.className('smo smo-close-black-alt')).click();
-
-    //       }
-    //     });
-
     await objProjectListingPage.clickOnHomePageButton();
     //await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))));
     await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))));
@@ -119,7 +82,7 @@ When('{string} unable to access dot menu options', function (string) {
   try {
     // expect(objProjectListingPage.btnDisable.isPresent()).to.eventually.equal(false);
     return browser.wait(function () {
-      return objProjectListingPage.btnDisable.isDisplayed()
+      return objProjectListingPage.btnDisable.isPresent()
         .then(function (visible) {
           if (visible) {
             return false;

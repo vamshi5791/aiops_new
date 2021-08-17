@@ -37,7 +37,6 @@ Feature:Login persona functionalities of ITOps_Engineer
               And "ITOpsEngineer" enters project name as "<ProjectName>" in the search field
               And "ITOpsEngineer" clicks dot menu icon
               And "ITOpsEngineer" unable to access dot menu options
-              #And "admin" clicks on logout button
         Examples:
-                  | ProjectName   |
-                  | Automation_02 |
+                  | ProjectName      |
+                  | Automation_IB_16 |

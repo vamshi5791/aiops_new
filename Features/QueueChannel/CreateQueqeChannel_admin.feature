@@ -14,7 +14,6 @@ Feature: Create Queue Channel with Itops Admin role
               And "Admin" clicks edit Project
               And "Admin" clicks on channel configuration
              Then new Queue channel must be available in Channel configuration page
-              And "admin" clicks on logout button
         Examples:
                   | UserName    | Password | projectName      |
                   | itops_admin | qa123    | Automation_IB_16 |
