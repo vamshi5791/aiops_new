@@ -55,11 +55,7 @@ export let config: Config = {
     // '../Features/DisplayConfiguration/DisplayConfiguration.feature',
     // '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
     '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
-   
 
-// DisplayUser
-    '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
-    '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
 //Visitor
     '../Features/LogIn/LogIn_ITOps_Visitor.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsVisitor.feature',
@@ -79,6 +75,11 @@ export let config: Config = {
 '../Features/LogIn/LogIn_IE.feature',
 '../Features/LogInPersona/LoginPersona_IE.feature',
 '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
+
+// DisplayUser
+    '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
+    '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
+
   ],
   cucumberOpts: {
 
