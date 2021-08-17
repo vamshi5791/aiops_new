@@ -261,12 +261,13 @@ try {
 
 
 
-Then('{string} verifies {string} is not moved to secondary section', async function (userName, string) {
+Then('{string} verifies {string} is not moved to secondary section', function (userName, string) {
   try {
-    await browser.wait(EC.invisibilityOf(objDisplayConfig.txtAlertIdInSecondaryColumn), 10000);
+    // browser.wait(EC.invisibilityOf(objDisplayConfig.txtAlertIdInSecondaryColumn), 10000);
+    expect(objDisplayConfig.txtAlertIdInSecondaryColumn.isPresent()).to.eventually.equal(false);
   } catch (error) {
-    await console.log("Feature name : Display Configuration " + userName + " and Scenario name : Default buttons in display configuration page")
-    await console.log(error)
+     console.log("Feature name : Display Configuration " + userName + " and Scenario name : Default buttons in display configuration page")
+     console.log(error)
     throw "Source field does exist in secondary section"
 }
 });

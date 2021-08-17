@@ -25,9 +25,15 @@ var Global_ProjectName;
 Then('Device details should be displayed {string}', async function (Device) {
   // try {
   await browser.sleep(2000);
-  await element(by.xpath('//td[text()=" ' + Device + ' "]')).getText().then(function (text) {
-    expect(text).to.include(Device);
+  var myElement = objAlerts.txtNoDataAvailable;
+  myElement.isPresent().then(async function (elm) {
+    if (elm == false) {
+      await element(by.xpath('//td[text()=" ' + Device + ' "]')).getText().then(function (text) {
+        expect(text).to.include(Device);
+      });
+    } 
   });
+  
   // } 
   // catch (error) {
     // await console.log("Feature name : Device Inventory and Scenario name :  ")

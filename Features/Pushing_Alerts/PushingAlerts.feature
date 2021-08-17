@@ -14,7 +14,7 @@ Feature: Pushing Alerts through RabbitMQ
             Given User with ITOps role renders the URL
               And "admin" selects project and open alerts
              Then enter alertname in search box and verify alert details "<Alerts>" "<alertName>"
-              And "admin" clicks on logout button
+              
 
         Examples:
                   | rabbitMQ_User | rabbitMQ_Password | Itops_UserName | Itops_Password | Alerts             | ProjectName      | ProjectNameForAlert              | ToQueue          | RouteKey         | alertName          | AlertName          | NodeIPAddress | ObjectName |

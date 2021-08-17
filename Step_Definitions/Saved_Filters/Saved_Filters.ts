@@ -327,19 +327,20 @@ When('{string} clicks on close button from any of the chip displayed', async fun
   }
 });
 
-Then('verify closed chips should not be displayed in UI', async function () {
+Then('verify closed chips should not be displayed in UI', function () {
   try {
     //await browser.wait(EC.invisibilityOf(objAlerts.btnCloseChip));
-    var myElement = objAlerts.btnCloseChip;
-    myElement.isPresent().then(async function (elm) {
-      if (elm) {
-      throw console.error();
-      } 
-    });
-    await browser.sleep(10000);
+    // var myElement = objAlerts.btnCloseChip;
+    // myElement.isPresent().then(async function (elm) {
+    //   if (elm) {
+    //  // throw console.error();
+    //   } 
+    // });
+    expect(objAlerts.btnCloseChip.isPresent()).to.eventually.equal(false);
+     browser.sleep(10000);
   } catch (error) {
-    await console.log("Feature name : Saved Filters and Scenario name :  ")
-    await console.log(error)
+     console.log("Feature name : Saved Filters and Scenario name :  ")
+     console.log(error)
     throw ""
   }
 });

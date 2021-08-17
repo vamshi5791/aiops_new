@@ -138,15 +138,15 @@ When('{string} deletes the solarwinds condition from alert console', async funct
 
 });
 
-Then('{string} verifies solarwinds filter is not visible', async function (userRole) {
+Then('{string} verifies solarwinds filter is not visible', function (userRole) {
   try {
-    await browser.sleep(5000)
-    await browser.wait(EC.invisibilityOf(objAlerts.btnRemoveSolarwinds), 1000);
-
+     browser.sleep(5000)
+    // await browser.wait(EC.invisibilityOf(objAlerts.btnRemoveSolarwinds), 1000);
+    expect(objAlerts.btnRemoveSolarwinds.isPresent()).to.eventually.equal(false);
   }
   catch (error) {
-    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to remove severity conditions from saved filters")
-    await console.log(error)
+     console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to remove severity conditions from saved filters")
+     console.log(error)
     throw "User is not able to verify solarwinds filter is not visible"
   }
 
@@ -232,23 +232,20 @@ Given('{string} clicks on Mark as default', async function (userRole) {
 
 });
 
-Then('{string} Verifies Warning filter is not applied', async function (userRole) {
+Then('{string} Verifies Warning filter is not applied', function (userRole) {
   try {
-    await browser.sleep(3000)
-    await browser.wait(EC.invisibilityOf(objAlerts.btnSelectWarning), 1000);
-
+     browser.sleep(3000)
+    // await browser.wait(EC.invisibilityOf(objAlerts.btnSelectWarning), 1000);
+    expect(objAlerts.btnSelectWarning.isPresent()).to.eventually.equal(false);
   }
   catch (error) {
-    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify when user applied Saved filter and some more severity conditions and navigated to other page and came back to alert console again, that time only saved filter exist")
-    await console.log(error)
+     console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify when user applied Saved filter and some more severity conditions and navigated to other page and came back to alert console again, that time only saved filter exist")
+     console.log(error)
     throw "User is not able to Verifies Warning filter is not applied"
   }
 
 });
 
-// Then('{string} opens infrastructure page', async function (string) {
-//   await objAlerts.Infrastructure()
-// });
 //Gopi 
 
 //Verify the advanced filter having Advanced filters, Source and Resource  sections
