@@ -13,15 +13,15 @@ Feature:Login persona functionalities of ITOps Visitor
                   | Automation_IB_16 |
 
         Scenario: ITOps Visitor is not able to  view alerts
-            
+
               And "ITOps_Visitor" unable to access alerts section
 
         Scenario: ITOps Visitor is able to  view configuration
-           
+
               And "ITOps_Visitor" able to access configuration section
 
         Scenario: ITOps Visitor is unable to  view infrastructure
-            
+
               And "ITOps_Visitor" unable to access infrastructure section
 
         Scenario:   ITOps Visitor is not able to create a new project
@@ -31,6 +31,7 @@ Feature:Login persona functionalities of ITOps Visitor
         Scenario: ITOps ITOps Visitor is not able to access the master configuration page
              When "ITOps_Visitor" navigates to ust home page
              Then "ITOps_Visitor" verifies edit configuration button is not present
+
         Scenario Outline:   ITOps Visitor Unbale TO Access Three Dots
              When "ITOps_Visitor" navigates to ust home page
              When "ITOps_Visitor" enters project name as "<ProjectName>" in the search field

@@ -79,21 +79,10 @@ When('enters queue name as {string} and routing key as {string}', async function
 
 When('enters AlertName as {string}, NodeIPAddress as, {string} and ObjectName as {string}', async function (AlertName, NodeIPAddress, ObjectName) {
   try {
-    JsonAlert = {
-      "Alert Name": AlertName,
-      "Alert Message": "1 of 2 Interface ha1 in CNHKGG-00A-SSC1 is Shutdown",
-      "Alert Severity": "Major",
-      "Service Name": "Node Down",
-      "Node Name": "CNHKGG-00A-SSC1",
-      "NodeIP Address": NodeIPAddress,
-      "Object Type": "Access Point",
-      "ObjectName": ObjectName,
-      "ObjectStatus": "down",
-      "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
-      "Resource Type": "Console",
-      "Alert time": ""
-    }
+    JsonAlert = JSON.parse(fs.readFileSync('JSONTestData/QueueChannel.json', 'utf-8')).QueueChannel;
+
     StringifiedJsonAlert = JSON.stringify(JsonAlert);
+   
   }
   catch (error) {
     await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
@@ -107,6 +96,7 @@ When('enters AlertName as {string}, NodeIPAddress as, {string} and ObjectName as
 When('enters the payload data and clicks on publish', async function () {
   try {
     await objFilter.enterPayLoad(StringifiedJsonAlert);
+
     await objFilter.clickOnPublish();
   }
   catch (error) {
