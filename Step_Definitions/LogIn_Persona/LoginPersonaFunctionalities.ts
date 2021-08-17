@@ -46,7 +46,7 @@ Then('{string} verifies edit configuration button is not present',  function (us
      objLogIn.logOutUser();
   } 
   catch (error) {
-     console.log("Feature name : " + userRole + " and Scenario name : ")
+     console.log("Feature name : " + userRole + " and Scenario name :verifies edit configuration button is not present ")
      console.log(error)
   throw "Edit configuration button is present"
   }
@@ -58,7 +58,7 @@ Then('{string} verifies edit configuration button is not present',  function (us
       expect(objProjectListingPage.btnClickOnCreateProject.isPresent()).to.eventually.equal(false);
     } 
     catch (error) {
-       console.log("Feature name : and Scenario name : ")
+       console.log("Feature name : and Scenario name : unable to click create new project")
        console.log(error)
     throw "User is able to create a new project"
     }
@@ -83,7 +83,7 @@ Then('{string} verifies edit configuration button is not present',  function (us
       await browser.sleep(5000)
     } 
     catch (error) {
-      await console.log("Feature name : and Scenario name : ")
+      await console.log("Feature name : and Scenario name : navigates to ust home page")
       await console.log(error)
     throw "User is able to create a new project"
     }
@@ -94,7 +94,7 @@ Then('{string} verifies edit configuration button is not present',  function (us
     await objProjectConfiguration.Update();
     } 
     catch (error) {
-      await console.log("Feature name : and Scenario name : ")
+      await console.log("Feature name : and Scenario name : clicks on Update")
       await console.log(error)
     throw "User is not able to update the project"
     }
@@ -107,7 +107,7 @@ Then('{string} verifies edit configuration button is not present',  function (us
     try {
       expect(objProjectListingPage.btnDisable.isPresent()).to.eventually.equal(false);
     } catch (error) {
-       console.log("Feature name : and Scenario name : ")
+       console.log("Feature name : and Scenario name :  unable to access dot menu options")
        console.log(error)
     throw "User is not able to update the project"
     }
