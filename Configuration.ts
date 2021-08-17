@@ -58,11 +58,11 @@ export let config: Config = {
    
 
 // DisplayUser
-    // '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
-    // '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
+    '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
+    '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
 //Visitor
-    // '../Features/LogIn/LogIn_ITOps_Visitor.feature',
-    // '../Features/LogInPersona/LoginPersona_ITOpsVisitor.feature',
+    '../Features/LogIn/LogIn_ITOps_Visitor.feature',
+    '../Features/LogInPersona/LoginPersona_ITOpsVisitor.feature',
     
 //Engineer
 // '../Features/LogIn/LogIn_ITOps_Engineer.feature',
@@ -76,9 +76,9 @@ export let config: Config = {
 // '../Features/DisplayConfiguration/DisplayConfiguration_Engineer.feature',
 // '../Features/TicketingThreshold/TicketingThreshold_ITOpsEngineer.feature',
 //IE
-// '../Features/LogIn/LogIn_IE.feature',
-// '../Features/LogInPersona/LoginPersona_IE.feature',
-// '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
+'../Features/LogIn/LogIn_IE.feature',
+'../Features/LogInPersona/LoginPersona_IE.feature',
+'../Features/ProjectInstallation/ProjectInstallation_IE.feature',
   ],
   cucumberOpts: {
 

@@ -30,7 +30,7 @@ Feature:Login persona functionalities of Display User
         Scenario: ITOps Display User is not able to access the master configuration page
              When "Display_User" navigates to ust home page
              Then "Display_User" verifies edit configuration button is not present
-            #   And "admin" clicks on logout button
+              And "admin" clicks on logout button
       #   Scenario Outline:   ITOps Display_User Unbale TO Access Three Dots
       #        When "Display_User" navigates to ust home page
       #        When "Display_User" enters project name as "<ProjectName>" in the search field
