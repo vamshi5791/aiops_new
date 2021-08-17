@@ -5,6 +5,8 @@ var drp = new support();
 var expect = chai.expect;
 export class AlertsPage {
  
+
+  //Alert console page elements
   btnSelectAlerts = element(by.xpath('//a[text()="Alerts"]'));
   btnSearch = element(by.xpath('//input[@placeholder="Search"]'))
   btnAdvanceFilter = element(by.className('filter smo smo-filter'));
@@ -22,6 +24,8 @@ export class AlertsPage {
   btnRemoveStateCondition = element(by.xpath('//span[text()="State"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
   btnRemoveOkCondition = element(by.xpath('//span[text()="Ok"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
   btnRemoveWarningCondition = element(by.xpath('//span[text()="Ok"]//preceding::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
+  
+  //Advanced filter section page elements
   chkMakeAsDefault = element(by.xpath('//span[text()="Make As Default"]//preceding::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'));
   btnEditSavedFilter = element(by.className('mr-3 smo smo-edit ng-star-inserted'));
   btnDeleteSavedFilter = element(by.className('smo smo-trash-alt-regular ng-star-inserted'));
@@ -45,14 +49,11 @@ export class AlertsPage {
   btnAutoRefreshInEveryRightButton = element(by.className('smo-btn-icon-col d-flex align-items-center smo smo-check-black-alt smo-clickable ng-star-inserted'));
   txtSpinner = element(by.className('smo-progress-spinner-svg'));
   btnInfrastructure = element(by.xpath('//a[text()="Infrastructure"]'))
-  
   txtRowsPerPage = element(by.xpath('//span[text()="Rows per page"]'));
   txtAdvancedFilters = element(by.xpath('//h3[text()="Advanced Filters"]'));
   txtSourceAndResources = element(by.xpath('//h4[text()="Source and Resources"]'));
   txtStateAndStatus = element(by.xpath('//h4[text()="State and Status"]'));
   txtDateAndTime = element(by.xpath('//h4[text()="Date and Time"]'));
-
-
   //ajay
 
   btnselectConfiguration=element(by.xpath('//a[text()="Configuration"]'));
@@ -68,6 +69,7 @@ export class AlertsPage {
   btnRemoveWarningSeverity=element(by.xpath('//span[text()="Warning"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
   btnRemoveSolarwinds=element(by.xpath('//span[text()="Solarwinds"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
   btnMarkAsDefault=element(by.xpath('//span[@smotooltip="Mark as default"]'))
+  
   async clickOnRemoveOkCondition() {
     await this.btnRemoveOkCondition.click();
   }

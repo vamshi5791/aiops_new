@@ -12,11 +12,11 @@ When('{string} clicks on configuration tab', async function (userrole) {
     try {
         var myElement = element(by.className('smo smo-close-black-alt'));
         myElement.isPresent().then(async function (elm) {
-          if (elm) {
-     await browser.sleep(10000)
-          await element(by.className('smo smo-close-black-alt')).click();
-    
-          }
+            if (elm) {
+                await browser.sleep(10000)
+                await element(by.className('smo smo-close-black-alt')).click();
+
+            }
         });
         await browser.wait(EC.visibilityOf(objPolicy.lnkConfiguration));
         await objPolicy.configurationNavigation();
@@ -35,6 +35,8 @@ When('{string} navigate to Alert Correlation Policy', async function (userrole) 
         await browser.wait(EC.visibilityOf(objPolicy.lnkAlertCorrelationPolicy));
         await objPolicy.correlationPolicyNavigation();
         await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Alert Correlation Policy"]'))), 10000);
+        await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Alert Correlation Policy"]'))), 10000);
+        await browser.sleep(5000)
     }
     catch (error) {
         await console.log("Feature name : Policies ")
@@ -45,7 +47,7 @@ When('{string} navigate to Alert Correlation Policy', async function (userrole) 
 
 When('{string} navigate to Acknowledgement Policy', async function (userrole) {
     try {
-         await browser.wait(EC.visibilityOf(objPolicy.lnkAcknowledgementPolicy));
+        await browser.wait(EC.visibilityOf(objPolicy.lnkAcknowledgementPolicy));
         await objPolicy.acknowledgementPolicyNavigation();
         await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Acknowledgement Policy"]'))), 10000);
     }
@@ -100,7 +102,7 @@ When('{string} clicks on edit icon in listing page {string}', async function (us
 
 When('{string} clicks on delete icon in listing page {string}', async function (userrole, policyname) {
     try {
-       // await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+        // await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
         await objPolicy.clickOnPolicyDeleteIcon(policyname);
     }
     catch (error) {
@@ -117,7 +119,7 @@ When('Admin clicks on Add {string} Policy', async function (policy) {
         await objPolicy.clickOnAddPolicyButton();
     }
     catch (error) {
-        await console.log("Feature name : Policies : Click on "+policy+"Add policy")
+        await console.log("Feature name : Policies : Click on " + policy + "Add policy")
         await console.log(error)
         throw "User not able to click on Add Policy button";
     }
@@ -257,16 +259,16 @@ When('Admin clicks on Save and Add Rule button', async function () {
 
 Then('verify {string} toaster {string}', async function (policy, Toaster) {
     // try {
-        await browser.wait(EC.visibilityOf(objPolicy.tostMessage), 10000);
-        await objPolicy.tostMessage.getText().then(async function (text) {
-            await  expect(text).to.include(Toaster);
-           
-        });
-        await browser.wait(EC.invisibilityOf(objPolicy.tostMessage), 10000);
+    await browser.wait(EC.visibilityOf(objPolicy.tostMessage), 10000);
+    await objPolicy.tostMessage.getText().then(async function (text) {
+        await expect(text).to.include(Toaster);
+
+    });
+    await browser.wait(EC.invisibilityOf(objPolicy.tostMessage), 10000);
     // }
     // catch (error) {
-        // await console.log("Feature name : Policies ")
-        // await console.log(error)
+    // await console.log("Feature name : Policies ")
+    // await console.log(error)
     //     throw "Toaster message is not same as Expected message";
     // }
 });
@@ -295,7 +297,7 @@ When('Admin clicks on Save button', async function () {
 
 When('Admin clicks on Activate Policy toggle button', async function () {
     try {
-         await browser.wait(EC.visibilityOf(objPolicy.tglbtnActivePolicy), 10000);
+        await browser.wait(EC.visibilityOf(objPolicy.tglbtnActivePolicy), 10000);
         await objPolicy.clickActivePolicyToggleButton();
     }
     catch (error) {
@@ -310,8 +312,8 @@ When('Admin clicks on Yes button in confirmation popup', async function () {
         await browser.wait(EC.visibilityOf(objPolicy.btnYes));
 
         await objPolicy.clickOnYesButton();
-         //await browser.sleep(5000)
-         //await browser.wait(EC.invisibilityOf(objPolicy.btnYes));
+        //await browser.sleep(5000)
+        //await browser.wait(EC.invisibilityOf(objPolicy.btnYes));
 
     }
     catch (error) {
@@ -326,7 +328,7 @@ When('Admin clicks on Done button', async function () {
         await browser.wait(EC.visibilityOf(objPolicy.btnDone));
         await browser.sleep(10000)
         await objPolicy.clickOnDoneButton();
-       
+
 
     }
     catch (error) {
@@ -422,9 +424,10 @@ Then('verify edit and delete icons in policy listing {string}', async function (
 When('{string} clicks on policy {string}', async function (userrole, policyname) {
     try {
         await objPolicy.clickOnPolicy(policyname);
+        // await element(by.className('cursor-pointer')).click();
     }
     catch (error) {
-        await console.log("Feature name : Policies - Action : clicking on "+policyname+" name")
+        await console.log("Feature name : Policies - Action : clicking on " + policyname + " name")
         await console.log(error)
         throw "User is not able to click on Policy Name";
     }

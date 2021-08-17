@@ -39,7 +39,6 @@ export class ProjectListingPage {
     await this.btnDeleteProject.click();
   }
   async clickOnClosePopUpButton() {
-    await browser.sleep(2000)
     await this.btnClosePopUp.click();
   }
   async ClickOnYes() {

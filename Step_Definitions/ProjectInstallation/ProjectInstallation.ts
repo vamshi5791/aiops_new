@@ -22,12 +22,14 @@ Given('ITOps {string} with username and password as {string}, {string} is in the
     await objLogIn.enterPassword(Password);
     await objLogIn.clickOnLogInButton();
     userName = UserName;
+    
     await console.log("------------------"+globalThis.BrowserMode)
     await browser.sleep(10000)
     if (globalThis.BrowserMode == "headless") {
+      //below line is for removing the banner
       await element(by.className('smo smo-close-black-alt')).click();
     }
-    //await browser.sleep(10000)
+   
   }
   catch (error) {
 
@@ -827,14 +829,6 @@ When('{string} enters Password {string}', async function (userRole, Password) {
 When('{string} clicks on sign in', async function (userRole) {
   try {
     await objProjectConfi.SignIn();
-
-    // var myElement = element(by.xpath('//span[text()="Incorrect user ID or password. Type the correct user ID and password, and try again."]'));
-    // myElement.isPresent().then(async function (elm) {
-    //   if (elm) {
-    //      await browser.get("https://smartops-qa01.eastus.cloudapp.azure.com/paas/itops/itopsui/pwf-hub/edit").then(async function () {
-    // })
-    //   }
-    // })
   }
   catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Email Channel Authentication")

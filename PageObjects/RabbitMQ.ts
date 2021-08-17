@@ -22,7 +22,7 @@ export class PushingAlerts {
   btnenterPayLoad = element(by.xpath('//textarea[@name="payload"]'));
   btnclickOnPublish = element(by.xpath('//input[@value="Publish message"]'))
 
-  async LogIn_Details2(adminUserName: string, adminPassword: string) {
+  async loginToRabbitMQ(adminUserName: string, adminPassword: string) {
     await this.txtUserName.sendKeys(adminUserName)
     await this.txtPassword.sendKeys(adminPassword)
   }

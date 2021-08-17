@@ -3,6 +3,8 @@ import { browser, element, by, protractor } from "protractor"
 import { LogIn } from '../../PageObjects/LogIn';
 import { ProjectListingPage } from '../../PageObjects/ProjectListing';
 import { ProjectConfiguration } from "../../PageObjects/ProjectConfiguration";
+var PropertiesReader = require('properties-reader');
+var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 import chai from "chai";
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
@@ -80,7 +82,7 @@ When('{string} with Username as {string}, Password as {string}, Creates Queue Ch
     "requestReceivedTimeFormat": "2021-06-24'T'14:50:09.002",
     "processInputasList": true
   };
-  const token_URL = "https://smartops-qa01.eastus.cloudapp.azure.com/paas/itops/pwf/api/smartops/login";
+  const token_URL = properties.get("main." + globalThis.environment + "_token_URL");
   const tokenPostRequest = {
     method: 'POST',
     body: JSON.stringify(userInfo),
@@ -97,10 +99,10 @@ When('{string} with Username as {string}, Password as {string}, Creates Queue Ch
       return Promise.reject(res);
     }
   }).then(async function (userData) {
-
+ 
     var bearerToken = "Bearer " + userData.access_token;
 
-    const chennalCreation_URL = "https://smartops-qa01.eastus.cloudapp.azure.com/paas/itops/ihubservice/api/smartops/ihub/channel";
+    const chennalCreation_URL = properties.get("main." + globalThis.environment + "_ihubservice");
     const channelCreationPosrRequest = {
       method: 'POST',
       body: JSON.stringify(channelInfo),

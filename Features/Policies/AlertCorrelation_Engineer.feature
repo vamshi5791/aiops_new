@@ -11,6 +11,7 @@ Feature: Alert Correlation Policy
               And "ITOPsEngineer" navigate to Alert Correlation Policy
              Then "ITOPsEngineer" verifies Add policy button
              When "ITOPsEngineer" clicks on policy "<policyname>"
+             # And "Admin" clicks on edit icon in listing page "<PolicyName>"
               And click on cancel button
 
         Examples:

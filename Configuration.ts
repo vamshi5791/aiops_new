@@ -37,7 +37,7 @@ export let config: Config = {
   },
   specs: [
     //Admin
-    // '../Features/LogIn/LogIn_Admin.feature',
+    '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/LogInPersona/LoginPersona_ITOpsAdmin.feature',
     // '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
     // '../Features/DeviceInventory/Device_Inventory_Admin.feature',
@@ -54,35 +54,35 @@ export let config: Config = {
     // '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
     // '../Features/DisplayConfiguration/DisplayConfiguration.feature',
     // '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
-    // '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
+    '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
 
     //Visitor
-    '../Features/LogIn/LogIn_ITOps_Visitor.feature',
-    '../Features/LogInPersona/LoginPersona_ITOpsVisitor.feature',
-    '../Features/Logout/LogOut.feature',
+    // '../Features/LogIn/LogIn_ITOps_Visitor.feature',
+    // '../Features/LogInPersona/LoginPersona_ITOpsVisitor.feature',
+    // '../Features/Logout/LogOut.feature',
 
     //Engineer
-    '../Features/LogIn/LogIn_ITOps_Engineer.feature',
-    '../Features/LogInPersona/LoginPersona_ITOpsEngineer.feature',
-    '../Features/DeviceInventory/Device_Inventory_Engineer.feature',
-    '../Features/Policies/AlertCorrelation_Engineer.feature',
-    '../Features/Policies/Acknowledgement_Engineer.feature',
-    '../Features/Policies/Failure_Engineer.feature',
-    '../Features/Policies/Recovery_Engineer.feature',
-    '../Features/SeverityMapping/Severity_Mapping_ITOpsEngineer.feature',
-    '../Features/DisplayConfiguration/DisplayConfiguration_Engineer.feature',
-    '../Features/TicketingThreshold/TicketingThreshold_ITOpsEngineer.feature',
-    '../Features/Logout/LogOut.feature',
+    // '../Features/LogIn/LogIn_ITOps_Engineer.feature',
+    // '../Features/LogInPersona/LoginPersona_ITOpsEngineer.feature',
+    // '../Features/DeviceInventory/Device_Inventory_Engineer.feature',
+    // '../Features/Policies/AlertCorrelation_Engineer.feature',
+    // '../Features/Policies/Acknowledgement_Engineer.feature',
+    // '../Features/Policies/Failure_Engineer.feature',
+    // '../Features/Policies/Recovery_Engineer.feature',
+    // '../Features/SeverityMapping/Severity_Mapping_ITOpsEngineer.feature',
+    // '../Features/DisplayConfiguration/DisplayConfiguration_Engineer.feature',
+    // '../Features/TicketingThreshold/TicketingThreshold_ITOpsEngineer.feature',
+    // '../Features/Logout/LogOut.feature',
 
     // DisplayUser
-    '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
-    '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
-    '../Features/Logout/LogOut.feature',
+    // '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
+    // '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
+    // '../Features/Logout/LogOut.feature',
 
     //IE
-    '../Features/LogIn/LogIn_IE.feature',
-    '../Features/LogInPersona/LoginPersona_IE.feature',
-    '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
+    // '../Features/LogIn/LogIn_IE.feature',
+    // '../Features/LogInPersona/LoginPersona_IE.feature',
+    // '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
 
 
   ],

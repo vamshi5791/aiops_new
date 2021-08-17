@@ -33,7 +33,7 @@ Given('User renders the RabbitMQ URL', async function () {
 
 When('user enters RabbitMQ_Username as {string}, RabbitMQ_Password as {string} and clicks on login button', async function (rabbitMQ_User, rabbitMQ_Password) {
   try {
-    await objFilter.LogIn_Details2(rabbitMQ_User, rabbitMQ_Password);
+    await objFilter.loginToRabbitMQ(rabbitMQ_User, rabbitMQ_Password);
     await objFilter.ClickOnRabbitMQSignIn();
     userName = rabbitMQ_User;
   }
