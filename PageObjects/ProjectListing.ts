@@ -18,9 +18,11 @@ export class ProjectListingPage {
   btnDisable = element(by.xpath('//a[@class="smo-menuitem-link smo-state-disabled smo-menuitem-link-sm ng-star-inserted"]'))
   async Project_search(ProjectName: string) {
     await this.txtsearch.sendKeys(ProjectName);
-    await browser.sleep(2000);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))));
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="All Projects"]'))));
     await browser.actions().sendKeys(protractor.Key.ENTER).perform();
-    await browser.sleep(2000);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))));
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="All Projects"]'))));
 
   }
   async clickOnHomePageButton() {

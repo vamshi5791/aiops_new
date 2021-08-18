@@ -55,7 +55,9 @@ When('{string} navigates to ust home page', async function (string) {
     //await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))));
     await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))));
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="All Projects"]'))));
-    await browser.sleep(5000)
+    await browser.wait(EC.visibilityOf(objProjectListingPage.btnProfile), 10000);
+    await browser.wait(EC.elementToBeClickable(objProjectListingPage.btnProfile), 10000);
+    // await browser.sleep(5000)
   }
   catch (error) {
     await console.log("Feature name : and Scenario name : navigates to ust home page")
