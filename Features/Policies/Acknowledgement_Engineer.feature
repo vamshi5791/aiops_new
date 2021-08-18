@@ -7,7 +7,6 @@ Feature: Verify Acknowledgement Policy
             
              When "Itops_Engineer" navigate to Configuration section
               And "ITOpsEngineer" navigate to Acknowledgement Policy
-             Then "ITOpsEngineer" verifies Add policy button
              When "ITOpsEngineer" clicks on policy "<policyname>"
               And click on cancel button
 

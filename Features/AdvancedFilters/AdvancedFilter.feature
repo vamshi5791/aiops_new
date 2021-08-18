@@ -137,26 +137,27 @@ Feature Description: Admin navigates to alert page,
                   | SavedFilter | alertName  |
                   | IB          | Solarwinds |
 
-        Scenario Outline: Verify when user applied Saved filter and some more severity conditions and navigated to other page and came back, only saved filter exist
-              And "ITOps_Admin" clicks on Alerts page
-              And "ITOps_Admin" clicks on advanced filter icon
-              And "ITOps_Admin" selects saved filter "<SavedFilter>"
-              And "ITOps_Admin" clicks on Mark as default
-             Then "ITOps_Admin" clicks on filter by severity dropdown
-              And "ITOps_Admin" selects Warning
-              And "ITOps_Admin" opens infrastructure page
-              And "ITOps_Admin" clicks on Alerts page
-             Then "ITOps_Admin" Verifies Warning filter is not applied
+      #   Scenario Outline: Verify when user applied Saved filter and some more severity conditions and navigated to other page and came back, only saved filter exist
+      #         And "ITOps_Admin" clicks on Alerts page
+      #         And "ITOps_Admin" clicks on advanced filter icon
+      #         And "ITOps_Admin" selects saved filter "<SavedFilter>"
+      #         And "ITOps_Admin" clicks on Mark as default
+      #        Then "ITOps_Admin" clicks on filter by severity dropdown
+      #         And "ITOps_Admin" selects Warning
+      #         And "ITOps_Admin" opens infrastructure page
+      #         And "ITOps_Admin" clicks on Alerts page
+      #        Then "ITOps_Admin" Verifies Warning filter is not applied
              
  
-        Examples:
-                  | SelectFilter | SavedFilter |
-                  | Warning      | IB          |
+      #   Examples:
+      #             | SelectFilter | SavedFilter |
+      #             | Warning      | IB          |
 
 
 
         Scenario Outline:Verify that user is able to view edit and delete option in Advanced Filter section
              When "Admin" clicks on advanced filter icon
+              And "ITOps_Admin" selects saved filter "<SavedFilter>"
              When "Admin" clicks on Edit icon for "<SavedFilter>" filter
              Then "Admin" verifies that edit and delete options are present
               And "Admin" edits "<Source>" filter criteria

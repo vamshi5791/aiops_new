@@ -16,7 +16,7 @@ Then('{string} verifies edit configuration button is not present', function (use
   try {
     // await browser.wait(EC.invisibilityOf(objProjectListingPage.btnEditConfiguration), 1000);
     expect(objProjectListingPage.btnEditConfiguration.isPresent()).to.eventually.equal(false);
-    objLogIn.logOutUser();
+  
   }
   catch (error) {
     console.log("Feature name : " + userRole + " and Scenario name :verifies edit configuration button is not present ")

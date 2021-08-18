@@ -444,15 +444,14 @@ Then('{string} verifies that edit and delete options are present', async functio
 
 When('{string} clicks on Edit icon for {string} filter', async function (userName, SavedFilter) {
   try {
-  await browser.sleep(3000)
     await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
     await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
-    await browser.actions().mouseMove(element(by.xpath('//span[text()="'+SavedFilter+'"]'))).perform();
-    await browser.sleep(3000)
+    // await browser.actions().mouseMove(element(by.xpath('//span[text()="'+SavedFilter+'"]'))).perform();
+    // await browser.actions().mouseMove(element(by.className('justify-content-start ng-star-inserted'))).perform();
     await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
     await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
-    await element(by.className('mr-3 smo smo-edit ng-star-inserted')).click();
-   
+    //await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[@smotooltip="Edit"]'))), 10000);
+    await element(by.xpath('//span[@smotooltip="Edit"]')).click();
     await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
     await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
   } catch (error) {

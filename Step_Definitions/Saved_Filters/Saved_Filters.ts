@@ -291,12 +291,23 @@ Then('verify All filter condition chips should be removed from UI', async functi
   try {
     await browser.sleep(5000)
     //await browser.wait(EC.invisibilityOf(objAlerts.btnRemoveAll), 10000);
-    var myElement = objAlerts.btnRemoveAll;
-    myElement.isPresent().then(async function (elm) {
-      if (elm) {
-        console.error();
-      }
-    });
+    // var myElement = objAlerts.btnRemoveAll;
+    // myElement.isPresent().then(async function (elm) {
+    //   if (elm) {
+    //     // console.error();
+    //   }
+    // });
+    return browser.wait(function () {
+      return  objAlerts.btnRemoveAll.isPresent()
+        .then(function (visible) {
+          if (visible) {
+            return false;
+          }
+          return true;
+        }).catch(function (notFound) {
+          return true;
+        });
+    }, 10000, 'Element not found within 10 seconds');
   } catch (error) {
     await console.log("Feature name : Saved Filters and Scenario name :  ")
     await console.log(error)
@@ -336,8 +347,19 @@ Then('verify closed chips should not be displayed in UI', function () {
     //  // throw console.error();
     //   } 
     // });
-    expect(objAlerts.btnCloseChip.isPresent()).to.eventually.equal(false);
-     browser.sleep(10000);
+    // expect(objAlerts.btnCloseChip.isPresent()).to.eventually.equal(false);
+    //  browser.sleep(10000);
+    return browser.wait(function () {
+      return  objAlerts.btnCloseChip.isPresent()
+        .then(function (visible) {
+          if (visible) {
+            return false;
+          }
+          return true;
+        }).catch(function (notFound) {
+          return true;
+        });
+    }, 10000, 'Element not found within 10 seconds');
   } catch (error) {
      console.log("Feature name : Saved Filters and Scenario name :  ")
      console.log(error)
@@ -349,7 +371,9 @@ Then('verify closed chips should not be displayed in UI', function () {
 
 Then('verify all saved filters are displayed on left side {string}', async function (FIlterName) {
   try {
-    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="'+FIlterName+'"]'))), 10000);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="' + FIlterName + '"]'))), 10000);
+    await browser.wait(EC.presenceOf(element(by.xpath('//span[text()="'+FIlterName+'"]'))), 10000);
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="'+FIlterName+'"]'))), 10000);
     await browser.sleep(5000);
     await objAlerts.savedFilterTitle(FIlterName);
 
