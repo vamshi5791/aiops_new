@@ -34,7 +34,6 @@ When('user enters Username as {string}, Password as {string} and clicks on Login
   
     if (globalThis.BrowserMode == "headless") {
       await browser.sleep(20000)
-      
       await element(by.className('smo smo-close-black-alt')).click();
     }
   } catch (error) {

@@ -17,7 +17,7 @@
         "realm": "ustglobal",
         "userName": "username",
         "password": "password"
-    },
+    }, 
     "ChannelInfo": {
         "channelName": "channelName",
         "orgId": 1,

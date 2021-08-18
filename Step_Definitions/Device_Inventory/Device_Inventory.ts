@@ -61,7 +61,7 @@ Then('Verifies that Upload Icon is not present', async function () {
   try {
     // await browser.wait(EC.invisibilityOf(element(by.xpath('//span[@class="smo smo-upload-regular"]'))), 1000);
     expect(element(by.xpath('//span[@class="smo smo-upload-regular"]')).isPresent()).to.eventually.equal(false);
-    objLogIn.logOutUser();
+  
   }
   catch (error) {
     await console.log("Feature name : Device Inventory and Scenario name : ")
@@ -211,7 +211,7 @@ Then('{string} unable to find add device option', async function (userRole) {
   try {
     // await browser.wait(EC.invisibilityOf(element(by.xpath('//span[text()="Add Device"]'))), 1000);
     expect(element(by.xpath('//span[text()="Add Device"]')).isPresent()).to.eventually.equal(false);
-    objLogIn.logOutUser();
+   
   }
   catch (error) {
     await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
@@ -264,7 +264,7 @@ When('{string} unable to edit the resource type', async function (string) {
   try {
     // await browser.wait(EC.invisibilityOf(element(by.xpath('//div[text()="RESOURCE TYPE"]//following::input[@type="text"]'))), 1000);
     expect(element(by.xpath('//div[text()="RESOURCE TYPE"]//following::input[@type="text"]')).isPresent()).to.eventually.equal(false);
-    objLogIn.logOutUser();
+  
   }
   catch (error) {
     await console.log("Feature name : Device Inventory and Scenario name : ")

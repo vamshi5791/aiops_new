@@ -20,6 +20,6 @@ Feature Description :Severity Mapping
 
         Examples:
                   | UserName       | Password | ProjectName   | SourceSeverity1 | SourceSeverity2 | SourceSeverity  | SOSeverity  | time         | AddSeverity  | NewSource      | Time        |
-                  | Itops_engineer | qa123    | Automation_02 | 23              | 34              | SOURCE SEVERITY | SO SEVERITY | UPDATED TIME | Add Severity | Add New Source | 14 Jul 2021 |
+                  | Itops_engineer | qa123    | Automation_02 | 23              | 34              | SOURCE SEVERITY | SO SEVERITY | UPDATED TIME | Add Severity | Add New Source | 17 Aug 2021 |
 
 

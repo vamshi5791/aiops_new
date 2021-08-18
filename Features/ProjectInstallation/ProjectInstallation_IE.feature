@@ -137,7 +137,6 @@ Feature Description Once the login is done with ITOps_IE role,
         Scenario Outline: Project Installation
              When "Installation Engineer" clicks on Install button
              Then Project must be in "<ProjectStatus>" state in Project Listing Page
-              And "Installation Engineer" clicks on logout button
 
         Examples:
                   | ProjectStatus |

@@ -39,12 +39,12 @@ export let config: Config = {
     //Admin
     '../Features/LogIn/LogIn_Admin.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsAdmin.feature',
-    // '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
+    // // '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
     '../Features/DeviceInventory/Device_Inventory_Admin.feature',
-    // // '../Features/Policies/AlertCorrelation.feature',
-    // //  '../Features/Policies/Acknowledgement.feature',
-    // // '../Features/Policies/Failure.feature',
-    // // '../Features/Policies/Recovery.feature',
+    // // // '../Features/Policies/AlertCorrelation.feature',
+    // // //  '../Features/Policies/Acknowledgement.feature',
+    // // // '../Features/Policies/Failure.feature',
+    // // // '../Features/Policies/Recovery.feature',
     '../Features/Pushing_Alerts/PushingAlerts.feature',
     '../Features/SavedFilters/SavedFilters.feature',
     '../Features/AdvancedFilters/AdvancedFilter.feature',
@@ -54,14 +54,14 @@ export let config: Config = {
     '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
     '../Features/DisplayConfiguration/DisplayConfiguration.feature',
     '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
-    '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
+    // '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
     '../Features/Logout/LogOut.feature',
-    // //Visitor
+    // // //Visitor
     '../Features/LogIn/LogIn_ITOps_Visitor.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsVisitor.feature',
     '../Features/Logout/LogOut.feature',
 
-    // // DisplayUser
+    // // // DisplayUser
     '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
     '../Features/Logout/LogOut.feature',
@@ -69,9 +69,9 @@ export let config: Config = {
     // //IE
     '../Features/LogIn/LogIn_IE.feature',
     '../Features/LogInPersona/LoginPersona_IE.feature',
-    // '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
+    // // '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
     '../Features/Logout/LogOut.feature',
-    // //Engineer
+    // // //Engineer
     '../Features/LogIn/LogIn_ITOps_Engineer.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsEngineer.feature',
     '../Features/DeviceInventory/Device_Inventory_Engineer.feature',

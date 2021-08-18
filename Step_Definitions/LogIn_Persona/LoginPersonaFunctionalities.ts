@@ -51,14 +51,14 @@ When('{string} unable to click create new project', function (string) {
 
 When('{string} navigates to ust home page', async function (string) {
   try {
-    var myElement = element(by.className('smo smo-close-black-alt'));
-    myElement.isPresent().then(async function (elm) {
-      if (elm) {
-        await browser.sleep(10000)
-        await element(by.className('smo smo-close-black-alt')).click();
+    // var myElement = element(by.className('smo smo-close-black-alt'));
+    // myElement.isPresent().then(async function (elm) {
+    //   if (elm) {
+    //     await browser.sleep(10000)
+    //     await element(by.className('smo smo-close-black-alt')).click();
 
-      }
-    });
+    //   }
+    // });
 
     await objProjectListingPage.clickOnHomePageButton();
     //await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))));
