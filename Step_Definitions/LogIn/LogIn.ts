@@ -33,7 +33,8 @@ When('user enters Username as {string}, Password as {string} and clicks on Login
     await console.log("------------------"+globalThis.BrowserMode)
   
     if (globalThis.BrowserMode == "headless") {
-      await browser.sleep(20000)
+      await browser.sleep(10000)
+      await browser.wait(EC.visibilityOf(element(by.className('smo smo-close-black-alt'))), 60000);
       await element(by.className('smo smo-close-black-alt')).click();
     }
   } catch (error) {
@@ -59,12 +60,15 @@ Then('ITOps home page is displayed', async function () {
 When('{string} clicks on logout button', async function (string) {
 
   try {
+    await browser.sleep(3000)
     await ProjectListing.ClickOnProfile();
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Logout"]'))), 10000);
+    await browser.sleep(3000)
     await ProjectListing.LogOut();
-    await browser.wait(EC.visibilityOf(element(by.xpath('//input[@name="login"]'))), 10000);
+    // await browser.sleep(10000)
+    await browser.wait(EC.visibilityOf(element(by.xpath('//input[@name="login"]'))), 50000);
   } catch (error) {
-    await console.log("Logout")
+    await console.log("Unable to logout")
     await console.log(error)
     throw "user is unable to logout"
   }

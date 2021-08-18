@@ -43,7 +43,7 @@ When('{string} clicks on project name {string}', async function (userRole, TestP
     await browser.sleep(3000);
     await ProjectListing.selectProject(TestProjectName);
   } catch (error) {
-    await console.log("Feature name : Saved Filters " + userRole + " and Scenario name :  ")
+    await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on project name")
     await console.log(error)
 
   }
@@ -67,9 +67,14 @@ await browser.sleep(10000)
 
 
 When('{string} clicks on advanced filter icon', async function (userRole) {
-  await browser.wait(EC.visibilityOf(element(by.className('filter smo smo-filter'))), 100000);
-  await browser.sleep(2000);
-  await objAlerts.AdvanceFilter();
+  try {
+    await browser.wait(EC.visibilityOf(element(by.className('filter smo smo-filter'))), 100000);
+    await browser.sleep(2000);
+    await objAlerts.AdvanceFilter();
+  } catch (error) {
+    await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on Advanced filter icon")
+    await console.log(error)
+  }
 });
 
 
@@ -99,7 +104,7 @@ When('{string} enters source as {string} and alert state as {string}', async fun
     await browser.wait(EC.visibilityOf(objAlerts.btnSearch), 10000);
     await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
     await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
-    await console.log("Feature name : Saved Filters " + userRole + " and Scenario name :  ")
+    await console.log("Feature name : Saved Filters " + userRole + " and Action : selecting source and alert state ")
     await console.log(error)
     throw "User is not able to enter source and alert state"
   }
@@ -117,7 +122,7 @@ When('{string} clicks on Save filter button', async function (userRole) {
     await browser.wait(EC.visibilityOf(objAlerts.btnSearch), 10000);
     await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
     await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
-    await console.log("Feature name : Saved Filters " + userRole + " and Scenario name :  ")
+    await console.log("Feature name : Saved Filters " + userRole + " and Action : clicking on Save filter button")
     await console.log(error)
     throw "User is not able to click on save filter button"
   }
@@ -138,7 +143,7 @@ When('{string} enters filter name as {string} and Description as {string}', asyn
     await browser.wait(EC.visibilityOf(objAlerts.btnSearch), 10000);
     await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
     await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
-    await console.log("Feature name : Saved Filters " + userRole + " and Scenario name :  ")
+    await console.log("Feature name : Saved Filters " + userRole + " and Action : entering filter name and Description ")
     await console.log(error)
     throw "User is not able to enter filter name and Description"
   }
@@ -157,7 +162,7 @@ When('{string} clicks on save and apply button', async function (userRole) {
     await browser.wait(EC.visibilityOf(objAlerts.btnSearch), 10000);
     await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
     await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
-    await console.log("Feature name : Saved Filters " + userRole + " and Scenario name :  ")
+    await console.log("Feature name : Saved Filters " + userRole + " and Action : clicks on save and apply button ")
     await console.log(error)
     throw "User is not able to click on save and apply button"
   }

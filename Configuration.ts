@@ -45,7 +45,7 @@ export let config: Config = {
     // // //  '../Features/Policies/Acknowledgement.feature',
     // // // '../Features/Policies/Failure.feature',
     // // // '../Features/Policies/Recovery.feature',
-    '../Features/Pushing_Alerts/PushingAlerts.feature',
+   
     '../Features/SavedFilters/SavedFilters.feature',
     '../Features/AdvancedFilters/AdvancedFilter.feature',
     '../Features/FilterBySeverityDropdown/FilterBySeverityDropdown.feature',
@@ -54,7 +54,8 @@ export let config: Config = {
     '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
     '../Features/DisplayConfiguration/DisplayConfiguration.feature',
     '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
-    // '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
+    '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
+     // '../Features/Pushing_Alerts/PushingAlerts.feature',
     '../Features/Logout/LogOut.feature',
     // // //Visitor
     '../Features/LogIn/LogIn_ITOps_Visitor.feature',
@@ -69,9 +70,9 @@ export let config: Config = {
     // //IE
     '../Features/LogIn/LogIn_IE.feature',
     '../Features/LogInPersona/LoginPersona_IE.feature',
-    // // '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
+    // '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
     '../Features/Logout/LogOut.feature',
-    // // //Engineer
+    // // // //Engineer
     '../Features/LogIn/LogIn_ITOps_Engineer.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsEngineer.feature',
     '../Features/DeviceInventory/Device_Inventory_Engineer.feature',

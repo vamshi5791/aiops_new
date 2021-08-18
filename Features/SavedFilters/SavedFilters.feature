@@ -8,9 +8,9 @@ Feature Description : User navigates to alert console page and creates the filte
         @SavedFilterSaveAndApplyTheFilter
         Scenario Outline:  Verifying the ITOps admin is able to save and apply the filter
 
-             When "admin" navigates to ust home page
-             When "Admin" enters project name as "<ProjectName>" in the search field
-              And "admin" clicks on project name "<ProjectName>"
+            #  When "admin" navigates to ust home page
+            #  When "Admin" enters project name as "<ProjectName>" in the search field
+            #   And "admin" clicks on project name "<ProjectName>"
               And "admin" clicks on Alerts page
              When "admin" clicks on advanced filter icon
               And "admin" enters source as "<Source>" and alert state as "<Alert_State>"
