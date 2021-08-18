@@ -21,21 +21,21 @@ let objConfiguration = new Configuration();
 
 
 
-Given('{string} unable to access dashboard', function (string) {
+Given('{string} unable to access dashboard', async function (string) {
   try {
-    // await browser.wait(EC.invisibilityOf(objDashboard.btnDashboard), 10000);
+    await browser.wait(EC.invisibilityOf(objDashboard.btnDashboard), 10000);
     // expect(objDashboard.btnDashboard.isPresent()).to.eventually.equal(false);
-    return browser.wait(function () {
-      return objDashboard.btnDashboard.isPresent()
-        .then(function (visible) {
-          if (visible) {
-            return false;
-          }
-          return true;
-        }).catch(function (notFound) {
-          return true;
-        });
-    }, 10000, 'Element not found within 10 seconds');
+    // return browser.wait(function () {
+    //   return objDashboard.btnDashboard.isPresent()
+    //     .then(function (visible) {
+    //       if (visible) {
+    //         return false;
+    //       }
+    //       return true;
+    //     }).catch(function (notFound) {
+    //       return true;
+    //     });
+    // }, 10000, 'Element not found within 10 seconds');
 
   }
   catch (error) {
@@ -45,21 +45,20 @@ Given('{string} unable to access dashboard', function (string) {
   }
 });
 
-Given('{string} unable to access alerts section', function (string) {
+Given('{string} unable to access alerts section', async function (string) {
   try {
-
-    //  expect(element(by.xpath('//a[text()="Alerts"]')).isPresent()).to.eventually.equal(false);
-    return browser.wait(function () {
-      return element(by.xpath('//a[text()="Alerts"]')).isPresent()
-        .then(function (visible) {
-          if (visible) {
-            return false;
-          }
-          return true;
-        }).catch(function (notFound) {
-          return true;
-        });
-    }, 10000, 'Element not found within 10 seconds');
+    await browser.wait(EC.invisibilityOf(element(by.xpath('//a[text()="Alerts"]'))), 10000);
+    // return browser.wait(function () {
+    //   return element(by.xpath('//a[text()="Alerts"]')).isPresent()
+    //     .then(function (visible) {
+    //       if (visible) {
+    //         return false;
+    //       }
+    //       return true;
+    //     }).catch(function (notFound) {
+    //       return true;
+    //     });
+    // }, 10000, 'Element not found within 10 seconds');
 
   }
   catch (error) {
@@ -70,22 +69,23 @@ Given('{string} unable to access alerts section', function (string) {
 
 });
 
-Given('{string} unable to access configuration section', function (string) {
+Given('{string} unable to access configuration section', async function (string) {
   try {
-    // await browser.wait(EC.invisibilityOf(objConfiguration.btnConfiguration), 10000);
-    // expect(objConfiguration.btnConfiguration.isPresent()).to.eventually.equal(false);
-    return browser.wait(function () {
-      return objConfiguration.btnConfiguration.isPresent()
-        .then(function (visible) {
-          if (visible) {
-            return false;
-          }
-          return true;
-        }).catch(function (notFound) {
-          return true;
-        });
-    }, 10000, 'Element not found within 10 seconds');
-  }
+    await browser.wait(EC.invisibilityOf(objInfrastructurePage.btnInfrastructure), 10000);
+    // await objConfiguration.btnConfiguration.click()
+  //     expect(objInfrastructurePage.btnInfrastructure.isPresent()).to.eventually.equal(false);
+  //   return browser.wait(function () {
+  //     return objInfrastructurePage.btnInfrastructure.isPresent()
+  //       .then(function (visible) {
+  //         if (visible) {
+  //           return false;
+  //         }
+  //         return true;
+  //       }).catch(function (notFound) {
+  //         return true;
+  //       });
+  //   }, 10000, 'Element not found within 10 seconds');
+   }
   catch (error) {
     console.log("Feature name : and Scenario name : ")
     console.log(error)
@@ -94,21 +94,22 @@ Given('{string} unable to access configuration section', function (string) {
 });
 
 
-Given('{string} unable to access infrastructure section', function (string) {
+Given('{string} unable to access infrastructure section', async function (string) {
   try {
-    // await browser.wait(EC.invisibilityOf(objInfrastructurePage.btnInfrastructure), 10000);
+    // objInfrastructurePage.btnInfrastructure.click()
+     await browser.wait(EC.invisibilityOf(objInfrastructurePage.btnInfrastructure), 10000);
     // expect(objInfrastructurePage.btnInfrastructure.isPresent()).to.eventually.equal(false);
-    return browser.wait(function () {
-      return objInfrastructurePage.btnInfrastructure.isPresent()
-        .then(function (visible) {
-          if (visible) {
-            return false;
-          }
-          return true;
-        }).catch(function (notFound) {
-          return true;
-        });
-    }, 10000, 'Element not found within 10 seconds');
+    // return browser.wait(function () {
+    //   return objInfrastructurePage.btnInfrastructure.isPresent()
+    //     .then(function (visible) {
+    //       if (visible) {
+    //         return false;
+    //       }
+    //       return true;
+    //     }).catch(function (notFound) {
+    //       return true;
+    //     });
+    // }, 10000, 'Element not found within 10 seconds');
   }
   catch (error) {
     console.log("Feature name : and Scenario name : ")

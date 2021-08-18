@@ -8,7 +8,7 @@ Feature Description : Device Inventory Features
         Scenario Outline: ITOps Engineer unable to find the Upload Icon Button
              #When "ITOps_Engineer" navigates to ust home page
               #And "ITOps_Engineer" enters project name as "<ProjectName>" in the search field
-              And "Admin" clicks on project name "<ProjectName>"
+              #And "Admin" clicks on project name "<ProjectName>"
               And "ITOps_Engineer" opens infrastructure page
              Then Verifies that Upload Icon is not present
 

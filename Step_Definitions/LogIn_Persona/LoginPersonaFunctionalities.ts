@@ -25,22 +25,11 @@ Then('{string} verifies edit configuration button is not present', function (use
   }
 });
 
-When('{string} unable to click create new project', function (string) {
+When('{string} unable to click create new project', async function (string) {
 
   try {
-    // await browser.wait(EC.invisibilityOf(objProjectListingPage.btnClickOnCreateProject), 10000);
-    // expect(objProjectListingPage.btnClickOnCreateProject.isPresent()).to.eventually.equal(false);
-    return browser.wait(function () {
-      return objProjectListingPage.btnClickOnCreateProject.isDisplayed()
-        .then(function (visible) {
-          if (visible) {
-            return false;
-          }
-          return true;
-        }).catch(function (notFound) {
-          return true;
-        });
-    }, 10000, 'Element not found within 10 seconds');
+    // await objProjectListingPage.btnClickOnCreateProject.click()
+    await browser.wait(EC.invisibilityOf(objProjectListingPage.btnClickOnCreateProject), 10000);
   }
   catch (error) {
     console.log("Feature name : and Scenario name : unable to click create new project")
@@ -51,17 +40,10 @@ When('{string} unable to click create new project', function (string) {
 
 When('{string} navigates to ust home page', async function (string) {
   try {
-    // var myElement = element(by.className('smo smo-close-black-alt'));
-    // myElement.isPresent().then(async function (elm) {
-    //   if (elm) {
-    //     await browser.sleep(10000)
-    //     await element(by.className('smo smo-close-black-alt')).click();
-
-    //   }
-    // });
-
+   
+    await browser.wait(EC.elementToBeClickable(objProjectListingPage.btnHomePage), 40000);
+    await browser.sleep(5000)
     await objProjectListingPage.clickOnHomePageButton();
-    //await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))));
     await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))));
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="All Projects"]'))));
     await browser.wait(EC.visibilityOf(objProjectListingPage.btnProfile), 10000);

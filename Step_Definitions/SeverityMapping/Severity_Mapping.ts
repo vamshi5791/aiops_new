@@ -23,9 +23,10 @@ var Global_ProjectName;
 // Verifying_Configuring_New_Severity_Mapping
 
 When('{string} clicks on Configuration tab', async function (userRole) {
-  await objSeverityMapping.Configuration();
+  
   try {
-    
+    await browser.wait(EC.elementToBeClickable(objSeverityMapping.btnConfiguration), 10000);
+    await objSeverityMapping.Configuration();
   } catch (error) {
     await console.log("Feature name : Severity Mapping and Scenario name : Verifying Configuring New Severity Mapping")
     await console.log(error)
@@ -210,7 +211,7 @@ Then('{string} verifies Delete icon of specefic Severity', async function (userR
 
 Then('{string} verifies the Time as {string}', async function (userRole, Time) {
 
-  await element(by.xpath('//b[text()="14 Jul 2021"]')).getText().then(function (text) {
+  await element(by.xpath('//b[text()="17 Aug 2021"]')).getText().then(function (text) {
     expect(text).to.include(Time);
   });
 });

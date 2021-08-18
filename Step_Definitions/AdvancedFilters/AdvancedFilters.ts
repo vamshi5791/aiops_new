@@ -15,6 +15,7 @@ var testSource;
 When('{string} clicks on Alerts page', async function (userName) {
   try {
     await browser.sleep(5000)
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//a[text()="Alerts"]'))), 100000);
     await objAlerts.selectAlerts();
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()=" Auto-refresh in every "]'))), 100000);
   }

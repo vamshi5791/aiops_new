@@ -16,7 +16,7 @@ Feature: Login persona functionalities of Installation Engineer
                   | Automation_IB_16 | NewSample   | Project Updated Succesfully |
 
         Scenario Outline: Installation Engineer is able to access the Master Configuration page
-          
+             When "Display_User" navigates to ust home page
               And "Installation_Engineer" clicks on edit configuration button
              Then "Installation_Engineer" is taken to the master configuration page "<MasterText>"
 
@@ -25,8 +25,8 @@ Feature: Login persona functionalities of Installation Engineer
                   | Master Configuration |
 
         Scenario Outline: ITOps Installation Engineer is unable to view Dashboard
-
-             #When "Installation_Engineer" enters project name as "<ProjectName>" in the search field
+             When "Display_User" navigates to ust home page
+             When "Installation_Engineer" enters project name as "<ProjectName>" in the search field
               And "Installation_Engineer" clicks on project name "<ProjectName>"
               And "Installation_Engineer" unable to access dashboard
         Examples:
