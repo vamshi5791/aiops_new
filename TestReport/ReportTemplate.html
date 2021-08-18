@@ -19,6 +19,9 @@
 
                 // $.getJSON("http://localhost:3000/", function (json) {
 
+                var tms = json[0].id.split('|')[1];
+
+                json[0].id = json[0].id.split('|')[0];
 
                 var Divscenario = ""
                 var total = 0
@@ -233,16 +236,14 @@
                 var daParentPDF = document.getElementById('scenariosPDF');
                 daParentPDF.innerHTML = Divscenario;
 
-                var ti = new Date();
-// console.log("time and date========================================================"+ti);
-//                 var tms = AddZero(ti.getDay() + 1) + '-' + AddZero((ti.getMonth() + 1)) + '-' + ti.getFullYear() + ' ' + AddZero(ti.getHours()) + ':' + AddZero(ti.getMinutes());
-// var tms = ti;
-var tms = ti.toLocaleDateString("en-US") + ' ' + AddZero(ti.getHours()) + ':' + AddZero(ti.getMinutes());
+                // var ti = new Date();
+
+                // var tms = ti.toLocaleDateString("en-US") + ' ' + AddZero(ti.getHours()) + ':' + AddZero(ti.getMinutes());
+
 
 
                 document.getElementById('spTimeStamp').innerHTML = tms;
                 document.getElementById('spTimeStampPDF').innerHTML = tms;
-
 
                 var _total = document.getElementById('spTotalScenarios');
                 _total.innerHTML = total;
