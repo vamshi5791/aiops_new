@@ -16,7 +16,7 @@ Then('{string} verifies edit configuration button is not present', function (use
   try {
     // await browser.wait(EC.invisibilityOf(objProjectListingPage.btnEditConfiguration), 1000);
     expect(objProjectListingPage.btnEditConfiguration.isPresent()).to.eventually.equal(false);
-  
+
   }
   catch (error) {
     console.log("Feature name : " + userRole + " and Scenario name :verifies edit configuration button is not present ")
@@ -51,6 +51,15 @@ When('{string} unable to click create new project', function (string) {
 
 When('{string} navigates to ust home page', async function (string) {
   try {
+    var myElement = element(by.className('smo smo-close-black-alt'));
+    myElement.isPresent().then(async function (elm) {
+      if (elm) {
+        await browser.sleep(10000)
+        await element(by.className('smo smo-close-black-alt')).click();
+
+      }
+    });
+
     await objProjectListingPage.clickOnHomePageButton();
     //await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))));
     await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))));
@@ -80,20 +89,10 @@ When('{string} clicks on Update', async function (string) {
 
 
 When('{string} unable to access dot menu options', function (string) {
-  // await browser.wait(EC.invisibilityOf(objProjectListingPage.btnDisable), 10000);
+
   try {
-    // expect(objProjectListingPage.btnDisable.isPresent()).to.eventually.equal(false);
-    return browser.wait(function () {
-      return objProjectListingPage.btnDisable.isPresent()
-        .then(function (visible) {
-          if (visible) {
-            return false;
-          }
-          return true;
-        }).catch(function (notFound) {
-          return true;
-        });
-    }, 10000, 'Element not found within 10 seconds');
+    browser.wait(EC.visibilityOf(element(by.className('smo-menuitem-link smo-state-disabled smo-menuitem-link-sm ng-star-inserted'))), 10000);
+
   } catch (error) {
     console.log("Feature name : and Scenario name :  unable to access dot menu options")
     console.log(error)
