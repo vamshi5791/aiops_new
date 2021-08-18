@@ -54,8 +54,8 @@ export let config: Config = {
     '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
     '../Features/DisplayConfiguration/DisplayConfiguration.feature',
     '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
-    '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
-     // '../Features/Pushing_Alerts/PushingAlerts.feature',
+    // '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
+     '../Features/Pushing_Alerts/PushingAlerts.feature',
     '../Features/Logout/LogOut.feature',
     // // //Visitor
     '../Features/LogIn/LogIn_ITOps_Visitor.feature',
