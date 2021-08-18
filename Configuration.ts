@@ -31,7 +31,7 @@ export let config: Config = {
   onPrepare: async function () {
     await browser.waitForAngularEnabled(false);
     await browser.manage().window().maximize();
-    await browser.manage().timeouts().implicitlyWait(80000);
+    await browser.manage().timeouts().implicitlyWait(120000);
     globalThis.environment = browser.params.env;
     globalThis.BrowserMode = args.Options;
   },
@@ -39,13 +39,13 @@ export let config: Config = {
     //Admin
     '../Features/LogIn/LogIn_Admin.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsAdmin.feature',
-    // // // '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
+    '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
     // '../Features/DeviceInventory/Device_Inventory_Admin.feature',
     // // // '../Features/Policies/AlertCorrelation.feature',
     // // //  '../Features/Policies/Acknowledgement.feature',
     // // // '../Features/Policies/Failure.feature',
     // // // '../Features/Policies/Recovery.feature',
-    '../Features/Pushing_Alerts/PushingAlerts.feature',
+    // '../Features/Pushing_Alerts/PushingAlerts.feature',
     '../Features/SavedFilters/SavedFilters.feature',
     '../Features/AdvancedFilters/AdvancedFilter.feature',
     '../Features/FilterBySeverityDropdown/FilterBySeverityDropdown.feature',
@@ -69,7 +69,7 @@ export let config: Config = {
     // // //IE
     '../Features/LogIn/LogIn_IE.feature',
     '../Features/LogInPersona/LoginPersona_IE.feature',
-     //'../Features/ProjectInstallation/ProjectInstallation_IE.feature',
+     '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
     '../Features/Logout/LogOut.feature',
     // // // // //Engineer
     '../Features/LogIn/LogIn_ITOps_Engineer.feature',
