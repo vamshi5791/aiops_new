@@ -4,7 +4,7 @@ Feature: Pushing Alerts through RabbitMQ
 
         Scenario Outline: Pushing Alerts through RabbitMQ
 
-             When "admin" navigates to ust home page
+            
              When User renders the RabbitMQ URL
               And user enters RabbitMQ_Username as "<rabbitMQ_User>", RabbitMQ_Password as "<rabbitMQ_Password>" and clicks on login button
               And clicks on the project "<ProjectName>" "<ProjectNameForAlert>"
@@ -12,6 +12,7 @@ Feature: Pushing Alerts through RabbitMQ
               And enters AlertName as "<AlertName>", NodeIPAddress as, "<NodeIPAddress>" and ObjectName as "<ObjectName>"
               And enters the payload data and clicks on publish
             Given User with ITOps role renders the URL
+             When "admin" navigates to ust home page
               And "admin" selects project and open alerts
              Then enter alertname in search box and verify alert details "<Alerts>" "<AlertName>"
               

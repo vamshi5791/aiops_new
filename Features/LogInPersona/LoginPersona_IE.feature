@@ -3,7 +3,7 @@
 Feature: Login persona functionalities of Installation Engineer
 
         Scenario Outline:   Veirfying the IE is able to edit the project
-
+             When "Display_User" navigates to ust home page
               And "Installation_Engineer" enters project name as "<ProjectName>" in the search field
               And "Installation_Engineer" clicks dot menu icon
               And "Installation_Engineer" clicks edit Project
