@@ -261,10 +261,13 @@ try {
 
 
 
-Then('{string} verifies {string} is not moved to secondary section', function (userName, string) {
+Then('{string} verifies {string} is not moved to secondary section', async function (userName, string) {
   try {
     // browser.wait(EC.invisibilityOf(objDisplayConfig.txtAlertIdInSecondaryColumn), 10000);
-    expect(objDisplayConfig.txtAlertIdInSecondaryColumn.isPresent()).to.eventually.equal(false);
+    // expect(objDisplayConfig.txtAlertIdInSecondaryColumn.isPresent()).to.eventually.equal(false);
+    await objDisplayConfig.txtAlertIdInSecondaryColumn.isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
   } catch (error) {
      console.log("Feature name : Display Configuration " + userName + " and Scenario name : Default buttons in display configuration page")
      console.log(error)
@@ -308,7 +311,7 @@ Then('{string} verifies if {string} message is displayed', async function (userN
 }
 });
 
-
+ 
 Then('{string} verifies {string} is updated in primary section', async function (userName, Source) {
   try {
     await objDisplayConfig.getSourceDisplayNameText(Source);

@@ -15,17 +15,17 @@ Feature:Login persona functionalities of Display User
              
               And "Display_User" able to access alerts section
 
-      #   Scenario: Display User is unable to  view configuration
+        Scenario: Display User is unable to  view configuration
 
-      #         And "Display_User" unable to access configuration section
+              And "Display_User" unable to access configuration section
 
-      #   Scenario: Display User is unable to  view infrastructure
+        Scenario: Display User is unable to  view infrastructure
              
-      #         And "Display_User" unable to access infrastructure section
+              And "Display_User" unable to access infrastructure section
 
-      #   Scenario:   ITOps Engineer is not able to create a new project
-      #        When "Display_User" navigates to ust home page
-      #        When "Display_User" unable to click create new project
+        Scenario:   ITOps Engineer is not able to create a new project
+             When "Display_User" navigates to ust home page
+             When "Display_User" unable to click create new project
 
         Scenario: ITOps Display User is not able to access the master configuration page
              When "Display_User" navigates to ust home page

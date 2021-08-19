@@ -6,12 +6,12 @@ Feature Description Using post method to API we generate Bearer Token
         Scenario Outline: Create Queue Channel
              When "IE" with Username as "<Username>", Password as "<Password>", Creates Queue Channel with channelName as "<channelName>", for the project "<projectName>" with projectId "<projectId>"
         Examples:
-                  | Username        | Password | channelName    | projectId | projectName      |
-                  | Itops_admin_new | qa123    | TestIEChannell | 1225      | Automation_IB_16 |
+                  | Username        | Password | channelName | projectId | projectName      |
+                  | Itops_admin_new | qa123    | Channel600  | 1225      | Automation_IB_16 |
 
 
         Scenario Outline: Verify Queue Channel creation
-           
+             When "IE" navigates to ust home page
              When "IE" enters project name as "<projectName>" in the search field
              When "IE" clicks dot menu icon
              When "IE" clicks edit Project

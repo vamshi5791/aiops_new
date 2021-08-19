@@ -294,25 +294,29 @@ Then('verify data should be reset to default set without any filter applied {str
 
 Then('verify All filter condition chips should be removed from UI', async function () {
   try {
-    await browser.sleep(5000)
+    // await browser.sleep(5000)
     //await browser.wait(EC.invisibilityOf(objAlerts.btnRemoveAll), 10000);
     // var myElement = objAlerts.btnRemoveAll;
     // myElement.isPresent().then(async function (elm) {
     //   if (elm) {
     //     // console.error();
     //   }
+
     // });
-    return browser.wait(function () {
-      return  objAlerts.btnRemoveAll.isPresent()
-        .then(function (visible) {
-          if (visible) {
-            return false;
-          }
-          return true;
-        }).catch(function (notFound) {
-          return true;
-        });
-    }, 10000, 'Element not found within 10 seconds');
+    await objAlerts.btnRemoveAll.isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
+    // return browser.wait(function () {
+    //   return  objAlerts.btnRemoveAll.isPresent()
+    //     .then(function (visible) {
+    //       if (visible) {
+    //         return false;
+    //       }
+    //       return true;
+    //     }).catch(function (notFound) {
+    //       return true;
+    //     });
+    // }, 10000, 'Element not found within 10 seconds');
   } catch (error) {
     await console.log("Feature name : Saved Filters and Scenario name :  ")
     await console.log(error)
@@ -343,7 +347,7 @@ When('{string} clicks on close button from any of the chip displayed', async fun
   }
 });
 
-Then('verify closed chips should not be displayed in UI', function () {
+Then('verify closed chips should not be displayed in UI', async function () {
   try {
     //await browser.wait(EC.invisibilityOf(objAlerts.btnCloseChip));
     // var myElement = objAlerts.btnCloseChip;
@@ -354,17 +358,20 @@ Then('verify closed chips should not be displayed in UI', function () {
     // });
     // expect(objAlerts.btnCloseChip.isPresent()).to.eventually.equal(false);
     //  browser.sleep(10000);
-    return browser.wait(function () {
-      return  objAlerts.btnCloseChip.isPresent()
-        .then(function (visible) {
-          if (visible) {
-            return false;
-          }
-          return true;
-        }).catch(function (notFound) {
-          return true;
-        });
-    }, 10000, 'Element not found within 10 seconds');
+    await objAlerts.btnCloseChip.isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
+    // return browser.wait(function () {
+    //   return  objAlerts.btnCloseChip.isPresent()
+    //     .then(function (visible) {
+    //       if (visible) {
+    //         return false;
+    //       }
+    //       return true;
+    //     }).catch(function (notFound) {
+    //       return true;
+    //     });
+    // }, 10000, 'Element not found within 10 seconds');
   } catch (error) {
      console.log("Feature name : Saved Filters and Scenario name :  ")
      console.log(error)

@@ -15,15 +15,15 @@
     },
     "UserInfo": {
         "realm": "ustglobal",
-        "userName": "username",
-        "password": "password"
-    }, 
+        "userName": "Itops_admin_new",
+        "password": "qa123"
+    },
     "ChannelInfo": {
-        "channelName": "channelName",
+        "channelName": "Channel600",
         "orgId": 1,
         "active": true,
-        "projectId": "projectID",
-        "projectName": "projectName",
+        "projectId": 1225,
+        "projectName": "Automation_IB_16",
         "source": "PWF",
         "destinations": [
             {
@@ -73,12 +73,5 @@
         "includeRequestReceivedTime": true,
         "requestReceivedTimeFormat": "2021-06-24'T'14:50:09.002",
         "processInputasList": true
-    },
-    "Headers": {
-        "Content-Type": "application/json",
-        "organization-key": "1",
-        "Authorization": "bearerToken",
-        "user": "Itops_admin_new",
-        "organization-name": "ustglobal"
     }
 }

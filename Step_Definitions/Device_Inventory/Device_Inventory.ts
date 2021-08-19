@@ -25,13 +25,8 @@ var Global_ProjectName;
 Then('Device details should be displayed {string}', async function (Device) {
   // try {
   await browser.sleep(2000);
-  var myElement = objAlerts.txtNoDataAvailable;
-  myElement.isPresent().then(async function (elm) {
-    if (elm == false) {
-      await element(by.xpath('//td[text()=" ' + Device + ' "]')).getText().then(function (text) {
-        expect(text).to.include(Device);
-      });
-    } 
+  await element(by.xpath('//td[text()=" ' + Device + ' "]')).getText().then(function (text) {
+    expect(text).to.include(Device);
   });
   
   // } 
@@ -60,8 +55,10 @@ Then('Device details should not be displayed {string}', async function (Device) 
 Then('Verifies that Upload Icon is not present', async function () {
   try {
     // await browser.wait(EC.invisibilityOf(element(by.xpath('//span[@class="smo smo-upload-regular"]'))), 1000);
-    expect(element(by.xpath('//span[@class="smo smo-upload-regular"]')).isPresent()).to.eventually.equal(false);
-  
+    // expect(element(by.xpath('//span[@class="smo smo-upload-regular"]')).isPresent()).to.eventually.equal(false);
+    await element(by.xpath('//span[@class="smo smo-upload-regular"]')).isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
   }
   catch (error) {
     await console.log("Feature name : Device Inventory and Scenario name : ")
@@ -210,8 +207,10 @@ Then('Success toaster must be shown and device must be added to the list {string
 Then('{string} unable to find add device option', async function (userRole) {
   try {
     // await browser.wait(EC.invisibilityOf(element(by.xpath('//span[text()="Add Device"]'))), 1000);
-    expect(element(by.xpath('//span[text()="Add Device"]')).isPresent()).to.eventually.equal(false);
-   
+    // expect(element(by.xpath('//span[text()="Add Device"]')).isPresent()).to.eventually.equal(false);
+    await element(by.xpath('//span[text()="Add Device"]')).isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
   }
   catch (error) {
     await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : ")
@@ -263,8 +262,10 @@ Then('{string} verifies the update button is visible', async function (userRole)
 When('{string} unable to edit the resource type', async function (string) {
   try {
     // await browser.wait(EC.invisibilityOf(element(by.xpath('//div[text()="RESOURCE TYPE"]//following::input[@type="text"]'))), 1000);
-    expect(element(by.xpath('//div[text()="RESOURCE TYPE"]//following::input[@type="text"]')).isPresent()).to.eventually.equal(false);
-  
+    // expect(element(by.xpath('//div[text()="RESOURCE TYPE"]//following::input[@type="text"]')).isPresent()).to.eventually.equal(false);
+    await element(by.xpath('//div[text()="RESOURCE TYPE"]//following::input[@type="text"]')).isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
   }
   catch (error) {
     await console.log("Feature name : Device Inventory and Scenario name : ")

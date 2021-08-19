@@ -7,7 +7,7 @@ Feature Description: Engineer creats Ticketing Threshold
         Scenario Outline: ITOps Engineer should not be able to Add New Ticketing threshold Policy
              When "Itops_Engineer" navigate to Configuration section
               And "ITOps Engineer" navigate to Ticketing Threshold
-             Then Verify Add New Threshold button for ITOps Engineer
+             Then Verify Add New Threshold button in not present for ITOps Engineer
         Examples:
                   | UserName       | Password |
                   | Itops_Engineer | qa123    |

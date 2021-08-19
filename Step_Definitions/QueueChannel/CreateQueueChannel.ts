@@ -9,20 +9,21 @@ import chai from "chai";
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
 let objLogIn = new LogIn();
-var fs = require('fs');
 let objProjectListing = new ProjectListingPage();
 let objProjectConfi = new ProjectConfiguration();
 var fetch = require("node-fetch");
 const { async } = require("q");
 var ChannnelNameText;
 var Global_ProjectName
+var fs = require('fs');
+
 
 When('{string} with Username as {string}, Password as {string}, Creates Queue Channel with channelName as {string}, for the project {string} with projectId {string}', async function (userRole, username, password, channelName, projectName, projectID) {
   ChannnelNameText = channelName;
 
   var JSONTestData = JSON.parse(fs.readFileSync('JSONTestData/QueueChannel.json', 'utf-8'));
 
-  var userInfo = JSONTestData.UserInfo;
+  var userInfo =JSONTestData.UserInfo;
 
   var channelInfo = JSONTestData.ChannelInfo;
 
@@ -50,7 +51,13 @@ When('{string} with Username as {string}, Password as {string}, Creates Queue Ch
     const channelCreationPosrRequest = {
       method: 'POST',
       body: JSON.stringify(channelInfo),
-      headers: JSONTestData.Headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'organization-key': '1',
+        'Authorization': bearerToken,
+        'user': 'Itops_admin_new',
+        'organization-name': 'ustglobal',
+      }
     };
     await fetch(chennalCreation_URL, channelCreationPosrRequest)
       .then(response => response.json()).then(data => {

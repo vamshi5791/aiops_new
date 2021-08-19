@@ -6,10 +6,11 @@ Feature Description :Severity Mapping
 
         Scenario Outline: Verifying Admin is able to Configure New Severity Mapping
 
-
+             When "Admin" navigates to ust home page
+              And "Admin" enters project name as "<ProjectName>" in the search field
+              And "Admin" clicks on project name "<ProjectName>"
               And "Admin" clicks on Configuration tab
               And "Admin" clicks on Severity Mapping
-              And "Admin" clicks on Add new source button
               And "Admin" clicks on source dropdown and select a source
               And "Admin" enters source Severity as "<SourceSeverity1>"
               And "Admin" clicks on SO Severity dropdown and selects Information
@@ -21,8 +22,8 @@ Feature Description :Severity Mapping
 
 
         Examples:
-                  | ProjectName   | SourceSeverity1 | SourceSeverity2 | popup                                              |
-                  | Automation_02 | 2323            | 324             | Severity mapping details are successfully Inserted |
+                  | ProjectName      | SourceSeverity1 | SourceSeverity2 | popup                                              |
+                  | Automation_IB_16 | 2323            | 324             | Severity mapping details are successfully Inserted |
 
 
         Scenario Outline: Verifying Admin is able to Configure New Severity Mapping
@@ -42,7 +43,7 @@ Feature Description :Severity Mapping
 
         Examples:
                   | ProjectName   | SourceSeverity1 | SourceSeverity2 | SourceSeverity  | SOSeverity  | time         | AddSeverity  | NewSource      | Time        |
-                  | Automation_02 | 23              | 34              | SOURCE SEVERITY | SO SEVERITY | UPDATED TIME | Add Severity | Add New Source | 17 Aug 2021 |
+                  | Automation_02 | 23              | 34              | SOURCE SEVERITY | SO SEVERITY | UPDATED TIME | Add Severity | Add New Source | 19 Aug 2021 |
 
 
 
@@ -110,12 +111,12 @@ Feature Description :Severity Mapping
               And 'Admin' clicks on save button
               And 'Admin' clicks on yes button
              Then Success message for updating Severity Mapping must be shown in popup "<Success_popup>"
-             
+
 
 
 
         Examples:
                   | SourceSeverity | SourceSeverity2 | Error_popup                                         | Success_popup         |
-                  | 23             | 32              | Severity mapping for Source Severity already exists | Successfully Updated. |
+                  | 264            | 32              | Severity mapping for Source Severity already exists | Successfully Updated. |
 
 

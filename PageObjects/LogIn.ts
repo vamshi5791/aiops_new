@@ -13,7 +13,6 @@ export class LogIn {
     }
     async enterUserName(UserName: string) {
         await this.txtUserName.sendKeys(UserName)
-       
     }
     async enterPassword(Password: string) {
        

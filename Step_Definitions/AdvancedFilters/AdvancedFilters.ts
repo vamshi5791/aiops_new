@@ -139,11 +139,15 @@ When('{string} deletes the solarwinds condition from alert console', async funct
 
 });
 
-Then('{string} verifies solarwinds filter is not visible', function (userRole) {
+Then('{string} verifies solarwinds filter is not visible', async function (userRole) {
   try {
-     browser.sleep(5000)
+    browser.sleep(5000)
     // await browser.wait(EC.invisibilityOf(objAlerts.btnRemoveSolarwinds), 1000);
-    expect(objAlerts.btnRemoveSolarwinds.isPresent()).to.eventually.equal(false);
+    // expect(objAlerts.btnRemoveSolarwinds.isPresent()).to.eventually.equal(false);
+    await objAlerts.btnRemoveSolarwinds.isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
+  
   }
   catch (error) {
      console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to remove severity conditions from saved filters")
@@ -233,11 +237,14 @@ Given('{string} clicks on Mark as default', async function (userRole) {
 
 });
 
-Then('{string} Verifies Warning filter is not applied', function (userRole) {
+Then('{string} Verifies Warning filter is not applied', async function (userRole) {
   try {
      browser.sleep(3000)
     // await browser.wait(EC.invisibilityOf(objAlerts.btnSelectWarning), 1000);
-    expect(objAlerts.btnSelectWarning.isPresent()).to.eventually.equal(false);
+    // expect(objAlerts.btnSelectWarning.isPresent()).to.eventually.equal(false);
+    await objAlerts.btnSelectWarning.isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
   }
   catch (error) {
      console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify when user applied Saved filter and some more severity conditions and navigated to other page and came back to alert console again, that time only saved filter exist")

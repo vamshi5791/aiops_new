@@ -31,10 +31,11 @@ When('user enters Username as {string}, Password as {string} and clicks on Login
     await objLogIn.clickOnLogInButton();
     userName = UserName;
     await console.log("------------------"+globalThis.BrowserMode)
-  
+  //For removing banner
     if (globalThis.BrowserMode == "headless") {
       await browser.sleep(10000)
       await browser.wait(EC.visibilityOf(element(by.className('smo smo-close-black-alt'))), 60000);
+      await browser.wait(EC.elementToBeClickable(element(by.className('smo smo-close-black-alt'))), 60000);
       await element(by.className('smo smo-close-black-alt')).click();
     }
   } catch (error) {

@@ -175,9 +175,8 @@ Then('{string} verifies SO Severity as {string}', async function (userRole, SOSe
 
 Then('{string} verifies Updated time as {string}', async function (userRole, time) {
 
-  await element(by.xpath('//th[text()="UPDATED TIME"]')).getText().then(function (text) {
-    expect(text).to.include(time);
-  });
+  await browser.wait(EC.visibilityOf(element(by.xpath('//th[text()="UPDATED TIME"]'))), 10000);
+
 });
 
 Then('{string} verifies +Add Severity as {string}', async function (userRole, AddSeverity) {
@@ -211,7 +210,7 @@ Then('{string} verifies Delete icon of specefic Severity', async function (userR
 
 Then('{string} verifies the Time as {string}', async function (userRole, Time) {
 
-  await element(by.xpath('//b[text()="17 Aug 2021"]')).getText().then(function (text) {
+  await element(by.xpath('//b[text()="19 Aug 2021"]')).getText().then(function (text) {
     expect(text).to.include(Time);
   });
 });
@@ -228,9 +227,9 @@ Then('Error message for creating duplicate source must be shown in popup {string
       expect(text).to.include(Error_popup);
       await console.log(text);
     });
-   // await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-    //await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-    await objProjectListing.clickOnClosePopUpButton();
+    // browser.sleep(2000);
+    // await browser.wait(EC.elementToBeClickable(objProjectListing.btnClosePopUp), 10000);
+    // await objProjectListing.clickOnClosePopUpButton();
   }
 
   catch (error) {
@@ -268,8 +267,10 @@ Then('Error message for creating duplicate source severity must be shown in popu
   await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
     expect(text).to.include(Error_popup);
   });
-  //await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 10000);
-  await objProjectListing.clickOnClosePopUpButton();
+  await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 10000);
+  // browser.sleep(2000);
+  // await browser.wait(EC.elementToBeClickable(objProjectListing.btnClosePopUp), 10000);
+  // await objProjectListing.clickOnClosePopUpButton();
 })
 
 Given('{string} changes another source Severity as {string}', async function (userRole, SourceSeverity) {
@@ -347,21 +348,29 @@ Then('Success message for Verifyimg adding additional source severity within the
 // Verifying ITOps Enginner is able to Configure New Severity Mapping
 
 Then('{string} verifies +Add Severity icon is not available {string}', async function (string, string2) {
-  await browser.wait(EC.invisibilityOf(element(by.xpath('//b[text()="SOLARWINDS"]//following::span[@class="cursor-pointer ng-star-inserted"]'))), 1000);
-
+  //await browser.wait(EC.invisibilityOf(element(by.xpath('//b[text()="SOLARWINDS"]//following::span[@class="cursor-pointer ng-star-inserted"]'))), 1000);
+  await element(by.xpath('//b[text()="SOLARWINDS"]//following::span[@class="cursor-pointer ng-star-inserted"]')).isPresent().then(function (select) {
+    expect(select).to.be.false;
+  });
 });
 
 Then('{string} verifies Delete icon is not available', async function (string) {
-  await browser.wait(EC.invisibilityOf(element(by.xpath('//span[@class="smo smo-delete cursor-pointer font-18 color-grey left-margin-20 ng-star-inserted"]'))), 1000);
-
+  // await browser.wait(EC.invisibilityOf(element(by.xpath('//span[@class="smo smo-delete cursor-pointer font-18 color-grey left-margin-20 ng-star-inserted"]'))), 1000);
+  await element(by.xpath('//span[@class="smo smo-delete cursor-pointer font-18 color-grey left-margin-20 ng-star-inserted"]')).isPresent().then(function (select) {
+    expect(select).to.be.false;
+  });
 });
 
 Then('{string} verifies Add New Source icon is not available {string}', async function (string, string2) {
-  await browser.wait(EC.invisibilityOf(element(by.xpath('//span[text()=" Add New Source"]'))), 1000);
-
+  // await browser.wait(EC.invisibilityOf(element(by.xpath('//span[text()=" Add New Source"]'))), 1000);
+  await element(by.xpath('//span[text()=" Add New Source"]')).isPresent().then(function (select) {
+    expect(select).to.be.false;
+  });
 });
 
 Then('{string} verifies Edit icon is not available', async function (string) {
-  await browser.wait(EC.invisibilityOf(element(by.xpath('//span[@class="smo smo-create-alt edit-icon cursor-pointer right-padding-20 ng-star-inserted"]'))), 1000);
-
+  // await browser.wait(EC.invisibilityOf(element(by.xpath('//span[@class="smo smo-create-alt edit-icon cursor-pointer right-padding-20 ng-star-inserted"]'))), 1000);
+  await element(by.xpath('//span[@class="smo smo-create-alt edit-icon cursor-pointer right-padding-20 ng-star-inserted"]')).isPresent().then(function (select) {
+    expect(select).to.be.false;
+  });
 });

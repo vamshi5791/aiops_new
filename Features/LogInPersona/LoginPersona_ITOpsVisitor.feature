@@ -3,8 +3,8 @@
 
 Feature:Login persona functionalities of ITOps Visitor
 
-      #   Scenario:   ITOps Visitor is not able to create a new project
-      #        When "ITOps_Visitor" unable to click create new project
+        Scenario:   ITOps Visitor is not able to create a new project
+             When "ITOps_Visitor" unable to click create new project
              
         Scenario Outline: ITOps Visitor is able to  view dashboard
 
@@ -27,17 +27,16 @@ Feature:Login persona functionalities of ITOps Visitor
 
               And "ITOps_Visitor" unable to access infrastructure section
 
-        
+      
+        Scenario: ITOps ITOps Visitor is not able to access the master configuration page
+             When "ITOps_Visitor" navigates to ust home page
+             Then "ITOps_Visitor" verifies edit configuration button is not present
 
-      #   Scenario: ITOps ITOps Visitor is not able to access the master configuration page
-      #        When "ITOps_Visitor" navigates to ust home page
-      #        Then "ITOps_Visitor" verifies edit configuration button is not present
-
-      #   Scenario Outline:   ITOps Visitor Unbale TO Access Three Dots
-      #        When "ITOps_Visitor" navigates to ust home page
-      #        When "ITOps_Visitor" enters project name as "<ProjectName>" in the search field
-      #         And "ITOps_Visitor" clicks dot menu icon
-      #        When "ITOps_Visitor" unable to access dot menu options
-      #   Examples:
-      #             | ProjectName      |
-      #             | Automation_IB_16 |
+        Scenario Outline:   ITOps Visitor Unbale TO Access Three Dots
+             When "ITOps_Visitor" navigates to ust home page
+             When "ITOps_Visitor" enters project name as "<ProjectName>" in the search field
+              And "ITOps_Visitor" clicks dot menu icon
+             When "ITOps_Visitor" unable to access dot menu options
+        Examples:
+                  | ProjectName      |
+                  | Automation_IB_16 |

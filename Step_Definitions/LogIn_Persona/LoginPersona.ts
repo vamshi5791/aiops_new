@@ -23,7 +23,10 @@ let objConfiguration = new Configuration();
 
 Given('{string} unable to access dashboard', async function (string) {
   try {
-    await browser.wait(EC.invisibilityOf(objDashboard.btnDashboard), 10000);
+    // await browser.wait(EC.invisibilityOf(objDashboard.btnDashboard), 10000);
+    await objDashboard.btnDashboard.isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
     // expect(objDashboard.btnDashboard.isPresent()).to.eventually.equal(false);
     // return browser.wait(function () {
     //   return objDashboard.btnDashboard.isPresent()
@@ -47,7 +50,10 @@ Given('{string} unable to access dashboard', async function (string) {
 
 Given('{string} unable to access alerts section', async function (string) {
   try {
-    await browser.wait(EC.invisibilityOf(element(by.xpath('//a[text()="Alerts"]'))), 10000);
+    // await browser.wait(EC.invisibilityOf(element(by.xpath('//a[text()="Alerts"]'))), 10000);
+    await element(by.xpath('//a[text()="Alerts"]')).isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
     // return browser.wait(function () {
     //   return element(by.xpath('//a[text()="Alerts"]')).isPresent()
     //     .then(function (visible) {
@@ -67,11 +73,15 @@ Given('{string} unable to access alerts section', async function (string) {
     throw "User is able to access alerts section"
   }
 
-});
+}); 
 
 Given('{string} unable to access configuration section', async function (string) {
   try {
-    await browser.wait(EC.invisibilityOf(objInfrastructurePage.btnInfrastructure), 10000);
+    await objInfrastructurePage.btnInfrastructure.isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
+    // await browser.wait(EC.invisibilityOf(objInfrastructurePage.btnInfrastructure), 10000);
+
     // await objConfiguration.btnConfiguration.click()
   //     expect(objInfrastructurePage.btnInfrastructure.isPresent()).to.eventually.equal(false);
   //   return browser.wait(function () {
@@ -97,7 +107,10 @@ Given('{string} unable to access configuration section', async function (string)
 Given('{string} unable to access infrastructure section', async function (string) {
   try {
     // objInfrastructurePage.btnInfrastructure.click()
-     await browser.wait(EC.invisibilityOf(objInfrastructurePage.btnInfrastructure), 10000);
+    //  await browser.wait(EC.invisibilityOf(objInfrastructurePage.btnInfrastructure), 10000);
+    await objInfrastructurePage.btnInfrastructure.isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
     // expect(objInfrastructurePage.btnInfrastructure.isPresent()).to.eventually.equal(false);
     // return browser.wait(function () {
     //   return objInfrastructurePage.btnInfrastructure.isPresent()

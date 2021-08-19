@@ -8,7 +8,7 @@ import { TicketingThreshold } from "../../PageObjects/TicketingThreshholdPageObj
 let objTicketingThreshold = new TicketingThreshold();
 
 var EC = browser.ExpectedConditions;
-
+var expect = chai.expect;
 
 
 When('{string} navigate to Ticketing Threshold', async function (userRole) {
@@ -80,17 +80,21 @@ When('Admin clicks on Add Threshold button', async function(){
     }
 });
 
-Then('Verify Add New Threshold button for ITOps Engineer', async function(){
+Then('Verify Add New Threshold button in not present for ITOps Engineer', async function(){
     try {
-          var lnkAddThreshold = objTicketingThreshold.lnkAddNewThreshold;
-          lnkAddThreshold.isPresent().then(function (elm) {
-            if (elm) {
-              console.log("... Add policy was found for ITOps Engineer") 
+      //     var lnkAddThreshold = objTicketingThreshold.lnkAddNewThreshold;
+      //     lnkAddThreshold.isPresent().then(function (elm) {
+      //       if (elm) {
+      //         console.log("... Add policy was found for ITOps Engineer") 
        
-            } else {
-              console.log("... Element was not found")
-            }
-      })
+      //       } else {
+      //         console.log("... Element was not found")
+      //       }
+      // })
+      await objTicketingThreshold.lnkAddNewThreshold.isPresent().then(function (select) {
+        expect(select).to.be.false;
+      
+  });
     } 
       catch (error) {
         await console.log("Feature name : Ticketing Threshold and Scenario name : Add New Ticketing Threshold ")
