@@ -42,7 +42,7 @@ export class PolicyObjects {
 
     tglbtnActivePolicy = element(by.xpath('//div[text()="Activate Policy"]//following::smo-input-switch'));
     btnYes = element(by.xpath('//span[text()="Yes"]'));
-    btnDone = element(by.xpath('//span[text()="Done"]'));
+    btnDone = element(by.xpath('//button[@class="smo-button smo-widget smo-state-default smo-button-default smo-corner-all smo-button-ms smo-button-active-ms smo-button-text-only"]'));
 
     clmnPolicyName = element(by.xpath('//th[text()=" Policy Name "]'));
     clmnCreatedBy = element(by.xpath('//th[text()=" Created By "]'));

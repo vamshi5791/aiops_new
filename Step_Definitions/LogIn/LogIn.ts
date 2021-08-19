@@ -66,11 +66,12 @@ When('{string} clicks on logout button', async function (string) {
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Logout"]'))), 10000);
     await browser.sleep(3000)
     await ProjectListing.LogOut();
-    // await browser.sleep(10000)
+     await browser.sleep(10000)
     await browser.wait(EC.visibilityOf(element(by.xpath('//input[@name="login"]'))), 50000);
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//input[@name="login"]'))), 50000);
   } catch (error) {
-    await console.log("Unable to logout")
-    await console.log(error)
+     console.log("Unable to logout")
+     console.log(error)
     throw "user is unable to logout"
   }
 })

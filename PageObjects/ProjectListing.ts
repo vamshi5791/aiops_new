@@ -17,6 +17,7 @@ export class ProjectListingPage {
   btnHomePage = element(by.className('smartops-logo-img'));
   btnDisable = element(by.xpath('//a[@class="smo-menuitem-link smo-state-disabled smo-menuitem-link-sm ng-star-inserted"]'))
   async Project_search(ProjectName: string) {
+    await this.txtsearch.clear();
     await this.txtsearch.sendKeys(ProjectName);
     await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))));
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="All Projects"]'))));

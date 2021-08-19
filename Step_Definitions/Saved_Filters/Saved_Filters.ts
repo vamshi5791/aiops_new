@@ -41,6 +41,7 @@ When('{string} Clicks on Saved Filter from advanced filter section {string}', as
 When('{string} clicks on project name {string}', async function (userRole, TestProjectName) {
   try {
     await browser.sleep(3000);
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//h3[text()=" ' + TestProjectName + ' "]'))), 100000);
     await ProjectListing.selectProject(TestProjectName);
   } catch (error) {
     await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on project name")
