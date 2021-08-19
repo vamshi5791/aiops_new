@@ -174,29 +174,29 @@ Feature Description: Admin navigates to alert page,
       #             | Source | Alert_State | SavedFilter | Description | ConfirmationToaster          | DifferentUserName | Toaster                      |
       #             | ITSM   | Ticketed    | IB          | Value 2     | Filter updated successfully. | Itops_engineer    | Filter deleted successfully. |
         
-        Scenario Outline:Verify creating default filter for Alert Console
+      #   Scenario Outline:Verify creating default filter for Alert Console
            
-              And "Admin" clicks on Alerts page
-             When "Admin" clicks on advanced filter icon
-              And "Admin" enters source as "<Source>" and alert state as "<Alert_State>"
-              And "Admin" clicks on Save filter button
-              And "Admin" enters filter name as "<FilterName>" and Description as "<Description>"
-              And "Admin" clicks on Make as default checkbox
-              And "Admin" clicks on save and apply button
-             Then "Admin" verifies if "<SuccessMessage>" message is displayed
-              And verify alert console should show results based on default filter applied
-              And "Installation Engineer" clicks on logout button
-            Given ITOps "Admin" with username and password as "<DifferentUserName>", "<Password>" is in the home page
-             When "Admin" enters project name as "<ProjectName>" in the search field
-              And "Admin" clicks on project name "<ProjectName>"
-              And "Admin" clicks on Alerts page
-             Then verify alert console should show results based on default filter applied
-              And "Installation Engineer" clicks on logout button
-            Given ITOps "Admin" with username and password as "<UserName>", "<Password>" is in the home page
-             When "Admin" enters project name as "<ProjectName>" in the search field
-              And "Admin" clicks on project name "<ProjectName>"
-              And "Admin" clicks on Alerts page
-             Then verify alert console should not show results based on previous default filter.
-        Examples:
-                  | UserName    | Password | ProjectName      | Source     | Alert_State | FilterName | Description | SuccessMessage             | DifferentUserName |
-                  | Itops_admin | qa123    | Automation_IB_16 | Solarwinds | Ticketed    | Automation | Value 2     | Filter saved successfully. | Itops_engineer    |
+      #         And "Admin" clicks on Alerts page
+      #        When "Admin" clicks on advanced filter icon
+      #         And "Admin" enters source as "<Source>" and alert state as "<Alert_State>"
+      #         And "Admin" clicks on Save filter button
+      #         And "Admin" enters filter name as "<FilterName>" and Description as "<Description>"
+      #         And "Admin" clicks on Make as default checkbox
+      #         And "Admin" clicks on save and apply button
+      #        Then "Admin" verifies if "<SuccessMessage>" message is displayed
+      #         And verify alert console should show results based on default filter applied
+      #         And "Installation Engineer" clicks on logout button
+      #       Given ITOps "Admin" with username and password as "<DifferentUserName>", "<Password>" is in the home page
+      #        When "Admin" enters project name as "<ProjectName>" in the search field
+      #         And "Admin" clicks on project name "<ProjectName>"
+      #         And "Admin" clicks on Alerts page
+      #        Then verify alert console should show results based on default filter applied
+      #         And "Installation Engineer" clicks on logout button
+      #       Given ITOps "Admin" with username and password as "<UserName>", "<Password>" is in the home page
+      #        When "Admin" enters project name as "<ProjectName>" in the search field
+      #         And "Admin" clicks on project name "<ProjectName>"
+      #         And "Admin" clicks on Alerts page
+      #        Then verify alert console should not show results based on previous default filter.
+      #   Examples:
+      #             | UserName    | Password | ProjectName      | Source     | Alert_State | FilterName | Description | SuccessMessage             | DifferentUserName |
+      #             | Itops_admin | qa123    | Automation_IB_16 | Solarwinds | Ticketed    | Automation | Value 2     | Filter saved successfully. | Itops_engineer    |
