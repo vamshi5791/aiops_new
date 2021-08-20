@@ -210,7 +210,7 @@ Then('{string} verifies Delete icon of specefic Severity', async function (userR
 
 Then('{string} verifies the Time as {string}', async function (userRole, Time) {
 
-  await element(by.xpath('//b[text()="19 Aug 2021"]')).getText().then(function (text) {
+  await element(by.xpath('//b[text()="'+Time+'"]')).getText().then(function (text) {
     expect(text).to.include(Time);
   });
 });

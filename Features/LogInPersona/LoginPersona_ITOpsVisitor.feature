@@ -19,9 +19,9 @@ Feature:Login persona functionalities of ITOps Visitor
 
               And "ITOps_Visitor" unable to access alerts section
 
-        Scenario: ITOps Visitor is able to  view configuration
+        Scenario: ITOps Visitor is not able to  view configuration
 
-              And "ITOps_Visitor" able to access configuration section
+              And "ITOps_Visitor" unable to access configuration section
 
         Scenario: ITOps Visitor is unable to  view infrastructure
 

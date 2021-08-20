@@ -89,8 +89,8 @@ Feature Description: ITOpsAdmin verifies Alert Correlation Policy operations
               And Admin clicks on Done button
 
         Examples:
-                  | PolicyName    | UpdatedPolicyName | policyAtttribute    | PolicyValue | UpdatedRuleName         | ruleAtttribute      | ruleValue | RuleCreatedSuccessMessage                                                                   |
-                  | Automation IB | Automation IB     | Business Time Alert | False       | CorrelationRuleUpdated1 | Business Time Alert | False     |  on any existing alert clusters |
+                  | PolicyName    | UpdatedPolicyName | policyAtttribute    | PolicyValue | UpdatedRuleName         | ruleAtttribute      | ruleValue | RuleCreatedSuccessMessage      |
+                  | Automation IB | Automation IB     | Business Time Alert | False       | CorrelationRuleUpdated1 | Business Time Alert | False     | on any existing alert clusters |
 
 
         Scenario Outline: Admin deletes the existing Alert Correlation Policy

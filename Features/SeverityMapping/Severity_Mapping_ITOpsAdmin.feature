@@ -43,7 +43,7 @@ Feature Description :Severity Mapping
 
         Examples:
                   | ProjectName   | SourceSeverity1 | SourceSeverity2 | SourceSeverity  | SOSeverity  | time         | AddSeverity  | NewSource      | Time        |
-                  | Automation_02 | 23              | 34              | SOURCE SEVERITY | SO SEVERITY | UPDATED TIME | Add Severity | Add New Source | 19 Aug 2021 |
+                  | Automation_02 | 23              | 34              | SOURCE SEVERITY | SO SEVERITY | UPDATED TIME | Add Severity | Add New Source | 20 Aug 2021 |
 
 
 

@@ -24,16 +24,16 @@ Feature: Login persona functionalities of Installation Engineer
                   | MasterText           |
                   | Master Configuration |
 
-        Scenario Outline: ITOps Installation Engineer is unable to view Dashboard
+        Scenario Outline: ITOps Installation Engineer is able to view Dashboard
              When "Display_User" navigates to ust home page
              When "Installation_Engineer" enters project name as "<ProjectName>" in the search field
               And "Installation_Engineer" clicks on project name "<ProjectName>"
-              And "Installation_Engineer" unable to access dashboard
+              And "Installation_Engineer" able to access dashboard
         Examples:
                   | ProjectName      |
                   | Automation_IB_16 |
 
-
+ 
         Scenario: Installation Engineer is unable to  view Alerts
             
               And "Installation_Engineer" unable to access alerts section
