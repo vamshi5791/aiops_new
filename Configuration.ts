@@ -31,7 +31,7 @@ export let config: Config = {
   onPrepare: async function () {
     await browser.waitForAngularEnabled(false);
     await browser.manage().window().maximize();
-    await browser.manage().timeouts().implicitlyWait(65000);
+    await browser.manage().timeouts().implicitlyWait(70000);
     globalThis.environment = browser.params.env;
     globalThis.BrowserMode = args.Options;
   },
@@ -68,7 +68,7 @@ export let config: Config = {
     '../Features/LogInPersona/LoginPersona_ITOpsVisitor.feature',
     '../Features/Logout/LogOut.feature',
 
-    // Admin
+    // // Admin
     '../Features/LogIn/LogIn_Admin.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsAdmin.feature',
     '../Features/DeviceInventory/Device_Inventory_Admin.feature',

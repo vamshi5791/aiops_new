@@ -110,7 +110,6 @@ When('enters the payload data and clicks on publish', async function () {
 When('{string} selects project and open alerts', async function (userRole) {
 
   try {
-
     var myElement = element(by.className('smo smo-close-black-alt'));
     myElement.isPresent().then(async function (elm) {
       if (elm) {
@@ -128,6 +127,8 @@ When('{string} selects project and open alerts', async function (userRole) {
     await browser.wait(EC.visibilityOf(element(by.xpath('//a[text()="Alerts"]'))), 100000);
     await objAlerts.selectAlerts();
 
+
+
   }
   catch (error) {
     await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : selects project and open alerts")
@@ -138,6 +139,14 @@ When('{string} selects project and open alerts', async function (userRole) {
 
 Then('enter alertname in search box and verify alert details {string} {string}', async function (Alerts, alertName) {
   try {
+    var myElement = objAlerts.btnRemoveAll;
+    myElement.isDisplayed().then(async function (elm) {
+      if (elm) {
+        await browser.sleep(5000)
+        await browser.wait(EC.elementToBeClickable(objAlerts.btnRemoveAll), 100000);
+        await objAlerts.btnRemoveAll.click();
+      }
+    });
     await objAlerts.Alert_Search(alertName);
     await element(by.xpath('//span[text()="Alert Name"]//following::td[6]')).getText().then(function (text) {
       expect(text).to.include(Alerts);
