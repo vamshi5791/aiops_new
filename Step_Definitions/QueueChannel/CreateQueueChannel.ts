@@ -20,13 +20,9 @@ var fs = require('fs');
 
 When('{string} with Username as {string}, Password as {string}, Creates Queue Channel with channelName as {string}, for the project {string} with projectId {string}', async function (userRole, username, password, channelName, projectName, projectID) {
   ChannnelNameText = channelName;
-
   var JSONTestData = JSON.parse(fs.readFileSync('JSONTestData/QueueChannel.json', 'utf-8'));
-
-  var userInfo =JSONTestData.UserInfo;
-
+  var userInfo = JSONTestData.UserInfo;
   var channelInfo = JSONTestData.ChannelInfo;
-
   const token_URL = properties.get("main." + globalThis.environment + "_token_URL");
   const tokenPostRequest = {
     method: 'POST',
@@ -44,7 +40,7 @@ When('{string} with Username as {string}, Password as {string}, Creates Queue Ch
       return Promise.reject(res);
     }
   }).then(async function (userData) {
- 
+
     var bearerToken = "Bearer " + userData.access_token;
 
     const chennalCreation_URL = properties.get("main." + globalThis.environment + "_ihubservice");
@@ -77,7 +73,7 @@ When('{string} enters project name as {string} in the search field', async funct
     Global_ProjectName = projectName;
   }
   catch (error) {
-   
+    await console.log("Feature name : Channel configuration with  " + userRole + " and Scenario name :enters project name")
     await console.log(error)
     throw "IE is unable to enter project name in project search field"
   }
@@ -89,9 +85,8 @@ When('{string} clicks dot menu icon', async function (userRole) {
     await objProjectListing.ThreeDots(Global_ProjectName);
   }
   catch (error) {
-   
+    await console.log("Feature name : Channel configuration with  " + userRole + " and Scenario name : clicks dot menu icon")
     console.log(error);
-
     throw "User is not able to click Three dot menu"
   }
 });
@@ -101,11 +96,10 @@ When('{string} clicks edit Project', async function (userRole) {
     await objProjectListing.EditProject()
   }
   catch (error) {
-   
+    await console.log("Feature name : Channel configuration with  " + userRole + " and Scenario name : clicks edit Project")
     await console.log(error)
     throw "User is not able to click Edit Project"
   }
-
 });
 
 When('{string} clicks on channel configuration', async function (userRole) {
@@ -115,8 +109,7 @@ When('{string} clicks on channel configuration', async function (userRole) {
     await objProjectConfi.channelConfiguration();
   }
   catch (error) {
-  
-    await console.log("Feature name : Channel configuration with  " + userRole + " and Scenario name : Channel configuration")
+    await console.log("Feature name : Channel configuration with  " + userRole + " and Scenario name : clicks on channel configuration")
     await console.log(error)
     throw "User is not able to click on Channel Configuration"
   }
@@ -129,8 +122,7 @@ Then('new Queue channel must be available in Channel configuration page', async 
     });
   }
   catch (error) {
-  
-    await console.log("Feature name : Create Queue Channel and Scenario name : Create Queue Channel")
+    await console.log("Feature name : Create Queue Channel and Scenario name : new Queue channel must be available in Channel configuration page")
     await console.log(error)
     throw "Newly created channel name should be displayed in list. But the new queue channel is not exist"
   };

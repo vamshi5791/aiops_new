@@ -31,7 +31,7 @@ When('{string} navigate to Alert Correlation Policy', async function (userrole) 
         await browser.sleep(5000)
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies and Scenario Name : navigate to Alert Correlation Policy")
         await console.log(error)
         throw userrole + " not able to click on Alert Correlation Policy";
     }
@@ -44,7 +44,7 @@ When('{string} navigate to Acknowledgement Policy', async function (userrole) {
         await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Acknowledgement Policy"]'))), 10000);
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies and Scenario Name :navigate to Acknowledgement Policy ")
         await console.log(error)
         throw userrole + " not able to click on Acknowledgement Policy";
     }
@@ -58,7 +58,7 @@ When('{string} navigate to Failure Policy', async function (userrole) {
         await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Failure Policy"]'))), 10000);
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies  and Scenario Name :navigate to Failure Policy")
         await console.log(error)
         throw userrole + " not able to click on Failure Policy";
     }
@@ -71,7 +71,7 @@ When('{string} navigate to Recovery Policy', async function (userrole) {
         await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Recovery Policy"]'))), 10000);
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies  and Scenario Name :navigate to  Recovery Policy")
         await console.log(error)
         throw userrole + " not able to click on Failure Policy";
     }
@@ -136,7 +136,7 @@ Then('verify default value in Operator dropdown', async function () {
         await browser.wait(EC.visibilityOf(objPolicy.drpdwnDefaultOperatorValue));
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies  and Scenario Name :verify default value in Operator dropdown ")
         await console.log(error)
         throw "Default value in Operator dropdown is not 'Equals'";
     }
@@ -151,7 +151,7 @@ Then('verify values in operator dropdown', async function () {
             await browser.wait(EC.visibilityOf(objPolicy.drpdwnOptEquals));
         }
         catch (error) {
-            await console.log("Feature name : Policies ")
+            await console.log("Feature name : Policies   and Scenario Name :verify values in operator dropdown")
             await console.log(error)
             throw "Equals Option is not found in the drop down";
         }
@@ -160,7 +160,7 @@ Then('verify values in operator dropdown', async function () {
             await browser.wait(EC.visibilityOf(objPolicy.drpdwnOptContains));
         }
         catch (error) {
-            await console.log("Feature name : Policies ")
+            await console.log("Feature name : Policies   and Scenario Name :verify values in operator dropdown")
             await console.log(error)
             throw "Contains Option is not found in the drop down";
         }
@@ -169,7 +169,7 @@ Then('verify values in operator dropdown', async function () {
             await browser.wait(EC.visibilityOf(objPolicy.drpdwnOptStartswith));
         }
         catch (error) {
-            await console.log("Feature name : Policies ")
+            await console.log("Feature name : Policies  and Scenario Name :verify values in operator dropdown ")
             await console.log(error)
             throw " Starts Option is not found in the drop down";
         }
@@ -178,13 +178,13 @@ Then('verify values in operator dropdown', async function () {
             await browser.wait(EC.visibilityOf(objPolicy.drpdwnOptEndswith));
         }
         catch (error) {
-            await console.log("Feature name : Policies ")
+            await console.log("Feature name : Policies  and Scenario Name :verify values in operator dropdown ")
             await console.log(error)
             throw "'Ends with' Option is not found in the drop down";
         }
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies  and Scenario Name :verify values in operator dropdown ")
         await console.log(error)
         throw "User is not able to click on operator drop down";
     }
@@ -219,7 +219,7 @@ When('Admin selects {string} attribute as {string}', async function (policy, Att
         await objPolicy.selectAttribute(Attribute);
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies- Action : 'Admin selects attribute ")
         await console.log(error)
         throw "User is not able to select Attribute";
     }
@@ -230,17 +230,13 @@ When('Admin selects {string} value as {string}', async function (policy, value) 
         await objPolicy.selectValue(value);
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies - Action : Admin selects value")
         await console.log(error)
         throw "User is not able to select Value";
     }
 });
 
 When('Admin clicks on Save and Add Rule button', async function () {
-
-
-
-
 
     try {
         await objPolicy.clickSaveandAddRule();
@@ -277,7 +273,7 @@ When('Admin enters {string} rule name as {string}', async function (policy, rule
         await objPolicy.enterRulename(rulename);
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies and  Action : Admin enters rule name ")
         await console.log(error)
         throw "User is not able to enter Rule Name";
     }
@@ -311,9 +307,6 @@ When('Admin clicks on Yes button in confirmation popup', async function () {
         await browser.wait(EC.visibilityOf(objPolicy.btnYes));
 
         await objPolicy.clickOnYesButton();
-        //await browser.sleep(5000)
-        //await browser.wait(EC.invisibilityOf(objPolicy.btnYes));
-
     }
     catch (error) {
         await console.log("Feature name : Policies - Action : clicking on Yes button in confirmation popup")
@@ -336,7 +329,7 @@ When('Admin clicks on Done button', async function () {
 
     }
     catch (error) {
-        await console.log("Feature name : Policies : Action : clicking on done button")
+        await console.log("Feature name : Policies and Action : clicking on done button")
         await console.log(error)
         throw "User is not able to click on Done button";
     }
@@ -349,7 +342,7 @@ Then('verify column values in Policy listing page', async function () {
             await browser.wait(EC.visibilityOf(objPolicy.clmnPolicyName));
         }
         catch (error) {
-            await console.log("Feature name : Policies ")
+            await console.log("Feature name : Policies and Action : verify column values in Policy listing page")
             await console.log(error)
             throw "Unable to verify column values in Policy listing page";
         }
@@ -358,7 +351,7 @@ Then('verify column values in Policy listing page', async function () {
             await browser.wait(EC.visibilityOf(objPolicy.clmnCreatedBy));
         }
         catch (error) {
-            await console.log("Feature name : Policies ")
+            await console.log("Feature name : Policies and Action : verify column values in Policy listing page")
             await console.log(error)
             throw "'Column Created by' header is not found";
         }
@@ -367,7 +360,7 @@ Then('verify column values in Policy listing page', async function () {
             await browser.wait(EC.visibilityOf(objPolicy.clmnModifiedBy));
         }
         catch (error) {
-            await console.log("Feature name : Policies ")
+            await console.log("Feature name : Policies and Action : verify column values in Policy listing page")
             await console.log(error)
             throw "'Column Modified' header is not found";
         }
@@ -376,7 +369,7 @@ Then('verify column values in Policy listing page', async function () {
             await browser.wait(EC.visibilityOf(objPolicy.clmnPrecednece));
         }
         catch (error) {
-            await console.log("Feature name : Policies ")
+            await console.log("Feature name : Policies and Action : verify column values in Policy listing page")
             await console.log(error)
             throw "'Column Precedence' header is not found";
         }
@@ -385,13 +378,13 @@ Then('verify column values in Policy listing page', async function () {
             await browser.wait(EC.visibilityOf(objPolicy.clmnStatus));
         }
         catch (error) {
-            await console.log("Feature name : Policies ")
+            await console.log("Feature name : Policies and Action : verify column values in Policy listing page")
             await console.log(error)
             throw "'Column Status' header is not found";
         }
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies and Action : verify column values in Policy listing page")
         await console.log(error)
         throw "User is not in Policy Listing page";
     }
@@ -405,7 +398,7 @@ Then('verify edit and delete icons in policy listing {string}', async function (
             await browser.wait(EC.visibilityOf(objPolicy.icnEdit));
         }
         catch (error) {
-            await console.log("Feature name : Policies - Action : ")
+            await console.log("Feature name : Policies - Action : verify edit and delete icons in policy listing")
             await console.log(error)
             throw "Edit icon is not found in Policy listing page";
         }
@@ -413,13 +406,13 @@ Then('verify edit and delete icons in policy listing {string}', async function (
             await browser.wait(EC.visibilityOf(objPolicy.icnDelete));
         }
         catch (error) {
-            await console.log("Feature name : Policies ")
+            await console.log("Feature name : Policies - Action : verify edit and delete icons in policy listing")
             await console.log(error)
             throw "Delete icon is not found in Policy listing page";
         }
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies - Action : verify edit and delete icons in policy listing")
         await console.log(error)
         throw "User is not able to Mouse hover on Policy Name";
     }
@@ -428,7 +421,6 @@ Then('verify edit and delete icons in policy listing {string}', async function (
 When('{string} clicks on policy {string}', async function (userrole, policyname) {
     try {
         await objPolicy.clickOnPolicy(policyname);
-        // await element(by.className('cursor-pointer')).click();
     }
     catch (error) {
         await console.log("Feature name : Policies - Action : clicking on " + policyname + " name")
@@ -461,9 +453,9 @@ Then('{string} verifies Add policy button', async function (userrole) {
         })
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies- Action :verifies Add policy button ")
         await console.log(error)
-        throw "";
+        throw "Add policy button is not present ";
     }
 });
 
@@ -574,7 +566,7 @@ When('Admin enters {string} value as {string}', async function (policy, value) {
         await objPolicy.enterValue(value);
     }
     catch (error) {
-        await console.log("Feature name : Policies ")
+        await console.log("Feature name : Policies and Action : 'Admin enters policy values")
         await console.log(error)
         throw "User is not able to select Value";
     }

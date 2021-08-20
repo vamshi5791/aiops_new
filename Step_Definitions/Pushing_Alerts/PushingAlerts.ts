@@ -25,7 +25,7 @@ Given('User renders the RabbitMQ URL', async function () {
 
   }
   catch (error) {
-    await console.log("Feature name : Pushing Alerts through RabbitMQ Admin and Scenario name : Pushing Alerts")
+    await console.log("Feature name : Pushing Alerts through RabbitMQ Admin and Scenario name : User renders the RabbitMQ URL")
     await console.log(error)
     throw "User is unable to renders rabbitMQ url"
   }
@@ -38,7 +38,7 @@ When('user enters RabbitMQ_Username as {string}, RabbitMQ_Password as {string} a
     userName = rabbitMQ_User;
   }
   catch (error) {
-    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : User log in into RabbitMQ")
     await console.log(error)
     throw "user is unable to Login"
   }
@@ -53,7 +53,7 @@ When('clicks on the project {string} {string}', async function (ProjectName, Pro
     await objFilter.clickOnProject(ProjectNameForAlert);
   }
   catch (error) {
-    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : clicks on the project")
     await console.log(error)
     throw new Error("Invalid login details")
   }
@@ -71,7 +71,7 @@ When('enters queue name as {string} and routing key as {string}', async function
     await objFilter.enterRoutingKey(RouteKey);
   }
   catch (error) {
-    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : enters queue name")
     await console.log(error)
     throw "incorrect Queue and Route key"
   }
@@ -82,10 +82,10 @@ When('enters AlertName as {string}, NodeIPAddress as, {string} and ObjectName as
     JsonAlert = JSON.parse(fs.readFileSync('JSONTestData/QueueChannel.json', 'utf-8')).QueueChannel;
 
     StringifiedJsonAlert = JSON.stringify(JsonAlert);
-   
+
   }
   catch (error) {
-    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : enters AlertName")
     await console.log(error)
     throw "incorrect payload data"
   }
@@ -100,7 +100,7 @@ When('enters the payload data and clicks on publish', async function () {
     await objFilter.clickOnPublish();
   }
   catch (error) {
-    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : enters the payload data and clicks on publish")
     await console.log(error)
     throw "unable to publish payload data from RabbitMQ"
   }
@@ -110,6 +110,15 @@ When('enters the payload data and clicks on publish', async function () {
 When('{string} selects project and open alerts', async function (userRole) {
 
   try {
+
+    var myElement = element(by.className('smo smo-close-black-alt'));
+    myElement.isPresent().then(async function (elm) {
+      if (elm) {
+        await browser.sleep(10000)
+        await browser.wait(EC.elementToBeClickable(element(by.className('smo smo-close-black-alt'))), 100000);
+        await element(by.className('smo smo-close-black-alt')).click();
+      }
+    });
 
     await objProjectListing.Project_search(Global_ProjectName);
     await browser.sleep(3000);
@@ -121,7 +130,7 @@ When('{string} selects project and open alerts', async function (userRole) {
 
   }
   catch (error) {
-    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : selects project and open alerts")
     await console.log(error)
     throw "Project doesn't exist"
   }
@@ -134,8 +143,8 @@ Then('enter alertname in search box and verify alert details {string} {string}',
       expect(text).to.include(Alerts);
     });
   } catch (error) {
-   
-    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : Pushing Alerts")
+
+    await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : enter alertname in search box and verify alert details")
     await console.log(error)
     throw "Alert not found"
   };

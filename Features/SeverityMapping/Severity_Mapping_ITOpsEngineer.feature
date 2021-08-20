@@ -6,9 +6,9 @@ Feature Description :Severity Mapping
 
         Scenario Outline: Verifying ITOps Enginner is able to Configure New Severity Mapping
 
-          #    When "admin" navigates to ust home page
-          #    When "Admin" enters project name as "<ProjectName>" in the search field
-          #     And "admin" clicks on project name "<ProjectName>"
+            #  When "admin" navigates to ust home page
+            #  When "Admin" enters project name as "<ProjectName>" in the search field
+            #   And "admin" clicks on project name "<ProjectName>"
               And "ITOps_Enginner" clicks on Configuration tab
               And "ITOps_Enginner" clicks on Severity Mapping
              Then "ITOps_Enginner" verifies Source Severity text feild as "<SourceSeverity>"

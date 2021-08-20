@@ -18,17 +18,15 @@ let objSeverityMapping = new SeverityMapping();
 let objProjectListing = new ProjectListingPage();
 var Global_ProjectName;
 
-
-
 // Verifying_Configuring_New_Severity_Mapping
 
 When('{string} clicks on Configuration tab', async function (userRole) {
-  
+
   try {
     await browser.wait(EC.elementToBeClickable(objSeverityMapping.btnConfiguration), 10000);
     await objSeverityMapping.Configuration();
   } catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : Verifying Configuring New Severity Mapping")
+    await console.log("Feature name : Severity Mapping and Scenario name : clicks on Configuration tab")
     await console.log(error)
   }
 });
@@ -36,9 +34,9 @@ When('{string} clicks on Configuration tab', async function (userRole) {
 When('{string} clicks on Severity Mapping', async function (userRole) {
   await objSeverityMapping.SeverityMapping();
   try {
-    
+
   } catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : Verifying Configuring New Severity Mapping")
+    await console.log("Feature name : Severity Mapping and Scenario name : clicks on Severity Mapping")
     await console.log(error)
   }
 });
@@ -47,9 +45,9 @@ When('{string} clicks on Add new source button', async function (userRole) {
   await browser.sleep(3000);
   await objSeverityMapping.AddNewSource();
   try {
-    
+
   } catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : Verifying Configuring New Severity Mapping")
+    await console.log("Feature name : Severity Mapping and Scenario name :clicks on Add new source button")
     await console.log(error)
   }
 });
@@ -58,9 +56,9 @@ Given('{string} clicks on source dropdown and select a source', async function (
   await objSeverityMapping.ChooseSource();
   await objSeverityMapping.SelectSolarWinds();
   try {
-    
+
   } catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : Verifying Configuring New Severity Mapping")
+    await console.log("Feature name : Severity Mapping and Scenario name : clicks on source dropdown and select a source")
     await console.log(error)
   }
 });
@@ -68,9 +66,9 @@ Given('{string} clicks on source dropdown and select a source', async function (
 Given('{string} enters source Severity as {string}', async function (userRole, SourceSeverity1) {
   await objSeverityMapping.SourceSeverity(SourceSeverity1);
   try {
-    
+
   } catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : Verifying Configuring New Severity Mapping")
+    await console.log("Feature name : Severity Mapping and Scenario name : enters source Severit")
     await console.log(error)
   }
 });
@@ -79,9 +77,9 @@ Given('{string} clicks on SO Severity dropdown and selects Information', async f
   await objSeverityMapping.ChooseSOSeverity();
   await objSeverityMapping.SelectInformation();
   try {
-    
+
   } catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : Verifying Configuring New Severity Mapping")
+    await console.log("Feature name : Severity Mapping and Scenario name : clicks on SO Severity dropdown and selects Information")
     await console.log(error)
   }
 });
@@ -89,9 +87,9 @@ Given('{string} clicks on SO Severity dropdown and selects Information', async f
 Given('{string} clicks on + button', async function (userRole) {
   await objSeverityMapping.ClickOnPlusButton();
   try {
-    
+
   } catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : Verifying Configuring New Severity Mapping")
+    await console.log("Feature name : Severity Mapping and Scenario name : clicks on + button")
     await console.log(error)
   }
 });
@@ -99,9 +97,9 @@ Given('{string} clicks on + button', async function (userRole) {
 Given('{string} enters next source Severity as {string}', async function (userRole, SourceSeverity2) {
   await objSeverityMapping.NextSouceSeverity(SourceSeverity2);
   try {
-    
+
   } catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : Verifying Configuring New Severity Mapping")
+    await console.log("Feature name : Severity Mapping and Scenario name :enters next source Severity")
     await console.log(error)
   }
 });
@@ -110,9 +108,9 @@ Given('{string} clicks on next SO Severity dropdown and selects Information', as
   await objSeverityMapping.NextChooseSOSeverity();
   await objSeverityMapping.SelectInformation();
   try {
-    
+
   } catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : Verifying Configuring New Severity Mapping")
+    await console.log("Feature name : Severity Mapping and Scenario name :  clicks on next SO Severity dropdown and selects Information")
     await console.log(error)
   }
 });
@@ -120,41 +118,42 @@ Given('{string} clicks on next SO Severity dropdown and selects Information', as
 Given('{string} clicks on Add Source button', async function (userRole) {
   await objSeverityMapping.AddSource();
   try {
-    
+
   } catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : Verifying Configuring New Severity Mapping")
+    await console.log("Feature name : Severity Mapping and Scenario name : clicks on Add Source button")
     await console.log(error)
   }
 });
 
 Then('{string} verifying the label {string}', async function (userRole, label) {
- 
-   try {
+
+  try {
     await browser.wait(EC.visibilityOf(element(by.className('//span[@class="hint"]'))), 10000);
     await element(by.xpath('//span[@class="hint"]')).getText().then(function (text) {
-   expect(text).to.include(label);
+      expect(text).to.include(label);
     });
   } catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : Verifying Configuring New Severity Mapping")
+    await console.log("Feature name : Severity Mapping and Scenario name : verifying the label")
     await console.log(error)
   }
 });
 
 Then('Success message for Severity Mapping must be shown in popup {string}', async function (popup) {
   try {
-  await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-  await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-    expect(text).to.include(popup);
-  });
-  await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
+      expect(text).to.include(popup);
+    });
+    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
 
-   }
-   catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : ")
+  }
+  catch (error) {
+    await console.log("Feature name : Severity Mapping and Scenario name : Success message for Severity Mapping must be shown in popup ")
     await console.log(error)
-   throw " Severity Mapping details are not inserted"
-   }
+    throw " Severity Mapping details are not inserted"
+  }
 });
+
 
 
 //  Verify_Severity_Mapping_Page_For_ITOps_Admin
@@ -210,7 +209,7 @@ Then('{string} verifies Delete icon of specefic Severity', async function (userR
 
 Then('{string} verifies the Time as {string}', async function (userRole, Time) {
 
-  await element(by.xpath('//b[text()="'+Time+'"]')).getText().then(function (text) {
+  await element(by.xpath('//b[text()="' + Time + '"]')).getText().then(function (text) {
     expect(text).to.include(Time);
   });
 });
@@ -227,9 +226,6 @@ Then('Error message for creating duplicate source must be shown in popup {string
       expect(text).to.include(Error_popup);
       await console.log(text);
     });
-    // browser.sleep(2000);
-    // await browser.wait(EC.elementToBeClickable(objProjectListing.btnClosePopUp), 10000);
-    // await objProjectListing.clickOnClosePopUpButton();
   }
 
   catch (error) {
@@ -256,7 +252,7 @@ Given('{string} click on save button', async function (userRole) {
 });
 
 Given('{string} clicks on yes button', async function (userRole) {
-await browser.sleep(2000)
+  await browser.sleep(2000)
   await objSeverityMapping.ClickONYes();
 
 });
@@ -268,9 +264,7 @@ Then('Error message for creating duplicate source severity must be shown in popu
     expect(text).to.include(Error_popup);
   });
   await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 10000);
-  // browser.sleep(2000);
-  // await browser.wait(EC.elementToBeClickable(objProjectListing.btnClosePopUp), 10000);
-  // await objProjectListing.clickOnClosePopUpButton();
+
 })
 
 Given('{string} changes another source Severity as {string}', async function (userRole, SourceSeverity) {
@@ -320,17 +314,17 @@ Given('{string} clicks on save button', async function (userRole) {
 
 Then('Success message for Verifyimg adding additional source severity within the same source must be shown in popup {string}', async function (popup) {
   try {
-  await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 10000);
-  await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-    expect(text).to.include(popup);
-  });
-  await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-  await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-  } 
+    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 10000);
+    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
+      expect(text).to.include(popup);
+    });
+    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+  }
   catch (error) {
     await console.log("Feature name : Severity Mapping and Scenario name : ")
     await console.log(error)
-  throw " Severity Mapping details are not inseted"
+    throw " Severity Mapping details are not inseted"
   }
 });
 
@@ -348,28 +342,24 @@ Then('Success message for Verifyimg adding additional source severity within the
 // Verifying ITOps Enginner is able to Configure New Severity Mapping
 
 Then('{string} verifies +Add Severity icon is not available {string}', async function (string, string2) {
-  //await browser.wait(EC.invisibilityOf(element(by.xpath('//b[text()="SOLARWINDS"]//following::span[@class="cursor-pointer ng-star-inserted"]'))), 1000);
   await element(by.xpath('//b[text()="SOLARWINDS"]//following::span[@class="cursor-pointer ng-star-inserted"]')).isPresent().then(function (select) {
     expect(select).to.be.false;
   });
 });
 
 Then('{string} verifies Delete icon is not available', async function (string) {
-  // await browser.wait(EC.invisibilityOf(element(by.xpath('//span[@class="smo smo-delete cursor-pointer font-18 color-grey left-margin-20 ng-star-inserted"]'))), 1000);
   await element(by.xpath('//span[@class="smo smo-delete cursor-pointer font-18 color-grey left-margin-20 ng-star-inserted"]')).isPresent().then(function (select) {
     expect(select).to.be.false;
   });
 });
 
 Then('{string} verifies Add New Source icon is not available {string}', async function (string, string2) {
-  // await browser.wait(EC.invisibilityOf(element(by.xpath('//span[text()=" Add New Source"]'))), 1000);
   await element(by.xpath('//span[text()=" Add New Source"]')).isPresent().then(function (select) {
     expect(select).to.be.false;
   });
 });
 
 Then('{string} verifies Edit icon is not available', async function (string) {
-  // await browser.wait(EC.invisibilityOf(element(by.xpath('//span[@class="smo smo-create-alt edit-icon cursor-pointer right-padding-20 ng-star-inserted"]'))), 1000);
   await element(by.xpath('//span[@class="smo smo-create-alt edit-icon cursor-pointer right-padding-20 ng-star-inserted"]')).isPresent().then(function (select) {
     expect(select).to.be.false;
   });

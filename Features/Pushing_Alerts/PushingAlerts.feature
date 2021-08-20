@@ -12,7 +12,6 @@ Feature: Pushing Alerts through RabbitMQ
               And enters AlertName as "<AlertName>", NodeIPAddress as, "<NodeIPAddress>" and ObjectName as "<ObjectName>"
               And enters the payload data and clicks on publish
             Given User with ITOps role renders the URL
-             When "admin" navigates to ust home page
               And "admin" selects project and open alerts
              Then enter alertname in search box and verify alert details "<Alerts>" "<AlertName>"
               
