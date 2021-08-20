@@ -24,7 +24,6 @@ When('{string} clicks on deactivate project', async function (userRole) {
 });
 
 When('{string} clicks on yes', async function (userRole) {
-
   try {
     await objProjectListing.ClickOnYes();
   } catch (error) {

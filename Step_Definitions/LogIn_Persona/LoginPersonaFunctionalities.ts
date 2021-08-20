@@ -14,31 +14,26 @@ let objProjectConfiguration = new ProjectConfiguration();
 
 Then('{string} verifies edit configuration button is not present', async function (userRole) {
   try {
-    // await browser.wait(EC.invisibilityOf(objProjectListingPage.btnEditConfiguration), 1000);
-    // expect(objProjectListingPage.btnEditConfiguration.isPresent()).to.eventually.equal(false);
     await objProjectListingPage.btnEditConfiguration.isPresent().then(function (select) {
       expect(select).to.be.false;
     });
 
   }
   catch (error) {
-    console.log("Feature name : " + userRole + " and Scenario name :verifies edit configuration button is not present ")
+    console.log("Feature name : Login persona " + userRole + " and Scenario name :verifies edit configuration button is not present ")
     console.log(error)
     throw "Edit configuration button is present"
   }
 });
 
 When('{string} unable to click create new project', async function (string) {
-
   try {
-    // await objProjectListingPage.btnClickOnCreateProject.click()
-    // await browser.wait(EC.invisibilityOf(objProjectListingPage.btnClickOnCreateProject), 10000);
     await objProjectListingPage.btnClickOnCreateProject.isPresent().then(function (select) {
       expect(select).to.be.false;
     });
   }
   catch (error) {
-    console.log("Feature name : and Scenario name : unable to click create new project")
+    console.log("Feature name :Login persona and Scenario name : unable to click create new project")
     console.log(error)
     throw "User is able to create a new project"
   }
@@ -46,7 +41,7 @@ When('{string} unable to click create new project', async function (string) {
 
 When('{string} navigates to ust home page', async function (string) {
   try {
-   
+
     await browser.wait(EC.elementToBeClickable(objProjectListingPage.btnHomePage), 40000);
     await browser.sleep(5000)
     await objProjectListingPage.clickOnHomePageButton();
@@ -54,10 +49,9 @@ When('{string} navigates to ust home page', async function (string) {
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="All Projects"]'))));
     await browser.wait(EC.visibilityOf(objProjectListingPage.btnProfile), 10000);
     await browser.wait(EC.elementToBeClickable(objProjectListingPage.btnProfile), 10000);
-    // await browser.sleep(5000)
   }
   catch (error) {
-    await console.log("Feature name : and Scenario name : navigates to ust home page")
+    await console.log("Feature name :Login persona and Scenario name : navigates to ust home page")
     await console.log(error)
     throw "User is able to create a new project"
   }
@@ -68,13 +62,11 @@ When('{string} clicks on Update', async function (string) {
     await objProjectConfiguration.Update();
   }
   catch (error) {
-    await console.log("Feature name : and Scenario name : clicks on Update")
+    await console.log("Feature name : Login persona and Scenario name : clicks on Update")
     await console.log(error)
     throw "User is not able to update the project"
   }
-
 });
-
 
 When('{string} unable to access dot menu options', function (string) {
 
@@ -82,12 +74,10 @@ When('{string} unable to access dot menu options', function (string) {
     browser.wait(EC.visibilityOf(element(by.className('smo-menuitem-link smo-state-disabled smo-menuitem-link-sm ng-star-inserted'))), 10000);
 
   } catch (error) {
-    console.log("Feature name : and Scenario name :  unable to access dot menu options")
+    console.log("Feature name :Login persona and Scenario name :  unable to access dot menu options")
     console.log(error)
     throw "User is not able to update the project"
   }
-
-
 });
 
 

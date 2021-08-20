@@ -10,14 +10,6 @@ let objPolicy = new PolicyObjects();
 
 When('{string} clicks on configuration tab', async function (userrole) {
     try {
-        // var myElement = element(by.className('smo smo-close-black-alt'));
-        // myElement.isPresent().then(async function (elm) {
-        //     if (elm) {
-        //         await browser.sleep(10000)
-        //         await element(by.className('smo smo-close-black-alt')).click();
-
-        //     }
-        // }); 
         await browser.wait(EC.visibilityOf(objPolicy.lnkConfiguration));
         await objPolicy.configurationNavigation();
     }
@@ -89,8 +81,7 @@ When('{string} navigate to Recovery Policy', async function (userrole) {
 
 When('{string} clicks on edit icon in listing page {string}', async function (userrole, policyname) {
     try {
-        //await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-         await browser.sleep(5000)
+        await browser.sleep(5000)
         await objPolicy.clickOnPolicyEditIcon(policyname);
     }
     catch (error) {
@@ -102,7 +93,6 @@ When('{string} clicks on edit icon in listing page {string}', async function (us
 
 When('{string} clicks on delete icon in listing page {string}', async function (userrole, policyname) {
     try {
-        // await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
         await objPolicy.clickOnPolicyDeleteIcon(policyname);
     }
     catch (error) {
@@ -265,19 +255,19 @@ When('Admin clicks on Save and Add Rule button', async function () {
 Then('verify {string} toaster {string}', async function (policy, Toaster) {
     try {
         await console.log("before success msz validation")
-    await browser.wait(EC.visibilityOf(objPolicy.tostMessage), 10000);
-    await objPolicy.tostMessage.getText().then(async function (text) {
-           await  console.log(text)
-        await expect(text).to.include(Toaster);
-     
+        await browser.wait(EC.visibilityOf(objPolicy.tostMessage), 10000);
+        await objPolicy.tostMessage.getText().then(async function (text) {
+            await console.log(text)
+            await expect(text).to.include(Toaster);
 
-    });
-    await browser.wait(EC.invisibilityOf(objPolicy.tostMessage), 10000);
-await console.log("after success msz validation")
+
+        });
+        await browser.wait(EC.invisibilityOf(objPolicy.tostMessage), 10000);
+        await console.log("after success msz validation")
     }
     catch (error) {
-    await console.log("Feature name : Policies : Action : validation Toaster")
-    await console.log(error)
+        await console.log("Feature name : Policies : Action : validation Toaster")
+        await console.log(error)
         throw "Toaster message is not same as Expected message";
     }
 });
@@ -336,10 +326,10 @@ When('Admin clicks on Done button', async function () {
     try {
         await console.log("before cliking on done button")
         await browser.wait(EC.visibilityOf(objPolicy.btnDone));
-         await console.log("00000000000")
+        await console.log("00000000000")
         await browser.wait(EC.elementToBeClickable(objPolicy.btnDone));
         await browser.sleep(5000)
-         await console.log("11111111")
+        await console.log("11111111")
         await objPolicy.clickOnDoneButton();
         await console.log("after cliking on done button")
 
@@ -522,17 +512,6 @@ When('Admin clicks on Update Deatils', async function () {
     }
 });
 
-// When('Admin clicks on Update Details', async function () {
-//     try {
-//         await objPolicy.clickOnUpdateDetails();
-//     }
-//     catch (error) {
-//         await console.log("Feature name : Policies - Action : clicking on Update Details")
-//         await console.log(error)
-//         throw "User is not able to click on Update Deatils Button";
-//     }
-// });
-
 When('clicks on Next button', async function () {
     try {
         await objPolicy.clickOnNext();
@@ -547,8 +526,6 @@ When('clicks on Next button', async function () {
 When('clicks on Edit rule icon', async function () {
     try {
         await browser.sleep(5000);
-        //await browser.wait(EC.visibilityOf(objPolicy.icnEditRule));
-        //await objPolicy.clickEditRuleIcon();
         await objPolicy.btnEditIconInFailurePolicy.click();
     }
     catch (error) {

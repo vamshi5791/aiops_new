@@ -5,13 +5,8 @@ import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { InfrastructurePage } from "../../PageObjects/InfrastructurePage";
 import { Dashboard } from "../../PageObjects/Dashboard";
 import { Configuration } from "../../PageObjects/Configuration";
-
-
-// global.expect = require('chai').expect
-// var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
 let objAlerts = new AlertsPage();
@@ -23,26 +18,12 @@ let objConfiguration = new Configuration();
 
 Given('{string} unable to access dashboard', async function (string) {
   try {
-    // await browser.wait(EC.invisibilityOf(objDashboard.btnDashboard), 10000);
     await objDashboard.btnDashboard.isPresent().then(function (select) {
       expect(select).to.be.false;
     });
-    // expect(objDashboard.btnDashboard.isPresent()).to.eventually.equal(false);
-    // return browser.wait(function () {
-    //   return objDashboard.btnDashboard.isPresent()
-    //     .then(function (visible) {
-    //       if (visible) {
-    //         return false;
-    //       }
-    //       return true;
-    //     }).catch(function (notFound) {
-    //       return true;
-    //     });
-    // }, 10000, 'Element not found within 10 seconds');
-
   }
   catch (error) {
-    console.log("Feature name : and Scenario name : ")
+    console.log("Feature name : Login persona and Scenario name : unable to access dashboard")
     console.log(error)
     throw "User is able to access dashboard"
   }
@@ -50,54 +31,25 @@ Given('{string} unable to access dashboard', async function (string) {
 
 Given('{string} unable to access alerts section', async function (string) {
   try {
-    // await browser.wait(EC.invisibilityOf(element(by.xpath('//a[text()="Alerts"]'))), 10000);
     await element(by.xpath('//a[text()="Alerts"]')).isPresent().then(function (select) {
       expect(select).to.be.false;
     });
-    // return browser.wait(function () {
-    //   return element(by.xpath('//a[text()="Alerts"]')).isPresent()
-    //     .then(function (visible) {
-    //       if (visible) {
-    //         return false;
-    //       }
-    //       return true;
-    //     }).catch(function (notFound) {
-    //       return true;
-    //     });
-    // }, 10000, 'Element not found within 10 seconds');
-
   }
   catch (error) {
-    console.log("Feature name : and Scenario name : ")
+    console.log("Feature name : Login persona and Scenario name : unable to access alerts section")
     console.log(error)
     throw "User is able to access alerts section"
   }
-
-}); 
+});
 
 Given('{string} unable to access configuration section', async function (string) {
   try {
     await objInfrastructurePage.btnInfrastructure.isPresent().then(function (select) {
       expect(select).to.be.false;
     });
-    // await browser.wait(EC.invisibilityOf(objInfrastructurePage.btnInfrastructure), 10000);
-
-    // await objConfiguration.btnConfiguration.click()
-  //     expect(objInfrastructurePage.btnInfrastructure.isPresent()).to.eventually.equal(false);
-  //   return browser.wait(function () {
-  //     return objInfrastructurePage.btnInfrastructure.isPresent()
-  //       .then(function (visible) {
-  //         if (visible) {
-  //           return false;
-  //         }
-  //         return true;
-  //       }).catch(function (notFound) {
-  //         return true;
-  //       });
-  //   }, 10000, 'Element not found within 10 seconds');
-   }
+  }
   catch (error) {
-    console.log("Feature name : and Scenario name : ")
+    console.log("Feature name : Login persona and Scenario name :unable to access configuration section ")
     console.log(error)
     throw "User is able to access configuration section"
   }
@@ -106,26 +58,12 @@ Given('{string} unable to access configuration section', async function (string)
 
 Given('{string} unable to access infrastructure section', async function (string) {
   try {
-    // objInfrastructurePage.btnInfrastructure.click()
-    //  await browser.wait(EC.invisibilityOf(objInfrastructurePage.btnInfrastructure), 10000);
     await objInfrastructurePage.btnInfrastructure.isPresent().then(function (select) {
       expect(select).to.be.false;
     });
-    // expect(objInfrastructurePage.btnInfrastructure.isPresent()).to.eventually.equal(false);
-    // return browser.wait(function () {
-    //   return objInfrastructurePage.btnInfrastructure.isPresent()
-    //     .then(function (visible) {
-    //       if (visible) {
-    //         return false;
-    //       }
-    //       return true;
-    //     }).catch(function (notFound) {
-    //       return true;
-    //     });
-    // }, 10000, 'Element not found within 10 seconds');
   }
   catch (error) {
-    console.log("Feature name : and Scenario name : ")
+    console.log("Feature name : Login persona and Scenario name : unable to access infrastructure section")
     console.log(error)
     throw "User is not to access infrastructure section"
   }
@@ -135,10 +73,9 @@ Given('{string} unable to access infrastructure section', async function (string
 When('{string} able to access dashboard', async function (string) {
   try {
     await browser.wait(EC.visibilityOf(objDashboard.btnDashboard), 10000);
-
   }
   catch (error) {
-    await console.log("Feature name : and Scenario name : ")
+    console.log("Feature name : Login persona and Scenario name : able to access dashboard")
     await console.log(error)
     throw "User is not able to access dashboard"
   }
@@ -149,7 +86,7 @@ When('{string} able to access alerts section', async function (string) {
     await browser.wait(EC.visibilityOf(objAlerts.btnSelectAlerts), 10000);
   }
   catch (error) {
-    await console.log("Feature name : and Scenario name : ")
+    console.log("Feature name : Login persona and Scenario name : able to access alerts section")
     await console.log(error)
     throw "User is not able to access alerts section"
   }
@@ -160,7 +97,7 @@ When('{string} able to access configuration section', async function (string) {
     await browser.wait(EC.visibilityOf(objConfiguration.btnConfiguration), 10000);
   }
   catch (error) {
-    await console.log("Feature name : and Scenario name : ")
+    console.log("Feature name : Login persona and Scenario name :able to access configuration section")
     await console.log(error)
     throw "User is not able to access configuration section"
   }
@@ -171,7 +108,7 @@ When('{string} able to access infrastructure section', async function (string) {
     await browser.wait(EC.visibilityOf(objInfrastructurePage.btnInfrastructure), 10000);
   }
   catch (error) {
-    await console.log("Feature name : and Scenario name : ")
+    console.log("Feature name : Login persona and Scenario name :able to access infrastructure section ")
     await console.log(error)
     throw "User is not able to access infrastructure section"
   }
