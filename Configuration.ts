@@ -81,7 +81,7 @@ export let config: Config = {
     '../Features/DisplayConfiguration/DisplayConfiguration.feature',
     '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
     '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
-    '../Features/Pushing_Alerts/PushingAlerts.feature',
+    // '../Features/Pushing_Alerts/PushingAlerts.feature',
     '../Features/Logout/LogOut.feature',
  // Admin
     '../Features/LogIn/LogIn_Admin.feature',
