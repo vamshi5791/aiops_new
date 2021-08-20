@@ -6,7 +6,7 @@ Feature Description: Admin creats Ticketing Threshold
         @AddNewTicketingThresholdByITOPsADMIN
         Scenario Outline: ITOps Admin should able to Add New Ticketing Threshold
 
-              And "Admin" navigate to Ticketing Threshold
+             When "Admin" navigate to Ticketing Threshold
               #And Admin enter clicks on Add New Threshold button
               And Admin selects Source "<source>"
               And Admin enters Cluster Size "<clustersize>"

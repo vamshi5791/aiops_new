@@ -6,7 +6,7 @@ Feature Description : Verifying Display Configuration functionalities
         @Display
         Scenario Outline: Verify whether itops_admin is able to view Display Configuration settings
          
-              And "Admin" clicks on Alert Console Display Configuration from LHS menu Settings
+             When "Admin" clicks on Alert Console Display Configuration from LHS menu Settings
              Then "Admin" verifies that Primary and secondary sections are present
               And "Admin" verifies Up and Down arrows are present in both sections
               And "Admin" verifies left and right arrows are present

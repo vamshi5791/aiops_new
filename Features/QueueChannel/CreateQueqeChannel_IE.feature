@@ -12,10 +12,10 @@ Feature Description Using post method to API we generate Bearer Token
 
         Scenario Outline: Verify Queue Channel creation
              When "IE" navigates to ust home page
-             When "IE" enters project name as "<projectName>" in the search field
-             When "IE" clicks dot menu icon
-             When "IE" clicks edit Project
-             When "IE" clicks on channel configuration
+              And "IE" enters project name as "<projectName>" in the search field
+              And "IE" clicks dot menu icon
+              And "IE" clicks edit Project
+              And "IE" clicks on channel configuration
              Then new Queue channel must be available in Channel configuration page
              
         Examples:

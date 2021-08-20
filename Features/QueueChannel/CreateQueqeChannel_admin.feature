@@ -9,7 +9,7 @@ Feature: Create Queue Channel with Itops Admin role
 
         Scenario Outline: Verify Queue Channel
              When "admin" navigates to ust home page
-             When "Admin" enters project name as "<projectName>" in the search field
+              And "Admin" enters project name as "<projectName>" in the search field
               And "Admin" clicks dot menu icon
               And "Admin" clicks edit Project
               And "Admin" clicks on channel configuration

@@ -9,7 +9,7 @@ Feature Description: ITOpsAdmin verifies Acknowledgement Policy operations
           #    When "Admin" enters project name as "<ProjectName>" in the search field
           #     And "admin" clicks on project name "<ProjectName>"
           #    When "Admin" clicks on configuration tab
-            And "Admin" navigate to Acknowledgement Policy
+             When "Admin" navigate to Acknowledgement Policy
               And Admin clicks on Add "Acknowledgement" Policy
               And Admin enters "Acknowledgement" Policy Name as "<PolicyName>"
               And Admin enters "Acknowledgement" Precedence as "<PolicyPrecedence>"
@@ -64,7 +64,7 @@ Feature Description: ITOpsAdmin verifies Acknowledgement Policy operations
               And Admin clicks on Done button
  
         Examples:
-                  | PolicyName | UpdatedPolicyName | policyAtttribute | PolicyValue | UpdatedRuleName        | ruleAtttribute | ruleValue | RuleCreatedSuccessMessage                                                                   |
+                  | PolicyName | UpdatedPolicyName | policyAtttribute | PolicyValue | UpdatedRuleName        | ruleAtttribute | ruleValue | RuleCreatedSuccessMessage                                                                 |
                   | Automation | Automation IB     | Alert Name       | 22          | CorrelationRuleUpdated | Alert Source   | Forescout | The acknowledgement policy change will not have any effect on any existing alert clusters |
 
         Scenario Outline: ITOps Admin edits existing Acknowledgement Policy from Listing page
@@ -89,13 +89,13 @@ Feature Description: ITOpsAdmin verifies Acknowledgement Policy operations
               And Admin clicks on Done button
 
         Examples:
-                  | PolicyName    | UpdatedPolicyName | policyAtttribute    | PolicyValue | UpdatedRuleName         | ruleAtttribute      | ruleValue | RuleCreatedSuccessMessage                                                                   |
+                  | PolicyName    | UpdatedPolicyName | policyAtttribute    | PolicyValue | UpdatedRuleName         | ruleAtttribute      | ruleValue | RuleCreatedSuccessMessage                                                                 |
                   | Automation IB | Automation IB     | Business Time Alert | False       | CorrelationRuleUpdated1 | Business Time Alert | False     | The acknowledgement policy change will not have any effect on any existing alert clusters |
 
 
         Scenario Outline: Admin deletes the existing Acknowledgement Policy
 
-            And "Admin" navigate to Acknowledgement Policy
+              And "Admin" navigate to Acknowledgement Policy
               And "Admin" clicks on delete icon in listing page "<PolicyName>"
               And Admin clicks on Yes button in confirmation popup
              Then "Admin" verifies if "<SuccessMessage>" message is displayed

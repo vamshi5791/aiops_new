@@ -5,8 +5,8 @@ Feature Description : User navigates to alert console page, searches by Node Nam
                       verifies results should be based on the search input
         
         Scenario Outline: Search by Node Name
-              And "admin" clicks on Alerts page
-             When "admin" enters "node name" and clicks on enter "<NodeName>"
+             When "admin" clicks on Alerts page
+              And "admin" enters "node name" and clicks on enter "<NodeName>"
              Then verify search result should contain all the alerts from the same node name
              
         Examples:
@@ -14,8 +14,8 @@ Feature Description : User navigates to alert console page, searches by Node Nam
                   | CNHKGG-00A-KKR |
 
         Scenario Outline: Search by alert metric
-              And "admin" clicks on Alerts page
-             When "admin" enters "alertMetric data" and clicks on enter "<AlertMetricData>"
+             When "admin" clicks on Alerts page
+              And "admin" enters "alertMetric data" and clicks on enter "<AlertMetricData>"
              Then verify search result should contain all the alerts which has alert metric matching the search criteria "<AlertMetricData>"
              
         Examples:
@@ -23,8 +23,8 @@ Feature Description : User navigates to alert console page, searches by Node Nam
                   | Node Down       |
 
         Scenario Outline: Search by alert name
-              And "admin" clicks on Alerts page
-             When "admin" enters "alert name" and clicks on enter "<AlertName>"
+             When "admin" clicks on Alerts page
+              And "admin" enters "alert name" and clicks on enter "<AlertName>"
              Then verify search result should contain all the alerts which has alert name matching the search criteria "<AlertName>"
             
         Examples:

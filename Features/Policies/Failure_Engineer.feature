@@ -6,8 +6,8 @@ Feature: Failure Policy
 
             
             
-              And "ITOpsEngineer" navigate to Failure Policy
-             When "ITOpsEngineer" clicks on policy "<policyname>"
+             When "ITOpsEngineer" navigate to Failure Policy
+              And "ITOpsEngineer" clicks on policy "<policyname>"
               And click on cancel button
 
         Examples:

@@ -36,16 +36,16 @@ Feature: Login persona functionalities of Installation Engineer
  
         Scenario: Installation Engineer is unable to  view Alerts
             
-              And "Installation_Engineer" unable to access alerts section
+             Then "Installation_Engineer" unable to access alerts section
 
 
         Scenario: Installation Engineer is unable to  view Infrastructure
           
-              And "Installation_Engineer" unable to access infrastructure section
+             Then "Installation_Engineer" unable to access infrastructure section
 
         Scenario: Installation Engineer is unable to  view Configuration
             
-              And "Installation_Engineer" unable to access configuration section
+             Then "Installation_Engineer" unable to access configuration section
 
 
   

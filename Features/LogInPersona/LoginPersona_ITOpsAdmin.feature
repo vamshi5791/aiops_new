@@ -8,21 +8,21 @@ Feature: Login persona functionalities of ITOps Admin
 
              When "ITOps_Admin" enters project name as "<ProjectName>" in the search field
               And "ITOps_Admin" clicks on project name "<ProjectName>"
-              And "ITOps_Admin" able to access dashboard
+             Then "ITOps_Admin" able to access dashboard
         Examples:
                   | ProjectName      |
                   | Automation_IB_16 |
         Scenario: ITOps Admin is able to  view Alerts
              When "ITOps_Admin" clicks on Alerts page
-              And "ITOps_Admin" able to access alerts section
+             Then "ITOps_Admin" able to access alerts section
               
         Scenario: ITOps Admin is able to  view Infrastructure
              When "ITOps_Admin" opens infrastructure page
-              And "ITOps_Admin" able to access infrastructure section
+             Then "ITOps_Admin" able to access infrastructure section
 
         Scenario: ITOps Admin is able to  view Configuration
              When "ITOps_Admin" navigate to Configuration section
-              And "ITOps_Admin" able to access configuration section
+             Then "ITOps_Admin" able to access configuration section
 
        
         Scenario Outline:   Veirfying the ITOps Admin is able to edit the project

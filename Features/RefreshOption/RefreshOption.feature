@@ -6,7 +6,7 @@ Feature Description: User navigates to alert console page, enters refresh value 
 
         Scenario Outline: Verify auto refresh functionality
            
-              And "admin" clicks on Alerts page
+             When "admin" clicks on Alerts page
               And "ITOps_Admin" enters value "<Value>" in auto refresh textbox
               And "ITOps_Admin" clicks on tick button
              Then verify a success message should be displayed "<Toaster>"

@@ -9,10 +9,10 @@ Feature Description : User navigates to alert console page and creates the filte
         Scenario Outline:  Verifying the ITOps admin is able to save and apply the filter
 
              When "admin" navigates to ust home page
-             When "Admin" enters project name as "<ProjectName>" in the search field
+              And "Admin" enters project name as "<ProjectName>" in the search field
               And "admin" clicks on project name "<ProjectName>"
               And "admin" clicks on Alerts page
-             When "admin" clicks on advanced filter icon
+              And "admin" clicks on advanced filter icon
               And "admin" enters source as "<Source>" and alert state as "<Alert_State>"
               And "admin" clicks on Save filter button
               And "admin" enters filter name as "<FilterName>" and Description as "<Description>"
@@ -25,8 +25,8 @@ Feature Description : User navigates to alert console page and creates the filte
         @SavedFilterApplyTheSavedFilterAgain
         Scenario Outline: Verifying ITOps admin is able to apply the saved filter again
 
-              And "admin" clicks on Alerts page
-             When "admin" clicks on advanced filter icon
+             When "admin" clicks on Alerts page
+              And "admin" clicks on advanced filter icon
               And "admin" Clicks on Saved Filter from advanced filter section "<SavedFilter>"
              Then verify Apply and cancel buttons should be present
               And Verify the filter conditions are retrieved and click on Apply
@@ -38,10 +38,10 @@ Feature Description : User navigates to alert console page and creates the filte
         @SavedFilterChipsOnUI
         Scenario Outline: Alert console UI should show all filter conditions as chips
 
-              And "admin" clicks on Alerts page
+             When "admin" clicks on Alerts page
               And "admin" clicks on saved filters "<SavedFilter>"
               And "admin" verifies Remove all button is present
-              And Chips should have a close button
+             Then Chips should have a close button
 
         Examples:
                   | SavedFilter |
@@ -49,18 +49,18 @@ Feature Description : User navigates to alert console page and creates the filte
         @SavedFilterAbleToRemoveAllFilterConditions
         Scenario Outline: Verify user is able to remove all filter conditions via alert console once applied
 
-              And "admin" clicks on Alerts page
+             When "admin" clicks on Alerts page
               And "admin" clicks on saved filters "<SavedFilter>"
               And "admin" clicks on Remove all link next to the chips displayed from Alert console
              Then verify data should be reset to default set without any filter applied "<TestSource>"
-             Then verify All filter condition chips should be removed from UI
+              And verify All filter condition chips should be removed from UI
 
         Examples:
                   | SavedFilter | TestSource |
                   | IB          | Solarwinds |
         @SavedFilterAbleToRemoveAnyFilterConditions
         Scenario Outline: Verify user is able to remove any filter conditions via alert console once applied
-              And "admin" clicks on Alerts page
+             When "admin" clicks on Alerts page
               And "admin" clicks on saved filters "<SavedFilter>"
               And "admin" clicks on close button from any of the chip displayed
              Then verify closed chips should not be displayed in UI
@@ -72,8 +72,8 @@ Feature Description : User navigates to alert console page and creates the filte
         @SavedFilterAvailability
         Scenario Outline: Saved filters availability
 
-              And "admin" clicks on Alerts page
-             When "admin" clicks on advanced filter icon
+             When "admin" clicks on Alerts page
+              And "admin" clicks on advanced filter icon
              Then verify all saved filters are displayed on left side "<FIlterName>"
               And verify filter name, description and Created time should be displayed "<FIlterName>", "<Description>", "<CreatedTime>"
               And verify Expand button should be present for each saved filter
