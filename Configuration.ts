@@ -47,7 +47,7 @@ export let config: Config = {
     '../Features/LogIn/LogIn_IE.feature',
     '../Features/QueueChannel/CreateQueqeChannel_IE.feature',
     '../Features/LogInPersona/LoginPersona_IE.feature',
-    // // '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
+    '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
     '../Features/Logout/LogOut.feature',
 
     // // Engineer
@@ -89,7 +89,7 @@ export let config: Config = {
     '../Features/Policies/Acknowledgement.feature',
     '../Features/Policies/Failure.feature',
     '../Features/Policies/Recovery.feature',
-    // '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
+    '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
   ],
   cucumberOpts: {
 
