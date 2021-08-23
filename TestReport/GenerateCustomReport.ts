@@ -27,7 +27,9 @@ export class GenerateCustomReport {
       this.jsonData[0].id = this.jsonData[0].id + '|' + tms;
 
       console.log("ID :" + this.jsonData[0].id);
-      console.log("========================After data===================");
+      console.log("========================JSON Start===================");
+      // console.log(JSON.stringify(this.jsonData));
+      console.log("========================JSON End===================");
       this.bindReportData();
     } catch (error) {
       console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> In Catch of readJson ");
@@ -47,7 +49,7 @@ export class GenerateCustomReport {
         if (err) {
           return console.error(err);
         }
-        
+
         var templateData = tdata.toString();
         console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> Before replace json data: ");
 
@@ -78,7 +80,7 @@ export class GenerateCustomReport {
         }
         else {
           console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> HTML Report File created!");
-          // console.log("File created!");
+           console.log("File created!");
           var reportDir = reportFileName
           var desDir = "./Previous_Reports/ITOpsAutomation_Report"
           if (fse.existsSync(reportDir)) {

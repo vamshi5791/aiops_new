@@ -38,7 +38,7 @@ export let config: Config = {
   specs: [
 
 
-    // DisplayUser
+    // // DisplayUser
     '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
     '../Features/Logout/LogOut.feature',
@@ -89,8 +89,8 @@ export let config: Config = {
     '../Features/Policies/Acknowledgement.feature',
     '../Features/Policies/Failure.feature',
     '../Features/Policies/Recovery.feature',
-    // '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
-    '../Features/Logout/LogOut.feature',
+    '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
+  //   '../Features/Logout/LogOut.feature',
   ],
   cucumberOpts: {
 
