@@ -73,7 +73,7 @@ Feature: Login persona functionalities of Installation Engineer
 
         Examples:
                   | projectName      | Toaster                      |
-                  | Automation_IB_96 | Project Deleted Successfully |
+                  | Automation_IB_60 | Project Deleted Successfully |
 
 
 

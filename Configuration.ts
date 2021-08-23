@@ -85,11 +85,11 @@ export let config: Config = {
     '../Features/Logout/LogOut.feature',
  // Admin
   '../Features/LogIn/LogIn_Admin.feature',
- '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
    '../Features/Policies/AlertCorrelation.feature',
     '../Features/Policies/Acknowledgement.feature',
     '../Features/Policies/Failure.feature',
     '../Features/Policies/Recovery.feature',
+    '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
    
   ],
   cucumberOpts: {
