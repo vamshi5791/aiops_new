@@ -31,7 +31,7 @@ export let config: Config = {
   onPrepare: async function () {
     await browser.waitForAngularEnabled(false);
     await browser.manage().window().maximize();
-    await browser.manage().timeouts().implicitlyWait(80000);
+    await browser.manage().timeouts().implicitlyWait(70000);
     globalThis.environment = browser.params.env;
     globalThis.BrowserMode = args.Options;
   },
