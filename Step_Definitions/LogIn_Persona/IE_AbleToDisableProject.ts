@@ -18,13 +18,13 @@ When('{string} click on three dots of a project', async function (userRole, stri
 });
 
 
-When('{string} clicks on deactivate project', async function (userRole) {
-  await objProjectListing.Deactivate();
-});
+// When('{string} clicks on deactivate project', async function (userRole) {
+//   await objProjectListing.Deactivate();
+// });
 
-When('{string} clicks on yes', async function (userRole) {
-  await objProjectListing.ClickOnYes();
-});
+// When('{string} clicks on yes', async function (userRole) {
+//   await objProjectListing.ClickOnYes();
+// });
 Then('Success message for Project is {string} must be shown as a toaster {string}', async function (userRole, Toaster) {
   await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
 
