@@ -89,7 +89,7 @@ export let config: Config = {
     '../Features/Policies/Acknowledgement.feature',
     '../Features/Policies/Failure.feature',
     '../Features/Policies/Recovery.feature',
-    '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
+    // '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
   //   '../Features/Logout/LogOut.feature',
   ],
   cucumberOpts: {
