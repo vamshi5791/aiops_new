@@ -57,6 +57,8 @@ When('{string} clicks dot menu icon to delete project', async function (string) 
 
   try {
     await browser.sleep(2000)
+    await browser.wait(EC.elementToBeClickable(objProjectListing.btnThreeDots), 100000);
+    
     await objProjectListing.clickOnThreeDots();
   } catch (error) {
     await console.log("Feature name : Login Persona and Scenario name : Delete Project")

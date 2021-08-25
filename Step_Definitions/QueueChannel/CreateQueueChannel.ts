@@ -106,6 +106,7 @@ When('{string} clicks on channel configuration', async function (userRole) {
   try {
     await browser.sleep(3000)
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Channel Configuration"]'))), 100000);
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Channel Configuration"]'))), 100000);
     await objProjectConfi.channelConfiguration();
   }
   catch (error) {
