@@ -14,7 +14,7 @@ export class GenerateCustomReport {
   finalhtmlstring: any = "";
   noOfTCs: any = "";
 
-  readJson() {
+  async readJson() {
     try {
       this.jsonData = JSON.parse(fs.readFileSync('./TestReport/cucumberreport.json', 'utf-8'));
       console.log("====cucumber json data========");
@@ -26,14 +26,15 @@ export class GenerateCustomReport {
 
       this.jsonData[0].id = this.jsonData[0].id + '|' + tms;
 
-      console.log("ID :" + this.jsonData[0].id);
-      console.log("========================JSON Start===================");
+      await console.log("ID :" + this.jsonData[0].id);
+      await console.log("========================JSON Start===================");
       // console.log(JSON.stringify(this.jsonData));
-      console.log("========================JSON End===================");
-      this.bindReportData();
+      await console.log("========================JSON End===================");
+      
+     await this.bindReportData();
     } catch (error) {
-      console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> In Catch of readJson ");
-      console.log(error);
+      await  console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> In Catch of readJson ");
+      await console.log(error);
     }
 
 
@@ -43,39 +44,40 @@ export class GenerateCustomReport {
     return (num >= 0 && num < 10) ? "0" + num : num + "";
   }
 
-  bindReportData() {
+  async bindReportData() {
     try {
-      fs.readFile('./TestReport/ReportTemplate.html', (err, tdata) => {
+      fs.readFile('./TestReport/ReportTemplate.html', async (err, tdata) => {
         if (err) {
           return console.error(err);
         }
 
         var templateData = tdata.toString();
-        console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> Before replace json data: ");
+        await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> Before replace json data: ");
 
         var re = /jsondatabinding/gi;
-        this.finalhtmlstring = templateData.replace(re, JSON.stringify(this.jsonData));
-        console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> After replace json data: ");
+         this.finalhtmlstring = templateData.replace(re, JSON.stringify(this.jsonData));
+         await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> After replace json data: ");
         //console.log("Html final data: " + this.finalhtmlstring);
-        this.createReportFile()
+        await this.createReportFile()
       });
     } catch (error) {
-      console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> In Catch of bindReportData ");
-      console.log(error);
+      await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> In Catch of bindReportData ");
+      await console.log(error);
     }
 
   }
 
-  createReportFile() {
+  async createReportFile() {
+    await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> Starting createReportFile: ");
     try {
       var html = '<h1>Hello</h1>'
 
       var reportFileName = './TestReport/ITOpsAutomation_Report.html';
 
-      fs.writeFile(reportFileName, this.finalhtmlstring, function (err) {
+      fs.writeFile(reportFileName, this.finalhtmlstring, async function (err) {
         if (err) {
-          console.log("error in create file")
-          console.log(err)
+          await console.log("error in create file")
+          await console.log(err)
           return console.error(err);
         }
         else {
@@ -85,19 +87,19 @@ export class GenerateCustomReport {
           var desDir = "./Previous_Reports/ITOpsAutomation_Report"
           if (fse.existsSync(reportDir)) {
             fse.copySync(reportDir,
-              desDir + "_" + moment().format("YYYYMMDD_HHmmss") + ".html", { overwrite: true }, function (err) {
+              desDir + "_" + moment().format("YYYYMMDD_HHmmss") + ".html", { overwrite: true }, async function (err) {
                 if (err) {
-                  console.error(err);
+                  await console.error(err);
                 } else {
-                  console.log("success!");
+                  await  console.log("success!");
                 }
               });
           }
         }
       });
     } catch (error) {
-      console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> In Catch of createReportFile ");
-      console.log(error);
+      await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> In Catch of createReportFile ");
+      await console.log(error);
     }
   }
 }

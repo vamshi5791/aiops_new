@@ -38,7 +38,7 @@ Feature Description :Severity Mapping
               And "Admin" verifies Add New Source as "<NewSource>"
               And "Admin" verifies Edit icon
               And "Admin" verifies Delete icon of specefic Severity
-              And "Admin" verifies the Time as "<Time>"
+              #And "Admin" verifies the Time as "<Time>"
 
 
 

@@ -18,7 +18,7 @@ Feature Description :Severity Mapping
               And "ITOps_Enginner" verifies Delete icon is not available
               And "ITOps_Enginner" verifies Add New Source icon is not available "<NewSource>"
               And "ITOps_Enginner" verifies Edit icon is not available
-              And "ITOps_Enginner" verifies the Time as "<Time>"
+              #And "ITOps_Enginner" verifies the Time as "<Time>"
 
         Examples:
                   | UserName       | Password | ProjectName      | SourceSeverity1 | SourceSeverity2 | SourceSeverity  | SOSeverity  | time         | AddSeverity  | NewSource      | Time        |
