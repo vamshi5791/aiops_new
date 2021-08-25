@@ -73,7 +73,7 @@ pipeline {
             emailext (
                   subject: "Regression Test results for itops . Job '${env.JOB_NAME} . Build No ${env.BUILD_NUMBER}'",
                   body: """Please see the attachment for regression test result""",
-                  to: "Prakash.kumar@ust.com,SreejithSivankutty.Nair@ust-global.com,sravanthi.thumma@ideabytes.com,Binu.Rajagopal@ust-global.com,ajay.nelavetla@ideabytes.com,gopi.balde@ideabytes.com,yadagiri.kongari@ideabytes.com",
+                  to: "sravanthi.thumma@ideabytes.com,ajay.nelavetla@ideabytes.com,gopi.balde@ideabytes.com,yadagiri.kongari@ideabytes.com",
                   from: "noreplysmartopssvc@ust-global.com",
                   mimeType: 'text/plain',
                   attachmentsPattern: 'TestReport/ITOpsAutomation_Report.html'

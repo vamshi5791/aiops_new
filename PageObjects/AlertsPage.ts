@@ -20,8 +20,8 @@ export class AlertsPage {
   txtFilterDescription = element(by.xpath('//textarea[@name="description"]'));
   drpSavedFilter = element(by.xpath('//label[text()="Saved Filter"]'));
   btnRemoveAll = element(by.xpath('//a[text()="Remove All"]'));
-  btnRemoveSourceCondition = element(by.xpath('//span[text()="State"]//preceding::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
-  btnRemoveStateCondition = element(by.xpath('//span[text()="State"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
+  btnRemoveSourceCondition = element(by.xpath('//span[text()="State : "]//preceding::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
+  btnRemoveStateCondition = element(by.xpath('//span[text()="State : "]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
   btnRemoveOkCondition = element(by.xpath('//span[text()="Ok"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
   btnRemoveWarningCondition = element(by.xpath('//span[text()="Ok"]//preceding::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
   
