@@ -53,7 +53,7 @@ When('{string} navigates to ust home page', async function (string) {
   catch (error) {
     await console.log("Feature name :Login persona and Scenario name : navigates to ust home page")
     await console.log(error)
-    throw "User is able to create a new project"
+    throw "User is not able navigates to ust home page"
   }
 });
 When('{string} clicks on Update', async function (string) {

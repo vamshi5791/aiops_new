@@ -54,9 +54,33 @@ Feature Description : Verifying Display Configuration functionalities
               And "Admin" verifies "<DisplayOrderDown>" of the "<FieldName>" is as per the new order
         Examples:
                   | FieldName | DisplayOrderUP | DisplayOrderDown | SuccessMessage                            |
-                  | nodeName  | 5              | 6                | Alert Console Settings saved Successfully |
+                  | nodeName  | 6              | 7                | Alert Console Settings saved Successfully |
        
+        
+     
+        Scenario Outline: Active and Inactive fields in secondary section
+             When "Itops_Engineer" navigate to Configuration section
+             When "Admin" clicks on Alert Console Display Configuration from LHS menu Settings
+             When "Admin" selects "<FieldName>" and clicks on toggle bar to inactive the field in Secondary section
+              And "Admin" clicks on Save configuration button
+             Then "Admin" verifies if "<SuccessMessage>" message is displayed
+        Examples:
+                  | FieldName    | SuccessMessage                            |
+                  | objectStatus | Alert Console Settings saved Successfully |
+      
+        Scenario Outline: Maximum fields in Primary section
+             When "Itops_Engineer" navigate to Configuration section
+             When "Admin" clicks on Alert Console Display Configuration from LHS menu Settings
+             When "Admin" selects "<FiledName_1>", "<FiledName_2>", "<FiledName_3>", "<FiledName_4>", "<FiledName_5>" and "<FiledName_6>" from Secondary to Primary section
+             Then if number of fields are more than 16, "<Toaster>" message should be displayed
+     
+        Examples:
+                  | FiledName_1   | FiledName_2 | FiledName_3 | FiledName_4 | FiledName_5 | FiledName_6  | Toaster                                                                 |
+                  | resourceGroup | connectedTo | region      | site        | portNumber  | resourceType | The maximum number of columns that can be added as primary column is 16 |
+     
         Scenario Outline: Verify user is able to interchange primary fields and secondary fields
+             When "Itops_Engineer" navigate to Configuration section
+             When "Admin" clicks on Alert Console Display Configuration from LHS menu Settings
              When "Admin" selects "<FieldName>" in the primary section and clicks on Left arrow button
               And "Admin" clicks on Save configuration button
              Then "Admin" verifies if "<SuccessMessage>" message is displayed
@@ -68,21 +92,3 @@ Feature Description : Verifying Display Configuration functionalities
         Examples:
                   | FieldName    | DisplayName | SuccessMessage                            |
                   | alertMessage | Test        | Alert Console Settings saved Successfully |
-     
-        Scenario Outline: Active and Inactive fields in secondary section
-             When "Admin" selects "<FieldName>" and clicks on toggle bar to inactive the field in Secondary section
-              And "Admin" clicks on Save configuration button
-             Then "Admin" verifies if "<SuccessMessage>" message is displayed
-        Examples:
-                  | FieldName    | SuccessMessage                            |
-                  | alertMessage | Alert Console Settings saved Successfully |
-      
-        Scenario Outline: Maximum fields in Primary section
-             When "Admin" selects "<FiledName_1>", "<FiledName_2>", "<FiledName_3>", "<FiledName_4>", "<FiledName_5>" and "<FiledName_6>" from Secondary to Primary section
-             Then if number of fields are more than 16, "<Toaster>" message should be displayed
-     
-        Examples:
-                  | FiledName_1   | FiledName_2 | FiledName_3 | FiledName_4 | FiledName_5 | FiledName_6  | Toaster                                                                 |
-                  | resourceGroup | connectedTo | region      | site        | portNumber  | resourceType | The maximum number of columns that can be added as primary column is 16 |
-     
-       

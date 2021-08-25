@@ -17,7 +17,7 @@ export class GenerateCustomReport {
   async readJson() {
     try {
       this.jsonData = JSON.parse(fs.readFileSync('./TestReport/cucumberreport.json', 'utf-8'));
-      console.log("====cucumber json data========");
+      await console.log("====cucumber json data========");
       // console.log(this.jsonData);
       var ti = new Date();
 
@@ -40,13 +40,13 @@ export class GenerateCustomReport {
 
   }
 
-  AddZero(num) {
+  async AddZero(num) {
     return (num >= 0 && num < 10) ? "0" + num : num + "";
   }
 
   async bindReportData() {
     try {
-      fs.readFile('./TestReport/ReportTemplate.html', async (err, tdata) => {
+      await fs.readFile('./TestReport/ReportTemplate.html', async (err, tdata) => {
         if (err) {
           return console.error(err);
         }
@@ -74,20 +74,20 @@ export class GenerateCustomReport {
 
       var reportFileName = './TestReport/ITOpsAutomation_Report.html';
 
-      fs.writeFile(reportFileName, this.finalhtmlstring, async function (err) {
+      await fs.writeFile(reportFileName, this.finalhtmlstring, async function (err) {
         if (err) {
           await console.log("error in create file")
           await console.log(err)
           return console.error(err);
         }
         else {
-          console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> HTML Report File created!");
-           console.log("File created!");
+          await  console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> HTML Report File created!");
+          await  console.log("File created!");
           var reportDir = reportFileName
           var desDir = "./Previous_Reports/ITOpsAutomation_Report"
           if (fse.existsSync(reportDir)) {
-            fse.copySync(reportDir,
-              desDir + "_" + moment().format("YYYYMMDD_HHmmss") + ".html", { overwrite: true }, async function (err) {
+            await fse.copySync(reportDir,
+              await  desDir + "_" + moment().format("YYYYMMDD_HHmmss") + ".html", { overwrite: true }, async function (err) {
                 if (err) {
                   await console.error(err);
                 } else {

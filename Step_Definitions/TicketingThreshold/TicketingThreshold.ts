@@ -19,7 +19,7 @@ When('{string} navigate to Ticketing Threshold', async function (userRole) {
   catch (error) {
     await console.log("Feature name : Ticketing Threshold " + userRole + " and Scenario name : Add New Ticketing Threshold ")
     await console.log(error)
-    throw console.error
+    throw console.log("user not able to navigate to Ticketing Threshold")
   }
 });
 
@@ -31,7 +31,7 @@ When('Admin enter clicks on Add New Threshold button', async function () {
   catch (error) {
     await console.log("Feature name : Ticketing Threshold and Scenario name : Admin enter clicks on Add New Threshold button ")
     await console.log(error)
-    throw console.error
+    throw console.log("user not able to click on Add new thresold button")
   }
 });
 

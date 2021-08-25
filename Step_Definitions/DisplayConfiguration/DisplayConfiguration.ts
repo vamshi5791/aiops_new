@@ -18,6 +18,7 @@ var TestSource;
 When('{string} navigate to Configuration section', async function (userName) {
  
   try {
+    await browser.wait(EC.elementToBeClickable(objDisplayConfig.lnkConfiguration), 50000);
     await objDisplayConfig.clickOnConfigurationTab();
     await browser.wait(EC.visibilityOf(objPolicy.lnkAlertCorrelationPolicy));
     await browser.wait(EC.visibilityOf(objPolicy.lnkAcknowledgementPolicy));
@@ -467,7 +468,6 @@ await objDisplayConfig.clickOnFieldName(FieldName_6);
 await elm.click();
 
   } catch (error) {
-    await objLogIn.logOutUser();
     await console.log("Feature name : Display Configuration and Scenario name : Maximum fields in Primary section")
     await console.log(error)
     throw "User not able to click on save configuration button"   
@@ -479,7 +479,6 @@ await elm.click();
   try {
    await objDisplayConfig.getSuccessMessageText(Toaster)
   } catch (error) {
-    await objLogIn.logOutUser();
     await console.log("Feature name : Display Configuration and Scenario name : Maximum fields in Primary section")
     await console.log(error)
     throw "More then 16 fields are updated in primary section"  
@@ -493,7 +492,6 @@ Then('{string} verifies user is not able to edit the fields', async function (st
   try {
     await objDisplayConfig.verifyAlertIdDisplayName;
   } catch (error) {
-    await objLogIn.logOutUser();
     await console.log("Feature name : Display Configuration  and Scenario name : ReOrdering of Primary section fields")
     await console.log(error)
     throw "User is able to edit the fields"  
