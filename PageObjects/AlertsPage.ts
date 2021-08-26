@@ -176,17 +176,17 @@ export class AlertsPage {
     await this.btnCancel.click();
   } 
   async getTestSource(TestSource) {
-    await element(by.xpath('//span[text()="Alert Name"]//following::td[8]//span')).getText().then(async function (text) {
+    await element(by.xpath('//div[text()="'+TestSource+'"]')).getText().then(async function (text) {
         await expect(text).to.include(TestSource);
       });
   }
   async getTicketNumber(TicketNumber) {
-    await element(by.xpath('//span[text()="Alert Name"]//following::td[11]//span')).getText().then(async function (text) {
+    await element(by.xpath('//div[text()="'+TicketNumber+'"]')).getText().then(async function (text) {
       await expect(text).to.include(TicketNumber);
     });
   }
   async getLastAlertTime(LastAlertTime) {
-  await element(by.xpath('//span[text()="Alert Name"]//following::td[5]//span//div')).getText().then(async function (text) {
+  await element(by.xpath('//div[text()="'+LastAlertTime+'"]')).getText().then(async function (text) {
         await expect(text).to.include(LastAlertTime);
       });
   }
@@ -198,7 +198,7 @@ export class AlertsPage {
   }
   
   async getAlertMetric(AlertMetric) {
-    await element(by.xpath('//span[text()="Alert Name"]//following::td[10]//span')).getText().then(async function (text) {
+    await element(by.xpath('//div[text()="'+AlertMetric+'"]')).getText().then(async function (text) {
           await expect(text).to.include(AlertMetric);
         });
   }

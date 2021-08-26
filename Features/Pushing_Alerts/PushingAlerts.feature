@@ -13,12 +13,12 @@ Feature: Pushing Alerts through RabbitMQ
               And enters the payload data and clicks on publish
             Given User with ITOps role renders the URL
               And "admin" selects project and open alerts
-             Then enter alertname in search box and verify alert details "<Alerts>" "<AlertName>"
+             Then enter alertname in search box and verify alert details "<AlertName>"
               
 
         Examples:
-                  | rabbitMQ_User | rabbitMQ_Password | Itops_UserName | Itops_Password | Alerts         | ProjectName      | ProjectNameForAlert              | ToQueue          | RouteKey         | AlertName      | NodeIPAddress | ObjectName |
-                  | admin         | j5c6ym6nFm8M2Yia  | Itops_admin    | qa123          | AlertName22222 | Automation_IB_16 | 1.1225.Automation_IB_16.exchange | 1.1225.UST.queue | 1.1225.UST.queue | AlertName22222 | Demo          | Sample     |
+                  | rabbitMQ_User | rabbitMQ_Password | Itops_UserName | Itops_Password | ProjectName      | ProjectNameForAlert              | ToQueue          | RouteKey         | AlertName      | NodeIPAddress | ObjectName |
+                  | admin         | j5c6ym6nFm8M2Yia  | Itops_admin    | qa123          | Automation_IB_16 | 1.1225.Automation_IB_16.exchange | 1.1225.UST.queue | 1.1225.UST.queue | AlertName22222 | Demo          | Sample     |
 
 
 

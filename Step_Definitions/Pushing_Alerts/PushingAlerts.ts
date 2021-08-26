@@ -137,7 +137,7 @@ When('{string} selects project and open alerts', async function (userRole) {
   }
 })
 
-Then('enter alertname in search box and verify alert details {string} {string}', async function (Alerts, alertName) {
+Then('enter alertname in search box and verify alert details {string}', async function (AlertName) {
   try {
     var myElement = objAlerts.btnRemoveAll;
     myElement.isDisplayed().then(async function (elm) {
@@ -147,10 +147,8 @@ Then('enter alertname in search box and verify alert details {string} {string}',
         await objAlerts.btnRemoveAll.click();
       }
     });
-    await objAlerts.Alert_Search(alertName);
-    await element(by.xpath('//span[text()="Alert Name"]//following::td[6]')).getText().then(function (text) {
-      expect(text).to.include(Alerts);
-    });
+    await objAlerts.Alert_Search(AlertName);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="'+AlertName+'"]'))), 100000);
   } catch (error) {
 
     await console.log("Feature name : Pushing Alerts through RabbitMQ " + userName + " and Scenario name : enter alertname in search box and verify alert details")
