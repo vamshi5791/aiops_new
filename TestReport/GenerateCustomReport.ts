@@ -73,8 +73,9 @@ export class GenerateCustomReport {
       var html = '<h1>Hello</h1>'
 
       var reportFileName = './TestReport/ITOpsAutomation_Report.html';
-
+      await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>>  createdReportFile: ");
       await fs.writeFile(reportFileName, this.finalhtmlstring, async function (err) {
+        await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss") + " >>>>>>>> Starting writeFile: ");
         if (err) {
           await console.log("error in create file")
           await console.log(err)
