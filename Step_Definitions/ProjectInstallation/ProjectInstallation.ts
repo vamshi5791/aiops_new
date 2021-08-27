@@ -12,8 +12,10 @@ var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 let objLogIn = new LogIn();
 let objProjectListing = new ProjectListingPage();
 let objProjectConfi = new ProjectConfiguration();
+// let objProjectConfiguration = new ProjectConfiguration();
 var TestProjectName;
 var userName;
+
 Given('ITOps {string} with username and password as {string}, {string} is in the home page', async function (userRole, UserName, Password) {
   try {
     await browser.get(properties.get("main." + globalThis.environment + "_url")).then(async function () {
@@ -22,14 +24,13 @@ Given('ITOps {string} with username and password as {string}, {string} is in the
     await objLogIn.enterPassword(Password);
     await objLogIn.clickOnLogInButton();
     userName = UserName;
-    
-    await console.log("------------------"+globalThis.BrowserMode)
+
+    await console.log("------------------" + globalThis.BrowserMode)
     await browser.sleep(10000)
     if (globalThis.BrowserMode == "headless") {
       //below line is for removing the banner
       await element(by.className('smo smo-close-black-alt')).click();
     }
-   
   }
   catch (error) {
 
@@ -88,14 +89,30 @@ When('{string} clicks on create button', async function (userRole) {
   }
 });
 
-Then('{string} message should be displayed and {string} should navigate to project configuration page', async function (Toaster, string) {
+Then('{string} message should be displayed and {string} should navigate to project configuration page', async function (Toaster, userName) {
   try {
+
     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
+
+    await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(async function (text) {
       expect(text).to.include(Toaster);
+
     });
   }
   catch (error) {
+
+    await browser.wait(EC.elementToBeClickable(objProjectListing.btnHomePage), 40000);
+    await browser.sleep(5000)
+    await objProjectListing.clickOnHomePageButton();
+    await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))));
+    await objProjectListing.Project_search("Automation_IB_105");
+    await browser.sleep(5000);
+    await browser.wait(EC.elementToBeClickable(objProjectListing.btnThreeDots), 40000);
+    await objProjectListing.clickOnThreeDots();
+    await objProjectListing.EditProject();
+    await objProjectConfi.txtProjectConfiguration.click();
+
+
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Creation")
     await console.log(error)
     throw "Incorrect toast message"
@@ -106,6 +123,7 @@ Then('{string} message should be displayed and {string} should navigate to proje
 
 When('{string} enters Service now hostname as {string}', async function (userRole, ServiceNowHost) {
   try {
+    await browser.sleep(5000)
     await objProjectConfi.ServiceNowHost(ServiceNowHost)
   }
   catch (error) {
@@ -304,7 +322,7 @@ When('{string} clicks on Save button in Scheduler Configuration page', async fun
 
 When('{string} clicks on Error Response Configuration', async function (userRole) {
   try {
-     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
+    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
     await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(async function () {
       await objProjectConfi.ErrorResponseConfiguration()
     })
@@ -368,7 +386,7 @@ When('{string} clicks on Save button in Error Response Configuration page', asyn
 
 When('{string} clicks on Surge Configuration', async function (userRole) {
   try {
-     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
+    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
     await objProjectConfi.SurgeConfiguration()
   }
   catch (error) {
@@ -495,7 +513,7 @@ When('{string} clicks on Save button in Surge Configuration page', async functio
 
 When('{string} clicks on Ticket Dump Configuration', async function (userRole) {
   try {
-     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
+    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
     await objProjectConfi.TicketDumpConfiguration()
   }
   catch (error) {
@@ -634,7 +652,7 @@ When('{string} clicks on Save button in Ticket Dump Configuration page', async f
 
 When('{string} clicks on Channel Configuration', async function (userRole) {
   try {
-     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
+    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
     await browser.executeScript('window.scrollTo(0,0);').then(async function () {
     });
     await objProjectConfi.channelConfiguration()
@@ -782,7 +800,7 @@ When('{string} clicks on Save and Configure button', async function (userRole) {
 
 When('{string} clicks on authenticate', async function (userRole) {
   try {
-     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
+    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 120000);
     await objProjectConfi.ClickOnAuthenticate();
   }
   catch (error) {
@@ -886,11 +904,11 @@ When('{string} clicks on Add User button', async function (userRole) {
 
 Then('User must be added and listed in the below list and success message {string} must be shown', async function (Toaster) {
   try {
-     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
       expect(text).to.include(Toaster);
     });
-     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+    await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
   } catch (error) {
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Add User")
     await console.log(error)

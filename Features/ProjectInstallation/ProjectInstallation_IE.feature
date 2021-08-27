@@ -16,16 +16,16 @@ Feature Description Once the login is done with ITOps_IE role,
              Then "<Toaster>" message should be displayed and "Installation Engineer" should navigate to project configuration page
         Examples:
                   | UserName | Password | ProjectName      | Description       | Toaster                      |
-                  | Itops_IE | qa123    | Automation_IB_56 | Release1.4Project | Project Created Successfully |
+                  | Itops_IE | qa123    | Automation_IB_110 | Release1.4Project | Project Created Succesfully |
         @GeneralConfiguration
         Scenario Outline: General Configuration
-             When "Installation Engineer" enters Service now hostname as "<ServiceNowHost>"
-              And "Installation Engineer" enters Service now Username as "<ServiceNowUserName>"
-              And "Installation Engineer" enters Service now Password as "<ServicenowPassword>"
+          #    When "Installation Engineer" enters Service now hostname as "<ServiceNowHost>"
+          #     And "Installation Engineer" enters Service now Username as "<ServiceNowUserName>"
+          #     And "Installation Engineer" enters Service now Password as "<ServicenowPassword>"
               And "Installation Engineer" enters Response SLA Threshold Count as "<ThresholdCount>"
-              And "Installation Engineer" enters ITSM Name as "<ITSMName>"
-              And "Installation Engineer" enters ITSM Version as "<ITSMVersion>"
-              And "Installation Engineer" selects ITSM TimeZone as "<ITSMTimeZone>"
+          #     And "Installation Engineer" enters ITSM Name as "<ITSMName>"
+          #     And "Installation Engineer" enters ITSM Version as "<ITSMVersion>"
+          #     And "Installation Engineer" selects ITSM TimeZone as "<ITSMTimeZone>"
               And "Installation Engineer" selects ITOps Flavor as "<ITopsFlavor>"
               And "Installation Engineer" clicks on Save button in General Configuration page
              Then Success message "<Toaster>" must be shown for "General Configuration"

@@ -83,14 +83,14 @@ ignoreUncaughtExceptions: true,
     '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
     // '../Features/Pushing_Alerts/PushingAlerts.feature',
     '../Features/Logout/LogOut.feature',
-  //    // Admin
+     // Admin
   '../Features/LogIn/LogIn_Admin.feature',
   '../Features/Policies/AlertCorrelation.feature',
    '../Features/Policies/Acknowledgement.feature',
    '../Features/Policies/Failure.feature',
    '../Features/Policies/Recovery.feature',
    '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
-  //  '../Features/Logout/LogOut.feature',
+   '../Features/Logout/LogOut.feature',
 
   
 

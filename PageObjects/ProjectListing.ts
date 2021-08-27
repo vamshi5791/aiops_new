@@ -12,10 +12,11 @@ export class ProjectListingPage {
   btnDeactivate = element(by.xpath('//span[text()="Deactivate Project"]'));
   editProject = element(by.xpath('//span[text()="Edit Project"]'));
   btnLogOut = element(by.xpath('//span[text()="Logout"]'));
-  btnThreeDots = element(by.xpath('//span[@class="status-warning nowrap-space ng-star-inserted"]//following::span'));
+  btnThreeDots = element(by.xpath('//span[@class="smo smo-more-vert-24px ellipsis-icon font-14 cursor-pt secondary-color default-icon context-menu-icon"]'));
   btnClosePopUp = element(by.xpath('//div[@class="smo-toast-message smo-shadow ng-trigger ng-trigger-messageState smo-toast-shadow-sm smo-toast-message-success-sm smo-toast-message-success"]//following::a'));
   btnHomePage = element(by.className('smartops-logo-img'));
   btnDisable = element(by.xpath('//a[@class="smo-menuitem-link smo-state-disabled smo-menuitem-link-sm ng-star-inserted"]'))
+  
   async Project_search(ProjectName: string) {
     await this.txtsearch.clear();
     await this.txtsearch.sendKeys(ProjectName);

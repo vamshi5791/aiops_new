@@ -9,7 +9,8 @@ export class ProjectConfiguration {
     txtDescription = element(by.xpath('//legend[text()="Project Description"]//following::textarea'));
     btnCreate = element(by.xpath('//span[text()="Create"]'));
     btnUpdate = element(by.xpath('//legend[text()="Project Description"]//following::button'));
-    //General configuration            
+    //General configuration  
+    txtProjectConfiguration = element(by.xpath("//span[text()='Project Configuration']"))          
     txtServiceNowHost = element(by.xpath('//legend[text()="Servicenow Host"]//following-sibling::input'));
     txtServiceUsername = element(by.xpath('//legend[text()="Servicenow Username"]//following-sibling::input'));
     pwdServicePassword = element(by.xpath('//legend[text()="Servicenow Password"]//following-sibling::input'));

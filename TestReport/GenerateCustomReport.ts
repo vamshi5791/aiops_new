@@ -15,7 +15,7 @@ export class GenerateCustomReport {
   finalhtmlstring: any = "";
   noOfTCs: any = "";
 
-  readJson() {
+  async readJson() {
     try {
       this.jsonData = JSON.parse(fs.readFileSync('./TestReport/cucumberreport.json', 'utf-8'));
       console.log("====cucumber json data========");
@@ -32,7 +32,10 @@ export class GenerateCustomReport {
       // console.log(JSON.stringify(this.jsonData));
       console.log("========================JSON End===================");
 
-      return this.bindReportData();
+      await this.bindReportData();
+      await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> Before sleep");
+      await this.sleep(30 * 1000);
+      await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> After sleep");
     } catch (error) {
       console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> In Catch of readJson ");
       console.log(error);
@@ -47,7 +50,7 @@ export class GenerateCustomReport {
 
   bindReportData() {
     try {
-      fs.readFile('./TestReport/ReportTemplate.html', (err, tdata) => {
+      fs.readFile('./TestReport/ReportTemplate.html', async (err, tdata) => {
         if (err) {
           return console.error(err);
         }
@@ -59,14 +62,18 @@ export class GenerateCustomReport {
         this.finalhtmlstring = templateData.replace(re, JSON.stringify(this.jsonData));
         console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> After replace json data: ");
         //console.log("Html final data: " + this.finalhtmlstring);
-        return this.createReportFile();
-        //console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> After createReportFile: ");
+        await this.createReportFile();
+
+        console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> After createReportFile: ");
       });
     } catch (error) {
       console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> In Catch of bindReportData ");
       console.log(error);
     }
 
+  }
+  sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   createReportFile() {
@@ -78,11 +85,7 @@ export class GenerateCustomReport {
       try {
         console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> Before writeFile");
 
-
-
-
-
-        fs.writeFile(reportFileName, this.finalhtmlstring, function (err) {
+        fs.writeFileSync(reportFileName, this.finalhtmlstring, function (err) {
           console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> Starting writeFile");
           if (err) {
             console.log("error in create file")
@@ -118,5 +121,6 @@ export class GenerateCustomReport {
       console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> In Catch of createReportFile ");
       console.log(error);
     }
+
   }
 }
