@@ -17,7 +17,7 @@ export class GenerateCustomReport {
 
   readJson() {
     try {
-      this.jsonData = JSON.parse(fs.readFileSync('./TestReport/cucumberreport_test1.json', 'utf-8'));
+      this.jsonData = JSON.parse(fs.readFileSync('./TestReport/cucumberreport.json', 'utf-8'));
       console.log("====cucumber json data========");
       // console.log(this.jsonData);
       var ti = new Date();

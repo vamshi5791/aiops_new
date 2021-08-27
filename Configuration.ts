@@ -90,7 +90,7 @@ ignoreUncaughtExceptions: true,
    '../Features/Policies/Failure.feature',
    '../Features/Policies/Recovery.feature',
    '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
-   '../Features/Logout/LogOut.feature',
+  //  '../Features/Logout/LogOut.feature',
 
   
 
