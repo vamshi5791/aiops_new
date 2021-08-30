@@ -8,15 +8,15 @@ Feature Description Once the login is done with ITOps_IE role,
 
         @CreateProject
         Scenario Outline: Project Creation
-             #When "admin" navigates to ust home page
+             When "admin" navigates to ust home page
              When "Installation Engineer" clicks on create project button
               And "Installation Engineer" enters project name as "<ProjectName>"
               And "Installation Engineer" enters description as "<Description>"
               And "Installation Engineer" clicks on create button
              Then "<Toaster>" message should be displayed and "Installation Engineer" should navigate to project configuration page
         Examples:
-                  | UserName | Password | ProjectName      | Description       | Toaster                      |
-                  | Itops_IE | qa123    | Automation_IB_110 | Release1.4Project | Project Created Succesfully |
+                  | UserName | Password | ProjectName      | Description       | Toaster                     |
+                  | Itops_IE | qa123    | Automation_IB_11 | Release1.4Project | Project Created Succesfully |
         @GeneralConfiguration
         Scenario Outline: General Configuration
           #    When "Installation Engineer" enters Service now hostname as "<ServiceNowHost>"

@@ -21,7 +21,7 @@ Feature Description : User navigates to alert console page and creates the filte
 
         Examples:
                   | ProjectName      | Source     | Alert_State | FilterName | Description | Toaster                    |
-                  | Automation_IB_16 | Solarwinds | Ticketed    | IB         | Value 2     | Filter saved successfully. |
+                  | Automation_IB_24 | Solarwinds | Ticketed    | IB         | Value 2     | Filter saved successfully. |
         @SavedFilterApplyTheSavedFilterAgain
         Scenario Outline: Verifying ITOps admin is able to apply the saved filter again
 

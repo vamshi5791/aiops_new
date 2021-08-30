@@ -14,4 +14,4 @@ Feature: Alert Correlation Policy
 
         Examples:
                   | policyname              | ProjectName      |
-                  | AlertCorrelationPolicy2 | Automation_IB_16 |
+                  | AlertCorrelationPolicy2 | Automation_IB_24 |

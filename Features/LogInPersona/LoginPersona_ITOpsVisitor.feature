@@ -13,7 +13,7 @@ Feature:Login persona functionalities of ITOps Visitor
              Then "ITOps_Visitor" able to access dashboard
         Examples:
                   | ProjectName      |
-                  | Automation_IB_16 |
+                  | Automation_IB_24 |
 
         Scenario: ITOps Visitor is able to  view alerts
 
@@ -39,4 +39,4 @@ Feature:Login persona functionalities of ITOps Visitor
              Then "ITOps_Visitor" unable to access dot menu options
         Examples:
                   | ProjectName      |
-                  | Automation_IB_16 |
+                  | Automation_IB_24 |

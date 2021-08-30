@@ -24,7 +24,7 @@ Feature Description :Severity Mapping
 
         Examples:
                   | ProjectName      | SourceSeverity1 | SourceSeverity2 | popup                                              |
-                  | Automation_IB_16 | 2323            | 324             | Severity mapping details are successfully Inserted |
+                  | Automation_IB_24 | 2323            | 324             | Severity mapping details are successfully Inserted |
 
 
         Scenario Outline: Verifying Admin is able to Configure New Severity Mapping

@@ -16,7 +16,7 @@ Feature:Login persona functionalities of ITOps_Engineer
              Then "ITOpsEngineer" able to access dashboard
         Examples:
                   | ProjectName      |
-                  | Automation_IB_16 |
+                  | Automation_IB_24 |
 
         Scenario Outline: ITOps Engineer is able to  view Alerts
 
@@ -37,6 +37,6 @@ Feature:Login persona functionalities of ITOps_Engineer
              Then "ITOpsEngineer" unable to access dot menu options
         Examples:
                   | ProjectName      |
-                  | Automation_IB_16 |
+                  | Automation_IB_24 |
 
         

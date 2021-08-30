@@ -13,7 +13,7 @@ Feature: Login persona functionalities of Installation Engineer
 
         Examples:
                   | ProjectName      | Description | SuccessMessage              |
-                  | Automation_IB_16 | NewSample   | Project Updated Succesfully |
+                  | Automation_IB_24 | NewSample   | Project Updated Succesfully |
 
         Scenario Outline: Installation Engineer is able to access the Master Configuration page
              When "Display_User" navigates to ust home page
@@ -31,7 +31,7 @@ Feature: Login persona functionalities of Installation Engineer
               And "Installation_Engineer" unable to access dashboard
         Examples:
                   | ProjectName      |
-                  | Automation_IB_16 |
+                  | Automation_IB_24 |
 
  
         Scenario: Installation Engineer is unable to  view Alerts

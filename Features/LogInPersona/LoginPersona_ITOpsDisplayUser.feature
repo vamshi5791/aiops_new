@@ -9,7 +9,7 @@ Feature:Login persona functionalities of Display User
               And "Display_User" able to access dashboard
         Examples:
                   | ProjectName      |
-                  | Automation_IB_16 |
+                  | Automation_IB_24 |
 
         Scenario Outline: Display User is able to view alerts
              
@@ -39,4 +39,4 @@ Feature:Login persona functionalities of Display User
            
         Examples:
                   | ProjectName      |
-                  | Automation_IB_16 |
+                  | Automation_IB_24 |

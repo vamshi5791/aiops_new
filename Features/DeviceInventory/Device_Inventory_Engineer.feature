@@ -15,7 +15,7 @@ Feature Description : Device Inventory Features
         Examples:
 
                   | ProjectName      |
-                  | Automation_IB_16 |
+                  | Automation_IB_24 |
 
         Scenario Outline: ITOps Engineer view Device Details
 

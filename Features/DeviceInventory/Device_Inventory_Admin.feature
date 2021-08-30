@@ -16,7 +16,7 @@ Feature Description : Device Inventory Features
 
         Examples:
                   | ProjectName      | DeviceName      | Device          |
-                  | Automation_IB_16 | AUMECO-50A-SBC1 | AUMECO-50A-SBC1 |
+                  | Automation_IB_24 | AUMECO-50A-SBC1 | AUMECO-50A-SBC1 |
 
         Scenario Outline: Itops Admin searches the device with Non Existing device name.
 
@@ -58,7 +58,7 @@ Feature Description : Device Inventory Features
 
         Examples:
                   | SuccessPopUp                     | ResourceName  | ResourceType | Site   | Country | Region |
-                  | New resource added successfully! | Automation_40 | Samp3le      | Sample | Sample  | Sample |
+                  | New resource added successfully! | Automation_41 | Samp3le      | Sample | Sample  | Sample |
 
         Scenario Outline: Itops Admin updates the device in the device inventory.
 
