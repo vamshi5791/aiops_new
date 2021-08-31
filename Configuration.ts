@@ -47,7 +47,7 @@ ignoreUncaughtExceptions: true,
     '../Features/LogIn/LogIn_IE.feature',
     '../Features/QueueChannel/CreateQueqeChannel_IE.feature',
     '../Features/LogInPersona/LoginPersona_IE.feature',
-    '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
+    // '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
     '../Features/Logout/LogOut.feature',
 
   // // //   // // Engineer
@@ -81,7 +81,7 @@ ignoreUncaughtExceptions: true,
     '../Features/DisplayConfiguration/DisplayConfiguration.feature',
     '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
     '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
-    '../Features/Pushing_Alerts/PushingAlerts.feature',
+    // '../Features/Pushing_Alerts/PushingAlerts.feature',
     '../Features/Logout/LogOut.feature',
   // //    // Admin
   '../Features/LogIn/LogIn_Admin.feature',
@@ -89,7 +89,7 @@ ignoreUncaughtExceptions: true,
    '../Features/Policies/Acknowledgement.feature',
    '../Features/Policies/Failure.feature',
    '../Features/Policies/Recovery.feature',
-   '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
+  //  '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
    '../Features/Logout/LogOut.feature',
 
   
