@@ -38,7 +38,7 @@ ignoreUncaughtExceptions: true,
   specs: [
 
 
-    // DisplayUser
+  //   // DisplayUser
     '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
     '../Features/Logout/LogOut.feature',
@@ -46,7 +46,7 @@ ignoreUncaughtExceptions: true,
   // //   // IE
     '../Features/LogIn/LogIn_IE.feature',
     '../Features/QueueChannel/CreateQueqeChannel_IE.feature',
-    // '../Features/LogInPersona/LoginPersona_IE.feature',
+    '../Features/LogInPersona/LoginPersona_IE.feature',
     '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
     '../Features/Logout/LogOut.feature',
 
@@ -80,10 +80,10 @@ ignoreUncaughtExceptions: true,
     '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
     '../Features/DisplayConfiguration/DisplayConfiguration.feature',
     '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
-    // '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
-    // '../Features/Pushing_Alerts/PushingAlerts.feature',
+    '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
+    '../Features/Pushing_Alerts/PushingAlerts.feature',
     '../Features/Logout/LogOut.feature',
-     // Admin
+  //    // Admin
   '../Features/LogIn/LogIn_Admin.feature',
   '../Features/Policies/AlertCorrelation.feature',
    '../Features/Policies/Acknowledgement.feature',

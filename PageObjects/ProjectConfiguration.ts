@@ -11,13 +11,10 @@ export class ProjectConfiguration {
     btnUpdate = element(by.xpath('//legend[text()="Project Description"]//following::button'));
     //General configuration  
     txtProjectConfiguration = element(by.xpath("//span[text()='Project Configuration']"))          
-    txtServiceNowHost = element(by.xpath('//legend[text()="Servicenow Host"]//following-sibling::input'));
-    txtServiceUsername = element(by.xpath('//legend[text()="Servicenow Username"]//following-sibling::input'));
-    pwdServicePassword = element(by.xpath('//legend[text()="Servicenow Password"]//following-sibling::input'));
+   
     txtThresholdCount = element(by.xpath('//legend[text()="Response SLA Threshold Count"]//following-sibling::input'));
-    txtITSMname = element(by.xpath('//legend[text()="ITSM Name"]//following-sibling::input'));
-    txtITSMversion = element(by.xpath('//legend[text()="ITSM Version"]//following-sibling::input'));
-    drpTimeZone = element(by.xpath('//legend[text()="ITSM Time Zone"]//following-sibling::div/span'));
+   
+    
     drpITOPsflavour = element(by.xpath('//legend[text()="ITOps Flavor"]//following-sibling::div/span'));
     btn_saveGeneralConfig = element(by.xpath('//span[text()="Scheduler Configurations "]//preceding::button'));
 
@@ -62,6 +59,34 @@ export class ProjectConfiguration {
     txtSubCategoryColumnNameInDumpFile = element(by.xpath('//legend[text()="Sub Category column name in dump file"]//following-sibling::input'));
     txtLongDescriptionColumnName = element(by.xpath('//legend[text()="Long Description column name in dump file"]//following-sibling::input'));
     btnSaveTicketConfig = element(by.xpath("//span[text()='Ticket Dump Configurations ']/ancestor::div[contains(@class, 'smo-accordion-header ')]//following-sibling::div//span[text()='Save']"));
+
+    // ITSM Configuration
+
+    txtITSMname = element(by.xpath('//legend[text()="ITSM Name"]//following-sibling::input'));
+    txtITSMversion = element(by.xpath('//legend[text()="ITSM Version"]//following-sibling::input'));
+    drpTimeZone = element(by.xpath('//legend[text()="ITSM Time Zone"]//following-sibling::div/span'));
+    txtServiceNowHost = element(by.xpath('//legend[text()="Servicenow Host"]//following-sibling::input'));
+    txtServiceUsername = element(by.xpath('//legend[text()="Servicenow Username"]//following-sibling::input'));
+    pwdServicePassword = element(by.xpath('//legend[text()="Servicenow Password"]//following-sibling::input'));
+    txtTicketNumber = element(by.xpath('//legend[text()="Ticket Number"]//following-sibling::input'));
+    txtTicketStatus = element(by.xpath('//legend[text()="Ticket Status"]//following-sibling::input'));
+    txtShortDescription = element(by.xpath('//legend[text()="Short Description"]//following-sibling::input'));
+    txtLongDescription = element(by.xpath('//legend[text()="Long Description"]//following-sibling::input'));
+    txtCategory = element(by.xpath('//legend[text()="Category"]//following-sibling::input'));
+    txtTicketPriority = element(by.xpath('//legend[text()="Ticket Priority"]//following-sibling::input'));
+    txtSysId = element(by.xpath('//legend[text()="Sys Id"]//following-sibling::input'));
+    txtAssignedTo = element(by.xpath('//legend[text()="Assigned To"]//following-sibling::input'));
+    txtAssignedToUserId = element(by.xpath('//legend[text()="Assigned To User Id"]//following-sibling::input'));
+    txtAssignedGroup = element(by.xpath('//legend[text()="Assigned Group"]//following-sibling::input'));
+    txtAssignedGroupId = element(by.xpath('//legend[text()="Assigned Group Id"]//following-sibling::input'));
+    txtClosureNotes = element(by.xpath('//legend[text()="Closure Notes"]//following-sibling::input'));
+    txtCreatedTime = element(by.xpath('//legend[text()="Created Time"]//following-sibling::input'));
+    txtUpdatedTime = element(by.xpath('//legend[text()="Updated Time"]//following-sibling::input'));
+    txtCreatedBy = element(by.xpath('//legend[text()="Created By"]//following-sibling::input'));
+    txtUpdatedBy = element(by.xpath('//legend[text()="Updated By"]//following-sibling::input'));
+    txtResolvedBy = element(by.xpath('//legend[text()="Resolved By"]//following-sibling::input'));
+    txtResolvedTime = element(by.xpath('//legend[text()="Resolved Time"]//following-sibling::input'));
+    txtComments = element(by.xpath('//legend[text()="Comments"]//following-sibling::input'));
 
 
     //Channel Configuration
