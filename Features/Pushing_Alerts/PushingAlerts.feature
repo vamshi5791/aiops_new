@@ -18,7 +18,7 @@ Feature: Pushing Alerts through RabbitMQ
 
         Examples:
                   | rabbitMQ_User | rabbitMQ_Password | Itops_UserName | Itops_Password | ProjectName      | ProjectNameForAlert              | ToQueue          | RouteKey         | AlertName      | NodeIPAddress | ObjectName |
-                  | admin         | j5c6ym6nFm8M2Yia  | Itops_admin    | qa123          | Automation_IB_24 | 1.1225.Automation_IB_16.exchange | 1.1465.UST.queue | 1.1225.UST.queue | AlertName22222 | Demo          | Sample     |
+                  | admin         | j5c6ym6nFm8M2Yia  | Itops_admin    | qa123          | Automation_IB_24 | 1.1465.Automation_IB_16.exchange | 1.1465.UST.queue | 1.1465.UST.queue | AlertName22222 | Demo          | Sample     |
 
 
 

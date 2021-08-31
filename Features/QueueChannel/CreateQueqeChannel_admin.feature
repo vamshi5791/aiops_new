@@ -5,7 +5,7 @@ Feature: Create Queue Channel with Itops Admin role
              When "Admin" with Username as "<Username>", Password as "<Password>", Creates Queue Channel with channelName as "<channelName>", for the project "<projectName>" with projectId "<projectId>"
         Examples:
                   | Username        | Password | channelName | projectId | projectName      |
-                  | Itops_admin_new | qa123    | Channel600  | 1225      | Automation_IB_16 |
+                  | Itops_admin_new | qa123    | Channel600  | 1456      | Automation_IB_24 |
 
         Scenario Outline: Verify Queue Channel
              When "admin" navigates to ust home page
@@ -16,5 +16,5 @@ Feature: Create Queue Channel with Itops Admin role
              Then new Queue channel must be available in Channel configuration page
         Examples:
                   | UserName    | Password | projectName      |
-                  | itops_admin | qa123    | Automation_IB_16 |
+                  | itops_admin | qa123    | Automation_IB_24 |
 

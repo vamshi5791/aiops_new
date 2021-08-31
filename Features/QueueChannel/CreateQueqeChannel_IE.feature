@@ -7,7 +7,7 @@ Feature Description Using post method to API we generate Bearer Token
              When "IE" with Username as "<Username>", Password as "<Password>", Creates Queue Channel with channelName as "<channelName>", for the project "<projectName>" with projectId "<projectId>"
         Examples:
                   | Username        | Password | channelName | projectId | projectName      |
-                  | Itops_admin_new | qa123    | Channel600  | 1225      | Automation_IB_16 |
+                  | Itops_admin_new | qa123    | Channel600  | 1456      | Automation_IB_24 |
 
 
         Scenario Outline: Verify Queue Channel creation
@@ -20,4 +20,4 @@ Feature Description Using post method to API we generate Bearer Token
              
         Examples:
                   | UserName | Password | projectName      |
-                  | Itops_IE | qa123    | Automation_IB_16 |
+                  | Itops_IE | qa123    | Automation_IB_24 |

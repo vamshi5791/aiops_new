@@ -38,19 +38,19 @@ ignoreUncaughtExceptions: true,
   specs: [
 
 
-  //   // DisplayUser
+  // //   // DisplayUser
     '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
     '../Features/Logout/LogOut.feature',
 
-  // //   // IE
+  // // //   // IE
     '../Features/LogIn/LogIn_IE.feature',
     '../Features/QueueChannel/CreateQueqeChannel_IE.feature',
     '../Features/LogInPersona/LoginPersona_IE.feature',
     '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
     '../Features/Logout/LogOut.feature',
 
-  // //   // // Engineer
+  // // //   // // Engineer
     '../Features/LogIn/LogIn_ITOps_Engineer.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsEngineer.feature',
     '../Features/DeviceInventory/Device_Inventory_Engineer.feature',
@@ -63,12 +63,12 @@ ignoreUncaughtExceptions: true,
     '../Features/TicketingThreshold/TicketingThreshold_ITOpsEngineer.feature',
     '../Features/Logout/LogOut.feature',
 
-  // //   // // Visitor
+  // // //   // // Visitor
     '../Features/LogIn/LogIn_ITOps_Visitor.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsVisitor.feature',
     '../Features/Logout/LogOut.feature',
 
-  // // // // Admin
+  // // // // // Admin
     '../Features/LogIn/LogIn_Admin.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsAdmin.feature',
     '../Features/DeviceInventory/Device_Inventory_Admin.feature',
@@ -83,7 +83,7 @@ ignoreUncaughtExceptions: true,
     '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
     '../Features/Pushing_Alerts/PushingAlerts.feature',
     '../Features/Logout/LogOut.feature',
-  //    // Admin
+  // //    // Admin
   '../Features/LogIn/LogIn_Admin.feature',
   '../Features/Policies/AlertCorrelation.feature',
    '../Features/Policies/Acknowledgement.feature',
