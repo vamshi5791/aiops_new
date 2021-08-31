@@ -1,7 +1,7 @@
 {
     "QueueChannel": {
-        "Alert Name": "AlertName22222",
-        "Alert Message": "1 of 2 Interface ha1 in CNHKGG-00A-SSC1 is Shutdown",
+        "Alert Name": "AlertName01",
+        "Alert Message": "Message1",
         "Alert Severity": "Major",
         "Service Name": "Node Down",
         "Node Name": "CNHKGG-00A-SSC1",
@@ -22,8 +22,8 @@
         "channelName": "Channel600",
         "orgId": 1,
         "active": true,
-        "projectId": 1456,
-        "projectName": "Automation_IB_24",
+        "projectId": 1518,
+        "projectName": "Automation_M3",
         "source": "PWF",
         "destinations": [
             {

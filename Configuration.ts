@@ -68,7 +68,7 @@ ignoreUncaughtExceptions: true,
     '../Features/LogInPersona/LoginPersona_ITOpsVisitor.feature',
     '../Features/Logout/LogOut.feature',
 
-  // // // // // Admin
+  // // // // Admin
     '../Features/LogIn/LogIn_Admin.feature',
     '../Features/LogInPersona/LoginPersona_ITOpsAdmin.feature',
     '../Features/DeviceInventory/Device_Inventory_Admin.feature',
@@ -81,9 +81,9 @@ ignoreUncaughtExceptions: true,
     '../Features/DisplayConfiguration/DisplayConfiguration.feature',
     '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
     '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
-    // '../Features/Pushing_Alerts/PushingAlerts.feature',
+    '../Features/Pushing_Alerts/PushingAlerts.feature',
     '../Features/Logout/LogOut.feature',
-  // //    // Admin
+  //    // Admin
   '../Features/LogIn/LogIn_Admin.feature',
   '../Features/Policies/AlertCorrelation.feature',
    '../Features/Policies/Acknowledgement.feature',
