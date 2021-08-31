@@ -24,7 +24,6 @@ export class GenerateCustomReport {
 
       var tms = ti.toLocaleDateString("en-US") + ' ' + this.AddZero(ti.getHours()) + ':'
         + this.AddZero(ti.getMinutes());
-
       this.jsonData[0].id = this.jsonData[0].id + '|' + tms;
 
       console.log("ID :" + this.jsonData[0].id);
@@ -44,13 +43,13 @@ export class GenerateCustomReport {
 
   }
 
-  async AddZero(num) {
+  AddZero(num) {
     return (num >= 0 && num < 10) ? "0" + num : num + "";
   }
 
-  bindReportData() {
+  async bindReportData() {
     try {
-      fs.readFile('./TestReport/ReportTemplate.html', async (err, tdata) => {
+      await fs.readFile('./TestReport/ReportTemplate.html', async (err, tdata) => {
         if (err) {
           return console.error(err);
         }
@@ -62,9 +61,9 @@ export class GenerateCustomReport {
         this.finalhtmlstring = templateData.replace(re, JSON.stringify(this.jsonData));
         console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> After replace json data: ");
         //console.log("Html final data: " + this.finalhtmlstring);
-        await this.createReportFile();
+        return await this.createReportFile();
 
-        console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> After createReportFile: ");
+        // console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> After createReportFile: ");
       });
     } catch (error) {
       console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> In Catch of bindReportData ");
@@ -85,7 +84,7 @@ export class GenerateCustomReport {
       try {
         console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> Before writeFile");
 
-        fs.writeFileSync(reportFileName, this.finalhtmlstring, function (err) {
+        return fs.writeFile(reportFileName, this.finalhtmlstring, function (err) {
           console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> Starting writeFile");
           if (err) {
             console.log("error in create file")
@@ -99,7 +98,7 @@ export class GenerateCustomReport {
             var desDir = "./Previous_Reports/ITOpsAutomation_Report"
             if (fse.existsSync(reportDir)) {
               console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> Before copySync");
-              fse.copySync(reportDir,
+              return fse.copySync(reportDir,
                 desDir + "_" + moment().format("YYYYMMDD_HHmmss SSS") + ".html", { overwrite: true }, function (err) {
                   if (err) {
                     console.error(err);
