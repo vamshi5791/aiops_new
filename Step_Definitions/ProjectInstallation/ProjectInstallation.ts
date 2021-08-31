@@ -105,7 +105,7 @@ Then('{string} message should be displayed and {string} should navigate to proje
     await browser.sleep(5000)
     await objProjectListing.clickOnHomePageButton();
     await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))));
-    await objProjectListing.Project_search("Automation_IB_105");
+    await objProjectListing.Project_search("Automation_IB_20");
     await browser.sleep(5000);
     await browser.wait(EC.elementToBeClickable(objProjectListing.btnThreeDots), 40000);
     await objProjectListing.clickOnThreeDots();
