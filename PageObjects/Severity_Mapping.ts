@@ -30,7 +30,7 @@ export class SeverityMapping {
 
 
     async SeverityMapping() { 
-      await browser.sleep(2000);
+      // await browser.sleep(2000);
       await this.btnSeverityMapping.click();
     }
     async Cancel() { 
@@ -78,7 +78,7 @@ export class SeverityMapping {
       }
       async ClickOnSaveAndAddNew() { 
         await this.btnClickOnSaveAndAddNew.click();
-        await browser.sleep(5000);
+        // await browser.sleep(5000);
       }
       async SelectCritical() { 
         await this.btnSelectCritical.click();
@@ -91,7 +91,7 @@ export class SeverityMapping {
       }
       async Edit() { 
         await element(by.xpath('//td[@class="action-btn-tr col-width-1 align-r"]')).click();
-        await browser.sleep(5000);
+        // await browser.sleep(5000);
         await this.btnEdit.click();
       }
       async Save() { 

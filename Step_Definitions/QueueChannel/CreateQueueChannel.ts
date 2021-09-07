@@ -82,6 +82,8 @@ When('{string} enters project name as {string} in the search field', async funct
 When('{string} clicks dot menu icon', async function (userRole) {
   try {
     await browser.sleep(3000)
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[@class="smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm"]//following::span[@class="cursor-pt favourite-icon ng-star-inserted"]//following::span'))), 50000);
+    await browser.wait(EC.presenceOf(element(by.xpath('//span[@class="smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm"]//following::span[@class="cursor-pt favourite-icon ng-star-inserted"]//following::span'))), 50000);
     await objProjectListing.ThreeDots(Global_ProjectName);
   }
   catch (error) {

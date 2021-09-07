@@ -24,7 +24,7 @@ var Global_ProjectName;
 
 Then('Device details should be displayed {string}', async function (Device) {
   try {
-    await browser.sleep(2000);
+    // await browser.sleep(2000);
     await element(by.xpath('//td[text()=" ' + Device + ' "]')).getText().then(function (text) {
       expect(text).to.include(Device);
     });
@@ -91,7 +91,7 @@ Then('verifying the resource name is same as in previous page {string}', async f
 
 Then('{string} navigates back to device inventory page', async function (userRole) {
   try {
-    await objInfrastructurePage.BackToInfrastructure();
+    await objInfrastructurePage.Infrastructure();
 
   }
   catch (error) {
@@ -208,7 +208,7 @@ Then('{string} unable to find add device option', async function (userRole) {
   catch (error) {
     await console.log("Feature name : Device Inventory " + userRole + " and Scenario name : unable to find add device option")
     await console.log(error)
-    throw "User is not able to render the URL"
+    throw "User is able to find add device option"
   }
 });
 
@@ -239,7 +239,7 @@ When('{string} edit the resource type {string}', async function (userRole, EditR
 
 Then('{string} verifies the update button is visible', async function (userRole) {
   try {
-    await browser.sleep(3000)
+    // await browser.sleep(3000)
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Update Device"]'))), 100000);
   }
   catch (error) {

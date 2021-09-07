@@ -9,7 +9,7 @@ Feature Description : Once the login is done with ITOps_Admin role,
         @CreateProject
         Scenario Outline: Project Creation
 
-             When "Admin" navigates to ust home page
+             When "Admin" navigates to ITOps home page
              When "Admin" clicks on create project button
               And "Admin" enters project name as "<ProjectName>"
               And "Admin" enters description as "<Description>"
@@ -17,7 +17,7 @@ Feature Description : Once the login is done with ITOps_Admin role,
              Then "<Toaster>" message should be displayed and "Admin" should navigate to project configuration page
         Examples:
                   | UserName    | Password | ProjectName      | Description       | Toaster                     |
-                  | Itops_admin | qa123    | Automation_IB_73 | Release1.4Project | Project Created Succesfully |
+                  | Itops_admin | qa123    | Automation_IB_70 | Release1.4Project | Project Created Succesfully |
 
         @GeneralConfiguration
         Scenario Outline: General Configuration

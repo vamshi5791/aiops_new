@@ -14,8 +14,6 @@ let objInfrastructurePage = new InfrastructurePage();
 let objDashboard = new Dashboard();
 let objConfiguration = new Configuration();
 
-
-
 Given('{string} unable to access dashboard', async function (string) {
   try {
     await objDashboard.btnDashboard.isPresent().then(function (select) {

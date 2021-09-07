@@ -6,7 +6,7 @@ Feature Description : Device Inventory Features
 
         @Device_Inventory_Upload
         Scenario Outline: ITOps Engineer unable to find the Upload Icon Button
-             When "ITOps_Engineer" navigates to ust home page
+             When "ITOps_Engineer" navigates to ITOps home page
               And "ITOps_Engineer" enters project name as "<ProjectName>" in the search field
               And "Admin" clicks on project name "<ProjectName>"
               And "ITOps_Engineer" opens infrastructure page
@@ -47,3 +47,13 @@ Feature Description : Device Inventory Features
                   | DeviceName      | ResourceName    |
                   | AUMECO-50A-SBC1 | AUMECO-50A-SBC1 |
 
+        Scenario Outline: Itops Engineer searches the device with Non Existing device name.
+
+             When "ITOps_Engineer" opens infrastructure page
+              And "ITOps_Engineer" searches device name "<DeviceName>"
+             Then Device details should not be displayed "<DeviceDetails>"
+
+
+        Examples:
+                  | DeviceName        | DeviceDetails     |
+                  | GBLNBS-05A-FPA122 | No data available |

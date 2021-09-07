@@ -20,9 +20,9 @@ When('{string} navigate to Configuration section', async function (userName) {
   try {
     await browser.wait(EC.elementToBeClickable(objDisplayConfig.lnkConfiguration), 50000);
     await objDisplayConfig.clickOnConfigurationTab();
-    await browser.wait(EC.visibilityOf(objPolicy.lnkAlertCorrelationPolicy));
-    await browser.wait(EC.visibilityOf(objPolicy.lnkAcknowledgementPolicy));
-    await browser.wait(EC.visibilityOf(objPolicy.lnkFailurePolicy));
+    // await browser.wait(EC.visibilityOf(objPolicy.lnkAlertCorrelationPolicy));
+    // await browser.wait(EC.visibilityOf(objPolicy.lnkAcknowledgementPolicy));
+    // await browser.wait(EC.visibilityOf(objPolicy.lnkFailurePolicy));
   } catch (error) { 
     await console.log("Feature name : Display Configuration " + userName + " and Scenario name : Verify whether itops_admin is able to view display configuration settings")
     await console.log(error)
@@ -36,12 +36,12 @@ When('{string} clicks on Alert Console Display Configuration from LHS menu Setti
   try {
     await browser.wait(EC.visibilityOf(objDisplayConfig.lnkDisplayConfiguration), 10000);
     await browser.wait(EC.elementToBeClickable(objDisplayConfig.lnkDisplayConfiguration), 10000);
-    await browser.wait(EC.visibilityOf(objDisplayConfig.lnkDisplayConfiguration), 10000);
-    await browser.wait(EC.elementToBeClickable(objDisplayConfig.lnkDisplayConfiguration), 10000)
-    await browser.wait(EC.visibilityOf(objDisplayConfig.lnkDisplayConfiguration), 10000);
-    await browser.wait(EC.elementToBeClickable(objDisplayConfig.lnkDisplayConfiguration), 10000);
-    await browser.wait(EC.visibilityOf(objDisplayConfig.lnkDisplayConfiguration), 10000);
-    await browser.wait(EC.elementToBeClickable(objDisplayConfig.lnkDisplayConfiguration), 10000)
+    // await browser.wait(EC.visibilityOf(objDisplayConfig.lnkDisplayConfiguration), 10000);
+    // await browser.wait(EC.elementToBeClickable(objDisplayConfig.lnkDisplayConfiguration), 10000)
+    // await browser.wait(EC.visibilityOf(objDisplayConfig.lnkDisplayConfiguration), 10000);
+    // await browser.wait(EC.elementToBeClickable(objDisplayConfig.lnkDisplayConfiguration), 10000);
+    // await browser.wait(EC.visibilityOf(objDisplayConfig.lnkDisplayConfiguration), 10000);
+    // await browser.wait(EC.elementToBeClickable(objDisplayConfig.lnkDisplayConfiguration), 10000)
     await objDisplayConfig.clickOnDisplayConfigurationTab();
   } catch (error) {
     await console.log("Feature name : Display Configuration " + userName + " and Scenario name : Verify whether itops_admin is able to view display configuration settings")
@@ -78,7 +78,7 @@ Then('{string} verifies Up and Down arrows are present in both sections', async 
   } catch (error) {
     await console.log("Feature name : Display Configuration " + userName + " and Scenario name : Verify whether itops_admin is able to view display configuration settings")
     await console.log(error)
-    throw "Up arrow button of primary column section is not present"
+    throw "Unable to find Up arrow button in Primary column"
   }
 
   try {
@@ -86,21 +86,21 @@ Then('{string} verifies Up and Down arrows are present in both sections', async 
   } catch (error) {
     await console.log("Feature name : Display Configuration " + userName + " and Scenario name : Verify whether itops_admin is able to view display configuration settings")
     await console.log(error)
-    throw "Down arrow button of primary column section is not present"
+    throw "Unable to find Down arrow button in Primary column"
   }
   try {
     await browser.wait(EC.visibilityOf(objDisplayConfig.btnUpArrowSecondaryColumns), 10000);
   } catch (error) {
     await console.log("Feature name : Display Configuration " + userName + " and Scenario name : Verify whether itops_admin is able to view display configuration settings")
     await console.log(error)
-      throw "Up arrow button of secondary column section is not present"
+    throw "Unable to find Down arrow button in Secondary column"
   }
   try {
     await browser.wait(EC.visibilityOf(objDisplayConfig.btnDownArrowSecondaryColumns), 10000);
   } catch (error) {
     await console.log("Feature name : Display Configuration " + userName + " and Scenario name : Verify whether itops_admin is able to view display configuration settings")
     await console.log(error)
-      throw "Up arrow button of secondary column section is not present"
+    throw "Unable to find Down arrow button in Secondary column"
     }
 });
 
@@ -161,7 +161,17 @@ Then('{string} verifies Save configuration button disabled by default', async fu
     throw "Save configuration button is in enabled state"
 }
 });
-
+//
+Then('{string} verifies the updated field name as {string}', async function (userName, FiledName) {
+  try{
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="'+FiledName+'"]'))), 10000);
+  } catch (error) {
+    await console.log("Feature name : Display Configuration " + userName + " and Scenario name : Default buttons in display configuration page")
+    await console.log(error)
+    throw "Save configuration button is in enabled state"
+}
+});
+//
 //3. Verify the default fields in Primary section
 
 When('{string} clicks on {string} from primary section', async function (userName, FieldName) {
@@ -405,7 +415,8 @@ When('{string} selects {string} in the primary section and clicks on Left arrow 
 
 When('{string} navigates to Alerts section to verify the console', async function (userName) {
   try {
-    await browser.sleep(5000)
+    // await browser.sleep(5000)
+
     await objAlerts.selectAlerts();
   } catch (error) {
     await console.log("Feature name : Display Configuration " + userName + " and Scenario name : ReOrdering of Primary section fields")
@@ -419,7 +430,7 @@ When('{string} navigates to Alerts section to verify the console', async functio
 Then('{string} verifies the {string} present in secondary section', async function (string, DisplayName) {
   
   try{
-    await browser.sleep(5000)
+    // await browser.sleep(5000)
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="' + DisplayName + '"]'))), 10000);
   } catch (error) {
     await console.log("Feature name : Display Configuration and Scenario name : ReOrdering of Primary section fields")

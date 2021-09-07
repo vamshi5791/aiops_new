@@ -30,6 +30,11 @@ Feature Description : Verifying Display Configuration functionalities
              When "Admin" clicks on a field name and edits the name as "<DisplayName>" in primary section
               And "Admin" clicks on Save configuration button
              Then "Admin" verifies if "<SuccessMessage>" message is displayed
+              And "admin" verifies the updated field name as "<DisplayName>"
+             When "Admin" navigates to Alerts section to verify the console
+             Then "Admin" verifies the "<DisplayName>" present in secondary section
+              And "Admin" navigate to Configuration section
+              And "Admin" clicks on Alert Console Display Configuration from LHS menu Settings
         Examples:
                   | DisplayName | SuccessMessage                            |
                   | Test        | Alert Console Settings saved Successfully |
@@ -38,7 +43,7 @@ Feature Description : Verifying Display Configuration functionalities
              When "Admin" clicks on a field name and edits the name as "<DisplayName>" in secondary section
               And "Admin" clicks on Save configuration button
              Then "Admin" verifies if "<SuccessMessage>" message is displayed
-
+              And "admin" verifies the updated field name as "<DisplayName>"
         Examples:
                   | DisplayName | SuccessMessage                            |
                   | Value       | Alert Console Settings saved Successfully |

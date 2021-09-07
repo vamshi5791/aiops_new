@@ -10,7 +10,8 @@ let objAlerts = new AlertsPage();
 When('{string} clicks on Filter by severity drop down', async function (string) {
 
   try {
-    await browser.sleep(10000)
+    // await browser.sleep(10000)
+    await browser.wait(EC.visibilityOf(objAlerts.drpFilterBySeverity));
     await objAlerts.clickOnFilterBySeverity();
   } catch (error) {
     await console.log("Feature name : Filter by Severity dropdown and Scenario name : clicks on Filter by severity drop down")
@@ -93,16 +94,14 @@ Then('verify data should be alerts with OK and warning severity only', async fun
   try {
     var myElement = objAlerts.txtNoDataAvailable;
     myElement.isPresent().then(async function (elm) {
-      if (elm) {
-
-      } else {
-
-      }
+      if (elm==false) {
+        await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="OK"]'))));
+      } 
     });
   } catch (error) {
     await console.log("Feature name : Filter by Severity dropdown and Scenario name : verify data should be alerts with OK and warning severity only")
     await console.log(error)
-    throw ""
+    throw "results are not based on the applied filter"
   }
 });
 

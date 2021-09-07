@@ -4,12 +4,15 @@ import { AlertsPage } from "../../PageObjects/AlertsPage";
 var EC = browser.ExpectedConditions;
 let objAlerts = new AlertsPage();
 
-When('{string} enters {string} and clicks on enter {string}', async function (string, string2, SearchAlertData) {
+
+// Entering alert name in search box filed
+
+When('{string} enters {string} and clicks on enter {string}', async function (string, SearchData, SearchAlertData) {
   try {
     await browser.wait(EC.visibilityOf(element(by.className('filter smo smo-filter'))), 10000);
     await objAlerts.Alert_Search(SearchAlertData);
   } catch (error) {
-    console.log("Feature Name : Search Functionality : Alert Page - Entering text in search field box")
+    console.log("Feature Name : Search Functionality : Alert Page - Entering "+SearchData+" in search field box")
     console.log(error);
     throw "User not able to enter in search box field in alert page"
   }

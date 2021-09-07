@@ -42,7 +42,7 @@ When('{string} clicks on Severity Mapping', async function (userRole) {
 });
 
 When('{string} clicks on Add new source button', async function (userRole) {
-  await browser.sleep(3000);
+  // await browser.sleep(3000);
   await objSeverityMapping.AddNewSource();
   try {
 
@@ -68,7 +68,7 @@ Given('{string} enters source Severity as {string}', async function (userRole, S
   try {
 
   } catch (error) {
-    await console.log("Feature name : Severity Mapping and Scenario name : enters source Severit")
+    await console.log("Feature name : Severity Mapping and Scenario name : enters source Severity")
     await console.log(error)
   }
 });
@@ -213,10 +213,10 @@ Then('{string} verifies Delete icon', async function (userRole) {
 
 });
 
-Then('{string} verifies Add New Source as {string}', async function (userRole, popup6) {
+Then('{string} verifies Add New Source as {string}', async function (userRole, Toaster) {
   try {
     await element(by.xpath('//span[text()=" Add New Source"]')).getText().then(function (text) {
-      expect(text).to.include(popup6);
+      expect(text).to.include(Toaster);
     });
   }
   catch (error) {
@@ -242,11 +242,11 @@ Then('{string} verifies Delete icon of specefic Severity', async function (userR
 
   }
   catch (error) {
-    throw "User is not able to verifies Delete icon of specefic Severity"
+    throw "User is not able to verifies Delete icon of specific Severity"
   }
 
 });
-
+ 
 Then('{string} verifies the Time as {string}', async function (userRole, Time) {
   try {
     await element(by.xpath('//b[text()="' + Time + '"]')).getText().then(function (text) {
@@ -276,11 +276,11 @@ Then('Error message for creating duplicate source must be shown in popup {string
   catch (error) {
     await console.log("Feature name : Severity Mapping and Scenario name : ")
     await console.log(error)
-    throw " Severity Mapping details are inseted"
+    throw " Severity Mapping details are inserted"
   }
 });
 
-// Verify_Duplicate_SourceSeverityandSOSeverity
+// Verify_Duplicate_Source Severity and SO Severity
 
 Given('{string} clicks on edit button', async function (userRole) {
   try {
@@ -322,7 +322,8 @@ Given('{string} click on save button', async function (userRole) {
 
 Given('{string} clicks on yes button', async function (userRole) {
   try {
-    await browser.sleep(2000)
+    // await browser.sleep(2000)
+    await browser.wait(EC.elementToBeClickable(objSeverityMapping.btnClickONYes), 10000);
     await objSeverityMapping.ClickONYes();
   }
   catch (error) {
@@ -364,7 +365,7 @@ Then('Success message for updating Severity Mapping must be shown in popup {stri
   catch (error) {
     await console.log("Feature name : Severity Mapping and Scenario name : ")
     await console.log(error)
-    throw " Severity Mapping details are not inseted"
+    throw " Severity Mapping details are not inserted"
   }
 });
 
@@ -428,7 +429,7 @@ Then('Success message for Verifyimg adding additional source severity within the
   catch (error) {
     await console.log("Feature name : Severity Mapping and Scenario name : ")
     await console.log(error)
-    throw " Severity Mapping details are not inseted"
+    throw " Severity Mapping details are not inserted"
   }
 });
 
@@ -443,7 +444,7 @@ Then('Success message for Verifyimg adding additional source severity within the
 
 
 
-// Verifying ITOps Enginner is able to Configure New Severity Mapping
+// Verifying ITOps Engineer is able to Configure New Severity Mapping
 
 Then('{string} verifies +Add Severity icon is not available {string}', async function (string, string2) {
   try {

@@ -6,7 +6,7 @@ Feature Description :Severity Mapping
 
         Scenario Outline: Verifying Admin is able to Configure New Severity Mapping
 
-             When "Admin" navigates to ust home page
+             When "Admin" navigates to ITOps home page
               And "Admin" enters project name as "<ProjectName>" in the search field
               And "Admin" clicks on project name "<ProjectName>"
               And "Admin" clicks on Configuration tab
@@ -27,9 +27,9 @@ Feature Description :Severity Mapping
                   | Automation_IB_24 | 2323            | 324             | Severity mapping details are successfully Inserted |
 
 
-        Scenario Outline: Verifying Admin is able to Configure New Severity Mapping
-             When "Admin" clicks on Severity Mapping
+        Scenario Outline: Admin is verifying the fileds in Severity Mapping
 
+             When "Admin" clicks on Severity Mapping
              Then "Admin" verifies Source Severity text feild as "<SourceSeverity>"
               And "Admin" verifies SO Severity as "<SOSeverity>"
               And "Admin" verifies Updated time as "<time>"
@@ -38,20 +38,16 @@ Feature Description :Severity Mapping
               And "Admin" verifies Add New Source as "<NewSource>"
               And "Admin" verifies Edit icon
               And "Admin" verifies Delete icon of specefic Severity
-              #And "Admin" verifies the Time as "<Time>"
-
-
-
+              And "Admin" verifies the Time as "<Time>"
         Examples:
                   | ProjectName   | SourceSeverity1 | SourceSeverity2 | SourceSeverity  | SOSeverity  | time         | AddSeverity  | NewSource      | Time        |
-                  | Automation_02 | 23              | 34              | SOURCE SEVERITY | SO SEVERITY | UPDATED TIME | Add Severity | Add New Source | 23 Aug 2021 |
+                  | Automation_02 | 23              | 34              | SOURCE SEVERITY | SO SEVERITY | UPDATED TIME | Add Severity | Add New Source | 02 Sep 2021 |
 
 
 
-        Scenario Outline: Verifying Admin is able to Configure New Severity Mapping
+        Scenario Outline: Verifying Admin is unable to create duplicate source
 
              When "Admin" clicks on Severity Mapping
-
               And "Admin" clicks on Add new source button
               And "Admin" clicks on source dropdown and select a source
               And "Admin" enters source Severity as "<SourceSeverity1>"
@@ -82,13 +78,13 @@ Feature Description :Severity Mapping
 
         Scenario Outline: Verify adding additional source severity within the same source
 
-
              When "Admin" clicks on Severity Mapping
               And 'Admin' clicks on cancel button
               And "Admin" clicks on + Add Severity button
               And "Admin" enters source Severity as "<SourceSeverity1>"
               And "Admin" clicks on SO Severity dropdown and selects Information
               And "Admin" clicks on save and add new button
+             Then Success message for Verifyimg adding additional source severity within the same source must be shown in popup "<popup>"
               And "Admin" enters source Severity as "<SourceSeverity2>"
               And "Admin" clicks on SO Severity dropdown and selects Information
               And "Admin" click on save button

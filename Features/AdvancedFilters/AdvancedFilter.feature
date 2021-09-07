@@ -14,7 +14,7 @@ Feature Description: Admin navigates to alert page,
 
         Examples:
                   | UserName    | Password | ProjectName      | AdvancedFilters  | SourceAndResource    | StateAndStatus   | DataAndTime   |
-                  | Itops_admin | qa123    | Automation_IB_16 | Advanced Filters | Source and Resources | State and Status | Date and Time |
+                  | Itops_admin | qa123    | Automation_IB_24 | Advanced Filters | Source and Resources | State and Status | Date and Time |
 
         Scenario Outline: Verifying ITOps admin is able to apply the Saved Filter again
 
@@ -155,48 +155,48 @@ Feature Description: Admin navigates to alert page,
 
 
 
-#   Scenario Outline:Verify that user is able to view edit and delete option in Advanced Filter section
-#        When "Admin" clicks on advanced filter icon
-#         And "ITOps_Admin" selects saved filter "<SavedFilter>"
-#        When "Admin" clicks on Edit icon for "<SavedFilter>" filter
-#        Then "Admin" verifies that edit and delete options are present
-#         And "Admin" edits "<Source>" filter criteria
-#         And "Admin" click on Update and Apply
-#         And "Admin" clicks on Yes on confirmation pop up
-#        Then "Admin" verifies "<ConfirmationToaster>" shown
-#         And "Admin" verifies data in UI
-#        When "Admin" clicks on advanced filter icon
-#        When "Admin" clicks on Delete icon for "<SavedFilter>" filter
-#         And "Admin" clicks on Yes on confirmation pop up
-#        Then "Admin" verifies "<Toaster>" shown
-#        Then "Admin" verifies deleted "<SavedFilter>" filter is removed from the filter dropdown in console
-#   Examples:
-#             | Source | Alert_State | SavedFilter | Description | ConfirmationToaster          | DifferentUserName | Toaster                      |
-#             | ITSM   | Ticketed    | IB          | Value 2     | Filter updated successfully. | Itops_engineer    | Filter deleted successfully. |
+        Scenario Outline:Verify that user is able to view edit and delete option in Advanced Filter section
+             When "Admin" clicks on advanced filter icon
+              And "ITOps_Admin" selects saved filter "<SavedFilter>"
+             When "Admin" clicks on Edit icon for "<SavedFilter>" filter
+             Then "Admin" verifies that edit and delete options are present
+              And "Admin" edits "<Source>" filter criteria
+              And "Admin" click on Update and Apply
+              And "Admin" clicks on Yes on confirmation pop up
+             Then "Admin" verifies "<ConfirmationToaster>" shown
+              And "Admin" verifies data in UI
+             When "Admin" clicks on advanced filter icon
+             When "Admin" clicks on Delete icon for "<SavedFilter>" filter
+              And "Admin" clicks on Yes on confirmation pop up
+             Then "Admin" verifies "<Toaster>" shown
+             Then "Admin" verifies deleted "<SavedFilter>" filter is removed from the filter dropdown in console
+        Examples:
+                  | Source | Alert_State | SavedFilter | Description | ConfirmationToaster          | DifferentUserName | Toaster                      |
+                  | ITSM   | Ticketed    | IB          | Value 2     | Filter updated successfully. | Itops_engineer    | Filter deleted successfully. |
 
-#   Scenario Outline:Verify creating default filter for Alert Console
+        Scenario Outline:Verify creating default filter for Alert Console
 
-#         And "Admin" clicks on Alerts page
-#        When "Admin" clicks on advanced filter icon
-#         And "Admin" enters source as "<Source>" and alert state as "<Alert_State>"
-#         And "Admin" clicks on Save filter button
-#         And "Admin" enters filter name as "<FilterName>" and Description as "<Description>"
-#         And "Admin" clicks on Make as default checkbox
-#         And "Admin" clicks on save and apply button
-#        Then "Admin" verifies if "<SuccessMessage>" message is displayed
-#         And verify alert console should show results based on default filter applied
-#         And "Installation Engineer" clicks on logout button
-#       Given ITOps "Admin" with username and password as "<DifferentUserName>", "<Password>" is in the home page
-#        When "Admin" enters project name as "<ProjectName>" in the search field
-#         And "Admin" clicks on project name "<ProjectName>"
-#         And "Admin" clicks on Alerts page
-#        Then verify alert console should show results based on default filter applied
-#         And "Installation Engineer" clicks on logout button
-#       Given ITOps "Admin" with username and password as "<UserName>", "<Password>" is in the home page
-#        When "Admin" enters project name as "<ProjectName>" in the search field
-#         And "Admin" clicks on project name "<ProjectName>"
-#         And "Admin" clicks on Alerts page
-#        Then verify alert console should not show results based on previous default filter.
-#   Examples:
-#             | UserName    | Password | ProjectName      | Source     | Alert_State | FilterName | Description | SuccessMessage             | DifferentUserName |
-#             | Itops_admin | qa123    | Automation_IB_16 | Solarwinds | Ticketed    | Automation | Value 2     | Filter saved successfully. | Itops_engineer    |
+              And "Admin" clicks on Alerts page
+             When "Admin" clicks on advanced filter icon
+              And "Admin" enters source as "<Source>" and alert state as "<Alert_State>"
+              And "Admin" clicks on Save filter button
+              And "Admin" enters filter name as "<FilterName>" and Description as "<Description>"
+              And "Admin" clicks on Make as default checkbox
+              And "Admin" clicks on save and apply button
+             Then "Admin" verifies if "<SuccessMessage>" message is displayed
+              And verify alert console should show results based on default filter applied
+              And "Installation Engineer" clicks on logout button
+            Given ITOps "Admin" with username and password as "<DifferentUserName>", "<Password>" is in the home page
+             When "Admin" enters project name as "<ProjectName>" in the search field
+              And "Admin" clicks on project name "<ProjectName>"
+              And "Admin" clicks on Alerts page
+             Then verify alert console should show results based on default filter applied
+              And "Installation Engineer" clicks on logout button
+            Given ITOps "Admin" with username and password as "<UserName>", "<Password>" is in the home page
+             When "Admin" enters project name as "<ProjectName>" in the search field
+              And "Admin" clicks on project name "<ProjectName>"
+              And "Admin" clicks on Alerts page
+             Then verify alert console should not show results based on previous default filter.
+        Examples:
+                  | UserName    | Password | ProjectName      | Source     | Alert_State | FilterName | Description | SuccessMessage             | DifferentUserName |
+                  | Itops_admin | qa123    | Automation_IB_24 | Solarwinds | Ticketed    | Automation | Value 2     | Filter saved successfully. | Itops_engineer    |

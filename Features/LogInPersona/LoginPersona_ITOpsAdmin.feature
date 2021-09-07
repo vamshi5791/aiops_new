@@ -26,7 +26,7 @@ Feature: Login persona functionalities of ITOps Admin
 
        
         Scenario Outline:   Veirfying the ITOps Admin is able to edit the project
-             When "ITOps_Admin" navigates to ust home page
+             When "ITOps_Admin" navigates to ITOps home page
               And "ITOps_Admin" enters project name as "<ProjectName>" in the search field
               And "ITOps_Admin" clicks dot menu icon
               And "ITOps_Admin" clicks edit Project
@@ -41,10 +41,35 @@ Feature: Login persona functionalities of ITOps Admin
 
 
         Scenario Outline: ITOps Admin is able to access the Master Configuration page
-             When "ITOps_Admin" navigates to ust home page
+             When "ITOps_Admin" navigates to ITOps home page
               And "ITOps_Admin" clicks on edit configuration button
              Then "ITOps_Admin" is taken to the master configuration page "<MasterText>"
              
         Examples:
                   | MasterText           |
                   | Master Configuration |
+
+     #    Scenario Outline: ITOps Admin is able to disable the project
+     #         When "ITOps_Admin" navigates to ITOps home page
+     #          And "ITOps_Admin" enters project name as "<ProjectName>" in the search field
+     #          And "ITOps_Admin" clicks dot menu icon
+     #          And "ITOps_Admin" clicks on deactivate project
+     #          And "ITOps_Admin" clicks on yes
+     #         Then Success message "<Toaster>" must be shown once project is "disabled"
+ 
+     #    Examples:
+     #              | ProjectName      | Toaster                          |
+     #              | Automation_IB_99 | Project Deactivated Successfully |
+
+     #    @IE_Deleting_Project
+     #    Scenario Outline: ITOps_Admin is able to delete the project
+     #         When "ITOps_Admin" navigates to ITOps home page
+     #          And "ITOps_Admin" enters project name as "<projectName>" in the search field
+     #          And "ITOps_Admin" clicks dot menu icon to delete project
+     #          And "ITOps_Admin" clicks on delete project
+     #          And "ITOps_Admin" clicks on yes
+     #         Then Success message "<Toaster>" must be shown once project is "deleted"
+
+     #    Examples:
+     #              | projectName      | Toaster                      |
+     #              | Automation_IB_60 | Project Deleted Successfully |

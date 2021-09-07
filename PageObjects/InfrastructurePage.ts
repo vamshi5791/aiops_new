@@ -3,7 +3,7 @@ import { ElementFinder, element, by, promise, browser, protractor } from "protra
 export class InfrastructurePage {
 
     btnTopology=element(by.xpath('//span[@class="smo-menuitem-icon smo smo-topology-tree ng-star-inserted"]'))
-    txtTopologySearch=element(by.xpath('//input[@placeholder="Search"]'))
+    // txtTopologySearch=element(by.xpath('//input[@placeholder="Search"]'))
     btnImport=element(by.xpath('//span[@class="smo-btn-icon-col d-flex align-items-center smo smo-upload-regular smo-clickable smo-button-icon-right smo-flex-order-three ng-star-inserted"]'))
     btnDelete=element(by.xpath('//span[@class="smo-btn-icon-col d-flex align-items-center smo smo-delete smo-clickable smo-button-icon-right smo-flex-order-three ng-star-inserted"]'))
     btnInfrastructure=element(by.xpath('//a[text()="Infrastructure"]'))
@@ -16,21 +16,21 @@ export class InfrastructurePage {
     txtEnterSite=element(by.xpath('//input[@placeholder="Site"]'))
     txtEnterCountry=element(by.xpath('//input[@placeholder="Country"]'))
     txtEnterRegion=element(by.xpath('//input[@placeholder="Region"]'))
-    btnBackToInfrastructure=element(by.xpath('//a[text()="Infrastructure"]'))
+    // btnBackToInfrastructure=element(by.xpath('//a[text()="Infrastructure"]'))
     btnAddDeviceTOList=element(by.xpath('//span[@class="smo smo-close-black-alt"] //following::span[text()="Add Device"]'))
     txtEditResourceType=element(by.xpath('//div[text()="RESOURCE TYPE"]//following::input[@type="text"]'))
     btnUpdateDevice=element(by.xpath('//span[text()="Update Device"]'))
-    btnFailOverDevice=element(by.xpath('//label[text()="Select failover device"]'))
+    // btnFailOverDevice=element(by.xpath('//label[text()="Select failover device"]'))
     drpFailOverDevice=element(by.xpath('//div[text()="FAILOVER DEVICE"]//following::span[@class="smo-dropdown-trigger-icon smo-clickable smo smo-expand-more-alt chevron-icon"]'))
 
 
     async Topology() {
-      await browser.sleep(2000);
+      // await browser.sleep(2000);
         await this.btnTopology.click();
       }
-      async FailOverDevice() {
-        await this.btnFailOverDevice.click();
-      }
+      // async FailOverDevice() {
+      //   await this.btnFailOverDevice.click();
+      // }
 
       async UpdateDevice() {
         await this.btnUpdateDevice.click();
@@ -38,9 +38,9 @@ export class InfrastructurePage {
       async EditResourceType(EditResourceType:string) {
         await this.txtEditResourceType.sendKeys(EditResourceType);
       }
-      async TopologySearch() {
-        await this.txtTopologySearch.click();
-      }
+      // async TopologySearch() {
+      //   await this.txtTopologySearch.click();
+      // }
       async Import() {
         await this.btnImport.click();
       }
@@ -51,15 +51,15 @@ export class InfrastructurePage {
         // await element(by.className('smo smo-close-black-alt')).click();
         // await browser.sleep(5000)
         await this.btnInfrastructure.click();
-
+ 
       }
       async Upload() {
         await this.btnUpload.click();
       }
       async Search(DeviceName:string) {
-        await browser.sleep(2000);
+        // await browser.sleep(2000);
         await this.txtSearch.sendKeys(DeviceName);
-        await browser.sleep(2000);
+        // await browser.sleep(2000);
         await browser.actions().sendKeys(protractor.Key.ENTER).perform();
       }
       async ClickOnYes() {
@@ -70,7 +70,7 @@ export class InfrastructurePage {
       //   await element(by.xpath('//div[text()="'+Device+'"]')).click();
       // }
       async ResourceName(ResourceName:string) {
-        await browser.sleep(2000);
+        // await browser.sleep(2000);
         await element(by.xpath('//td[text()=" '+ResourceName+' "]')).click();
       }
       
@@ -89,10 +89,9 @@ export class InfrastructurePage {
       async EnterCountry(Country:string) {
         await this.txtEnterCountry.sendKeys(Country);
       }
-      async BackToInfrastructure() {
-        await this.btnBackToInfrastructure.click();
-
-      }
+      // async BackToInfrastructure() {
+      //   await this.btnBackToInfrastructure.click();
+      // }
       async EnterSite(Site:string) {
         await this.txtEnterSite.sendKeys(Site);
       }

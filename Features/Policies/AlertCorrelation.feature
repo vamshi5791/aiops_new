@@ -6,7 +6,7 @@ Feature Description: ITOpsAdmin verifies Alert Correlation Policy operations
 
         Scenario Outline: ITOps Admin creates Alert Correlation policy
 
-             When "Admin" navigates to ust home page
+             When "Admin" navigates to ITOps home page
              When "Admin" enters project name as "<ProjectName>" in the search field
               And "admin" clicks on project name "<ProjectName>"
              When "Admin" clicks on configuration tab

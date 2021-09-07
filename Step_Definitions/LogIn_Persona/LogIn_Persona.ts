@@ -14,7 +14,9 @@ let objProjectListing = new ProjectListingPage();
 When('{string} clicks on deactivate project', async function (userRole) {
 
   try {
-    await browser.sleep(2000)
+    // await browser.sleep(2000)
+    await browser.wait(EC.visibilityOf(objProjectListing.btnDeactivate), 50000);
+    await browser.wait(EC.elementToBeClickable(objProjectListing.btnDeactivate), 50000);
     await objProjectListing.Deactivate();
   } catch (error) {
     await console.log("Feature name : Login Persona with " + userRole + " and Scenario name : Disable the Project")
@@ -58,7 +60,6 @@ When('{string} clicks dot menu icon to delete project', async function (string) 
   try {
     await browser.sleep(2000)
     await browser.wait(EC.elementToBeClickable(objProjectListing.btnThreeDots), 100000);
-    
     await objProjectListing.clickOnThreeDots();
   } catch (error) {
     await console.log("Feature name : Login Persona and Scenario name : Delete Project")
@@ -85,7 +86,7 @@ When('{string} clicks on edit configuration button', async function (userRole) {
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Edit Configuration"]'))));
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Create New Project"]'))));
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Edit Configuration"]'))));
-    await browser.sleep(3000)
+    // await browser.sleep(3000)
     await objProjectListing.EditConfiguration();
   } catch (error) {
     await console.log("Feature name : Login Persona with " + userRole + " and Scenario name : master configuration")

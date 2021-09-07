@@ -28,7 +28,7 @@ When('{string} navigate to Alert Correlation Policy', async function (userrole) 
         await objPolicy.correlationPolicyNavigation();
         await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Alert Correlation Policy"]'))), 10000);
         await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Alert Correlation Policy"]'))), 10000);
-        await browser.sleep(5000)
+        // await browser.sleep(5000)
     }
     catch (error) {
         await console.log("Feature name : Policies and Scenario Name : navigate to Alert Correlation Policy")
@@ -81,7 +81,7 @@ When('{string} navigate to Recovery Policy', async function (userrole) {
 
 When('{string} clicks on edit icon in listing page {string}', async function (userrole, policyname) {
     try {
-        await browser.sleep(5000)
+        // await browser.sleep(5000)
         await objPolicy.clickOnPolicyEditIcon(policyname);
     }
     catch (error) {
@@ -105,7 +105,7 @@ When('{string} clicks on delete icon in listing page {string}', async function (
 When('Admin clicks on Add {string} Policy', async function (policy) {
     try {
         await browser.wait(EC.visibilityOf(objPolicy.btnAddPolicy));
-        await browser.sleep(5000)
+        // await browser.sleep(5000)
         await objPolicy.clickOnAddPolicyButton();
     }
     catch (error) {
@@ -119,8 +119,8 @@ Then('verify plus icon for adding {string}', async function (policy) {
     try {
         var plusIcon = objPolicy.icnPlus;
         plusIcon.isPresent().then(function (elm) {
-            if (elm == false) {
-            }
+            // if (elm == false) {
+            // }
         })
     }
     catch (error) {
@@ -132,7 +132,7 @@ Then('verify plus icon for adding {string}', async function (policy) {
 
 Then('verify default value in Operator dropdown', async function () {
     try {
-        await browser.sleep(3000);
+        // await browser.sleep(3000);
         await browser.wait(EC.visibilityOf(objPolicy.drpdwnDefaultOperatorValue));
     }
     catch (error) {
@@ -144,7 +144,7 @@ Then('verify default value in Operator dropdown', async function () {
 
 Then('verify values in operator dropdown', async function () {
     try {
-        await browser.sleep(3000);
+        // await browser.sleep(3000);
         await objPolicy.clickOnOperatorDropdown();
 
         try {
@@ -192,7 +192,7 @@ Then('verify values in operator dropdown', async function () {
 
 When('Admin enters {string} Policy Name as {string}', async function (policy, policyname) {
     try {
-        await browser.sleep(2000);
+        // await browser.sleep(2000);
         await objPolicy.enterPolicyName(policyname);
     }
     catch (error) {
@@ -204,7 +204,7 @@ When('Admin enters {string} Policy Name as {string}', async function (policy, po
 
 When('Admin enters {string} Precedence as {string}', async function (policy, policyPrecedence) {
     try {
-        await browser.sleep(2000);
+        // await browser.sleep(2000);
         await objPolicy.enterPrecedence(policyPrecedence);
     }
     catch (error) {
@@ -250,16 +250,12 @@ When('Admin clicks on Save and Add Rule button', async function () {
 
 Then('verify {string} toaster {string}', async function (policy, Toaster) {
     try {
-        await console.log("before success msz validation")
         await browser.wait(EC.visibilityOf(objPolicy.tostMessage), 10000);
         await objPolicy.tostMessage.getText().then(async function (text) {
             await console.log(text)
             await expect(text).to.include(Toaster);
-
-
         });
         await browser.wait(EC.invisibilityOf(objPolicy.tostMessage), 10000);
-        await console.log("after success msz validation")
     }
     catch (error) {
         await console.log("Feature name : Policies : Action : validation Toaster")
@@ -317,16 +313,10 @@ When('Admin clicks on Yes button in confirmation popup', async function () {
 
 When('Admin clicks on Done button', async function () {
     try {
-        await console.log("before cliking on done button")
         await browser.wait(EC.visibilityOf(objPolicy.btnDone));
-        await console.log("00000000000")
         await browser.wait(EC.elementToBeClickable(objPolicy.btnDone));
-        await browser.sleep(5000)
-        await console.log("11111111")
+        // await browser.sleep(5000)
         await objPolicy.clickOnDoneButton();
-        await console.log("after cliking on done button")
-
-
     }
     catch (error) {
         await console.log("Feature name : Policies and Action : clicking on done button")
@@ -337,7 +327,7 @@ When('Admin clicks on Done button', async function () {
 
 Then('verify column values in Policy listing page', async function () {
     try {
-        await browser.sleep(3000);
+        // await browser.sleep(3000);
         try {
             await browser.wait(EC.visibilityOf(objPolicy.clmnPolicyName));
         }
@@ -392,7 +382,7 @@ Then('verify column values in Policy listing page', async function () {
 
 Then('verify edit and delete icons in policy listing {string}', async function (PolicyName) {
     try {
-        await browser.sleep(3000);
+        // await browser.sleep(3000);
         objPolicy.mouseOverPolicyName(PolicyName);
         try {
             await browser.wait(EC.visibilityOf(objPolicy.icnEdit));
@@ -434,7 +424,9 @@ When('click on cancel button', async function () {
         await browser.sleep(3000);
         await browser.executeScript('window.scrollTo(0,800);').then(async function () {
         });
-        await browser.wait(EC.visibilityOf(objPolicy.btnCancel));
+        await browser.wait(EC.visibilityOf(objPolicy.btnCancel)), 30000;
+        await browser.wait(EC.presenceOf(objPolicy.btnCancel), 30000);
+        await browser.wait(EC.elementToBeClickable(objPolicy.btnCancel), 30000);
         await objPolicy.clickCancelButton();
     }
     catch (error) {
@@ -446,11 +438,14 @@ When('click on cancel button', async function () {
 
 Then('{string} verifies Add policy button', async function (userrole) {
     try {
-        objPolicy.btnAddPolicy.isPresent().then(function (elm) {
-            if (elm) {
-            } else {
-            }
-        })
+        // objPolicy.btnAddPolicy.isPresent().then(function (elm) {
+        //     if (elm) {
+        //     } else {
+        //     }
+        // })
+        await objPolicy.btnAddPolicy.isPresent().then(function (select) {
+            expect(select).to.be.true;
+        });
     }
     catch (error) {
         await console.log("Feature name : Policies- Action :verifies Add policy button ")
@@ -517,7 +512,8 @@ When('clicks on Next button', async function () {
 
 When('clicks on Edit rule icon', async function () {
     try {
-        await browser.sleep(5000);
+        // await browser.sleep(5000);
+        await browser.wait(EC.visibilityOf(objPolicy.btnEditIconInFailurePolicy), 10000);
         await objPolicy.btnEditIconInFailurePolicy.click();
     }
     catch (error) {
@@ -559,10 +555,19 @@ When('clicks on status toggle button {string}', async function (Policyname) {
         throw "User is not able to click on Status Toggle Button";
     }
 });
-
+When('{string} verifies edit policy button is working', async function (username) {
+    try {
+        await browser.wait(EC.visibilityOf(objPolicy.btnEditIconInFailurePolicy), 10000);
+    }
+    catch (error) {
+        await console.log("Feature name : Policies : Action : verifying edit policy button is working")
+        await console.log(error)
+        throw "Edit policy button is not working";
+    }
+})
 When('Admin enters {string} value as {string}', async function (policy, value) {
     try {
-        await browser.sleep(3000);
+        // await browser.sleep(3000);
         await objPolicy.enterValue(value);
     }
     catch (error) {

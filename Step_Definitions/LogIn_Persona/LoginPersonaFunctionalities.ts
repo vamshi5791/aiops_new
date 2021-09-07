@@ -9,7 +9,8 @@ var EC = browser.ExpectedConditions;
 let objProjectListingPage = new ProjectListingPage();
 var expect = chai.expect;
 let objProjectConfiguration = new ProjectConfiguration();
-
+let objProjectListing = new ProjectListingPage();
+var Global_ProjectName;
 
 
 Then('{string} verifies edit configuration button is not present', async function (userRole) {
@@ -39,11 +40,14 @@ When('{string} unable to click create new project', async function (string) {
   }
 });
 
-When('{string} navigates to ust home page', async function (string) {
+When('{string} navigates to ITOps home page', async function (string) {
   try {
 
+    await browser.wait(EC.visibilityOf(objProjectListingPage.btnHomePage), 40000);
+    await browser.wait(EC.presenceOf(objProjectListingPage.btnHomePage), 40000);
     await browser.wait(EC.elementToBeClickable(objProjectListingPage.btnHomePage), 40000);
-    await browser.sleep(5000)
+    await browser.wait(EC.presenceOf(objProjectListingPage.btnHomePage), 40000);
+    // await browser.sleep(5000)
     await objProjectListingPage.clickOnHomePageButton();
     await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))));
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="All Projects"]'))));
@@ -76,8 +80,25 @@ When('{string} unable to access dot menu options', function (string) {
   } catch (error) {
     console.log("Feature name :Login persona and Scenario name :  unable to access dot menu options")
     console.log(error)
-    throw "User is not able to update the project"
+    throw "Able to access dot menu options"
   }
 });
 
+
+
+When('{string} click on three dots of a project', async function (userRole, string) {
+  await objProjectListing.ThreeDots(Global_ProjectName);
+});
+When('{string} click on delete project', async function (userRole) {
+  await objProjectListing.DeleteProject();
+});
+
+Then('Success message for Project is {string} must be shown as a toaster {string}', async function (userRole, Toaster) {
+  await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+
+  await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
+    expect(text).to.include(Toaster);
+  });
+  await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+});
 

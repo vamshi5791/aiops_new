@@ -36,17 +36,18 @@ Feature Description: ITOpsAdmin verifies Acknowledgement Policy operations
               And Admin clicks on Done button
              #Then verify "success" toaster "<ActivatedToggle>"
              Then verify column values in Policy listing page
-
+             
         Examples:
                   | RuleName        | ruleAtttribute      | ruleValue | RuleCreatedSuccessMessage  | ActivatedToggle             |
                   | CorrelationRule | Business Time Alert | True      | Rule Successfully Created. | Status updated successfully |
 
 
         Scenario Outline: ITOps Admin edits existing Acknowledgement policy from viewMode
-
+ 
              #When "ITOps_Admin" navigate to Alert Correlation Policy
-              And "Admin" clicks on policy "<PolicyName>"
-              And Admin clicks on edit policy button
+             When "Admin" clicks on policy "<PolicyName>"
+             Then "admin" verifies edit policy button is working
+             When Admin clicks on edit policy button
               And Admin enters "Alert Correlation" Policy Name as "<UpdatedPolicyName>"
               And Admin selects "policy" attribute as "<policyAtttribute>"
               And Admin enters "policy" value as "<PolicyValue>"
@@ -71,7 +72,8 @@ Feature Description: ITOpsAdmin verifies Acknowledgement Policy operations
 
 
              #When "ITOps_Admin" navigate to Alert Correlation Policy
-              And "Admin" clicks on edit icon in listing page "<PolicyName>"
+             Then "admin" verifies edit policy button is working
+             When "Admin" clicks on edit icon in listing page "<PolicyName>"
               And Admin enters "Acknowledgement" Policy Name as "<UpdatedPolicyName>"
               And Admin selects "policy" attribute as "<policyAtttribute>"
               And Admin selects "policy" value as "<PolicyValue>"

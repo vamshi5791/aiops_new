@@ -36,7 +36,7 @@ export class TicketingThreshold {
     }
 
     async enterCluserSize(clustersize){
-        await browser.sleep(2000);
+        // await browser.sleep(2000);
         await this.txtClusterSize.sendKeys(clustersize);
     }
 

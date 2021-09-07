@@ -10,7 +10,7 @@ let objAlerts = new AlertsPage();
 When('{string} enters value {string} in auto refresh textbox', async function (string, AutoRefreshValue) {
 
   try {
-    await browser.sleep(5000)
+    // await browser.sleep(5000)
     await objAlerts.enterAutoRefreshInEvery(AutoRefreshValue);
   } catch (error) {
     await console.log("Feature name : Refresh Options and Scenario name : enters value in auto refresh textbox")
@@ -19,15 +19,15 @@ When('{string} enters value {string} in auto refresh textbox', async function (s
   }
 });
 
-When('{string} clicks on tick button', async function (string) {
+When('{string} clicks on tick button', async function (UserName) {
 
   try {
-    await browser.sleep(5000)
+    // await browser.sleep(5000)
     await objAlerts.clickOnRefreshInEveryRightButton();
   } catch (error) {
     await console.log("Feature name : Refresh Options and Scenario name : clicks on tick button")
     await console.log(error)
-    // throw "User unable to click on auto refresh text box field"
+     throw "User unable to click on tick button"
   }
 });
 
@@ -38,7 +38,7 @@ Then('verify a success message should be displayed {string}', async function (To
   } catch (error) {
     await console.log("Feature name : Refresh Options and Scenario name : verify a success message should be displayed")
     await console.log(error)
-    throw ""
+    throw "Success message is not displayed"
   }
 });
 
@@ -46,9 +46,9 @@ Then('verify a success message should be displayed {string}', async function (To
 Then('verify that page gets refreshed on every {string} minutes and data got added if any', async function (string) {
 
   try {
-    await browser.sleep(5000)
+    // await browser.sleep(5000)
     await browser.wait(EC.visibilityOf(objAlerts.txtSpinner), 10000);
-    await browser.sleep(5000)
+    // await browser.sleep(5000)
   } catch (error) {
     await console.log("Feature name : Refresh Options and Scenario name : verify that page gets refreshed on every few minutes and data got added if any ")
     await console.log(error)

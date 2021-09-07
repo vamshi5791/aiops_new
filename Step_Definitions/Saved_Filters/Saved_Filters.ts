@@ -56,11 +56,11 @@ When('{string} navigate to alert console', async function (userRole) {
   var myElement = element(by.className('smo smo-close-black-alt'));
   myElement.isPresent().then(async function (elm) {
     if (elm) {
-
-
-      await browser.sleep(10000)
+      // await browser.sleep(10000)
+      await browser.wait(EC.visibilityOf(element(by.className('smo smo-close-black-alt'))), 60000);
+      await browser.wait(EC.elementToBeClickable(element(by.className('smo smo-close-black-alt'))), 60000);
+      await browser.wait(EC.presenceOf(element(by.className('smo smo-close-black-alt'))), 60000);
       await element(by.className('smo smo-close-black-alt')).click();
-
     }
   });
   await objAlerts.selectAlerts();
@@ -69,9 +69,12 @@ When('{string} navigate to alert console', async function (userRole) {
 
 When('{string} clicks on advanced filter icon', async function (userRole) {
   try {
+    await browser.wait(EC.presenceOf(element(by.className('filter smo smo-filter'))), 100000);
+    await browser.wait(EC.elementToBeClickable(element(by.className('filter smo smo-filter'))), 100000);
     await browser.wait(EC.visibilityOf(element(by.className('filter smo smo-filter'))), 100000);
-    await browser.sleep(2000);
+     await browser.sleep(2000);
     await objAlerts.AdvanceFilter();
+    await browser.sleep(3000);
   } catch (error) {
     await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on Advanced filter icon")
     await console.log(error)
@@ -87,13 +90,11 @@ Then('Success message should be disaplayed as toaster {string}', async function 
   });
 });
 
-//Gopi
-
 When('{string} enters source as {string} and alert state as {string}', async function (userRole, Source, AlertState) {
   try {
     await browser.wait(EC.visibilityOf(objAlerts.drpSource), 10000);
     await browser.wait(EC.visibilityOf(objAlerts.drpAlertState), 10000);
-    await browser.sleep(2000);
+    // await browser.sleep(2000);
     await objAlerts.SelectSource(Source);
     await objAlerts.AlertState(AlertState);
     testSource = Source;
@@ -206,7 +207,9 @@ Then('verify Apply and cancel buttons should be present', async function () {
 Then('Verify the filter conditions are retrieved and click on Apply', async function () {
   try {
 
-    await browser.sleep(5000);
+    // await browser.sleep(5000);
+    await browser.wait(EC.presenceOf(objAlerts.btnApply), 10000);
+    await browser.wait(EC.elementToBeClickable(objAlerts.btnApply), 10000);
     await objAlerts.Apply();
     // await element(by.xpath('//span[text()="Save Filter "]')).click();
 
@@ -236,7 +239,9 @@ Then('verify Data shown should be based on the filter conditions {string}', asyn
 
 When('{string} clicks on saved filters {string}', async function (string, SavedFilter) {
   try {
-    await browser.sleep(10000);
+    // await browser.sleep(10000);
+    await browser.wait(EC.elementToBeClickable(objAlerts.drpSavedFilter), 10000);
+    await browser.wait(EC.presenceOf(objAlerts.drpSavedFilter), 10000);
     await objAlerts.selectSavedFilterFromAlertConsole(SavedFilter);
   } catch (error) {
     await console.log("Feature name : Saved Filters and Scenario name : clicks on saved filters ")
@@ -270,7 +275,7 @@ Then('Chips should have a close button', async function () {
 
 When('{string} clicks on Remove all link next to the chips displayed from Alert console', async function (userRole) {
   try {
-    await browser.sleep(2000)
+    // await browser.sleep(2000)
     await objAlerts.selectRemoveAllConditions();
   } catch (error) {
     await console.log("Feature name : Saved Filters and Scenario name : clicks on Remove all link next to the chips displayed from Alert console ")
@@ -350,7 +355,7 @@ Then('verify all saved filters are displayed on left side {string}', async funct
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="' + FIlterName + '"]'))), 10000);
     await browser.wait(EC.presenceOf(element(by.xpath('//span[text()="' + FIlterName + '"]'))), 10000);
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="' + FIlterName + '"]'))), 10000);
-    await browser.sleep(5000);
+    // await browser.sleep(3000);
     await objAlerts.savedFilterTitle(FIlterName);
 
   } catch (error) {
@@ -364,7 +369,7 @@ Then('verify all saved filters are displayed on left side {string}', async funct
 
 Then('verify filter name, description and Created time should be displayed {string}, {string}, {string}', async function (FilterName, Description, CreatedTime) {
   try {
-    await browser.sleep(5000);
+    // await browser.sleep(5000);
     await browser.wait(EC.visibilityOf(element(by.xpath('//h3[text()="Saved Filters"]//following::b'))), 10000);
 
   } catch (error) {

@@ -14,7 +14,8 @@ var testSource;
 
 When('{string} clicks on Alerts page', async function (userName) {
   try {
-    await browser.sleep(5000)
+    // await browser.sleep(5000)
+    await browser.wait(EC.visibilityOf(element(by.xpath('//a[text()="Alerts"]'))), 100000);
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//a[text()="Alerts"]'))), 100000);
     await objAlerts.selectAlerts();
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()=" Auto-refresh in every "]'))), 100000);
@@ -26,12 +27,9 @@ When('{string} clicks on Alerts page', async function (userName) {
   }
 
 });
-// Ajay 
-
-
 When('{string} selects alert severity dropdown', async function (userRole) {
   try {
-    await browser.sleep(3000)
+    // await browser.sleep(3000)
     await objAlerts.AlertSeverityDpn();
   }
   catch (error) {
@@ -74,7 +72,8 @@ Then('verifies severity condition in severity dropdown {string}', async function
 
 When('{string} selects Ok', async function (userRole) {
   try {
-    await objAlerts.Ok();
+    // await browser.sleep(2000);
+    await objAlerts.clickOnOkFilterBySeverity();
 
   }
   catch (error) {
@@ -141,9 +140,7 @@ When('{string} deletes the solarwinds condition from alert console', async funct
 
 Then('{string} verifies solarwinds filter is not visible', async function (userRole) {
   try {
-    browser.sleep(5000)
-    // await browser.wait(EC.invisibilityOf(objAlerts.btnRemoveSolarwinds), 1000);
-    // expect(objAlerts.btnRemoveSolarwinds.isPresent()).to.eventually.equal(false);
+    // browser.sleep(5000)
     await objAlerts.btnRemoveSolarwinds.isPresent().then(function (select) {
       expect(select).to.be.false;
     });
@@ -239,9 +236,7 @@ Given('{string} clicks on Mark as default', async function (userRole) {
 
 Then('{string} Verifies Warning filter is not applied', async function (userRole) {
   try {
-     browser.sleep(3000)
-    // await browser.wait(EC.invisibilityOf(objAlerts.btnSelectWarning), 1000);
-    // expect(objAlerts.btnSelectWarning.isPresent()).to.eventually.equal(false);
+    //  browser.sleep(3000)
     await objAlerts.btnSelectWarning.isPresent().then(function (select) {
       expect(select).to.be.false;
     });
@@ -253,8 +248,6 @@ Then('{string} Verifies Warning filter is not applied', async function (userRole
   }
 
 });
-
-//Gopi 
 
 //Verify the advanced filter having Advanced filters, Source and Resource  sections
 
@@ -550,13 +543,13 @@ Then('{string} verifies data in UI', async function (userName) {
 
 When('{string} clicks on Delete icon for {string} filter', async function (userName, SavedFilter) {
   try {
-    await browser.sleep(3000)
+    // await browser.sleep(3000)
     await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
     await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
     await browser.actions().mouseMove(element(by.xpath('//span[text()="' + SavedFilter + '"]'))).perform();
-    await browser.sleep(3000)
+    // await browser.sleep(3000)
     await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
-    await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
+    await browser.wait(EC.elementToBeClickable(element(by.className('smo smo-trash-alt-regular ng-star-inserted'))));
     await element(by.className('smo smo-trash-alt-regular ng-star-inserted')).click();
   } catch (error) {
     await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")

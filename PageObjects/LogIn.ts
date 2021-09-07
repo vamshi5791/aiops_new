@@ -24,7 +24,7 @@ export class LogIn {
         await this.btnClickOnSignIn.click();
     }
     async logOutUser() {
-        await browser.sleep(3000)
+        // await browser.sleep(3000)
         await element(by.className("iframe-link a-cursor profile-arrow")).click();
         await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Logout"]'))), 10000);
         await element(by.xpath('//span[text()="Logout"]')).click();

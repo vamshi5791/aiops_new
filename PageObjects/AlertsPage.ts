@@ -1,10 +1,11 @@
 import { ElementFinder, element, by, promise, browser, protractor } from "protractor";
 import { support } from "../support/support";
 import chai from "chai";
+var EC = browser.ExpectedConditions;
 var drp = new support();
 var expect = chai.expect;
 export class AlertsPage {
- 
+
 
   //Alert console page elements
   btnSelectAlerts = element(by.xpath('//a[text()="Alerts"]'));
@@ -15,7 +16,7 @@ export class AlertsPage {
   txtResource = element(by.name('resourceName'));
   btnSaveFilter = element(by.className('d-flex justify-content-end save-link ng-star-inserted'));
   txtInLast = element(by.name('inLast'));
-  drpSelectDurationType =  element(by.xpath('//label[text()="Select"]'));
+  drpSelectDurationType = element(by.xpath('//label[text()="Select"]'));
   txtFilterName = element(by.xpath('//input[@name="name"]'));
   txtFilterDescription = element(by.xpath('//textarea[@name="description"]'));
   drpSavedFilter = element(by.xpath('//label[text()="Saved Filter"]'));
@@ -24,12 +25,12 @@ export class AlertsPage {
   btnRemoveStateCondition = element(by.xpath('//div[text()="State : "]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
   btnRemoveOkCondition = element(by.xpath('//span[text()="Ok"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
   btnRemoveWarningCondition = element(by.xpath('//span[text()="Ok"]//preceding::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
-  
+
   //Advanced filter section page elements
   chkMakeAsDefault = element(by.xpath('//span[text()="Make As Default"]//preceding::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'));
   btnEditSavedFilter = element(by.className('mr-3 smo smo-edit ng-star-inserted'));
   btnDeleteSavedFilter = element(by.className('smo smo-trash-alt-regular ng-star-inserted'));
-  btnSavedFilter = element(by.xpath('//span[text()="IB"]'));
+  // btnSavedFilter = element(by.xpath('//span[text()="IB"]'));
   btnApply = element(by.xpath('//span[text()="Apply"]'));
   btnSave_Apply = element(by.xpath('//span[text()="Save and Apply"]'));
   btnUpdateAndApply = element(by.xpath('//span[text()="Update and Apply"]'));
@@ -54,22 +55,20 @@ export class AlertsPage {
   txtSourceAndResources = element(by.xpath('//h4[text()="Source and Resources"]'));
   txtStateAndStatus = element(by.xpath('//h4[text()="State and Status"]'));
   txtDateAndTime = element(by.xpath('//h4[text()="Date and Time"]'));
-  //ajay
 
-  btnselectConfiguration=element(by.xpath('//a[text()="Configuration"]'));
-  btnDownloadAlert=element(by.xpath('//span[@class="smo smo-download cursor-pt ng-star-inserted"]'))
-  btnAlertsPage=element(by.xpath('//a[text()="Alerts"]'))
-  btnClickOnApply = element(by.xpath('//span[text()="Apply"]'));
-  btnAlertSeverityDpn=element(by.xpath('//label[text()="Alert Severity"]'))
-  btnSelectWarning=element(by.xpath('//span[text()="Warning"]'))
-  txtWarning=element(by.xpath('//span[text()="Warning"]'))
-  txtOk=element(by.xpath('//span[text()="Ok"]'))
-  txtInformation=element(by.xpath('//span[text()="Information"]'))
-  btnRemoveOkSeverity=element(by.xpath('//span[text()="Ok"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
-  btnRemoveWarningSeverity=element(by.xpath('//span[text()="Warning"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
-  btnRemoveSolarwinds=element(by.xpath('//span[text()="Solarwinds"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
-  btnMarkAsDefault=element(by.xpath('//span[@smotooltip="Mark as default"]'))
-  
+  btnselectConfiguration = element(by.xpath('//a[text()="Configuration"]'));
+  btnDownloadAlert = element(by.xpath('//span[@class="smo smo-download cursor-pt ng-star-inserted"]'))
+  // btnAlertsPage = element(by.xpath('//a[text()="Alerts"]'))
+  btnAlertSeverityDpn = element(by.xpath('//label[text()="Alert Severity"]'))
+  btnSelectWarning = element(by.xpath('//span[text()="Warning"]'))
+  txtWarning = element(by.xpath('//span[text()="Warning"]'))
+  // txtOk = element(by.xpath('//span[text()="Ok"]'))
+  txtInformation = element(by.xpath('//span[text()="Information"]'))
+  btnRemoveOkSeverity = element(by.xpath('//span[text()="Ok"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
+  btnRemoveWarningSeverity = element(by.xpath('//span[text()="Warning"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
+  btnRemoveSolarwinds = element(by.xpath('//span[text()="Solarwinds"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
+  btnMarkAsDefault = element(by.xpath('//span[@smotooltip="Mark as default"]'))
+
   async clickOnRemoveOkCondition() {
     await this.btnRemoveOkCondition.click();
   }
@@ -86,17 +85,17 @@ export class AlertsPage {
     await this.drpFilterBySeverity.click();
   }
   async selectAlerts() {
-        await browser.sleep(5000)
-        await element(by.xpath('//a[text()="Alerts"]')).click();
-     
-   
+    // await browser.sleep(5000)
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//a[text()="Alerts"]'))), 60000);
+    await element(by.xpath('//a[text()="Alerts"]')).click();
   }
 
   async Alert_Search(alertName: string) {
+    await browser.wait(EC.elementToBeClickable(this.btnSearch), 60000);
     await this.btnSearch.sendKeys(alertName);
-    await browser.sleep(2000)
+    // await browser.sleep(2000)
     await browser.actions().sendKeys(protractor.Key.ENTER).perform();
-    await browser.sleep(2000)
+    // await browser.sleep(2000)
   }
   async AdvanceFilter() {
     await this.btnAdvanceFilter.click();
@@ -130,9 +129,9 @@ export class AlertsPage {
 
   async FilterDescription(FilterDescription: string) {
     await this.txtFilterDescription.sendKeys(FilterDescription);
-  } 
+  }
   async savedFilterTitle(SavedFilter) {
-    await element(by.xpath('//span[text()="'+SavedFilter+'"]')).click();
+    await element(by.xpath('//span[text()="' + SavedFilter + '"]')).click();
   }
   async selectSavedFilterFromAlertConsole(SavedFilter) {
     await this.drpSavedFilter.click();
@@ -143,7 +142,7 @@ export class AlertsPage {
   }
   async removeSourceCondition() {
     await this.btnRemoveSourceCondition.click();
-  } 
+  }
   async removeStateCondition() {
     await this.btnRemoveStateCondition.click();
   }
@@ -151,10 +150,10 @@ export class AlertsPage {
     await this.btnEditSavedFilter.click();
 
   }
-    async  enterAutoRefreshInEvery(AutoRefreshValue) {
+  async enterAutoRefreshInEvery(AutoRefreshValue) {
     await this.txtAutoRefreshInEvery.sendKeys(AutoRefreshValue);
   }
-  async  clickOnRefreshInEveryRightButton() {
+  async clickOnRefreshInEveryRightButton() {
     await this.btnAutoRefreshInEveryRightButton.click();
   }
   async clickOnMakeAsDefault() {
@@ -174,33 +173,33 @@ export class AlertsPage {
   }
   async clickOnCancelButton() {
     await this.btnCancel.click();
-  } 
+  }
   async getTestSource(TestSource) {
-    await element(by.xpath('//div[text()="'+TestSource+'"]')).getText().then(async function (text) {
-        await expect(text).to.include(TestSource);
-      });
+    await element(by.xpath('//div[text()="' + TestSource + '"]')).getText().then(async function (text) {
+      await expect(text).to.include(TestSource);
+    });
   }
   async getTicketNumber(TicketNumber) {
-    await element(by.xpath('//div[text()="'+TicketNumber+'"]')).getText().then(async function (text) {
+    await element(by.xpath('//div[text()="' + TicketNumber + '"]')).getText().then(async function (text) {
       await expect(text).to.include(TicketNumber);
     });
   }
   async getLastAlertTime(LastAlertTime) {
-  await element(by.xpath('//div[text()="'+LastAlertTime+'"]')).getText().then(async function (text) {
-        await expect(text).to.include(LastAlertTime);
-      });
+    await element(by.xpath('//div[text()="' + LastAlertTime + '"]')).getText().then(async function (text) {
+      await expect(text).to.include(LastAlertTime);
+    });
   }
 
   async getAlertName(AlertName) {
     await element(by.xpath('//span[text()="Alert Name"]')).getText().then(async function (text) {
-          await expect(text).to.include(AlertName);
-        });
+      await expect(text).to.include(AlertName);
+    });
   }
-  
+
   async getAlertMetric(AlertMetric) {
-    await element(by.xpath('//div[text()="'+AlertMetric+'"]')).getText().then(async function (text) {
-          await expect(text).to.include(AlertMetric);
-        });
+    await element(by.xpath('//div[text()="' + AlertMetric + '"]')).getText().then(async function (text) {
+      await expect(text).to.include(AlertMetric);
+    });
   }
   async getFilterName(FilterName) {
     await element(by.xpath('//span[text()="' + FilterName + '"]')).getText().then(async function (textFilterName) {
@@ -223,57 +222,59 @@ export class AlertsPage {
   async verifyToaster(ToastMessage) {
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(async function (text) {
       await expect(text).to.include(ToastMessage);
-    }); 
+    });
   }
 
-//Ajay 
-  
-async MarkAsDefault() {
-  await this.btnMarkAsDefault.click();
-}
-async SelectFilter(SelectFilter:string) {
-  await element(by.xpath('//span[text()="'+SelectFilter+'"]')).click();
-}
-async SelectWarning() {
-  await this.btnSelectWarning.click();
-}
-async FilterBySeverity() {
-  await browser.sleep(2000);
-  await this.drpFilterBySeverity.click();
-}
-async RemoveOkSeverity() {
-  await this.btnRemoveOkSeverity.click();
-}
-async RemoveWarningSeverity() {
-  await this.btnRemoveWarningSeverity.click();
-  await browser.sleep(3000);
-}
-async RemoveSolarwinds() {
-  await this.btnRemoveSolarwinds.click();
-}
-async Warning() {
-  await this.txtWarning.click();
-}
-async Ok() {
-  await this.txtOk.click();
-}
-async Information() {
-  await this.txtInformation.click();
-}
-async AlertSeverityDpn() {
-  await browser.sleep(3000);
-  await this.btnAlertSeverityDpn.click();
-  await browser.sleep(3000);
-}
-async SavedFilter(SavedFilter:string) {
-  await browser.sleep(2000);
-  await element(by.xpath('//span[text()="'+SavedFilter+'"]')).click();
-  await browser.sleep(3000);
+  async MarkAsDefault() {
+    await this.btnMarkAsDefault.click();
+  }
+  async SelectFilter(SelectFilter: string) {
+    await element(by.xpath('//span[text()="' + SelectFilter + '"]')).click();
+  }
+  async SelectWarning() {
+    await this.btnSelectWarning.click();
+  }
+  async FilterBySeverity() {
+    await browser.sleep(2000);
+    await browser.wait(EC.elementToBeClickable(this.drpFilterBySeverity), 60000);
+    await this.drpFilterBySeverity.click();
+  }
+  async RemoveOkSeverity() {
+    await this.btnRemoveOkSeverity.click();
+  }
+  async RemoveWarningSeverity() {
+    await this.btnRemoveWarningSeverity.click();
+    // await browser.sleep(3000);
+  }
+  async RemoveSolarwinds() {
+    await this.btnRemoveSolarwinds.click();
+  }
+  async Warning() {
+    await this.txtWarning.click();
+  }
+  // async Ok() {
+  //   await this.txtOk.click();
+  // }
+  async Information() {
+    await this.txtInformation.click();
+  }
+  async AlertSeverityDpn() {
+    // await browser.sleep(3000);
+    await browser.wait(EC.elementToBeClickable(this.btnAlertSeverityDpn), 60000);
+    await this.btnAlertSeverityDpn.click();
+    // await browser.sleep(3000);
+  }
+  async SavedFilter(SavedFilter: string) {
+    // await browser.sleep(2000);
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="' + SavedFilter + '"]'))), 60000);
+    await element(by.xpath('//span[text()="' + SavedFilter + '"]')).click();
+    // await browser.sleep(3000);
   }
   async Infrastructure() {
-    await browser.sleep(5000)
+    // await browser.sleep(5000)
+    await browser.wait(EC.elementToBeClickable(this.btnInfrastructure), 60000);
     await this.btnInfrastructure.click();
-  
+
   }
 }
 

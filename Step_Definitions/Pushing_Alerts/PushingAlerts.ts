@@ -120,7 +120,7 @@ When('{string} selects project and open alerts', async function (userRole) {
     });
 
     await objProjectListing.Project_search(Global_ProjectName);
-    await browser.sleep(3000);
+    // await browser.sleep(3000);
     await browser.wait(EC.visibilityOf(element(by.xpath('//h3[text()=" ' + Global_ProjectName + ' "]'))), 100000);
     await objProjectListing.selectProject(Global_ProjectName);
 

@@ -6,7 +6,7 @@ Feature Description : Device Inventory Features
 
         Scenario Outline: Itops Admin searches the device with existing device name.
 
-             When "Admin" navigates to ust home page
+             When "Admin" navigates to ITOps home page
               And "Admin" enters project name as "<ProjectName>" in the search field
               And "Admin" clicks on project name "<ProjectName>"
               And "ITOps_Admin" opens infrastructure page
@@ -18,17 +18,7 @@ Feature Description : Device Inventory Features
                   | ProjectName      | DeviceName      | Device          |
                   | Automation_IB_24 | AUMECO-50A-SBC1 | AUMECO-50A-SBC1 |
 
-        Scenario Outline: Itops Admin searches the device with Non Existing device name.
-
-             When "ITOps_Admin" opens infrastructure page
-              And "ITOps_Admin" searches device name "<DeviceName>"
-             Then Device details should not be displayed "<DeviceDetails>"
-
-
-        Examples:
-                  | DeviceName        | DeviceDetails     |
-                  | GBLNBS-05A-FPA122 | No data available |
-
+        
         Scenario Outline:  ITOps Admin view Device Details
 
              When "ITOps_Admin" opens infrastructure page
@@ -58,7 +48,7 @@ Feature Description : Device Inventory Features
 
         Examples:
                   | SuccessPopUp                     | ResourceName  | ResourceType | Site   | Country | Region |
-                  | New resource added successfully! | Automation_50 | Samp3le      | Sample | Sample  | Sample |
+                  | New resource added successfully! | Automation_49 | Samp3le      | Sample | Sample  | Sample |
 
         Scenario Outline: Itops Admin updates the device in the device inventory.
 

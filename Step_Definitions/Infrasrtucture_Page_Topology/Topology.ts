@@ -10,7 +10,7 @@ let objInfrastructurePage = new InfrastructurePage();
 When('{string} opens infrastructure page', async function (userRole) {
   try {
 
-    await browser.sleep(5000)
+    // await browser.sleep(5000)
     await objInfrastructurePage.Infrastructure();
   }
   catch (error) {
