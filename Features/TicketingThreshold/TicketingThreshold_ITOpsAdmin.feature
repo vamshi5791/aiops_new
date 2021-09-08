@@ -6,9 +6,7 @@ Feature: Create Ticketing Threshold by admin
      @AddNewTicketingThresholdByITOPsADMIN
      Scenario Outline: ITOps Admin should able to Add New Ticketing Threshold
 
-          When "admin" navigates to ITOps home page
-          And "Admin" enters project name as "Automation_IB_24" in the search field
-          And "admin" clicks on project name "Automation_IB_24"
+
           And "Admin" clicks on Configuration tab
           When "Admin" navigate to Ticketing Threshold
           And Admin selects Source "<source>"

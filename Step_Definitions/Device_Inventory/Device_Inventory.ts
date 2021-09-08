@@ -252,7 +252,7 @@ Then('{string} verifies the update button is visible', async function (userRole)
 
 // Itops Engineer unable to update the device in the device inventory.
 
-When('{string} unable to edit the resource type', async function (string) {
+When('{string} unable to edit the resource type', async function (userRole) {
   try {
     await element(by.xpath('//div[text()="RESOURCE TYPE"]//following::input[@type="text"]')).isPresent().then(function (select) {
       expect(select).to.be.false;
@@ -263,4 +263,30 @@ When('{string} unable to edit the resource type', async function (string) {
     await console.log(error)
     throw "User is not able to edit the resource type"
   }
+});
+
+
+
+// ITOps Admin Configure columns in device inventory
+
+
+When('{string} clicks on Configure columns option', async function (userRole) {
+  await objInfrastructurePage.ConfigureColumns();
+});
+
+When('{string} selects resource name column', async function (userRole) {
+  await objInfrastructurePage.IPAdress();
+  await objInfrastructurePage.MacAddress();
+  await objInfrastructurePage.Vendor();
+  await objInfrastructurePage.MaintenanceMode();
+  await objInfrastructurePage.Site();
+  // await objInfrastructurePage.
+
+});
+
+When('{string} clicks on close button', async function (userRole) {
+});
+
+Then('{string} verifies the resource name column is present or not', async function (userRole) {
+  await browser.wait(EC.visibilityOf(objInfrastructurePage.txtResourceName), 100000);
 });

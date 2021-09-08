@@ -22,6 +22,16 @@ export class InfrastructurePage {
     btnUpdateDevice=element(by.xpath('//span[text()="Update Device"]'))
     // btnFailOverDevice=element(by.xpath('//label[text()="Select failover device"]'))
     drpFailOverDevice=element(by.xpath('//div[text()="FAILOVER DEVICE"]//following::span[@class="smo-dropdown-trigger-icon smo-clickable smo smo-expand-more-alt chevron-icon"]'))
+    btnConfigureColumns=element(by.xpath('//span[@class="smo smo-settings-regular"]'))
+    btnIPAdress=element(by.xpath('//label[text()="IP Address"]'))
+    btnMacAddress=element(by.xpath('//label[text()="Mac Address"]'))
+    btnVendor=element(by.xpath('//label[text()="Vendor"]'))
+    btnMaintenanceMode=element(by.xpath('//label[text()="Maintenance Mode"]'))
+    btnSite=element(by.xpath('//label[text()="Site"]'))
+    btnCancel=element(by.xpath('//span[text()="Cancel"]'))
+    txtResourceName=element(by.xpath('//th[text()=" Resource Type "]'))
+
+
 
 
     async Topology() {
@@ -31,9 +41,30 @@ export class InfrastructurePage {
       // async FailOverDevice() {
       //   await this.btnFailOverDevice.click();
       // }
-
       async UpdateDevice() {
         await this.btnUpdateDevice.click();
+      }
+      async IPAdress() {
+        await this.btnIPAdress.click();
+      }
+      async MacAddress() {
+        await this.btnMacAddress.click();
+      }
+      async Vendor() {
+        await this.btnVendor.click();
+      }
+      async MaintenanceMode() {
+        await this.btnMaintenanceMode.click();
+      }
+      async Site() {
+        await this.btnSite.click();
+      }
+      async Cancel() {
+        await this.btnCancel.click();
+      }
+
+      async ConfigureColumns() {
+        await this.btnConfigureColumns.click();
       }
       async EditResourceType(EditResourceType:string) {
         await this.txtEditResourceType.sendKeys(EditResourceType);
