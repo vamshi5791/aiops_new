@@ -64,3 +64,21 @@ Feature Description : Device Inventory Features
                   | AUMECO-50A-SBC1 | AUMECO-50A-SBC1  | AUMECO-50A-SBC1 |
 
 
+#     Scenario Outline:  ITOps Admin Configure columns in device inventory
+
+#           When "ITOps_Admin" opens infrastructure page
+#           And "ITOps_Admin" clicks on Configure columns option
+#           And "ITOps_Admin" selects resource name column
+#           And "ITOps_Admin" clicks on close button
+#           When "user" clicks on logout button
+#           When "ITOps_Admin" navigates to ITOps home page
+#           When user enters Username as "<UserName>", Password as "<Password>" and clicks on Login button
+#           And "ITOps_Admin" enters project name as "<ProjectName>" in the search field
+#           And "ITOps_Admin" clicks on project name "<ProjectName>"
+#           And "ITOps_Admin" opens infrastructure page
+#           Then "ITOps_Admin" verifies the resource name column is present or not
+
+
+#           Examples:
+#                | UserName    | Password | ProjectName      |
+#                | Itops_admin | qa123    | Automation_IB_24 |

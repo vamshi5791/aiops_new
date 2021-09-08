@@ -12,6 +12,8 @@ When('{string} clicks on Filter by severity drop down', async function (string) 
   try {
     // await browser.sleep(10000)
     await browser.wait(EC.visibilityOf(objAlerts.drpFilterBySeverity));
+    await browser.wait(EC.elementToBeClickable(objAlerts.drpFilterBySeverity));
+    await browser.wait(EC.presenceOf(objAlerts.drpFilterBySeverity));
     await objAlerts.clickOnFilterBySeverity();
   } catch (error) {
     await console.log("Feature name : Filter by Severity dropdown and Scenario name : clicks on Filter by severity drop down")

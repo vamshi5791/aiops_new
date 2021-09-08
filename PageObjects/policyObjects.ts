@@ -96,9 +96,9 @@ export class PolicyObjects {
     }
 
     async clickOnPolicyEditIcon(policyname) {
-        await browser.sleep(2000)
+        // await browser.sleep(2000)
         await browser.actions().mouseMove(element(by.xpath('//b[text()="' + policyname + '"]'))).perform();
-        await browser.sleep(2000)
+        // await browser.sleep(2000)
         //await element(by.xpath('//b[text()="' + policyname + '"]//following::span[@class="smo smo-create-alt edit-icon cursor-pointer right-padding-20 ng-star-inserted"]')).click();
         await element(by.xpath('//span[@class="smo smo-create-alt edit-icon cursor-pointer right-padding-20 ng-star-inserted"]')).click();
     //span[@class="action-btns"]//following::span

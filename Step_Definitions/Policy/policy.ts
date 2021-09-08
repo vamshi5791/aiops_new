@@ -81,7 +81,7 @@ When('{string} navigate to Recovery Policy', async function (userrole) {
 
 When('{string} clicks on edit icon in listing page {string}', async function (userrole, policyname) {
     try {
-         await browser.sleep(5000)
+        //  await browser.sleep(5000)
         await objPolicy.clickOnPolicyEditIcon(policyname);
     }
     catch (error) {
