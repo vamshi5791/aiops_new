@@ -3,7 +3,7 @@ import { browser, element, by} from "protractor"
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 var EC = browser.ExpectedConditions;
 let objAlerts = new AlertsPage();
-
+ 
 import chai from "chai";
  
 var EC = browser.ExpectedConditions;

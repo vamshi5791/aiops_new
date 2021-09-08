@@ -20,8 +20,8 @@ Feature Description: ITOpsAdmin verifies Alert Correlation Policy operations
              Then verify "success" toaster "<PolicyCreatedSuccessMessage>"
 
         Examples:
-                  | ProjectName      | PolicyName | PolicyPrecedence | policyAtttribute    | PolicyValue | PolicyCreatedSuccessMessage  |
-                  | Automation_IB_24 | Automation | 1                | Business Time Alert | True        | Policy successfully created. |
+                  | ProjectName   | PolicyName | PolicyPrecedence | policyAtttribute    | PolicyValue | PolicyCreatedSuccessMessage  |
+                  | Automation_M3 | Automation | 6                | Business Time Alert | True        | Policy successfully created. |
 
 
         Scenario Outline: ITOps Admin adds Alert Correlation rule

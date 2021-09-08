@@ -81,7 +81,7 @@ When('{string} navigate to Recovery Policy', async function (userrole) {
 
 When('{string} clicks on edit icon in listing page {string}', async function (userrole, policyname) {
     try {
-        // await browser.sleep(5000)
+         await browser.sleep(5000)
         await objPolicy.clickOnPolicyEditIcon(policyname);
     }
     catch (error) {
@@ -192,7 +192,7 @@ Then('verify values in operator dropdown', async function () {
 
 When('Admin enters {string} Policy Name as {string}', async function (policy, policyname) {
     try {
-        // await browser.sleep(2000);
+        await browser.sleep(2000);
         await objPolicy.enterPolicyName(policyname);
     }
     catch (error) {

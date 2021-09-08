@@ -416,14 +416,18 @@ Given('{string} clicks on save button', async function (userRole) {
   }
 
 });
-
+ 
 Then('Success message for Verifyimg adding additional source severity within the same source must be shown in popup {string}', async function (popup) {
   try {
-    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 10000);
+    await console.log("11111111111")
+    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 50000);
+    await console.log("222222222222")
     await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
       expect(text).to.include(popup);
     });
-    await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+    await console.log("33333333333333")
+     await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
+     await console.log("44444444444")
     await browser.wait(EC.invisibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
   }
   catch (error) {

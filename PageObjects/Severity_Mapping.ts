@@ -78,7 +78,7 @@ export class SeverityMapping {
       }
       async ClickOnSaveAndAddNew() { 
         await this.btnClickOnSaveAndAddNew.click();
-        // await browser.sleep(5000);
+        await browser.sleep(5000);
       }
       async SelectCritical() { 
         await this.btnSelectCritical.click();

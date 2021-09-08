@@ -247,6 +247,9 @@ export class AlertsPage {
     // await browser.sleep(3000);
   }
   async RemoveSolarwinds() {
+    await browser.wait(EC.presenceOf(this.btnRemoveSolarwinds), 60000);
+    await browser.wait(EC.visibilityOf(this.btnRemoveSolarwinds), 60000);
+    await browser.wait(EC.elementToBeClickable(this.btnRemoveSolarwinds), 60000);
     await this.btnRemoveSolarwinds.click();
   }
   async Warning() {

@@ -41,7 +41,7 @@ Feature Description :Severity Mapping
               And "Admin" verifies the Time as "<Time>"
         Examples:
                   | ProjectName   | SourceSeverity1 | SourceSeverity2 | SourceSeverity  | SOSeverity  | time         | AddSeverity  | NewSource      | Time        |
-                  | Automation_02 | 23              | 34              | SOURCE SEVERITY | SO SEVERITY | UPDATED TIME | Add Severity | Add New Source | 02 Sep 2021 |
+                  | Automation_02 | 23              | 34              | SOURCE SEVERITY | SO SEVERITY | UPDATED TIME | Add Severity | Add New Source | 31 Aug 2021 |
 
 
 

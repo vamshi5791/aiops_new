@@ -92,9 +92,9 @@ Then('Success message should be disaplayed as toaster {string}', async function 
 
 When('{string} enters source as {string} and alert state as {string}', async function (userRole, Source, AlertState) {
   try {
-    await browser.wait(EC.visibilityOf(objAlerts.drpSource), 10000);
-    await browser.wait(EC.visibilityOf(objAlerts.drpAlertState), 10000);
-    // await browser.sleep(2000);
+    // await browser.wait(EC.visibilityOf(objAlerts.drpSource), 10000);
+    // await browser.wait(EC.visibilityOf(objAlerts.drpAlertState), 10000);
+    await browser.sleep(2000);
     await objAlerts.SelectSource(Source);
     await objAlerts.AlertState(AlertState);
     testSource = Source;
@@ -239,7 +239,7 @@ Then('verify Data shown should be based on the filter conditions {string}', asyn
 
 When('{string} clicks on saved filters {string}', async function (string, SavedFilter) {
   try {
-    // await browser.sleep(10000);
+    await browser.sleep(10000);
     await browser.wait(EC.elementToBeClickable(objAlerts.drpSavedFilter), 10000);
     await browser.wait(EC.presenceOf(objAlerts.drpSavedFilter), 10000);
     await objAlerts.selectSavedFilterFromAlertConsole(SavedFilter);

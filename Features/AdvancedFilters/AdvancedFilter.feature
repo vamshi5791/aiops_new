@@ -155,24 +155,24 @@ Feature Description: Admin navigates to alert page,
 
 
 
-        Scenario Outline:Verify that user is able to view edit and delete option in Advanced Filter section
-             When "Admin" clicks on advanced filter icon
-              And "ITOps_Admin" selects saved filter "<SavedFilter>"
-             When "Admin" clicks on Edit icon for "<SavedFilter>" filter
-             Then "Admin" verifies that edit and delete options are present
-              And "Admin" edits "<Source>" filter criteria
-              And "Admin" click on Update and Apply
-              And "Admin" clicks on Yes on confirmation pop up
-             Then "Admin" verifies "<ConfirmationToaster>" shown
-              And "Admin" verifies data in UI
-             When "Admin" clicks on advanced filter icon
-             When "Admin" clicks on Delete icon for "<SavedFilter>" filter
-              And "Admin" clicks on Yes on confirmation pop up
-             Then "Admin" verifies "<Toaster>" shown
-             Then "Admin" verifies deleted "<SavedFilter>" filter is removed from the filter dropdown in console
-        Examples:
-                  | Source | Alert_State | SavedFilter | Description | ConfirmationToaster          | DifferentUserName | Toaster                      |
-                  | ITSM   | Ticketed    | IB          | Value 2     | Filter updated successfully. | Itops_engineer    | Filter deleted successfully. |
+     #    Scenario Outline:Verify that user is able to view edit and delete option in Advanced Filter section
+     #         When "Admin" clicks on advanced filter icon
+     #          And "ITOps_Admin" selects saved filter "<SavedFilter>"
+     #         When "Admin" clicks on Edit icon for "<SavedFilter>" filter
+     #         Then "Admin" verifies that edit and delete options are present
+     #          And "Admin" edits "<Source>" filter criteria
+     #          And "Admin" click on Update and Apply
+     #          And "Admin" clicks on Yes on confirmation pop up
+     #         Then "Admin" verifies "<ConfirmationToaster>" shown
+     #          And "Admin" verifies data in UI
+     #         When "Admin" clicks on advanced filter icon
+     #         When "Admin" clicks on Delete icon for "<SavedFilter>" filter
+     #          And "Admin" clicks on Yes on confirmation pop up
+     #         Then "Admin" verifies "<Toaster>" shown
+     #         Then "Admin" verifies deleted "<SavedFilter>" filter is removed from the filter dropdown in console
+     #    Examples:
+     #              | Source | Alert_State | SavedFilter | Description | ConfirmationToaster          | DifferentUserName | Toaster                      |
+     #              | ITSM   | Ticketed    | IB          | Value 2     | Filter updated successfully. | Itops_engineer    | Filter deleted successfully. |
 
         Scenario Outline:Verify creating default filter for Alert Console
 

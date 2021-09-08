@@ -142,7 +142,7 @@ Then('enter alertname in search box and verify alert details {string}', async fu
     var myElement = objAlerts.btnRemoveAll;
     myElement.isDisplayed().then(async function (elm) {
       if (elm) {
-        await browser.sleep(5000)
+        // await browser.sleep(5000)
         await browser.wait(EC.elementToBeClickable(objAlerts.btnRemoveAll), 100000);
         await objAlerts.btnRemoveAll.click();
       }
