@@ -91,6 +91,52 @@ Feature Description: ITOpsAdmin verifies Failure Policy operations
         Examples:
                   | PolicyName    | UpdatedPolicyName | policyAtttribute    | PolicyValue | UpdatedRuleName         | ruleAtttribute      | ruleValue | RuleCreatedSuccessMessage                                                                   |
                   | Automation IB | Automation IB     | Business Time Alert | False       | CorrelationRuleUpdated1 | Business Time Alert | False     | The failure policy change will not have any effect on any existing alerts |
+    Scenario Outline: Verify duplicate precedence validation exists while editing a correlation policy
+
+
+          # When "admin" navigates to ITOps home page
+          # And "Admin" enters project name as "Automation_IB_24" in the search field
+          # And "admin" clicks on project name "Automation_IB_24"
+          When "Admin" clicks on configuration tab
+          And Admin clicks on Add "AlertCorrelation" Policy
+          And Admin enters "AlertCorrelation" Policy Name as "<PolicyName>"
+          And Admin enters "AlertCorrelation" Precedence as "<PolicyPrecedence>"
+          And Admin selects "policy" attribute as "<policyAtttribute>"
+          And Admin selects "policy" value as "<PolicyValue>"
+          And Admin clicks on Save Policy
+          Then verify "error" toaster "<PrecedenceAlreadyExists>"
+          And click on cancel button
+
+          Examples:
+               | PolicyName   | PolicyPrecedence | policyAtttribute    | PolicyValue | PrecedenceAlreadyExists                              |
+               | Automation12 | 6                | Business Time Alert | True        | Precedence exists under the type for the project id. |
+
+
+     Scenario Outline: Verify correlation policy cannot be activated when all rules are inactive
+
+          # When "admin" navigates to ITOps home page
+          # And "Admin" enters project name as "Automation_M3" in the search field
+          # And "admin" clicks on project name "Automation_M3"
+          When "Admin" clicks on configuration tab
+          And "Admin" clicks on policy "<PolicyName>"
+          And Admin clicks on edit policy button
+          And Admin clicks on set rules
+          When Admin clicks on toggle button
+          And Admin clicks on Yes button in confirmation popup
+          Then verify "success" toaster "<SuccesToaster>"
+          When Admin clicks on Activate Policy toggle button
+          And Admin clicks on Yes button in confirmation popup
+          Then verify "error" toaster "<ErrorToaster>"
+          And Admin clicks on Done button
+          When Admin clicks on toggle button
+          And Admin clicks on Yes button in confirmation popup
+          Then verify "error" toaster "<ErrorToaster>"
+
+
+          Examples:
+               | PolicyName    | ErrorToaster                                                            | SuccesToaster                                      |
+               | Automation IB | The policy cannot be turned active as it does not have any active rules | Rule: CorrelationRuleUpdated1 updated successfully |
+
 
 
         Scenario Outline: Admin deletes the existing Failure Policy

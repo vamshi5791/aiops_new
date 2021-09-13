@@ -248,6 +248,18 @@ When('Admin clicks on Save and Add Rule button', async function () {
     }
 });
 
+When('Admin clicks on Save Policy', async function () {
+
+    try {
+        await objPolicy.SavePolicy();
+    }
+    catch (error) {
+        await console.log("Feature name : Policies - Action : clicking on Save Policy")
+        await console.log(error)
+        throw "User is not able to click on Save Policy";
+    }
+});
+
 Then('verify {string} toaster {string}', async function (policy, Toaster) {
     try {
         await browser.wait(EC.visibilityOf(objPolicy.tostMessage), 10000);
@@ -577,3 +589,13 @@ When('Admin enters {string} value as {string}', async function (policy, value) {
     }
 });
 
+
+
+When('Admin clicks on set rules', async function () {
+    await objPolicy.SetRules();
+  });
+
+
+  When('Admin clicks on toggle button', async function () {
+      await objPolicy.RuleToggle();
+  });

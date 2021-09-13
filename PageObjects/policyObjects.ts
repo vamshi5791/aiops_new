@@ -30,6 +30,7 @@ export class PolicyObjects {
     drpdwnOperator = element(by.xpath('//label[text()="Operator *"]//following::span[@class="smo-dropdown-trigger-icon smo-clickable smo smo-expand-more-alt chevron-icon"]'));
     drpdwnValue = element(by.xpath('//label[text()="Value *"]//following::span[@class="smo-dropdown-trigger-icon smo-clickable smo smo-expand-more-alt chevron-icon"]'));
     btnSaveandAddRule = element(by.xpath('//span[text()="Save and Add Rule"]'));
+    btnSavePolicy = element(by.xpath('//span[text()="Save Policy"]'));
 
 
     tostMessage = element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'));
@@ -59,6 +60,8 @@ export class PolicyObjects {
     icnEditRule = element(by.xpath('//span[@class="smo smo-create-alt edit-icon pr-2"]'));
     btnEditIconInFailurePolicy = element(by.css('.smo-create-alt'));
     btnUpdateRule = element(by.xpath('//span[text()="Update Rule"]'));
+    btnSetRules = element(by.xpath('//span[text()="Set Rules"]'))
+    btnRuleToggle = element(by.xpath('//span[@class="smo-inputswitch-slider smo-inputswitch-slider-default smo-inputswitch-slider-default-sm input-switch-small"]'))
 
     tgbbthStatus = element(by.xpath('//span[@class="smo-inputswitch-slider smo-inputswitch-slider-default smo-inputswitch-slider-default-sm input-switch-small"]'));
 
@@ -74,13 +77,17 @@ export class PolicyObjects {
         await this.txtValue.sendKeys(Value);
     }
 
-
+    async RuleToggle() {
+        await this.btnRuleToggle.click();
+    }
     async clickOnProject(projectName) {
         await element(by.xpath('//h3[text()=" ' + projectName + ' "]')).click();
     }
-
     async configurationNavigation() {
         await this.lnkConfiguration.click();
+    }
+    async SetRules() {
+        await this.btnSetRules.click();
     }
     async correlationPolicyNavigation() {
         await this.lnkAlertCorrelationPolicy.click();
@@ -137,6 +144,9 @@ export class PolicyObjects {
     }
     async clickSaveandAddRule() {
         await this.btnSaveandAddRule.click();
+    }
+    async SavePolicy() {
+        await this.btnSavePolicy.click();
     }
     async enterRulename(Rulename) {
         await this.txtRulename.clear();

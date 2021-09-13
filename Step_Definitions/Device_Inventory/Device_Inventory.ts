@@ -275,18 +275,34 @@ When('{string} clicks on Configure columns option', async function (userRole) {
 });
 
 When('{string} selects resource name column', async function (userRole) {
+
   await objInfrastructurePage.IPAdress();
-  await objInfrastructurePage.MacAddress();
   await objInfrastructurePage.Vendor();
   await objInfrastructurePage.MaintenanceMode();
   await objInfrastructurePage.Site();
-  // await objInfrastructurePage.
-
 });
 
 When('{string} clicks on close button', async function (userRole) {
+  await objInfrastructurePage.Cancel();
 });
 
-Then('{string} verifies the resource name column is present or not', async function (userRole) {
-  await browser.wait(EC.visibilityOf(objInfrastructurePage.txtResourceName), 100000);
+Then('{string} verifies the Mac address column is present or not', async function (userRole) {
+  await browser.wait(EC.presenceOf(objInfrastructurePage.txtMacAdress), 10000);
+});
+
+
+
+//  Itops Admin edits fail over device.
+
+
+When('{string} clicks on fail over device drop down', async function (userRole) {
+
+  var myElement = objInfrastructurePage.btnFailOverDevice;
+  await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+  await objInfrastructurePage.FailOverDevice();
+
+});
+
+Then('{string} verifies the same resource name in the dropdown {string}', async function (userRole, ResourceName) {
+  await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="'+ResourceName+'"]'))), 100000);
 });
