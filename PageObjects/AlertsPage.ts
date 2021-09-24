@@ -30,7 +30,6 @@ export class AlertsPage {
   chkMakeAsDefault = element(by.xpath('//span[text()="Make As Default"]//preceding::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'));
   btnEditSavedFilter = element(by.className('mr-3 smo smo-edit ng-star-inserted'));
   btnDeleteSavedFilter = element(by.className('smo smo-trash-alt-regular ng-star-inserted'));
-  // btnSavedFilter = element(by.xpath('//span[text()="IB"]'));
   btnApply = element(by.xpath('//span[text()="Apply"]'));
   btnSave_Apply = element(by.xpath('//span[text()="Save and Apply"]'));
   btnUpdateAndApply = element(by.xpath('//span[text()="Update and Apply"]'));
@@ -58,16 +57,60 @@ export class AlertsPage {
 
   btnselectConfiguration = element(by.xpath('//a[text()="Configuration"]'));
   btnDownloadAlert = element(by.xpath('//span[@class="smo smo-download cursor-pt ng-star-inserted"]'))
-  // btnAlertsPage = element(by.xpath('//a[text()="Alerts"]'))
   btnAlertSeverityDpn = element(by.xpath('//label[text()="Alert Severity"]'))
   btnSelectWarning = element(by.xpath('//span[text()="Warning"]'))
   txtWarning = element(by.xpath('//span[text()="Warning"]'))
-  // txtOk = element(by.xpath('//span[text()="Ok"]'))
   txtInformation = element(by.xpath('//span[text()="Information"]'))
   btnRemoveOkSeverity = element(by.xpath('//span[text()="Ok"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
   btnRemoveWarningSeverity = element(by.xpath('//span[text()="Warning"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
   btnRemoveSolarwinds = element(by.xpath('//span[text()="Solarwinds"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
   btnMarkAsDefault = element(by.xpath('//span[@smotooltip="Mark as default"]'))
+
+  // ------------------Milestone3------------ 
+
+  btnState = element(by.xpath('//span[text()="State/Action"]//following::span[@class="smo-dropdown-trigger-icon smo-clickable smo smo-expand-more-alt chevron-icon"]'))
+  btnAcknowledge = element(by.xpath('//span[text()="Acknowledge"]'))
+  btnHold = element(by.xpath('//span[text()="Hold"]'));
+  btnClose = element(by.xpath('//span[text()="Close"]'));
+  txtTicket = element(by.xpath('//span[@class="cursor-pt ng-star-inserted"]'))
+  txtShortDescription = element(by.xpath('//div[@class="ticket-title"]'))
+  btnCluster = element(by.xpath('//span[@class="cluster-badge-icon smo smo-expand-more-alt ng-star-inserted"]'))
+  btnCheckbox = element(by.xpath('//span[text()="Correlated Alerts"]//following::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'))
+  btncancel = element(by.xpath('//span[@class="d-flex justify-content-end align-button"]//following::span[text()="Cancel"]'))
+
+  // -------------------Assign Module -----------------------
+
+  btnStatusDropdown = element(by.className('button-icon button-icon-sm'));
+  btnAssign = element(by.xpath('//span[text()="Assign"]'))
+  btnRefresh = element(by.className('smo-btn-icon-col d-flex align-items-center smo smo-refresh-alt btn-icon smo-clickable ng-star-inserted'));
+  btnAssigned = element(by.xpath('//label[text()="assigned"]'))
+  btnAlertCheckBox = element(by.xpath('//smo-check-box[@class="ng-untouched ng-pristine ng-valid"]'))
+  txtClosingComment = element(by.xpath('//span[text()="Please enter the closure note"]//following::textarea'))
+  btnAddClosureComment = element(by.xpath('//span[text()="Add"]'))
+  btnClosureNoteTab = element(by.xpath('//span[text()="Closure Notes"]'))
+  btnThreeDotsAlertPage = element(by.xpath("(//smo-check-box[@binary='true']/following-sibling::span)[2]"))
+  btnSelectAllCheckBox = element(by.xpath("(//div[contains(@class,'smo-widget smo-corner-all')])[3]"))
+  btnAssignButtonOnPopUp = element(by.xpath("//smo-button[@label='Assign']//button"))
+  btnAutoRefresh = element(by.className("smo-btn-icon-col d-flex align-items-center smo smo-refresh-alt btn-icon smo-clickable ng-star-inserted"))
+  nextArrayButton = element(by.xpath('//a[@class="smo-paginator-next smo-paginator-element smo-state-default smo-corner-all smo-paginator-next-ms"]'))
+  btnDownloadIcon = element(by.className('smo smo-download cursor-pt ng-star-inserted'));
+  txtInformationStripColour = element(by.xpath("//div[contains(@class,'highlight bg-information')]"));
+  btnClusterCount = element(by.xpath("//span[contains(@class,'cluster-badge-icon smo')]"));
+  btnCancelInClustetPopup = element(by.className("smo-overlaypanel-close-icon smo smo-close-black-alt"));
+  chkIncludeToday = element(by.className("smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"));
+
+  async clickOnIncludeToday() {
+    await this.chkIncludeToday.click();
+  }
+  async clickOnCancelInClustetPopup() {
+    await this.btnCancelInClustetPopup.click();
+  }
+  async clickOnClusterCount() {
+    await this.btnClusterCount.click();
+  }
+  async clickOnDownloadIcon() {
+    await this.btnDownloadIcon.click();
+  }
 
   async clickOnRemoveOkCondition() {
     await this.btnRemoveOkCondition.click();
@@ -85,7 +128,6 @@ export class AlertsPage {
     await this.drpFilterBySeverity.click();
   }
   async selectAlerts() {
-    // await browser.sleep(5000)
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//a[text()="Alerts"]'))), 60000);
     await element(by.xpath('//a[text()="Alerts"]')).click();
   }
@@ -93,14 +135,13 @@ export class AlertsPage {
   async Alert_Search(alertName: string) {
     await browser.wait(EC.elementToBeClickable(this.btnSearch), 60000);
     await this.btnSearch.sendKeys(alertName);
-    // await browser.sleep(2000)
     await browser.actions().sendKeys(protractor.Key.ENTER).perform();
-    // await browser.sleep(2000)
   }
   async AdvanceFilter() {
     await this.btnAdvanceFilter.click();
   }
   async SelectSource(Source) {
+    await browser.wait(EC.elementToBeClickable(this.drpSource), 60000);
     await this.drpSource.click()
     await drp.selectByVisibleText(Source);
     await this.drpSource.click()
@@ -244,7 +285,6 @@ export class AlertsPage {
   }
   async RemoveWarningSeverity() {
     await this.btnRemoveWarningSeverity.click();
-    // await browser.sleep(3000);
   }
   async RemoveSolarwinds() {
     await browser.wait(EC.presenceOf(this.btnRemoveSolarwinds), 60000);
@@ -255,29 +295,127 @@ export class AlertsPage {
   async Warning() {
     await this.txtWarning.click();
   }
-  // async Ok() {
-  //   await this.txtOk.click();
-  // }
+  
   async Information() {
     await this.txtInformation.click();
   }
   async AlertSeverityDpn() {
-    // await browser.sleep(3000);
+    await browser.sleep(1000);
     await browser.wait(EC.elementToBeClickable(this.btnAlertSeverityDpn), 60000);
     await this.btnAlertSeverityDpn.click();
-    // await browser.sleep(3000);
   }
   async SavedFilter(SavedFilter: string) {
-    // await browser.sleep(2000);
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="' + SavedFilter + '"]'))), 60000);
     await element(by.xpath('//span[text()="' + SavedFilter + '"]')).click();
-    // await browser.sleep(3000);
   }
   async Infrastructure() {
-    // await browser.sleep(5000)
     await browser.wait(EC.elementToBeClickable(this.btnInfrastructure), 60000);
     await this.btnInfrastructure.click();
 
+  }
+
+
+  // ------------------Milestone3------------ 
+
+
+  async Ticket() {
+    await this.txtTicket.click();
+  }
+  async clickOnUpdateStatus(Status) {
+    await element(by.xpath('//span[text()="' + Status + '"]')).click();
+  }
+  async Acknowledge() {
+    await this.btnAcknowledge.click();
+  }
+  async State() {
+    await this.btnState.click();
+  }
+
+
+
+
+  // -------------------Assign Module -----------------------
+
+
+  async clickOnAutoRefresh() {
+    await this.btnAutoRefresh.click();
+  }
+  async clickOnAssignButtonOnPopUp() {
+    await this.btnAssignButtonOnPopUp.click();
+  }
+  async clickOnThreeDotsAlertPage() {
+    await this.btnThreeDotsAlertPage.click();
+  }
+  async clickOnTicketNumber(TicketNumber: string) {
+    await element(by.xpath('//span[text()="' + TicketNumber + '"]')).click();
+  }
+  async clickOnStatusDropdown(AssignOption: string) {
+    await this.btnStatusDropdown.click();
+    await element(by.xpath('//div[text()="' + AssignOption + '"]')).click();
+  }
+  async selectGroup(value: string) {
+    await browser.wait(EC.elementToBeClickable(element(by.xpath("//label[text()='Choose a Group*']//following::span"))), 50000);
+    await element(by.xpath("//label[text()='Choose a Group*']//following::span")).click();
+    await drp.selectByVisibleText(value);
+  }
+  async selectTeamMember(value: string) {
+    await browser.wait(EC.elementToBeClickable(element(by.xpath("//label[text()='Choose a Team member*']//following::span"))), 50000);
+    await element(by.xpath("//label[text()='Choose a Team member*']//following::span")).click();
+    await browser.sleep(2000)
+    await drp.selectByVisibleText(value);
+  }
+  async clickOnAssignButton() {
+    await this.btnAssign.click();
+  }
+  async clickOnRefreshButton() {
+    await this.btnRefresh.click();
+  }
+  async clickOnAssigned() {
+    await this.btnAssigned.click();
+  }
+
+  async clickOnState(State) {
+    await element(by.xpath('//div[text()="' + State + '"]')).click()
+  }
+
+  async clickOnStateDropdown() {
+    await this.btnState.click();
+  }
+  async clickOnAlertCheckBox() {
+    await this.btnAlertCheckBox.click();
+  }
+
+  async enterClosingComment(Comment) {
+    await this.txtClosingComment.sendKeys(Comment);
+  }
+
+  async clickOnAddClosureComment() {
+    await this.btnAddClosureComment.click();
+  }
+  async clickOnClosureNoteTab() {
+    await this.btnClosureNoteTab.click();
+  }
+  async selectNoOfRows(NoOfRows) {
+    await browser.sleep(5000)
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Rows per page"]//following::smo-dropdown'))), 50000);
+    await element(by.xpath('//span[text()="Rows per page"]//following::smo-dropdown')).click();
+    await browser.sleep(5000)
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="' + NoOfRows + '"]'))), 50000);
+    var myElement = element(by.xpath('//span[text()="' + NoOfRows + '"]'));
+    await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+    await element(by.xpath('//span[text()="' + NoOfRows + '"]')).click();
+  }
+  async clickOnSelectAllCheckBox() {
+    await this.btnSelectAllCheckBox.click();
+  }
+  async Cluster() {
+    await this.btnCluster.click();
+  }
+  async Checkbox() {
+    await this.btnCheckbox.click();
+  }
+  async cancel() {
+    await this.btncancel.click();
   }
 }
 

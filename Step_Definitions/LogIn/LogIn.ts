@@ -50,7 +50,7 @@ When('user enters Username as {string}, Password as {string} and clicks on Login
 Then('ITOps home page is displayed', async function () {
   try {
     await browser.getTitle().then(async function (txtTitle) {
-      await expect(txtTitle).to.include('Itops');
+      await expect(txtTitle).to.include('AIOPS');
     });
   } catch (error) {
     await console.log("Feature name : Login with ITOps " + userName + " role and Scenario name : Login")

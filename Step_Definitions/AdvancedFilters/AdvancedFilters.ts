@@ -1,11 +1,13 @@
-import { Given, When, Then} from "cucumber"
-import { browser, element, by} from "protractor"
+import { Given, When, Then } from "cucumber"
+import { browser, element, by } from "protractor"
 import { AlertsPage } from "../../PageObjects/AlertsPage";
+import { AlertConsoleTableData } from "../../PageObjects/AlertConsoleTableData";
+let objAlertsTableData = new AlertConsoleTableData();
 var EC = browser.ExpectedConditions;
 let objAlerts = new AlertsPage();
- 
+
 import chai from "chai";
- 
+
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
 var testAlertState;
@@ -14,7 +16,6 @@ var testSource;
 
 When('{string} clicks on Alerts page', async function (userName) {
   try {
-    // await browser.sleep(5000)
     await browser.wait(EC.visibilityOf(element(by.xpath('//a[text()="Alerts"]'))), 100000);
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//a[text()="Alerts"]'))), 100000);
     await objAlerts.selectAlerts();
@@ -29,7 +30,6 @@ When('{string} clicks on Alerts page', async function (userName) {
 });
 When('{string} selects alert severity dropdown', async function (userRole) {
   try {
-    // await browser.sleep(3000)
     await objAlerts.AlertSeverityDpn();
   }
   catch (error) {
@@ -72,7 +72,6 @@ Then('verifies severity condition in severity dropdown {string}', async function
 
 When('{string} selects Ok', async function (userRole) {
   try {
-    // await browser.sleep(2000);
     await objAlerts.clickOnOkFilterBySeverity();
 
   }
@@ -124,7 +123,7 @@ When('{string} selects saved filter {string}', async function (userRole, SavedFi
 
 
 });
- 
+
 When('{string} deletes the solarwinds condition from alert console', async function (userRole) {
   try {
     await objAlerts.RemoveSolarwinds();
@@ -140,15 +139,14 @@ When('{string} deletes the solarwinds condition from alert console', async funct
 
 Then('{string} verifies solarwinds filter is not visible', async function (userRole) {
   try {
-    // browser.sleep(5000)
     await objAlerts.btnRemoveSolarwinds.isPresent().then(function (select) {
       expect(select).to.be.false;
     });
-  
+
   }
   catch (error) {
-     console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to remove severity conditions from saved filters")
-     console.log(error)
+    console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to remove severity conditions from saved filters")
+    console.log(error)
     throw "User is not able to verify solarwinds filter is not visible"
   }
 
@@ -236,14 +234,13 @@ Given('{string} clicks on Mark as default', async function (userRole) {
 
 Then('{string} Verifies Warning filter is not applied', async function (userRole) {
   try {
-    //  browser.sleep(3000)
     await objAlerts.btnSelectWarning.isPresent().then(function (select) {
       expect(select).to.be.false;
     });
   }
   catch (error) {
-     console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify when user applied Saved filter and some more severity conditions and navigated to other page and came back to alert console again, that time only saved filter exist")
-     console.log(error)
+    console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify when user applied Saved filter and some more severity conditions and navigated to other page and came back to alert console again, that time only saved filter exist")
+    console.log(error)
     throw "User is not able to Verifies Warning filter is not applied"
   }
 
@@ -259,20 +256,20 @@ Then('{string} verifies heading as {string}', async function (userName, Advanced
     await console.log(error)
     throw "Advanced Filter heading is not available in the advanced filter page"
   }
-  
+
 });
 
 
 Then('{string} verifies Source and Resource section heading as {string}', async function (userName, SourceAndResource) {
   try {
     await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
-  
+
   } catch (error) {
     await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : Verify the advanced filter having Source and Resource sections")
     await console.log(error)
     throw "Source and Resource section is not available in the advanced filter page"
   }
-  
+
 });
 
 
@@ -292,7 +289,7 @@ Then('{string} verifies State and Status,Date and Time sections heading as {stri
     await console.log(error)
     throw "Date and Time section is not present in the advanced filter page"
   }
- 
+
 });
 
 
@@ -306,7 +303,7 @@ Then('{string} verifies user redirects to alert console', async function (userNa
     await console.log(error)
     throw "User is not redirecting to alert console"
   }
- 
+
 });
 
 When('{string} clicks on apply button', async function (userName) {
@@ -317,34 +314,51 @@ When('{string} clicks on apply button', async function (userName) {
     await console.log(error)
     throw "User is not able to click on apply button"
   }
- 
+
 });
 
-Then('{string} verifies the Data shown is solarwinds and ticketed alerts only', async function (userName) {
+Then('{string} verifies the Data shown is solarwinds and ticketed alerts only {string}', async function (userName, Node) {
   try {
     var myElement = objAlerts.txtNoDataAvailable;
-    myElement.isPresent().then(async function (elm) {
+    myElement.isPresent().then(async (elm) => {
       if (elm == false) {
-        await objAlerts.Alert_Search(testSource);
-        await objAlerts.getTestSource(testSource)
-        await objAlerts.getTicketNumber(testAlertState)
-      } 
+        await browser.sleep(2000);
+        var i = 1
+        await objAlertsTableData.verifyAlertMetricColumn(Node);
+        i++;
+        var isNextPageAvailable = "";
+        await objAlertsTableData.isElementIsDisplayed().then((visible) => {
+
+          return this.isNextPageAvailable = visible;
+        });
+        while (this.isNextPageAvailable) {
+          await browser.wait(EC.elementToBeClickable(objAlertsTableData.nextArrayButton), 30000);
+          await browser.sleep(500);
+          objAlertsTableData.nextArrayButton.click();
+          await objAlertsTableData.verifyAlertMetricColumn(Node);
+          i++;
+          await objAlertsTableData.isElementIsDisplayed().then((visible) => {
+            this.isNextPageAvailable = visible;
+          });
+        }
+      }
     });
   } catch (error) {
     await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  Apply the saved filter")
     await console.log(error)
     throw "Data shown is not based on the solar winds and ticketed alerts"
   }
- 
+
 
 });
- 
+
 //Verify date time filter
 
 When('{string} enters in last fields as {string} and select Duration type {string}', async function (userName, InLast, DurationType) {
   try {
     await objAlerts.enterInLastNumber(InLast);
     await objAlerts.selectDurationType(DurationType);
+    await objAlerts.clickOnIncludeToday();
   } catch (error) {
     await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  Date time filter")
     await console.log(error)
@@ -363,13 +377,13 @@ Then('{string} verifies last {string} Days alerts are displayed in the console',
         await objAlerts.getTicketNumber(NumberOfDays)
       }
     });
-  
+
   } catch (error) {
     await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  Date time filter")
     await console.log(error)
     throw "Data shown is not based on the mentioned days "
   }
-  
+
 });
 
 
@@ -382,7 +396,7 @@ When('{string} clicks on Make as default checkbox', async function (userName) {
     await console.log(error)
     throw "User not able to click on Make as default checkbox"
   }
- 
+
 });
 
 
@@ -395,17 +409,17 @@ Then('verify alert console should show results based on default filter applied',
         await objAlerts.Alert_Search(testSource);
         await objAlerts.getTestSource(testSource)
         await objAlerts.getTicketNumber(testAlertState)
-      } 
+      }
     });
   } catch (error) {
     await console.log("Feature name : Advanced Filters  and Scenario name : Verify creating default filter for Alert Console ")
     await console.log(error)
     throw "Data shown is not based on the default filter applied"
   }
- 
+
 });
 
-Then('verify alert console should not show results based on previous default filter.',async  function () {
+Then('verify alert console should not show results based on previous default filter.', async function () {
   try {
     var myElement = objAlerts.txtNoDataAvailable;
     myElement.isPresent().then(async function (elm) {
@@ -438,7 +452,7 @@ Then('{string} verifies that edit and delete options are present', async functio
     await console.log(error)
     throw "Delete option is not present in the page"
   }
- 
+
 });
 
 
@@ -447,11 +461,8 @@ When('{string} clicks on Edit icon for {string} filter', async function (userNam
   try {
     await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
     await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
-    // await browser.actions().mouseMove(element(by.xpath('//span[text()="'+SavedFilter+'"]'))).perform();
-    // await browser.actions().mouseMove(element(by.className('justify-content-start ng-star-inserted'))).perform();
-    await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
-    await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
-    //await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[@smotooltip="Edit"]'))), 10000);
+    await browser.wait(EC.presenceOf(objAlerts.txtAdvancedFilters));
+    await browser.wait(EC.presenceOf(objAlerts.txtSourceAndResources));
     await element(by.xpath('//span[@smotooltip="Edit"]')).click();
     await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
     await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
@@ -460,7 +471,7 @@ When('{string} clicks on Edit icon for {string} filter', async function (userNam
     await console.log(error)
     throw "User not able to click on Edit icon on a saved filter"
   }
- 
+
 });
 
 
@@ -477,7 +488,7 @@ When('{string} edits {string} filter criteria', async function (userName, Source
     await console.log(error)
     throw "User not able to edit filter criteria"
   }
- 
+
 });
 
 
@@ -491,10 +502,8 @@ When('{string} click on Update and Apply', async function (userName) {
     await console.log(error)
     throw "User not able to click on update and apply button"
   }
- 
+
 });
-
-
 
 When('{string} clicks on Yes on confirmation pop up', async function (userName) {
   try {
@@ -504,7 +513,7 @@ When('{string} clicks on Yes on confirmation pop up', async function (userName) 
     await console.log(error)
     throw "User not able to click on Yes from confirmation pop up"
   }
- 
+
 });
 
 
@@ -521,16 +530,16 @@ Then('{string} verifies {string} success message', async function (userName, Toa
     await console.log(error)
     throw "success message is not shown"
   }
-  
+
 });
 
-Then('{string} verifies data in UI', async function (userName) {
+
+Then('{string} verifies data shown should be only related to OK and Warning', async function (userName) {
   try {
     var myElement = objAlerts.txtNoDataAvailable;
     myElement.isPresent().then(async function (elm) {
       if (elm == false) {
-        await objAlerts.Alert_Search(testSource);
-        await objAlerts.getTestSource(testSource)
+        await browser.wait(EC.visibilityOf(element(by.xpath("//div[contains(@class,'highlight bg-success')]"))), 20000);
       }
     });
   } catch (error) {
@@ -540,14 +549,11 @@ Then('{string} verifies data in UI', async function (userName) {
   }
 });
 
-
 When('{string} clicks on Delete icon for {string} filter', async function (userName, SavedFilter) {
   try {
-    // await browser.sleep(3000)
     await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
     await browser.wait(EC.visibilityOf(objAlerts.txtSourceAndResources));
     await browser.actions().mouseMove(element(by.xpath('//span[text()="' + SavedFilter + '"]'))).perform();
-    // await browser.sleep(3000)
     await browser.wait(EC.visibilityOf(objAlerts.txtAdvancedFilters));
     await browser.wait(EC.elementToBeClickable(element(by.className('smo smo-trash-alt-regular ng-star-inserted'))));
     await element(by.className('smo smo-trash-alt-regular ng-star-inserted')).click();
@@ -577,12 +583,11 @@ Then('{string} verifies {string} shown', async function (userName, Toaster) {
 Then('{string} verifies deleted {string} filter is removed from the filter dropdown in console', async function (userName, SavedFilter) {
   try {
     await objAlerts.drpSavedFilter.click();
-    //await browser.wait(EC.invisibilityOf(element(by.xpath('//span[text()="Automation"]'))), 5000);
   } catch (error) {
     await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
     await console.log(error)
-    
-   }
- })
+
+  }
+})
 
 

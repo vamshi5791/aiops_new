@@ -10,10 +10,8 @@ let objTicketingThreshold = new TicketingThreshold();
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
 
-
 When('{string} navigate to Ticketing Threshold', async function (userRole) {
   try {
-    // await browser.sleep(2000);
     await objTicketingThreshold.clickOnTicketingThreshold();
   }
   catch (error) {
@@ -25,7 +23,6 @@ When('{string} navigate to Ticketing Threshold', async function (userRole) {
 
 When('Admin enter clicks on Add New Threshold button', async function () {
   try {
-    // await browser.sleep(2000);
     await objTicketingThreshold.clickOnAddNewThresholdButton();
   }
   catch (error) {
@@ -68,7 +65,6 @@ When('Admin enters Time Interval {string}', async function (timeinterval) {
 When('Admin clicks on Add Threshold button', async function () {
   try {
     await objTicketingThreshold.clickOnAddThreshold();
-    // await browser.sleep(15000);
   }
   catch (error) {
     await console.log("Feature name : Ticketing Threshold  and Scenario name : Admin clicks on Add Threshold button ")

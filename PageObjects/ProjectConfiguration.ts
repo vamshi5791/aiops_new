@@ -10,11 +10,11 @@ export class ProjectConfiguration {
     btnCreate = element(by.xpath('//span[text()="Create"]'));
     btnUpdate = element(by.xpath('//legend[text()="Project Description"]//following::button'));
     //General configuration  
-    txtProjectConfiguration = element(by.xpath("//span[text()='Project Configuration']"))          
-   
+    txtProjectConfiguration = element(by.xpath("//span[text()='Project Configuration']"))
+
     txtThresholdCount = element(by.xpath('//legend[text()="Response SLA Threshold Count"]//following-sibling::input'));
-   
-    
+
+
     drpITOPsflavour = element(by.xpath('//legend[text()="ITOps Flavor"]//following-sibling::div/span'));
     btn_saveGeneralConfig = element(by.xpath('//span[text()="Scheduler Configurations "]//preceding::button'));
 
@@ -129,7 +129,6 @@ export class ProjectConfiguration {
         await this.txtProjectname.sendKeys(ProjectName)
     }
     async ProjectDescription(Description: string) {
-        //await this.txtDescription.clear();
         await this.txtDescription.sendKeys(Description)
     }
 

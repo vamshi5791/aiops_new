@@ -8,6 +8,7 @@ Feature: Recovery Policy
             
              When "ITOpsEngineer" navigate to Recovery Policy
               And "ITOpsEngineer" clicks on policy "<policyname>"
+            And "ITOpsEngineer" must be able to see the policy and rules in read only mode
               And click on cancel button
 
         Examples:

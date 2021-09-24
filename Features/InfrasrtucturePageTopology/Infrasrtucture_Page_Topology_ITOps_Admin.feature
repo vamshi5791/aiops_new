@@ -5,24 +5,23 @@ Feature: Device Inventory Features
   Feature Description : Device Inventory Features
 
 
-  #  @Topology_Upload
-  #  Scenario Outline: Topology Upload
-  # Given user opens itops application
-  # And "ITOps_Admin" enters Username, Password and click on Login button "Itops_admin", "qa123"
-  # When "ITOps_Admin" enters project name in project search feild "Automation_02"
-  # And "ITOps_Admin" clicks on project name "Automation_02"
-  # And "ITOps_Admin" opens infrastructure page
-  # And "ITOps_Admin" clicks on Topology icon
-  # And "ITOps_Admin" clicks on import
-  # And "ITOps_Admin" selects the valid file to be uploaded
-  # And "ITOps_Admin" clicks on upload button
-  # And "ITOps_Admin" verifies the device is visible
+   @Topology_Upload
+  Scenario Outline: Topology Upload
+
+    When "Admin" navigates to ust home page
+    And "Admin" enters project name as "<ProjectName>" in the search field
+    And "Admin" clicks on project name "<ProjectName>"
+    And "ITOps_Admin" opens infrastructure page
+    And "ITOps_Admin" clicks on Topology icon
+    And "ITOps_Admin" clicks on import
+    And "ITOps_Admin" selects the valid file to be uploaded
+    And "ITOps_Admin" clicks on upload button
 
 
 
-  #    Examples:
-  # | Itops_UserName | Itops_Password | projectName   | TestProjectName |
-  # | Itops_admin    | qa123          | Automation_02 | Automation_02   |
+    Examples:
+      | Itops_UserName | Itops_Password | ProjectName   | TestProjectName |
+      | Itops_admin    | qa123          | Automation_01M3 | Automation_02   |
 
 
   @ITOpsAdminSearchWithNonExistingDeviceName
@@ -55,11 +54,11 @@ Feature: Device Inventory Features
 #     | AUSYCT-28A-SBC1 | ausyct-28a-sbc1 |
 
 
-# @Delete_Topology
-# Scenario: Delete_Topology View
+@Delete_Topology
+Scenario: Delete_Topology View
 
-# When "ITOps_Admin" clicks on Topology icon
-#     And "ITOps_Admin" clicks the delete topology icon
-#     And "ITOps_Admin" clicks on yes for conformation
+When "ITOps_Admin" clicks on Topology icon
+    And "ITOps_Admin" clicks the delete topology icon
+    And "ITOps_Admin" clicks on yes for conformation
 
 

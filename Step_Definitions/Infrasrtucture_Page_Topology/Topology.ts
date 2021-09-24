@@ -9,8 +9,6 @@ let objInfrastructurePage = new InfrastructurePage();
 
 When('{string} opens infrastructure page', async function (userRole) {
   try {
-
-    // await browser.sleep(5000)
     await objInfrastructurePage.Infrastructure();
   }
   catch (error) {
@@ -124,4 +122,29 @@ Then('device should not be available {string}', async function (string) {
     throw "Device is available"
   }
 });
+
+
+When('{string} selects the valid file to be uploaded', async function (string) {
+  await console.log("directory path: " + __dirname);
+  var basePath = __dirname;
+  basePath = basePath.split('JSFiles')[0];
+  await console.log("basePath: " + basePath);
+
+  var filePath = basePath + "\Sample_Topology.xlsx";
+  await console.log("filePath: " + filePath);
+  await objInfrastructurePage.browseFile.sendKeys(filePath);
+  await browser.sleep(1000)
+});
+
+
+When('{string} clicks on upload button', async function (string) {
+  await browser.wait(EC.elementToBeClickable(objInfrastructurePage.btnUpload2), 30000);
+  await browser.sleep(500);
+  await objInfrastructurePage.btnUpload2.click();
+});
+
+
+
+
+
 

@@ -15,7 +15,7 @@ Feature: Verify filter by severity drop down
             Then verify Severity drop down should have values as - Ok, Warning, Minor, Major, Critical,Information
             And verify UI should show chips with filter condition with close option
             And "admin" verifies Remove all button is present
-            And verify data should be alerts with OK and warning severity only
+            And verify data should be alerts with OK and warning severity only "<Ok>"
             Examples:
                   | UserName    | Password | Severity_1 | Severity_2 | Alert_State | FilterName | Description | Toaster                    | DifferentUserName |
                   | Itops_admin | qa123    | Ok         | Warning    | Ticketed    | Automation | Value 2     | Filter saved successfully. | Itops_engineer    |

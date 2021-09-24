@@ -21,6 +21,8 @@ export class PushingAlerts {
   btnenterRoutingKey = element(by.xpath('//h2[text()="Publish message"]//following::input[@name="routing_key"]'));
   btnenterPayLoad = element(by.xpath('//textarea[@name="payload"]'));
   btnclickOnPublish = element(by.xpath('//input[@value="Publish message"]'))
+  btnClose = element(by.xpath('//span[text()="Close"]'))
+
 
   async loginToRabbitMQ(adminUserName: string, adminPassword: string) {
     await this.txtUserName.sendKeys(adminUserName)
@@ -56,6 +58,9 @@ export class PushingAlerts {
   }
   async clickOnPublish() {
     await this.btnclickOnPublish.click();
+  }
+  async Close() {
+    await this.btnClose.click();
   }
 
 }

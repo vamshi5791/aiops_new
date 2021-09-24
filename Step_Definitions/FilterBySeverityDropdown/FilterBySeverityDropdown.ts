@@ -2,6 +2,8 @@ import { When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { support } from "../../support/support";
+import { AlertConsoleTableData } from "../../PageObjects/AlertConsoleTableData";
+let objAlertsTableData = new AlertConsoleTableData();
 var drp = new support();
 var EC = browser.ExpectedConditions;
 let objAlerts = new AlertsPage();
@@ -10,7 +12,6 @@ let objAlerts = new AlertsPage();
 When('{string} clicks on Filter by severity drop down', async function (string) {
 
   try {
-    // await browser.sleep(10000)
     await browser.wait(EC.visibilityOf(objAlerts.drpFilterBySeverity));
     await browser.wait(EC.elementToBeClickable(objAlerts.drpFilterBySeverity));
     await browser.wait(EC.presenceOf(objAlerts.drpFilterBySeverity));
@@ -91,14 +92,32 @@ Then('verify Severity drop down should have values as - Ok, Warning, Minor, Majo
 });
 
 
-Then('verify data should be alerts with OK and warning severity only', async function () {
+Then('verify data should be alerts with OK and warning severity only {string}', async function (Severity) {
 
   try {
     var myElement = objAlerts.txtNoDataAvailable;
-    myElement.isPresent().then(async function (elm) {
-      if (elm==false) {
-        await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="OK"]'))));
-      } 
+    myElement.isPresent().then(async (elm) => {
+      if (elm == false) {
+        await browser.sleep(2000);
+        var i = 1
+        await objAlertsTableData.verifySeverityColumn(Severity);
+        i++;
+        var isNextPageAvailable = "";
+        await objAlertsTableData.isElementIsDisplayed().then((visible) => {
+
+          return this.isNextPageAvailable = visible;
+        });
+        while (this.isNextPageAvailable) {
+          await browser.wait(EC.elementToBeClickable(objAlertsTableData.nextArrayButton), 30000);
+          await browser.sleep(500);
+          objAlertsTableData.nextArrayButton.click();
+          await objAlertsTableData.verifySeverityColumn(Severity);
+          i++;
+          await objAlertsTableData.isElementIsDisplayed().then((visible) => {
+            this.isNextPageAvailable = visible;
+          });
+        }
+      }
     });
   } catch (error) {
     await console.log("Feature name : Filter by Severity dropdown and Scenario name : verify data should be alerts with OK and warning severity only")

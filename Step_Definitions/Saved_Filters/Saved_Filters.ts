@@ -4,7 +4,8 @@ import chai from "chai";
 import { LogIn } from '../../PageObjects/LogIn';
 import { ProjectListingPage } from "../../PageObjects/ProjectListing";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
-
+import { AlertConsoleTableData } from "../../PageObjects/AlertConsoleTableData";
+let objAlertsTableData = new AlertConsoleTableData();
 var EC = browser.ExpectedConditions;
 var fs = require('fs');
 var expect = chai.expect;
@@ -225,12 +226,27 @@ Then('verify Data shown should be based on the filter conditions {string}', asyn
   await browser.wait(EC.visibilityOf(objAlerts.drpSavedFilter), 10000);
 
   var myElement = objAlerts.txtNoDataAvailable;
-  myElement.isPresent().then(async function (elm) {
-    if (elm) {
-      console.log("No data available")
+  myElement.isPresent().then(async (elm) => {
+    if (elm == false) {
+      await browser.sleep(2000);
+      var i = 1
+      await objAlertsTableData.verifyAlertMetricColumn(Node);
+      i++;
+      var isNextPageAvailable = "";
+      await objAlertsTableData.isElementIsDisplayed().then((visible) => {
 
-    } else {
-      await objAlerts.getTestSource(TestSource)
+        return this.isNextPageAvailable = visible;
+      });
+      while (this.isNextPageAvailable) {
+        await browser.wait(EC.elementToBeClickable(objAlertsTableData.nextArrayButton), 30000);
+        await browser.sleep(500);
+        objAlertsTableData.nextArrayButton.click();
+        await objAlertsTableData.verifyAlertMetricColumn(Node);
+        i++;
+        await objAlertsTableData.isElementIsDisplayed().then((visible) => {
+          this.isNextPageAvailable = visible;
+        });
+      }
     }
   });
 });

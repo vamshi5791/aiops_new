@@ -73,7 +73,6 @@ export class PolicyObjects {
 
     async enterValue(Value) {
         await this.txtValue.clear();
-        // await browser.sleep(2000)
         await this.txtValue.sendKeys(Value);
     }
 
@@ -103,16 +102,11 @@ export class PolicyObjects {
     }
 
     async clickOnPolicyEditIcon(policyname) {
-        // await browser.sleep(2000)
         await browser.actions().mouseMove(element(by.xpath('//b[text()="' + policyname + '"]'))).perform();
-        // await browser.sleep(2000)
-        //await element(by.xpath('//b[text()="' + policyname + '"]//following::span[@class="smo smo-create-alt edit-icon cursor-pointer right-padding-20 ng-star-inserted"]')).click();
         await element(by.xpath('//span[@class="smo smo-create-alt edit-icon cursor-pointer right-padding-20 ng-star-inserted"]')).click();
-    //span[@class="action-btns"]//following::span
     }
 
     async clickOnPolicyDeleteIcon(policyname) {
-        // await browser.sleep(2000)
         await browser.actions().mouseMove(element(by.xpath('//b[text()="' + policyname + '"]'))).perform();
         await element(by.xpath('//span[@class="smo smo-delete trash-icon cursor-pointer ng-star-inserted"]')).click();
     }
@@ -122,20 +116,17 @@ export class PolicyObjects {
     }
     async enterPolicyName(policyName) {
         await this.txtPolicyName.clear();
-         await browser.sleep(2000)
+        await browser.sleep(2000)
         await this.txtPolicyName.sendKeys(policyName);
     }
     async enterPrecedence(precedence) {
         await this.txtPrecedence.clear();
-        // await browser.sleep(2000)
         await this.txtPrecedence.sendKeys(precedence);
     }
     async selectAttribute(attibute) {
         await browser.sleep(2000)
         await this.drpdwnAttribute.click();
         await browser.sleep(2000)
-        // await browser.wait(EC.visibilityOf(element(by.xpath("//span[text()='" + attibute + "']"))), 40000);
-        // await browser.wait(EC.elementToBeClickable(element(by.xpath("//span[text()='" + attibute + "']"))), 40000);
         await drp.selectByVisibleText(attibute);
     }
     async selectValue(Value) {
@@ -150,7 +141,6 @@ export class PolicyObjects {
     }
     async enterRulename(Rulename) {
         await this.txtRulename.clear();
-        // await browser.sleep(2000)
         await this.txtRulename.sendKeys(Rulename);
     }
 
@@ -193,7 +183,7 @@ export class PolicyObjects {
     }
     async clickOnNext() {
         await this.btnNext.click();
-    } 
+    }
     async clickEditRuleIcon() {
         await this.icnEditRule.click();
     }
@@ -201,7 +191,6 @@ export class PolicyObjects {
         await this.btnUpdateRule.click();
     }
     async clickOnPolicy(policyname) {
-        // await browser.sleep(2000);
         await element(by.xpath('//b[text()="' + policyname + '"]')).click();
     }
     async clickOnAddNewRUle() {

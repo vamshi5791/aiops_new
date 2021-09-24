@@ -8,6 +8,7 @@ Feature: Verify Acknowledgement Policy
              When "Itops_Engineer" navigate to Configuration section
               And "ITOpsEngineer" navigate to Acknowledgement Policy
              When "ITOpsEngineer" clicks on policy "<policyname>"
+            And "ITOpsEngineer" must be able to see the policy and rules in read only mode
               And click on cancel button
 
         Examples:
