@@ -53,16 +53,32 @@ pipeline {
                 
             }   
         }
-        stage('ITOPS Regression Test') {
+        stage('ITOPS Regression Tests') {
+        parallel{
+        stage('Batch 1') {
             steps {
                 echo "[INFO] Executing Regression Test"
                 sh """                
-                  node node_modules/protractor/bin//protractor JSFiles/Configuration.js --params.env ${Environment_Name} --browser=${Browser} --Options=${BrowserMode} --no-sandbox
+                  node node_modules/protractor/bin//protractor JSFiles/Configuration_Batch_1.js --params.env ${Environment_Name} --browser=${Browser} --Options=${BrowserMode} --no-sandbox
                 
 
                 """
                 
             }   
+        }
+
+        stage('Batch 2') {
+            steps {
+                echo "[INFO] Executing Regression Test"
+                sh """                
+                  node node_modules/protractor/bin//protractor JSFiles/Configuration_Batch_2.js --params.env ${Environment_Name} --browser=${Browser} --Options=${BrowserMode} --no-sandbox
+                
+
+                """
+                
+            }   
+        }
+        }
         }
 
   }
@@ -73,7 +89,7 @@ pipeline {
             emailext (
                   subject: "Regression Test results for itops . Job '${env.JOB_NAME} . Build No ${env.BUILD_NUMBER}'",
                   body: """Please see the attachment for regression test result""",
-                  to: "ajay.nelavetla@ideabytes.com,gopi.balde@ideabytes.com",
+                  to: "ajay.nelavetla@ideabytes.com,gopi.balde@ideabytes.com,sravanthi.thumma@ideabytes.com",
                   from: "noreplysmartopssvc@ust-global.com",
                   mimeType: 'text/plain',
                   attachmentsPattern: 'TestReport/ITOpsAutomation_Report.html'
@@ -85,4 +101,3 @@ pipeline {
 
    
 }
-
