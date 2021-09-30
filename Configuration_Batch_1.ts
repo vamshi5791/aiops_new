@@ -158,7 +158,7 @@ export let config: Config = {
     };
  
     let generateCustomReport = new GenerateCustomReport();
-    await generateCustomReport.readJson('cucumberreport_batch_1');
+    await generateCustomReport.readJson('batch_1');
 
   },
   jasmineNodeOpts: {

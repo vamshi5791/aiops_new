@@ -16,7 +16,7 @@ export class GenerateCustomReport {
 
   async readJson(BatchType) {
     try {
-      this.jsonData = JSON.parse(fs.readFileSync('./TestReport/'+BatchType+'.json', 'utf-8'));
+      this.jsonData = JSON.parse(fs.readFileSync('./TestReport/cucumberreport_'+BatchType+'.json', 'utf-8'));
       console.log("====cucumber json data========");
       // console.log(this.jsonData);
       var ti = new Date();
@@ -79,7 +79,7 @@ export class GenerateCustomReport {
     try {
       var html = '<h1>Hello</h1>'
 
-      var reportFileName = './TestReport/ITOpsAutomation_Report'+BatchType+'.html';
+      var reportFileName = './TestReport/ITOpsAutomation_Report_'+BatchType+'.html';
       try {
         console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> Before writeFile");
 
@@ -94,7 +94,7 @@ export class GenerateCustomReport {
             console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> HTML Report File created!");
             console.log("File created!");
             var reportDir = reportFileName
-            var desDir = "./Previous_Reports/ITOpsAutomation_Report"+BatchType
+            var desDir = "./Previous_Reports/ITOpsAutomation_Report_"+BatchType
             if (fse.existsSync(reportDir)) {
               console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> Before copySync");
               return fse.copySync(reportDir,
