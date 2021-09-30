@@ -128,14 +128,10 @@ export let config: Config = {
 
 
 
-
-
-
-
   ],
   cucumberOpts: {
 
-    format: 'json:./TestReport/cucumberreport.json',
+    format: 'json:./TestReport/cucumberreport_batch_2.json',
     tags: "",
     require: [
       '../JSFiles/Step_Definitions/*/*.js',
@@ -144,13 +140,13 @@ export let config: Config = {
     ]
   },
 
-
+ 
   onComplete: async () => {
     var options = {
       brandTitle: 'Ideabytes',
       name: 'Automation Test Report',
       theme: 'bootstrap',
-      jsonFile: './TestReport/cucumberreport.json',
+      jsonFile: './TestReport/cucumberreport_batch_2.json',
       output: './TestReport/Test_Report.html',
       reportSuiteAsScenarios: true,
       launchReport: true,
@@ -165,7 +161,7 @@ export let config: Config = {
     };
 
     let generateCustomReport = new GenerateCustomReport();
-    await generateCustomReport.readJson();
+    await generateCustomReport.readJson('cucumberreport_batch_2');
 
   },
   jasmineNodeOpts: {

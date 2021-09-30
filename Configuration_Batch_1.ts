@@ -1,6 +1,5 @@
 const args = require('minimist')(process.argv.slice(2));
 import { Config, browser } from "protractor";
-import * as reporter from "cucumber-html-reporter";
 import { GenerateCustomReport } from './TestReport/GenerateCustomReport'
 
 var moment = require("moment");
@@ -126,15 +125,10 @@ export let config: Config = {
     //  '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
 
 
-
-
-
-
-
   ],
   cucumberOpts: {
 
-    format: 'json:./TestReport/cucumberreport.json',
+    format: 'json:./TestReport/cucumberreport_batch_1.json',
     tags: "",
     require: [
       '../JSFiles/Step_Definitions/*/*.js',
@@ -149,7 +143,7 @@ export let config: Config = {
       brandTitle: 'Ideabytes',
       name: 'Automation Test Report',
       theme: 'bootstrap',
-      jsonFile: './TestReport/cucumberreport.json',
+      jsonFile: './TestReport/cucumberreport_batch_1.json',
       output: './TestReport/Test_Report.html',
       reportSuiteAsScenarios: true,
       launchReport: true,
@@ -162,9 +156,9 @@ export let config: Config = {
         "Executed": "Remote"
       }
     };
-
+ 
     let generateCustomReport = new GenerateCustomReport();
-    await generateCustomReport.readJson();
+    await generateCustomReport.readJson('cucumberreport_batch_1');
 
   },
   jasmineNodeOpts: {

@@ -1,17 +1,17 @@
 [
   {
-    "description": "Feature Description : Verifying Login functionality for ITOps Engineer",
+    "description": "Feature Description : Verifying Login functionality for ITOpsAdmin",
     "keyword": "Feature",
-    "name": "Login with ITOps Engineer",
+    "name": "Login with ITOpsAdmin",
     "line": 3,
-    "id": "login-with-itops-engineer",
+    "id": "login-with-itopsadmin",
     "tags": [
       {
-        "name": "@Login",
+        "name": "@Login_Admin",
         "line": 1
       },
       {
-        "name": "@ITOpsEngineer",
+        "name": "@ITOps_Admin",
         "line": 1
       },
       {
@@ -19,20 +19,20 @@
         "line": 1
       }
     ],
-    "uri": "Features\\LogIn\\LogIn_ITOps_Engineer.feature",
+    "uri": "Features\\LogIn\\LogIn_Admin.feature",
     "elements": [
       {
-        "id": "login-with-itops-engineer;successful-login-with-itops-user-roles",
+        "id": "login-with-itopsadmin;successful-login-with-itopsadmin",
         "keyword": "Scenario",
         "line": 15,
-        "name": "Successful Login with ITOps user roles",
+        "name": "Successful Login with ITOpsAdmin",
         "tags": [
           {
-            "name": "@Login",
+            "name": "@Login_Admin",
             "line": 1
           },
           {
-            "name": "@ITOpsEngineer",
+            "name": "@ITOps_Admin",
             "line": 1
           },
           {
@@ -52,20 +52,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6705000000
+              "duration": 4056000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 10,
-            "name": "user enters Username as \"Itops_engineer\", Password as \"qa123\" and clicks on Login button",
+            "name": "user enters Username as \"Itops_admin\", Password as \"qa123\" and clicks on Login button",
             "match": {
               "location": "Step_Definitions\\LogIn\\LogIn.ts:27"
             },
             "result": {
               "status": "passed",
-              "duration": 3540000000
+              "duration": 3089000000
             }
           },
           {
@@ -78,7 +78,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19000000
+              "duration": 14000000
             }
           },
           {
@@ -89,7 +89,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 159000000
+              "duration": 142000000
             },
             "embeddings": [
               {

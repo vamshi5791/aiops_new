@@ -93,7 +93,7 @@ pipeline {
                   to: "ajay.nelavetla@ideabytes.com,gopi.balde@ideabytes.com,sravanthi.thumma@ideabytes.com",
                   from: "noreplysmartopssvc@ust-global.com",
                   mimeType: 'text/plain',
-                  attachmentsPattern: 'TestReport/ITOpsAutomation_Report.html'
+                  attachmentsPattern: 'TestReport/ITOpsAutomation_Report_Batch_1.html,TestReport/ITOpsAutomation_Report_Batch_2.html'
              ) 
 
 

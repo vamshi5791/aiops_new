@@ -1,4 +1,3 @@
-// import { join } from 'path';
 import jsPDF from 'jspdf';
 import { browser } from 'protractor';
 
@@ -15,9 +14,9 @@ export class GenerateCustomReport {
   finalhtmlstring: any = "";
   noOfTCs: any = "";
 
-  async readJson() {
+  async readJson(BatchType) {
     try {
-      this.jsonData = JSON.parse(fs.readFileSync('./TestReport/cucumberreport.json', 'utf-8'));
+      this.jsonData = JSON.parse(fs.readFileSync('./TestReport/'+BatchType+'.json', 'utf-8'));
       console.log("====cucumber json data========");
       // console.log(this.jsonData);
       var ti = new Date();
@@ -31,7 +30,7 @@ export class GenerateCustomReport {
       // console.log(JSON.stringify(this.jsonData));
       console.log("========================JSON End===================");
 
-      await this.bindReportData();
+      await this.bindReportData(BatchType);
       await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> Before sleep");
       await this.sleep(30 * 1000);
       await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> After sleep");
@@ -47,7 +46,7 @@ export class GenerateCustomReport {
     return (num >= 0 && num < 10) ? "0" + num : num + "";
   }
 
-  async bindReportData() {
+  async bindReportData(BatchType) {
     try {
       await fs.readFile('./TestReport/ReportTemplate.html', async (err, tdata) => {
         if (err) {
@@ -61,7 +60,7 @@ export class GenerateCustomReport {
         this.finalhtmlstring = templateData.replace(re, JSON.stringify(this.jsonData));
         console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> After replace json data: ");
         //console.log("Html final data: " + this.finalhtmlstring);
-        return await this.createReportFile();
+        return await this.createReportFile(BatchType);
 
         // console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> After createReportFile: ");
       });
@@ -75,12 +74,12 @@ export class GenerateCustomReport {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  createReportFile() {
+  createReportFile(BatchType) {
     console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> Starting createReportFile: ");
     try {
       var html = '<h1>Hello</h1>'
 
-      var reportFileName = './TestReport/ITOpsAutomation_Report.html';
+      var reportFileName = './TestReport/ITOpsAutomation_Report'+BatchType+'.html';
       try {
         console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> Before writeFile");
 
@@ -95,7 +94,7 @@ export class GenerateCustomReport {
             console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> HTML Report File created!");
             console.log("File created!");
             var reportDir = reportFileName
-            var desDir = "./Previous_Reports/ITOpsAutomation_Report"
+            var desDir = "./Previous_Reports/ITOpsAutomation_Report"+BatchType
             if (fse.existsSync(reportDir)) {
               console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " >>>>>>>> Before copySync");
               return fse.copySync(reportDir,
