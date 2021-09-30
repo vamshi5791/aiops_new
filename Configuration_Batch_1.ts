@@ -16,6 +16,8 @@ export let config: Config = {
   ignoreUncaughtExceptions: true,
   capabilities: {
     'browserName': args.browser,
+    // 'shardTestFiles': true,
+    // maxInstances: 2,
     chromeOptions:
 
     {
@@ -37,7 +39,6 @@ export let config: Config = {
   },
   specs: [
 
- 
     // // //   // DisplayUser
     // '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
     // '../Features/DownloadAlerts/DownloadAlerts_DisplayUser.feature',
@@ -60,7 +61,7 @@ export let config: Config = {
     // '../Features/Logout/LogOut.feature',
 
 
-    // '../Features/LogIn/LogIn_ITOps_Engineer.feature',
+    '../Features/LogIn/LogIn_ITOps_Engineer.feature',
     // '../Features/LogInPersona/LoginPersona_ITOpsEngineer.feature',
     // '../Features/DeviceInventory/Device_Inventory_Engineer.feature',
     // '../Features/Policies/AlertCorrelation_Engineer.feature',
@@ -78,8 +79,8 @@ export let config: Config = {
     // '../Features/Logout/LogOut.feature',
 
     // // // // // Admin
-   //M3
-    '../Features/LogIn/LogIn_Admin.feature',
+    //M3
+    // '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/AlertConsole/AlertConsole.feature',
     // '../Features/Assign/Assign.feature',
     // '../Features/Hold/Hold.feature',
@@ -88,16 +89,23 @@ export let config: Config = {
     // '../Features/AlertListingPage/AlertListingPage.feature',
     // '../Features/TicketDetailsPage-Assign/TicketDetailsPage-Assign.feature',
     // '../Features/DownloadAlerts/DownloadAlerts.feature',
-    // '../Features/DashBoard/DashBoard.feature', 
+    // '../Features/DashBoard/DashBoard.feature',
+    // '../Features/ITSM/ITSM.feature',
+    // '../Features/TicketTemplate/TicketTemplate.feature',
 
-
-
+    // '../Features/InfrasrtucturePageTopology/Infrasrtucture_Page_Topology_ITOps_Admin.feature',
+    // '../Features/MoveToTicketed/MoveToTicketed.feature',
+    // '../Features/ShortDescriptionOfTickets/ShortDescriptionOfTickets.feature',
+    // '../Features/AcknowledgementAlertProcessing/AcknowledgementAlertProcessing.feature',
+    // '../Features/VirtualEngineerAssignemnt/VirtualEngineerAssignemnt.feature',
+    //  '../Features/DeviceDetails/DeviceDetails.feature',    
+    //  '../Features/BulkAcknowledge/BulkAcknowledge.feature'
 
     // '../Features/LogInPersona/LoginPersona_ITOpsAdmin.feature',
     // '../Features/DeviceInventory/Device_Inventory_Admin.feature',
     // '../Features/FilterBySeverityDropdown/FilterBySeverityDropdown.feature',
     // '../Features/RefreshOption/RefreshOption.feature',
-    '../Features/SearchFuntionality/SearchFunctionality.feature',
+    // '../Features/SearchFuntionality/SearchFunctionality.feature',
     // '../Features/SavedFilters/SavedFilters.feature',
     // '../Features/AdvancedFilters/AdvancedFilter.feature',
     // '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
@@ -114,17 +122,12 @@ export let config: Config = {
     //  '../Features/Policies/Recovery.feature',
     // //  '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
     //  '../Features/Logout/LogOut.feature',
-
     //  '../Features/LogIn/LogIn_IE.feature',
     //  '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
 
 
-    // '../Features/InfrasrtucturePageTopology/Infrasrtucture_Page_Topology_ITOps_Admin.feature',
-    // '../Features/MoveToTicketed/MoveToTicketed.feature',
-    // '../Features/ShortDescriptionOfTickets/ShortDescriptionOfTickets.feature',
-    // '../Features/AcknowledgementAlertProcessing/AcknowledgementAlertProcessing.feature',
 
-    // '../Features/VirtualEngineerAssignemnt/VirtualEngineerAssignemnt.feature'
+
 
 
 
