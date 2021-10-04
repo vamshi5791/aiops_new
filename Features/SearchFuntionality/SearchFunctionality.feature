@@ -5,9 +5,7 @@ Feature: Search Functionality with ITOps Admin role
      verifies results should be based on the search input
 
      Scenario Outline: Search by Node Name
-          When "admin" navigates to ITOps home page
-          And "Admin" enters project name as "<ProjectName>" in the search field
-          And "admin" clicks on project name "<ProjectName>"
+
           And "admin" clicks on Alerts page
           And "admin" enters "node name" and clicks on enter "<NodeName>"
           Then verify search result should contain all the alerts from the same node name "<NodeName>"

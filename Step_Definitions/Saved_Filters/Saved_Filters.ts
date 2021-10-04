@@ -20,7 +20,7 @@ let objAlerts = new AlertsPage();
 var testAlertState;
 var testSource;
   
-When('{string} enters project name in project search field {string}', async function (userRole, ProjectName) {
+When('{string} enters project name in project search field', async function (userRole) {
   await ProjectListing.Project_search(ProjectName_Batch_1);
   await browser.sleep(5000)
   TestProjectName = ProjectName_Batch_1;
@@ -70,6 +70,18 @@ When('{string} clicks on project name', async function (userRole) {
     await ProjectListing.selectProject(ProjectName_Batch_2);
   } catch (error) {
     await ProjectListing.selectProject(ProjectName_Batch_2);
+    await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on project name")
+    await console.log(error)
+
+  }
+});
+When('{string} clicks on project name and navigates to dashboard', async function (userRole) {
+  try {
+    await browser.sleep(5000);
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//h3[text()=" ' + ProjectName_Batch_1 + ' "]'))), 100000);
+    await ProjectListing.selectProject(ProjectName_Batch_1);
+  } catch (error) {
+    await ProjectListing.selectProject(ProjectName_Batch_1);
     await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on project name")
     await console.log(error)
 

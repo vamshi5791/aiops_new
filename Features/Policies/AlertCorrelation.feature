@@ -4,10 +4,9 @@ Feature: Verify Alert Correlation Policy
      Feature Description: ITOpsAdmin verifies Alert Correlation Policy operations
 
      Scenario Outline: ITOps Admin creates Alert Correlation policy
-
-          When "Admin" navigates to ITOps home page
-          When "Admin" enters project name as "<ProjectName>" in the search field
-          And "admin" clicks on project name "<ProjectName>"
+          When "admin" navigates to ITOps home page
+          And "Admin" enters project name in project search field
+          And "admin" clicks on project name and navigates to dashboard
           When "Admin" clicks on configuration tab
           When "Admin" navigate to Alert Correlation Policy
           And Admin clicks on Add "AlertCorrelation" Policy
@@ -139,12 +138,12 @@ Feature: Verify Alert Correlation Policy
                | Automation IB | The policy cannot be turned active as it does not have any active rules | Rule: CorrelationRuleUpdated1 updated successfully |
 
 
-Scenario Outline: Admin deletes the existing Alert Correlation Policy
+     Scenario Outline: Admin deletes the existing Alert Correlation Policy
 
-     When "ITOps_Admin" navigate to Alert Correlation Policy
-     And "Admin" clicks on delete icon in listing page "<PolicyName>"
-     And Admin clicks on Yes button in confirmation popup
-     Then "Admin" verifies if "<SuccessMessage>" message is displayed
-     Examples:
-          | PolicyName    | SuccessMessage              |
-          | Automation IB | Policy deleted successfully |
+          When "ITOps_Admin" navigate to Alert Correlation Policy
+          And "Admin" clicks on delete icon in listing page "<PolicyName>"
+          And Admin clicks on Yes button in confirmation popup
+          Then "Admin" verifies if "<SuccessMessage>" message is displayed
+          Examples:
+               | PolicyName    | SuccessMessage              |
+               | Automation IB | Policy deleted successfully |

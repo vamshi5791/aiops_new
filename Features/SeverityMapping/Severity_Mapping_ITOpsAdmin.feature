@@ -6,9 +6,9 @@ Feature:Severity Mapping
 
      Scenario Outline: Verifying Admin is able to Configure New Severity Mapping
 
-          When "Admin" navigates to ITOps home page
-          And "Admin" enters project name as "<ProjectName>" in the search field
-          And "Admin" clicks on project name "<ProjectName>"
+          When "admin" navigates to ITOps home page
+          And "Admin" enters project name in project search field
+          And "admin" clicks on project name and navigates to dashboard
           And "Admin" clicks on Configuration tab
           And "Admin" clicks on Severity Mapping
           And "Admin" clicks on Add new source button

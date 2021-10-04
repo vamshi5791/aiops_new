@@ -8,7 +8,9 @@ Feature: Verify filter by severity drop down
 
       Scenario Outline: Verify filter by severity drop down
 
-
+            When "admin" navigates to ITOps home page
+            And "Admin" enters project name in project search field
+            And "admin" clicks on project name and navigates to dashboard
             When "admin" clicks on Alerts page
             And "admin" clicks on Filter by severity drop down
             And "admin" selects Severity - OK and Warning "<Ok>", "<Warning>"
