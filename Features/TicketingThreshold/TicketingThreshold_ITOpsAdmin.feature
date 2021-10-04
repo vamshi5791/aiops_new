@@ -19,6 +19,13 @@ Feature: Create Ticketing Threshold by admin
                | Forescout | 3           | 60           | Threshold added successfully. |
 
 
+     Scenario Outline: ITOps Admin deleting newly created Ticketing Threshold
 
+          When "Admin" clicks on Configuration tab
+          And "Admin" navigate to Ticketing Threshold
+          And Admin clicks on delete icon
+          And 'Admin' clicks on yes button
 
-
+          Examples:
+               | SuccessMessage |
+               | Threshold deleted successfully. |

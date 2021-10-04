@@ -72,6 +72,9 @@ Feature:  Display Configuration
           Then "Admin" verifies the "<DisplayName>" present in secondary section
           And "Admin" navigate to Configuration section
           And "Admin" clicks on Alert Console Display Configuration from LHS menu Settings
+          When "Admin" selects "<FieldName>" in the primary section and clicks on right arrow button
+          And "Admin" clicks on Save configuration button
+          Then "Admin" verifies if "<SuccessMessage>" message is displayed
 
           Examples:
                | FieldName    | DisplayName | SuccessMessage                            |

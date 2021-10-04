@@ -152,27 +152,13 @@ Feature:  Advanced Filter
 
      Scenario Outline:Verify creating default filter for Alert Console
 
-          When "Admin" clicks on Alerts page
+          And "admin" clicks on Alerts page
           And "Admin" clicks on advanced filter icon
-          And "Admin" enters source as "<Source>" and alert state as "<Alert_State>"
-          And "Admin" clicks on Save filter button
-          And "Admin" enters filter name as "<FilterName>" and Description as "<Description>"
-          And "Admin" clicks on Make as default checkbox
-          And "Admin" clicks on save and apply button
-          Then "Admin" verifies if "<SuccessMessage>" message is displayed
-          And verify alert console should show results based on default filter applied
-          And "Admin" clicks on logout button
-          Given ITOps "Admin" with username and password as "<DifferentUserName>", "<Password>" is in the home page
-          When "Admin" enters project name as "<ProjectName>" in the search field
-          And "Admin" clicks on project name "<ProjectName>"
-          And "Admin" clicks on Alerts page
-          Then verify alert console should show results based on default filter applied
-          And "Admin" clicks on logout button
-          Given ITOps "Admin" with username and password as "<UserName>", "<Password>" is in the home page
-          When "Admin" enters project name as "<ProjectName>" in the search field
-          And "Admin" clicks on project name "<ProjectName>"
-          And "Admin" clicks on Alerts page
-          Then verify alert console should not show results based on previous default filter.
+          When "Admin" clicks on Delete icon for "<SavedFilter>" filter
+          And "Admin" clicks on Yes on confirmation pop up
+          Then "Admin" verifies "<Toaster>" shown
+          Then "Admin" verifies deleted "<SavedFilter>" filter is removed from the filter dropdown in console
+
           Examples:
-               | UserName    | Password | ProjectName      | Source     | Alert_State | FilterName | Description | SuccessMessage             | DifferentUserName |
-               | Itops_admin | qa123    | Automation_IB_24 | Solarwinds | Ticketed    | Automation | Value 2     | Filter saved successfully. | Itops_engineer    |
+               | UserName    | Password | ProjectName      | SavedFilter | Toaster                      |
+               | Itops_admin | qa123    | Automation_IB_24 | IB          | Filter deleted successfully. |

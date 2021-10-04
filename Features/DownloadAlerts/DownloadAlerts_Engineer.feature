@@ -1,12 +1,12 @@
 @DownloadAlerts  @ITOps_DisplayUser @Regression
 
-Feature: Download Alerts
+Feature: Download Alerts with Itops Engineer
 
-    Scenario Outline: Verify the user is able to download the alerts In csv file
+    Scenario Outline: Verify the ITOps Engineer is able to download the alerts In csv file
 
         When "ITOps_Engineer" navigates to ITOps home page
-        And "ITOps_Engineer" enters project name as "<ProjectName>" in the search field
-        And "ITOps_Engineer" clicks on project name "<ProjectName>"
+        And "Admin" enters project name in project search field and click on enter
+        And "admin" clicks on project name
         And "ITOps_Engineer" clicks on Alerts page
         And "ITOps_Engineer" clicks on download icon
         And "ITOps_Engineer" reads data from alerts console
@@ -15,4 +15,4 @@ Feature: Download Alerts
 
         Examples:
             | ProjectName     |
-            | Automation_02M3 |
+            | Automation_01M3 |

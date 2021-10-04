@@ -1,25 +1,23 @@
 import { Given, When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import chai from "chai";
-// import { LogIn } from '../../PageObjects/LogIn';
 import { Dashboard } from "../../PageObjects/Dashboard";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { AlertConsoleTableData } from "../../PageObjects/AlertConsoleTableData";
+import { ApiRabbitMQ } from '../../PageObjects/ApiRabbitMQ';
 
 let objAlertsTableData = new AlertConsoleTableData();
 var moment = require("moment");
-// var fse = require("fs-extra");
-// var PropertiesReader = require('properties-reader');
-// var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
-// let objLogIn = new LogIn();
 let objAlerts = new AlertsPage();
 let objectDashboard = new Dashboard();
-// var userName;
+let objApiRabbitMQ = new ApiRabbitMQ()
 var TestCount;
-var tableRowCount;
+var MTBFdata;
 var alertData;
+
+
 //ITOPS Dashboard - verify Top 10 Alerts widget
 
 When('{string} navigate to dashboard section', async function (string) {
@@ -91,6 +89,7 @@ When('{string} gets the number of {string} in alert console page {string}', asyn
     await objAlertsTableData.isElementIsDisplayed().then((visible) => {
       this.isNextPageAvailable = visible;
     });
+    // totalAlertsCount=tableRowCount ;
   }
   await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " after while " + this.tableRowCount);
 
@@ -137,12 +136,32 @@ When('{string} selects alert state as {string}', async function (string, Alert_S
 
 });
 
+
+When('{string} verifies the total open alerts count using project id as {string}', async function (string, ProjectID) {
+  try {
+    var totalAlertCount = await objApiRabbitMQ.openTicketsServName(ProjectID);
+
+    await element(by.className('apexcharts-text apexcharts-datalabel-value')).getText().then(async function (totalAlertCountFromDashboard) {
+      await expect(totalAlertCountFromDashboard).to.include(totalAlertCount);
+    })
+
+  } catch (error) {
+    await browser.switchTo().defaultContent();
+    console.log("verifying total open alerts count in dashboard")
+    console.log(error)
+    throw "invalid total count"
+  }
+
+});
 Then('{string} verifies Alert count should match in both Top {string} Alerts widget and Alert index', async function (string, string1) {
   try {
-    await element(by.xpath('//div[@class="alert-message"]//following::td')).getText().then(async function (text) {
-      await expect(text).to.include(tableRowCount);
+    await element(by.xpath('//div[@class="alert-message"]//following::td')).getText().then(async (text) => {
+      await expect(text).to.include(this.tableRowCount);
+      await console.log("================================" + text)
+      //   await console.log("========-----========================"+this.tableRowCount)
     })
-    await browser.wait(EC.visibilityOf(element(by.xpath('//td[text()="' + tableRowCount + '"]'))), 30000);
+    // await console.log("================================"+totalAlertsCount)
+    // await browser.wait(EC.visibilityOf(element(by.xpath('//td[text()="' + this.totalAlertsCount + '"]'))), 30000);
   } catch (error) {
     await browser.switchTo().defaultContent();
     console.log("Alert count")
@@ -189,6 +208,7 @@ Then('{string} comes out of the dashboard frame', async function (string) {
 });
 Then('{string} moves to the dashboard frame', async function (string) {
   try {
+    //Dashboard taking much time to load
     await browser.sleep(30000)
     await browser.switchTo().frame(element(by.xpath('//iframe[@sandbox="allow-forms allow-modals allow-popups allow-same-origin allow-scripts allow-downloads"]')).getWebElement());
   } catch (error) {
@@ -403,5 +423,92 @@ Then('{string} verifies Top5 alert names from each day should be shown on Y axis
     console.log("verifying the widget Source device mapping is available in the dashboard")
     console.log(error)
     throw "Source device mapping is not available in the dashboard"
+  }
+})
+
+Then('{string} clicks on a device name', async function (string) {
+  try {
+    await objectDashboard.clickOnHostName();
+
+  } catch (error) {
+    await browser.switchTo().defaultContent();
+    console.log("verifying the widget Source device mapping is available in the dashboard")
+    console.log(error)
+    throw "Source device mapping is not available in the dashboard"
+  }
+});
+
+
+Then('{string} verifies Title of popup should be {string}', async function (string, string2) {
+  try {
+    await browser.wait(EC.visibilityOf(objectDashboard.txtTicketDetailsTitle));
+
+  } catch (error) {
+    await browser.switchTo().defaultContent();
+    console.log("verifying the widget Source device mapping is available in the dashboard")
+    console.log(error)
+    throw "Source device mapping is not available in the dashboard"
+  }
+});
+
+
+Then('{string} verifies left side should include label {string}', async function (string, string2) {
+  try {
+    await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="MTBF for Top Alerts"]'))));
+
+  } catch (error) {
+    await browser.switchTo().defaultContent();
+    console.log("verifying the widget Source device mapping is available in the dashboard")
+    console.log(error)
+    throw "Source device mapping is not available in the dashboard"
+  }
+});
+
+
+Then('{string} verifies right side should include label {string}', async function (string, string2) {
+  try {
+    await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="Total Alerts : "]'))));
+
+  } catch (error) {
+    await browser.switchTo().defaultContent();
+    console.log("verifying the widget Source device mapping is available in the dashboard")
+    console.log(error)
+    throw "Source device mapping is not available in the dashboard"
+  }
+});
+
+
+Then('{string} verifies column headings should be {string}, {string}, {string}', async function (string, string2, string3, string4) {
+
+  try {
+    await browser.wait(EC.visibilityOf(element(by.xpath('//th[text()="Alert Name"]'))));
+    await browser.wait(EC.visibilityOf(element(by.xpath('//th[text()="Count"]'))));
+    await browser.wait(EC.visibilityOf(element(by.xpath('//th[text()="Resolution"]'))));
+  } catch (error) {
+    await browser.switchTo().defaultContent();
+    console.log("verifying the widget Source device mapping is available in the dashboard")
+    console.log(error)
+    throw "Source device mapping is not available in the dashboard"
+  }
+});
+When('{string} gets device name from the widget', async function (string) {
+  try {
+    await objectDashboard.btnHostName.getText().then(async function (deviceName) {
+      MTBFdata = await objectDashboard.deviceAvailability("1519", deviceName);
+    });
+  } catch (error) {
+    await console.log(error);
+    throw "unable to get device name"
+  }
+});
+When('{string} verifies the MTBF calculation result', async function (string) {
+  try {
+    var value = MTBFdata[0].mtbf;
+    value = value.split(' ')
+    var MTBFInHours = value[0] / 60;
+    await browser.wait(EC.visibilityOf(element(by.xpath('//td[text()="' + MTBFInHours + '"]'))));
+  } catch (error) {
+    await browser.switchTo().defaultContent();
+    throw "wrong MTBF calculation"
   }
 });

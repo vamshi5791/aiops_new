@@ -77,6 +77,10 @@ export class AlertsPage {
   btnCluster = element(by.xpath('//span[@class="cluster-badge-icon smo smo-expand-more-alt ng-star-inserted"]'))
   btnCheckbox = element(by.xpath('//span[text()="Correlated Alerts"]//following::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'))
   btncancel = element(by.xpath('//span[@class="d-flex justify-content-end align-button"]//following::span[text()="Cancel"]'))
+  btnAlertscheckbox = element(by.xpath('//div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'))
+  btnThreedots = element(by.xpath('//span[@class="smo smo-more-vert-24px ellipsis-icon font-14 cursor-pt secondary-color default-icon context-menu-icon ng-star-inserted"]'))
+  btnSelectMajor = element(by.xpath('//span[text()="Major"]'))
+
 
   // -------------------Assign Module -----------------------
 
@@ -94,14 +98,22 @@ export class AlertsPage {
   btnAutoRefresh = element(by.className("smo-btn-icon-col d-flex align-items-center smo smo-refresh-alt btn-icon smo-clickable ng-star-inserted"))
   nextArrayButton = element(by.xpath('//a[@class="smo-paginator-next smo-paginator-element smo-state-default smo-corner-all smo-paginator-next-ms"]'))
   btnDownloadIcon = element(by.className('smo smo-download cursor-pt ng-star-inserted'));
+  btnDownloadAlertReport = element(by.className('smo smo-download-alt download-icon cursor-pointer'));
   txtInformationStripColour = element(by.xpath("//div[contains(@class,'highlight bg-information')]"));
+  txtMajorStripColour = element(by.xpath("//div[contains(@class,'highlight bg-major')]"));
   btnClusterCount = element(by.xpath("//span[contains(@class,'cluster-badge-icon smo')]"));
   btnCancelInClustetPopup = element(by.className("smo-overlaypanel-close-icon smo smo-close-black-alt"));
   chkIncludeToday = element(by.className("smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"));
-
+  txtAssigned = element(by.xpath("//label[text()='assigned']"));
   async clickOnIncludeToday() {
     await this.chkIncludeToday.click();
   }
+
+  
+  async clickOnDownloadAlertReport() {
+    await this.btnDownloadAlertReport.click();
+  }
+
   async clickOnCancelInClustetPopup() {
     await this.btnCancelInClustetPopup.click();
   }
@@ -135,6 +147,7 @@ export class AlertsPage {
   async Alert_Search(alertName: string) {
     await browser.wait(EC.elementToBeClickable(this.btnSearch), 60000);
     await this.btnSearch.sendKeys(alertName);
+    await browser.sleep(2000)
     await browser.actions().sendKeys(protractor.Key.ENTER).perform();
   }
   async AdvanceFilter() {
@@ -295,7 +308,7 @@ export class AlertsPage {
   async Warning() {
     await this.txtWarning.click();
   }
-  
+
   async Information() {
     await this.txtInformation.click();
   }
@@ -331,6 +344,16 @@ export class AlertsPage {
     await this.btnState.click();
   }
 
+  async Alertscheckbox() {
+    await this.btnAlertscheckbox.click();
+  }
+  async Threedots() {
+    await this.btnThreedots.click();
+  }
+  async SelectMajor() {
+    await this.btnSelectMajor.click();
+  }
+ 
 
 
 

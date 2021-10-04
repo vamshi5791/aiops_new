@@ -5,6 +5,10 @@ import { LogIn } from '../../PageObjects/LogIn';
 import { ProjectListingPage } from "../../PageObjects/ProjectListing";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { AlertConsoleTableData } from "../../PageObjects/AlertConsoleTableData";
+var PropertiesReader = require('properties-reader');
+var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
+var ProjectName_Batch_1 = properties.get("main.ProjectName_Batch_1");
+var ProjectName_Batch_2 = properties.get("main.ProjectName_Batch_2");
 let objAlertsTableData = new AlertConsoleTableData();
 var EC = browser.ExpectedConditions;
 var fs = require('fs');
@@ -15,10 +19,17 @@ let ProjectListing = new ProjectListingPage();
 let objAlerts = new AlertsPage();
 var testAlertState;
 var testSource;
-
+  
 When('{string} enters project name in project search field {string}', async function (userRole, ProjectName) {
-  await ProjectListing.Project_search(ProjectName);
-  TestProjectName = ProjectName;
+  await ProjectListing.Project_search(ProjectName_Batch_1);
+  await browser.sleep(5000)
+  TestProjectName = ProjectName_Batch_1;
+});
+
+When('{string} enters project name in project search field and click on enter', async function (userRole) {
+  await ProjectListing.Project_search(ProjectName_Batch_2);
+  await browser.sleep(5000)
+  TestProjectName = ProjectName_Batch_2;
 });
 
 When('{string} Clicks on Saved Filter from advanced filter section {string}', async function (string, FilterName) {
@@ -41,17 +52,29 @@ When('{string} Clicks on Saved Filter from advanced filter section {string}', as
 
 When('{string} clicks on project name {string}', async function (userRole, TestProjectName) {
   try {
-    await browser.sleep(3000);
-    await browser.wait(EC.elementToBeClickable(element(by.xpath('//h3[text()=" ' + TestProjectName + ' "]'))), 100000);
-    await ProjectListing.selectProject(TestProjectName);
+    await browser.sleep(5000);
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//h3[text()=" ' + ProjectName_Batch_1 + ' "]'))), 100000);
+    await ProjectListing.selectProject(ProjectName_Batch_1);
   } catch (error) {
+    await ProjectListing.selectProject(ProjectName_Batch_1);
     await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on project name")
     await console.log(error)
 
   }
 });
 
+When('{string} clicks on project name', async function (userRole) {
+  try {
+    await browser.sleep(5000);
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//h3[text()=" ' + ProjectName_Batch_2 + ' "]'))), 100000);
+    await ProjectListing.selectProject(ProjectName_Batch_2);
+  } catch (error) {
+    await ProjectListing.selectProject(ProjectName_Batch_2);
+    await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on project name")
+    await console.log(error)
 
+  }
+});
 
 When('{string} navigate to alert console', async function (userRole) {
   var myElement = element(by.className('smo smo-close-black-alt'));
@@ -73,7 +96,7 @@ When('{string} clicks on advanced filter icon', async function (userRole) {
     await browser.wait(EC.presenceOf(element(by.className('filter smo smo-filter'))), 100000);
     await browser.wait(EC.elementToBeClickable(element(by.className('filter smo smo-filter'))), 100000);
     await browser.wait(EC.visibilityOf(element(by.className('filter smo smo-filter'))), 100000);
-     await browser.sleep(2000);
+    await browser.sleep(2000);
     await objAlerts.AdvanceFilter();
     await browser.sleep(3000);
   } catch (error) {

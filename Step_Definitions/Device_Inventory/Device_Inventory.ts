@@ -10,7 +10,7 @@ import { InfrastructurePage } from "../../PageObjects/InfrastructurePage";
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = browser.ExpectedConditions;
-var fs = require('fs');
+var fs = require('fs'); 
 var expect = chai.expect;
 let objLogIn = new LogIn();
 let objFilter = new PushingAlerts();
@@ -67,6 +67,7 @@ Then('Verifies that Upload Icon is not present', async function () {
 
 When('{string} clicks on resource name in the device inventory list {string}', async function (userRole, ResourceName) {
   try {
+    await browser.sleep(5000)
     await objInfrastructurePage.ResourceName(ResourceName);
   }
   catch (error) {
@@ -112,27 +113,26 @@ When('{string} clicks on add device option', async function (userRole) {
     throw "User is not able to click the add device option"
   }
 });
-
+ 
 When('{string} enters resource name {string}', async function (userRole, ResourceName) {
   try {
-    await objInfrastructurePage.EnterResourceName(ResourceName);
+    await objInfrastructurePage.EnterResourceName(ResourceName+Math.floor(Math.random() * 100)+Math.floor(Math.random() * 100));
   }
   catch (error) {
     await console.log("Feature name : Device Inventory " + userRole + " and Scenario name :enters resource name ")
     await console.log(error)
-    throw "User is not able to enter resource name feild"
+    throw "User is not able to enter resource name field"
   }
 });
 
 When('{string} enters resource type {string}', async function (userRole, ResourceType) {
   try {
     await objInfrastructurePage.EnterResourceType(ResourceType);
-
   }
   catch (error) {
     await console.log("Feature name : Device Inventory " + userRole + " and Scenario name :enters resource type ")
     await console.log(error)
-    throw "User is not able to enter the resource type feild"
+    throw "User is not able to enter the resource type field"
   }
 });
 

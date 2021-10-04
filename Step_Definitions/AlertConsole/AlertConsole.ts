@@ -5,7 +5,8 @@ import { LogIn } from '../../PageObjects/LogIn';
 import { Dashboard } from "../../PageObjects/Dashboard";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { ApiRabbitMQ } from "../../PageObjects/ApiRabbitMQ";
-
+import { ServiceNowAPI } from '../../ServiceNowAPI/servicenowAPI';
+let objServiceNow = new ServiceNowAPI();
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = browser.ExpectedConditions;
@@ -13,11 +14,12 @@ var expect = chai.expect;
 let objLogIn = new LogIn();
 let objAlerts = new AlertsPage();
 let objApiRabbitMQ = new ApiRabbitMQ();
-
-When('{string} pushes an solarwinds alert with {string}, {string}, {string}', async function (string, ProjectName, routeKey, channelJson) {
-  try{
-  await objApiRabbitMQ.apiPushMsgRabbitMQ(ProjectName, routeKey, channelJson);
-  }catch(error){
+let TicketNumber;
+var resultState;
+When('{string} pushes new solarwinds alert with {string}, {string}, {string}', async function (string, ProjectName, routeKey, channelJson) {
+  try {
+    await objApiRabbitMQ.apiPushMsgRabbitMQ(ProjectName, routeKey, channelJson);
+  } catch (error) {
     await console.log("Action Name: pushing alerts through api")
     await console.log(error)
     throw "unable to push alerts"
@@ -26,8 +28,7 @@ When('{string} pushes an solarwinds alert with {string}, {string}, {string}', as
 
 When('{string} verifies the severity strip color', async function (string) {
   try {
-    await browser.wait(EC.visibilityOf(objAlerts.txtInformationStripColour), 50000);
-
+    await browser.wait(EC.visibilityOf(objAlerts.txtMajorStripColour), 50000);
   }
   catch (error) {
     console.log("Action Name : verifies the severity strip color")
@@ -39,7 +40,7 @@ When('{string} verifies the severity strip color', async function (string) {
 
 
 When('{string} verifies the ticket number', async function (string) {
-  
+
   try {
     await element(by.xpath("//span[@class='text-font-dark text-with-bold']")).isPresent().then(function (select) {
       expect(select).to.be.true;
@@ -53,22 +54,37 @@ When('{string} verifies the ticket number', async function (string) {
 });
 
 
-
-Then('{string} sends {string} more alerts satisfying correlation policy {string}, {string}, {string}', async function (string, PushCount, ProjectName, routeKey, channelJson) {
-  try{
+ 
+Then('{string} sends {string} new {string} alerts with {string}, {string}, {string}', async function (UserRole, PushCount, AlertSource, ProjectName, routeKey, channelJson) {
+  try {
+    await objApiRabbitMQ.deleteQueryForAlerts();
     for (let i = 1; i <= PushCount; i++) {
       await objApiRabbitMQ.apiPushMsgRabbitMQ(ProjectName, routeKey, channelJson);
-      await console.log("Number of alerts sent" +PushCount)
     }
-    // }
-    }catch(error){
-      await console.log("Action Name: pushing alerts through api")
-      await console.log(error)
-      throw "unable to push alerts"
-    }
+    //waiting for alerts to cluster
+    await browser.sleep(85000)
+
+  } catch (error) {
+    await console.log("Action Name: pushing alerts through api")
+    await console.log(error)
+    throw "unable to push alerts"
+  }
 });
 
+Then('{string} sends {string} {string} alerts with {string}, {string}, {string}', async function (UserRole, PushCount, AlertSource, ProjectName, routeKey, channelJson) {
+  try {
+    for (let i = 1; i <= PushCount; i++) {
+      await objApiRabbitMQ.apiPushMsgRabbitMQ(ProjectName, routeKey, channelJson);
+    }
+    //waiting for alerts to cluster
+    await browser.sleep(70000)
 
+  } catch (error) {
+    await console.log("Action Name: pushing alerts through api")
+    await console.log(error)
+    throw "unable to push alerts"
+  }
+});
 
 When('{string} verifies Cluster occurrence badge position is right aligned to Alert Name', async function (string) {
   try {
@@ -96,19 +112,19 @@ Then('{string} verifies launch icon present inside Cluster occurrence badge', as
 // Verify cluster popup and Severity strip color(with alerts from a single device) for cluster
 
 When('{string} clicks on the cluster count for the ticketed alert from previous step', async function (string) {
- try{
-  await objAlerts.clickOnClusterCount()
- }catch(error){
-   await console.log("Action name : Clicking on the cluster count")
-   await console.log(error)
-   throw "Unable to click on cluster count"
- }
+  try {
+    await objAlerts.clickOnClusterCount()
+  } catch (error) {
+    await console.log("Action name : Clicking on the cluster count")
+    await console.log(error)
+    throw "Unable to click on cluster count"
+  }
 });
 
 Then('{string} verifies the checkbox against each alert', async function (string) {
-  try{
+  try {
     await browser.wait(EC.visibilityOf(element(by.className("smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"))), 50000);
-  }catch(error){
+  } catch (error) {
     await objAlerts.clickOnCancelInClustetPopup()
     await console.log("verifying the checkbox against each alert")
     await console.log(error)
@@ -117,9 +133,9 @@ Then('{string} verifies the checkbox against each alert', async function (string
 });
 
 Then('{string} Verifies launch icon corresponding to each alert', async function (string) {
-  try{
+  try {
     await browser.wait(EC.visibilityOf(element(by.className("smo smo-expand cursor-pointer"))), 50000);
-  }catch(error){
+  } catch (error) {
     await objAlerts.clickOnCancelInClustetPopup()
     await console.log("Verifying launch icon corresponding to each alert")
     await console.log(error)
@@ -129,14 +145,19 @@ Then('{string} Verifies launch icon corresponding to each alert', async function
 
 // Verify ticket details page for a new ticket created
 
-When('{string} clicks on the cluster count for the ticketed alert from previous step', function (string) {
- 
+When('{string} gets ticket number for the previously alert', async function (string) {
+  await browser.sleep(60000)
+  await element(by.xpath("//span[@class='text-font-dark text-with-bold']")).getText().then(async function (GeneratedTicketNumber) {
+    await console.log("generated new ticket " + GeneratedTicketNumber)
+    TicketNumber = GeneratedTicketNumber;
+  });
+  await console.log("generated new ticket " + TicketNumber)
 });
-
-Then('{string} verifies the checkbox against each alert', function (string) {
- 
-});
-
-Then('{string} Verifies launch icon corresponding to each alert', function (string) {
-
+When('{string} login in to service now and search for the incident id', async function (string, IncidentID) {
+  try {
+    resultState = await objServiceNow.apiServiceNow(TicketNumber)
+    await console.log(resultState)
+  } catch (error) {
+    await console.log(error)
+  }
 });

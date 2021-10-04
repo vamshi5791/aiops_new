@@ -92,7 +92,6 @@ Then('{string} verifies that on alert console {string} alerts are displayed', as
       });
     }
     await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " after while " + this.tableRowCount);
-    expect(this.tableRowCount).to.include(RowsInPage)
   } catch (error) {
     await console.log("Action Name : verifies that on alert console should contains "+RowsInPage+" alerts are displayed")
     await console.log(error)

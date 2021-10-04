@@ -6,13 +6,9 @@ Feature: Device Details for the existing Device
 
     Scenario Outline: Itops Admin searches the device with existing device name.
 
-        When "Admin" navigates to ITOps home page
-        And "Admin" enters project name as "<ProjectName>" in the search field
-        And "Admin" clicks on project name "<ProjectName>"
-        And "Admin" opens infrastructure page
+        When "Admin" opens infrastructure page
         And "Admin" searches device name "<DeviceName>"
-        And "ITOps_Admin" clicks on resource name in the device inventory list
-
+        And "ITOps_Admin" clicks on resource name in the device inventory list "<Device>"
         Then Device details should be displayed "<Device>"
         Then Verify Green Up arrow against Device Name
         Then "Admin" verifies the Resource Type column
@@ -40,5 +36,32 @@ Feature: Device Details for the existing Device
 
 
         Examples:
-            | ProjectName      | DeviceName      | Device          | 
-            | Automation_IB_24 | AUSYGR-00A-SSC1 | AUSYGR-00A-SSC1 |
+            | ProjectName     | DeviceName      | Device          |
+            | Automation_01M3 | AUSYGR-00A-SSC1 | AUSYGR-00A-SSC1 |
+
+
+
+    Scenario Outline: Itops Admin Verify Device Details section with alert count
+
+        When "Admin" opens infrastructure page
+        And "Admin" searches device name "<DeviceName>"
+        And "ITOps_Admin" clicks on resource name in the device inventory list "<Device>"
+        Then "Admin" verifies the Warning column
+        Then "Admin" verifies the Ok column
+        Then "Admin" verifies the Major column
+        When "ITOps_Admin" clicks on Alerts page
+        # And Admin click on state
+        # And "Admin" clicks on "Close" button
+
+
+        And "Admin" opens infrastructure page
+        And "Admin" searches device name "<DeviceName>"
+        And "ITOps_Admin" clicks on resource name in the device inventory list "<Device>"
+        Then "Admin" verifies the Warning column
+        Then "Admin" verifies the Ok column
+        Then "Admin" verifies the Major column
+
+
+        Examples:
+            | ProjectName     | DeviceName      | Device          |
+            | Automation_01M3 | AUSYGR-00A-SSC1 | AUSYGR-00A-SSC1 |

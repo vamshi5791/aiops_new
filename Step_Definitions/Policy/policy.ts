@@ -28,6 +28,7 @@ When('{string} navigate to Alert Correlation Policy', async function (userrole) 
         await objPolicy.correlationPolicyNavigation();
         await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Alert Correlation Policy"]'))), 10000);
         await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Alert Correlation Policy"]'))), 10000);
+        // await browser.sleep(5000)
     }
     catch (error) {
         await console.log("Feature name : Policies and Scenario Name : navigate to Alert Correlation Policy")
@@ -80,6 +81,7 @@ When('{string} navigate to Recovery Policy', async function (userrole) {
 
 When('{string} clicks on edit icon in listing page {string}', async function (userrole, policyname) {
     try {
+        //  await browser.sleep(5000)
         await objPolicy.clickOnPolicyEditIcon(policyname);
     }
     catch (error) {
@@ -103,6 +105,7 @@ When('{string} clicks on delete icon in listing page {string}', async function (
 When('Admin clicks on Add {string} Policy', async function (policy) {
     try {
         await browser.wait(EC.visibilityOf(objPolicy.btnAddPolicy));
+        // await browser.sleep(5000)
         await objPolicy.clickOnAddPolicyButton();
     }
     catch (error) {
@@ -116,7 +119,8 @@ Then('verify plus icon for adding {string}', async function (policy) {
     try {
         var plusIcon = objPolicy.icnPlus;
         plusIcon.isPresent().then(function (elm) {
-
+            // if (elm == false) {
+            // }
         })
     }
     catch (error) {
@@ -128,6 +132,7 @@ Then('verify plus icon for adding {string}', async function (policy) {
 
 Then('verify default value in Operator dropdown', async function () {
     try {
+        // await browser.sleep(3000);
         await browser.wait(EC.visibilityOf(objPolicy.drpdwnDefaultOperatorValue));
     }
     catch (error) {
@@ -139,6 +144,7 @@ Then('verify default value in Operator dropdown', async function () {
 
 Then('verify values in operator dropdown', async function () {
     try {
+        // await browser.sleep(3000);
         await objPolicy.clickOnOperatorDropdown();
 
         try {
@@ -198,6 +204,7 @@ When('Admin enters {string} Policy Name as {string}', async function (policy, po
 
 When('Admin enters {string} Precedence as {string}', async function (policy, policyPrecedence) {
     try {
+        // await browser.sleep(2000);
         await objPolicy.enterPrecedence(policyPrecedence);
     }
     catch (error) {
@@ -320,6 +327,7 @@ When('Admin clicks on Done button', async function () {
     try {
         await browser.wait(EC.visibilityOf(objPolicy.btnDone));
         await browser.wait(EC.elementToBeClickable(objPolicy.btnDone));
+        // await browser.sleep(5000)
         await objPolicy.clickOnDoneButton();
     }
     catch (error) {
@@ -331,6 +339,7 @@ When('Admin clicks on Done button', async function () {
 
 Then('verify column values in Policy listing page', async function () {
     try {
+        // await browser.sleep(3000);
         try {
             await browser.wait(EC.visibilityOf(objPolicy.clmnPolicyName));
         }
@@ -384,12 +393,14 @@ Then('verify column values in Policy listing page', async function () {
 });
 
 When('Admin verify link for adding similarity correlation should not be available', async function () {
+    // await browser.wait(EC.visibilityOf(objPolicy.lnkAlertCorrelationPolicy), 10000);
     await objPolicy.lnkAlertCorrelationPolicy.isPresent().then(function (select) {
         expect(select).to.be.true;
     });
 });
 
 When('Admin verifies Activate policy toggle should be disabled', async function () {
+    // await browser.wait(EC.visibilityOf(objPolicy.tglbtnActivePolicy), 10000);
     await objPolicy.tglbtnActivePolicy.isPresent().then(function (select) {
         expect(select).to.be.true;
     });
@@ -397,6 +408,7 @@ When('Admin verifies Activate policy toggle should be disabled', async function 
 });
 
 When('Admin verifies Save, Save and Add New Rule should be disabled', async function () {
+    // await browser.wait(EC.invisibilityOf(objPolicy.btnSave), 10000);
     await objPolicy.btnSave.isPresent().then(function (select) {
         expect(select).to.be.false;
     });
@@ -406,6 +418,7 @@ When('Admin verifies Save, Save and Add New Rule should be disabled', async func
 
 Then('verify edit and delete icons in policy listing {string}', async function (PolicyName) {
     try {
+        // await browser.sleep(3000);
         objPolicy.mouseOverPolicyName(PolicyName);
         try {
             await browser.wait(EC.visibilityOf(objPolicy.icnEdit));
@@ -461,6 +474,11 @@ When('click on cancel button', async function () {
 
 Then('{string} verifies Add policy button', async function (userrole) {
     try {
+        // objPolicy.btnAddPolicy.isPresent().then(function (elm) {
+        //     if (elm) {
+        //     } else {
+        //     }
+        // })
         await objPolicy.btnAddPolicy.isPresent().then(function (select) {
             expect(select).to.be.true;
         });
@@ -530,6 +548,7 @@ When('clicks on Next button', async function () {
 
 When('clicks on Edit rule icon', async function () {
     try {
+        // await browser.sleep(5000);
         await browser.wait(EC.visibilityOf(objPolicy.btnEditIconInFailurePolicy), 10000);
         await objPolicy.btnEditIconInFailurePolicy.click();
     }
@@ -584,6 +603,7 @@ When('{string} verifies edit policy button is working', async function (username
 })
 When('Admin enters {string} value as {string}', async function (policy, value) {
     try {
+        // await browser.sleep(3000);
         await objPolicy.enterValue(value);
     }
     catch (error) {

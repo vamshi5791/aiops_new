@@ -1,6 +1,6 @@
 { 
     "QueueChannel": {
-        "Alert Name": "AlertUST",
+        "Alert Name": "Alert1",
         "Alert Message": "Sample Alert",
         "Alert Severity": "Major",
         "Service Name": "Node Down",
@@ -42,7 +42,7 @@
         "Alert time": ""
     },
     "VerbaWitMessage": {
-        "Alert Name": "AlertName_Verba",
+        "Alert Name": "Alert1",
         "Description": "Interface error in IAMBSBC1",
         "Severity": "Critical",
         "Service": "test alert",
@@ -53,9 +53,9 @@
         "Resource Type": "Console",
         "ResourceGroup": "Group1",
         "Time": "2021.08.05 16:50:00.000"
-    },
+    }, 
     "VerbaWitNoMessage": {
-        "Alert Name": "AlertName_Verba",
+        "Alert Name": "Alert1",
         "Description": "",
         "Severity": "Critical",
         "Service": "test alert",
@@ -68,7 +68,7 @@
         "Time": "2021.08.05 16:50:00.000"
     },
     "ForescoutWithMessageandIP": {
-        "ForeScout CounterACT": "Device has been changed to VLAN 680 - Guest Wired",
+        "ForeScout CounterACT": "Alert1",
         "Subject Line": "CounterACT: Change to VLAN 680 - Splunk Agent Not Installed",
         "Alert Severity": "Major",
         "Admission event": "Surge Interface Receive Bandwidth Usage",
@@ -82,7 +82,7 @@
         "Switch location": "GreatBritain/London/BasinghallStreet/4thFloor/ZoneA"
     },
     "ForescoutWithNoMessageandNoIP": {
-        "ForeScout CounterACT": "Device has been changed to VLAN 680 - Guest Wired",
+        "ForeScout CounterACT": "Alert1",
         "Subject Line": "",
         "Alert Severity": "Major",
         "Admission event": "Surge Interface Receive Bandwidth Usage",
@@ -96,7 +96,7 @@
         "Switch location": "GreatBritain/London/BasinghallStreet/4thFloor/ZoneA"
     },
     "ForescoutWithNoMessageandIP": {
-        "ForeScout CounterACT": "Device has been changed to VLAN 680 - Guest Wired",
+        "ForeScout CounterACT": "Alert1",
         "Subject Line": "",
         "Alert Severity": "Major",
         "Admission event": "Surge Interface Receive Bandwidth Usage",
@@ -110,7 +110,7 @@
         "Switch location": "GreatBritain/London/BasinghallStreet/4thFloor/ZoneA"
     },
     "ForescoutWithMessageandNoIP": {
-        "ForeScout CounterACT": "Device has been changed to VLAN 680 - Guest Wired",
+        "ForeScout CounterACT": "Alert1",
         "Subject Line": "CounterACT: Change to VLAN 680 - Splunk Agent Not Installed",
         "Alert Severity": "Major",
         "Admission event": "Surge Interface Receive Bandwidth Usage",
@@ -183,5 +183,19 @@
         "includeRequestReceivedTime": true,
         "requestReceivedTimeFormat": "2021-06-24'T'14:50:09.002",
         "processInputasList": true
+    },
+    "ForescoutForTicketTemplate": {
+        "ForeScout CounterACT": "ForeScout",
+        "Subject Line": "creating a new cluster and ticket gets created",
+        "Alert Severity": "Major",
+        "Admission event": "Surge Interface Receive Bandwidth Usage",
+        "Host Name": "AUMECO-50A-AOB1",
+        "IP Address": "10.64.48.80",
+        "MAC Address": "74b20314ce80",
+        "DNS Name": "D-S4AA4155.investecam.corp",
+        "NIC Vendor": "MICRO-STAR INT'L CO., LTD.",
+        "OS Fingerprint": "Windows 10 64-bit Enterprise",
+        "Switch IP and Desc": "10.78.116.137:Gi2/0/4",
+        "Switch location": "GreatBritain/London/BasinghallStreet/4thFloor/ZoneA"
     }
 }

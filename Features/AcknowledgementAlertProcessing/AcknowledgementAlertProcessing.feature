@@ -5,33 +5,24 @@ Feature: Acknowledge Alert Processing
     Scenario Outline: Pushing two acknowledgement alerts
 
 
-        Given User pushes an solarwinds alert
-        Given User pushes an solarwinds alert
-        Given User with ITOps role renders the URL
-        And "Admin" selects project and open alerts "<ProjectName>"
-        Then enter alertname in search box and verify alert details "<AlertName>"
+        When "Admin" sends "2" new "solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>"
+        And "admin" clicks on Alerts page
         And verify cluster size must be "<size>"
         And Admin click on state
-        And Admin selects acknowledge
-
-
-
+        And "admin" clicks on "Acknowledge" button
 
         Examples:
-            | ProjectName     | AlertName | size |
-            | Automation_01M3 | Alert1    | 2    |
-
+            | ProjectName     | AlertName | size | ChannelName | channelJson  |
+            | Automation_01M3 | Alert1    | 2    | Solarwinds  | QueueChannel |
 
 
     Scenario Outline: Pushing another acknowledgement alert
 
-        Given User pushes an solarwinds alert
-        Given User with ITOps role renders the URL
-        And "Admin" selects project and open alerts "<ProjectName>"
-        Then enter alertname in search box and verify alert details "<AlertName>"
+        When "Admin" sends "1" "solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>"
+        And "admin" clicks on Alerts page
         And verify cluster size must be "<size>"
 
 
         Examples:
-            | ProjectName     | AlertName | size |
-            | Automation_01M3 | Alert1    | 3    |
+            | ProjectName     | AlertName | size | ChannelName | channelJson  |
+            | Automation_01M3 | Alert1    | 3    | Solarwinds  | QueueChannel |

@@ -494,3 +494,15 @@ Then('{string} verifies user is not able to edit the fields', async function (st
     throw "User is able to edit the fields"
   }
 });
+
+
+When('{string} selects {string} in the primary section and clicks on right arrow button', async function (userName, FieldName) {
+  try {
+    await objDisplayConfig.clickOnFieldName(FieldName);
+    await element(by.xpath('//span[@class="smo-btn-icon-col d-flex align-items-center smo smo-chevron-right-alt icon-size smo-clickable ng-star-inserted"]')).click();
+  } catch (error) {
+    await console.log("Feature name : Display Configuration " + userName + " and Scenario name : ReOrdering of Primary section fields")
+    await console.log(error)
+    throw "FiledName doesn't exist"
+  }
+});

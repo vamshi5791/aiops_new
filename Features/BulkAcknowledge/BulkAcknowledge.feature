@@ -4,34 +4,25 @@ Feature: Verify the bulk acknowledgement in alert console
 
     Scenario Outline: Verify the bulk acknowledgement in alert console
 
-
-        Given User pushes an solarwinds alert
-        Given User pushes an solarwinds alert
-
-
-        Given User with ITOps role renders the URL
-        And "admin" selects project and open alerts "<ProjectName>"
-        Then enter alertname in search box and verify alert details "<AlertName>"
-
-
+        When "Admin" sends "2" new "solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>"
+        And "admin" clicks on Alerts page
         Given User clicks on alert cluster
         Given User selects select all check box
         Given User clicks on cancel
         And Admin click on state
-        And Admin selects acknowledge
-        And Admin click on state
-        And Admin verifies Close state
+        And "admin" clicks on "Acknowledge" button
+
 
         Examples:
-            | ProjectName     | AlertName | size |
-            | Automation_01M3 | Alert1    | 2    |
+            | ProjectName     | AlertName | size | ChannelName | channelJson  |
+            | Automation_01M3 | Alert1    | 2    | Solarwinds  | QueueChannel |
 
 
     Scenario Outline: Verify the bulk acknowledgement in alert console with multiple alerts
 
 
-        Given User pushes an solarwinds alert
-        Given User pushes an solarwinds alert
+        When "Admin" sends "3" new "solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>"
+        And "admin" clicks on Alerts page
         Given User clicks on alert cluster
         Given User selects select all check box
         Given User clicks on cancel
@@ -39,5 +30,27 @@ Feature: Verify the bulk acknowledgement in alert console
         And Admin verifies acknowledge option is not present
 
         Examples:
-            | ProjectName     | AlertName | size |
-            | Automation_01M3 | Alert1    | 2    |
+            | ProjectName     | AlertName | size | ChannelName | channelJson  |
+            | Automation_01M3 | Alert1    | 3    | Solarwinds  | QueueChannel |
+
+    Scenario Outline: Verify the bulk acknowledgement in alert console - in filter results
+
+        When "admin" clicks on Alerts page
+        And "Admin" clicks on advanced filter icon
+        And "Admin" enters resource name as "<ResourceName>"
+        And "Admin" clicks on apply button
+        And "Admin" clicks on checkbox
+        And "Admin" clicks on three dots button
+        And "Admin" clicks on Acknowledge
+        # And Admin verifies Acknowledge state
+        And "Admin" clicks on remove all button
+        Then "Admin" clicks on filter by severity dropdown
+        And "Admin" selects Major
+        And "Admin" clicks on checkbox
+        And "Admin" clicks on three dots button
+        And "Admin" clicks on Acknowledge
+        # And Admin verifies Acknowledge state
+
+        Examples:
+            | ProjectName     | AlertName | size | ResourceName    |
+            | Automation_01M3 | Alert1    | 2    | CNHKGG-00A-SSC1 |

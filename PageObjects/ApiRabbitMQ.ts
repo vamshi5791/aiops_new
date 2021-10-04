@@ -2,11 +2,16 @@
 var fs = require('fs');
 var fetch = require("node-fetch");
 var sss;
-
 let baseApiUrl = "https://smartops-qa01.eastus.cloudapp.azure.com/paas/itops/rabbitmq/api"
 let projectName;
-
+var base64 = require('base-64');
 const request = require('request');
+var PropertiesReader = require('properties-reader');
+var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
+var KibanaAPI_URL = properties.get("main." + globalThis.environment + "_KibanaAPI_URL");
+var Kibana_UserID = properties.get("main." + globalThis.environment + "_Kibana_UserID");
+var Kibana_Password = properties.get("main." + globalThis.environment + "_Kibana_Password");
+var totalOpenAlertsCount;
 
 export class ApiRabbitMQ {
 
@@ -75,7 +80,7 @@ export class ApiRabbitMQ {
     async apiServiceNow(incNumber) {
         const env_url = 'https://ustglobaldev.service-now.com/';
         const mainService_url = env_url + 'incident.do?JSONv2&sysparm_action=getRecords&sysparm_query=number=' + incNumber;
- 
+
         await fetch(mainService_url, {
             method: "GET",
             headers: { "Content-type": "application/json;charset=UTF-8", authorization: 'Basic U21hcnRvcHMuTmluZXR5b25lOkpSYVNxOU5LaCVXNysrakY=' }
@@ -84,12 +89,55 @@ export class ApiRabbitMQ {
             .then(response => response.json())
             // Displaying results to console
             .then(result => {
-               // console.log(result)
+                // console.log(result)
                 let dd = result.records[0]
                 let rr = JSON.stringify(dd);
-                sss =  rr;
+                sss = rr;
             });
         return sss;
+    }
+
+    //Delete Query for Kibana api
+
+    async deleteQueryForAlerts() {
+
+        const kibanaApiUrl = KibanaAPI_URL + '?path=alerts_' + '1519' + '_1/_delete_by_query&method=POST';
+
+        await fetch(kibanaApiUrl, {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "Authorization": `Basic ${base64.encode(`${Kibana_UserID}:${Kibana_Password}`)}`,
+                "kbn-xsrf": true
+            },
+            body: '{ "query": { "match_all": {} } }'
+        }).then(response => response.json())
+            .then(resp => {
+                console.log(resp)
+            })
+    }
+
+    //Open Tickets in Service Now
+
+    async openTicketsServName(projectID) {
+        const urlOpenTickets = KibanaAPI_URL + '?path=tickets_' + projectID + '_1/_search?size=5000&method=POST'
+        var todayDate = new Date();
+        var todayDateGMT = todayDate.toISOString();
+        todayDate.setDate(todayDate.getDate() - 14);
+        var datebeforetwoWeeksGMT = todayDate.toISOString();
+        await fetch(urlOpenTickets, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "Authorization": `Basic ${base64.encode(`${Kibana_UserID}:${Kibana_Password}`)}`,
+                "kbn-xsrf": true
+            },
+            body: '{"_source":["ticketNumber","assignedTo","ticketBusinessTimeLeft","slaLastUpdated","itopsTicketStateInfo"],"size":999999,"from":0,"sort":[{"updatedTime":{"order":"desc"}}],"query":{"bool":{"must_not":[{"terms":{"itopsTicketStateInfo.ticketState":["resolved","onHold","closed"]}}],"must":[{"range":{"createdTime":{"gte":"'+datebeforetwoWeeksGMT+'","lte":"'+todayDateGMT+'"}}}]}}}'
+        }).then(response => response.json())
+            .then(resp => {
+                totalOpenAlertsCount = resp.hits.total;
+            })
+        return totalOpenAlertsCount;
     }
 }
 

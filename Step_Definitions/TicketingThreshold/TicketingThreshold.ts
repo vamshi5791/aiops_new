@@ -83,3 +83,13 @@ Then('Verify Add New Threshold button in not present for ITOps Engineer', async 
     await console.log(error)
   }
 });
+
+When('Admin clicks on delete icon', async function () {
+  try {
+    await element(by.className("smo smo-delete ng-star-inserted")).click();
+  }
+  catch (error) {
+    await console.log("Feature name : Ticketing Threshold and Scenario name : Verify Add New Threshold button in not present for ITOps Engineer ")
+    await console.log(error)
+  }
+});

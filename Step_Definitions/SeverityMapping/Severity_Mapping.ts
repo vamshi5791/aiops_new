@@ -17,7 +17,7 @@ let objAlerts = new AlertsPage();
 let objSeverityMapping = new SeverityMapping();
 let objProjectListing = new ProjectListingPage();
 var Global_ProjectName;
-
+var todayDate;
 // Verifying_Configuring_New_Severity_Mapping
 
 When('{string} clicks on Configuration tab', async function (userRole) {
@@ -242,16 +242,21 @@ Then('{string} verifies Delete icon of specefic Severity', async function (userR
 
   }
   catch (error) {
-    throw "User is not able to verifies Delete icon of specefic Severity"
+    throw "User is not able to verifies Delete icon of specific Severity"
   }
 
 });
-
+ 
 Then('{string} verifies the Time as {string}', async function (userRole, Time) {
   try {
+    todayDate = new Date().toDateString();
+    todayDate = todayDate.split(' ');
+   var severitCreatedDate = await todayDate[2] + ' ' + todayDate[1] + ' ' + todayDate[3]
+   await console.log("-----------------",severitCreatedDate)
     await element(by.xpath('//b[text()="' + Time + '"]')).getText().then(function (text) {
-      expect(text).to.include(Time);
+      expect(text).to.include(severitCreatedDate);
     });
+
   }
   catch (error) {
     throw "User is not able to  verifies the Time"
@@ -280,7 +285,7 @@ Then('Error message for creating duplicate source must be shown in popup {string
   }
 });
 
-// Verify_Duplicate_SourceSeverityandSOSeverity
+// Verify_Duplicate_Source Severity and SO Severity
 
 Given('{string} clicks on edit button', async function (userRole) {
   try {
@@ -364,7 +369,7 @@ Then('Success message for updating Severity Mapping must be shown in popup {stri
   catch (error) {
     await console.log("Feature name : Severity Mapping and Scenario name : ")
     await console.log(error)
-    throw " Severity Mapping details are not inseted"
+    throw " Severity Mapping details are not instead"
   }
 });
 
@@ -428,7 +433,7 @@ Then('Success message for Verifyimg adding additional source severity within the
   catch (error) {
     await console.log("Feature name : Severity Mapping and Scenario name : ")
     await console.log(error)
-    throw " Severity Mapping details are not inseted"
+    throw " Severity Mapping details are not instead"
   }
 });
 
@@ -443,7 +448,7 @@ Then('Success message for Verifyimg adding additional source severity within the
 
 
 
-// Verifying ITOps Enginner is able to Configure New Severity Mapping
+// Verifying ITOps Engineer is able to Configure New Severity Mapping
 
 Then('{string} verifies +Add Severity icon is not available {string}', async function (string, string2) {
   try {
@@ -491,4 +496,22 @@ Then('{string} verifies Edit icon is not available', async function (string) {
     throw "Edit icon is available"
   }
 
+});
+When('{string} clicks on delete the Severity Mapping', async function (userRole) {
+  try {
+    await objSeverityMapping.Yes();
+  }
+  catch (error) {
+    throw "Delete icon is not available"
+  }
+});
+
+Given('{string} clicks on Yes button', async function (userRole) {
+  try {
+    await browser.sleep(5000)
+    await objSeverityMapping.Yes();
+  }
+  catch (error) {
+    throw "User is not able to clicks on yes button"
+  }
 });

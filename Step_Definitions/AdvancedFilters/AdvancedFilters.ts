@@ -52,6 +52,17 @@ When('{string} selects Warning', async function (userRole) {
 
 });
 
+When('{string} selects Major', async function (userRole) {
+  try {
+    await objAlerts.SelectMajor();
+  }
+  catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name :  Verify that Itops_admin is able to Verify severity drop down severity conditions")
+    await console.log(error)
+    throw "User is not able to select Major"
+  }
+
+});
 
 Then('verifies severity condition in severity dropdown {string}', async function (string) {
   try {
@@ -590,4 +601,18 @@ Then('{string} verifies deleted {string} filter is removed from the filter dropd
   }
 })
 
+Then('{string} verifies deleted {string} filter is removed from the filter dropdown in console', async function (userName, SavedFilter) {
+  try {
+    await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="No Saved Filters"]'))), 20000);
+    var myElement = objAlerts.btnCancel;
+    await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+    await browser.wait(EC.visibilityOf(objAlerts.btnSearch), 10000);
+    await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
+    await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
+    await element(by.xpath('//smo-button[@label="Cancel"]')).click();
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
+  }
 
+})

@@ -6,10 +6,7 @@ Feature: Device Inventory Features
 
      Scenario Outline: Itops Admin searches the device with existing device name.
 
-          When "Admin" navigates to ITOps home page
-          And "Admin" enters project name as "<ProjectName>" in the search field
-          And "Admin" clicks on project name "<ProjectName>"
-          And "ITOps_Admin" opens infrastructure page
+          When "ITOps_Admin" opens infrastructure page
           And "ITOps_Admin" searches device name "<DeviceName>"
           Then Device details should be displayed "<Device>"
 
@@ -47,8 +44,8 @@ Feature: Device Inventory Features
 
 
           Examples:
-               | SuccessPopUp                     | ResourceName  | ResourceType | Site   | Country | Region |
-               | New resource added successfully! | Automation_57 | Samp3le      | Sample | Sample  | Sample |
+               | SuccessPopUp                     | ResourceName | ResourceType | Site   | Country | Region |
+               | New resource added successfully! | Automation_  | Samp3le      | Sample | Sample  | Sample |
 
      Scenario Outline: Itops Admin updates the device in the device inventory.
 
@@ -65,9 +62,6 @@ Feature: Device Inventory Features
 
      Scenario Outline: Itops Admin edits fail over device.
 
-          # When "admin" navigates to ITOps home page
-          # And "Admin" enters project name as "Automation_IB_24" in the search field
-          # And "admin" clicks on project name "Automation_IB_24"
           When "ITOps_Admin" opens infrastructure page
           And "ITOps_Admin" searches device name "<DeviceName>"
           And "ITOps_Admin" clicks on resource name "<ResourceName>"
@@ -82,9 +76,7 @@ Feature: Device Inventory Features
 
      Scenario Outline:  ITOps Admin Configure columns in device inventory
 
-          # When "admin" navigates to ITOps home page
-          # And "Admin" enters project name as "Automation_IB_24" in the search field
-          # And "admin" clicks on project name "Automation_IB_24"
+
           When "ITOps_Admin" opens infrastructure page
           And "ITOps_Admin" clicks on Configure columns option
           And "ITOps_Admin" selects resource name column

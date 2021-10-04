@@ -9,6 +9,8 @@ let objInfrastructurePage = new InfrastructurePage();
 
 When('{string} opens infrastructure page', async function (userRole) {
   try {
+
+    // await browser.sleep(5000)
     await objInfrastructurePage.Infrastructure();
   }
   catch (error) {
@@ -65,6 +67,9 @@ When('{string} verifies the delete option is not visible', async function (userR
 When('{string} searches device name {string}', async function (userRole, DeviceName) {
   try {
     await objInfrastructurePage.Search(DeviceName);
+    // await browser.sleep(5000)
+    // await browser.actions().sendKeys(protractor.Key.ENTER).perform();
+
   }
   catch (error) {
     await console.log("Feature name : Infrastructure Topology " + userRole + " and Scenario name : searches device name")
@@ -132,6 +137,8 @@ When('{string} selects the valid file to be uploaded', async function (string) {
 
   var filePath = basePath + "\Sample_Topology.xlsx";
   await console.log("filePath: " + filePath);
+
+  // await objInfrastructurePage.browseFile.sendKeys('C:\\Yadagiri\\Testing\\protractor_ws\\itops-automation\\Sample_Topology.xlsx');
   await objInfrastructurePage.browseFile.sendKeys(filePath);
   await browser.sleep(1000)
 });

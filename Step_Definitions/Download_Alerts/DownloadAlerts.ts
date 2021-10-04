@@ -26,7 +26,17 @@ When('{string} clicks on download icon', async function (string) {
   }
 });
 
-
+When('{string} clicks on download icon button', async function (string) {
+  try {
+    await browser.sleep(3000)
+    await browser.wait(EC.elementToBeClickable(objAlerts.btnDownloadIcon), 30000);
+    await objAlerts.clickOnDownloadIcon()
+    await browser.sleep(2000)
+    await objAlerts.clickOnDownloadAlertReport
+  } catch (error) {
+    await console.log(error)
+  }
+});
 
 When('{string} reads data from downloaded csv file', async function (string) {
   // read data from xlsx/csv file

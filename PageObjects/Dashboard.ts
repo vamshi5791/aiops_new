@@ -3,12 +3,21 @@ import { support } from "../support/support";
 import chai from "chai";
 var drp = new support(); 
 var expect = chai.expect;
+var fs = require('fs');
+var fetch = require("node-fetch");
+var accessToken;
+var alertDetails;
 export class Dashboard {
     btnDashboard = element(by.xpath('//a[text()="Dashboard"]'));
     btnSeverity = element(by.xpath('//span[text()="All"]'));
     txtSource = element(by.xpath('//label[text()="Source"]//following::input[@type="text"]'));
+    btnHostName = element(by.xpath('//th[text()="Host Name"]//following::div[@class="alert-message"]'));
+    txtTicketDetailsTitle = element(by.className('graph-title'));
     async clickOnDashboard() {
         await this.btnDashboard.click()
+    }
+    async clickOnHostName() {
+        await this.btnHostName.click()
     }
     async clickOnSeverity(Severity: string) {
         await this.btnSeverity.click()
@@ -23,4 +32,37 @@ export class Dashboard {
              
             });
       }
+
+      async getAccessToken() {
+        await fetch('https://smartops-qa01.eastus.cloudapp.azure.com/paas/itops/pwf/api/smartops/login', {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+            },
+            body: '{"realm":"ustglobal","userName":"Itops_admin","password":"qa123"}',
+        }).then(response => response.json())
+            .then(resp => {
+                // console.log(resp.access_token)
+                accessToken = resp.access_token;
+                //return accessToken;
+            })
+        return accessToken;
+    }
+    async deviceAvailability(ProjectId: string, deviceName: string) {
+        const accessToken = await this.getAccessToken();
+        var urldeviceAvail = 'https://smartops-qa01.eastus.cloudapp.azure.com/paas/itops/alertmapping' + '/api/deviceAvailability/' + ProjectId + '/' + deviceName;
+        await fetch(urldeviceAvail, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "Organization-name": "ustglobal",
+                "Organization-key": 1,
+                "Authorization": "Bearer " + accessToken,
+            },
+        }).then(response => response.json())
+            .then(resp => {
+                alertDetails = resp.alertDetails
+            })
+        return alertDetails;
+    }
 };

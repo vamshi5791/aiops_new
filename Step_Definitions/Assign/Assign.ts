@@ -13,8 +13,10 @@ var expect = chai.expect;
 var EC = browser.ExpectedConditions;
 var TestTeamMember;
 var resultState;
+let TicketNumber;
 When('{string} clicks on ticket number {string} from state column of a ticket', async function (UserRole, TicketNumber) {
   try {
+    await browser.sleep(5000)
     await objAlerts.clickOnTicketNumber(TicketNumber)
   } catch (error) {
     await console.log("Action Name : clicking on ticket number")
@@ -22,8 +24,6 @@ When('{string} clicks on ticket number {string} from state column of a ticket', 
     throw "ticket number is not available"
   }
 });
-
-
 
 When('{string} clicks on assign option from state drop down as {string}', async function (UserRole, AssignOption) {
   try {
@@ -63,6 +63,7 @@ When('{string} selects user from the team member drop down as {string}, {string}
 
 When('{string} clicks on assign button', async function (UserRole) {
   try {
+    await browser.sleep(5000)
     await objAlerts.clickOnAssignButton()
   } catch (error) {
     await console.log("Action Name : clicking on assign button")
@@ -97,6 +98,7 @@ Then('{string} Verifies the Alert console for the particular ticket status as {s
 When('{string} selects user from the team member drop down as {string}', async function (UserRole, Group) {
   try {
     await objAlerts.selectGroup(Group)
+    TestTeamMember = Group;
   } catch (error) {
     await console.log("Action Name : selecting user from the team member drop down")
     await console.log(error)
@@ -143,7 +145,8 @@ When('{string} navigates to Tickets page', async function (string) {
 
 Then('{string} verifies {string} card should have assigned users name and group name', async function (string, string2) {
   try {
-
+    await browser.wait(EC.visibilityOf(element(by.xpath("//span[text()='The ticket has been assigned to ']"))), 50000);
+    await browser.wait(EC.visibilityOf(element(by.xpath("//span[text()='" + TestTeamMember + "']"))), 50000);
   } catch (error) {
     await console.log("Action Name : Verifying ticket card should have assigned users name and group name")
     await console.log(error)
@@ -209,12 +212,6 @@ Then('{string} verifies Ticket should be assigned to TeamMember {string}', async
     throw "Ticket was assigned to TeamMember"
   }
 });
-Then('{string} verifies selected group should be displayed on drop down', async function (string) {
-
-});
-When('{string} selects {string} option from {string} column', function (string, string2, string3) {
-
-});
 
 When('{string} clicks on Closure Notes tab in ticket details page', async function (string) {
   try {
@@ -233,15 +230,6 @@ When('{string} verifies closure note as {string}', async function (string, Closu
     await console.log("Action Name : Verifies verifies closure note as " + ClosureNote + "")
     await console.log(error)
     throw "Closure note has not updated"
-  }
-});
-Then('{string} verifies that ticketed alerts will not have close option', async function (string) {
-  try {
-
-  } catch (error) {
-    await console.log("Action Name : Verifies the Alert console for the particular ticket")
-    await console.log(error)
-    throw "Ticket "
   }
 });
 
@@ -265,27 +253,6 @@ Then('{string} clicks on 3 dots in top left', async function (string) {
   }
 });
 
-Then('{string} verify the alert console for corresponding ticket cluster', function (string) {
-
-});
-
-
-Then('{string} clicks on a ticket and verify the ticket details page', function (string) {
-
-});
-
-When('{string} clicks on assign button on the popup', async function (string) {
-
-  try {
-    await browser.sleep(2000)
-    await objAlerts.clickOnAssignButtonOnPopUp()
-  } catch (error) {
-    await console.log("Action Name : clicking on assign button on the popup")
-    await console.log(error)
-    throw "unable to click on assign button on the popup"
-  }
-});
-
 Then('{string} Verifies ticket is assigned to team member', async function (string) {
   try {
     await browser.wait(EC.visibilityOf(element(by.xpath("//span[text()='The ticket has been assigned to ']"))), 50000);
@@ -298,9 +265,10 @@ Then('{string} Verifies ticket is assigned to team member', async function (stri
 });
 
 
+
 Then('{string} Verifies that ticket is assigned to self', async function (string) {
   try {
-
+    // Don't have test data to assign self
   } catch (error) {
     await console.log("Action Name : Verifies the Alert console for the particular ticket")
     await console.log(error)
@@ -319,18 +287,6 @@ When('{string} verifies on ticket number when ticket status is hold', async func
     throw "Ticket is not on hold state"
   }
 });
-
-
-
-When('{string} clicks on assign {string} radio button', async function (string, string2) {
-  try {
-  } catch (error) {
-    await console.log("Action Name : Verifies the Alert console for the particular ticket")
-    await console.log(error)
-    throw "Ticket "
-  }
-});
-
 
 Then('{string} assigned to me button is disabled', async function (string) {
   try {
@@ -354,28 +310,54 @@ When('{string} verifies text displayed like {string}', async function (string, S
   }
 });
 
-Then('{string} verifies user is able to assign ticket again to team member and self', function (string) {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
-});
-
 //service now
 
 When('{string} login in to service now and search for the incident id as {string}', async function (string, IncidentID) {
   try {
-    // await objServiceNow.apiServiceNow(IncidentID)
     resultState = await objServiceNow.apiServiceNow(IncidentID)
+    await objServiceNow.assignmentGroup(resultState.assignment_group_id)
+    await objServiceNow.assignedTo(resultState.assigned_to_id)
     await console.log(resultState)
+    await console.log(resultState.close_notes)
+    await console.log(resultState.assignment_group_name)
   } catch (error) {
     await console.log(error)
   }
 });
-
-
-Then('{string} verifies state of ticket should be Active', async function (string) {
+When('{string} verifies the ticket status in service now {string}', async function (string, status) {
   try {
-    await console.log("Sate ++++++++" + resultState.state)
-    await expect(resultState.state).to.include('Active');
+    resultState = await objServiceNow.apiServiceNow(TicketNumber)
+    await console.log(resultState.state)
+    await expect(resultState.state).to.include(status);
+  } catch (error) {
+    await console.log(error)
+  }
+});
+Then('{string} verifies the ticket closure note in service now {string}', async function (string, ClosureNote) {
+  try {
+    resultState = await objServiceNow.apiServiceNow(TicketNumber)
+    await console.log(resultState.close_notes)
+    await expect(resultState.close_notes).to.include(ClosureNote);
+  } catch (error) {
+    await console.log(error)
+  }
+});
+Then('{string} gets the ticket number from alert console', async function (string) {
+  try {
+    await objAlerts.txtTicket.getText().then(async function (TxtTicketNumber) {
+      await console.log("Line no - 348",TxtTicketNumber);
+      TicketNumber = TxtTicketNumber;
+    });
+    await console.log("line no - 351",TicketNumber);
+  }
+  catch (error) {
+    throw "User unable to get the ticket number"
+  }
+});
+
+Then('{string} verifies state of ticket should be {string}', async function (string, status) {
+  try {
+    await expect(resultState.state).to.include(status);
   } catch (error) {
     await console.log("Action Name : verifying state of ticket should be Active")
     await console.log(error)
@@ -383,10 +365,9 @@ Then('{string} verifies state of ticket should be Active', async function (strin
   }
 });
 
-Then('{string} verifies ticket is assigned ITOps to a team member {string}', async function (string, string2) {
+Then('{string} verifies ticket is assigned ITOps to a team member {string}', async function (string, TeamMember) {
   try {
-    await console.log("Sate ++++++++" + resultState.state)
-    // await expect(resultState.state).to.include('Active');
+    await expect(resultState.assigned_to).to.include(TeamMember);
   } catch (error) {
     await console.log("Action Name : verifying ticket is assigned ITOps to a team member")
     await console.log(error)
@@ -396,7 +377,6 @@ Then('{string} verifies ticket is assigned ITOps to a team member {string}', asy
 
 Then('{string} verifies ticket is assigned to self {string}', async function (string, string2) {
   try {
-    await console.log("Sate ++++++++" + resultState.state)
     // await expect(resultState.state).to.include('Active');
   } catch (error) {
     await console.log("Action Name : verifying ticket is assigned ITOps to self")
@@ -404,11 +384,20 @@ Then('{string} verifies ticket is assigned to self {string}', async function (st
     throw "Ticket not in assigned ITOps to a self"
   }
 });
-
+When('{string} in servicnow that ticket is closed and closure note is added {string}', async function (string, ClosureNote) {
+  try {
+    await console.log(resultState.close_notes)
+    await expect(resultState.close_notes).to.include(ClosureNote);
+  } catch (error) {
+    await console.log("Action Name : verifying the Close Notes for the ticket")
+    await console.log(error)
+    throw "Wrong closure note"
+  }
+});
 Then('{string} verifies the Close Notes for the ticket as {string}', async function (string, ClosureNote) {
   try {
-    await console.log("Sate ++++++++" + resultState.state)
-    // await expect(resultState.state).to.include(ClosureNote);
+    await console.log(resultState.state)
+    await expect(resultState.state).to.include(ClosureNote);
   } catch (error) {
     await console.log("Action Name : verifying the Close Notes for the ticket")
     await console.log(error)
@@ -419,11 +408,66 @@ Then('{string} verifies the Close Notes for the ticket as {string}', async funct
 
 Then('{string} verifies state of ticket should be Resolved', async function (string) {
   try {
-    await console.log("Sate ++++++++" + resultState.state)
-    // await expect(resultState.state).to.include('Resolved');
+    await console.log(resultState.state)
+    await expect(resultState.state).to.include('Resolved');
   } catch (error) {
     await console.log("Action Name : verifying state of ticket should be Resolved")
     await console.log(error)
     throw "Ticket not in Resolved state"
   }
 });
+
+When('{string} clicks on assign button on the popup', async function (string) {
+  await browser.sleep(5000)
+  await objAlerts.clickOnAssignButtonOnPopUp()
+});
+
+Then('{string} verify the alert console for corresponding ticket cluster', async function (string) {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.txtAssigned), 50000);
+  } catch (error) {
+    await console.log(error)
+  }
+});
+
+
+
+Then('{string} verifies ticket is assigned to {string}', async function (string, TestTeamMember) {
+  try {
+    await browser.wait(EC.visibilityOf(element(by.xpath("//span[text()='The ticket has been assigned to ']"))), 50000);
+    await browser.wait(EC.visibilityOf(element(by.xpath("//span[text()='" + TestTeamMember + "']"))), 50000);
+  } catch (error) {
+    await console.log(error)
+    throw "The ticket has been assigned to " + TestTeamMember + " is not displayed"
+  }
+});
+
+
+Then('{string} verifies the ticket is assigned {string}', async function (string, AssignedBy) {
+  try {
+    await browser.wait(EC.visibilityOf(element(by.xpath("//div[text()='" + AssignedBy + "']"))), 50000);
+  } catch (error) {
+    await console.log(error)
+    throw "The ticket has been assigned by " + AssignedBy + " is not displayed"
+  }
+});
+
+ 
+Then('{string} verifies Assignment Group of the ticket should be as defined in template {string}', async function (string, AssignGroup) {
+  try {
+    resultState = await objServiceNow.apiServiceNow(TicketNumber)
+    await objServiceNow.assignmentGroup(resultState.assignment_group_id)
+    await expect(resultState.assignment_group_id).to.include(AssignGroup);
+  } catch (error) {
+    await console.log(error)
+    throw "The ticket has been assigned"
+  }
+});
+
+Then('{string} verifies Short description of the ticket should be as defined in template {string}', async function (string,
+  ShortDescription) {
+  resultState = await objServiceNow.apiServiceNow(TicketNumber)
+  await expect(resultState.short_description).to.include(ShortDescription);
+});
+
+

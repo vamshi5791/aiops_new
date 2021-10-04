@@ -6,10 +6,8 @@ Feature: Device Inventory Features
 
      @Device_Inventory_Upload
      Scenario Outline: ITOps Engineer unable to find the Upload Icon Button
-          When "ITOps_Engineer" navigates to ITOps home page
-          And "ITOps_Engineer" enters project name as "<ProjectName>" in the search field
-          And "Admin" clicks on project name "<ProjectName>"
-          And "ITOps_Engineer" opens infrastructure page
+     
+          When "ITOps_Engineer" opens infrastructure page
           Then Verifies that Upload Icon is not present
 
           Examples:
@@ -60,9 +58,6 @@ Feature: Device Inventory Features
 
      Scenario Outline:  ITOps Admin Configure columns in device inventory
 
-          # When "ITOps_Engineer" navigates to ITOps home page
-          # And "ITOps_Engineer" enters project name as "Automation_IB_24" in the search field
-          # And "ITOps_Engineer" clicks on project name "Automation_IB_24"
           When "ITOps_Engineer" opens infrastructure page
           And "ITOps_Engineer" clicks on Configure columns option
           And "ITOps_Engineer" selects resource name column

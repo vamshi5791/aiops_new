@@ -48,7 +48,7 @@ pipeline {
                 npm run webdriver-update
 
                 node node_modules/protractor/bin/webdriver-manager update
-                 node node_modules/protractor/bin/webdriver-manager update --versions.chrome 92.0.4515.107
+                node node_modules/protractor/bin/webdriver-manager update --versions.chrome 92.0.4515.107
                 /home/smartops-jenkins/.npm-packages/lib/node_modules/typescript/bin/tsc
                 """
                 
@@ -102,3 +102,4 @@ pipeline {
 
    
 }
+

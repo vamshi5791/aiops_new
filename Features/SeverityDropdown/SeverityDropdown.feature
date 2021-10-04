@@ -4,10 +4,7 @@ Feature:  SeverityDropdown
 
       Scenario Outline:Verify search operation on top of severity condition from severity drop down
 
-            When "admin" navigates to ust home page
-            And "Admin" enters project name as "<ProjectName>" in the search field
-            And "admin" clicks on project name "<ProjectName>"
-            And "admin" clicks on Alerts page
+            When "admin" clicks on Alerts page
             Then "admin" clicks on filter by severity dropdown
             And "admin" selects severity condition as "<Severity>"
             And "admin" enters "AlertName" and clicks on enter "<AlertName>"

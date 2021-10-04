@@ -65,19 +65,19 @@ When('{string} with Username as {string}, Password as {string}, Creates Queue Ch
   });
 });
 
-
-When('{string} enters project name as {string} in the search field', async function (userRole, projectName) {
-  try {
-    await objProjectListing.Project_search(projectName);
-    await browser.actions().sendKeys(protractor.Key.ENTER).perform();
-    Global_ProjectName = projectName;
-  }
-  catch (error) {
-    await console.log("Feature name : Channel configuration with  " + userRole + " and Scenario name :enters project name")
-    await console.log(error)
-    throw "IE is unable to enter project name in project search field"
-  }
-});
+ 
+// When('{string} enters project name as {string} in the search field', async function (userRole, projectName) {
+//   try {
+//     await objProjectListing.Project_search(projectName);
+//     await browser.actions().sendKeys(protractor.Key.ENTER).perform();
+//     Global_ProjectName = projectName;
+//   }
+//   catch (error) {
+//     await console.log("Feature name : Channel configuration with  " + userRole + " and Scenario name :enters project name")
+//     await console.log(error)
+//     throw "IE is unable to enter project name in project search field"
+//   }
+// });
 
 When('{string} clicks dot menu icon', async function (userRole) {
   try {
