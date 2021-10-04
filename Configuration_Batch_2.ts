@@ -35,17 +35,17 @@ export let config: Config = {
     globalThis.environment = browser.params.env;
     globalThis.BrowserMode = args.Options;
   },
-  specs: [
+  specs: [ 
     //DisplayUser
     '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
     '../Features/DownloadAlerts/DownloadAlerts_DisplayUser.feature',
     '../Features/Logout/LogOut.feature',
-    // IE
+    // // IE
     '../Features/LogIn/LogIn_IE.feature',
     '../Features/DashBoard/DashBoard_ItopsIE.feature',
     '../Features/Logout/LogOut.feature',
 
-    //Engineer
+    // //Engineer
     '../Features/LogIn/LogIn_ITOps_Engineer.feature',
     '../Features/DownloadAlerts/DownloadAlerts_Engineer.feature',
     '../Features/MultipleAssignments/MultipleAssignmentsEngineer.feature',
@@ -53,7 +53,7 @@ export let config: Config = {
     '../Features/InfrasrtucturePageTopology/Infrasrtucture_Topology_Engineer.feature',
     '../Features/Logout/LogOut.feature',
 
-    //Admin
+    // //Admin
     '../Features/LogIn/LogIn_Admin.feature',
     '../Features/Assign/Assign.feature',
     '../Features/Hold/Hold.feature',

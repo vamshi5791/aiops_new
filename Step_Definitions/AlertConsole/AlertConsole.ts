@@ -123,7 +123,7 @@ When('{string} clicks on the cluster count for the ticketed alert from previous 
 
 Then('{string} verifies the checkbox against each alert', async function (string) {
   try {
-    await browser.wait(EC.visibilityOf(element(by.className("smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"))), 50000);
+    await browser.wait(EC.visibilityOf(element(by.className("smo-chkbox-icon smo-clickable null"))), 50000);
   } catch (error) {
     await objAlerts.clickOnCancelInClustetPopup()
     await console.log("verifying the checkbox against each alert")

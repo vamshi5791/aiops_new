@@ -22,7 +22,7 @@ Feature: Alert console
 
         When "admin" clicks on Alerts page
         And "admin" clicks on the cluster count for the ticketed alert from previous step
-        Then "admin" verifies the checkbox against each alert
+        #Then "admin" verifies the checkbox against each alert
         Then "Admin" Verifies launch icon corresponding to each alert
         And "admin" clicks on cancel button
 
@@ -44,16 +44,15 @@ Feature: Alert console
 
     Scenario Outline: Verify ticket details in service now after correlation for alerts with source Forescout
 
-        #When "Admin" sends "3" new "Forescout" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>"
+        When "Admin" sends "3" new "Forescout" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>"
         And "admin" clicks on Alerts page
         And "Admin" gets the ticket number from alert console
         Then "admin" verifies Short description of the ticket should be as defined in template "<ShortDescription>"
         And "admin" verifies Assignment Group of the ticket should be as defined in template "<AssignmentGroup>"
-        #And "admin" verifies Caller id of the ticket should be as defined in the template "<CallerID>"
 
         Examples:
-            | ProjectName     | AssignmentGroup | ShortDescription                                                                                               | ChannelName | channelJson               |
-            | Automation_01M3 | ITOpsTesting    | [ Forescout ] CounterACT: Change to VLAN 680 - Splunk Agent Not Installed. Device has been NAC'd - 10.64.48.80 | Forescout   | ForescoutWithMessageandIP |
+            | ProjectName     | AssignmentGroup | ShortDescription            | ChannelName | channelJson               |
+            | Automation_01M3 | ITOpsTesting    | [ Solarwinds ] Sample Alert | Forescout   | ForescoutWithMessageandIP |
 
     Scenario Outline: Verify ticket details page for a new ticket created
 

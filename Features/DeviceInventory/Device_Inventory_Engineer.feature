@@ -6,7 +6,10 @@ Feature: Device Inventory Features
 
      @Device_Inventory_Upload
      Scenario Outline: ITOps Engineer unable to find the Upload Icon Button
-     
+
+          When "admin" navigates to ITOps home page
+          And "Admin" enters project name in project search field
+          And "admin" clicks on project name and navigates to dashboard
           When "ITOps_Engineer" opens infrastructure page
           Then Verifies that Upload Icon is not present
 
@@ -65,8 +68,8 @@ Feature: Device Inventory Features
           When "ITOps_Engineer" clicks on logout button
           Given User with ITOps role renders the URL
           When user enters Username as "Itops_engineer", Password as "qa123" and clicks on Login button
-          And "ITOps_Engineer" enters project name as "<ProjectName>" in the search field
-          And "ITOps_Engineer" clicks on project name "<ProjectName>"
+          And "Admin" enters project name in project search field
+          And "admin" clicks on project name and navigates to dashboard
           And "ITOps_Engineer" opens infrastructure page
           Then "ITOps_Engineer" verifies the Mac address column is present or not
 

@@ -6,9 +6,7 @@ Feature: Device Inventory Features
 
      Scenario Outline: Itops Admin searches the device with existing device name
 
-          When "admin" navigates to ITOps home page
-          And "Admin" enters project name in project search field
-          And "admin" clicks on project name and navigates to dashboard
+          
           When "ITOps_Admin" opens infrastructure page
           And "ITOps_Admin" searches device name "<DeviceName>"
           Then Device details should be displayed "<Device>"
@@ -87,8 +85,8 @@ Feature: Device Inventory Features
           When "user" clicks on logout button
           Given User with ITOps role renders the URL
           When user enters Username as "Itops_admin", Password as "qa123" and clicks on Login button
-          And "ITOps_Admin" enters project name as "<ProjectName>" in the search field
-          And "ITOps_Admin" clicks on project name "<ProjectName>"
+          And "Admin" enters project name in project search field
+          And "admin" clicks on project name and navigates to dashboard
           And "ITOps_Admin" opens infrastructure page
           Then "ITOps_Admin" verifies the Mac address column is present or not
 
