@@ -298,6 +298,7 @@ Given('{string} clicks on edit button', async function (userRole) {
 });
 Given('{string} clicks on cancel button', async function (userRole) {
   try {
+    await browser.sleep(2000)
     await objSeverityMapping.Cancel();
   }
   catch (error) {

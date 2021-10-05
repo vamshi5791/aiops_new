@@ -66,8 +66,8 @@ Feature: Ticket Details Page- Assign
     And "admin" Verifies ticket is assigned to team member
 
     Examples:
-      | TicketNumber | Group            | TeamMember          | SuccessMessage                | ChannelName | channelJson  |
-      | INC0820433   | Visibility - UST | Nimsoft Integration | Tickets assigned successfully | Solarwinds  | QueueChannel |
+      | ProjectName     | Group            | TeamMember          | SuccessMessage                | ChannelName | channelJson  |
+      | Automation_01M3 | Visibility - UST | Nimsoft Integration | Tickets assigned successfully | Solarwinds  | QueueChannel |
 
 
   #Test case on Hold
@@ -82,8 +82,8 @@ Feature: Ticket Details Page- Assign
   #   And "admin" assigned to me button is disabled
   #   And "Admin" verifies text displayed like "self assign"
   #   Examples:
-  #     | TicketNumber | Group            | SuccessMessage                |
-  #     | INC0819624   | Visibility - UST | Tickets assigned successfully |
+  #    | ProjectName      | Group            | SuccessMessage                |
+  #     | Automation_01M3    | Visibility - UST | Tickets assigned successfully |
 
 
   Scenario Outline:verify subtext when user perfrmed team member assignment
@@ -98,5 +98,5 @@ Feature: Ticket Details Page- Assign
     And "admin" assigned to me button is disabled
     And "Admin" verifies text displayed like "Ticket has been assigned to team member"
     Examples:
-      | TicketNumber | Group            | TeamMember      | SuccessMessage                | ChannelName | channelJson  |
-      | INC0820433   | Visibility - UST | Amjathsha Abdul | Tickets assigned successfully | Solarwinds  | QueueChannel |
+      | ProjectName     | Group            | TeamMember      | SuccessMessage                | ChannelName | channelJson  |
+      | Automation_01M3 | Visibility - UST | Amjathsha Abdul | Tickets assigned successfully | Solarwinds  | QueueChannel |

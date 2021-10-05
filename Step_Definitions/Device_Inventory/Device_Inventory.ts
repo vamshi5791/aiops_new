@@ -217,6 +217,7 @@ Then('{string} unable to find add device option', async function (userRole) {
 
 When('{string} clicks on resource name {string}', async function (userRole, ResourceName) {
   try {
+    await browser.sleep(5000)
     await objInfrastructurePage.ResourceName(ResourceName);
   }
   catch (error) {

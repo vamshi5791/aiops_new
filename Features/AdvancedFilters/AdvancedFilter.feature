@@ -157,7 +157,7 @@ Feature:  Advanced Filter
           When "Admin" clicks on Delete icon for "<SavedFilter>" filter
           And "Admin" clicks on Yes on confirmation pop up
           Then "Admin" verifies "<Toaster>" shown
-          Then "Admin" verifies deleted "<SavedFilter>" filter is removed from the filter dropdown in console
+          And "admin" clicks on cancel button in advance filter console
 
           Examples:
                | UserName    | Password | ProjectName      | SavedFilter | Toaster                      |

@@ -51,7 +51,7 @@ Feature: Device Inventory Features
 
   @Delete_Topology
   Scenario: Delete_Topology View
-
+    When "ITOps_Admin" opens infrastructure page
     When "ITOps_Admin" clicks on Topology icon
     And "ITOps_Admin" clicks the delete topology icon
     And "ITOps_Admin" clicks on yes for conformation

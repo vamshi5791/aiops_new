@@ -2,10 +2,10 @@ import { ElementFinder, element, by, promise, browser, protractor } from "protra
 
 export class InfrastructurePage {
 
-  btnTopology = element(by.xpath('//span[@class="smo-menuitem-icon smo smo-topology-tree ng-star-inserted"]'))
+  btnTopology = element(by.className('smo-menuitem-icon smo smo-topology-tree ng-star-inserted'))
   // txtTopologySearch=element(by.xpath('//input[@placeholder="Search"]'))
   btnImport = element(by.xpath('//span[@class="smo-btn-icon-col d-flex align-items-center smo smo-upload-regular smo-clickable smo-button-icon-right smo-flex-order-three ng-star-inserted"]'))
-  btnDelete = element(by.xpath('//span[@class="smo-btn-icon-col d-flex align-items-center smo smo-delete smo-clickable smo-button-icon-right smo-flex-order-three ng-star-inserted"]'))
+  btnDelete = element(by.xpath('//smo-button[@smotooltip="Delete Topology"]'));
   btnInfrastructure = element(by.xpath('//a[text()="Infrastructure"]'))
   btnUpload = element(by.xpath('//span[@class="smo-button-icon-left smo-clickable fa fa-upload"]'))
   txtSearch = element(by.xpath('//input[@placeholder="Search"]'))

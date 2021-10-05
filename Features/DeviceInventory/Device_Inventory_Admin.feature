@@ -6,7 +6,6 @@ Feature: Device Inventory Features
 
      Scenario Outline: Itops Admin searches the device with existing device name
 
-          
           When "ITOps_Admin" opens infrastructure page
           And "ITOps_Admin" searches device name "<DeviceName>"
           Then Device details should be displayed "<Device>"

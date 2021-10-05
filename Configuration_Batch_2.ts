@@ -40,7 +40,7 @@ export let config: Config = {
     '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
     '../Features/DownloadAlerts/DownloadAlerts_DisplayUser.feature',
     '../Features/Logout/LogOut.feature',
-    // // IE
+    // // // IE
     '../Features/LogIn/LogIn_IE.feature',
     '../Features/DashBoard/DashBoard_ItopsIE.feature',
     '../Features/Logout/LogOut.feature',

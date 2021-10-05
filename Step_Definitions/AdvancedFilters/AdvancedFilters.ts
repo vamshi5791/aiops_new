@@ -576,7 +576,6 @@ When('{string} clicks on Delete icon for {string} filter', async function (userN
 });
 
 
-
 Then('{string} verifies {string} shown', async function (userName, Toaster) {
   try {
     await browser.wait(EC.visibilityOf(objAlerts.txtPopUp));
@@ -600,7 +599,21 @@ Then('{string} verifies deleted {string} filter is removed from the filter dropd
 
   }
 })
+Then('{string} clicks on cancel button in advance filter console', async function (userName) {
+  try {
+    await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="No Saved Filters"]'))), 20000);
+    var myElement = objAlerts.btnCancel;
+    await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+    await browser.wait(EC.visibilityOf(objAlerts.btnSearch), 10000);
+    await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
+    await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
+    await element(by.xpath('//smo-button[@label="Cancel"]')).click();
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+    await console.log(error)
 
+  }
+})
 Then('{string} verifies deleted {string} filter is removed from the filter dropdown in console', async function (userName, SavedFilter) {
   try {
     await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="No Saved Filters"]'))), 20000);

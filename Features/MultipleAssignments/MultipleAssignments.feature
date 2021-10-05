@@ -9,10 +9,6 @@ Feature: ITOps admin Multiple Assignments from Alert Console
         And "admin" clicks on select all checkbox for the ticket number "<TicketNumber01>", "<TicketNumber02>"
         And "admin" clicks on 3 dots in top left
         And "admin" clicks on "Assign" button
-        And "admin" clicks on "Individual" radio button
-        And "admin" selects user from the team member drop down as "<Group>", "<TeamMember>"
-        And "admin" clicks on assign button on the popup
-        Then "Admin" verifies if "<SuccessMessage>" message is displayed
         Then "admin" verify the alert console for corresponding ticket cluster
         And "admin" verifies the ticket is assigned "By itops_admin"
         When "Admin" clicks on the ticket number
@@ -49,10 +45,6 @@ Feature: ITOps admin Multiple Assignments from Alert Console
         And "admin" clicks on select all checkbox for the ticket number "<TicketNumber01>", "<TicketNumber02>"
         And "admin" clicks on 3 dots in top left
         And "admin" clicks on "Assign" button
-        And "admin" clicks on "Group" radio button
-        And "admin" selects user from the team member drop down as "<Group>"
-        And "admin" clicks on assign button on the popup
-        Then "Admin" verifies if "<SuccessMessage>" message is displayed
         Then "admin" verify the alert console for corresponding ticket cluster
         And "admin" verifies the ticket is assigned "By itops_admin"
         When "Admin" clicks on the ticket number

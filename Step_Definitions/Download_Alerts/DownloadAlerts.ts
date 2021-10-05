@@ -98,24 +98,24 @@ When('{string} reads data from alerts console', async function (string) {
 
 Then('{string} verifies the data displayed is same as UI', async function (string) {
   // //validating data
+
   console.log("tableData.length========: " + this.tableData.length);
   console.log("downloadedAlertsDta.length========: " + this.downloadedAlertsDta.length);
-  console.log("tableData[1] : " + this.tableData[1]);
-  console.log(this.tableData[1]);
+  console.log("tableData[1] : " + this.tableData[0]);
+  console.log(this.tableData[0]);
   console.log("downloadedAlertsDta[1]: " + this.downloadedAlertsDta[1]);
-  console.log(this.downloadedAlertsDta[1]);
+  console.log(this.downloadedAlertsDta[0]);
   for (let i = 0; i < this.tableData.length; i++) {
     var tableObj = this.tableData[i];
     var downloadedObj = this.downloadedAlertsDta[i];
     await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " Verifying table row num: " + i);
     await console.log(i + " : tableObj['3']: " + tableObj['3'] + ", downloadedObj['Alert ID']: " + downloadedObj['Alert ID']);
-
-    // expect(tableObj['3']).to.include(downloadedObj['Alert ID']);
+     expect(tableObj['3']).to.include(downloadedObj['Alert ID']);
     expect(downloadedObj['Alert Name']).to.include(tableObj['6']);
     expect(moment(downloadedObj['First Alert Time']).format("hh:mm:ss A DD-MMM-YYYY")).to.include(tableObj['4'].replace('\n', ' '));
     expect(moment(downloadedObj['Last Alert Time']).format("hh:mm:ss A DD-MMM-YYYY")).to.include(tableObj['5'].replace('\n', ' '));
     expect(downloadedObj['Resource Name']).to.include(tableObj['9']);
-    expect(downloadedObj['Source']).to.include(tableObj['8']);
+    // expect(downloadedObj['Source']).to.include(tableObj['8']);
     expect(downloadedObj['IP Address']).to.include(tableObj['10']);
     expect(downloadedObj['Metrics']).to.include(tableObj['11']);
 

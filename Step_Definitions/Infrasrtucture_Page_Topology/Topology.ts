@@ -9,9 +9,9 @@ let objInfrastructurePage = new InfrastructurePage();
 
 When('{string} opens infrastructure page', async function (userRole) {
   try {
-
-    // await browser.sleep(5000)
+   
     await objInfrastructurePage.Infrastructure();
+    await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="Device Inventory"]'))), 60000);
   }
   catch (error) {
     await console.log("Feature name : Infrastructure Topology " + userRole + " and Scenario name : opens infrastructure page")

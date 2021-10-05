@@ -9,8 +9,9 @@ var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 import { ApiRabbitMQ } from "../../PageObjects/ApiRabbitMQ";
 var objApiRabbitMQ = new ApiRabbitMQ()
-
-
+import { ServiceNowAPI } from '../../ServiceNowAPI/servicenowAPI';
+let objServiceNow = new ServiceNowAPI();
+ 
 var EC = browser.ExpectedConditions;
 var fs = require('fs');
 var expect = chai.expect;
@@ -201,7 +202,7 @@ Then('{string} gets the short description', async function (string) {
 
 Given('User verifies short description in service now', async function () {
   try {
-    var dd = await objApiRabbitMQ.apiServiceNow(TicketNumber);
+    var dd = await objServiceNow.apiServiceNow(TicketNumber);
     var stringify = JSON.parse(dd);
     ShortDescriptionServiceNow = stringify.short_description
   }
