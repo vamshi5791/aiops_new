@@ -45,7 +45,7 @@ export let config: Config = {
     // '../Features/Logout/LogOut.feature',
 
     // IE
-    // '../Features/LogIn/LogIn_IE.feature',
+    '../Features/LogIn/LogIn_IE.feature',
     // '../Features/QueueChannel/CreateQueqeChannel_IE.feature',
     // '../Features/LogInPersona/LoginPersona_IE.feature',
     // '../Features/Logout/LogOut.feature',
@@ -70,7 +70,7 @@ export let config: Config = {
     // '../Features/Logout/LogOut.feature',
 
     // Admin
-    '../Features/LogIn/LogIn_Admin.feature',
+    // '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/LogInPersona/LoginPersona_ITOpsAdmin.feature',
     // '../Features/DeviceInventory/Device_Inventory_Admin.feature',
     // '../Features/FilterBySeverityDropdown/FilterBySeverityDropdown.feature',
