@@ -22,7 +22,6 @@ Feature: Alert console
 
         When "admin" clicks on Alerts page
         And "admin" clicks on the cluster count for the ticketed alert from previous step
-        #Then "admin" verifies the checkbox against each alert
         Then "Admin" Verifies launch icon corresponding to each alert
         And "admin" clicks on cancel button
 

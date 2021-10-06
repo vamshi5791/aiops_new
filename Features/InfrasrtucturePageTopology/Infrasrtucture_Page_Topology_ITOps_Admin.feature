@@ -7,28 +7,22 @@ Feature: Device Inventory Features
   @Topology_Upload
   Scenario Outline: Topology Upload
 
-    When "ITOps_Admin" navigates to ITOps home page
-    And "Admin" enters project name in project search field and click on enter
-    And "admin" clicks on project name
-    And "ITOps_Admin" opens infrastructure page
+    When "ITOps_Admin" opens infrastructure page
     And "ITOps_Admin" clicks on Topology icon
     And "ITOps_Admin" clicks on import
     And "ITOps_Admin" selects the valid file to be uploaded
     And "ITOps_Admin" clicks on upload button
+    Then "Admin" verifies "<Toaster>" shown
 
     Examples:
-      | Itops_UserName | Itops_Password | ProjectName     | TestProjectName |
-      | Itops_admin    | qa123          | Automation_01M3 | Automation_02   |
+      | Toaster               |
+      | Imported Successfully |
 
-
-  @ITOpsAdminSearchWithNonExistingDeviceName
   Scenario Outline: ITOpsAdminSearchWithNonExistingDeviceName
 
     When "ITOps_Admin" clicks on Topology icon
     And "ITOps_Admin" searches device name "<DeviceName>"
     Then device should not be available "<Device>"
-
-
 
     Examples:
       | DeviceName      | Device          |

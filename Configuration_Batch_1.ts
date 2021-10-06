@@ -15,8 +15,6 @@ export let config: Config = {
   ignoreUncaughtExceptions: true,
   capabilities: {
     'browserName': args.browser,
-    // 'shardTestFiles': true,
-    // maxInstances: 2,
     chromeOptions:
 
     {
@@ -45,24 +43,24 @@ export let config: Config = {
     // '../Features/Logout/LogOut.feature',
 
     // IE
-    '../Features/LogIn/LogIn_IE.feature',
+    // '../Features/LogIn/LogIn_IE.feature',
     // '../Features/QueueChannel/CreateQueqeChannel_IE.feature',
     // '../Features/LogInPersona/LoginPersona_IE.feature',
     // '../Features/Logout/LogOut.feature',
 
     // Engineer
 
-    // '../Features/LogIn/LogIn_ITOps_Engineer.feature',
-    // '../Features/LogInPersona/LoginPersona_ITOpsEngineer.feature',
-    // '../Features/DeviceInventory/Device_Inventory_Engineer.feature',
-    // '../Features/Policies/AlertCorrelation_Engineer.feature',
-    // '../Features/Policies/Acknowledgement_Engineer.feature',
-    // '../Features/Policies/Failure_Engineer.feature',
-    // '../Features/Policies/Recovery_Engineer.feature',
-    // '../Features/SeverityMapping/Severity_Mapping_ITOpsEngineer.feature',
-    // '../Features/DisplayConfiguration/DisplayConfiguration_Engineer.feature',
-    // '../Features/TicketingThreshold/TicketingThreshold_ITOpsEngineer.feature',
-    // '../Features/Logout/LogOut.feature',
+    '../Features/LogIn/LogIn_ITOps_Engineer.feature',
+    '../Features/LogInPersona/LoginPersona_ITOpsEngineer.feature',
+    '../Features/DeviceInventory/Device_Inventory_Engineer.feature',
+    '../Features/Policies/AlertCorrelation_Engineer.feature',
+    '../Features/Policies/Acknowledgement_Engineer.feature',
+    '../Features/Policies/Failure_Engineer.feature',
+    '../Features/Policies/Recovery_Engineer.feature',
+    '../Features/SeverityMapping/Severity_Mapping_ITOpsEngineer.feature',
+    '../Features/DisplayConfiguration/DisplayConfiguration_Engineer.feature',
+    '../Features/TicketingThreshold/TicketingThreshold_ITOpsEngineer.feature',
+    '../Features/Logout/LogOut.feature',
 
     // Visitor
     // '../Features/LogIn/LogIn_ITOps_Visitor.feature',

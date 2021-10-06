@@ -2,16 +2,12 @@
 
 Feature:Login persona functionalities of Display User
 
-     Scenario Outline: ITOps Display User is able to  view dashboard
+     Scenario: ITOps Display User is able to  view dashboard
 
-
-          And "Admin" enters project name in project search field
-          And "admin" clicks on project name and navigates to dashboard
-          And "Display_User" able to access dashboard
-          Examples:
-               | ProjectName      |
-               | Automation_IB_24 |
-
+          When "Display_User" enters project name in project search field
+          And "Display_User" clicks on project name and navigates to dashboard
+          Then "Display_User" able to access dashboard
+        
      Scenario Outline: Display User is able to view alerts
 
           Then "Display_User" able to access alerts section
@@ -32,13 +28,8 @@ Feature:Login persona functionalities of Display User
           When "Display_User" navigates to ITOps home page
           Then "Display_User" verifies edit configuration button is not present
 
-     Scenario Outline:   ITOps Display_User Unbale TO Access Three Dots
-          When "admin" navigates to ITOps home page
-          And "Admin" enters project name in project search field
-          And "admin" clicks on project name and navigates to dashboard
+     Scenario:   ITOps Display_User Unbale TO Access Three Dots
+          When "Display_User" navigates to ITOps home page
+          And "Display_User" enters project name in project search field
           And "Display_User" clicks dot menu icon
-          When "Display_User" unable to access dot menu options
-
-          Examples:
-               | ProjectName      |
-               | Automation_IB_24 |
+          Then "Display_User" unable to access dot menu options

@@ -4,7 +4,6 @@ var fs = require('fs');
 
 export class support {
 
-
   async selectByVisibleText(DropdownValue: string) {
     await element(by.xpath("//span[text()='" + DropdownValue + "']")).click();
   }

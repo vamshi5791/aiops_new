@@ -32,7 +32,7 @@ export class ApiRabbitMQ {
             });
         await this.RabbitMQPushMsg(routeKey, channelJson)
     }
-
+ 
     //POST Method for Push Messages Through RabbitMQ Api
     async RabbitMQPushMsg(routeKey: string, channelJson: string) {
         let mainApiUrl = rabbitMQAPI_URL + '/api/exchanges/ihub/' + projectName + '/publish';
@@ -65,26 +65,6 @@ export class ApiRabbitMQ {
             .then(resp => {
             })
     }
-
-    // async apiServiceNow(incNumber) {
-    //     const env_url = 'https://ustglobaldev.service-now.com/';
-    //     const mainService_url = env_url + 'incident.do?JSONv2&sysparm_action=getRecords&sysparm_query=number=' + incNumber;
-
-    //     await fetch(mainService_url, {
-    //         method: "GET",
-    //         headers: { "Content-type": "application/json;charset=UTF-8", authorization: 'Basic U21hcnRvcHMuTmluZXR5b25lOkpSYVNxOU5LaCVXNysrakY=' }
-    //     })
-    //         // Converting to JSON
-    //         .then(response => response.json())
-    //         // Displaying results to console
-    //         .then(result => {
-    //             // console.log(result)
-    //             let dd = result.records[0]
-    //             let rr = JSON.stringify(dd);
-    //             sss = rr;
-    //         });
-    //     return sss;
-    // }
 
     //Delete Query for Kibana api
 

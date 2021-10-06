@@ -132,8 +132,8 @@
         "channelName": "Channel600",
         "orgId": 1,
         "active": true,
-        "projectId": 1518,
-        "projectName": "Automation_M3",
+        "projectId": 1456,
+        "projectName": "Automation_IB_24",
         "source": "PWF",
         "destinations": [
             {

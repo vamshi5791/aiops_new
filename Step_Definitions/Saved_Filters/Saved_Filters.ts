@@ -1,7 +1,6 @@
 import { Given, When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import chai from "chai";
-import { LogIn } from '../../PageObjects/LogIn';
 import { ProjectListingPage } from "../../PageObjects/ProjectListing";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { AlertConsoleTableData } from "../../PageObjects/AlertConsoleTableData";
@@ -11,14 +10,10 @@ var ProjectName_Batch_1 = properties.get("main.ProjectName_Batch_1");
 var ProjectName_Batch_2 = properties.get("main.ProjectName_Batch_2");
 let objAlertsTableData = new AlertConsoleTableData();
 var EC = browser.ExpectedConditions;
-var fs = require('fs');
 var expect = chai.expect;
 var TestProjectName;
-let objLogIn = new LogIn();
 let ProjectListing = new ProjectListingPage();
 let objAlerts = new AlertsPage();
-var testAlertState;
-var testSource;
   
 When('{string} enters project name in project search field', async function (userRole) {
   await ProjectListing.Project_search(ProjectName_Batch_1);
@@ -50,18 +45,6 @@ When('{string} Clicks on Saved Filter from advanced filter section {string}', as
   }
 });
 
-When('{string} clicks on project name {string}', async function (userRole, TestProjectName) {
-  try {
-    await browser.sleep(5000);
-    await browser.wait(EC.elementToBeClickable(element(by.xpath('//h3[text()=" ' + ProjectName_Batch_1 + ' "]'))), 100000);
-    await ProjectListing.selectProject(ProjectName_Batch_1);
-  } catch (error) {
-    await ProjectListing.selectProject(ProjectName_Batch_1);
-    await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on project name")
-    await console.log(error)
-
-  }
-});
 
 When('{string} clicks on project name', async function (userRole) {
   try {
@@ -70,7 +53,7 @@ When('{string} clicks on project name', async function (userRole) {
     await ProjectListing.selectProject(ProjectName_Batch_2);
   } catch (error) {
     await ProjectListing.selectProject(ProjectName_Batch_2);
-    await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on project name")
+    await console.log("Action Name : clicking on project name")
     await console.log(error)
 
   }
@@ -82,7 +65,7 @@ When('{string} clicks on project name and navigates to dashboard', async functio
     await ProjectListing.selectProject(ProjectName_Batch_1);
   } catch (error) {
     await ProjectListing.selectProject(ProjectName_Batch_1);
-    await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on project name")
+    await console.log("Action Name : clicking on project name")
     await console.log(error)
 
   }
@@ -117,24 +100,11 @@ When('{string} clicks on advanced filter icon', async function (userRole) {
   }
 });
 
-
-Then('Success message should be disaplayed as toaster {string}', async function (Toaster) {
-  await browser.wait(EC.visibilityOf(element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm'))), 100000);
-
-  await element(by.className('smo-toast-detail smo-toast-message-text-sm smo-toast-detail-sm')).getText().then(function (text) {
-    expect(text).to.include(Toaster);
-  });
-});
-
 When('{string} enters source as {string} and alert state as {string}', async function (userRole, Source, AlertState) {
   try {
-    // await browser.wait(EC.visibilityOf(objAlerts.drpSource), 10000);
-    // await browser.wait(EC.visibilityOf(objAlerts.drpAlertState), 10000);
     await browser.sleep(2000);
     await objAlerts.SelectSource(Source);
     await objAlerts.AlertState(AlertState);
-    testSource = Source;
-    testAlertState = AlertState;
   } catch (error) {
     var myElement = objAlerts.btnCancel;
     await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());

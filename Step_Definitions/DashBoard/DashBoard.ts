@@ -41,7 +41,6 @@ When('{string} selects rows per page as {string}', async function (string, NoOfR
         console.log("No Pages in alert console")
       } else {
         await objAlerts.selectNoOfRows(NoOfRows)
-
       }
     });
 
@@ -89,7 +88,6 @@ When('{string} gets the number of {string} in alert console page {string}', asyn
     await objAlertsTableData.isElementIsDisplayed().then((visible) => {
       this.isNextPageAvailable = visible;
     });
-    // totalAlertsCount=tableRowCount ;
   }
   await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " after while " + this.tableRowCount);
 
@@ -158,10 +156,7 @@ Then('{string} verifies Alert count should match in both Top {string} Alerts wid
     await element(by.xpath('//div[@class="alert-message"]//following::td')).getText().then(async (text) => {
       await expect(text).to.include(this.tableRowCount);
       await console.log("================================" + text)
-      //   await console.log("========-----========================"+this.tableRowCount)
     })
-    // await console.log("================================"+totalAlertsCount)
-    // await browser.wait(EC.visibilityOf(element(by.xpath('//td[text()="' + this.totalAlertsCount + '"]'))), 30000);
   } catch (error) {
     await browser.switchTo().defaultContent();
     console.log("Alert count")
@@ -307,25 +302,13 @@ Then('{string} Y Axis values right side average time', async function (string) {
     throw "Doesn't have Y Axis values right side average time"
   }
 });
-
-
-
-Then('{string} only the selected severity and source data must be available in the chart', async function (string) {
-  try {
-
-  } catch (error) {
-    console.log("selecting Alert state")
-    console.log(error)
-    throw "unable to select state"
-  }
-});
-
 // Dashboard -Resolution SLA
 
 Then('{string} verifies that Hours selection option is present in the widget', async function (string) {
   try {
     await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="Hour"]'))), 10000);
   } catch (error) {
+    await browser.switchTo().defaultContent();
     console.log("verifying the Hours selection option is available in the dashboard")
     console.log(error)
     throw "unable to find hour selection option"
@@ -415,17 +398,6 @@ Then('{string} verifies Date should be on X axis and Alert names on Y axis.', as
   }
 });
 
-Then('{string} verifies Top5 alert names from each day should be shown on Y axis', async function (string) {
-  try {
-
-  } catch (error) {
-    await browser.switchTo().defaultContent();
-    console.log("verifying the widget Source device mapping is available in the dashboard")
-    console.log(error)
-    throw "Source device mapping is not available in the dashboard"
-  }
-})
-
 Then('{string} clicks on a device name', async function (string) {
   try {
     await objectDashboard.clickOnHostName();
@@ -497,6 +469,7 @@ When('{string} gets device name from the widget', async function (string) {
       MTBFdata = await objectDashboard.deviceAvailability("1519", deviceName);
     });
   } catch (error) {
+    await browser.switchTo().defaultContent();
     await console.log(error);
     throw "unable to get device name"
   }
@@ -509,6 +482,7 @@ When('{string} verifies the MTBF calculation result', async function (string) {
     await browser.wait(EC.visibilityOf(element(by.xpath('//td[text()="' + MTBFInHours + '"]'))));
   } catch (error) {
     await browser.switchTo().defaultContent();
+    await console.log(error)
     throw "wrong MTBF calculation"
   }
 });

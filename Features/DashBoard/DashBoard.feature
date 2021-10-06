@@ -23,14 +23,14 @@ Feature:  Dashboard
           And "Admin" verifies Alert count should match in both Top "10" Alerts widget and Alert index
           When "Admin" comes out of the dashboard frame
           Examples:
-               | ProjectName     | No.Of.Rows | InLast | DurationType | AlertName   |
-               | Automation_01M3 | 100        | 14     | Days         | Test Alert1 |
+               | No.Of.Rows | InLast | DurationType | AlertName   |
+               | 100        | 14     | Days         | Test Alert1 |
      Scenario Outline: ITOPS Dashboard - verify Open tickets in service now  widget
 
           When "Admin" navigate to dashboard section
           And "admin" moves to the dashboard frame
           Then "Admin" verifies that the widget "Alert Trend" is available in the dashboard
-          When "Admin" verifies the total open alerts count using project id as "<ProjectID>"
+          And "Admin" verifies the total open alerts count using project id as "<ProjectID>"
           When "Admin" comes out of the dashboard frame
 
           Examples:
@@ -131,6 +131,19 @@ Feature:  Dashboard
                | Severity | source     |
                | Critical | Solarwinds |
 
+     Scenario Outline: Verify Dashboard widget - Alert Pattern
+
+          When "Admin" navigate to dashboard section
+          And "admin" moves to the dashboard frame
+          Then "Admin" verifies that the widget "Alert Pattern" is available in the dashboard
+          When "Admin" selects a severity as "<Severity>" and source as "<source>" and make sure only data related to that are displayed -open vs closed
+          And "Admin" selects date more than one month
+          Then "Admin" verifies Date should be on X axis and Alert names on Y axis.
+          When "Admin" comes out of the dashboard frame
+          Examples:
+               | Severity | source     |
+               | Critical | Solarwinds |
+
      Scenario Outline: MTBF calculation for top 5 alerts are shown for each device
 
           When "Admin" navigate to dashboard section
@@ -142,20 +155,6 @@ Feature:  Dashboard
           And "Admin" verifies right side should include label "Total Alerts : <count of total alerts for the selected device>"
           And "Admin" verifies column headings should be "ALERT NAME", "COUNT", "MTBF"
           And "admin" verifies the MTBF calculation result
-          When "Admin" comes out of the dashboard frame
-          Examples:
-               | Severity | source     |
-               | Critical | Solarwinds |
-
-     Scenario Outline: Verify Dashboard widget - Alert Pattern
-
-          When "Admin" navigate to dashboard section
-          And "admin" moves to the dashboard frame
-          Then "Admin" verifies that the widget "Alert Pattern" is available in the dashboard
-          When "Admin" selects a severity as "<Severity>" and source as "<source>" and make sure only data related to that are displayed -open vs closed
-          And "Admin" selects date more than one month
-          Then "Admin" verifies Date should be on X axis and Alert names on Y axis.
-          And "Admin" verifies Top5 alert names from each day should be shown on Y axis
           When "Admin" comes out of the dashboard frame
           Examples:
                | Severity | source     |

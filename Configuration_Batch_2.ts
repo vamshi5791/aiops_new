@@ -37,7 +37,7 @@ export let config: Config = {
   },
   specs: [ 
     //DisplayUser
-    '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
+    // '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
     // '../Features/DownloadAlerts/DownloadAlerts_DisplayUser.feature',
     // '../Features/Logout/LogOut.feature',
     // IE
@@ -54,7 +54,7 @@ export let config: Config = {
     // '../Features/Logout/LogOut.feature',
 
     // //Admin
-    // '../Features/LogIn/LogIn_Admin.feature',
+    '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/Assign/Assign.feature',
     // '../Features/Hold/Hold.feature',
     // '../Features/MultipleAssignments/MultipleAssignments.feature',
@@ -71,15 +71,14 @@ export let config: Config = {
     // '../Features/ShortDescriptionOfTickets/ShortDescriptionOfTickets.feature',
     // '../Features/AcknowledgementAlertProcessing/AcknowledgementAlertProcessing.feature',
     // '../Features/VirtualEngineerAssignemnt/VirtualEngineerAssignemnt.feature',
-    // '../Features/DeviceDetails/DeviceDetails.feature',
     // '../Features/BulkAcknowledge/BulkAcknowledge.feature',
     // '../Features/DeviceInventory/Device_Inventory_Admin.feature',
 
-    // '../Features/DashBoard/DashBoard.feature',
-    // '../Features/DownloadAlerts/DownloadAlerts.feature',
+    '../Features/DashBoard/DashBoard.feature',
+    '../Features/DownloadAlerts/DownloadAlerts.feature',
+      '../Features/DeviceDetails/DeviceDetails.feature',
     // '../Features/AlertConsole/AlertConsole.feature',
-
-    // '../Features/InfrasrtucturePageTopology/Infrasrtucture_Page_Topology_ITOps_Admin.feature',
+    '../Features/InfrasrtucturePageTopology/Infrasrtucture_Page_Topology_ITOps_Admin.feature',
 
   ],
   cucumberOpts: {

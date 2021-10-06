@@ -4,14 +4,12 @@ Feature: Login persona functionalities of ITOps Admin
 
      @Admin_AbleToViewDashboard
 
-     Scenario Outline: ITOps Admin is able to  view Dashboard
+     Scenario: ITOps Admin is able to  view Dashboard
 
           And "Admin" enters project name in project search field
           And "admin" clicks on project name and navigates to dashboard
           Then "ITOps_Admin" able to access dashboard
-          Examples:
-               | ProjectName      |
-               | Automation_IB_24 |
+      
      Scenario: ITOps Admin is able to  view Alerts
           When "ITOps_Admin" clicks on Alerts page
           Then "ITOps_Admin" able to access alerts section
@@ -36,8 +34,8 @@ Feature: Login persona functionalities of ITOps Admin
 
 
           Examples:
-               | ProjectName      | Description | SuccessMessage              |
-               | Automation_IB_24 | NewSample   | Project Updated Succesfully |
+               | Description | SuccessMessage              |
+               | NewSample   | Project Updated Succesfully |
 
 
      Scenario Outline: ITOps Admin is able to access the Master Configuration page

@@ -17,7 +17,7 @@ var ChannnelNameText;
 var Global_ProjectName
 var fs = require('fs');
 
-
+ 
 When('{string} with Username as {string}, Password as {string}, Creates Queue Channel with channelName as {string}, for the project {string} with projectId {string}', async function (userRole, username, password, channelName, projectName, projectID) {
   ChannnelNameText = channelName;
   var JSONTestData = JSON.parse(fs.readFileSync('JSONTestData/QueueChannel.json', 'utf-8'));
@@ -65,25 +65,11 @@ When('{string} with Username as {string}, Password as {string}, Creates Queue Ch
   });
 });
 
- 
-// When('{string} enters project name as {string} in the search field', async function (userRole, projectName) {
-//   try {
-//     await objProjectListing.Project_search(projectName);
-//     await browser.actions().sendKeys(protractor.Key.ENTER).perform();
-//     Global_ProjectName = projectName;
-//   }
-//   catch (error) {
-//     await console.log("Feature name : Channel configuration with  " + userRole + " and Scenario name :enters project name")
-//     await console.log(error)
-//     throw "IE is unable to enter project name in project search field"
-//   }
-// });
-
 When('{string} clicks dot menu icon', async function (userRole) {
   try {
-    await browser.sleep(3000)
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[@class="smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm"]//following::span[@class="cursor-pt favourite-icon ng-star-inserted"]//following::span'))), 50000);
     await browser.wait(EC.presenceOf(element(by.xpath('//span[@class="smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm"]//following::span[@class="cursor-pt favourite-icon ng-star-inserted"]//following::span'))), 50000);
+    await browser.sleep(1000)
     await objProjectListing.ThreeDots(Global_ProjectName);
   }
   catch (error) {
