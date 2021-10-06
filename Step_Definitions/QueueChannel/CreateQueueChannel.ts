@@ -69,7 +69,7 @@ When('{string} clicks dot menu icon', async function (userRole) {
   try {
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[@class="smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm"]//following::span[@class="cursor-pt favourite-icon ng-star-inserted"]//following::span'))), 50000);
     await browser.wait(EC.presenceOf(element(by.xpath('//span[@class="smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm"]//following::span[@class="cursor-pt favourite-icon ng-star-inserted"]//following::span'))), 50000);
-    await browser.sleep(1000)
+    await browser.sleep(4000)
     await objProjectListing.ThreeDots(Global_ProjectName);
   }
   catch (error) {

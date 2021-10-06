@@ -2,8 +2,9 @@
 Feature: Ticket Details Page- Assign
 
   Scenario Outline: Verify that user able to assign ticket to team member
-    When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>"
+    When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
     When "admin" clicks on Alerts page
+    And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
     And "Admin" gets the ticket number
     And "Admin" clicks on the ticket number
     And "admin" clicks on "Individual" radio button
@@ -12,8 +13,8 @@ Feature: Ticket Details Page- Assign
     Then "Admin" verifies if "<SuccessMessage>" message is displayed
     And "admin" Verifies ticket is assigned to team member
     Examples:
-      | ProjectName     | TicketNumber | Group            | TeamMember      | SuccessMessage                | ChannelName | channelJson  |
-      | Automation_01M3 | INC0820433   | Visibility - UST | Amjathsha Abdul | Tickets assigned successfully | Solarwinds  | QueueChannel |
+      | ProjectName     | TicketNumber | Group            | TeamMember      | SuccessMessage                | ChannelName | channelJson  | NodeName               |
+      | Automation_01M3 | INC0820433   | Visibility - UST | Amjathsha Abdul | Tickets assigned successfully | Solarwinds  | QueueChannel | CGBLON428-6120-SDWAN-1 |
 
   #Test case on Hold
 
@@ -51,8 +52,9 @@ Feature: Ticket Details Page- Assign
 
   Scenario Outline:Verify that user able to assign ticket to team member when ticket is on hold
 
-    When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>"
+    When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
     And "admin" clicks on Alerts page
+    And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
     And Admin click on state
     And "admin" clicks on "Hold" button
     Then "Admin" verifies if "<SuccessMessage>" message is displayed
@@ -66,8 +68,8 @@ Feature: Ticket Details Page- Assign
     And "admin" Verifies ticket is assigned to team member
 
     Examples:
-      | ProjectName     | Group            | TeamMember          | SuccessMessage                | ChannelName | channelJson  |
-      | Automation_01M3 | Visibility - UST | Nimsoft Integration | Tickets assigned successfully | Solarwinds  | QueueChannel |
+      | ProjectName     | Group            | TeamMember          | SuccessMessage                | ChannelName | channelJson  | NodeName        |
+      | Automation_01M3 | Visibility - UST | Nimsoft Integration | Tickets assigned successfully | Solarwinds  | QueueChannel | ZAPRMP-00A-FPA2 |
 
 
   #Test case on Hold
@@ -87,8 +89,9 @@ Feature: Ticket Details Page- Assign
 
 
   Scenario Outline:verify subtext when user perfrmed team member assignment
-    When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>"
+    When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
     When "admin" clicks on Alerts page
+    And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
     And "Admin" gets the ticket number
     And "Admin" clicks on the ticket number
     And "admin" clicks on "Individual" radio button
@@ -98,5 +101,5 @@ Feature: Ticket Details Page- Assign
     And "admin" assigned to me button is disabled
     And "Admin" verifies text displayed like "Ticket has been assigned to team member"
     Examples:
-      | ProjectName     | Group            | TeamMember      | SuccessMessage                | ChannelName | channelJson  |
-      | Automation_01M3 | Visibility - UST | Amjathsha Abdul | Tickets assigned successfully | Solarwinds  | QueueChannel |
+      | ProjectName     | Group            | TeamMember      | SuccessMessage                | ChannelName | channelJson  | NodeName        |
+      | Automation_01M3 | Visibility - UST | Amjathsha Abdul | Tickets assigned successfully | Solarwinds  | QueueChannel | ZAPRMP-04A-FPA1 |

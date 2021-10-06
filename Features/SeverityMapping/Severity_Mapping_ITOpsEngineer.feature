@@ -14,7 +14,7 @@ Feature Description :Severity Mapping
              Then "ITOps_Enginner" verifies Source Severity text feild as "<SourceSeverity>"
               And "ITOps_Enginner" verifies SO Severity as "<SOSeverity>"
               And "ITOps_Enginner" verifies Updated time as "<time>"
-              And "ITOps_Enginner" verifies +Add Severity icon is not available "<AddSeverity>"
+              When "ITOps_Enginner" verifies +Add Severity icon is not available "<AddSeverity>"
               And "ITOps_Enginner" verifies Delete icon is not available
               And "ITOps_Enginner" verifies Add New Source icon is not available "<NewSource>"
               And "ITOps_Enginner" verifies Edit icon is not available

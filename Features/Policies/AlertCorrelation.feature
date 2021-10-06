@@ -33,7 +33,6 @@ Feature: Verify Alert Correlation Policy
           And Admin clicks on Yes button in confirmation popup
           Then verify "success" toaster "<ActivatedToggle>"
           And Admin clicks on Done button
-          #Then verify "success" toaster "<ActivatedToggle>"
           Then verify column values in Policy listing page
 
           Examples:
@@ -43,7 +42,6 @@ Feature: Verify Alert Correlation Policy
 
      Scenario Outline: ITOps Admin edits existing Alert Correlation policy from viewMode
 
-          #When "ITOps_Admin" navigate to Alert Correlation Policy
           And "Admin" clicks on policy "<PolicyName>"
           And Admin clicks on edit policy button
           And Admin enters "Alert Correlation" Policy Name as "<UpdatedPolicyName>"
@@ -69,9 +67,7 @@ Feature: Verify Alert Correlation Policy
      Scenario Outline: ITOps Admin edits existing Alert Correlation Policy from Listing page
 
 
-          #When "ITOps_Admin" navigate to Alert Correlation Policy
-          And "Admin" clicks on edit icon in listing page "<PolicyName>"
-          And Admin enters "Alert Correlation" Policy Name as "<UpdatedPolicyName>"
+          When Admin enters "Alert Correlation" Policy Name as "<UpdatedPolicyName>"
           And Admin selects "policy" attribute as "<policyAtttribute>"
           And Admin selects "policy" value as "<PolicyValue>"
           And Admin clicks on Update Deatils

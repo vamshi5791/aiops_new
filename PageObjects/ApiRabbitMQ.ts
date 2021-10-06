@@ -19,7 +19,7 @@ var totalOpenAlertsCount;
 export class ApiRabbitMQ {
 
     // Get method for Project Name  in RabbitMQ
-    async apiPushMsgRabbitMQ(project: string, routeKey: string, channelJson: string) {
+    async apiPushMsgRabbitMQ(project: string, routeKey: string, channelJson: string, nodeName: string) {
         const url = rabbitMQAPI_URL + '/api/exchanges?page=1&name=' + project + '&pagination=true';
         await fetch(url, {
             method: "GET",
@@ -30,17 +30,19 @@ export class ApiRabbitMQ {
             .then(result => {
                 projectName = result.items[0].name
             });
-        await this.RabbitMQPushMsg(routeKey, channelJson)
+        await this.RabbitMQPushMsg(routeKey, channelJson, nodeName)
     }
  
     //POST Method for Push Messages Through RabbitMQ Api
-    async RabbitMQPushMsg(routeKey: string, channelJson: string) {
+    async RabbitMQPushMsg(routeKey: string, channelJson: string, nodeName: string) {
         let mainApiUrl = rabbitMQAPI_URL + '/api/exchanges/ihub/' + projectName + '/publish';
         let project_id = projectName.split('.', 2);
         let routingKey = project_id[0] + '.' + project_id[1] + '.' + routeKey + '.queue';
-        console.log(routingKey)
         let JsonAlert = JSON.parse(fs.readFileSync('JSONTestData/QueueChannel.json', 'utf-8'));
         let info = JsonAlert[channelJson];
+        if (typeof info['Node Name'] !== 'undefined') {
+            info['Node Name'] = nodeName;
+            }
         let StringifiedJsonAlert = JSON.stringify(info);
         console.log(StringifiedJsonAlert)
         let body = {

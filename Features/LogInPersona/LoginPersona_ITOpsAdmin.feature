@@ -6,7 +6,7 @@ Feature: Login persona functionalities of ITOps Admin
 
      Scenario: ITOps Admin is able to  view Dashboard
 
-          And "Admin" enters project name in project search field
+          When "Admin" enters project name in project search field
           And "admin" clicks on project name and navigates to dashboard
           Then "ITOps_Admin" able to access dashboard
       

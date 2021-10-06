@@ -301,6 +301,7 @@ When('Admin clicks on Save button', async function () {
 When('Admin clicks on Activate Policy toggle button', async function () {
     try {
         await browser.wait(EC.visibilityOf(objPolicy.tglbtnActivePolicy), 10000);
+        await browser.sleep(1000)
         await objPolicy.clickActivePolicyToggleButton();
     }
     catch (error) {

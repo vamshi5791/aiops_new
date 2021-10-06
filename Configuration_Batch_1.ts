@@ -38,15 +38,15 @@ export let config: Config = {
 
     // DisplayUser
 
-    // '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
-    // '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
-    // '../Features/Logout/LogOut.feature',
+    '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
+    '../Features/LogInPersona/LoginPersona_ITOpsDisplayUser.feature',
+    '../Features/Logout/LogOut.feature',
 
     // IE
-    // '../Features/LogIn/LogIn_IE.feature',
-    // '../Features/QueueChannel/CreateQueqeChannel_IE.feature',
-    // '../Features/LogInPersona/LoginPersona_IE.feature',
-    // '../Features/Logout/LogOut.feature',
+    '../Features/LogIn/LogIn_IE.feature',
+    '../Features/QueueChannel/CreateQueqeChannel_IE.feature',
+    '../Features/LogInPersona/LoginPersona_IE.feature',
+    '../Features/Logout/LogOut.feature',
 
     // Engineer
 
@@ -63,36 +63,36 @@ export let config: Config = {
     '../Features/Logout/LogOut.feature',
 
     // Visitor
-    // '../Features/LogIn/LogIn_ITOps_Visitor.feature',
-    // '../Features/LogInPersona/LoginPersona_ITOpsVisitor.feature',
-    // '../Features/Logout/LogOut.feature',
+    '../Features/LogIn/LogIn_ITOps_Visitor.feature',
+    '../Features/LogInPersona/LoginPersona_ITOpsVisitor.feature',
+    '../Features/Logout/LogOut.feature',
 
     // Admin
-    // '../Features/LogIn/LogIn_Admin.feature',
-    // '../Features/LogInPersona/LoginPersona_ITOpsAdmin.feature',
-    // '../Features/DeviceInventory/Device_Inventory_Admin.feature',
-    // '../Features/FilterBySeverityDropdown/FilterBySeverityDropdown.feature',
-    // '../Features/RefreshOption/RefreshOption.feature',
-    // '../Features/SearchFuntionality/SearchFunctionality.feature',
-    // '../Features/SavedFilters/SavedFilters.feature',
-    // '../Features/AdvancedFilters/AdvancedFilter.feature',
-    // '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
-    // '../Features/DisplayConfiguration/DisplayConfiguration.feature',
-    // '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
-    // '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
-    // '../Features/Pushing_Alerts/PushingAlerts.feature',
-    // '../Features/Logout/LogOut.feature',
+    '../Features/LogIn/LogIn_Admin.feature',
+    '../Features/LogInPersona/LoginPersona_ITOpsAdmin.feature',
+    '../Features/DeviceInventory/Device_Inventory_Admin.feature',
+    '../Features/FilterBySeverityDropdown/FilterBySeverityDropdown.feature',
+    '../Features/RefreshOption/RefreshOption.feature',
+    '../Features/SearchFuntionality/SearchFunctionality.feature',
+    '../Features/SavedFilters/SavedFilters.feature',
+    '../Features/AdvancedFilters/AdvancedFilter.feature',
+    '../Features/SeverityMapping/Severity_Mapping_ITOpsAdmin.feature',
+    '../Features/DisplayConfiguration/DisplayConfiguration.feature',
+    '../Features/TicketingThreshold/TicketingThreshold_ITOpsAdmin.feature',
+    '../Features/QueueChannel/CreateQueqeChannel_admin.feature',
+    '../Features/Pushing_Alerts/PushingAlerts.feature',
+    '../Features/Logout/LogOut.feature',
     // // Admin
-    // '../Features/LogIn/LogIn_Admin.feature',
-    // '../Features/Policies/AlertCorrelation.feature',
-    // '../Features/Policies/Acknowledgement.feature',
-    // '../Features/Policies/Failure.feature',
-    // '../Features/Policies/Recovery.feature',
-    // '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
-    // '../Features/Logout/LogOut.feature',
+    '../Features/LogIn/LogIn_Admin.feature',
+    '../Features/Policies/AlertCorrelation.feature',
+    '../Features/Policies/Acknowledgement.feature',
+    '../Features/Policies/Failure.feature',
+    '../Features/Policies/Recovery.feature',
+    '../Features/ProjectInstallation/ProjectInstallation_Admin.feature',
+    '../Features/Logout/LogOut.feature',
 
-    // '../Features/LogIn/LogIn_IE.feature',
-    // '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
+    '../Features/LogIn/LogIn_IE.feature',
+    '../Features/ProjectInstallation/ProjectInstallation_IE.feature',
 
 
   ],

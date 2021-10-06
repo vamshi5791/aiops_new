@@ -16,15 +16,6 @@ let objAlerts = new AlertsPage();
 let objApiRabbitMQ = new ApiRabbitMQ();
 let TicketNumber;
 var resultState;
-When('{string} pushes new solarwinds alert with {string}, {string}, {string}', async function (string, ProjectName, routeKey, channelJson) {
-  try {
-    await objApiRabbitMQ.apiPushMsgRabbitMQ(ProjectName, routeKey, channelJson);
-  } catch (error) {
-    await console.log("Action Name: pushing alerts through api")
-    await console.log(error)
-    throw "unable to push alerts"
-  }
-});
 
 When('{string} verifies the severity strip color', async function (string) {
   try {
@@ -55,29 +46,14 @@ When('{string} verifies the ticket number', async function (string) {
 
 
  
-Then('{string} sends {string} new {string} alerts with {string}, {string}, {string}', async function (UserRole, PushCount, AlertSource, ProjectName, routeKey, channelJson) {
+Then('{string} sends {string} new {string} alerts with {string}, {string}, {string}, {string}', async function (UserRole, PushCount, AlertSource, ProjectName, routeKey, channelJson, nodeName) {
   try {
-    await objApiRabbitMQ.deleteQueryForAlerts();
+    // await objApiRabbitMQ.deleteQueryForAlerts();
     for (let i = 1; i <= PushCount; i++) {
-      await objApiRabbitMQ.apiPushMsgRabbitMQ(ProjectName, routeKey, channelJson);
+      await objApiRabbitMQ.apiPushMsgRabbitMQ(ProjectName, routeKey, channelJson, nodeName);
     }
     //waiting for alerts to cluster
     await browser.sleep(85000)
-
-  } catch (error) {
-    await console.log("Action Name: pushing alerts through api")
-    await console.log(error)
-    throw "unable to push alerts"
-  }
-});
-
-Then('{string} sends {string} {string} alerts with {string}, {string}, {string}', async function (UserRole, PushCount, AlertSource, ProjectName, routeKey, channelJson) {
-  try {
-    for (let i = 1; i <= PushCount; i++) {
-      await objApiRabbitMQ.apiPushMsgRabbitMQ(ProjectName, routeKey, channelJson);
-    }
-    //waiting for alerts to cluster
-    await browser.sleep(70000)
 
   } catch (error) {
     await console.log("Action Name: pushing alerts through api")

@@ -1,7 +1,7 @@
 @MultipleAssignments @ITOps_Admin @Regression
 
 Feature: ITOps Engineer Multiple Assignments from Alert Console
-    Scenario Outline: Verify that selecting multiple tickets and self assign works
+    # Scenario Outline: Verify that selecting multiple tickets and self assign works
 
     # When "admin" clicks on Alerts page
     # # And "admin" clicks on ticket number "<TicketNumber>" from state column of a ticket
@@ -24,8 +24,9 @@ Feature: ITOps Engineer Multiple Assignments from Alert Console
 
     Scenario Outline: selecting multiple tickets of state Ticketed/Hold only can be selected for performing assign from 3 dots in Alert Console
 
-        When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>"
+        When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         And "admin" clicks on Alerts page
+        When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And "admin" clicks on select all checkbox for the ticket number "<TicketNumber01>", "<TicketNumber02>"
         And "admin" clicks on 3 dots in top left
         And "admin" clicks on "Assign" button
@@ -33,7 +34,7 @@ Feature: ITOps Engineer Multiple Assignments from Alert Console
         And "admin" verifies the ticket is assigned "By ITOps Engineer"
         When "Admin" clicks on the ticket number
         Then "admin" verifies ticket is assigned to "<Group>"
- 
+
         Examples:
-            | ProjectName     | Group            | SuccessMessage                | ChannelName | channelJson  |
-            | Automation_01M3 | Visibility - UST | Tickets assigned successfully | Solarwinds  | QueueChannel |
+            | ProjectName     | Group            | SuccessMessage                | ChannelName | channelJson  | NodeName        |
+            | Automation_01M3 | Visibility - UST | Tickets assigned successfully | Solarwinds  | QueueChannel | ZACTTV-02A-SBC1 |

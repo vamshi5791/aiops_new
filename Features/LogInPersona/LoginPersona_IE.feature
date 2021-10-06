@@ -29,7 +29,7 @@ Feature: Login persona functionalities of Installation Engineer
           And "Installation_Engineer" enters project name in project search field
           And "Installation_Engineer" clicks on project name and navigates to dashboard
           Then "Installation_Engineer" unable to access dashboard
-          
+
      Scenario: Installation Engineer is unable to  view Alerts
 
           Then "Installation_Engineer" unable to access alerts section

@@ -105,11 +105,14 @@ export class AlertsPage {
   btnCancelInClustetPopup = element(by.className("smo-overlaypanel-close-icon smo smo-close-black-alt"));
   chkIncludeToday = element(by.className("smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"));
   txtAssigned = element(by.xpath("//label[text()='assigned']"));
+  txtClosed = element(by.xpath('//div[text()="closed"]'))
   async clickOnIncludeToday() {
     await this.chkIncludeToday.click();
   }
 
-  
+  async Closed() {
+    await this.txtClosed.click();
+  }
   async clickOnDownloadAlertReport() {
     await this.btnDownloadAlertReport.click();
   }

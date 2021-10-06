@@ -84,7 +84,7 @@ Given('{string} clicks on SO Severity dropdown and selects Information', async f
   }
 });
 
-Given('{string} clicks on + button', async function (userRole) {
+When('{string} clicks on + button', async function (userRole) {
   await objSeverityMapping.ClickOnPlusButton();
   try {
 
@@ -507,7 +507,7 @@ When('{string} clicks on delete the Severity Mapping', async function (userRole)
   }
 });
 
-Given('{string} clicks on Yes button', async function (userRole) {
+When('{string} clicks on Yes button', async function (userRole) {
   try {
     await browser.sleep(5000)
     await objSeverityMapping.Yes();

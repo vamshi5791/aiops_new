@@ -73,88 +73,6 @@ Then('enter alertname in search box and verify alert details {string}', async fu
   
 //-----------------Short Description of Tickets -----------------
 
-
-Given('User pushes an solarwinds alert', async function () {
-  try {
-    await objApiRabbitMQ.apiPushMsgRabbitMQ('Automation_01M3', 'Solarwinds', 'QueueChannel');
-  }
-  catch (error) {
-    throw "User unable to push a solarwinds alert"
-  }
-})
-
-Given('User pushes an recovery alert', async function () {
-  try {
-    await objApiRabbitMQ.apiPushMsgRabbitMQ('Automation_01M3', 'Solarwinds', 'RecoveryPolicy');
-  }
-  catch (error) {
-    throw "User unable to push an recovery alert"
-  }
-});
-
-Given('User pushes an solarwinds alert with no message', async function () {
-  try {
-    await objApiRabbitMQ.apiPushMsgRabbitMQ('Automation_01M3', 'Solarwinds', 'AlertWithNoMessage');
-  }
-  catch (error) {
-    throw "User unable to push an solarwinds alert with no message"
-  }
-})
-
-Given('User pushes an Verba alert with message', async function () {
-  try {
-    await objApiRabbitMQ.apiPushMsgRabbitMQ('Automation_01M3', 'VerbaNew', 'VerbaWitMessage');
-  }
-  catch (error) {
-    throw "User unable to pushes an Verba alert with message"
-  }
-})
-
-Given('User pushes an Verba alert with no message', async function () {
-  try {
-    await objApiRabbitMQ.apiPushMsgRabbitMQ('Automation_01M3', 'VerbaNew', 'VerbaWitNoMessage');
-  }
-  catch (error) {
-    throw "User unable to pushes an Verba alert with no message"
-  }
-});
-
-Given('User pushes an Forescout alert with message and IP address', async function () {
-  try {
-    await objApiRabbitMQ.apiPushMsgRabbitMQ('Automation_01M3', 'Forescout', 'ForescoutWithMessageandIP');
-  }
-  catch (error) {
-    throw "User unable to pushes an Forescout alert with message and IP address"
-  }
-
-
-});
-Given('User pushes an Forescout alert with no message and no IP address', async function () {
-  try {
-    await objApiRabbitMQ.apiPushMsgRabbitMQ('Automation_01M3', 'Forescout', 'ForescoutWithNoMessageandNoIP');
-  }
-  catch (error) {
-    throw "User unable to pushes an Forescout alert with no message and no IP address"
-  }
-});
-Given('User pushes an Forescout alert with no message and IP address', async function () {
-  try {
-    await objApiRabbitMQ.apiPushMsgRabbitMQ('Automation_01M3', 'Forescout', 'ForescoutWithNoMessageandIP');
-  }
-  catch (error) {
-    throw "User unable to pushes an Forescout alert with no message and IP address"
-  }
-
-});
-Given('User pushes an Forescout alert with message and no IP address', async function () {
-  try {
-    await objApiRabbitMQ.apiPushMsgRabbitMQ('Automation_01M3', 'Forescout', 'ForescoutWithMessageandNoIP');
-  }
-  catch (error) {
-    throw "User unable to pushes an Forescout alert with message and no IP address"
-  }
-});
-
 Then('{string} gets the ticket number', async function (string) {
   try {
     await objAlerts.txtTicket.getText().then(async function (TxtTicketNumber) {
@@ -219,15 +137,10 @@ Then('{string} verifies the short description', async function (string) {
     throw "User is not able to verifies the short description"
   }
 });
-
-
-
-
-
+When('{string} waits {string} minute to reach ticket threshold time', async function (userName, minutes) {
+  await browser.sleep(60000);
+});
 //----------------- Move to ticketed-----------------
-
-
-
 
 
 Then('verify cluster size must be {string}', async function (size) {
@@ -299,16 +212,6 @@ When('Admin selects acknowledge', async function () {
   }
 });
 
-
-When('enters the recovery alert data and clicks on publish for one time', async function () {
-  try {
-    await objApiRabbitMQ.apiPushMsgRabbitMQ('Automation_01M3', 'Solarwinds', 'RecoveryPolicy');
-  }
-  catch (error) {
-    throw "User is not able to push the recovery alert"
-  }
-});
-
 Then('{string} verifies pushed alert in alert console with {string}', async function (userName, AlertName) {
   try {
     await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="' + AlertName + '"]'))), 10000);
@@ -316,4 +219,12 @@ Then('{string} verifies pushed alert in alert console with {string}', async func
   catch (error) {
     throw "User is not able to verifies Close state"
   }
+});
+
+// Recovery policy and AutoClosure
+
+Then('Admin verifies cluster got closed', async function () {
+
+  await browser.wait(EC.visibilityOf(objAlerts.txtClosed), 10000);
+
 });

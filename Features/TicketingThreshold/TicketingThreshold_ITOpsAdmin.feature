@@ -24,7 +24,7 @@ Feature: Create Ticketing Threshold by admin
           When "Admin" clicks on Configuration tab
           And "Admin" navigate to Ticketing Threshold
           And Admin clicks on delete icon
-          And 'Admin' clicks on yes button
+          When "Admin" clicks on yes button
 
           Examples:
                | SuccessMessage |

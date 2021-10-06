@@ -131,6 +131,7 @@ export class PolicyObjects {
     }
     async selectValue(Value) {
         await this.drpdwnValue.click();
+        await browser.sleep(2000)
         await drp.selectByVisibleText(Value);
     }
     async clickSaveandAddRule() {

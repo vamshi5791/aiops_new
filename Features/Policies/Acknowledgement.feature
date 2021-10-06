@@ -6,9 +6,7 @@ Feature: Verify Acknowledgement Policy
 
      Scenario Outline: ITOps Admin creates Acknowledgement policy
 
-             When "Admin" enters project name as "<ProjectName>" in the search field
-              And "admin" clicks on project name "<ProjectName>"
-             When "Admin" clicks on configuration tab
+          When "Admin" clicks on configuration tab
           When "Admin" navigate to Acknowledgement Policy
           And Admin clicks on Add "Acknowledgement" Policy
           And Admin enters "Acknowledgement" Policy Name as "<PolicyName>"

@@ -4,11 +4,12 @@ Feature: Assign
 
     Scenario Outline: Verify Assigning tickets from alert console to individual in ITOps
 
-        When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>"
+        When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         When "ITOps_Admin" navigates to ITOps home page
         And "Admin" enters project name in project search field and click on enter
         And "admin" clicks on project name
         And "admin" clicks on Alerts page
+        And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And "Admin" gets the ticket number
         And "Admin" clicks on the ticket number
         And "admin" clicks on "Individual" radio button
@@ -18,25 +19,28 @@ Feature: Assign
         Then "admin" Verifies the Alert console for the particular ticket
 
         Examples:
-            | ProjectName     | Group            | TeamMember      | SuccessMessage                | ChannelName | channelJson  |
-            | Automation_01M3 | Visibility - UST | Amjathsha Abdul | Tickets assigned successfully | Solarwinds  | QueueChannel |
+            | ProjectName     | Group            | TeamMember      | SuccessMessage                | ChannelName | channelJson  | NodeName        |
+            | Automation_01M3 | Visibility - UST | Amjathsha Abdul | Tickets assigned successfully | Solarwinds  | QueueChannel | AUSYCT-28A-SBC1 |
 
     # # Service now test cases
 
     Scenario Outline: Verify tickets in Service now after it is assigned in ITOps to a team member
+        When "admin" clicks on Alerts page
+        When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         When "Admin" gets the ticket number from alert console
         And "admin" login in to service now and search for the incident id as "<IncidentId>"
         Then "admin" verifies state of ticket should be "Active"
         And "admin" verifies ticket is assigned ITOps to a team member "<TeamMember>"
 
         Examples:
-            | IncidentId | TeamMember  |
-            | INC0820489 | Kevin Soman |
+            | IncidentId | TeamMember  | NodeName        |
+            | INC0820489 | Kevin Soman | AUSYCT-28A-SBC1 |
 
     Scenario Outline: Verify Assigning tickets from alert console to group in ITOps
 
-        When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>"
+        When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         When "admin" clicks on Alerts page
+        When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And "Admin" gets the ticket number
         And "Admin" clicks on the ticket number
         And "admin" clicks on "Group" radio button
@@ -46,8 +50,8 @@ Feature: Assign
         Then "admin" Verifies the Alert console for the particular ticket
 
         Examples:
-            | ProjectName     | Group            | SuccessMessage                | ChannelName | channelJson  |
-            | Automation_01M3 | Visibility - UST | Tickets assigned successfully | Solarwinds  | QueueChannel |
+            | ProjectName     | Group            | SuccessMessage                | ChannelName | channelJson  | NodeName        |
+            | Automation_01M3 | Visibility - UST | Tickets assigned successfully | Solarwinds  | QueueChannel | ZACTHS-00B-SUA1 |
 
 
     #Test case on Hold
