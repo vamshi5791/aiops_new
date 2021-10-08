@@ -89,11 +89,12 @@ pipeline {
 
             emailext (
                   subject: "Regression Test results for itops . Job '${env.JOB_NAME} . Build No ${env.BUILD_NUMBER}'",
-                  body: """Please see the attachment for regression test result""",
-                  to: "ajay.nelavetla@ideabytes.com,gopi.balde@ideabytes.com,sravanthi.thumma@ideabytes.com,balakishore.pendyala@ideabytes.com",
+                  body: """Please see the below link  for regression test result
+                  ${env.BUILD_URL}/execution/node/3/ws/TestReport/""",
+                  to: "ajay.nelavetla@ideabytes.com,gopi.balde@ideabytes.com",
                   from: "noreplysmartopssvc@ust-global.com",
-                  mimeType: 'text/plain',
-                  attachmentsPattern: 'TestReport/ITOpsAutomation_Report_batch_1.html,TestReport/ITOpsAutomation_Report_batch_2.html'
+                  mimeType: 'text/plain'
+                  
              ) 
 
 
