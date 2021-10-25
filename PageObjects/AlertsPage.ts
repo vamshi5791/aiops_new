@@ -13,6 +13,7 @@ export class AlertsPage {
   btnAdvanceFilter = element(by.className('filter smo smo-filter'));
   drpSource = element(by.xpath('//label[text()="Source"]'));
   drpAlertState = element(by.xpath('//label[text()="Alert State"]'));
+  drpAlertAction= element(by.className("ng-tns-c18-40 smo-inputtext smo-placeholder dropdown-label-ms smo-dropdown-label ng-star-inserted"))
   txtResource = element(by.name('resourceName'));
   btnSaveFilter = element(by.className('d-flex justify-content-end save-link ng-star-inserted'));
   txtInLast = element(by.name('inLast'));
@@ -25,7 +26,7 @@ export class AlertsPage {
   btnRemoveStateCondition = element(by.xpath('//div[text()="State : "]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
   btnRemoveOkCondition = element(by.xpath('//span[text()="Ok"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
   btnRemoveWarningCondition = element(by.xpath('//span[text()="Ok"]//preceding::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
-
+  txtTimeError=element(by.className("smo-badge smo-badge-sm smo-badge-info"));
   //Advanced filter section page elements
   chkMakeAsDefault = element(by.xpath('//span[text()="Make As Default"]//preceding::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'));
   btnEditSavedFilter = element(by.className('mr-3 smo smo-edit ng-star-inserted'));
@@ -105,14 +106,11 @@ export class AlertsPage {
   btnCancelInClustetPopup = element(by.className("smo-overlaypanel-close-icon smo smo-close-black-alt"));
   chkIncludeToday = element(by.className("smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"));
   txtAssigned = element(by.xpath("//label[text()='assigned']"));
-  txtClosed = element(by.xpath('//div[text()="closed"]'))
   async clickOnIncludeToday() {
     await this.chkIncludeToday.click();
   }
 
-  async Closed() {
-    await this.txtClosed.click();
-  }
+  
   async clickOnDownloadAlertReport() {
     await this.btnDownloadAlertReport.click();
   }

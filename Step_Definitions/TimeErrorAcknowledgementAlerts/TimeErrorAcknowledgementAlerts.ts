@@ -2,8 +2,8 @@ import { When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { ProjectListingPage } from "../../PageObjects/ProjectListing";
- import chai from "chai";
- import { LogIn } from "../../PageObjects/LogIn";
+import chai from "chai";
+import { LogIn } from "../../PageObjects/LogIn";
 import { PushingAlerts } from "../../PageObjects/RabbitMQ";
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
@@ -11,9 +11,9 @@ import { ApiRabbitMQ } from "../../PageObjects/ApiRabbitMQ";
 var objApiRabbitMQ = new ApiRabbitMQ()
 
 var EC = browser.ExpectedConditions;
- var fs = require('fs');
- var expect = chai.expect;
- let objLogIn = new LogIn();
+var fs = require('fs');
+var expect = chai.expect;
+let objLogIn = new LogIn();
 let objFilter = new PushingAlerts();
 
 
@@ -24,16 +24,10 @@ var EC = browser.ExpectedConditions;
 let objAlerts = new AlertsPage();
 let objProjectListing = new ProjectListingPage();
 
-When('{string} clicks on Alerts page tab in {string}', async function (userName, ProjectName) {
+When('{string} clicks on Alerts page tab', async function (userName) {
 
 
 try {
-  Global_ProjectName = ProjectName;
-
-  await objProjectListing.Project_search(Global_ProjectName);
-  await browser.sleep(3000);
-  await browser.wait(EC.visibilityOf(element(by.xpath('//h3[text()=" ' + Global_ProjectName + ' "]'))), 100000);
-  await objProjectListing.selectProject(Global_ProjectName);
   await browser.wait(EC.visibilityOf(objAlerts.btnSelectAlerts),10000);
   await objAlerts.btnSelectAlerts.click()
 
