@@ -25,8 +25,6 @@ let objAlerts = new AlertsPage();
 let objProjectListing = new ProjectListingPage();
 
 When('{string} clicks on Alerts page tab in {string}', async function (userName, ProjectName) {
-
-
 try {
   Global_ProjectName = ProjectName;
 
@@ -44,7 +42,7 @@ try {
 }
  
 });
-When('{string} verifies pushed alert is in state Acknowledged', async function (userName) {
+/*When('{string} verifies pushed alert is in state Acknowledged', async function (userName) {
 try {
   await browser.wait(EC.visibilityOf(objAlerts.drpAlertAction), 10000);
   objAlerts.drpAlertAction.click();
@@ -66,4 +64,4 @@ try {
   throw "User is not able to verify pushed alert has TimeError indicator"
 }
  
-});
+});*/
