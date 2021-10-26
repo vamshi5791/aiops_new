@@ -3,6 +3,7 @@ var EC = browser.ExpectedConditions;
 var fs = require('fs');
 
 export class ProjectListingPage {
+  
   txtsearch = element(by.xpath('//input[@placeholder="Search"]'));
   btnClickOnCreateProject = element(by.xpath('//span[text()="Create New Project"]'));
   btnProfile = element(by.className("iframe-link a-cursor profile-arrow"));
