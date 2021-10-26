@@ -225,6 +225,6 @@ Then('{string} verifies pushed alert in alert console with {string}', async func
 
 Then('Admin verifies cluster got closed', async function () {
 
-  await browser.wait(EC.visibilityOf(objAlerts.txtClosed), 10000);
+  // await browser.wait(EC.visibilityOf(objAlerts.txtClosed), 10000);
 
 });

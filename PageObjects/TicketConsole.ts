@@ -21,16 +21,24 @@ export class TicketConsole {
     txtTicketTitle = element(by.xpath('//span[text()="Tickets"]'))
     txtMe = element(by.xpath("//span[text()='Me']"))
     LatestUpdatedDateandTime= element(by.className("smo smo-expand-less-alt"))
+    btnremovegrp1 = element(by.xpath("//span[text()='ITOpsTesting']//following-sibling::span"))
+    btnremoveAssigned_status= element(by.xpath("//span[text()='Assigned']//following-sibling::span"))
+    btnremoveHigh_priority= element(by.xpath("//span[text()='2 - High']//following-sibling::span"))
+
     //QuickFilterElements
     txtQuickFilter= element(by.xpath("//span[text()='Quick Filter']"))
     drpFilterbyStatustype= element(by.xpath("//span[text()=' Filter by Status Type ']"))
-    drpFilterbyPriority=element(by.className("ng-tns-c47-14 smo-multiselect-trigger smo-state-default smo-corner-right"))
+    drpFilterbyStatustypeclose= element(by.className("ng-tns-c45-13 ng-star-inserted"))
+    drpFilterbyPriority=element(by.xpath("//span[text()=' Filter by Priority ']"))
+    drpFilterbyPriorityclose= element(by.className("ng-tns-c45-14 ng-star-inserted"))
     drpFilterByAssignedTo=element(by.xpath("//label[text()='Assigned To']"))
-    drpAssignedGrp=element(by.className("ng-tns-c47-16 smo-multiselect-trigger smo-state-default smo-corner-right"))
+    drpAssignedgrp=element(by.xpath("//span[text()=' Assigned Group ']"))
+    drpAssignedGrpclose=element(by.className("ng-tns-c56-31 smo-multiselect-trigger smo-state-default smo-corner-right"))
     btncloseQuickFilter=element(by.className("smo-overlaypanel-close-icon smo smo-close-black-alt"))
 
     //FilterByStatusType dropdown elements
-    chkContainer_status=element(by.className("ng-tns-c47-13 smo-multiselect smo-widget smo-state-default smo-corner-all d-flex align-items-center"))
+    chkContainer_dwnarrow_status=element(by.className("ng-tns-c45-13 smo-multiselect-trigger smo-state-default smo-corner-right"))
+    chkContainer_dwnarrow_priority=element(by.className("ng-tns-c45-14 smo-multiselect-trigger smo-state-default smo-corner-right"))
     chkSelectAll_Status= element(by.className("d-flex margin-top-select-ms"))
     chkOpen_Status=element(by.xpath("//li[@aria-label='Open']"))
     chkAssigned_Status=element(by.xpath("//li[@aria-label='Assigned']"))
@@ -45,15 +53,13 @@ export class TicketConsole {
     chkLow=element(by.xpath("//li[@aria-label='4 - Low']"))
     
     //AssignedTo dropdown elements
-    chkNoneFilterByAssignedTo=element(by.xpath("//li[@aria-label='None']"))
-    chkMeFilterByAssignedTo=element(by.xpath("//li[@aria-label='Me']"))
-    chkOthersFilterByAssignedTo=element(by.xpath("//li[@aria-label='Others']"))
-    // txtNoneFilterByAssignedTo = element(by.xpath('//smo-dropdownitem//span[text()="None"]'))
-    // txtMeFilterByAssignedTo = element(by.xpath('//smo-dropdownitem//span[text()="Me"]'))
-    // txtOthersFilterByAssignedTo = element(by.xpath('//smo-dropdownitem//span[text()="Others"]'))
-
+    txtNoneFilterByAssignedTo=element(by.xpath("//li[@aria-label='None']"))
+    txtMeFilterByAssignedTo=element(by.xpath("//li[@aria-label='Me']"))
+    txtOthersFilterByAssignedTo=element(by.xpath("//li[@aria-label='Others']"))
+    
      //AssignedGroup dropdown elements
      chkgrp1=element(by.xpath("//li[@aria-label='ITOpsTesting']"))
+
      chkgrp2=element(by.xpath("//li[@aria-label='NinetyOne NOC']"))
      drpFilterByAssignedGroup = element(by.xpath('//smo-multiselect-dropdown[@defaultlabel="Assigned Group"]'))
      txtNoneFilterByAssignedGroup = element(by.xpath('//smo-multiselect-item//span[text()="None"]'))
