@@ -10,7 +10,7 @@ var expect = chai.expect;
 
 export class TicketConsole {
 
-    /*btnTickets = element(by.xpath('//a[text()="Tickets"]'))
+    btnTickets = element(by.xpath('//a[text()="Tickets"]'))
     btnSearch = element(by.xpath('//input[@placeholder="Search"]'))
     btnQuickFilter = element(by.xpath("//span[@smotooltip='Quick Filter']"))
     btnRefresh = element(by.className('smo-btn-icon-col d-flex align-items-center smo smo-refresh-alt btn-icon smo-clickable ng-star-inserted'));
@@ -66,8 +66,12 @@ export class TicketConsole {
      txtMyGroupsFilterByAssignedGroup = element(by.xpath('//smo-multiselect-item//span[text()="My Groups"]'))
      txtMyGroupNameFilterByAssignedGroup = element(by.xpath('//smo-multiselect-item[3]/li/span/text()'))
 
-
-     
+    //Additional elements for Ticket console view - with user having a group
+    chkMyGroupFilterByAssignedGroupSelected = element(by.xpath('//smo-multiselect-item//span[text()="My Groups"]//preceding::span[@class="smo-chkbox-icon smo-clickable smo smo-check ng-star-inserted"]'))
+    lblAssignedGroup = element(by.xpath('//div[@class="item-key-text ng-star-inserted" and text()="Assigned Group : "]'))
+    btnFilterChip = element(by.className('filter-result-span-sm smo-small-chips'))
+    chkMyGroupFilterByAssignedGroupsVal1 = element(by.xpath('//smo-multiselect-item[4]/li'))
+    txtFirstTicketNumber = element(by.xpath('//table[@class="undefined"]/tbody/tr[1]/td[2]')) 
   
     async Ticket_Search(ticketId: string) {
         await browser.wait(EC.elementToBeClickable(this.btnSearch), 60000);

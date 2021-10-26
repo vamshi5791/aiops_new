@@ -81,6 +81,9 @@ export let config: Config = {
     '../Features/InfrasrtucturePageTopology/Infrasrtucture_Page_Topology_ITOps_Admin.feature', */
     '../Features/DefaultItsmGroupInProjConfig/DefaultGroupInTicketCreation.feature',
     '../Features/DefaultTemplateForTicketCreate/DefaultTemplateForTicketCreate.feature'
+    
+    // Test below only after itops admin user is added to a group in service now
+    //'../Features/TicketListingDefaultView-Filters/TicketListingDefaultView-Filters.feature'
   ],
   cucumberOpts: {
 

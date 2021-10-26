@@ -17,7 +17,7 @@ var txtAssignedGroup1;
 
 When('{string} clicks on Tickets page', async function (string) {
     try { 
-        await objTicketConsole.Tickets();
+        await objTicketConsole.clickOnTicketPage();
         await browser.wait(EC.visibilityOf(objTicketConsole.txtTicketTitle), 60000);
       }
       catch (error) {
