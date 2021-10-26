@@ -934,11 +934,12 @@ When('{string} clicks on Install button', async function (userRole) {
 
 Then('Project must be in {string} state in Project Listing Page', async function (ProjectStatus) {
   try {
-    await objProjectListing.Project_search(TestProjectName);
-    await browser.sleep(2000);
-    await element(by.className("smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm")).getText().then(async function (text) {
-      await expect(text).to.include(ProjectStatus);
-      await console.log(text);
+    
+     await objProjectListing.Project_search(TestProjectName);
+     await browser.sleep(2000);
+     await element(by.className("smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm")).getText().then(async function (text) {
+     await expect(text).to.include(ProjectStatus);
+     await console.log(text);
     });
   }
   catch (error) {

@@ -37,25 +37,25 @@ export let config: Config = {
   },
   specs: [ 
     //DisplayUser
-    '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
-    '../Features/DownloadAlerts/DownloadAlerts_DisplayUser.feature',
-    '../Features/Logout/LogOut.feature',
+    //'../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
+    //'../Features/DownloadAlerts/DownloadAlerts_DisplayUser.feature',
+    //'../Features/Logout/LogOut.feature',
     // IE
-    '../Features/LogIn/LogIn_IE.feature',
-    '../Features/DashBoard/DashBoard_ItopsIE.feature',
-    '../Features/Logout/LogOut.feature',
+    //'../Features/LogIn/LogIn_IE.feature',
+    //'../Features/DashBoard/DashBoard_ItopsIE.feature',
+    //'../Features/Logout/LogOut.feature',
 
     // Engineer
-    '../Features/LogIn/LogIn_ITOps_Engineer.feature',
-    '../Features/DownloadAlerts/DownloadAlerts_Engineer.feature',
-    '../Features/MultipleAssignments/MultipleAssignmentsEngineer.feature',
+    //'../Features/LogIn/LogIn_ITOps_Engineer.feature',
+    //'../Features/DownloadAlerts/DownloadAlerts_Engineer.feature',
+    /* '../Features/MultipleAssignments/MultipleAssignmentsEngineer.feature',
     '../Features/DeviceInventory/Device_Inventory_Engineer.feature',
     '../Features/InfrasrtucturePageTopology/Infrasrtucture_Topology_Engineer.feature',
-    '../Features/Logout/LogOut.feature',
+    '../Features/Logout/LogOut.feature', */
 
     // //Admin
     '../Features/LogIn/LogIn_Admin.feature',
-    '../Features/Assign/Assign.feature',
+    /* '../Features/Assign/Assign.feature',
     '../Features/Hold/Hold.feature',
     '../Features/MultipleAssignments/MultipleAssignments.feature',
     '../Features/SeverityDropdown/SeverityDropdown.feature',
@@ -78,8 +78,9 @@ export let config: Config = {
     '../Features/DownloadAlerts/DownloadAlerts.feature',
       '../Features/DeviceDetails/DeviceDetails.feature',
     '../Features/AlertConsole/AlertConsole.feature',
-    '../Features/InfrasrtucturePageTopology/Infrasrtucture_Page_Topology_ITOps_Admin.feature',
-
+    '../Features/InfrasrtucturePageTopology/Infrasrtucture_Page_Topology_ITOps_Admin.feature', */
+    '../Features/DefaultItsmGroupInProjConfig/DefaultGroupInTicketCreation.feature',
+    '../Features/DefaultTemplateForTicketCreate/DefaultTemplateForTicketCreate.feature'
   ],
   cucumberOpts: {
 
