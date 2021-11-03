@@ -33,7 +33,6 @@ When('user enters Username as {string}, Password as {string} and clicks on Login
     await console.log("------------------"+globalThis.BrowserMode)
   //For removing banner
     if (globalThis.BrowserMode == "headless") {
-      // await browser.sleep(10000)
       await browser.wait(EC.visibilityOf(element(by.className('smo smo-close-black-alt'))), 60000);
       await browser.wait(EC.elementToBeClickable(element(by.className('smo smo-close-black-alt'))), 60000);
       await browser.wait(EC.presenceOf(element(by.className('smo smo-close-black-alt'))), 60000);
@@ -62,16 +61,14 @@ Then('ITOps home page is displayed', async function () {
 When('{string} clicks on logout button', async function (string) {
 
   try {
-    // await browser.sleep(3000)
+    await browser.sleep(5000)
     await browser.wait(EC.elementToBeClickable(ProjectListing.btnProfile), 50000);
     await browser.wait(EC.presenceOf(ProjectListing.btnProfile), 50000);
     await ProjectListing.ClickOnProfile();
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Logout"]'))), 10000);
     await browser.wait(EC.presenceOf(element(by.xpath('//span[text()="Logout"]'))), 10000);
-    // await browser.sleep(3000)
      await browser.wait(EC.elementToBeClickable(ProjectListing.btnLogOut), 50000);
     await ProjectListing.LogOut();
-    //  await browser.sleep(10000)
     await browser.wait(EC.visibilityOf(element(by.xpath('//input[@name="login"]'))), 50000);
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//input[@name="login"]'))), 50000);
   } catch (error) {

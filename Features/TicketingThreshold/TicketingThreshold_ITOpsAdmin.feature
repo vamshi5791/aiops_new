@@ -6,8 +6,6 @@ Feature: Create Ticketing Threshold by admin
      @AddNewTicketingThresholdByITOPsADMIN
      Scenario Outline: ITOps Admin should able to Add New Ticketing Threshold
 
-
-          And "Admin" clicks on Configuration tab
           When "Admin" navigate to Ticketing Threshold
           And Admin selects Source "<source>"
           And Admin enters Cluster Size "<clustersize>"
@@ -25,7 +23,7 @@ Feature: Create Ticketing Threshold by admin
           And "Admin" navigate to Ticketing Threshold
           And Admin clicks on delete icon
           When "Admin" clicks on yes button
-
+          Then "Admin" verifies if "<SuccessMessage>" message is displayed
           Examples:
-               | SuccessMessage |
+               | SuccessMessage                  |
                | Threshold deleted successfully. |

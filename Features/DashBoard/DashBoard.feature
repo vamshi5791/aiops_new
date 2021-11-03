@@ -47,22 +47,22 @@ Feature:  Dashboard
                | ProjectName     | No.Of.Rows | InLast | DurationType | Alert_State |
                | Btest_RES_Aug30 | 100        | 14     | Days         | Closed      |
 
-     # Scenario Outline: Dasshboard - Alerts-Open vs closed
+     Scenario Outline: Dasshboard - Alerts-Open vs closed
 
-     #      When "Admin" navigate to dashboard section
-     #      And "admin" moves to the dashboard frame
-     #      Then "Admin" verifies that the widget "Alerts Clusters - Open Vs Closed" is available in the dashboard
-     #      And "Admin" verifies the date filter is "<DateFilter>" by default
-     #      When "Admin" comes out of the dashboard frame
-     #      When "Admin" clicks on Alerts page
-     #      And "admin" gets the number of "alerts" in alert console page "<AlertName>"
-     #      And "Admin" navigate to dashboard section
-     #      And "admin" moves to the dashboard frame
-     #      And "Admin" verifies the total alert count is "<TotalCount>"
-     #      When "Admin" comes out of the dashboard frame
-     #      Examples:
-     #           | DateFilter   | TotalCount | OpenClusterCount | ClosedClusterCount | AlertState | AlertName |
-     #           | last 14 days | 14         | 6                | 8                  | Closed     | Closed    |
+          When "Admin" navigate to dashboard section
+          And "admin" moves to the dashboard frame
+          Then "Admin" verifies that the widget "Alerts Clusters - Open Vs Closed" is available in the dashboard
+          And "Admin" verifies the date filter is "<DateFilter>" by default
+          When "Admin" comes out of the dashboard frame
+          When "Admin" clicks on Alerts page
+          And "admin" gets the number of "alerts" in alert console page "<AlertName>"
+          And "Admin" navigate to dashboard section
+          And "admin" moves to the dashboard frame
+          # And "Admin" verifies the total alert count
+          When "Admin" comes out of the dashboard frame
+          Examples:
+               | DateFilter   | TotalCount | OpenClusterCount | ClosedClusterCount | AlertState | AlertName |
+               | last 14 days | 14         | 6                | 8                  | Closed     | Closed    |
 
 
      Scenario Outline: Dasshboard - Open vs closed(Top 10 alerts)
@@ -124,7 +124,6 @@ Feature:  Dashboard
           And "admin" moves to the dashboard frame
           Then "Admin" verifies that the widget "Top 10 Noise Creating Devices" is available in the dashboard
           And "Admin" Column names should be "Host Name" and "Count"
-          And "Admin" Count should be the count of Alerts for each Device from alert index
           When "Admin" selects a severity as "<Severity>" and source as "<source>" and make sure only data related to that are displayed -open vs closed
           When "Admin" comes out of the dashboard frame
           Examples:
@@ -136,7 +135,6 @@ Feature:  Dashboard
           When "Admin" navigate to dashboard section
           And "admin" moves to the dashboard frame
           Then "Admin" verifies that the widget "Alert Pattern" is available in the dashboard
-          When "Admin" selects a severity as "<Severity>" and source as "<source>" and make sure only data related to that are displayed -open vs closed
           And "Admin" selects date more than one month
           Then "Admin" verifies Date should be on X axis and Alert names on Y axis.
           When "Admin" comes out of the dashboard frame

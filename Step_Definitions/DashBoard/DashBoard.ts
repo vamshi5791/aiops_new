@@ -16,13 +16,14 @@ let objApiRabbitMQ = new ApiRabbitMQ()
 var TestCount;
 var MTBFdata;
 var alertData;
+var TotalCount = 1;
 
 
 //ITOPS Dashboard - verify Top 10 Alerts widget
 
 When('{string} navigate to dashboard section', async function (string) {
   try {
-    await browser.sleep(15000)
+    // await browser.sleep(15000)
     await browser.wait(EC.visibilityOf(objectDashboard.btnDashboard), 10000);
     await browser.wait(EC.elementToBeClickable(objectDashboard.btnDashboard), 10000);
     await objectDashboard.clickOnDashboard()
@@ -53,7 +54,7 @@ When('{string} selects rows per page as {string}', async function (string, NoOfR
 
 When('{string} gets the number of {string} in alert console page {string}', async function (string, string2, AlertName) {
 
-  await browser.sleep(2000);
+  await browser.sleep(5000);
   var i = 1
   this.pageRowCount = 0;
   await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " table page number: " + i);
@@ -61,7 +62,6 @@ When('{string} gets the number of {string} in alert console page {string}', asyn
     await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " table data: ");
     this.tableRowCount = pageRowCount;
     console.log("tableData lenth: 0" + this.tableRowCount);
-
   });
 
   i++;
@@ -97,7 +97,6 @@ When('{string} gets the number of {string} in alert console page {string}', asyn
 When('{string} gets alert name from Top Alerts', async function (string) {
   try {
     await element(by.className('alert-message')).getText().then(async function (AlertNameFromDashboard) {
-      await console.log("++++++++++++++" + AlertNameFromDashboard)
       alertData = AlertNameFromDashboard;
     })
   } catch (error) {
@@ -155,7 +154,6 @@ Then('{string} verifies Alert count should match in both Top {string} Alerts wid
   try {
     await element(by.xpath('//div[@class="alert-message"]//following::td')).getText().then(async (text) => {
       await expect(text).to.include(this.tableRowCount);
-      await console.log("================================" + text)
     })
   } catch (error) {
     await browser.switchTo().defaultContent();
@@ -226,14 +224,14 @@ Then('{string} verifies the date filter is {string} by default', async function 
 });
 
 
-Then('{string} verifies the total alert count is {string}', async function (string, string2) {
+Then('{string} verifies the total alert count', async function (string) {
 
-  try {
-    await element(by.className('alert-message')).getText().then(async function (AlertNameFromDashboard) {
-      await console.log("++++++++++++++" + AlertNameFromDashboard)
-      alertData = AlertNameFromDashboard;
-    })
-    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="' + TestCount + '"]'))));
+  try { 
+    await console.log("''''''''''''''''''''''''''''''''",this.tableRowCount)
+    var openalerts =  this.tableRowCount;
+    await console.log("''''''''''''''''''''''''''''''''",openalerts)
+    await console.log("''''''''''''''''''''''''''''''''",typeof(openalerts))
+    await browser.wait(EC.visibilityOf(element(by.partialLinkText("'"+openalerts+"'"))));
   } catch (error) {
     await browser.switchTo().defaultContent();
     console.log("verifying the total alert count")
@@ -317,6 +315,8 @@ Then('{string} verifies that Hours selection option is present in the widget', a
 
 Then('{string} verifies the dropdown has {string} to {string} numbers', async function (string, string2, string3) {
   try {
+    var myElement =  element(by.id('comboA'));
+    await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
     await element(by.id('comboA')).click();
     await browser.wait(EC.visibilityOf(element(by.xpath('//option[text()="1"]'))));
     await browser.wait(EC.visibilityOf(element(by.xpath('//option[text()="2"]'))));
@@ -352,17 +352,6 @@ Then('{string} Column names should be {string} and {string}', async function (st
     console.log("verifying host name and count")
     console.log(error)
     throw "Hostname and count columns doesn't exist"
-  }
-});
-
-Then('{string} Count should be the count of Alerts for each Device from alert index', async function (string) {
-  try {
-
-
-  } catch (error) {
-    console.log("verifying the widget Source device mapping is available in the dashboard")
-    console.log(error)
-    throw "Source device mapping is not available in the dashboard"
   }
 });
 //Verify Dashboard widget - Alert Pattern

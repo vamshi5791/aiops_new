@@ -16,7 +16,6 @@ var resultState;
 let TicketNumber;
 When('{string} clicks on ticket number {string} from state column of a ticket', async function (UserRole, TicketNumber) {
   try {
-    await browser.sleep(5000)
     await objAlerts.clickOnTicketNumber(TicketNumber)
   } catch (error) {
     await console.log("Action Name : clicking on ticket number")
@@ -63,7 +62,9 @@ When('{string} selects user from the team member drop down as {string}, {string}
 
 When('{string} clicks on assign button', async function (UserRole) {
   try {
-    await browser.sleep(5000)
+    // await browser.sleep(5000)
+    await browser.wait(EC.visibilityOf(objAlerts.btnAssign), 50000);
+    await browser.wait(EC.presenceOf(objAlerts.btnAssign), 50000);
     await objAlerts.clickOnAssignButton()
   } catch (error) {
     await console.log("Action Name : clicking on assign button")
@@ -110,7 +111,7 @@ When('{string} clicks on ticket State dropdown', async function (string) {
   try {
     await browser.wait(EC.visibilityOf(objAlerts.btnState), 50000);
     await browser.wait(EC.elementToBeClickable(objAlerts.btnState), 50000);
-    await objAlerts.clickOnStateDropdown()
+    await objAlerts.State()
 
   } catch (error) {
     await console.log("Action Name : clicking on ticket State/Action dropdown")
@@ -136,6 +137,7 @@ Then('{string} verifies {string} should have further actions like {string}, {str
 When('{string} navigates to Tickets page', async function (string) {
   try {
     await objTicket.clickOnTicketPage()
+    await await browser.wait(EC.visibilityOf(element(by.xpath("//span[text()=' Auto-refresh in every ']"))), 50000);
   } catch (error) {
     await console.log("Action Name : Navigating to ticket page")
     await console.log(error)
@@ -170,7 +172,7 @@ When('{string} clicks on refresh button in alert console', async function (strin
 
 When('{string} clicks on {string} button', async function (string, Status) {
   try {
-    await browser.sleep(5000)
+    // await browser.sleep(5000)
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="' + Status + '"]'))), 50000);
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="' + Status + '"]'))), 50000);
     await objAlerts.clickOnUpdateStatus(Status)
@@ -317,40 +319,39 @@ When('{string} login in to service now and search for the incident id as {string
     resultState = await objServiceNow.apiServiceNow(IncidentID)
     await objServiceNow.assignmentGroup(resultState.assignment_group_id)
     await objServiceNow.assignedTo(resultState.assigned_to_id)
-    await console.log(resultState)
-    await console.log(resultState.close_notes)
-    await console.log(resultState.assignment_group_name)
   } catch (error) {
     await console.log(error)
+    throw "incident id not found in servicenow"
   }
 });
 When('{string} verifies the ticket status in service now {string}', async function (string, status) {
   try {
     resultState = await objServiceNow.apiServiceNow(TicketNumber)
-    await console.log(resultState.state)
     await expect(resultState.state).to.include(status);
   } catch (error) {
     await console.log(error)
+    throw "ticket status not updated in servicenow "
   }
 });
 Then('{string} verifies the ticket closure note in service now {string}', async function (string, ClosureNote) {
   try {
     resultState = await objServiceNow.apiServiceNow(TicketNumber)
-    await console.log(resultState.close_notes)
     await expect(resultState.close_notes).to.include(ClosureNote);
   } catch (error) {
     await console.log(error)
+    throw "closure note doesn't match"
   }
 });
 Then('{string} gets the ticket number from alert console', async function (string) {
   try {
     await objAlerts.txtTicket.getText().then(async function (TxtTicketNumber) {
-      await console.log("Line no - 348",TxtTicketNumber);
       TicketNumber = TxtTicketNumber;
     });
-    await console.log("line no - 351",TicketNumber);
+    await console.log("line no - 351", TicketNumber);
+    await console.log(TicketNumber);
   }
   catch (error) {
+    await console.log(error)
     throw "User unable to get the ticket number"
   }
 });
@@ -386,7 +387,6 @@ Then('{string} verifies ticket is assigned to self {string}', async function (st
 });
 When('{string} in servicnow that ticket is closed and closure note is added {string}', async function (string, ClosureNote) {
   try {
-    await console.log(resultState.close_notes)
     await expect(resultState.close_notes).to.include(ClosureNote);
   } catch (error) {
     await console.log("Action Name : verifying the Close Notes for the ticket")
@@ -396,7 +396,6 @@ When('{string} in servicnow that ticket is closed and closure note is added {str
 });
 Then('{string} verifies the Close Notes for the ticket as {string}', async function (string, ClosureNote) {
   try {
-    await console.log(resultState.state)
     await expect(resultState.state).to.include(ClosureNote);
   } catch (error) {
     await console.log("Action Name : verifying the Close Notes for the ticket")
@@ -408,7 +407,6 @@ Then('{string} verifies the Close Notes for the ticket as {string}', async funct
 
 Then('{string} verifies state of ticket should be Resolved', async function (string) {
   try {
-    await console.log(resultState.state)
     await expect(resultState.state).to.include('Resolved');
   } catch (error) {
     await console.log("Action Name : verifying state of ticket should be Resolved")
@@ -418,8 +416,16 @@ Then('{string} verifies state of ticket should be Resolved', async function (str
 });
 
 When('{string} clicks on assign button on the popup', async function (string) {
-  await browser.sleep(5000)
-  await objAlerts.clickOnAssignButtonOnPopUp()
+
+  try {
+    // await browser.sleep(5000)
+    await browser.wait(EC.visibilityOf(objAlerts.btnAssignButtonOnPopUp), 50000);
+    await browser.wait(EC.elementToBeClickable(objAlerts.btnAssignButtonOnPopUp), 50000);
+    await objAlerts.clickOnAssignButtonOnPopUp()
+  } catch (error) {
+    await console.log(error)
+    throw "unable to click on assign button on popup"
+  }
 });
 
 Then('{string} verify the alert console for corresponding ticket cluster', async function (string) {
@@ -430,19 +436,6 @@ Then('{string} verify the alert console for corresponding ticket cluster', async
   }
 });
 
-
-
-Then('{string} verifies ticket is assigned to {string}', async function (string, TestTeamMember) {
-  try {
-    await browser.wait(EC.visibilityOf(element(by.xpath("//span[text()='The ticket has been assigned to ']"))), 50000);
-    await browser.wait(EC.visibilityOf(element(by.xpath("//span[text()='" + TestTeamMember + "']"))), 50000);
-  } catch (error) {
-    await console.log(error)
-    throw "The ticket has been assigned to " + TestTeamMember + " is not displayed"
-  }
-});
-
-
 Then('{string} verifies the ticket is assigned {string}', async function (string, AssignedBy) {
   try {
     await browser.wait(EC.visibilityOf(element(by.xpath("//div[text()='" + AssignedBy + "']"))), 50000);
@@ -452,27 +445,26 @@ Then('{string} verifies the ticket is assigned {string}', async function (string
   }
 });
 
- 
+
 Then('{string} verifies Assignment Group of the ticket should be as defined in template {string}', async function (string, AssignGroup) {
   try {
     resultState = await objServiceNow.apiServiceNow(TicketNumber)
-   var data= await objServiceNow.assignmentGroup(resultState.assignment_group_id)
-    await console.log(data)
-    // await expect(resultState.assignment_group_id).to.include(AssignGroup);
+    var data = await objServiceNow.assignmentGroup(resultState.assignment_group_id)
   } catch (error) {
     await console.log(error)
-    throw "The ticket has been assigned"
+    throw "Assignment Group of the ticket is not same as defined in template"
   }
 });
 
 Then('{string} verifies Short description of the ticket should be as defined in template {string}', async function (string,
   ShortDescription) {
-    try{
-  resultState = await objServiceNow.apiServiceNow(TicketNumber)
-  await expect(resultState.short_description).to.include(ShortDescription);
-    }catch(error){
-      await console.log(error)
-    }
+  try {
+    resultState = await objServiceNow.apiServiceNow(TicketNumber)
+    await expect(resultState.short_description).to.include(ShortDescription);
+  } catch (error) {
+    await console.log(error)
+    throw "short description of the ticket is not same as defined in template"
+  }
 });
 
 

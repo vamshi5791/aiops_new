@@ -2,6 +2,7 @@
 Feature: Ticket Details Page- Assign
 
   Scenario Outline: Verify that user able to assign ticket to team member
+
     When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
     When "admin" clicks on Alerts page
     And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
@@ -64,12 +65,12 @@ Feature: Ticket Details Page- Assign
     And "admin" clicks on "Individual" radio button
     And "admin" selects user from the team member drop down as "<Group>", "<TeamMember>"
     And "Admin" clicks on assign button
-    Then "Admin" verifies if "<SuccessMessage>" message is displayed
+    Then "Admin" verifies if "<Toaster>" message is displayed
     And "admin" Verifies ticket is assigned to team member
 
     Examples:
-      | ProjectName     | Group            | TeamMember          | SuccessMessage                | ChannelName | channelJson  | NodeName        |
-      | Automation_01M3 | Visibility - UST | Nimsoft Integration | Tickets assigned successfully | Solarwinds  | QueueChannel | ZAPRMP-00A-FPA2 |
+      | ProjectName     | Group            | TeamMember          | SuccessMessage                | ChannelName | channelJson  | NodeName        | Toaster                       |
+      | Automation_01M3 | Visibility - UST | Nimsoft Integration | Ticket(s) holded successfully | Solarwinds  | QueueChannel | GBLNGS-05A-WLC1 | Tickets assigned successfully |
 
 
   #Test case on Hold

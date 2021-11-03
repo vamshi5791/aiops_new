@@ -86,6 +86,8 @@ Then('Verify Add New Threshold button in not present for ITOps Engineer', async 
 
 When('Admin clicks on delete icon', async function () {
   try {
+    await browser.sleep(2000)
+    await browser.actions().mouseMove(element(by.className('cluster-edit'))).perform();
     await element(by.className("smo smo-delete ng-star-inserted")).click();
   }
   catch (error) {

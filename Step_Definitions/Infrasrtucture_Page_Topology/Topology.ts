@@ -9,7 +9,7 @@ let objInfrastructurePage = new InfrastructurePage();
 
 When('{string} opens infrastructure page', async function (userRole) {
   try {
-   
+
     await objInfrastructurePage.Infrastructure();
     await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="Device Inventory"]'))), 60000);
   }
@@ -67,9 +67,6 @@ When('{string} verifies the delete option is not visible', async function (userR
 When('{string} searches device name {string}', async function (userRole, DeviceName) {
   try {
     await objInfrastructurePage.Search(DeviceName);
-    // await browser.sleep(5000)
-    // await browser.actions().sendKeys(protractor.Key.ENTER).perform();
-
   }
   catch (error) {
     await console.log("Feature name : Infrastructure Topology " + userRole + " and Scenario name : searches device name")
@@ -130,6 +127,8 @@ Then('device should not be available {string}', async function (string) {
 
 
 When('{string} selects the valid file to be uploaded', async function (string) {
+    
+try {
   await console.log("directory path: " + __dirname);
   var basePath = __dirname;
   basePath = basePath.split('JSFiles')[0];
@@ -141,13 +140,26 @@ When('{string} selects the valid file to be uploaded', async function (string) {
   // await objInfrastructurePage.browseFile.sendKeys('C:\\Yadagiri\\Testing\\protractor_ws\\itops-automation\\Sample_Topology.xlsx');
   await objInfrastructurePage.browseFile.sendKeys(filePath);
   await browser.sleep(1000)
+} catch (error) {
+  await console.log("Action Name : selects the valid file to be uploaded ")
+  await console.log(error)
+  throw "Admin unable to selects the valid file to be uploaded "
+}
+
 });
 
 
 When('{string} clicks on upload button', async function (string) {
-  await browser.wait(EC.elementToBeClickable(objInfrastructurePage.btnUpload2), 30000);
-  await browser.sleep(500);
-  await objInfrastructurePage.btnUpload2.click();
+  try {
+    await browser.wait(EC.elementToBeClickable(objInfrastructurePage.btnUploadFile), 30000);
+    await browser.sleep(500);
+    await objInfrastructurePage.btnUploadFile.click();
+  } catch (error) {
+    await console.log("Action Name : clicks on upload button ")
+    await console.log(error)
+    throw "Admin unable to clicks on upload button"
+  }
+
 });
 
 

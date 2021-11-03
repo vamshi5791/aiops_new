@@ -56,10 +56,6 @@ Feature: Alerts moved to ticketed
 
     Scenario Outline: Verify sending 2 alerts first and another alert after 2 minutes
 
-        When "ITOps_Admin" navigates to ITOps home page
-        And "Admin" enters project name in project search field and click on enter
-        And "Admin" clicks on project name
-
         When "Admin" sends "2" new "solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         And "Admin" clicks on Alerts page
         And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
@@ -152,9 +148,6 @@ Feature: Alerts moved to ticketed
 
         When "Admin" sends "1" new "Recovery" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryChannelJson>", "<NodeName>"
         When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<SolarwindsChannelJson>", "<NodeName>"
-        When "ITOps_Admin" navigates to ITOps home page
-        And "Admin" enters project name in project search field and click on enter
-        And "Admin" clicks on project name
         And "Admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName>"
         And verify cluster size must be "<size>"

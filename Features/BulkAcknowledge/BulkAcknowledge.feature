@@ -16,11 +16,10 @@ Feature: Verify the bulk acknowledgement in alert console
 
         Examples:
             | ProjectName     | AlertName | size | ChannelName | channelJson  | NodeName        |
-            | Automation_01M3 | Alert1    | 2    | Solarwinds  | QueueChannel | CNHKIF-36A-SSC1 |
+            | Automation_01M3 | Alert1    | 2    | Solarwinds  | QueueChannel | CNHKIF-36A-FPA1 |
 
 
     Scenario Outline: Verify the bulk acknowledgement in alert console with multiple alerts
-
 
         When "Admin" sends "3" new "solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         And "admin" clicks on Alerts page
@@ -44,15 +43,13 @@ Feature: Verify the bulk acknowledgement in alert console
         And "Admin" clicks on checkbox
         And "Admin" clicks on three dots button
         And "Admin" clicks on Acknowledge
-        # And Admin verifies Acknowledge state
         And "Admin" clicks on remove all button
         Then "Admin" clicks on filter by severity dropdown
         And "Admin" selects Major
         And "Admin" clicks on checkbox
         And "Admin" clicks on three dots button
         And "Admin" clicks on Acknowledge
-        # And Admin verifies Acknowledge state
 
         Examples:
             | ProjectName     | AlertName | size | ResourceName    |
-            | Automation_01M3 | Alert1    | 2    | CNHKGG-00A-SSC1 |
+            | Automation_01M3 | Alert1    | 2    | GBLNGS-05B-SUA1 |

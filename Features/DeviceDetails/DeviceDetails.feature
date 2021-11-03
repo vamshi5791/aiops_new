@@ -9,7 +9,6 @@ Feature: Device Details for the existing Device
         When "Admin" opens infrastructure page
         And "Admin" searches device name "<DeviceName>"
         And "ITOps_Admin" clicks on resource name in the device inventory list "<Device>"
-        Then Device details should be displayed "<Device>"
         Then Verify Green Up arrow against Device Name
         Then "Admin" verifies the Resource Type column
         Then "Admin" verifies the Resource Group column
@@ -28,6 +27,7 @@ Feature: Device Details for the existing Device
         Then "Admin" verifies the Minor column
         Then "Admin" verifies the Info column
         Then "Admin" verifies the Total column
+        Then "Admin" verifies alert count "<AlertCount>"
         Then "Admin" verifies the Alert Name column in Device Availability
         Then "Admin" verifies the Mtbf column in Device Availability
         Then "Admin" verifies the Port column in Connections
@@ -36,8 +36,8 @@ Feature: Device Details for the existing Device
 
 
         Examples:
-            | ProjectName     | DeviceName      | Device          |
-            | Automation_01M3 | AUSYGR-00A-SSC1 | AUSYGR-00A-SSC1 |
+            | ProjectName     | DeviceName      | Device          | AlertName | AlertCount |
+            | Automation_01M3 | AUMECO-50A-AOB1 | AUMECO-50A-AOB1 | Alert1    | 5          |
 
 
 

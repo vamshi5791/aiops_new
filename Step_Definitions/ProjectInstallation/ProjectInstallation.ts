@@ -102,11 +102,9 @@ Then('{string} message should be displayed and {string} should navigate to proje
   catch (error) {
 
     await browser.wait(EC.elementToBeClickable(objProjectListing.btnHomePage), 40000);
-    // await browser.sleep(5000)
     await objProjectListing.clickOnHomePageButton();
     await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))));
     await objProjectListing.Project_search("Automation_IB_20");
-    // await browser.sleep(5000);
     await browser.wait(EC.elementToBeClickable(objProjectListing.btnThreeDots), 40000);
     await objProjectListing.clickOnThreeDots();
     await objProjectListing.EditProject();
@@ -925,7 +923,6 @@ When('{string} clicks on Install button', async function (userRole) {
     })
   }
   catch (error) {
-    // await objLogIn.logOutUser();
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Installation")
     await console.log(error)
     throw "User is not able to click on Install Button"
@@ -934,16 +931,14 @@ When('{string} clicks on Install button', async function (userRole) {
 
 Then('Project must be in {string} state in Project Listing Page', async function (ProjectStatus) {
   try {
-    
-     await objProjectListing.Project_search(TestProjectName);
-     await browser.sleep(2000);
-     await element(by.className("smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm")).getText().then(async function (text) {
-     await expect(text).to.include(ProjectStatus);
-     await console.log(text);
+    await objProjectListing.Project_search(TestProjectName);
+    await browser.sleep(2000);
+    await element(by.className("smo-badge smo-badge-round smo-badge-sm smo-badge-ready-sm")).getText().then(async function (text) {
+      await expect(text).to.include(ProjectStatus);
+      await console.log(text);
     });
   }
   catch (error) {
-    // await objLogIn.logOutUser();
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Installation")
     await console.log(error)
     throw "Once project is installed, Ready should be display as status opposite to project name in the list. But it is not displaying in the list"

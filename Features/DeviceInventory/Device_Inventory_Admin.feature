@@ -5,7 +5,10 @@ Feature: Device Inventory Features
      Feature Description : Device Inventory Features
 
      Scenario Outline: Itops Admin searches the device with existing device name
-
+          When "admin" navigates to ITOps home page
+          And "Admin" enters project name in project search field
+          And "admin" clicks on project name and navigates to dashboard
+         
           When "ITOps_Admin" opens infrastructure page
           And "ITOps_Admin" searches device name "<DeviceName>"
           Then Device details should be displayed "<Device>"

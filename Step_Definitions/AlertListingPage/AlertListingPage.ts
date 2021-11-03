@@ -27,6 +27,7 @@ When('{string} default value in rows per page is {string}', async function (stri
 When('{string} clicks on rows per page dropdown', async function (string) {
   try {
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Rows per page"]//following::smo-dropdown'))), 50000);
+    await browser.sleep(3000)
     await element(by.xpath('//span[text()="Rows per page"]//following::smo-dropdown')).click();
   } catch (error) {
     await console.log("Action Name : clicking on rows per page dropdown")

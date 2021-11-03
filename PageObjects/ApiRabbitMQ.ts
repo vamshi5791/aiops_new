@@ -1,10 +1,8 @@
 
 var fs = require('fs');
 var fetch = require("node-fetch");
-var sss;
 let projectName;
 var base64 = require('base-64');
-const request = require('request');
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var KibanaAPI_URL = properties.get("main." + globalThis.environment + "_KibanaAPI_URL");
@@ -32,7 +30,7 @@ export class ApiRabbitMQ {
             });
         await this.RabbitMQPushMsg(routeKey, channelJson, nodeName)
     }
- 
+
     //POST Method for Push Messages Through RabbitMQ Api
     async RabbitMQPushMsg(routeKey: string, channelJson: string, nodeName: string) {
         let mainApiUrl = rabbitMQAPI_URL + '/api/exchanges/ihub/' + projectName + '/publish';
@@ -42,9 +40,12 @@ export class ApiRabbitMQ {
         let info = JsonAlert[channelJson];
         if (typeof info['Node Name'] !== 'undefined') {
             info['Node Name'] = nodeName;
-            }
+        } else if (typeof info['Computer name'] !== 'undefined') {
+            info['Computer name'] = nodeName;
+        } else {
+            info['Host Name'] = nodeName;
+        }
         let StringifiedJsonAlert = JSON.stringify(info);
-        console.log(StringifiedJsonAlert)
         let body = {
             "properties": { "delivery_mode": 1, "headers": {} },
             "routing_key": routingKey,
@@ -65,14 +66,15 @@ export class ApiRabbitMQ {
             json: true
         }).then(response => response.json())
             .then(resp => {
+                console.log(resp)
             })
     }
 
     //Delete Query for Kibana api
 
-    async deleteQueryForAlerts() {
+    async deleteQueryForAlerts(projectID) {
 
-        const kibanaApiUrl = KibanaAPI_URL + '?path=alerts_' + '1519' + '_1/_delete_by_query&method=POST';
+        const kibanaApiUrl = KibanaAPI_URL + '?path=alerts_' + projectID + '_1/_delete_by_query&method=POST';
 
         await fetch(kibanaApiUrl, {
             method: 'POST',

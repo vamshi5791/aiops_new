@@ -66,7 +66,8 @@ Feature: Verify Alert Correlation Policy
 
      Scenario Outline: ITOps Admin edits existing Alert Correlation Policy from Listing page
 
-
+          And "Admin" clicks on policy "<PolicyName>"
+          And Admin clicks on edit policy button
           When Admin enters "Alert Correlation" Policy Name as "<UpdatedPolicyName>"
           And Admin selects "policy" attribute as "<policyAtttribute>"
           And Admin selects "policy" value as "<PolicyValue>"
@@ -87,32 +88,8 @@ Feature: Verify Alert Correlation Policy
                | PolicyName    | UpdatedPolicyName | policyAtttribute    | PolicyValue | UpdatedRuleName         | ruleAtttribute      | ruleValue | RuleCreatedSuccessMessage      |
                | Automation IB | Automation IB     | Business Time Alert | False       | CorrelationRuleUpdated1 | Business Time Alert | False     | on any existing alert clusters |
 
-     Scenario Outline: Verify duplicate precedence validation exists while editing a correlation policy
-
-
-          # When "admin" navigates to ITOps home page
-          # And "Admin" enters project name as "Automation_IB_24" in the search field
-          # And "admin" clicks on project name "Automation_IB_24"
-          When "Admin" clicks on configuration tab
-          And Admin clicks on Add "AlertCorrelation" Policy
-          And Admin enters "AlertCorrelation" Policy Name as "<PolicyName>"
-          And Admin enters "AlertCorrelation" Precedence as "<PolicyPrecedence>"
-          And Admin selects "policy" attribute as "<policyAtttribute>"
-          And Admin selects "policy" value as "<PolicyValue>"
-          And Admin clicks on Save Policy
-          Then verify "error" toaster "<PrecedenceAlreadyExists>"
-          And click on cancel button
-
-          Examples:
-               | PolicyName   | PolicyPrecedence | policyAtttribute    | PolicyValue | PrecedenceAlreadyExists                              |
-               | Automation12 | 6                | Business Time Alert | True        | Precedence exists under the type for the project id. |
-
-
      Scenario Outline: Verify correlation policy cannot be activated when all rules are inactive
 
-          # When "admin" navigates to ITOps home page
-          # And "Admin" enters project name as "Automation_M3" in the search field
-          # And "admin" clicks on project name "Automation_M3"
           When "Admin" clicks on configuration tab
           And "Admin" clicks on policy "<PolicyName>"
           And Admin clicks on edit policy button

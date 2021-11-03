@@ -124,7 +124,7 @@ Then('{string} deletes the ok severity condition from alert console', async func
 When('{string} selects saved filter {string}', async function (userRole, SavedFilter) {
   try {
     await objAlerts.SavedFilter(SavedFilter);
-
+    await browser.sleep(2000)
   }
   catch (error) {
     await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to remove severity conditions from saved filters")
@@ -215,6 +215,7 @@ When('{string} searches alert condition {string}', async function (userRole, ale
 
 When('{string} clicks on remove all button', async function (userRole) {
   try {
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//a[text()="Remove All"]'))), 60000);
     await objAlerts.selectRemoveAllConditions();
 
   }
@@ -449,21 +450,30 @@ Then('verify alert console should not show results based on previous default fil
 // Verify that user is able to view edit and delete option
 
 Then('{string} verifies that edit and delete options are present', async function (userName) {
-  try {
-    await browser.wait(EC.visibilityOf(objAlerts.btnEditSavedFilter));
-  } catch (error) {
-    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
-    await console.log(error)
-    throw "Edit option is not present in the page"
-  }
-  try {
-    await browser.wait(EC.visibilityOf(objAlerts.btnDeleteSavedFilter));
-  } catch (error) {
-    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
-    await console.log(error)
-    throw "Delete option is not present in the page"
-  }
 
+  try {
+    try {
+      await browser.wait(EC.visibilityOf(objAlerts.btnEditSavedFilter));
+    } catch (error) {
+      await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+      await console.log(error)
+      throw "Edit option is not present in the page"
+    }
+    try {
+      await browser.wait(EC.visibilityOf(objAlerts.btnDeleteSavedFilter));
+    } catch (error) {
+      await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  View edit and delete option")
+      await console.log(error)
+      throw "Delete option is not present in the page"
+    }
+  } catch (error) {
+    var myElement = objAlerts.btnCancel;
+    await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+    await browser.wait(EC.visibilityOf(objAlerts.btnSearch), 10000);
+    await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
+    await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
+    await element(by.xpath('//smo-button[@label="Cancel"]')).click();
+  }
 });
 
 

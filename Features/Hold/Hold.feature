@@ -15,7 +15,7 @@ Feature: Hold
 
         Examples:
             | ProjectName     | TicketNumber | SuccessMessage                | ChannelName | channelJson  | NodeName        |
-            | Automation_01M3 | INC0820433   | Ticket(s) holded successfully | Solarwinds  | QueueChannel | ZACTHS-03A-SSA1 |
+            | Automation_01M3 | INC0820433   | Ticket(s) holded successfully | Solarwinds  | QueueChannel2 | ZACTHS-03A-SSA1 |
 
 
     Scenario Outline: Hold from select all
@@ -35,7 +35,7 @@ Feature: Hold
 
         Examples:
             | ProjectName     | TicketNumber | SuccessMessage                | ChannelName | channelJson  | NodeName        |
-            | Automation_01M3 | INC0820433   | Ticket(s) holded successfully | Solarwinds  | QueueChannel | GBLNGS-LGA-SUA1 |
+            | Automation_01M3 | INC0820433   | Ticket(s) holded successfully | Solarwinds  | QueueChannel2 | GBLNGS-LGA-SUA1 |
 
     Scenario Outline: Hold - in ServieNow
 
@@ -52,7 +52,7 @@ Feature: Hold
         Then "admin" verifies the ticket status in service now "On Hold"
         Examples:
             | ProjectName     | TicketNumber | SuccessMessage                | ChannelName | channelJson  | NodeName        |
-            | Automation_01M3 | INC0820433   | Ticket(s) holded successfully | Solarwinds  | QueueChannel | GGSPDC-01A-AOB1 |
+            | Automation_01M3 | INC0820433   | Ticket(s) holded successfully | Solarwinds  | QueueChannel2 | GGSPDC-01A-AOB1 |
 
     Scenario Outline: Hold to close
 

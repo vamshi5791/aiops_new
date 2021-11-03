@@ -246,14 +246,14 @@ Then('{string} verifies Delete icon of specefic Severity', async function (userR
   }
 
 });
- 
+
 Then('{string} verifies the Time as {string}', async function (userRole, Time) {
   try {
     todayDate = new Date().toDateString();
     todayDate = todayDate.split(' ');
-   var severitCreatedDate = await todayDate[2] + ' ' + todayDate[1] + ' ' + todayDate[3]
-   await console.log("-----------------",severitCreatedDate)
-    await element(by.xpath('//b[text()="' + Time + '"]')).getText().then(function (text) {
+    var severitCreatedDate = await todayDate[2] + ' ' + todayDate[1] + ' ' + todayDate[3]
+    await console.log("-----------------", severitCreatedDate)
+    await element(by.xpath('//b[text()="' + severitCreatedDate + '"]')).getText().then(function (text) {
       expect(text).to.include(severitCreatedDate);
     });
 
@@ -326,9 +326,9 @@ Given('{string} click on save button', async function (userRole) {
 
 });
 
-Given('{string} clicks on yes button', async function (userRole) {
+When('{string} clicks on yes button', async function (userRole) {
   try {
-    await browser.sleep(2000)
+    // await browser.sleep(2000)
     await objSeverityMapping.ClickONYes();
   }
   catch (error) {
@@ -507,12 +507,23 @@ When('{string} clicks on delete the Severity Mapping', async function (userRole)
   }
 });
 
-When('{string} clicks on Yes button', async function (userRole) {
+// When('{string} clicks on Yes button', async function (userRole) {
+//   try {
+//     await browser.sleep(5000)
+//     await objSeverityMapping.Yes();
+//   }
+//   catch (error) {
+//     throw "User is not able to clicks on yes button"
+//   }
+// });
+
+
+When('{string} clicks on delete the Severity Mapping option', async function (userRole) {
   try {
-    await browser.sleep(5000)
-    await objSeverityMapping.Yes();
+    await element(by.xpath('//b[text()="SOLARWINDS"]//following::span[@class="smo smo-delete cursor-pointer font-18 color-grey left-margin-20 ng-star-inserted"]')).click()
+
   }
   catch (error) {
-    throw "User is not able to clicks on yes button"
+    throw "Delete icon is not available"
   }
 });

@@ -1,16 +1,11 @@
 import { ElementFinder, element, by, promise, browser, protractor } from "protractor";
-
+var EC = browser.ExpectedConditions;
 export class InfrastructurePage {
 
-  btnTopology = element(by.xpath('//span[@class="smo-menuitem-icon smo smo-topology-tree ng-star-inserted"]'))
-  tblTopology = element(by.className("row pt-2"))
-  txtTopologySearch=element(by.xpath('//input[@placeholder="Search"]'))
+  btnTopology = element(by.className('smo-menuitem-icon smo smo-topology-tree ng-star-inserted'))
   btnImport = element(by.xpath('//span[@class="smo-btn-icon-col d-flex align-items-center smo smo-upload-regular smo-clickable smo-button-icon-right smo-flex-order-three ng-star-inserted"]'))
-  btnDelete = element(by.xpath('//span[@class="smo-btn-icon-col d-flex align-items-center smo smo-delete smo-clickable smo-button-icon-right smo-flex-order-three ng-star-inserted"]'))
+  btnDelete = element(by.xpath('//smo-button[@smotooltip="Delete Topology"]'));
   btnInfrastructure = element(by.xpath('//a[text()="Infrastructure"]'))
-  tblInfrastructure = element(by.className("smo-table-expandable smo-widget smo-table-ms ng-star-inserted"))
-  btnDeviceInventoryDownload = element(by.className("smo smo-download"))
-  btnTopologyDownload = element(by.className("smo-btn-icon-col d-flex align-items-center smo smo-download smo-clickable smo-button-icon-right smo-flex-order-three ng-star-inserted"))
   btnUpload = element(by.xpath('//span[@class="smo-button-icon-left smo-clickable fa fa-upload"]'))
   txtSearch = element(by.xpath('//input[@placeholder="Search"]'))
   btnClickOnYes = element(by.xpath('//span[text()="Yes"]'))
@@ -20,7 +15,6 @@ export class InfrastructurePage {
   txtEnterSite = element(by.xpath('//input[@placeholder="Site"]'))
   txtEnterCountry = element(by.xpath('//input[@placeholder="Country"]'))
   txtEnterRegion = element(by.xpath('//input[@placeholder="Region"]'))
-  btnBackToInfrastructure=element(by.xpath('//a[text()="Infrastructure"]'))
   btnAddDeviceTOList = element(by.xpath('//span[@class="smo smo-close-black-alt"] //following::span[text()="Add Device"]'))
   txtEditResourceType = element(by.xpath('//div[text()="RESOURCE TYPE"]//following::input[@type="text"]'))
   btnUpdateDevice = element(by.xpath('//span[text()="Update Device"]'))
@@ -38,11 +32,11 @@ export class InfrastructurePage {
   // ------------------Milestone3------------ 
 
   browseFile = element(by.xpath('//*[@id="smo-container"]/div/app-infrastructure/div/div[2]/app-network-topology/div/div[2]/smo-modal[2]/div/div/div[2]/div/div/smo-fileupload/div/div[1]/div/span[2]/input'))
-  btnUpload2 = element(by.xpath('//*[@id="smo-container"]/div/app-infrastructure/div/div[2]/app-network-topology/div/div[2]/smo-modal[2]/div/div/div[2]/div/div/smo-fileupload/div/div[2]/div/div/div/div[4]/span/button/span[1]'))
+  btnUploadFile = element(by.xpath('//*[@id="smo-container"]/div/app-infrastructure/div/div[2]/app-network-topology/div/div[2]/smo-modal[2]/div/div/div[2]/div/div/smo-fileupload/div/div[2]/div/div/div/div[4]/span/button/span[1]'))
   txtResourceName = element(by.xpath('//div[text()="RESOURCE NAME"]'))
   txtResourcetype = element(by.xpath('//div[text()="RESOURCE TYPE"]'))
   txtResourcegroup = element(by.xpath('//div[text()="RESOURCE GROUP"]'))
-  txtmodel = element(by.xpath('//div[text()="MODEL"]'))
+  txtModel = element(by.xpath('//div[text()="MODEL"]'))
   txtIPAddress = element(by.xpath('//div[text()="IP ADDRESS"]'))
   txtMacAddress = element(by.xpath('//div[text()="MAC ADDRESS"]'))
   txtVendor = element(by.xpath('//div[text()="VENDOR"]'))
@@ -57,20 +51,19 @@ export class InfrastructurePage {
   txtMinor = element(by.xpath('//th[text()=" MINOR "]'))
   txtInfo = element(by.xpath('//th[text()=" INFO "]'))
   txtTotal = element(by.xpath('//th[text()=" TOTAL "]'))
-  txtAlertName = element(by.xpath('//div[text()="MODEL"]'))
-  txtMtbf = element(by.xpath('//div[text()="MODEL"]'))
-  txtPort = element(by.xpath('//div[text()="MODEL"]'))
-  txtDestHostname = element(by.xpath('//div[text()="MODEL"]'))
-  txtStatus = element(by.xpath('//div[text()="MODEL"]'))
   txtUp = element(by.xpath('//span[text()="Up"]'))
-
-
-
-
-
+  txtmtbf = element(by.xpath('//th[text()=" MTBF "]'))
+  txtPort = element(by.xpath('//th[text()=" PORT # "]'))
+  txtDesthostname = element(by.xpath('//th[text()=" DEST. HOST NAME "]'))
+  txtStatus = element(by.xpath('//th[text()=" STATUS "]'))
+  txtAlertcount = element(by.xpath('//td[@class="table-value major ng-star-inserted"]'))
 
   async Topology() {
     await this.btnTopology.click();
+  }
+
+  async mtbf() {
+    await this.txtmtbf.click();
   }
   async FailOverDevice() {
     await this.btnFailOverDevice.click();
@@ -118,9 +111,11 @@ export class InfrastructurePage {
     await this.btnUpload.click();
   }
   async Search(DeviceName: string) {
-    await browser.sleep(2000);
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//td[text()=" On "]'))), 30000);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//td[text()=" On "]'))), 30000);
     await this.txtSearch.sendKeys(DeviceName);
-    await browser.sleep(2000);
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//td[text()=" On "]'))), 30000);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//td[text()=" On "]'))), 30000);
     await browser.actions().sendKeys(protractor.Key.ENTER).perform();
   }
   async ClickOnYes() {

@@ -1,6 +1,7 @@
 @MultipleAssignments @ITOps_Admin @Regression
 
 Feature: ITOps Engineer Multiple Assignments from Alert Console
+
     # Scenario Outline: Verify that selecting multiple tickets and self assign works
 
     # When "admin" clicks on Alerts page
@@ -29,12 +30,21 @@ Feature: ITOps Engineer Multiple Assignments from Alert Console
         When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And "admin" clicks on select all checkbox for the ticket number "<TicketNumber01>", "<TicketNumber02>"
         And "admin" clicks on 3 dots in top left
-        And "admin" clicks on "Assign" button
+        And "admin" clicks on "Hold" button
         Then "Admin" verifies if "<SuccessMessage>" message is displayed
+        When "admin" clicks on refresh button in alert console
+        And "admin" clicks on select all checkbox for the ticket number "<TicketNumber01>", "<TicketNumber02>"
+        And "admin" clicks on 3 dots in top left
+        And "admin" clicks on "Assign" button
+        And "admin" clicks on "Group" radio button
+        And "admin" selects user from the team member drop down as "<Group>"
+        And "admin" clicks on assign button on the popup
+        Then "Admin" verifies if "<Toaster>" message is displayed
         And "admin" verifies the ticket is assigned "By ITOps Engineer"
         When "Admin" clicks on the ticket number
-        Then "admin" verifies ticket is assigned to "<Group>"
+        Then "Admin" verifies Ticket should be assigned to group "<Group>"
 
         Examples:
-            | ProjectName     | Group            | SuccessMessage                | ChannelName | channelJson  | NodeName        |
-            | Automation_01M3 | Visibility - UST | Tickets assigned successfully | Solarwinds  | QueueChannel | ZACTTV-02A-SBC1 |
+            | ProjectName     | Group            | SuccessMessage                | ChannelName | channelJson   | NodeName        | Toaster                       |
+            | Automation_01M3 | Visibility - UST | Ticket(s) holded successfully | Solarwinds  | QueueChannel2 | ZACTTV-02A-SBC1 | Tickets assigned successfully |
+

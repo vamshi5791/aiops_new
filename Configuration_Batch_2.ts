@@ -35,55 +35,54 @@ export let config: Config = {
     globalThis.environment = browser.params.env;
     globalThis.BrowserMode = args.Options;
   },
-  specs: [ 
-    //DisplayUser
-    //'../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
-    //'../Features/DownloadAlerts/DownloadAlerts_DisplayUser.feature',
-    //'../Features/Logout/LogOut.feature',
-    // IE
-    //'../Features/LogIn/LogIn_IE.feature',
-    //'../Features/DashBoard/DashBoard_ItopsIE.feature',
-    //'../Features/Logout/LogOut.feature',
+  specs: [
+    // //DisplayUser
+    '../Features/LogIn/LogIn_ITOps_DisplayUser.feature',
+    '../Features/DownloadAlerts/DownloadAlerts_DisplayUser.feature',
+    '../Features/Logout/LogOut.feature',
+    // // // // // IE
+    '../Features/LogIn/LogIn_IE.feature',
+    '../Features/DashBoard/DashBoard_ItopsIE.feature',
+    '../Features/Logout/LogOut.feature',
 
-    // Engineer
-    //'../Features/LogIn/LogIn_ITOps_Engineer.feature',
-    //'../Features/DownloadAlerts/DownloadAlerts_Engineer.feature',
-    /* '../Features/MultipleAssignments/MultipleAssignmentsEngineer.feature',
+    // // // // // //Engineer
+    '../Features/LogIn/LogIn_ITOps_Engineer.feature',
+    '../Features/DownloadAlerts/DownloadAlerts_Engineer.feature',
+    '../Features/MultipleAssignments/MultipleAssignmentsEngineer.feature',
     '../Features/DeviceInventory/Device_Inventory_Engineer.feature',
     '../Features/InfrasrtucturePageTopology/Infrasrtucture_Topology_Engineer.feature',
-    '../Features/Logout/LogOut.feature', */
+    '../Features/Logout/LogOut.feature',
 
-    // //Admin
+    // // // //Admin
     '../Features/LogIn/LogIn_Admin.feature',
-    /* '../Features/Assign/Assign.feature',
-    '../Features/Hold/Hold.feature',
-    '../Features/MultipleAssignments/MultipleAssignments.feature',
-    '../Features/SeverityDropdown/SeverityDropdown.feature',
+    '../Features/DownloadAlerts/DownloadAlerts.feature',
     '../Features/AlertListingPage/AlertListingPage.feature',
+    '../Features/DashBoard/DashBoard.feature',
+    '../Features/AlertConsole/AlertConsole.feature',
+    '../Features/Assign/Assign.feature',
+    '../Features/Hold/Hold.feature',
+    '../Features/SeverityDropdown/SeverityDropdown.feature',
     '../Features/TicketDetailsPage-Assign/TicketDetailsPage-Assign.feature',
     '../Features/TicketTemplate/TicketTemplate.feature',
     '../Features/ITSM/ITSM.feature',
     '../Features/Pushing_Alerts/PushingAlerts.feature',
     '../Features/RecoveryPolicy&AutoClosure/RecoveryPolicy&AutoClosure.feature',
 
-
-    '../Features/MoveToTicketed/MoveToTicketed.feature',
     '../Features/ShortDescriptionOfTickets/ShortDescriptionOfTickets.feature',
     '../Features/AcknowledgementAlertProcessing/AcknowledgementAlertProcessing.feature',
     '../Features/VirtualEngineerAssignemnt/VirtualEngineerAssignemnt.feature',
     '../Features/BulkAcknowledge/BulkAcknowledge.feature',
     '../Features/DeviceInventory/Device_Inventory_Admin.feature',
 
-    '../Features/DashBoard/DashBoard.feature',
-    '../Features/DownloadAlerts/DownloadAlerts.feature',
-      '../Features/DeviceDetails/DeviceDetails.feature',
-    '../Features/AlertConsole/AlertConsole.feature',
-    '../Features/InfrasrtucturePageTopology/Infrasrtucture_Page_Topology_ITOps_Admin.feature', */
-    '../Features/DefaultItsmGroupInProjConfig/DefaultGroupInTicketCreation.feature',
-    '../Features/DefaultTemplateForTicketCreate/DefaultTemplateForTicketCreate.feature'
-    
-    // Test below only after itops admin user is added to a group in service now
-    //'../Features/TicketListingDefaultView-Filters/TicketListingDefaultView-Filters.feature'
+    '../Features/DeviceDetails/DeviceDetails.feature',
+
+    '../Features/InfrasrtucturePageTopology/Infrasrtucture_Page_Topology_ITOps_Admin.feature',
+    '../Features/SplitFunctionality/SplitFunctionality.feature',
+    '../Features/MultipleAssignments/MultipleAssignments.feature',
+
+
+    '../Features/FlapConfiguration/FlapConfiguration.feature',
+
   ],
   cucumberOpts: {
 

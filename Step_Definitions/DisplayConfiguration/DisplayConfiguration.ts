@@ -212,7 +212,7 @@ Then('{string} verifies all the primary section fields are present', async funct
     throw "ModifiedTime field doesn't exist"
   }
   try {
-    await browser.wait(EC.visibilityOf(objDisplayConfig.txtAlertName), 10000);
+    await browser.wait(EC.visibilityOf(objDisplayConfig.txtModel), 10000);
   } catch (error) {
     await console.log("Feature name : Display Configuration " + userName + " and Scenario name : Default buttons in display configuration page")
     await console.log(error)
@@ -307,6 +307,13 @@ Then('{string} verifies if {string} message is displayed', async function (userN
   } catch (error) {
     await console.log("Feature name : Display Configuration " + userName + " and Scenario name : Change display name of Primary fields")
     await console.log(error)
+    var myElement = element(by.xpath("//span[text()='Assign To']//following::div[contains(@class,'d-flex justify-content-end')]//button"));
+    myElement.isPresent().then(async function (elm) {
+      if (elm) {
+        await browser.wait(EC.elementToBeClickable(element(by.xpath("//span[text()='Assign To']//following::div[contains(@class,'d-flex justify-content-end')]//button"))), 10000);
+        await element(by.xpath("//span[text()='Assign To']//following::div[contains(@class,'d-flex justify-content-end')]//button")).click();
+      }
+    });
     throw "Field changes are not saved successfully"
   }
 });

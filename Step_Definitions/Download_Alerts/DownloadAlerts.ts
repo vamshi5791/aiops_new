@@ -18,23 +18,13 @@ var downloadedAlertsDta;
 let tableData: any = [];
 When('{string} clicks on download icon', async function (string) {
   try {
-    await browser.sleep(3000)
+    // await browser.sleep(3000)
     await browser.wait(EC.elementToBeClickable(objAlerts.btnDownloadIcon), 30000);
+    await browser.wait(EC.presenceOf(objAlerts.btnDownloadIcon), 30000);
     await objAlerts.clickOnDownloadIcon()
   } catch (error) {
     await console.log(error)
-  }
-});
-
-When('{string} clicks on download icon button', async function (string) {
-  try {
-    await browser.sleep(3000)
-    await browser.wait(EC.elementToBeClickable(objAlerts.btnDownloadIcon), 30000);
-    await objAlerts.clickOnDownloadIcon()
-    await browser.sleep(2000)
-    await objAlerts.clickOnDownloadAlertReport();
-  } catch (error) {
-    await console.log(error)
+    throw "unable to click on download icon"
   }
 });
 
@@ -55,6 +45,7 @@ When('{string} reads data from downloaded csv file', async function (string) {
 
 When('{string} reads data from alerts console', async function (string) {
   // to read complete table data
+  //mandatory hard wait time 
   await browser.sleep(2000);
   var i = 1
 
@@ -95,7 +86,18 @@ When('{string} reads data from alerts console', async function (string) {
 });
 
 
-
+When('{string} clicks on download icon button', async function (string) {
+  try {
+    // await browser.sleep(3000)
+    await browser.wait(EC.elementToBeClickable(objAlerts.btnDownloadIcon), 30000);
+    await browser.wait(EC.presenceOf(objAlerts.btnDownloadIcon), 30000);
+    await objAlerts.clickOnDownloadIcon()
+    await objAlerts.clickOnDownloadAlertReport();
+  } catch (error) {
+    await console.log(error)
+    throw "unable to click on download icon"
+  }
+});
 Then('{string} verifies the data displayed is same as UI', async function (string) {
   // //validating data
 
@@ -110,15 +112,10 @@ Then('{string} verifies the data displayed is same as UI', async function (strin
     var downloadedObj = this.downloadedAlertsDta[i];
     await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " Verifying table row num: " + i);
     await console.log(i + " : tableObj['3']: " + tableObj['3'] + ", downloadedObj['Alert ID']: " + downloadedObj['Alert ID']);
-     expect(tableObj['3']).to.include(downloadedObj['Alert ID']);
     expect(downloadedObj['Alert Name']).to.include(tableObj['6']);
-    expect(moment(downloadedObj['First Alert Time']).format("hh:mm:ss A DD-MMM-YYYY")).to.include(tableObj['4'].replace('\n', ' '));
-    expect(moment(downloadedObj['Last Alert Time']).format("hh:mm:ss A DD-MMM-YYYY")).to.include(tableObj['5'].replace('\n', ' '));
-    expect(downloadedObj['Resource Name']).to.include(tableObj['9']);
-    // expect(downloadedObj['Source']).to.include(tableObj['8']);
-    expect(downloadedObj['IP Address']).to.include(tableObj['10']);
-    expect(downloadedObj['Metrics']).to.include(tableObj['11']);
-
+    expect(downloadedObj['Resource Name']).to.include(tableObj['10']);
+    expect(downloadedObj['IP Address']).to.include(tableObj['11']);
+    expect(downloadedObj['Metrics']).to.include(tableObj['12']);
   }
   await console.log("\n" + moment('2021-09-14T07:48:00.000Z').format("hh:mm:ss A DD-MMM-YYYY") + " >>>>>>>> date format");
 });
@@ -130,11 +127,9 @@ Then('{string} verifies that download option should not be present', async funct
     await element(by.className('smo smo-download cursor-pt ng-star-inserted')).isPresent().then(function (select) {
       expect(select).to.be.false;
     });
-
   } catch (error) {
-    console.log("alert count in dashboard")
     console.log(error)
-    throw "unable to navigate to Dashboard section"
+    throw "download icon exist's for display user role"
   }
 
 });

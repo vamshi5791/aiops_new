@@ -1,12 +1,17 @@
 import { ElementFinder, element, by, promise, browser, protractor } from "protractor";
 import { support } from "../support/support";
 import chai from "chai";
-var drp = new support(); 
+var drp = new support();
 var expect = chai.expect;
 var fs = require('fs');
 var fetch = require("node-fetch");
 var accessToken;
 var alertDetails;
+var PropertiesReader = require('properties-reader');
+var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
+var token_URL = properties.get("main." + globalThis.environment + "_token_URL");
+var access_Token_Body = properties.get("main." + globalThis.environment + "_AccessTokenBody");
+var alertMappingURL = properties.get("main." + globalThis.environment + "_alertMapping");
 export class Dashboard {
     btnDashboard = element(by.xpath('//a[text()="Dashboard"]'));
     btnSeverity = element(by.xpath('//span[text()="All"]'));
@@ -28,18 +33,18 @@ export class Dashboard {
     }
     async getCountFromDashBoard() {
         await element(by.xpath('//div[text()="1iam network - bgp neighbor down - critical"]//following::td')).getText().then(async function (text) {
-              console.log(text)
-             
-            });
-      }
+            console.log(text)
 
-      async getAccessToken() {
-        await fetch('https://smartops-qa01.eastus.cloudapp.azure.com/paas/itops/pwf/api/smartops/login', {
+        });
+    }
+
+    async getAccessToken() {
+        await fetch(token_URL, {
             method: 'POST',
             headers: {
                 "Content-type": "application/json;charset=UTF-8",
             },
-            body: '{"realm":"ustglobal","userName":"Itops_admin","password":"qa123"}',
+            body: access_Token_Body,
         }).then(response => response.json())
             .then(resp => {
                 // console.log(resp.access_token)
@@ -50,7 +55,7 @@ export class Dashboard {
     }
     async deviceAvailability(ProjectId: string, deviceName: string) {
         const accessToken = await this.getAccessToken();
-        var urldeviceAvail = 'https://smartops-qa01.eastus.cloudapp.azure.com/paas/itops/alertmapping' + '/api/deviceAvailability/' + ProjectId + '/' + deviceName;
+        var urldeviceAvail = alertMappingURL + '/api/deviceAvailability/' + ProjectId + '/' + deviceName;
         await fetch(urldeviceAvail, {
             method: "GET",
             headers: {

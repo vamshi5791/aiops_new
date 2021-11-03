@@ -12,6 +12,7 @@ var fse = require("fs-extra");
 
 When('{string} enters {string} and clicks on enter {string}', async function (string, SearchData, SearchAlertData) {
   try {
+    await browser.sleep(2000)
     await browser.wait(EC.visibilityOf(element(by.className('filter smo smo-filter'))), 10000);
     await objAlerts.Alert_Search(SearchAlertData);
   } catch (error) {

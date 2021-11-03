@@ -18,7 +18,7 @@ export class DisplayConfiguration {
   btnSaveConfigurationEnabled = element(by.xpath('//smo-button[@label="Save Configuration"]'));
   txtAlertMessage = element(by.xpath('//span[text()="alertMessage"]//following::input[@type="text"]'));
   txtAlertID = element(by.xpath('//span[text()="alertID"]'));
-  txtAlertName = element(by.xpath('//span[text()="alertName"]'));
+  txtModel = element(by.xpath('//span[text()="alertName"]'));
   txtSource = element(by.xpath('//span[text()="source"]'));
   txtAction = element(by.xpath('//span[text()="action"]'));
   txtIpAddress = element(by.xpath('//span[text()="ipAddress"]'));

@@ -24,7 +24,6 @@ var Global_ProjectName;
 
 Then('Device details should be displayed {string}', async function (Device) {
   try {
-    // await browser.sleep(2000);
     await element(by.xpath('//td[text()=" ' + Device + ' "]')).getText().then(function (text) {
       expect(text).to.include(Device);
     });
@@ -283,12 +282,30 @@ When('{string} selects resource name column', async function (userRole) {
   await objInfrastructurePage.Site();
 });
 
-When('{string} clicks on close button', async function (userRole) {
+When('{string} clicks on close button', async function (userRole) {  
+  try {
   await objInfrastructurePage.Cancel();
+    
+    } catch (error) {
+      await console.log("Action Name : clicks on close button ")
+      await console.log(error)
+      throw "Admin unable to clicks on close button"
+    }
+  
+  
 });
 
-Then('{string} verifies the Mac address column is present or not', async function (userRole) {
+Then('{string} verifies the Mac address column is present or not', async function (userRole) {  
+  try {
   await browser.wait(EC.presenceOf(objInfrastructurePage.txtMacAdress), 10000);
+    
+    } catch (error) {
+      await console.log("Action Name : verifies the Mac address column is present or not ")
+      await console.log(error)
+      throw "Admin unable to verifies the Mac address column is present or not"
+    }
+  
+  
 });
 
 
@@ -297,13 +314,31 @@ Then('{string} verifies the Mac address column is present or not', async functio
 
 
 When('{string} clicks on fail over device drop down', async function (userRole) {
+  
+  try {
+  
+    var myElement = objInfrastructurePage.btnFailOverDevice;
+    await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+    await objInfrastructurePage.FailOverDevice();
+  } catch (error) {
+    await console.log("Action Name : clicks on fail over device drop down ")
+    await console.log(error)
+    throw "Admin unable to clicks on fail over device drop down"
+  }
 
-  var myElement = objInfrastructurePage.btnFailOverDevice;
-  await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
-  await objInfrastructurePage.FailOverDevice();
+
 
 });
 
-Then('{string} verifies the same resource name in the dropdown {string}', async function (userRole, ResourceName) {
+Then('{string} verifies the same resource name in the dropdown {string}', async function (userRole, ResourceName) {  
+  try {
   await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="'+ResourceName+'"]'))), 100000);
+    
+    } catch (error) {
+      await console.log("Action Name : verifies the same resource name in the dropdown ")
+      await console.log(error)
+      throw "Admin unable to verifies the same resource name in the dropdown"
+    }
+  
+  
 });

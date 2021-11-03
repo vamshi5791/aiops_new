@@ -44,16 +44,14 @@ When('{string} verifies the ticket number', async function (string) {
   }
 });
 
-
  
 Then('{string} sends {string} new {string} alerts with {string}, {string}, {string}, {string}', async function (UserRole, PushCount, AlertSource, ProjectName, routeKey, channelJson, nodeName) {
   try {
-    // await objApiRabbitMQ.deleteQueryForAlerts();
     for (let i = 1; i <= PushCount; i++) {
       await objApiRabbitMQ.apiPushMsgRabbitMQ(ProjectName, routeKey, channelJson, nodeName);
     }
     //waiting for alerts to cluster
-    await browser.sleep(85000)
+    await browser.sleep(80000)
 
   } catch (error) {
     await console.log("Action Name: pushing alerts through api")
@@ -111,6 +109,17 @@ Then('{string} verifies the checkbox against each alert', async function (string
 Then('{string} Verifies launch icon corresponding to each alert', async function (string) {
   try {
     await browser.wait(EC.visibilityOf(element(by.className("smo smo-expand cursor-pointer"))), 50000);
+    await objAlerts.clickOnCancelInClustetPopup()
+  } catch (error) {
+    await objAlerts.clickOnCancelInClustetPopup()
+    await console.log("Verifying launch icon corresponding to each alert")
+    await console.log(error)
+    throw "launch icon not available to each alert"
+  }
+});
+Then('{string} verifies base alert checkbox must be disabled', async function (string) {
+  try {
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Correlated Alerts"]//following::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-state-disabled smo-chkbox-sm"]'))), 50000);
   } catch (error) {
     await objAlerts.clickOnCancelInClustetPopup()
     await console.log("Verifying launch icon corresponding to each alert")
@@ -119,21 +128,3 @@ Then('{string} Verifies launch icon corresponding to each alert', async function
   }
 });
 
-// Verify ticket details page for a new ticket created
-
-When('{string} gets ticket number for the previously alert', async function (string) {
-  await browser.sleep(60000)
-  await element(by.xpath("//span[@class='text-font-dark text-with-bold']")).getText().then(async function (GeneratedTicketNumber) {
-    await console.log("generated new ticket " + GeneratedTicketNumber)
-    TicketNumber = GeneratedTicketNumber;
-  });
-  await console.log("generated new ticket " + TicketNumber)
-});
-When('{string} login in to service now and search for the incident id', async function (string, IncidentID) {
-  try {
-    resultState = await objServiceNow.apiServiceNow(TicketNumber)
-    await console.log(resultState)
-  } catch (error) {
-    await console.log(error)
-  }
-});

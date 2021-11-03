@@ -1,11 +1,9 @@
-Feature:Recovery Policy & Auto closure
+@ITOps_Admin @Regression @RecoveryAutoclosure
 
+Feature:Recovery Policy & Auto closure
 
     Scenario Outline: Recovery + Autoclosure functionality
 
-        When "ITOps_Admin" navigates to ITOps home page
-        And "Admin" enters project name in project search field and click on enter
-        And "admin" clicks on project name
         When "Admin" sends "2" new "Recovery" alerts with "<ProjectName>", "<ChannelName>", "<channelJson1>", "<NodeName>"
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName>"

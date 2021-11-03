@@ -162,3 +162,41 @@ Feature:  Advanced Filter
           Examples:
                | UserName    | Password | ProjectName      | SavedFilter | Toaster                      |
                | Itops_admin | qa123    | Automation_IB_24 | IB          | Filter deleted successfully. |
+
+     Scenario Outline:Verify creating default filter for Alert Console
+
+          When "Admin" clicks on Alerts page
+          When "Admin" clicks on advanced filter icon
+          And "Admin" enters source as "<Source>" and alert state as "<Alert_State>"
+          And "Admin" clicks on Save filter button
+          And "Admin" enters filter name as "<FilterName>" and Description as "<Description>"
+          And "Admin" clicks on Make as default checkbox
+          And "Admin" clicks on save and apply button
+          Then "Admin" verifies if "<SuccessMessage>" message is displayed
+          And verify alert console should show results based on default filter applied
+          And "Admin" clicks on logout button
+          Given User with ITOps role renders the URL
+          When user enters Username as "<DifferentUserName>", Password as "<Password>" and clicks on Login button
+          Then ITOps home page is displayed
+          And "Engineer" enters project name in project search field
+          And "Engineer" clicks on project name and navigates to dashboard
+          And "Engineer" clicks on Alerts page
+          Then verify alert console should show results based on default filter applied
+          And "Engineer" clicks on logout button
+          Given User with ITOps role renders the URL
+          When user enters Username as "<UserName>", Password as "<Password>" and clicks on Login button
+          Then ITOps home page is displayed
+          And "Engineer" enters project name in project search field
+          And "Engineer" clicks on project name and navigates to dashboard
+          And "Admin" clicks on Alerts page
+          Then verify alert console should not show results based on previous default filter.
+          And "Admin" clicks on advanced filter icon
+          When "Admin" clicks on Delete icon for "<FilterName>" filter
+          Then "admin" verifies that edit and delete options are present
+          And "Admin" clicks on Yes on confirmation pop up
+          Then "Admin" verifies "<Toaster>" shown
+          And "admin" clicks on cancel button in advance filter console
+
+          Examples:
+               | UserName    | Password | ProjectName      | Source     | Alert_State | FilterName | Description | SuccessMessage             | DifferentUserName | Toaster                      |
+               | Itops_admin | qa123    | Automation_IB_16 | Solarwinds | Ticketed    | Automation | Value 2     | Filter saved successfully. | Itops_engineer    | Filter deleted successfully. |

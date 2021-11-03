@@ -32,6 +32,9 @@ export class ServiceNowAPI {
             .then(result => {
 
                 let ResultJSON = result.records[0]
+                var NoOfOccurence = ResultJSON.description.replace('Number of occurences:', '|');
+                NoOfOccurence = NoOfOccurence.replace('First occurrence', '|');
+                NoOfOccurence = NoOfOccurence.split('|')[1]
                 objectString = JSON.parse(emptyString);
                 objectString.short_description = ResultJSON.short_description;
                 objectString.state = arr_state[ResultJSON.state];
@@ -39,7 +42,10 @@ export class ServiceNowAPI {
                 objectString.assignment_group_id = ResultJSON.assignment_group;
                 objectString.assigned_to_id = ResultJSON.assigned_to;
                 objectString.close_notes = ResultJSON.close_notes;
+                objectString.NoOfOccurence = NoOfOccurence;
+
                 customJson = objectString;
+
             });
         return customJson;
     }
@@ -66,7 +72,7 @@ export class ServiceNowAPI {
     async updateTicketToResolved(sys_id: string, State: string, category: string, subCategory: string, closeCode: string, closeNote: string) {
         var bodyString = JSON.parse(emptyString);
         bodyString.incident_state = state_value[State];
-        bodyString.category =  category;
+        bodyString.category = category;
         bodyString.subcategory = subCategory;
         bodyString.close_code = closeCode;
         bodyString.close_notes = closeNote;
@@ -86,15 +92,22 @@ export class ServiceNowAPI {
                 console.log(error);
             });
     }
- 
+
     async createNewInc() {
+        var req_obj = JSON.parse(emptyString);
+        req_obj.short_description = 'IBAutomationTesting';
+        req_obj.caller_id = "SmartOps NinetyOne",
+        req_obj.assignment_group = "ITOpsTesting",
+        req_obj.assigned_to = "Remya Rnair"
+        const data_obj = JSON.stringify(req_obj);
         const main_url = ServiceNowURL + '/api/now/v1/table/incident';
         await fetch(main_url, {
             method: "POST",
             headers: {
                 "Content-type": "application/json;charset=UTF-8",
                 "Authorization": `Basic ${base64.encode(`${ServiceNowUserName}:${ServiceNowPassword}`)}`
-            }
+            },
+            body:data_obj,
         }).then(response => response.json())
             .then(resp => {
                 new_inc_number = resp.result.number

@@ -5,7 +5,7 @@ Feature: Acknowledge Alert Processing
     Scenario Outline: Pushing two acknowledgement alerts
 
 
-        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         And "admin" clicks on Alerts page
         And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And verify cluster size must be "<size>"

@@ -16,7 +16,8 @@ export class TicketingThreshold {
     txtClusterSize = element(by.xpath('//input[@label="Cluster Size *"]'));
     txtTimeInterval = element(by.xpath('//input[@label="Time interval in minutes"]'));
     btnAddThreshold = element(by.xpath('//span[text()="Add Threshold"]'));
-    
+    btnSaveThreshold = element(by.xpath('//span[text()="Save Threshold"]'))
+    btnYes = element(by.xpath('//span[text()="Yes"]'))
 
 
     /* methods written for add, edit acknowledgement policy 
@@ -24,6 +25,9 @@ export class TicketingThreshold {
 
     async clickOnTicketingThreshold(){
         await this.lnkTicketingThreshold.click();
+    }
+    async Yes(){
+        await this.btnYes.click();
     }
     async clickOnAddNewThresholdButton(){
         await this.lnkAddNewThreshold.click();
@@ -45,6 +49,9 @@ export class TicketingThreshold {
 
     async clickOnAddThreshold(){
         await this.btnAddThreshold.click();
+    }
+    async SaveThreshold(){
+        await this.btnSaveThreshold.click();
     }
 }
 

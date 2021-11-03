@@ -13,6 +13,34 @@
         "Resource Type": "Console",
         "Alert time": ""
     },
+    "QueueChannel2": {
+        "Alert Name": "Alert2",
+        "Alert Message": "Sample Alert",
+        "Alert Severity": "Major",
+        "Service Name": "Node Down",
+        "Node Name": "CNHKGG-00A-SSC1",
+        "NodeIP Address": "123.45.67",
+        "Object Type": "Access Point",
+        "ObjectName": "NewObject",
+        "ObjectStatus": "down",
+        "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+        "Resource Type": "Console",
+        "Alert time": ""
+    },
+    "QueueChannel3": {
+        "Alert Name": "Alert2",
+        "Alert Message": "Sample Alert",
+        "Alert Severity": "Major",
+        "Service Name": "Node Down",
+        "Node Name": "CNHKGG-00A-SSC1",
+        "NodeIP Address": "123.45.67",
+        "Object Type": "Access Point",
+        "ObjectName": "NewObject",
+        "ObjectStatus": "up",
+        "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+        "Resource Type": "Console",
+        "Alert time": ""
+    },
     "RecoveryPolicy": {
         "Alert Name": "Alert1",
         "Alert Message": "Message11",
@@ -223,35 +251,6 @@
         "Object Type": "Access Point",
         "ObjectName": "ObjectName",
         "ObjectStatus": "up",
-        "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
-        "Resource Type": "Console",
-        "Alert time": ""
-    },
-    "TemplateGroupJson": {
-        "Alert Name": "Alert2",
-        "Alert Message": "Sample Alert",
-        "Alert Severity": "warning",
-        "Service Name": "Node Down",
-        "Node Name": "CNHKGG-00A-SSC1",
-        "NodeIP Address": "123.45.67",
-        "Object Type": "Access Point",
-        "ObjectName": "NewObject",
-        "ObjectStatus": "down",
-        "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
-        "Resource Type": "Console",
-        "Alert time": ""
-    },
-    
-    "CreateTicketCustomTemplate": {
-        "Alert Name": "Alert3",
-        "Alert Message": "Sample Alert",
-        "Alert Severity": "critical",
-        "Service Name": "Node Down",
-        "Node Name": "CNHKGG-00A-SSC1",
-        "NodeIP Address": "123.45.67",
-        "Object Type": "Access Point",
-        "ObjectName": "NewObject",
-        "ObjectStatus": "down",
         "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
         "Resource Type": "Console",
         "Alert time": ""

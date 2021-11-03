@@ -98,23 +98,27 @@ Feature:Severity Mapping
      Scenario Outline: Verifying that Admin is able to create duplicate source severity and SO severity
 
           When "Admin" clicks on Severity Mapping
-          And 'Admin' clicks on edit button
-          And 'Admin' changes source Severity as "<SourceSeverity>"
-          And 'Admin' clicks on save button
-          And 'Admin' clicks on yes button
-          Then Error message for creating duplicate source severity must be shown in popup "<Error_popup>"
-          And 'Admin' clicks on edit button
-          And 'Admin' changes another source Severity as "<SourceSeverity2>"
-          And 'Admin' clicks on save button
-          And 'Admin' clicks on yes button
-          Then Success message for updating Severity Mapping must be shown in popup "<Success_popup>"
-
+          And "Admin" clicks on Add new source button
+          And "Admin" clicks on source dropdown and select a source
+          And "Admin" enters source Severity as "<SourceSeverity1>"
+          And "Admin" clicks on SO Severity dropdown and selects Information
+          And "Admin" clicks on Add Source button
+          Then Error message for creating duplicate source must be shown in popup "<Error_popup>"
           Examples:
-               | SourceSeverity | SourceSeverity2 | Error_popup                                         | Success_popup         |
-               | 264            | 32              | Severity mapping for Source Severity already exists | Successfully Updated. |
+               | SourceSeverity1 | SourceSeverity2 | Error_popup           |
+               | 264             | 34              | Source already exists |
 
      #Deleting the created severity mapping to run the next build
 
-     Scenario: Deleting the created severity mapping
-          When "Admin" clicks on delete the Severity Mapping
-          And 'Admin' clicks on yes button
+
+     Scenario Outline: Deleting the created severity mapping
+
+          When "Admin" clicks on Configuration tab
+          When "Admin" clicks on Severity Mapping
+          When "Admin" clicks on delete the Severity Mapping option
+          And "Admin" clicks on yes button
+          Then "Admin" verifies if "<SuccessMessage>" message is displayed
+
+          Examples:
+               | SuccessMessage        |
+               | Successfully Deleted. |

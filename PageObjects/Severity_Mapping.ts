@@ -1,5 +1,5 @@
 import { ElementFinder, element, by, promise, browser, protractor } from "protractor";
-
+var EC = browser.ExpectedConditions;
 export class SeverityMapping {
 
 
@@ -23,7 +23,6 @@ export class SeverityMapping {
   btnEdit = element(by.xpath('//span[@class="smo smo-create-alt edit-icon cursor-pointer right-padding-20 ng-star-inserted"]'))
   btnSave = element(by.xpath('//span[text()="Save"]'))
   btnClickONYes = element(by.xpath('//button[@class="smo-button smo-widget smo-state-default smo-button-default smo-corner-all smo-button-ms smo-button-active-ms smo-button-text-only"]'))
-  txtDate = element(by.xpath('//b[text()="14 Jul 2021"]'))
   btnConfiguration = element(by.xpath('//a[text()="Configuration"]'))
   btnCancel = element(by.xpath('//span[text()="Cancel"]'))
   btndelete = element(by.xpath('//span[@class="smo smo-delete cursor-pointer font-18 color-grey left-margin-20 ng-star-inserted"]'))
@@ -31,6 +30,8 @@ export class SeverityMapping {
 
 
   async SeverityMapping() {
+    await browser.wait(EC.visibilityOf(this.btnSeverityMapping), 10000);
+    await browser.wait(EC.elementToBeClickable(this.btnSeverityMapping), 10000);
     await this.btnSeverityMapping.click();
   }
   async Cancel() {
@@ -78,7 +79,6 @@ export class SeverityMapping {
   }
   async ClickOnSaveAndAddNew() {
     await this.btnClickOnSaveAndAddNew.click();
-    // await browser.sleep(5000);
   }
   async SelectCritical() {
     await this.btnSelectCritical.click();
@@ -97,12 +97,10 @@ export class SeverityMapping {
     await this.btnSave.click();
   }
   async ClickONYes() {
+    await browser.wait(EC.visibilityOf(this.btnClickONYes), 10000);
+    await browser.wait(EC.presenceOf(this.btnClickONYes), 10000);
     await this.btnClickONYes.click();
   }
-  async Date() {
-    await this.txtDate.click();
-  }
-
   async Delete() {
     await this.btndelete.click();
   }

@@ -62,13 +62,8 @@ export class PolicyObjects {
     btnUpdateRule = element(by.xpath('//span[text()="Update Rule"]'));
     btnSetRules = element(by.xpath('//span[text()="Set Rules"]'))
     btnRuleToggle = element(by.xpath('//span[@class="smo-inputswitch-slider smo-inputswitch-slider-default smo-inputswitch-slider-default-sm input-switch-small"]'))
-
     tgbbthStatus = element(by.xpath('//span[@class="smo-inputswitch-slider smo-inputswitch-slider-default smo-inputswitch-slider-default-sm input-switch-small"]'));
-
     txtValue = element(by.xpath('//input[@label="Value *"]'));
-
-
-
 
 
     async enterValue(Value) {
@@ -116,7 +111,6 @@ export class PolicyObjects {
     }
     async enterPolicyName(policyName) {
         await this.txtPolicyName.clear();
-        await browser.sleep(2000)
         await this.txtPolicyName.sendKeys(policyName);
     }
     async enterPrecedence(precedence) {
@@ -124,15 +118,12 @@ export class PolicyObjects {
         await this.txtPrecedence.sendKeys(precedence);
     }
     async selectAttribute(attibute) {
-        await browser.sleep(2000)
         await this.drpdwnAttribute.click();
-        await browser.sleep(2000)
         await drp.selectByVisibleText(attibute);
     }
     async selectValue(Value) {
         await this.drpdwnValue.click();
-        await browser.sleep(2000)
-        await drp.selectByVisibleText(Value);
+            await drp.selectByVisibleText(Value);
     }
     async clickSaveandAddRule() {
         await this.btnSaveandAddRule.click();

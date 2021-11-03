@@ -35,7 +35,7 @@ Feature: Login persona functionalities of ITOps Admin
 
           Examples:
                | Description | SuccessMessage              |
-               | NewSample   | Project Updated Succesfully |
+               | NewSample   | Project Updated Successfully |
 
 
      Scenario Outline: ITOps Admin is able to access the Master Configuration page

@@ -4,7 +4,10 @@ Feature: Download Alerts
 
 
     Scenario Outline: Verify the user is able to download the alerts In csv file
-       
+
+        When "ITOps_Admin" navigates to ITOps home page
+        And "Admin" enters project name in project search field and click on enter
+        And "Admin" clicks on project name
         When "admin" clicks on Alerts page
         And "admin" clicks on download icon button
         And "admin" reads data from alerts console

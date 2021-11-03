@@ -8,22 +8,28 @@ Feature: ITOps admin Multiple Assignments from Alert Console
         When "ITOps_Admin" navigates to ITOps home page
         And "Admin" enters project name in project search field and click on enter
         And "admin" clicks on project name
+
         And "admin" clicks on Alerts page
         When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
+        And "admin" clicks on select all checkbox for the ticket number "<TicketNumber01>", "<TicketNumber02>"
+        And "admin" clicks on 3 dots in top left
+        And "admin" clicks on "Hold" button
+        Then "Admin" verifies if "<SuccessMessage>" message is displayed
+        When "admin" clicks on refresh button in alert console
         And "admin" clicks on select all checkbox for the ticket number "<TicketNumber01>", "<TicketNumber02>"
         And "admin" clicks on 3 dots in top left
         And "admin" clicks on "Assign" button
         And "admin" clicks on "Individual" radio button
         And "admin" selects user from the team member drop down as "<Group>", "<TeamMember>"
         And "admin" clicks on assign button on the popup
-        Then "admin" verify the alert console for corresponding ticket cluster
+        Then "Admin" verifies if "<Toaster>" message is displayed
         And "admin" verifies the ticket is assigned "By itops_admin"
         When "Admin" clicks on the ticket number
-        Then "admin" verifies ticket is assigned to "<TeamMember>"
-
+        Then "Admin" verifies Ticket should be assigned to group "<Group>"
+        Then "Admin" verifies Ticket should be assigned to TeamMember "<TeamMember>"
         Examples:
-            | ProjectName     | TicketNumber | Group            | TeamMember      | SuccessMessage                | ChannelName | channelJson  | NodeName        |
-            | Automation_01M3 | INC0819624   | Visibility - UST | Amjathsha Abdul | Tickets assigned successfully | Solarwinds  | QueueChannel | GGSPDC-01A-AOB1 |
+            | ProjectName     | TicketNumber | Group            | TeamMember      | SuccessMessage                | ChannelName | channelJson  | NodeName        | Toaster                       |
+            | Automation_01M3 | INC0819624   | Visibility - UST | Amjathsha Abdul | Ticket(s) holded successfully | Solarwinds  | QueueChannel2 | CNHKGG-00A-SSC2 | Tickets assigned successfully |
 
     # Scenario Outline: Verify that selecting multiple tickets and self assign works
 
@@ -52,16 +58,20 @@ Feature: ITOps admin Multiple Assignments from Alert Console
         When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And "admin" clicks on select all checkbox for the ticket number "<TicketNumber01>", "<TicketNumber02>"
         And "admin" clicks on 3 dots in top left
+        And "admin" clicks on "Hold" button
+        Then "Admin" verifies if "<SuccessMessage>" message is displayed
+        When "admin" clicks on refresh button in alert console
+        And "admin" clicks on select all checkbox for the ticket number "<TicketNumber01>", "<TicketNumber02>"
+        And "admin" clicks on 3 dots in top left
         And "admin" clicks on "Assign" button
         And "admin" clicks on "Group" radio button
         And "admin" selects user from the team member drop down as "<Group>"
         And "admin" clicks on assign button on the popup
-        Then "admin" verify the alert console for corresponding ticket cluster
+        Then "Admin" verifies if "<Toaster>" message is displayed
         And "admin" verifies the ticket is assigned "By itops_admin"
         When "Admin" clicks on the ticket number
-        Then "admin" verifies ticket is assigned to "<Group>"
+        Then "Admin" verifies Ticket should be assigned to group "<Group>"
 
         Examples:
-            | ProjectName     | Group            | SuccessMessage                | ChannelName | channelJson  | NodeName        |
-            | Automation_01M3 | Visibility - UST | Tickets assigned successfully | Solarwinds  | QueueChannel | GBLNGS-04A-SUA1 |
-
+            | ProjectName     | Group            | SuccessMessage                | ChannelName | channelJson  | NodeName        | Toaster                       |
+            | Automation_01M3 | Visibility - UST | Ticket(s) holded successfully | Solarwinds  | QueueChannel2 | GBSLBA-00A-SSC1 | Tickets assigned successfully |

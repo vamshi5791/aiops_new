@@ -4,6 +4,11 @@ Feature: ITSM
 
     Scenario Outline: Verify that ITSM tickets created directly in Service now can be taken to ITOps application
 
+
+        When "ITOps_Admin" navigates to ITOps home page
+        And "Admin" enters project name in project search field and click on enter
+        And "Admin" clicks on project name
+
         When "ITOps_Admin" Login to service now as ninetyone user and create a incident
         When "ITOps_Admin" Search in ticket Console after "6" minutes
 
@@ -164,12 +169,12 @@ Feature: ITSM
             | Automation_01M3 | INC0820381 | Resolved      |
 
 
-    Scenario Outline: Verify that ITSM tickets created directly in Service now can be taken to ITOps application
+    Scenario: Verify that ITSM tickets created directly in Service now can be taken to ITOps application
 
         When "admin" navigates to Tickets page
-        And "admin" enters "Ticket number" in ticket console and clicks on enter "<IncidentId>"
-        Then "admin" verifies ticket console should display new Sevice now ticket created with Title, Description, Category, Priority and Time info
+        And "admin" enters "Ticket number" in ticket console and clicks on enter
+        Then "admin" verifies ticket console should display new Service now ticket created with "Title", "Description", "Category", "Priority" and "Created Time And Date"
+        And "admin" clicks on Alerts page
+        And "admin" enters "Ticket number" in ticket console and clicks on enter
+        And "admin" verifies ticket number in alert console
 
-        Examples:
-            | ProjectName     | IncidentId | SuccessMessage                |
-            | Automation_01M3 | INC0819593 | Ticket(s) holded successfully |

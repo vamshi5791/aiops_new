@@ -4,6 +4,7 @@ Feature: Download Alerts with Itops Engineer
 
     Scenario Outline: Verify the ITOps Engineer is able to download the alerts In csv file
 
+        When "Admin" sends "1" new "solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         When "ITOps_Engineer" navigates to ITOps home page
         And "Admin" enters project name in project search field and click on enter
         And "admin" clicks on project name
@@ -14,5 +15,5 @@ Feature: Download Alerts with Itops Engineer
         Then "ITOps_Engineer" verifies the data displayed is same as UI
 
         Examples:
-            | ProjectName     |
-            | Automation_01M3 |
+            | ProjectName     | ChannelName | channelJson  | NodeName        |
+            | Automation_01M3 | Solarwinds  | QueueChannel | IAMLFSCPRDDC1-2 |

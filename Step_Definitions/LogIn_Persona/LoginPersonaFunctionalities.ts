@@ -47,7 +47,6 @@ When('{string} navigates to ITOps home page', async function (string) {
     await browser.wait(EC.presenceOf(objProjectListingPage.btnHomePage), 40000);
     await browser.wait(EC.elementToBeClickable(objProjectListingPage.btnHomePage), 40000);
     await browser.wait(EC.presenceOf(objProjectListingPage.btnHomePage), 40000);
-    // await browser.sleep(5000)
     await objProjectListingPage.clickOnHomePageButton();
     await browser.wait(EC.visibilityOf(element(by.xpath('//h1[text()="Project Listing"]'))));
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="All Projects"]'))));

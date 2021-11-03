@@ -13,7 +13,6 @@ export class AlertsPage {
   btnAdvanceFilter = element(by.className('filter smo smo-filter'));
   drpSource = element(by.xpath('//label[text()="Source"]'));
   drpAlertState = element(by.xpath('//label[text()="Alert State"]'));
-  drpAlertAction= element(by.className("ng-tns-c18-40 smo-inputtext smo-placeholder dropdown-label-ms smo-dropdown-label ng-star-inserted"))
   txtResource = element(by.name('resourceName'));
   btnSaveFilter = element(by.className('d-flex justify-content-end save-link ng-star-inserted'));
   txtInLast = element(by.name('inLast'));
@@ -26,7 +25,7 @@ export class AlertsPage {
   btnRemoveStateCondition = element(by.xpath('//div[text()="State : "]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
   btnRemoveOkCondition = element(by.xpath('//span[text()="Ok"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
   btnRemoveWarningCondition = element(by.xpath('//span[text()="Ok"]//preceding::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'));
-  txtTimeError=element(by.className("smo-badge smo-badge-sm smo-badge-info"));
+
   //Advanced filter section page elements
   chkMakeAsDefault = element(by.xpath('//span[text()="Make As Default"]//preceding::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'));
   btnEditSavedFilter = element(by.className('mr-3 smo smo-edit ng-star-inserted'));
@@ -60,7 +59,6 @@ export class AlertsPage {
   btnDownloadAlert = element(by.xpath('//span[@class="smo smo-download cursor-pt ng-star-inserted"]'))
   btnAlertSeverityDpn = element(by.xpath('//label[text()="Alert Severity"]'))
   btnSelectWarning = element(by.xpath('//span[text()="Warning"]'))
-  txtWarning = element(by.xpath('//span[text()="Warning"]'))
   txtInformation = element(by.xpath('//span[text()="Information"]'))
   btnRemoveOkSeverity = element(by.xpath('//span[text()="Ok"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
   btnRemoveWarningSeverity = element(by.xpath('//span[text()="Warning"]//following::span[@class="smo smo-close-black-alt filter-result-icon-sm"]'))
@@ -77,7 +75,7 @@ export class AlertsPage {
   txtShortDescription = element(by.xpath('//div[@class="ticket-title"]'))
   btnCluster = element(by.xpath('//span[@class="cluster-badge-icon smo smo-expand-more-alt ng-star-inserted"]'))
   btnCheckbox = element(by.xpath('//span[text()="Correlated Alerts"]//following::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'))
-  btncancel = element(by.xpath('//span[@class="d-flex justify-content-end align-button"]//following::span[text()="Cancel"]'))
+  btncancelInAdvanceFilter = element(by.xpath('//span[@class="d-flex justify-content-end align-button"]//following::span[text()="Cancel"]'))
   btnAlertscheckbox = element(by.xpath('//div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'))
   btnThreedots = element(by.xpath('//span[@class="smo smo-more-vert-24px ellipsis-icon font-14 cursor-pt secondary-color default-icon context-menu-icon ng-star-inserted"]'))
   btnSelectMajor = element(by.xpath('//span[text()="Major"]'))
@@ -93,8 +91,8 @@ export class AlertsPage {
   txtClosingComment = element(by.xpath('//span[text()="Please enter the closure note"]//following::textarea'))
   btnAddClosureComment = element(by.xpath('//span[text()="Add"]'))
   btnClosureNoteTab = element(by.xpath('//span[text()="Closure Notes"]'))
-  btnThreeDotsAlertPage = element(by.xpath("(//smo-check-box[@binary='true']/following-sibling::span)[2]"))
-  btnSelectAllCheckBox = element(by.xpath("(//div[contains(@class,'smo-widget smo-corner-all')])[3]"))
+  btnThreeDotsAlertPage = element(by.xpath('//div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]//following::span'))
+  btnSelectAllCheckBox = element(by.xpath('//tr[@class="alert-list-row dropdown-hover ng-star-inserted"]//following::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'))
   btnAssignButtonOnPopUp = element(by.xpath("//smo-button[@label='Assign']//button"))
   btnAutoRefresh = element(by.className("smo-btn-icon-col d-flex align-items-center smo smo-refresh-alt btn-icon smo-clickable ng-star-inserted"))
   nextArrayButton = element(by.xpath('//a[@class="smo-paginator-next smo-paginator-element smo-state-default smo-corner-all smo-paginator-next-ms"]'))
@@ -106,11 +104,49 @@ export class AlertsPage {
   btnCancelInClustetPopup = element(by.className("smo-overlaypanel-close-icon smo smo-close-black-alt"));
   chkIncludeToday = element(by.className("smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"));
   txtAssigned = element(by.xpath("//label[text()='assigned']"));
+  txtClosed = element(by.xpath('//div[text()="closed"]'))
+  btnCreateTicket = element(by.xpath('//span[text()="Correlated Alerts"]//following::span[text()="Create Ticket"]'))
+  btnconfirm = element(by.xpath('//span[text()="Confirm"]'))
+  btnFirstAlert = element(by.xpath('//span[text()="Alert Id"]//following::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"]'))
+  btnAllAlerts = element(by.xpath('//span[text()="Correlated Alerts"]//following::smo-check-box[@class="ng-untouched ng-pristine ng-valid ng-star-inserted"]'))
+
+  // Mandatory indexes
+  btnSecondAlert = element(by.xpath('//span[text()="Alert Id"]//following::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"][1]'))
+  btnBaseAlert = element(by.xpath('//span[text()="Alert Id"]//following::div[@class="smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"][4]'))
+  btnSecondClusterCount = element(by.xpath("//span[contains(@class,'cluster-badge-icon smo')][1]"));
+  txtTicketNew = element(by.xpath("(//span[@class='text-font-dark text-with-bold'])[3]"))
+  txtBaseAlert = element(by.xpath("(//span[@type='circle'])[2]"))
+
+
+  async SecondClusterCount() {
+    await this.btnSecondClusterCount.click();
+  }
+  async confirm() {
+    await this.btnconfirm.click();
+  }
+  async CreateTicket() {
+    await browser.wait(EC.visibilityOf(this.btnCreateTicket), 60000);
+    await browser.wait(EC.elementToBeClickable(this.btnCreateTicket), 60000);
+    await this.btnCreateTicket.click();
+  }
+  async FirstAlert() {
+    await this.btnFirstAlert.click();
+  }
+  async SecondAlert() {
+    await this.btnSecondAlert.click();
+  }
+  async BaseAlert() {
+    await this.btnBaseAlert.click();
+  }
+  async AllAlerts() {
+    await this.btnAllAlerts.click();
+  }
   async clickOnIncludeToday() {
     await this.chkIncludeToday.click();
   }
-
-  
+  async Closed() {
+    await this.txtClosed.click();
+  }
   async clickOnDownloadAlertReport() {
     await this.btnDownloadAlertReport.click();
   }
@@ -122,6 +158,8 @@ export class AlertsPage {
     await this.btnClusterCount.click();
   }
   async clickOnDownloadIcon() {
+    await browser.wait(EC.elementToBeClickable(this.btnDownloadIcon), 30000);
+    await browser.wait(EC.presenceOf(this.btnDownloadIcon), 30000);
     await this.btnDownloadIcon.click();
   }
 
@@ -150,6 +188,7 @@ export class AlertsPage {
     await this.btnSearch.sendKeys(alertName);
     await browser.sleep(2000)
     await browser.actions().sendKeys(protractor.Key.ENTER).perform();
+    await browser.sleep(3000)
   }
   async AdvanceFilter() {
     await this.btnAdvanceFilter.click();
@@ -184,9 +223,6 @@ export class AlertsPage {
 
   async FilterDescription(FilterDescription: string) {
     await this.txtFilterDescription.sendKeys(FilterDescription);
-  }
-  async savedFilterTitle(SavedFilter) {
-    await element(by.xpath('//span[text()="' + SavedFilter + '"]')).click();
   }
   async selectSavedFilterFromAlertConsole(SavedFilter) {
     await this.drpSavedFilter.click();
@@ -306,9 +342,6 @@ export class AlertsPage {
     await browser.wait(EC.elementToBeClickable(this.btnRemoveSolarwinds), 60000);
     await this.btnRemoveSolarwinds.click();
   }
-  async Warning() {
-    await this.txtWarning.click();
-  }
 
   async Information() {
     await this.txtInformation.click();
@@ -328,14 +361,12 @@ export class AlertsPage {
 
   }
 
-
-  // ------------------Milestone3------------ 
-
-
   async Ticket() {
     await this.txtTicket.click();
   }
   async clickOnUpdateStatus(Status) {
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="' + Status + '"]'))), 50000);
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="' + Status + '"]'))), 50000);
     await element(by.xpath('//span[text()="' + Status + '"]')).click();
   }
   async Acknowledge() {
@@ -346,6 +377,8 @@ export class AlertsPage {
   }
 
   async Alertscheckbox() {
+    await browser.wait(EC.elementToBeClickable(this.btnAlertscheckbox), 50000);
+    await browser.wait(EC.presenceOf(this.btnAlertscheckbox), 50000);
     await this.btnAlertscheckbox.click();
   }
   async Threedots() {
@@ -354,9 +387,6 @@ export class AlertsPage {
   async SelectMajor() {
     await this.btnSelectMajor.click();
   }
- 
-
-
 
   // -------------------Assign Module -----------------------
 
@@ -371,6 +401,8 @@ export class AlertsPage {
     await this.btnThreeDotsAlertPage.click();
   }
   async clickOnTicketNumber(TicketNumber: string) {
+    await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="' + TicketNumber + '"]'))), 50000);
+    await browser.wait(EC.presenceOf(element(by.xpath('//span[text()="' + TicketNumber + '"]'))), 50000);
     await element(by.xpath('//span[text()="' + TicketNumber + '"]')).click();
   }
   async clickOnStatusDropdown(AssignOption: string) {
@@ -385,10 +417,11 @@ export class AlertsPage {
   async selectTeamMember(value: string) {
     await browser.wait(EC.elementToBeClickable(element(by.xpath("//label[text()='Choose a Team member*']//following::span"))), 50000);
     await element(by.xpath("//label[text()='Choose a Team member*']//following::span")).click();
-    await browser.sleep(2000)
     await drp.selectByVisibleText(value);
   }
   async clickOnAssignButton() {
+    await browser.wait(EC.presenceOf(this.btnAssign), 50000);
+    await browser.wait(EC.elementToBeClickable(this.btnAssign), 50000);
     await this.btnAssign.click();
   }
   async clickOnRefreshButton() {
@@ -400,10 +433,6 @@ export class AlertsPage {
 
   async clickOnState(State) {
     await element(by.xpath('//div[text()="' + State + '"]')).click()
-  }
-
-  async clickOnStateDropdown() {
-    await this.btnState.click();
   }
   async clickOnAlertCheckBox() {
     await this.btnAlertCheckBox.click();
@@ -420,10 +449,9 @@ export class AlertsPage {
     await this.btnClosureNoteTab.click();
   }
   async selectNoOfRows(NoOfRows) {
-    await browser.sleep(5000)
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="Rows per page"]//following::smo-dropdown'))), 50000);
+    await browser.wait(EC.presenceOf(element(by.xpath('//span[text()="Rows per page"]//following::smo-dropdown'))), 50000);
     await element(by.xpath('//span[text()="Rows per page"]//following::smo-dropdown')).click();
-    await browser.sleep(5000)
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="' + NoOfRows + '"]'))), 50000);
     var myElement = element(by.xpath('//span[text()="' + NoOfRows + '"]'));
     await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
@@ -439,7 +467,7 @@ export class AlertsPage {
     await this.btnCheckbox.click();
   }
   async cancel() {
-    await this.btncancel.click();
+    await this.btncancelInAdvanceFilter.click();
   }
 }
 

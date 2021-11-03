@@ -13,7 +13,7 @@ Feature: Login persona functionalities of Installation Engineer
 
           Examples:
                | Description | SuccessMessage              |
-               | NewSample   | Project Updated Succesfully |
+               | NewSample   | Project Updated Successfully |
 
      Scenario Outline: Installation Engineer is able to access the Master Configuration page
           When "Installation_Engineer" navigates to ITOps home page

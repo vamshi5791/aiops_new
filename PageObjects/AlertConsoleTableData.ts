@@ -6,7 +6,7 @@ var expect = chai.expect;
 var EC = browser.ExpectedConditions;
 var moment = require("moment");
 var fse = require("fs-extra");
-
+var maxColumnCount = 14;
 export class AlertConsoleTableData {
 
     nextArrayButton = element(by.xpath('//a[@class="smo-paginator-next smo-paginator-element smo-state-default smo-corner-all smo-paginator-next-ms"]'))
@@ -16,32 +16,37 @@ export class AlertConsoleTableData {
     columnCount = 0;
 
     async extractTableData() {
-        this.rowCount = 0;
-        this.columnCount = 0;
-        await browser.sleep(500);
-        let jsonArrayObject: any = [];
+        try {
+            this.rowCount = 0;
+            this.columnCount = 0;
+            await browser.sleep(500);
+            let jsonArrayObject: any = [];
+            //element get the total count of the columns in alert console
+            await element.all(by.xpath('//table[@class="undefined"]/tbody/tr[1]/td[@class="alert-table-text medium-column align-padding ng-star-inserted"]')).count().then(async (count) => {
+                return this.columnCount = count;
+            });
 
-        await element.all(by.xpath('//table[@class="undefined"]/tbody/tr[1]/td[@class="alert-table-text medium-column align-padding ng-star-inserted"]')).count().then(async (count) => {
-            return this.columnCount = count;
-        });
+            await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " this.columnCount: " + this.columnCount);
+            await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
+                await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " this.rowCount: " + count);
+                for (let i = 1; i <= count; i++) {
+                    var rowData = {};
+                    for (let j = 2; j <= maxColumnCount; j++) {
+                        await element(by.xpath('//table[@class="undefined"]/tbody/tr[' + i + ']/td[' + j + ']')).getText().then(async function (cellValue) {
+                            return rowData[j] = cellValue;
 
-        await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " this.columnCount: " + this.columnCount);
-        await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
-            await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " this.rowCount: " + count);
-            for (let i = 1; i <= count; i++) {
-                var rowData = {};
-                for (let j = 2; j <= 14; j++) {
-                    await element(by.xpath('//table[@class="undefined"]/tbody/tr[' + i + ']/td[' + j + ']')).getText().then(async function (cellValue) {
-                        return rowData[j] = cellValue;
+                        });
+                    }
+                    jsonArrayObject.push(rowData);
 
-                    });
-                }
-                jsonArrayObject.push(rowData);
+                };
 
-            };
-
-        });
-        return jsonArrayObject;
+            });
+            return jsonArrayObject;
+        } catch (error) {
+            console.log("reading all the rows and columns data from alert console")
+            console.log(error)
+        }
     }
 
     async isElementIsDisplayed() {
@@ -53,7 +58,7 @@ export class AlertConsoleTableData {
             });
         }
         catch (error) {
-            console.log("Feature name :Login persona and Scenario name : unable to click create new project")
+            console.log("verifying for the next page in alert console")
             console.log(error)
             return false;
         }
@@ -64,77 +69,107 @@ export class AlertConsoleTableData {
     //get count 
 
     async getTableDataRowCount() {
-        this.rowCount = 0;
+        try {
+            this.rowCount = 0;
 
-        await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " this.columnCount: " + this.columnCount);
-        await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
-            return this.rowCount = count;
-        });
+            await console.log("\n" + moment().format("YYYY-MM-DD HH:mm:ss SSS") + " this.columnCount: " + this.columnCount);
+            await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
+                return this.rowCount = count;
+            });
 
-        return this.rowCount;
+            return this.rowCount;
+        } catch (error) {
+            await console.log(error)
+        }
+
     }
 
     // verify by filter 
 
     async verifyAlertNameColumn(AlertName) {
-        await browser.sleep(500);
-        await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
-            for (let i = 1; i <= count; i++) {
-                await element(by.xpath('//table[@class="undefined"]/tbody/tr[' + i + ']/td[6]/div')).getText().then(async function (cellValue) {
-                    //assert
-                    await expect(cellValue).to.include(AlertName);
-                });
-            };
-        });
+        try {
+            await browser.sleep(500);
+            await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
+                for (let i = 1; i <= count; i++) {
+                    await element(by.xpath('//table[@class="undefined"]/tbody/tr[' + i + ']/td[6]/div')).getText().then(async function (cellValue) {
+                        //assert
+                        await expect(cellValue).to.include(AlertName);
+                    });
+                };
+            });
+        } catch (error) {
+            await console.log(error)
+        }
+
     }
     // get alert metric data from every row 
     async verifyAlertMetricColumn(AlertName) {
-        await browser.sleep(500);
-        await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
-            for (let i = 1; i <= count; i++) {
-                await element(by.xpath('//table[@class="undefined"]/tbody/tr[' + i + ']/td[11]/div')).getText().then(async function (cellValue) {
-                    //assert
-                    await expect(cellValue).to.include(AlertName);
-                });
-            };
-        });
+        try {
+            await browser.sleep(500);
+            await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
+                for (let i = 1; i <= count; i++) {
+                    await element(by.xpath('//table[@class="undefined"]/tbody/tr[' + i + ']/td[11]/div')).getText().then(async function (cellValue) {
+                        //assert
+                        await expect(cellValue).to.include(AlertName);
+                    });
+                };
+            });
+        } catch (error) {
+            await console.log(error)
+        }
+
     }
 
     // get node data from every row 
     async verifyNodeColumn(ResourceName) {
-        await browser.sleep(500);
-        await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
-            for (let i = 1; i <= count; i++) {
-                await element(by.xpath('//table[@class="undefined"]/tbody/tr[' + i + ']/td[9]/div')).getText().then(async function (cellValue) {
-                    //assert
-                    await expect(cellValue).to.include(ResourceName);
-                });
-            };
-        });
+        try {
+            await browser.sleep(500);
+            await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
+                for (let i = 1; i <= count; i++) {
+                    await element(by.xpath('//table[@class="undefined"]/tbody/tr[' + i + ']/td[9]/div')).getText().then(async function (cellValue) {
+                        //assert
+                        await expect(cellValue).to.include(ResourceName);
+                    });
+                };
+            });
+        } catch (error) {
+            await console.log(error)
+        }
+
     }
 
     // get source data from every row 
     async verifySourceColumn(Node) {
-        await browser.sleep(500);
-        await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
-            for (let i = 1; i <= count; i++) {
-                await element(by.xpath('//table[@class="undefined"]/tbody/tr[' + i + ']/td[8]/div')).getText().then(async function (cellValue) {
-                    //assert
-                    await expect(cellValue).to.include(Node);
-                });
-            };
-        });
+        try {
+            await browser.sleep(500);
+            await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
+                for (let i = 1; i <= count; i++) {
+                    await element(by.xpath('//table[@class="undefined"]/tbody/tr[' + i + ']/td[8]/div')).getText().then(async function (cellValue) {
+                        //assert
+                        await expect(cellValue).to.include(Node);
+                    });
+                };
+            });
+        } catch (error) {
+            await console.log(error)
+        }
+
     }
 
     // get severity data from every row 
     async verifySeverityColumn(Node) {
-        await browser.sleep(500);
-        await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
-            for (let i = 1; i <= count; i++) {
-                await element(by.xpath('//table[@class="undefined"]/tbody/tr[' + i + ']/td[1]/div[@class="highlight bg-ok ng-star-inserted"]')).getText().then(async function (cellValue) {
-                });
-            };
-        });
+        try {
+            await browser.sleep(500);
+            await element.all(by.xpath('//table[@class="undefined"]/tbody/tr')).count().then(async (count) => {
+                for (let i = 1; i <= count; i++) {
+                    await element(by.xpath('//table[@class="undefined"]/tbody/tr[' + i + ']/td[1]/div[@class="highlight bg-ok ng-star-inserted"]')).getText().then(async function (cellValue) {
+                    });
+                };
+            });
+        } catch (error) {
+            await console.log(error)
+        }
+
     }
 }
 
