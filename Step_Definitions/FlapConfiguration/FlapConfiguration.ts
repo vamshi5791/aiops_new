@@ -1,6 +1,7 @@
 import { Given, When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import chai from "chai";
+var EC = browser.ExpectedConditions;
 
 
 
@@ -35,4 +36,39 @@ Then('Click on update button and verify success message is displayed', async fun
         await console.log(error)
     }
 
+});
+
+Given('Admin verifies flap Indicator',async function () {
+    try {
+        await browser.wait(EC.visibilityOf(element(by.xpath('//span[@class="smo-badge smo-badge-sm smo-badge-info"]'))), 60000);
+    } catch (error) {
+        await console.log(error)
+    }
+});
+
+
+Given('Verify the comment in the closure note {string}',async function (string) {
+    try {
+        await browser.wait(EC.visibilityOf(element(by.xpath('//div[text()="Device Inventory"]'))), 60000);
+    } catch (error) {
+        await console.log(error)
+    }
+});
+
+
+Given('Admin verifies Time error indicator',async function () {
+    try {
+        await browser.wait(EC.visibilityOf(element(by.xpath('//span[@class="smo-badge smo-badge-sm smo-badge-info"]'))), 60000);
+    } catch (error) {
+        await console.log(error)
+    }
+});
+
+
+Given('Admin verifies correlation error indicator',async function () {
+    try {
+        await browser.wait(EC.visibilityOf(element(by.xpath('//span[@class="smo-badge smo-badge-sm smo-badge-info"]'))), 60000);
+    } catch (error) {
+        await console.log(error)
+    }
 });

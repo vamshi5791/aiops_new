@@ -82,6 +82,12 @@ export let config: Config = {
     // '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/TeamsExternalTeams/TeamsExternalTeams.feature',
     '../Features/SNOWDescription/SNOWDescription.feature',
+
+    
+        // '../Features/AutocloseAndFlap/AutocloseAndFlap.feature'
+    // '../Features/OrderOfSeverity/OrderOfSeverity.feature',
+    // '../Features/IndicatorForFlappingSurgeIncompleteCorrelationError/IndicatorForFlappingSurgeIncompleteCorrelationError.feature'
+    '../Features/LoanDepot/LoanDepot.feature',
   ],
   cucumberOpts: {
 

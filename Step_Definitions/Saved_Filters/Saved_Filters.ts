@@ -75,6 +75,7 @@ When('{string} navigate to alert console', async function (userRole) {
   var myElement = element(by.className('smo smo-close-black-alt'));
   myElement.isPresent().then(async function (elm) {
     if (elm) {
+      // await browser.sleep(10000)
       await browser.wait(EC.visibilityOf(element(by.className('smo smo-close-black-alt'))), 60000);
       await browser.wait(EC.elementToBeClickable(element(by.className('smo smo-close-black-alt'))), 60000);
       await browser.wait(EC.presenceOf(element(by.className('smo smo-close-black-alt'))), 60000);
@@ -117,6 +118,22 @@ When('{string} enters source as {string} and alert state as {string}', async fun
   }
 });
 
+When('{string} enters alert state as {string}', async function (userRole, AlertState) {
+  try {
+    await browser.sleep(2000);
+    await objAlerts.AlertState(AlertState);
+  } catch (error) {
+    var myElement = objAlerts.btnCancel;
+    await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+    await element(by.xpath('//smo-button[@label="Cancel"]')).click();
+    await browser.wait(EC.visibilityOf(objAlerts.btnSearch), 10000);
+    await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
+    await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
+    await console.log("Feature name : Saved Filters " + userRole + " and Action : selecting source and alert state ")
+    await console.log(error)
+    throw "User is not able to enter source and alert state"
+  }
+});
 
 
 When('{string} clicks on Save filter button', async function (userRole) {
@@ -212,6 +229,7 @@ Then('verify Apply and cancel buttons should be present', async function () {
 Then('Verify the filter conditions are retrieved and click on Apply', async function () {
   try {
 
+    // await browser.sleep(5000);
     await browser.wait(EC.presenceOf(objAlerts.btnApply), 10000);
     await browser.wait(EC.elementToBeClickable(objAlerts.btnApply), 10000);
     await objAlerts.Apply();
@@ -294,6 +312,7 @@ Then('Chips should have a close button', async function () {
 
 When('{string} clicks on Remove all link next to the chips displayed from Alert console', async function (userRole) {
   try {
+    // await browser.sleep(2000)
     await objAlerts.selectRemoveAllConditions();
   } catch (error) {
     await console.log("Feature name : Saved Filters and Scenario name : clicks on Remove all link next to the chips displayed from Alert console ")
@@ -386,6 +405,7 @@ Then('verify all saved filters are displayed on left side {string}', async funct
 
 Then('verify filter name, description and Created time should be displayed {string}, {string}, {string}', async function (FilterName, Description, CreatedTime) {
   try {
+    // await browser.sleep(5000);
     await browser.wait(EC.visibilityOf(element(by.xpath('//h3[text()="Saved Filters"]//following::b'))), 10000);
 
   } catch (error) {
