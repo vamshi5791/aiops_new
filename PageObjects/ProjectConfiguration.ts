@@ -17,7 +17,7 @@ export class ProjectConfiguration {
 
     drpITOPsflavour = element(by.xpath('//legend[text()="ITOps Flavor"]//following-sibling::div/span'));
     btn_saveGeneralConfig = element(by.xpath('//span[text()="Scheduler Configurations "]//preceding::button'));
-
+    lnkGeneralConfiguration = element(by.xpath('//span[text()="General Configuration "]'))
     //Scheduler configuration 
     lnkSchedularConfiguration = element(by.xpath('//span[text()="Scheduler Configurations "]'));
     drpCorrelationInterval = element(by.xpath('//label[text()="Schedule Interval for Correlation (Use 6-digit cron)"]//following-sibling::section//fieldset//span'));
@@ -25,7 +25,7 @@ export class ProjectConfiguration {
     drpAnalyticsInterval = element(by.xpath('//label[text()="Scheduler Interval for alert analytics"]//following-sibling::section//fieldset//span'));
     drpPredictionInterval = element(by.xpath('//label[text()="Scheduled interval for Batch Prediction"]//following-sibling::section//fieldset//span'));
     btnSaveSchedularConfig = element(by.xpath("//span[text()='Scheduler Configurations ']/ancestor::div[contains(@class, 'smo-accordion-header ')]//following-sibling::div//span[text()='Save']"));
-
+    lnkProjectConfiguration = element(by.xpath("//ul[@class='d-flex']/li[2]//em[@class='smo smo-check-solid smo-step-ms ng-star-inserted']"));
     //Error response ocnfiguration          
     lnkErrorConfiguration = element(by.xpath('//span[text()="Error response configurations "]'));
     txtFromEmail = element(by.xpath('//legend[text()="From Email Account"]//following-sibling::input'));
@@ -87,7 +87,9 @@ export class ProjectConfiguration {
     txtResolvedBy = element(by.xpath('//legend[text()="Resolved By"]//following-sibling::input'));
     txtResolvedTime = element(by.xpath('//legend[text()="Resolved Time"]//following-sibling::input'));
     txtComments = element(by.xpath('//legend[text()="Comments"]//following-sibling::input'));
-
+    lnkItsmConfiguration = element(by.xpath("//span[contains(.,'ITSM Configuration')]"));
+    txtDefaultAssignmentGroup = element(by.css("[data-key='ITOps_default_assignment_group']"));
+    btnSaveItsmConfig = element(by.xpath("//span[text()='ITSM Configuration ']/ancestor::div[contains(@class, 'smo-accordion-header ')]//following-sibling::div//span[text()='Save']"));
 
     //Channel Configuration
 
@@ -121,7 +123,7 @@ export class ProjectConfiguration {
     drpSelectUser = element(by.xpath('//h3[text()="Add User"]//following::smo-dropdownitem//span'));
     btnAddUserDetails = element(by.xpath('//h3[text()="Add User"]//following::span[text()="Add User"]'));
     btnInstall = element(by.xpath('//span[text()="INSTALL"]'));
-
+    btnUpdateInstall = element(by.css(".update-btn"));
 
 
 
@@ -139,6 +141,9 @@ export class ProjectConfiguration {
         await this.btnUpdate.click()
     }
     // General Configuration
+    async selectProjectConfig() {
+        await this.lnkProjectConfiguration.click();
+    }
     async ServiceNowHost(ServiceNowHost: string) {
         await this.txtServiceNowHost.sendKeys(ServiceNowHost)
     }
@@ -285,7 +290,10 @@ export class ProjectConfiguration {
         await this.btnSaveTicketConfig.click()
     }
 
-
+    //ITSM Configuration
+    async enterDefaultAssignmentGroup(DefaultGroupId: string) {
+        await this.txtDefaultAssignmentGroup.sendKeys(DefaultGroupId);
+    }
 
     //channel Configuration 
     async channelConfiguration() {
