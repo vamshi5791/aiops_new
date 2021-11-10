@@ -60,7 +60,7 @@ pipeline {
             steps {
                 echo "[INFO] Executing Regression Test"
                 sh """                
-                  node node_modules/protractor/bin//protractor JSFiles/Configuration_Batch_1.js --params.env ${Environment_Name} --browser=${Browser} --Options=${BrowserMode} --no-sandbox
+                  node node_modules/protractor/bin//protractor JSFiles/Configuration_Batch_3.js --params.env ${Environment_Name} --browser=${Browser} --Options=${BrowserMode} --no-sandbox
                 
 
                 """
@@ -72,7 +72,7 @@ pipeline {
             steps {
                 echo "[INFO] Executing Regression Test"
                 sh """                
-                  node node_modules/protractor/bin//protractor JSFiles/Configuration_Batch_2.js --params.env ${Environment_Name} --browser=${Browser} --Options=${BrowserMode} --no-sandbox
+                  node node_modules/protractor/bin//protractor JSFiles/Configuration_Batch_.js --params.env ${Environment_Name} --browser=${Browser} --Options=${BrowserMode} --no-sandbox
                 
 
                 """
