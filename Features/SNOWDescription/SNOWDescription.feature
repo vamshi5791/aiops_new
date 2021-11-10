@@ -8,38 +8,38 @@ Feature: The 1st Alert which is eligible for ticketing should be considered as S
         And "Admin" enters project name in project search field and click on enter
         And "Admin" clicks on project name
 
-        # When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-        # And "admin" clicks on Alerts page
-        # And "admin" enters "Node Name" and clicks on enter "<NodeName>"
-        # And Admin click on state
-        # And "Admin" verifies the options for the tickets in alert store must have "Close", "Close"
-        # When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJsonDownAlert>", "<NodeName>"
-        # And "admin" clicks on Alerts page
-        # And "admin" enters "Node Name" and clicks on enter "<NodeName>"
-        # And "Admin" gets the ticket number from alert console
+        When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        And "admin" clicks on Alerts page
+        And "admin" enters "Node Name" and clicks on enter "<NodeName>"
+        And Admin click on state
+        And "Admin" verifies the options for the tickets in alert store must have "Close", "Close"
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJsonDownAlert>", "<NodeName>"
+        And "admin" clicks on Alerts page
+        And "admin" enters "Node Name" and clicks on enter "<NodeName>"
+        And "Admin" gets the ticket number from alert console
 
         Examples:
             | ProjectName     | AlertName | ChannelName | channelJson          | NodeName        | channelJsonDownAlert   |
             | Automation_01M3 | Alert1    | Solarwinds  | QueueChannelUpAlerts | AUSYGR-00A-SSC2 | QueueChannelDownAlerts |
 
 
-    # Scenario Outline: Verify first ticket eligible for ticketing only is included SNOW description while creating a ticket - 3rd ack alert moves to ticketing.
+    Scenario Outline: Verify first ticket eligible for ticketing only is included SNOW description while creating a ticket - 3rd ack alert moves to ticketing.
 
 
-    #     When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-    #     And "admin" clicks on Alerts page
-    #     And "admin" enters "Node Name" and clicks on enter "<NodeName>"
-    #     And Admin click on state
-    #     And "Admin" verifies the options for the tickets in alert store must have "Acknowledge", "Acknowledge"
-    #     When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-    #     And "admin" clicks on Alerts page
-    #     And "admin" enters "Node Name" and clicks on enter "<NodeName>"
-    #     And "Admin" gets the ticket number from alert console
+        When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        And "admin" clicks on Alerts page
+        And "admin" enters "Node Name" and clicks on enter "<NodeName>"
+        And Admin click on state
+        And "Admin" verifies the options for the tickets in alert store must have "Acknowledge", "Acknowledge"
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        And "admin" clicks on Alerts page
+        And "admin" enters "Node Name" and clicks on enter "<NodeName>"
+        And "Admin" gets the ticket number from alert console
 
 
-    #     Examples:
-    #         | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        |
-    #         | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | GBPRCR-00A-FPA1 |
+        Examples:
+            | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        |
+            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | GBPRCR-00A-FPA1 |
 
 
     Scenario Outline: Verify during cluster split, split should not be successful if the new cluster or old cluster has only up alerts.

@@ -79,12 +79,27 @@ export let config: Config = {
 
     //MS5
 
-    // '../Features/LogIn/LogIn_Admin.feature',
-    // '../Features/TeamsExternalTeams/TeamsExternalTeams.feature',
-    '../Features/SNOWDescription/SNOWDescription.feature',
+    //MS5 
+    '../Features/LogIn/LogIn_IE.feature',
+    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesIE.feature',
+    '../Features/Logout/LogOut.feature',
 
-    
-        // '../Features/AutocloseAndFlap/AutocloseAndFlap.feature'
+    '../Features/LogIn/LogIn_ITOps_Visitor.feature',
+    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesVisitor.feature',
+    '../Features/TeamsExternalTeams/TeamsExternalTeamsVisitor.feature',
+    '../Features/Logout/LogOut.feature',
+
+    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesSupportEngineer.feature',
+
+    '../Features/LogIn/LogIn_Admin.feature',
+    '../Features/TeamsExternalTeams/TeamsExternalTeams.feature',
+    '../Features/SNOWDescription/SNOWDescription.feature',
+    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesAdmin.feature',
+    '../Features/RecommendedResolutionsAutomatedOrManual/RecommendedResolutionsAutomatedOrManual.feature',
+
+
+
+    // '../Features/AutocloseAndFlap/AutocloseAndFlap.feature'
     // '../Features/OrderOfSeverity/OrderOfSeverity.feature',
     // '../Features/IndicatorForFlappingSurgeIncompleteCorrelationError/IndicatorForFlappingSurgeIncompleteCorrelationError.feature'
     '../Features/LoanDepot/LoanDepot.feature',

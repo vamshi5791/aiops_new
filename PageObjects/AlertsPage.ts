@@ -117,6 +117,63 @@ export class AlertsPage {
   txtTicketNew = element(by.xpath("(//span[@class='text-font-dark text-with-bold'])[3]"))
   txtBaseAlert = element(by.xpath("(//span[@type='circle'])[2]"))
 
+  // M4
+
+  btnClusterType = element(by.xpath('//label[text()="Cluster Type"]'));
+  btnTicketed = element(by.xpath('//span[text()="Ticketed"]'));
+  btnNonTicketed = element(by.xpath('//span[text()="Non Ticketed"]'));
+  btnSelectAll = element(by.xpath('//span[text()="Select All"]'));
+  btnSolarwinds = element(by.xpath('//span[text()="Solarwinds"]'));
+  btnVerba = element(by.xpath('//span[text()="Verba"]'));
+  btnCritical = element(by.xpath('//span[text()="Critical"]'));
+  txtAutoRefresh = element(by.xpath('//input[@class="time-interval smo-inputtext numberField alert-search smo-input-padding smo-input-padding-sm ng-pristine ng-valid ui-inputtext ui-corner-all ui-state-default smo-widget smo-state-filled border-radius-sm smo-inputtext-small ng-touched"]'))
+
+  async ClusterType() {
+    await this.btnClusterType.click();
+  }
+
+  async Ticketed() {
+    await this.btnTicketed.click();
+  }
+
+  async NonTicketed() {
+    await this.btnNonTicketed.click();
+  }
+
+  async SelectAll() {
+    await this.btnSelectAll.click();
+  }
+
+  async Solarwinds() {
+    await this.btnSolarwinds.click();
+  }
+
+  async Verba() {
+    await this.btnVerba.click();
+  }
+  async Critical() {
+    await this.btnCritical.click();
+  }
+
+  async Source() {
+    await this.drpSource.click();
+  }
+  async AutoRefresh(Minutes) {
+    await this.drpSource.sendKeys(Minutes);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   async SecondClusterCount() {
     await this.btnSecondClusterCount.click();

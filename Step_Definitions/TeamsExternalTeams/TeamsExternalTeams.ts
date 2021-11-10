@@ -10,8 +10,10 @@ var expect = chai.expect;
 
 When('{string} clicks on external Teams', async function (string) {
     try {
+       
         await objDisplayConfig.clickOnExternalTeams()
         await browser.wait(EC.visibilityOf(element(by.xpath("//span[text()='External Teams']"))), 100000);
+        await browser.sleep(5000)
     } catch (error) {
         await console.log(error)
         throw ""
@@ -35,7 +37,14 @@ When('{string} clicks on choose a group dropdown', async function (string) {
         throw ""
     }
 });
-
+When('{string} clicks on choose a group dropdown on assign to popup', async function (string) {
+    try {
+        await element(by.xpath("//label[text()='Choose a Group*']")).click()
+    } catch (error) {
+        await console.log(error)
+        throw ""
+    }
+});
 When('{string} search for a group as {string} in external Teams', async function (string, GroupName) {
     try {
         await objDisplayConfig.searchForGroup(GroupName)
@@ -209,5 +218,14 @@ Then('{string} selects {string} alert checkbox from pop up', async function (str
     } catch (error) {
         await console.log(error)
         throw ""
+    }
+});
+
+When('{string} verifies groups shown in dropdown {string}, {string}', function (string, FirstGroup, SecondGroup) {
+    try {
+        objDisplayConfig.verifyingFields(FirstGroup)
+        objDisplayConfig.verifyingFields(SecondGroup)
+    } catch (error) {
+
     }
 });

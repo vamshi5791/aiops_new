@@ -2,31 +2,28 @@
 
 Feature: Teams > External Teams
 
-    # Scenario Outline: Verify External Team import from ITSM tool as ITOps Admin
-
-    #     When "Admin" navigates to ITOps home page
-    #     And "Admin" enters project name in project search field and click on enter
-    #     And "Admin" clicks on project name
-    #     And "Admin" navigate to Configuration section
-    #     And "Admin" clicks on external Teams
-    #     And "admin" selects source as "Service Now" in external Teams
-    #     And "admin" clicks on choose a group dropdown
-    #     And "admin" search for a group as "ITOps" in external Teams
-    #     And "Admin" verifies all the groups having "ITOpsTesting" should be displayed
-    #     And "Admin" selects group in external Teams "<GroupName>"
-    #     And "Admin" clicks on import button in external teams
-    #     Then "Admin" verifies if "<SuccessMessage>" message is displayed
-
-    #     Examples:
-    #         | GroupName    | SuccessMessage        |
-    #         | ITOpsTesting | User sync successful. |
-
-    Scenario Outline: Verify the imported section in External teams for ITOps admin
-
+    Scenario Outline: Verify External Team import from ITSM tool as ITOps Admin
 
         When "Admin" navigates to ITOps home page
         And "Admin" enters project name in project search field and click on enter
         And "Admin" clicks on project name
+        And "Admin" navigate to Configuration section
+        And "Admin" clicks on external Teams
+        And "admin" selects source as "Service Now" in external Teams
+        And "admin" clicks on choose a group dropdown
+        And "admin" search for a group as "ITOps" in external Teams
+        And "Admin" verifies all the groups having "ITOpsTesting" should be displayed
+        And "Admin" selects group in external Teams "<GroupName>"
+        And "Admin" clicks on import button in external teams
+        Then "Admin" verifies if "<SuccessMessage>" message is displayed
+
+        Examples:
+            | GroupName | SuccessMessage        |
+            | ITOpsDemo | User sync successful. |
+
+    Scenario Outline: Verify the imported section in External teams for ITOps admin
+
+
         And "Admin" navigate to Configuration section
         And "Admin" clicks on external Teams
 
@@ -60,19 +57,40 @@ Feature: Teams > External Teams
     Scenario Outline: Verify the imported section in External teams for ITOps admin
 
 
-        When "Admin" navigates to ITOps home page
-        And "Admin" enters project name in project search field and click on enter
-        And "Admin" clicks on project name
-
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
         And "admin" selects filter by status type as "Assigned"
         And Admin click on state in ticket console
-        And "Admin" verifies groups shown in dropdown
+        And "admin" clicks on "Assign" button
+        And "admin" clicks on "Individual" radio button
+        And "admin" clicks on choose a group dropdown on assign to popup
+        And "Admin" verifies groups shown in dropdown "UST - Enterprise Security", "Visibility - UST"
+        And "Admin" clicks on cancel button
+        When "admin" navigates to Tickets page
+        When "Admin" clicks on quick filter
+        And "admin" selects filter by status type as "Assigned"
+        And Admin click on state in ticket console
+        And "admin" clicks on "Assign" button
+        And "admin" clicks on "Group" radio button
+        And "admin" clicks on choose a group dropdown on assign to popup
+        And "Admin" verifies groups shown in dropdown "UST - Enterprise Security", "Visibility - UST"
+        And "Admin" clicks on cancel button
 
         And "admin" clicks on Alerts page
-        When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And Admin click on state
         And "admin" clicks on "Assign" button
         And "admin" clicks on "Individual" radio button
-        And "Admin" verifies groups shown in dropdown
+        And "admin" clicks on choose a group dropdown on assign to popup
+        And "Admin" verifies groups shown in dropdown "UST - Enterprise Security", "Visibility - UST"
+        And "Admin" clicks on cancel button
+        And "admin" clicks on Alerts page
+
+        And Admin click on state
+        And "admin" clicks on "Assign" button
+        And "admin" clicks on "Group" radio button
+        And "admin" clicks on choose a group dropdown on assign to popup
+        And "Admin" verifies groups shown in dropdown "UST - Enterprise Security", "Visibility - UST"
+        And "Admin" clicks on cancel button
+        Examples:
+            | GroupName                 | UserName          | SuccessMessage        |
+            | UST - Enterprise Security | Chandranhari Nair | User sync successful. |

@@ -88,6 +88,40 @@ Feature: Project Installation with ITOps Admin role
           Examples:
                | Hostname | FilePath | SourceUserName | SourcePassword | TicketNumberColumnName | WorkNotesColumnName | ShortDescriptionColumnName | CategoryColumnName | SubCategoryColumnName | LongDescription | Toaster                        |
                | Value1   | Value2   | Value3         | Value1         | Value 2                | Value 3             | Value 1                    | Value 2            | Value 3               | Value           | Project Configurations Updated |
+    
+     # Scenario Outline: ITSM Configuration
+     #      When "Admin" clicks on ITSM Configuration
+     #      And "Admin" enters "Default Assignment Group" as "<DefaultAssignmentGroup>"
+     #      And "Admin" enters "Ticket Number" as "<TicketNumber>"
+     #      And "Admin" enters "Ticket Status" as "<TicketStatus>"
+     #      And "Admin" enters "Short Description" as "<ShortDescription>"
+
+     #      And "Admin" enters "Long Description" as "<LongDescription>"
+     #      And "Admin" enters "Category" as "<Category>"
+     #      And "Admin" enters "Ticket Priority" as "<TicketPriority>"
+     #      And "Admin" enters "Sys Id" as "<SysId>"
+
+     #      And "Admin" enters "Assigned To" as "<AssignedTo>"
+     #      And "Admin" enters "Assigned To User Id" as "<AssignedToUserId>"
+     #      And "Admin" enters "Assigned Group" as "<AssignedGroup>"
+     #      And "Admin" enters "Assigned Group Id" as "<AssignedGroupId>"
+
+     #      And "Admin" enters "Closure Notes" as "<ClosureNotes>"
+     #      And "Admin" enters "Created Time" as "<CreatedTime>"
+     #      And "Admin" enters "Updated Time" as "<UpdatedTime>"
+     #      And "Admin" enters "Created By" as "<CreatedBy>"
+
+     #      And "Admin" enters "Updated By" as "<UpdatedBy>"
+     #      And "Admin" enters "Resolved By" as "<ResolvedBy>"
+     #      And "Admin" enters "Resolved Time" as "<ResolvedTime>"
+     #      And "Admin" enters "Comments" as "<Comments>"
+
+
+     #      Then Success message "<Toaster>" must be shown for "Scheduler Configuration"
+     #      Examples:
+     #           | Correlation    | AutoClosure    | AlertAnalytics | BatchPrediction | Toaster                        |
+     #           | Every 4 months | Every 3 months | Every 4 months | Every 6 months  | Project Configurations Updated |
+
      @ChannelConfiguration
      Scenario Outline: Channel Configuration
           When "Admin" clicks on Channel Configuration
