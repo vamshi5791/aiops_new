@@ -89,7 +89,7 @@ export let config: Config = {
     '../Features/TeamsExternalTeams/TeamsExternalTeamsVisitor.feature',
     '../Features/Logout/LogOut.feature',
 
-    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesSupportEngineer.feature',
+
 
     '../Features/LogIn/LogIn_Admin.feature',
     '../Features/TeamsExternalTeams/TeamsExternalTeams.feature',
@@ -99,10 +99,12 @@ export let config: Config = {
 
 
 
-    // '../Features/AutocloseAndFlap/AutocloseAndFlap.feature'
-    // '../Features/OrderOfSeverity/OrderOfSeverity.feature',
-    // '../Features/IndicatorForFlappingSurgeIncompleteCorrelationError/IndicatorForFlappingSurgeIncompleteCorrelationError.feature'
+    '../Features/AutocloseAndFlap/AutocloseAndFlap.feature',
+    '../Features/OrderOfSeverity/OrderOfSeverity.feature',
+    '../Features/IndicatorForFlappingSurgeIncompleteCorrelationError/IndicatorForFlappingSurgeIncompleteCorrelationError.feature',
     '../Features/LoanDepot/LoanDepot.feature',
+
+    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesSupportEngineer.feature',
   ],
   cucumberOpts: {
 
