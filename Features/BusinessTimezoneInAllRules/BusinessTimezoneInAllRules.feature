@@ -10,7 +10,7 @@ Feature: Alerts moved to ticketed
         And "Admin" clicks on project name
         And "Admin" clicks on Alerts page
         And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
-        And "Admin" verifies ticket is created
+        Then "admin" verifies created ticket in alert console
 
         Examples:
             | ProjectName     | AlertName | size | ChannelName | channelJson  | NodeName        |

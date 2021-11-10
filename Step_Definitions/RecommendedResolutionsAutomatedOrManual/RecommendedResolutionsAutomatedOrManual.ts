@@ -3,7 +3,7 @@ import { browser, element, by, ExpectedConditions, WebElement, protractor } from
 import chai from "chai";
 
 import { recommendedResolution } from "../../PageObjects/RecommendedResolutionsAutomatedOrManual";
-
+import { ITOPS_APIs } from "../../ITOPS_Apis/ItopsApis";
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = browser.ExpectedConditions;
@@ -11,7 +11,7 @@ var fs = require('fs');
 var expect = chai.expect;
 
 let objRecommendedResolution = new recommendedResolution();
-
+let objITOpsApi = new ITOPS_APIs();
 
 Then('{string} verifies recommended resolution should be available', async function (userRole) {
     try {
@@ -173,3 +173,36 @@ Then('{string} verifies automated Radio button is disabled and Manual option is 
 });
 
 
+Then('{string} verifies created ticket in alert console', async function (string) {
+    try {
+        await element(by.xpath("//span[contains(text(),'INC')]")).isPresent().then(function (select) {
+            expect(select).to.be.true;
+        });
+    } catch (error) {
+
+    }
+});
+
+Then('{string} deletes {string} template using template name {string}', async function (string, reassignment, TemplateName) {
+    try {
+        await objITOpsApi.deleteTemplate(TemplateName)
+    } catch (error) {
+
+    }
+});
+
+Then('{string} creates {string} template {string} for project id as {string}', async function (string, reassignment, TemplateName, ProjectId) {
+    try {
+        await objITOpsApi.CustomReassignmentTemplate(ProjectId, TemplateName)
+    } catch (error) {
+
+    }
+});
+Then('{string} Verifies after reassignment threshold it should be assigned to the default group mentioned in the project configuration page as {string}', async function (string, Group) {
+    try {
+        await browser.wait(EC.visibilityOf(element(by.xpath("//div[text()='ASSIGNED TO']"))), 50000);
+        await browser.wait(EC.visibilityOf(element(by.xpath("//div[text()='" + Group + " (Group)']"))), 50000);
+    } catch (error) {
+
+    }
+}); 

@@ -103,6 +103,18 @@ Then('{string} clicks on the ticket number', async function (string) {
     throw "User is not able to clicks on the ticket number"
   }
 });
+Then('{string} gets severity level from ticket details page and verifies as {string}', async function (string, SeverityLevel) {
+  try {
+    await element(by.className('severity-label')).getText().then(async function (text) {
+      await expect(text).to.include(SeverityLevel);
+    });
+  }
+  catch (error) {
+    await console.log("Action Name : Admin Verifying short description of tickets ")
+    await console.log(error)
+    throw "User is not able to clicks on the ticket number"
+  }
+});
 Then('{string} verifies the page must have {string}', async function (string, FieldName) {
 
   try {

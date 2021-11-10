@@ -4,7 +4,7 @@ Feature: Alerts moved to ticketed
 
     Scenario Outline: Make sure that user is able to add a new field in index and it is available in the application
 
-        When "Admin" adds new feild to the index
+        When "Admin" adds new field to the index
         When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         And "admin" clicks on Alerts page
         When "ITOps_Admin" verifies newly added field is available in the display configuration

@@ -102,7 +102,7 @@ Feature: Auto close and Flap
 
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName>"
-        And "Admin" verifies ticket is created
+       Then "admin" verifies created ticket in alert console
 
 
 

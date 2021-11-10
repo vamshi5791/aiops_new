@@ -408,5 +408,116 @@
         "Resource Type": "Console",
         "Alert time": "",
         "Alert priority" : "High"
+        },
+        "CustomReassignmentTemplate": {
+            "projectId": 1677,
+            "templateRules": {
+                "rules": [
+                    {
+                        "operator": "=",
+                        "value": "solarwinds",
+                        "field": "source"
+                    }
+                ]
+            },
+            "templateName": "CustomReassignmentTemplate",
+            "active": true,
+            "templateMapping": [
+                {
+                    "fieldName": "comments",
+                    "values": [
+                        {
+                            "fieldRules": {},
+                            "fieldValue": "Re-assigning ticket using custom template since no action from Virtual Engineer"
+                        }
+                    ]
+                },
+                {
+                    "fieldName": "assignment_group.link",
+                    "values": [
+                        {
+                            "fieldRules": {},
+                            "fieldValue": "00312f9a37f102007f0565e2b3990e3f"
+                        }
+                    ]
+                },
+                {
+                    "fieldName": "assigned_to.link",
+                    "values": [
+                        {
+                            "fieldRules": {},
+                            "fieldValue": ""
+                        }
+                    ]
+                },
+                {
+                    "fieldName": "comments",
+                    "values": [
+                        {
+                            "fieldRules": {},
+                            "fieldValue": "Reassigned as per the custome template"
+                        }
+                    ]
+                }
+            ],
+            "scenario": "reassignment",
+            "precedence": 10
+        },
+        "LogicMonitorAlertsPriorityMajor": {
+            "Alert Name": "IAM Network - BGP Neighbor Down - Critical",
+            "Alert Message": "Restore the deleted article in system",
+            "Alert Severity": "Major",
+            "Service Name": "Node Down",
+            "Node Name": "IAMCEMSPRDDC1",
+            "NodeIP Address": "NodeIPAddress",
+            "Object Type": "Access Point",
+            "ObjectName": "ObjectName",
+            "ObjectStatus": "down",
+            "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+            "Resource Type": "Console",
+            "Alert time": "",
+            "Business Timezone": "IST",
+            "DataSource": "New Network Interfaces_LD",
+            "Data Point": "41",
+            "ResourceGroup": "cdf",
+            "MAC Address": "Test Camera"
+        },
+        "LogicMonitorAlertsPriorityCritical": {
+            "Alert Name": "IAM Network - BGP Neighbor Down - Critical",
+            "Alert Message": "Restore the deleted article in system",
+            "Alert Severity": "Critical",
+            "Service Name": "Node Down",
+            "Node Name": "IAMCEMSPRDDC1",
+            "NodeIP Address": "NodeIPAddress",
+            "Object Type": "Access Point",
+            "ObjectName": "ObjectName",
+            "ObjectStatus": "down",
+            "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+            "Resource Type": "Console",
+            "Alert time": "",
+            "Business Timezone": "IST",
+            "DataSource": "New Network Interfaces_LD",
+            "Data Point": "41",
+            "ResourceGroup": "cdf",
+            "MAC Address": "Test Camera"
+        },
+        "LogicMonitorAlertsWarning": {
+            "Alert Name": "IAM Network - BGP Neighbor Down - Critical",
+            "Alert Message": "Restore the deleted article in system",
+            "Alert Severity": "Warning",
+            "Service Name": "Node Down",
+            "Node Name": "IAMCEMSPRDDC1",
+            "NodeIP Address": "NodeIPAddress",
+            "Object Type": "Access Point",
+            "ObjectName": "ObjectName",
+            "ObjectStatus": "down",
+            "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+            "Resource Type": "Console",
+            "Alert time": "",
+            "Business Timezone": "IST",
+            "DataSource": "New Network Interfaces_LD",
+            "Data Point": "41",
+            "ResourceGroup": "cdf",
+            "MAC Address": "Test Camera"
         }
 }
