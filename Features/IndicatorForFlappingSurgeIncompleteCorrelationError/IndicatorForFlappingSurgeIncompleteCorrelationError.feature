@@ -36,10 +36,6 @@ Feature: Indicator for flapping cluster/surge cluster/incomplete correlation err
 
     Scenario Outline: Time Error indicator
 
-        When "ITOps_Admin" navigates to ITOps home page
-        And "Admin" enters project name in project search field and click on enter
-        And "admin" clicks on project name
-
         When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryJson>", "<NodeName>"
         And "admin" clicks on Alerts page
         And "admin" enters "AlertName" and clicks on enter "<AlertName>"
@@ -52,10 +48,6 @@ Feature: Indicator for flapping cluster/surge cluster/incomplete correlation err
 
 
     Scenario Outline: Combination of Correlation Error indicator and Time Error indicator
-
-        When "ITOps_Admin" navigates to ITOps home page
-        And "Admin" enters project name in project search field and click on enter
-        And "admin" clicks on project name
 
         When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryJson>", "<NodeName>"
         And "admin" clicks on Alerts page
@@ -72,22 +64,20 @@ Feature: Indicator for flapping cluster/surge cluster/incomplete correlation err
             | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | AUMECO-50A-SBC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. |
 
 
-    # Scenario Outline: Surge Indicator
+    Scenario Outline: Surge Indicator
 
-    #     When "ITOps_Admin" navigates to ITOps home page
-    #     And "Admin" enters project name in project search field and click on enter
-    #     And "admin" clicks on project name
-
-    #     When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-    #     When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-    #     When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-    #     When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-    #     When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-    #     And "admin" clicks on Alerts page
-    #     And "admin" enters "AlertName" and clicks on enter "<AlertName>"
-    #     And Admin verifies Surge indicator
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        And "admin" clicks on Alerts page
+        And "admin" enters "AlertName" and clicks on enter "<AlertName>"
+        And Admin verifies Surge indicator
 
 
-    #     Examples:
-    #         | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 |
-    #         | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | AUMECO-50A-SBC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. |
+        Examples:
+            | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 |
+            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | AUMECO-50A-SBC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. |

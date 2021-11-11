@@ -9,11 +9,10 @@ Feature: Smart Desk - Roles/Privileges
         And "Itops_visitor" clicks on project name "<ProjectName>"
         And "Itops_visitor" navigate to dashboard section
         And "Itops_visitor" moves to the dashboard frame
-        Then "Itops_visitor" verifies that the widget "Open Tickets in Service Now" is available in the dashboard
-        Then "Itops_visitor" verifies that the widget "Mean Time To Repair" is available in the dashboard
-        Then "Itops_visitor" verifies that the widget "Resolution SLA" is available in the dashboard
+        Then "Itops_visitor" verifies that the widget "Open Tickets in Service Now" is available in the dashboard page
+        Then "Itops_visitor" verifies that the widget "Mean Time To Repair" is available in the dashboard page
+        Then "Itops_visitor" verifies that the widget "Resolution SLA" is available in the dashboard page
         When "Itops_visitor" comes out of the dashboard frame
-        When "Itops_visitor" navigates to Tickets page
         Then "Itops_visitor" able to access configuration section
         And "Itops_visitor" verifies infrastructure page should not be available
 

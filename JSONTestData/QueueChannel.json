@@ -1,4 +1,4 @@
-{ 
+{
     "QueueChannel": {
         "Alert Name": "Alert1",
         "Alert Message": "Sample Alert",
@@ -41,48 +41,48 @@
         "Resource Type": "Console",
         "Alert time": ""
     },
-        "QueueChannel5": {
-            "Alert Name": "Alert1",
-            "Alert Message": "Sample Alert",
-            "Alert Severity": "Warning",
-            "Service Name": "Node Down",
-            "Node Name": "CNHKGG-00A-SSC1",
-            "NodeIP Address": "123.45.67",
-            "Object Type": "Access Point",
-            "ObjectName": "NewObject",
-            "ObjectStatus": "down",
-            "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
-            "Resource Type": "Console",
-            "Alert time": ""
-        },
-        "QueueChannel6": {
-            "Alert Name": "Alert1",
-            "Alert Message": "Sample Alert",
-            "Alert Severity": "Critical",
-            "Service Name": "Node Down",
-            "Node Name": "CNHKGG-00A-SSC1",
-            "NodeIP Address": "123.45.67",
-            "Object Type": "Access Point",
-            "ObjectName": "NewObject",
-            "ObjectStatus": "down",
-            "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
-            "Resource Type": "Console",
-            "Alert time": ""
-        },
-        "QueueChannel7": {
-            "Alert Name": "Alert1",
-            "Alert Message": "Sample Alert",
-            "Alert Severity": "Unknown",
-            "Service Name": "Node Down",
-            "Node Name": "CNHKGG-00A-SSC1",
-            "NodeIP Address": "123.45.67",
-            "Object Type": "Access Point",
-            "ObjectName": "NewObject",
-            "ObjectStatus": "down",
-            "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
-            "Resource Type": "Console",
-            "Alert time": ""
-        },
+    "QueueChannel5": {
+        "Alert Name": "Alert1",
+        "Alert Message": "Sample Alert",
+        "Alert Severity": "Warning",
+        "Service Name": "Node Down",
+        "Node Name": "CNHKGG-00A-SSC1",
+        "NodeIP Address": "123.45.67",
+        "Object Type": "Access Point",
+        "ObjectName": "NewObject",
+        "ObjectStatus": "down",
+        "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+        "Resource Type": "Console",
+        "Alert time": ""
+    },
+    "QueueChannel6": {
+        "Alert Name": "Alert1",
+        "Alert Message": "Sample Alert",
+        "Alert Severity": "Critical",
+        "Service Name": "Node Down",
+        "Node Name": "CNHKGG-00A-SSC1",
+        "NodeIP Address": "123.45.67",
+        "Object Type": "Access Point",
+        "ObjectName": "NewObject",
+        "ObjectStatus": "down",
+        "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+        "Resource Type": "Console",
+        "Alert time": ""
+    },
+    "QueueChannel7": {
+        "Alert Name": "Alert1",
+        "Alert Message": "Sample Alert",
+        "Alert Severity": "Unknown",
+        "Service Name": "Node Down",
+        "Node Name": "CNHKGG-00A-SSC1",
+        "NodeIP Address": "123.45.67",
+        "Object Type": "Access Point",
+        "ObjectName": "NewObject",
+        "ObjectStatus": "down",
+        "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+        "Resource Type": "Console",
+        "Alert time": ""
+    },
     "QueueChannel2": {
         "Alert Name": "Alert2",
         "Alert Message": "Sample Alert",
@@ -137,7 +137,7 @@
         "Resource Type": "Console",
         "ResourceGroup": "Group1",
         "Time": "2021.08.05 16:50:00.000"
-    }, 
+    },
     "VerbaWitNoMessage": {
         "Alert Name": "Alert1",
         "Description": "",
@@ -282,7 +282,6 @@
         "Switch IP and Desc": "10.78.116.137:Gi2/0/4",
         "Switch location": "GreatBritain/London/BasinghallStreet/4thFloor/ZoneA"
     },
-
     "RecoveryPolicy2": {
         "Alert Name": "Alert1",
         "Alert Message": "Message11",
@@ -324,26 +323,26 @@
         "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
         "Resource Type": "Console",
         "Alert time": ""
-
     },
-    "HttpChannelAlerts":{
+    "HttpChannelAlerts": {
         "source1IB": "OthersIB",
-        "Alert Name": "3rd alert with timezone in alert from sep1 via http",
+        "Alert Name": "3rd alert with timezone in alert from sep1 via http Test",
         "Alert Message": "Test Alert",
         "Alert Severity": "Information",
         "Service Name": "CPU working",
-        "Node Name": "GBLNGS-04A-SUA1",
+        "Node Name": "BWGAFG-01A-SBC1",
         "NodeIP Address": "",
-        "Object Type" : "Access Point",
-        "ObjectName" : "Gi2/1/2",
-        "ObjectStatus" : "down",
+        "Object Type": "Access Point",
+        "ObjectName": "Gi2/1/2",
+        "ObjectStatus": "down",
         "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
         "Resource Type": "Console",
-        "Alert time": "2021-09-15T10:45:00.002",
+        "Alert time": "2021-11-11T10:45:00.000 ",
         "DataSource": "To testSource data",
-        "Data Point": "To testPoint data"
+        "Data Point": "To testPoint data",
+        "Business Timezone": "CST"
     },
-    "HttpChannelAlerts2":{
+    "HttpChannelAlerts2": {
         "source1IB": "OthersIB",
         "Alert Name": "3rd alert with timezone in alert from sep1 via http",
         "Alert Message": "Test Alert",
@@ -351,16 +350,17 @@
         "Service Name": "CPU working",
         "Node Name": "GBLNGS-04A-SUA1",
         "NodeIP Address": "",
-        "Object Type" : "Access Point",
-        "ObjectName" : "Gi2/1/2",
-        "ObjectStatus" : "down",
+        "Object Type": "Access Point",
+        "ObjectName": "Gi2/1/2",
+        "ObjectStatus": "down",
         "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
         "Resource Type": "Console",
-        "Alert time": "2021-09-15T10:45:00.002",
+        "Alert time": "2021-11-11T10:45:00.000",
         "DataSource": "To testSource data",
-        "Data Point": "To testPoint data"
+        "Data Point": "To testPoint data",
+        "Business Timezone": ""
     },
-    "HttpChannelAlerts3":{
+    "HttpChannelAlerts3": {
         "source1IB": "OthersIB",
         "Alert Name": "3rd alert with timezone in alert from sep1 via http",
         "Alert Message": "Test Alert",
@@ -368,16 +368,16 @@
         "Service Name": "CPU working",
         "Node Name": "GBLNGS-04A-SUA1",
         "NodeIP Address": "",
-        "Object Type" : "Access Point",
-        "ObjectName" : "Gi2/1/2",
-        "ObjectStatus" : "down",
+        "Object Type": "Access Point",
+        "ObjectName": "Gi2/1/2",
+        "ObjectStatus": "down",
         "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
         "Resource Type": "Console",
         "Alert time": "2021-09-15T10:45:00.002",
         "DataSource": "To testSource data",
         "Data Point": "To testPoint data"
     },
-    "HttpChannelAlerts4":{
+    "HttpChannelAlerts4": {
         "source1IB": "OthersIB",
         "Alert Name": "3rd alert with timezone in alert from sep1 via http",
         "Alert Message": "Test Alert",
@@ -385,16 +385,16 @@
         "Service Name": "CPU working",
         "Node Name": "GBLNGS-04A-SUA1",
         "NodeIP Address": "",
-        "Object Type" : "Access Point",
-        "ObjectName" : "Gi2/1/2",
-        "ObjectStatus" : "down",
+        "Object Type": "Access Point",
+        "ObjectName": "Gi2/1/2",
+        "ObjectStatus": "down",
         "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
         "Resource Type": "Console",
         "Alert time": "2021-09-15T10:45:00.002",
         "DataSource": "To testSource data",
         "Data Point": "To testPoint data"
     },
-    "CustomFieldIndex":{
+    "CustomFieldIndex": {
         "Alert Name": "Alert1",
         "Alert Message": "Restore the deleted article in system",
         "Alert Severity": "Information",
@@ -407,117 +407,117 @@
         "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
         "Resource Type": "Console",
         "Alert time": "",
-        "Alert priority" : "High"
+        "Alert priority": "High"
+    },
+    "CustomReassignmentTemplate": {
+        "projectId": 1677,
+        "templateRules": {
+            "rules": [
+                {
+                    "operator": "=",
+                    "value": "solarwinds",
+                    "field": "source"
+                }
+            ]
         },
-        "CustomReassignmentTemplate": {
-            "projectId": 1677,
-            "templateRules": {
-                "rules": [
+        "templateName": "CustomReassignmentTemplate",
+        "active": true,
+        "templateMapping": [
+            {
+                "fieldName": "comments",
+                "values": [
                     {
-                        "operator": "=",
-                        "value": "solarwinds",
-                        "field": "source"
+                        "fieldRules": {},
+                        "fieldValue": "Re-assigning ticket using custom template since no action from Virtual Engineer"
                     }
                 ]
             },
-            "templateName": "CustomReassignmentTemplate",
-            "active": true,
-            "templateMapping": [
-                {
-                    "fieldName": "comments",
-                    "values": [
-                        {
-                            "fieldRules": {},
-                            "fieldValue": "Re-assigning ticket using custom template since no action from Virtual Engineer"
-                        }
-                    ]
-                },
-                {
-                    "fieldName": "assignment_group.link",
-                    "values": [
-                        {
-                            "fieldRules": {},
-                            "fieldValue": "00312f9a37f102007f0565e2b3990e3f"
-                        }
-                    ]
-                },
-                {
-                    "fieldName": "assigned_to.link",
-                    "values": [
-                        {
-                            "fieldRules": {},
-                            "fieldValue": ""
-                        }
-                    ]
-                },
-                {
-                    "fieldName": "comments",
-                    "values": [
-                        {
-                            "fieldRules": {},
-                            "fieldValue": "Reassigned as per the custome template"
-                        }
-                    ]
-                }
-            ],
-            "scenario": "reassignment",
-            "precedence": 10
-        },
-        "LogicMonitorAlertsPriorityMajor": {
-            "Alert Name": "IAM Network - BGP Neighbor Down - Critical",
-            "Alert Message": "Restore the deleted article in system",
-            "Alert Severity": "Major",
-            "Service Name": "Node Down",
-            "Node Name": "IAMCEMSPRDDC1",
-            "NodeIP Address": "NodeIPAddress",
-            "Object Type": "Access Point",
-            "ObjectName": "ObjectName",
-            "ObjectStatus": "down",
-            "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
-            "Resource Type": "Console",
-            "Alert time": "",
-            "Business Timezone": "IST",
-            "DataSource": "New Network Interfaces_LD",
-            "Data Point": "41",
-            "ResourceGroup": "cdf",
-            "MAC Address": "Test Camera"
-        },
-        "LogicMonitorAlertsPriorityCritical": {
-            "Alert Name": "IAM Network - BGP Neighbor Down - Critical",
-            "Alert Message": "Restore the deleted article in system",
-            "Alert Severity": "Critical",
-            "Service Name": "Node Down",
-            "Node Name": "IAMCEMSPRDDC1",
-            "NodeIP Address": "NodeIPAddress",
-            "Object Type": "Access Point",
-            "ObjectName": "ObjectName",
-            "ObjectStatus": "down",
-            "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
-            "Resource Type": "Console",
-            "Alert time": "",
-            "Business Timezone": "IST",
-            "DataSource": "New Network Interfaces_LD",
-            "Data Point": "41",
-            "ResourceGroup": "cdf",
-            "MAC Address": "Test Camera"
-        },
-        "LogicMonitorAlertsWarning": {
-            "Alert Name": "IAM Network - BGP Neighbor Down - Critical",
-            "Alert Message": "Restore the deleted article in system",
-            "Alert Severity": "Warning",
-            "Service Name": "Node Down",
-            "Node Name": "IAMCEMSPRDDC1",
-            "NodeIP Address": "NodeIPAddress",
-            "Object Type": "Access Point",
-            "ObjectName": "ObjectName",
-            "ObjectStatus": "down",
-            "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
-            "Resource Type": "Console",
-            "Alert time": "",
-            "Business Timezone": "IST",
-            "DataSource": "New Network Interfaces_LD",
-            "Data Point": "41",
-            "ResourceGroup": "cdf",
-            "MAC Address": "Test Camera"
-        }
+            {
+                "fieldName": "assignment_group.link",
+                "values": [
+                    {
+                        "fieldRules": {},
+                        "fieldValue": "00312f9a37f102007f0565e2b3990e3f"
+                    }
+                ]
+            },
+            {
+                "fieldName": "assigned_to.link",
+                "values": [
+                    {
+                        "fieldRules": {},
+                        "fieldValue": ""
+                    }
+                ]
+            },
+            {
+                "fieldName": "comments",
+                "values": [
+                    {
+                        "fieldRules": {},
+                        "fieldValue": "Reassigned as per the custome template"
+                    }
+                ]
+            }
+        ],
+        "scenario": "reassignment",
+        "precedence": 10
+    },
+    "LogicMonitorAlertsPriorityMajor": {
+        "Alert Name": "IAM Network - BGP Neighbor Down - Critical",
+        "Alert Message": "Restore the deleted article in system",
+        "Alert Severity": "Major",
+        "Service Name": "Node Down",
+        "Node Name": "IAMCEMSPRDDC1",
+        "NodeIP Address": "NodeIPAddress",
+        "Object Type": "Access Point",
+        "ObjectName": "ObjectName",
+        "ObjectStatus": "down",
+        "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+        "Resource Type": "Console",
+        "Alert time": "",
+        "Business Timezone": "IST",
+        "DataSource": "New Network Interfaces_LD",
+        "Data Point": "41",
+        "ResourceGroup": "cdf",
+        "MAC Address": "Test Camera"
+    },
+    "LogicMonitorAlertsPriorityCritical": {
+        "Alert Name": "IAM Network - BGP Neighbor Down - Critical",
+        "Alert Message": "Restore the deleted article in system",
+        "Alert Severity": "Critical",
+        "Service Name": "Node Down",
+        "Node Name": "IAMCEMSPRDDC1",
+        "NodeIP Address": "NodeIPAddress",
+        "Object Type": "Access Point",
+        "ObjectName": "ObjectName",
+        "ObjectStatus": "down",
+        "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+        "Resource Type": "Console",
+        "Alert time": "",
+        "Business Timezone": "IST",
+        "DataSource": "New Network Interfaces_LD",
+        "Data Point": "41",
+        "ResourceGroup": "cdf",
+        "MAC Address": "Test Camera"
+    },
+    "LogicMonitorAlertsWarning": {
+        "Alert Name": "IAM Network - BGP Neighbor Down - Critical",
+        "Alert Message": "Restore the deleted article in system",
+        "Alert Severity": "Warning",
+        "Service Name": "Node Down",
+        "Node Name": "IAMCEMSPRDDC1",
+        "NodeIP Address": "NodeIPAddress",
+        "Object Type": "Access Point",
+        "ObjectName": "ObjectName",
+        "ObjectStatus": "down",
+        "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+        "Resource Type": "Console",
+        "Alert time": "",
+        "Business Timezone": "IST",
+        "DataSource": "New Network Interfaces_LD",
+        "Data Point": "41",
+        "ResourceGroup": "cdf",
+        "MAC Address": "Test Camera"
+    }
 }

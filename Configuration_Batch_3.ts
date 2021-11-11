@@ -93,7 +93,7 @@ export let config: Config = {
     '../Features/LoanDepot/LoanDepot.feature',
 
     '../Features/BusinessTimezoneInAllRules/BusinessTimezoneInAllRules.feature',//passed
-    '../Features/CustomFieldsInAlertIndex/CustomFieldsInAlertIndex.feature',
+    '../Features/CustomFieldsInAlertIndex/CustomFieldsInAlertIndex.feature',//passed
     '../Features/TicketTemplateM5/TicketTemplate.feature',//passed
     '../Features/AdvancedFilterM5/AdvancedFilter.feature',//passed
     '../Features/ITSMConfigurations/ITSMConfigurations.feature',//passed

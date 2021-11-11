@@ -28,106 +28,98 @@ Feature: Loan Depot
 
     Scenario Outline: Verify adding External format API to have business time alert in ES with value true or false
 
-        When "ITOps_Admin" navigates to ITOps home page
-        And "Admin" enters project name in project search field and click on enter
-        And "admin" clicks on project name
 
         When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>"
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName>"
         And Admin gets the alertId
-        And Admin verifies the bussiness time alert in elastic search index
+        # And Admin verifies the bussiness time alert in elastic search index
 
         When "Admin" sends "1" new Http alerts without NodeName
         And "admin" clicks on Alerts page
-        And "admin" enters "NodeName" and clicks on enter "<NodeName>"
         And Admin gets the alertId
-        And Admin verifies the bussiness time alert in elastic search index
+        And "admin" enters alertId "alertId" and clicks on enter
+        # And Admin verifies the bussiness time alert in elastic search index
 
 
         Examples:
             | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 |
             | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | CNHKGG-00A-SSC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. |
 
-       Scenario Outline:Verify that device inventory details are added to alert before calling external formatting API
-
-            When "ITOps_Admin" navigates to ITOps home page
-            And "Admin" enters project name in project search field and click on enter
-            And "admin" clicks on project name
-
-            When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>"
-            And "admin" clicks on Alerts page
-            And "admin" enters "NodeName" and clicks on enter "<NodeName>"
-
-            And Admin verifies the bussiness time alert in elastic search index
+    Scenario Outline:Verify that device inventory details are added to alert before calling external formatting API
 
 
-            Examples:
-                | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 |
-                | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | CNHKGG-00A-SSC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. |
+
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>"
+        And "admin" clicks on Alerts page
+        And "admin" enters "NodeName" and clicks on enter "<NodeName>"
+
+        And Admin verifies the bussiness time alert in elastic search index
+
+
+        Examples:
+            | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 |
+            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | CNHKGG-00A-SSC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. |
 
     Scenario Outline: Verify that Business Timezone/Data source/Data point fields will have data to ES if they are pushed with Alert
 
-        When "ITOps_Admin" navigates to ITOps home page
-        And "Admin" enters project name in project search field and click on enter
-        And "admin" clicks on project name
 
-        When "Admin" sends "1" new Http alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName>"
         And Admin gets the alertId
-        And Admin verifies the bussiness time alert in elastic search index
-
+        When "admin" clicks on three dots of an alert
+        And "admin" verify the Business timeZone "<BusinessTimeZone>"
+        And "admin" verify the Alert time "<AlertTime>"
 
         Examples:
-            | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 |
-            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | CNHKGG-00A-SSC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. |
+            | ProjectName     | AlertName | ChannelName | channelJson       | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 | BusinessTimeZone | AlertTime   |
+            | Automation_01M3 | Alert1    | Solarwinds  | HttpChannelAlerts | BWGAFG-01A-SBC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. | CST              | 10:15:00 PM |
 
     Scenario Outline: Verify that alert time is calculated based on business time zone of alert - where incoming alert have business time zone
 
-        When "ITOps_Admin" navigates to ITOps home page
-        And "Admin" enters project name in project search field and click on enter
-        And "admin" clicks on project name
-
-        When "Admin" sends "1" new Http alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName>"
-        And Admin verifies the bussiness time zone
-
+        And Admin gets the alertId
+        When "admin" clicks on three dots of an alert
+        And "admin" verify the Business timeZone "<BusinessTimeZone>"
+        And "admin" verify the Alert time "<AlertTime>"
         Examples:
-            | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 |
-            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | CNHKGG-00A-SSC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. |
+            | ProjectName     | AlertName | ChannelName | channelJson       | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 | BusinessTimeZone | AlertTime   |
+            | Automation_01M3 | Alert1    | Solarwinds  | HttpChannelAlerts | BWGAFG-01A-SBC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. | CST              | 10:15:00 PM |
 
     Scenario Outline: Verify that alert time is calculated based Business Timezone from device inventory if incoming alert do not have business timezone
 
-        When "ITOps_Admin" navigates to ITOps home page
-        And "Admin" enters project name in project search field and click on enter
-        And "admin" clicks on project name
 
-        When "Admin" sends "1" new Http alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName>"
-        And Admin verifies the bussiness time zone
+        And Admin gets the alertId
+        When "admin" clicks on three dots of an alert
+        And "admin" verify the Business timeZone "<BusinessTimeZone>"
+        And "admin" verify the Alert time "<AlertTime>"
 
         Examples:
-            | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 |
-            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | CNHKGG-00A-SSC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. |
+            | ProjectName     | AlertName | ChannelName | channelJson        | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 | BusinessTimeZone | AlertTime   |
+            | Automation_01M3 | Alert1    | Solarwinds  | HttpChannelAlerts2 | GGSPDC-01A-FPA2 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. | PDT              | 11:15:00 PM |
 
 
     Scenario Outline: Verify that alert time is calculated based timezone from channel created if incoming alert do not have business timezone or device inventory do not have Business Timezone.
 
-        When "ITOps_Admin" navigates to ITOps home page
-        And "Admin" enters project name in project search field and click on enter
-        And "admin" clicks on project name
 
-        When "Admin" sends "1" new Http alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName>"
-        And Admin verifies the bussiness time zone
+        And Admin gets the alertId
+        When "admin" clicks on three dots of an alert
+        And "admin" verify the Business timeZone "<BusinessTimeZone>"
+        And "admin" verify the Alert time "<AlertTime>"
 
         Examples:
-            | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 |
-            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | CNHKGG-00A-SSC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. |
+            | ProjectName     | AlertName | ChannelName | channelJson        | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 | BusinessTimeZone | AlertTime   |
+            | Automation_01M3 | Alert1    | Solarwinds  | HttpChannelAlerts2 | ZACTHS-03A-SSA1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. | IST              | 10:45:00 AM |
 
     # Scenario Outline: Verify that user can add more offset values to lookup data that too with same value and different code
 
@@ -146,16 +138,22 @@ Feature: Loan Depot
 
     Scenario Outline: Verify editing timezone from Device details page will calculate alertime based on new timezone from next alert.
 
-        When "ITOps_Admin" navigates to ITOps home page
-        And "Admin" enters project name in project search field
-        And "admin" clicks on project name and navigates to dashboard
+
         When "Admin" opens infrastructure page
-        And "Admin" searches device name "<DeviceName>"
-        And "ITOps_Admin" clicks on resource name in the device inventory list "<Device>"
-        And "Admin" selects bussiness timezone
+        And "Admin" searches device name "<NodeName>"
+        And "ITOps_Admin" clicks on resource name in the device inventory list "<NodeName>"
+        And "Admin" selects bussiness timezone as "<BusinessTimeZone>"
         And "Admin" clicks on update and save
-        When "Admin" sends "1" new Http alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        Then "Admin" verifies if "<SuccessMessage>" message is displayed
+
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
+        And "admin" clicks on Alerts page
+        And "admin" enters "NodeName" and clicks on enter "<NodeName>"
+        And Admin gets the alertId
+        When "admin" clicks on three dots of an alert
+        And "admin" verify the Business timeZone "<BusinessTimeZone>"
+        And "admin" verify the Alert time "<AlertTime>"
 
         Examples:
-            | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 |
-            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | CNHKGG-00A-SSC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. |
+            | ProjectName     | AlertName | ChannelName | channelJson        | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | BusinessTimeZone | AlertTime   | SuccessMessage                |
+            | Automation_01M3 | Alert1    | Solarwinds  | HttpChannelAlerts2 | ZACTHS-03A-SSA1 | RecoveryPolicy | 2                        | 3                 | PST              | 10:45:00 AM | Resource updated successfully |

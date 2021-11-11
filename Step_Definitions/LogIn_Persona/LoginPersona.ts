@@ -1,4 +1,4 @@
-import { Given, When } from "cucumber"
+import { Given, When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import chai from "chai";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
@@ -66,6 +66,8 @@ Given('{string} unable to access infrastructure section', async function (string
     throw "User is not to access infrastructure section"
   }
 });
+//verifying the text infraStructure
+
 
 
 When('{string} able to access dashboard', async function (string) {
@@ -109,5 +111,26 @@ When('{string} able to access infrastructure section', async function (string) {
     console.log("Feature name : Login persona and Scenario name :able to access infrastructure section ")
     await console.log(error)
     throw "User is not able to access infrastructure section"
+  }
+});
+Then('{string} verifies that the widget {string} is available in the dashboard page', async function (string, WidgetTitle) {
+  try {
+    await element(by.xpath('//span[text()="' + WidgetTitle + '"]')).isPresent().then(function (select) {
+      expect(select).to.be.true;
+    });
+  } catch (error) {
+    await browser.switchTo().defaultContent();
+    console.log("verifying the widget Alerts-open vs closed is available in the dashboard")
+    console.log(error)
+    throw "Alerts-open vs closed widget is not available in the dashboard"
+  }
+});
+Then('{string} verifies infrastructure page should not be available', async function (string) {
+  try {
+    await objInfrastructurePage.btnInfrastructure.isPresent().then(function (select) {
+      expect(select).to.be.false;
+    });
+  } catch (error) {
+    await console.log(error);
   }
 });

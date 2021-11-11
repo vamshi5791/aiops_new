@@ -172,7 +172,7 @@ When('{string} clicks on refresh button in alert console', async function (strin
 
 When('{string} clicks on {string} button', async function (string, Status) {
   try {
-    // await browser.sleep(5000)
+     await browser.sleep(2000)
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="' + Status + '"]'))), 50000);
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="' + Status + '"]'))), 50000);
     await objAlerts.clickOnUpdateStatus(Status)

@@ -419,8 +419,28 @@ When('{string} navigates to Alerts section to verify the console', async functio
   }
 });
 
-
-
+When('{string} verifies newly added field is available in the display configuration', async function (userName) {
+  try {
+    await element(by.xpath("//span[text()='customFields.Propert...']/following::input")).isPresent().then(function (select) {
+      expect(select).to.be.true;
+    });
+  } catch (error) {
+    await console.log("Feature name : Display Configuration " + userName + " and Scenario name : ReOrdering of Primary section fields")
+    await console.log(error)
+    throw "unable to navigate to Alert console page"
+  }
+});
+When('{string} verifies the {string} in alert console', async function (userName, IndexName) {
+  try {
+    await element(by.xpath("//span[text()='" + IndexName + "']/following::input")).isPresent().then(function (select) {
+      expect(select).to.be.true;
+    });
+  } catch (error) {
+    await console.log("Feature name : Display Configuration " + userName + " and Scenario name : ReOrdering of Primary section fields")
+    await console.log(error)
+    throw "unable to navigate to Alert console page"
+  }
+});
 Then('{string} verifies the {string} present in secondary section', async function (string, DisplayName) {
 
   try {
@@ -511,5 +531,21 @@ When('{string} selects {string} in the primary section and clicks on right arrow
     await console.log("Feature name : Display Configuration " + userName + " and Scenario name : ReOrdering of Primary section fields")
     await console.log(error)
     throw "FiledName doesn't exist"
+  }
+});
+Then('{string} verifies if any {string} message is displayed', async function (userName, Toaster) {
+  try {
+    await objDisplayConfig.getSuccessMessageText(Toaster);
+  } catch (error) {
+    await console.log("Feature name : Display Configuration " + userName + " and Scenario name : Change display name of Primary fields")
+    await console.log(error)
+    var myElement = element(by.xpath("//span[text()='Cancel']"));
+    myElement.isPresent().then(async function (elm) {
+      if (elm) {
+        await browser.wait(EC.elementToBeClickable(element(by.xpath("//span[text()='Cancel']"))), 10000);
+        await element(by.xpath("//span[text()='Cancel']")).click();
+      }
+    });
+    throw "Field changes are not saved successfully"
   }
 });

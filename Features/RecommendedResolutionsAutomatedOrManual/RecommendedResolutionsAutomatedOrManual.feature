@@ -192,24 +192,25 @@ Feature: Smart Desk - Roles/Privileges
             | ProjectName | ShortDescription                                  |
             | Auto_01Desk | Solarwinds] Restore the deleted article in system |
 
-    Scenario Outline: Verify Manual Resolving of a ticket via Ticket Details page >  Recommended Resolutions
+    # Scenario Outline: Verify Manual Resolving of a ticket via Ticket Details page >  Recommended Resolutions
 
-        When "admin" navigates to Tickets page
-        When "Admin" clicks on quick filter
-        And "admin" selects filter by status type as "Assigned"
+    #     When "admin" navigates to Tickets page
+    #     When "Admin" clicks on quick filter
+    #     And "admin" selects filter by status type as "Assigned"
 
-        When "Admin" get the ticket number from ticket console
-        And "admin" enters the ticket number in search field
-        When "Admin" clicks on the ticket number in ticket console
-        And "admin" clicks on ticket id in recommended resolution section
-        And "admin" clicks on "Resolve" button
-        And "admin" clicks on "Resolve" button
+    #     When "Admin" get the ticket number from ticket console
+    #     And "admin" enters the ticket number in search field
+    #     When "admin" updates the ticket in service now state as "New", category as "Skype for Business", subcategory as "Conference Call", close code as "Monitoring Incident", Enter close note as "USTIB" and update "<ShortDescription>"
+    #     When "Admin" clicks on the ticket number in ticket console
+    #     And "admin" clicks on ticket id in recommended resolution section
+    #     And "admin" clicks on "Resolve" button
+    #     And "admin" clicks on "Resolve" button
 
-        Then "Admin" verifies if "<SuccessMessage>" message is displayed
+    #     Then "Admin" verifies if any "<SuccessMessage>" message is displayed
 
-        Examples:
-            | ProjectName | ResolveNote | SuccessMessage               |
-            | Auto_01Desk | IBUST       | Ticket resolved successfully |
+    #     Examples:
+    #         | ProjectName | ResolveNote | SuccessMessage               | ShortDescription                                  |
+    #         | Auto_01Desk | IBUST       | Ticket resolved successfully | Solarwinds] Restore the deleted article in system |
 
 
 

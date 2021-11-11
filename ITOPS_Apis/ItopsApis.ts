@@ -13,9 +13,9 @@ var TemplateId;
 var accessToken;
 var QA_AccessTokenBody;
 export class ITOPS_APIs {
-    async HTTPchannelAlerts(nodeName: string = "", AlertSeverity: string = "Information") {
+    async HTTPchannelAlerts(nodeName: string = "", AlertSeverity: string = "Information",channelJson:string) {
         var HttpAlertJson = JSON.parse(fs.readFileSync('JSONTestData/QueueChannel.json', 'utf-8'));
-        var getHttpAlert = HttpAlertJson['HttpChannelAlerts'];
+        var getHttpAlert = HttpAlertJson[channelJson];
         getHttpAlert['Node Name'] = nodeName;
         getHttpAlert['Alert Severity'] = AlertSeverity;
 
