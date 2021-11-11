@@ -33,16 +33,16 @@ When('Admin gets the alertId', async function () {
 
 });
 
-When('Admin verifies the bussiness time alert in elastic search index', async function () {
-    try {
+// When('Admin verifies the bussiness time alert in elastic search index', async function () {
+//     try {
 
-        var valueTrue = await objAPIKibana.businessTimeAlert('1519', alertId)
-        await console.log(valueTrue)
+//         var valueTrue = await objAPIKibana.businessTimeAlert('1519', alertId)
+//         await console.log(valueTrue)
 
-    } catch (error) {
+//     } catch (error) {
 
-    }
-});
+//     }
+// });
 
 When('Admin verifies the bussiness time zone CST', async function () {
 });
