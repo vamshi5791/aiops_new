@@ -6,17 +6,17 @@ Feature: Loan Depot
         And "Admin" enters project name in project search field and click on enter
         And "admin" clicks on project name
 
-        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>"
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName>"
         And "admin" verifies the severity strip color
 
-        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>"
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName2>"
         And "admin" verifies the severity strip color
 
-        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>"
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName3>"
         And "admin" verifies the severity strip color
@@ -29,13 +29,13 @@ Feature: Loan Depot
     Scenario Outline: Verify adding External format API to have business time alert in ES with value true or false
 
 
-        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>"
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName>"
         And Admin gets the alertId
         # And Admin verifies the bussiness time alert in elastic search index
 
-        When "Admin" sends "1" new Http alerts without NodeName
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
         And "admin" clicks on Alerts page
         And Admin gets the alertId
         And "admin" enters alertId "alertId" and clicks on enter
@@ -50,7 +50,7 @@ Feature: Loan Depot
 
 
 
-        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>"
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName>"
 
