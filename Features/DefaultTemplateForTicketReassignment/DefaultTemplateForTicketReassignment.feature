@@ -24,21 +24,9 @@ Feature: Default template for ticket reassignment
         When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         Then "admin" verifies created ticket in alert console
 
-        # And Admin click on state
-        # And "admin" clicks on "Group" radio button
-        # And "admin" selects user from the team member drop down as "<Group>"
-        # And "admin" clicks on assign button on the popup
-        # Then "Admin" verifies if "<AssignSuccessMessage>" message is displayed
-
         And Admin click on state
         And "admin" clicks on "Hold" button
         Then "Admin" verifies if "<HoldSuccessMessage>" message is displayed
-
-        And Admin click on state
-        And "admin" clicks on "Close" button
-        When "admin" enters closure note as "<ClosureNote>" and click on Ok
-        Then "Admin" verifies if "<CloseSuccessMessage>" message is displayed
-
 
         Examples:
             | ProjectName    | Group            | ChannelName | channelJson  | NodeName        | VerbaChannelName | VerbaChannelJson  | VerbaNodeName | AssignSuccessMessage          | HoldSuccessMessage            | CloseSuccessMessage           | TemplateName               | ProjectId |

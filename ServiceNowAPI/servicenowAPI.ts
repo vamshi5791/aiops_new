@@ -69,13 +69,14 @@ export class ServiceNowAPI {
                 console.log(error);
             });
     }
-    async updateTicketToResolved(sys_id: string, State: string, category: string, subCategory: string, closeCode: string, closeNote: string) {
+    async updateTicketToResolved(sys_id: string, State: string, category: string, subCategory: string, closeCode: string, closeNote: string,shortDesc:string="IB testing") {
         var bodyString = JSON.parse(emptyString);
         bodyString.incident_state = state_value[State];
         bodyString.category = category;
         bodyString.subcategory = subCategory;
         bodyString.close_code = closeCode;
         bodyString.close_notes = closeNote;
+        bodyString.short_description = shortDesc;
         const data_body = JSON.stringify(bodyString);
         let this_url = ServiceNowURL + '/api/now/v1/table/incident/' + sys_id + "?sysparm_exclude_ref_link=true"
         await fetch(this_url, {

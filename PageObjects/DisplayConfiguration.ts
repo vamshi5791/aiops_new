@@ -46,6 +46,9 @@ export class DisplayConfiguration {
     await element(by.xpath("//span[text()='Correlated Alerts']//following::span[text()='Alert Name']//following::div[@class='smo-chkbox smo-widget'][" + checkBoxNumber + "]")).click();
   }
   async clickOnExternalTeams() {
+    await browser.wait(EC.visibilityOf(this.lnkExternalTeams), 100000);
+    await browser.wait(EC.presenceOf(this.lnkExternalTeams), 100000);
+    await browser.wait(EC.elementToBeClickable(this.lnkExternalTeams), 100000);
     await this.lnkExternalTeams.click();
   }
   async clickOnChooseGroup() {

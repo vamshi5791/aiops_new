@@ -116,7 +116,16 @@ When('{string} get the ticket number from ticket console', async function (strin
         throw "unable to get ticket number"
     }
 });
-
+When('{string} updates the ticket in service now state as {string}, category as {string}, subcategory as {string}, close code as {string}, Enter close note as {string} and update {string}', async function (string, state, category, subCategory, closeCode, closeNote, ShortDescription) {
+    try {
+      resultState = await objServiceNow.apiServiceNow(ticketNumber)
+      systemID = resultState.sys_id;
+      await objServiceNow.updateTicketToResolved(systemID, state, category, subCategory, closeCode, closeNote, ShortDescription)
+    } catch (error) {
+      await console.log(error)
+      throw "unable to change ticket state in service now"
+    }
+  });
 
 Then('{string} update the impact status to {string} and urgency status to {string} in service now', async function (string, urgencyStatus, impactStatus) {
     try {

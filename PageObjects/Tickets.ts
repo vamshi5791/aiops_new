@@ -62,7 +62,7 @@ export class Tickets {
         await browser.wait(EC.visibilityOf(element(by.xpath('//th[text()="' + TicketID + ' " ]'))), 10000);
         await browser.wait(EC.visibilityOf(element(by.xpath('//th[text()="' + Title + ' " ]'))), 10000);
         await browser.wait(EC.visibilityOf(element(by.xpath('//th[text()="' + Priority + ' " ]'))), 10000);
-         await browser.wait(EC.visibilityOf(element(by.xpath('//th[text()="' + Description + ' " ]'))), 10000);
+        await browser.wait(EC.visibilityOf(element(by.xpath('//th[text()="' + Description + ' " ]'))), 10000);
     }
 
     async verifyingTicketConsole(CreatedTimeAndDate, UpdatedTimeAndDate, Category, State) {
@@ -74,6 +74,8 @@ export class Tickets {
     async clickOnQuickFilter() {
         await browser.sleep(2000)
         await browser.wait(EC.visibilityOf(this.btnQuickFilter), 10000);
+        await browser.wait(EC.presenceOf(this.btnQuickFilter), 10000);
+        await browser.wait(EC.elementToBeClickable(this.btnQuickFilter), 10000);
         await this.btnQuickFilter.click()
     }
     async verifyField(FieldName) {

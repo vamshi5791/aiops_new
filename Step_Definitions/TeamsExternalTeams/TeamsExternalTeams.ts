@@ -10,7 +10,7 @@ var expect = chai.expect;
 
 When('{string} clicks on external Teams', async function (string) {
     try {
-       
+
         await objDisplayConfig.clickOnExternalTeams()
         await browser.wait(EC.visibilityOf(element(by.xpath("//span[text()='External Teams']"))), 100000);
         await browser.sleep(5000)
@@ -156,17 +156,6 @@ Then('{string} clicks on sort button', async function (string) {
     }
 });
 
-
-Then('{string} verifies user list should be sorted alphabetically', async function (string) {
-    try {
-
-    } catch (error) {
-        await console.log(error)
-        throw ""
-    }
-});
-
-
 Then('{string} searches for user in search box as {string}', async function (string, UserName) {
     try {
         await objDisplayConfig.searchForGroup(UserName)
@@ -200,9 +189,9 @@ Then('{string} verifies Refresh option should not be available', async function 
 });
 
 
-Then('{string} verifies user matching search should be displayed and his group also should be shown', async function (string) {
+Then('{string} verifies user matching search should be displayed and his group also should be shown {string}, {string}', async function (string, UserName, Group) {
     try {
-
+        await objDisplayConfig.verifyingFields(UserName)
     } catch (error) {
         await console.log(error)
         throw ""

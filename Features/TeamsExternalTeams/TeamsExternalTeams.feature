@@ -12,14 +12,14 @@ Feature: Teams > External Teams
         And "admin" selects source as "Service Now" in external Teams
         And "admin" clicks on choose a group dropdown
         And "admin" search for a group as "ITOps" in external Teams
-        And "Admin" verifies all the groups having "ITOpsTesting" should be displayed
+        And "Admin" verifies all the groups having "ITOpsPTTesting" should be displayed
         And "Admin" selects group in external Teams "<GroupName>"
         And "Admin" clicks on import button in external teams
         Then "Admin" verifies if "<SuccessMessage>" message is displayed
 
         Examples:
-            | GroupName | SuccessMessage        |
-            | ITOpsDemo | User sync successful. |
+            | GroupName      | SuccessMessage      |
+            | ITOpsPTTesting | No users to import. |
 
     Scenario Outline: Verify the imported section in External teams for ITOps admin
 
@@ -34,7 +34,6 @@ Feature: Teams > External Teams
         Then "Admin" verifies Search option to be available
         And "Admin" verifies Refresh option to be available
         And "Admin" clicks on sort button
-        And "Admin" verifies user list should be sorted alphabetically
         Then "Admin" searches for user in search box as "<UserName>"
         And "Admin" navigate to Configuration section
 
@@ -47,16 +46,15 @@ Feature: Teams > External Teams
         And "Admin" verifies sort option to be available
         And "Admin" verifies Refresh option should not be available
         Then "Admin" searches for user in search box as "<UserName>"
-        And "Admin" verifies user matching search should be displayed and his group also should be shown
+        And "Admin" verifies user matching search should be displayed and his group also should be shown "<UserName>", "<Group>"
 
         Examples:
-            | GroupName                 | UserName          | SuccessMessage        |
-            | UST - Enterprise Security | Chandranhari Nair | User sync successful. |
+            | GroupName                 | UserName          |
+            | UST - Enterprise Security | Chandranhari Nair |
 
 
     Scenario Outline: Verify the imported section in External teams for ITOps admin
 
-
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
         And "admin" selects filter by status type as "Assigned"
@@ -76,21 +74,6 @@ Feature: Teams > External Teams
         And "Admin" verifies groups shown in dropdown "UST - Enterprise Security", "Visibility - UST"
         And "Admin" clicks on cancel button
 
-        And "admin" clicks on Alerts page
-        And Admin click on state
-        And "admin" clicks on "Assign" button
-        And "admin" clicks on "Individual" radio button
-        And "admin" clicks on choose a group dropdown on assign to popup
-        And "Admin" verifies groups shown in dropdown "UST - Enterprise Security", "Visibility - UST"
-        And "Admin" clicks on cancel button
-        And "admin" clicks on Alerts page
-
-        And Admin click on state
-        And "admin" clicks on "Assign" button
-        And "admin" clicks on "Group" radio button
-        And "admin" clicks on choose a group dropdown on assign to popup
-        And "Admin" verifies groups shown in dropdown "UST - Enterprise Security", "Visibility - UST"
-        And "Admin" clicks on cancel button
         Examples:
-            | GroupName                 | UserName          | SuccessMessage        |
-            | UST - Enterprise Security | Chandranhari Nair | User sync successful. |
+            | GroupName                 | UserName          |
+            | UST - Enterprise Security | Chandranhari Nair |

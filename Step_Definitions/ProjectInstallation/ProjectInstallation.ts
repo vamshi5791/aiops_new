@@ -208,7 +208,17 @@ When('{string} selects ITOps Flavor as {string}', async function (userRole, ITIo
     throw "User is not able to select ITSM Flavour"
   }
 });
-
+When('{string} enters {string} as {string}', async function (userRole, FieldName, ITSMFieldData) {
+  try {
+    // await objProjectConfi.ITOPsflavour(ITSMFieldData)
+    await element(by.xpath('//legend[text()="' + FieldName + '"]//following-sibling::input')).sendKeys(ITSMFieldData);
+  }
+  catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : General Configuration")
+    await console.log(error)
+    throw "User is not able to select ITSM Flavour"
+  }
+});
 When('{string} clicks on Save button in General Configuration page', async function (userRole) {
   try {
     await objProjectConfi.SaveGeneralConfig()
@@ -942,5 +952,34 @@ Then('Project must be in {string} state in Project Listing Page', async function
     await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Installation")
     await console.log(error)
     throw "Once project is installed, Ready should be display as status opposite to project name in the list. But it is not displaying in the list"
+  }
+});
+
+When('{string} clicks on ITSM Configuration', async function (userRole) {
+  try {
+    var myElement = objProjectConfi.lnkSchedularConfiguration;
+    await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Surge Configurations "]'))), 10000);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Ticket Dump Configurations "]'))), 10000);
+    await browser.sleep(2000)
+    await element(by.xpath('//span[text()="ITSM Configuration "]')).click()
+  }
+  catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
+    await console.log(error)
+    throw "User is not able to click on Scheduler Configuration"
+  }
+});
+When('{string} clicks on project Configuration', async function (userRole) {
+  try {
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Project Configuration"]'))), 10000);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="Channel Configuration"]'))), 10000);
+    await browser.sleep(2000)
+    await element(by.xpath('//span[text()="Project Configuration"]')).click()
+  }
+  catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Schedular configuration")
+    await console.log(error)
+    throw "User is not able to click on Scheduler Configuration"
   }
 });

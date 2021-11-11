@@ -181,7 +181,25 @@ When('{string} clicks on filter by severity dropdown', async function (userRole)
 
 });
 
+Then('{string} verifies the status column as {string}', async function (userName, state) {
 
+  try {
+
+    var myElement = element(by.xpath('//span[text()="No data available"]'));
+    myElement.isPresent().then(async function (elm) {
+      if (elm) {
+        await console.log('No data Available');
+      } else {
+        var stateText = await element(by.xpath("//label[contains(@class,'smo-inputtext smo-placeholder dropdown-label-ms smo-dropdown-label ng-star-inserted')]")).getText()
+        await console.log(stateText);
+        await expect(stateText).equal(state);
+      }
+    });
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : apply the saved filter")
+    await console.log(error)
+  }
+});
 // Verify user is able to perform search operations on the filter conditions which we selected.
 
 When('{string} selects Information', async function (userRole) {

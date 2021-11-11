@@ -120,7 +120,7 @@ When('{string} enters source as {string} and alert state as {string}', async fun
 
 When('{string} enters alert state as {string}', async function (userRole, AlertState) {
   try {
-    await browser.sleep(2000);
+    await browser.sleep(5000);
     await objAlerts.AlertState(AlertState);
   } catch (error) {
     var myElement = objAlerts.btnCancel;

@@ -52,11 +52,10 @@ Feature: The 1st Alert which is eligible for ticketing should be considered as S
         And "Admin" selects "3" alert checkbox from pop up
         And "Admin" selects "4" alert checkbox from pop up
         And "Admin" selects create ticket from pop up
-        And "Admin" clicks on confirm
         Then "Admin" verifies if "<SuccessMessage>" message is displayed
         Examples:
-            | ProjectName     | AlertName | ChannelName | channelJson          | NodeName        | channelJsonDownAlert   | SuccessMessage          |
-            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannelUpAlerts | ZAPRMP-00A-FPA2 | QueueChannelDownAlerts | Split cluster completed |
+            | ProjectName     | AlertName | ChannelName | channelJson          | NodeName        | channelJsonDownAlert   | SuccessMessage                                          |
+            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannelUpAlerts | ZAPRMP-00A-FPA2 | QueueChannelDownAlerts | Recovery alerts alone cannot be moved to a new cluster. |
 
 
     Scenario Outline: Verify that when split is done, ticket created for the new cluster should be the first down alert selected to split.

@@ -129,6 +129,8 @@ Feature: Smart Desk - Roles/Privileges
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
         And "admin" selects filter by status type as "Assigned"
+        When "Admin" get the ticket number from ticket console
+        When "admin" updates the ticket in service now state as "Open", category as "Skype for Business", subcategory as "Conference Call", close code as "Monitoring Incident", Enter close note as "USTIB" and update "<ShortDescription>"
         And Admin click on state in ticket console
         Then "Admin" verifies recommended resolution should be available
         When "Admin" clicks on the ticket number in ticket console
@@ -137,11 +139,9 @@ Feature: Smart Desk - Roles/Privileges
         And "admin" verifies Resolve and Cancel button to be available with Resolve as selected by default
         And "Admin" verifies Ticket ID, Resolution selected and its Resolution quality should be shown
 
-
         Examples:
-            | ProjectName |
-            | Auto_01Desk |
-
+            | ProjectName | IncidentId | StatusInAlert | ShortDescription                                  |
+            | Auto_01Desk | INC0820381 | Resolved      | Solarwinds] Restore the deleted article in system |
 
     Scenario Outline: Verify Recommended Resolutions shown in ticket listing page for tickets in Resolved status having Resolutions previously
 
@@ -152,12 +152,6 @@ Feature: Smart Desk - Roles/Privileges
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
         And "admin" selects filter by status type as "Assigned"
-
-        #When "Admin" get the ticket number from ticket console
-        #And "admin" enters the ticket number in search field
-
-        # And Admin click on state in ticket console
-
 
         When "Admin" clicks on the ticket number in ticket console
         And Admin click on state in details page
@@ -186,15 +180,17 @@ Feature: Smart Desk - Roles/Privileges
 
         When "Admin" get the ticket number from ticket console
         And "admin" enters the ticket number in search field
+        When "admin" updates the ticket in service now state as "Open", category as "Skype for Business", subcategory as "Conference Call", close code as "Monitoring Incident", Enter close note as "USTIB" and update "<ShortDescription>"
         When "Admin" clicks on the ticket number in ticket console
         And "admin" clicks on ticket id in recommended resolution section
         Then "admin" verifies ticket resolution popup
         And "admin" verifies resolve button is enabled
+        And "admin" clicks on "Resolve" button
         And "admin" verifies automated Radio button is disabled and Manual option is selected by default
         And "Admin" clicks on cancel button
         Examples:
-            | ProjectName |
-            | Auto_01Desk |
+            | ProjectName | ShortDescription                                  |
+            | Auto_01Desk | Solarwinds] Restore the deleted article in system |
 
     Scenario Outline: Verify Manual Resolving of a ticket via Ticket Details page >  Recommended Resolutions
 
