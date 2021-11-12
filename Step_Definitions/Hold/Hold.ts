@@ -1,14 +1,7 @@
 import { When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
-import chai from "chai";
-import { DisplayConfiguration } from "../../PageObjects/DisplayConfiguration";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
-import { support } from '../../support/support';
-import { PolicyObjects } from '../../PageObjects/policyObjects';
-import { Tickets } from '../../PageObjects/Tickets';
 let objAlerts = new AlertsPage();
-let objsupport = new support();
-let objTicket = new Tickets()
 var EC = browser.ExpectedConditions;
 
 

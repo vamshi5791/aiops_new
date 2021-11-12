@@ -983,3 +983,16 @@ When('{string} clicks on project Configuration', async function (userRole) {
     throw "User is not able to click on Scheduler Configuration"
   }
 });
+
+Then('{string} clicks on Project Configuration Page', async function (ProjectStatus) {
+  try {
+    await objProjectConfi.txtProjectConfiguration.click();
+    await browser.sleep(2000);
+  }
+  catch (error) {
+    await console.log("Feature name : Project Installation for role " + userName + " and Scenario name : Project Installation")
+    await console.log(error)
+    throw "Once project is installed, Ready should be display as status opposite to project name in the list. But it is not displaying in the list"
+  }
+
+});

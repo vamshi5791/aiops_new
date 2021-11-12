@@ -1,4 +1,4 @@
-import { Given, When, Then, Before, After, Status } from "cucumber"
+import { Then } from "cucumber"
 import { browser, element, by, ExpectedConditions, WebElement, protractor } from "protractor"
 import chai from "chai";
 import { InfrastructurePage } from "../../PageObjects/InfrastructurePage";

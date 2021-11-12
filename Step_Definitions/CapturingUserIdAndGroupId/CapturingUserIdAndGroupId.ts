@@ -1,13 +1,10 @@
 import { Given, When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import { AlertsPage } from "../../PageObjects/AlertsPage";
-import { AlertConsoleTableData } from "../../PageObjects/AlertConsoleTableData";
 import { ApiKibana } from "../../KibanaApi/KibanaApi";
 import { ServiceNowAPI } from "../../ServiceNowAPI/servicenowAPI";
 
 var APIKibana = new ApiKibana;
-
-let objAlertsTableData = new AlertConsoleTableData();
 var EC = browser.ExpectedConditions;
 let objAlerts = new AlertsPage();
 var objServiceNowAPI = new ServiceNowAPI();
@@ -22,7 +19,6 @@ configure({
 });
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
-var testSource;
 var TicketNumber;
 
 
@@ -139,7 +135,6 @@ When('{string} verifies ticket is assigned to ITOPS Virtual Engineer {string} {s
 
 Given('{string} changes the assign to and assign to group from ITSM {string},{string}', async function (string, AssignTo, AssignToGroup) {
     var resultState = await objServiceNowAPI.apiServiceNow('INC0823356')
-    // await console.log(TicketNumber)
     var systemID = resultState.sys_id;
     await objServiceNowAPI.assignTo(systemID, AssignTo, AssignToGroup)
 });

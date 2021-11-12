@@ -1,13 +1,8 @@
 import { When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import chai from "chai";
-import { ServiceNowAPI } from '../../ServiceNowAPI/servicenowAPI';
-let objServiceNow = new ServiceNowAPI();
 var expect = chai.expect;
 var EC = browser.ExpectedConditions;
-let resultState;
-let systemID;
-let TicketNumber
 
 //For Log File
 import { configure, getLogger } from "log4js";

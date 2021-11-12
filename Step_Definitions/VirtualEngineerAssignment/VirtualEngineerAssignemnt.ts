@@ -8,9 +8,6 @@ var objServiceNowAPI = new ServiceNowAPI();
 
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
-let objInfrastructurePage = new InfrastructurePage();
-let objAlerts = new AlertsPage();
-
 
 Given('{string} renders the Service now API', async function (string) {
 

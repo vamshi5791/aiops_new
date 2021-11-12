@@ -1,21 +1,13 @@
 import { Given, When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import chai from "chai";
-import { LogIn } from '../../PageObjects/LogIn';
-import { Dashboard } from "../../PageObjects/Dashboard";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { ApiRabbitMQ } from "../../PageObjects/ApiRabbitMQ";
-import { ServiceNowAPI } from '../../ServiceNowAPI/servicenowAPI';
-let objServiceNow = new ServiceNowAPI();
-var PropertiesReader = require('properties-reader');
-var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
-let objLogIn = new LogIn();
 let objAlerts = new AlertsPage();
 let objApiRabbitMQ = new ApiRabbitMQ();
-let TicketNumber;
-var resultState;
+
 
 When('{string} verifies the severity strip color', async function (string) {
   try {

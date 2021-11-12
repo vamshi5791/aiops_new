@@ -38,17 +38,6 @@ Then('{string} clicks on the ticket number in ticket console', async function (s
     }
 });
 
-Then('{string} verifies the page must have {string}', async function (string, FieldName) {
-
-    try {
-        await objTicketsConsole.verifyTabs(FieldName)
-        logger.info("verifies the page must have " + FieldName)
-    } catch (error) {
-        logger.error("error message")
-        console.log(error)
-        throw FieldName + " doesn't exist"
-    }
-});
 Then('{string} verifies the page must have Conversation tab', async function (string) {
 
     try {

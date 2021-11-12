@@ -1,11 +1,9 @@
 import { When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
-import chai from "chai";
 import { ServiceNowAPI } from '../../ServiceNowAPI/servicenowAPI';
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 let objAlerts = new AlertsPage();
 let objServiceNow = new ServiceNowAPI();
-var expect = chai.expect;
 var EC = browser.ExpectedConditions;
 var resultState;
 var systemID;

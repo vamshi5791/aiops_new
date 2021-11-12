@@ -1,17 +1,12 @@
 import { Given, When, Then, Before, After, Status } from "cucumber"
 import { browser, element, by, ExpectedConditions, WebElement, protractor } from "protractor"
 import chai from "chai";
-import { InfrastructurePage } from "../../PageObjects/InfrastructurePage";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { ITOPS_APIs } from "../../ITOPS_Apis/ItopsApis";
-import { ApiKibana } from "../../KibanaApi/KibanaApi";
-import { throws } from "assert";
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
-let objInfrastructurePage = new InfrastructurePage();
 let objAlerts = new AlertsPage();
 var objITOps_API = new ITOPS_APIs();
-var objAPIKibana = new ApiKibana();
 var alertId
 
 

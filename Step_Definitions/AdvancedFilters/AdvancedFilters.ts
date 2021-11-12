@@ -352,7 +352,16 @@ When('{string} clicks on apply button', async function (userName) {
   }
 
 });
+When('{string} select the {string} cluster from the list', async function (userRole, cluster2) {
+  try {
+    await element(by.xpath('//span[text()="' + cluster2 + '"]')).click();
 
+  } catch (error) {
+
+    await console.log(error)
+    throw "user is unable to clicks checkbox from the list"
+  }
+});
 Then('{string} verifies the Data shown is solarwinds and ticketed alerts only {string}', async function (userName, Node) {
   try {
     var myElement = objAlerts.txtNoDataAvailable;

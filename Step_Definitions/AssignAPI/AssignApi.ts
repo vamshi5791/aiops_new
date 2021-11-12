@@ -2,9 +2,6 @@ import { Given, When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 
 import chai from "chai";
-
-var EC = browser.ExpectedConditions;
-var expect = chai.expect;
 //For Log File
 import { configure, getLogger } from "log4js";
 const logger = getLogger();

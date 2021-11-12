@@ -1,12 +1,10 @@
 import { When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import chai from "chai";
-import { LogIn } from '../../PageObjects/LogIn';
 import { ProjectListingPage } from '../../PageObjects/ProjectListing';
 
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
-let objLogIn = new LogIn();
 let objProjectListing = new ProjectListingPage();
 
 // Disable project

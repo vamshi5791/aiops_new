@@ -7,7 +7,6 @@ import { TicketingThreshold } from "../../PageObjects/TicketingThreshholdPageObj
 
 let objTicketingThreshold = new TicketingThreshold();
 
-var EC = browser.ExpectedConditions;
 var expect = chai.expect;
 
 When('{string} navigate to Ticketing Threshold', async function (userRole) {

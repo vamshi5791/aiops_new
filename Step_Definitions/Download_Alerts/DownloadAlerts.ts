@@ -1,8 +1,6 @@
 import { Given, When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import chai from "chai";
-import { LogIn } from '../../PageObjects/LogIn';
-import { Dashboard } from "../../PageObjects/Dashboard";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { AlertConsoleTableData } from "../../PageObjects/AlertConsoleTableData";
 
@@ -11,14 +9,10 @@ var moment = require("moment");
 var fse = require("fs-extra");
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
-let objLogIn = new LogIn();
 let objAlerts = new AlertsPage();
-let objectDashboard = new Dashboard();
-var downloadedAlertsDta;
 let tableData: any = [];
 When('{string} clicks on download icon', async function (string) {
   try {
-    // await browser.sleep(3000)
     await browser.wait(EC.elementToBeClickable(objAlerts.btnDownloadIcon), 30000);
     await browser.wait(EC.presenceOf(objAlerts.btnDownloadIcon), 30000);
     await objAlerts.clickOnDownloadIcon()

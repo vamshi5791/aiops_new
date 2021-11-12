@@ -1,7 +1,6 @@
 import { Given, When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import { AlertsPage } from "../../PageObjects/AlertsPage";
-import { AlertConsoleTableData } from "../../PageObjects/AlertConsoleTableData";
 var EC = browser.ExpectedConditions;
 let objAlerts = new AlertsPage();
 import { configure, getLogger } from "log4js";

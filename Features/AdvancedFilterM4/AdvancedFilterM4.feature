@@ -5,7 +5,6 @@ Feature:  Advanced Filters
     Feature Description: Admin navigates to alert page,
     verifies all the sections are present
 
-
     Scenario Outline: verify advance filter with cluster type
         When "ITOps_Admin" navigates to ITOps home page
         And "Admin" enters project name in project search field and click on enter
@@ -61,8 +60,26 @@ Feature:  Advanced Filters
 
         Examples:
             | UserName    | Password | ProjectName      | AdvancedFilters  | SourceAndResource    | StateAndStatus   | DataAndTime   | Severity | AssignedName     | FirstSeverity | SecondSeverity | AssignedGroup     | AllSeverity | AssignedName1    | AssignedGroup2            |
-            | Itops_admin | qa123    | Automation_IB_24 | Advanced Filters | Source and Resources | State and Status | Date and Time | Critical | Aneesh Jayarajan | Critical      | Ok             | UST - LCA Queries | Select All  | Aneesh Jayarajan | UST - Enterprise Security |
+            | Itops_admin | qa123    | Automation_IB_24 | Advanced Filters | Source and Resources | State and Status | Date and Time | Critical | Aneesh Jayarajan | Minor         | Ok             | UST - LCA Queries | Select All  | Aneesh Jayarajan | UST - Enterprise Security |
 
+
+    Scenario Outline: Verify advanced filter with single ,multiple and all sources
+
+        When "Admin" clicks on advanced filter icon
+        And "Admin" clicks on cluster type dropdown
+        And "Admin" select the "<cluster1>" from the list
+        And "Admin" clicks on apply button
+        And "Admin" verifies the status column status as "<sourcenameall>"
+
+        And "Admin" clicks on advanced filter icon
+        And "Admin" clicks on cluster type dropdown
+        And "Admin" select the "<cluster2>" cluster from the list
+        And "Admin" clicks on apply button
+        And "Admin" verifies the status column status as "<sourcenameall>"
+
+        Examples:
+            | cluster1 | cluster2     |
+            | Ticketed | Non Ticketed |
 # Scenario Outline: verify advance filter with severity
 
 #     When "Admin" clicks on Alerts page
@@ -163,9 +180,3 @@ Feature:  Advanced Filters
 #     Examples:
 #         | UserName    | Password | ProjectName      | AdvancedFilters  | SourceAndResource    | StateAndStatus   | DataAndTime   |
 #         | Itops_admin | qa123    | Automation_IB_24 | Advanced Filters | Source and Resources | State and Status | Date and Time |
-
-
-
-
-# ------------------------------------------------------------------
-

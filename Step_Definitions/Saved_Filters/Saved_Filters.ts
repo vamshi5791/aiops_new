@@ -233,6 +233,24 @@ Then('{string} verifies the status column status as {string}', async function (u
     throw "displaying wrong data1"
   }
 });
+When('{string} clicks on cluster type dropdown', async function (userRole) {
+  try {
+    await element(by.xpath('//label[text()="Cluster Type"]')).click();
+  } catch (error) {
+    await console.log(error)
+    throw "user is unable to clicks on source type dropdown"
+  }
+});
+When('{string} select the {string} from the list', async function (userRole, cluster1) {
+  try {
+    await element(by.xpath('//span[text()="' + cluster1 + '"]')).click();
+
+  } catch (error) {
+
+    await console.log(error)
+    throw "user is unable to clicks checkbox from the list"
+  }
+});
 When('{string} select all the checkbox from the list', async function (userRole) {
   try {
     await element(by.xpath('//span[text()="Select All"]')).click();

@@ -1,24 +1,11 @@
 import { Given, When, Then, Before, After, Status } from "cucumber"
 import { browser, element, by, ExpectedConditions, WebElement, protractor } from "protractor"
 import chai from "chai";
-import { LogIn } from "../../PageObjects/LogIn";
-import { PushingAlerts } from "../../PageObjects/RabbitMQ";
-import { AlertsPage } from "../../PageObjects/AlertsPage";
-import { ProjectListingPage } from "../../PageObjects/ProjectListing";
-import { SeverityMapping } from "../../PageObjects/Severity_Mapping";
 import { InfrastructurePage } from "../../PageObjects/InfrastructurePage";
-var PropertiesReader = require('properties-reader');
-var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var EC = browser.ExpectedConditions;
-var fs = require('fs'); 
+var fs = require('fs');
 var expect = chai.expect;
-let objLogIn = new LogIn();
-let objFilter = new PushingAlerts();
-let objAlerts = new AlertsPage();
-let objSeverityMapping = new SeverityMapping();
-let objProjectListing = new ProjectListingPage();
 let objInfrastructurePage = new InfrastructurePage();
-var Global_ProjectName;
 
 // Itops Admin searches the device with existing device name.
 
@@ -112,10 +99,10 @@ When('{string} clicks on add device option', async function (userRole) {
     throw "User is not able to click the add device option"
   }
 });
- 
+
 When('{string} enters resource name {string}', async function (userRole, ResourceName) {
   try {
-    await objInfrastructurePage.EnterResourceName(ResourceName+Math.floor(Math.random() * 100)+Math.floor(Math.random() * 100));
+    await objInfrastructurePage.EnterResourceName(ResourceName + Math.floor(Math.random() * 100) + Math.floor(Math.random() * 100));
   }
   catch (error) {
     await console.log("Feature name : Device Inventory " + userRole + " and Scenario name :enters resource name ")
@@ -282,30 +269,30 @@ When('{string} selects resource name column', async function (userRole) {
   await objInfrastructurePage.Site();
 });
 
-When('{string} clicks on close button', async function (userRole) {  
+When('{string} clicks on close button', async function (userRole) {
   try {
-  await objInfrastructurePage.Cancel();
-    
-    } catch (error) {
-      await console.log("Action Name : clicks on close button ")
-      await console.log(error)
-      throw "Admin unable to clicks on close button"
-    }
-  
-  
+    await objInfrastructurePage.Cancel();
+
+  } catch (error) {
+    await console.log("Action Name : clicks on close button ")
+    await console.log(error)
+    throw "Admin unable to clicks on close button"
+  }
+
+
 });
 
-Then('{string} verifies the Mac address column is present or not', async function (userRole) {  
+Then('{string} verifies the Mac address column is present or not', async function (userRole) {
   try {
-  await browser.wait(EC.presenceOf(objInfrastructurePage.txtMacAdress), 10000);
-    
-    } catch (error) {
-      await console.log("Action Name : verifies the Mac address column is present or not ")
-      await console.log(error)
-      throw "Admin unable to verifies the Mac address column is present or not"
-    }
-  
-  
+    await browser.wait(EC.presenceOf(objInfrastructurePage.txtMacAdress), 10000);
+
+  } catch (error) {
+    await console.log("Action Name : verifies the Mac address column is present or not ")
+    await console.log(error)
+    throw "Admin unable to verifies the Mac address column is present or not"
+  }
+
+
 });
 
 
@@ -314,9 +301,9 @@ Then('{string} verifies the Mac address column is present or not', async functio
 
 
 When('{string} clicks on fail over device drop down', async function (userRole) {
-  
+
   try {
-  
+
     var myElement = objInfrastructurePage.btnFailOverDevice;
     await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
     await objInfrastructurePage.FailOverDevice();
@@ -330,15 +317,15 @@ When('{string} clicks on fail over device drop down', async function (userRole) 
 
 });
 
-Then('{string} verifies the same resource name in the dropdown {string}', async function (userRole, ResourceName) {  
+Then('{string} verifies the same resource name in the dropdown {string}', async function (userRole, ResourceName) {
   try {
-  await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="'+ResourceName+'"]'))), 100000);
-    
-    } catch (error) {
-      await console.log("Action Name : verifies the same resource name in the dropdown ")
-      await console.log(error)
-      throw "Admin unable to verifies the same resource name in the dropdown"
-    }
-  
-  
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="' + ResourceName + '"]'))), 100000);
+
+  } catch (error) {
+    await console.log("Action Name : verifies the same resource name in the dropdown ")
+    await console.log(error)
+    throw "Admin unable to verifies the same resource name in the dropdown"
+  }
+
+
 });

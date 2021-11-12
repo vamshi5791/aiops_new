@@ -45,7 +45,6 @@ Then('{string} self assign should not be possible without group', async function
 Then('{string} clicks on assign to cancel popup button', async function (string) {
     try {
         await element(by.xpath("//span[@class='smo smo-close-black-alt']")).click()
-        logger.info("verifying ticket console")
     } catch (error) {
         logger.error("error message")
         console.log(error)
@@ -56,7 +55,6 @@ Then('{string} clicks on assign to cancel popup button', async function (string)
 When('{string} clicks on the group dropdown', async function (string) {
     try {
         await element(by.xpath("//span[contains(@class,'smo-dropdown-trigger-icon smo-clickable')]")).click()
-        logger.info("verifying ticket console")
     } catch (error) {
         logger.error("error message")
         console.log(error)
@@ -66,7 +64,6 @@ When('{string} clicks on the group dropdown', async function (string) {
 When('{string} clicks on the member dropdown', async function (string) {
     try {
         await element(by.xpath("//label[text()='Choose a Team member*']")).click()
-        logger.info("verifying ticket console")
     } catch (error) {
         logger.error("error message")
         console.log(error)
@@ -78,7 +75,6 @@ Then('{string} verifies Member drop should contains only users list who are havi
     try {
         await objTicketsConsole.verifyingSections(MemberOne)
         await objTicketsConsole.verifyingSections(MemberTwo)
-        logger.info("verifying ticket console")
     } catch (error) {
         logger.error("error message")
         console.log(error)
@@ -90,7 +86,6 @@ Then('{string} verifies group drop down should contains imported groups through 
     try {
         await objTicketsConsole.verifyingSections(GroupOne)
         await objTicketsConsole.verifyingSections(GroupTwo)
-        logger.info("verifying ticket console")
     } catch (error) {
         logger.error("error message")
         console.log(error)
