@@ -1,4 +1,4 @@
-@OrderOfSeverity  @ITOps_Admin
+@OrderOfSeverity  @ITOps_Admin @Regression
 
 Feature:  Order of severity
 

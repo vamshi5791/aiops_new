@@ -99,7 +99,7 @@ When('{string} verify the Business timeZone {string}', async function (string, B
     }
     catch (error) {
         await console.log(error)
-        throw "verify the Business timeZone"
+        throw "invalid Business timeZone"
     }
 });
 
