@@ -1,4 +1,4 @@
-@VirtualEngineerQueue
+@VirtualEngineerQueue @ITOps_Admin @Regression
 
 Feature: Virtual Engineer Queue
 
@@ -67,12 +67,12 @@ Feature: Virtual Engineer Queue
         Then Admin verifies cluster got closed
 
         Examples:
-            | ProjectName     | AlertName | ChannelName | channelJson1  | NodeName        | channelJson2  |
-            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel2 | GBSLBA-00A-FPA1 | QueueChannel3 |
+            | ProjectName     | ChannelName | channelJson1  | NodeName        | channelJson2  |
+            | Automation_01M3 | Solarwinds  | QueueChannel2 | GBSLBA-00A-FPA1 | QueueChannel3 |
 
 
 
-    Scenario Outline: Verify an autoclosure happens while in virtual engineer queue and in hold state, the 'hold' is overridden and ticket should be closed
+    Scenario Outline: Verify an autoclosure not happend while in virtual engineer queue and in hold state, he ticket will carry over the hold state and be moved to the configured default SNOW queue
 
         When "Admin" sends "2" new "Recovery" alerts with "<ProjectName>", "<ChannelName>", "<channelJson1>", "<NodeName>"
         And "admin" clicks on Alerts page
@@ -85,5 +85,5 @@ Feature: Virtual Engineer Queue
         Then Admin verifies cluster not closed
 
         Examples:
-            | ProjectName     | AlertName | ChannelName | channelJson1    | NodeName        | channelJson2    |
-            | Automation_01M3 | Alert1    | Solarwinds  | RecoveryPolicy2 | ZACTTV-03A-FPA2 | RecoveryPolicy3 |
+            | ProjectName     | ChannelName | channelJson1    | NodeName        | channelJson2    |
+            | Automation_01M3 | Solarwinds  | RecoveryPolicy2 | ZACTTV-03A-FPA2 | RecoveryPolicy3 |

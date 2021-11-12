@@ -5,6 +5,7 @@ import { InfrastructurePage } from "../../PageObjects/InfrastructurePage";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { ITOPS_APIs } from "../../ITOPS_Apis/ItopsApis";
 import { ApiKibana } from "../../KibanaApi/KibanaApi";
+import { throws } from "assert";
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
 let objInfrastructurePage = new InfrastructurePage();
@@ -18,42 +19,43 @@ When('{string} sends {string} new Http alerts with {string}, {string}, {string}'
     try {
         await objITOps_API.HTTPchannelAlerts(NodeName, AlertSeverity, channelJson);
     } catch (error) {
+        console.log(error)
+        throw "Unable to Send new Http alerts"
+    }
 
+});
+
+When('{string} sends {string} new Http alerts with out {string}, {string}, {string}', async function (string, string2, NodeName, AlertSeverity, channelJson) {
+    try {
+        await objITOps_API.HTTPchannelAlerts(NodeName, AlertSeverity, channelJson);
+    } catch (error) {
+        console.log(error)
+        throw "Unable to Send new Http alerts"
     }
 
 });
 
 When('Admin gets the alertId', async function () {
     try {
+        await browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='text-font-dark text-with-bold']"))), 20000);
         alertId = await element(by.xpath("//div[@class='text-font-dark text-with-bold']")).getText()
         console.log(alertId)
     } catch (error) {
-
+        console.log(error)
+        throw "Can't Find AlertId"
     }
 
 });
 
-// When('Admin verifies the bussiness time alert in elastic search index', async function () {
-//     try {
-
-//         var valueTrue = await objAPIKibana.businessTimeAlert('1519', alertId)
-//         await console.log(valueTrue)
-
-//     } catch (error) {
-
-//     }
-// });
-
-When('Admin verifies the bussiness time zone CST', async function () {
-});
-
-// When('{string} sends {string} new Http alerts without NodeName', async function (string, string2) {
-//     await objITOps_API.HTTPchannelAlerts(channelJson);
-// });
-
 Given('{string} selects bussiness timezone as {string}', async function (string, timeZone) {
-    await element(by.xpath("//div[text()='BUSINESS TIMEZONE']//following::span[contains(@class,'smo-dropdown-trigger-icon smo-clickable')]")).click()
-    await element(by.xpath("//span[text()='" + timeZone + "']")).click();
+    try {
+        await element(by.xpath("//div[text()='BUSINESS TIMEZONE']//following::span[contains(@class,'smo-dropdown-trigger-icon smo-clickable')]")).click()
+        await element(by.xpath("//span[text()='" + timeZone + "']")).click();
+    } catch (error) {
+        console.log(error)
+        throw "Invaild bussiness timezone Selected"
+    }
+
 });
 
 Given('{string} clicks on update and save', async function (string) {
@@ -63,7 +65,8 @@ Given('{string} clicks on update and save', async function (string) {
         await browser.wait(EC.visibilityOf(element(by.xpath("//span[text()='Confirm']"))), 50000);
         await element(by.xpath("//span[text()='Confirm']")).click()
     } catch (error) {
-
+        console.log(error)
+        throw "Unable to update and save Infrastructure"
     }
 });
 

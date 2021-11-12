@@ -21,10 +21,6 @@ export class Tickets {
     txtNewTabTicketDetailsPage = element(by.className("smo-state-default smo-tabview-selected smo-state-active smo-tabview-sm ng-star-inserted"))
     btnFilterByStatusTypeDropDown = element(by.xpath("//span[contains(@class,'smo-multiselect-trigger-icon smo-clickable')]"))
 
-
-
-
-
     btnFilterByStatusTypeDrp = element(by.xpath('//span[text()=" Filter by Status Type "]'))
 
     btnFilterByPriorityDropdown = element(by.xpath('//span[text()=" Filter by Priority "]'))
@@ -45,8 +41,6 @@ export class Tickets {
     async FilterByStatusTypeDrp() {
         await this.btnFilterByStatusTypeDrp.click()
     }
-
-
 
     async clickOnFilterByStatusTypeDropDown(Status) {
         await this.btnFilterByStatusTypeDropDown.click()

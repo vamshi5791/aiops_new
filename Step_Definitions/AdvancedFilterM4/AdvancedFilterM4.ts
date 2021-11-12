@@ -2,32 +2,21 @@ import { Given, When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { AlertConsoleTableData } from "../../PageObjects/AlertConsoleTableData";
-let objAlertsTableData = new AlertConsoleTableData();
 var EC = browser.ExpectedConditions;
 let objAlerts = new AlertsPage();
-
-import chai from "chai";
-
 import { configure, getLogger } from "log4js";
 const logger = getLogger();
 configure({
     appenders: { Error: { type: "file", filename: "logs/logs.log" } },
     categories: { default: { appenders: ["Error"], level: "all" } }
 });
-var EC = browser.ExpectedConditions;
-var expect = chai.expect;
-var testAlertState;
-var testSource;
-
 
 When('{string} selects cluster type dropdown', async function (userName) {
     try {
         await objAlerts.ClusterType();
-
         logger.info("selects cluster type dropdown")
     } catch (error) {
         logger.error("error message")
-        
         await console.log("Action Name : selects cluster type dropdown ")
         await console.log(error)
         throw "Admin unable to selects cluster type dropdown "

@@ -1,4 +1,4 @@
-@QuickFilterTicketConsole
+@QuickFilterTicketConsole @ITOps_Admin @Regression
 
 Feature:  Verify Quick filter on Ticket Console and order of ticket state
 
@@ -27,6 +27,6 @@ Feature:  Verify Quick filter on Ticket Console and order of ticket state
 
 
         Examples:
-            | source    | clustersize | timeInterval | SuccessMessage                | TicketNumber |
-            | Forescout | 3           | 60           | Threshold added successfully. | INC0822555   |
+            | TicketNumber |
+            | INC0822555   |
 

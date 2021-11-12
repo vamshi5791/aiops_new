@@ -5,14 +5,10 @@ import { LogIn } from "../../PageObjects/LogIn";
 import { PushingAlerts } from "../../PageObjects/RabbitMQ";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { ProjectListingPage } from "../../PageObjects/ProjectListing";
-var PropertiesReader = require('properties-reader');
-var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 import { ApiRabbitMQ } from "../../PageObjects/ApiRabbitMQ";
 var objApiRabbitMQ = new ApiRabbitMQ()
-// import { ServiceNowAPI } from '../../ServiceNowAPI/servicenowAPI';
 import { ServiceNowAPI } from "../../ServiceNowAPI/servicenowAPI";
 var objServiceNowAPI = new ServiceNowAPI();
-// let objServiceNow = new ServiceNowAPI();
 
 
 var EC = browser.ExpectedConditions;

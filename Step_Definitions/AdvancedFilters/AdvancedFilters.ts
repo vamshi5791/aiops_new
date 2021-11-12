@@ -341,6 +341,12 @@ When('{string} clicks on apply button', async function (userName) {
     await objAlerts.Apply();
   } catch (error) {
     await console.log("Feature name : Advanced Filters " + userName + " and Scenario name :  Apply the saved filter")
+    var myElement = objAlerts.btnCancel;
+    await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
+    await browser.wait(EC.visibilityOf(objAlerts.btnSearch), 10000);
+    await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
+    await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
+    await element(by.xpath('//smo-button[@label="Cancel"]')).click();
     await console.log(error)
     throw "User is not able to click on apply button"
   }

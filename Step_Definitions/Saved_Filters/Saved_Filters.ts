@@ -14,7 +14,7 @@ var expect = chai.expect;
 var TestProjectName;
 let ProjectListing = new ProjectListingPage();
 let objAlerts = new AlertsPage();
-  
+
 When('{string} enters project name in project search field', async function (userRole) {
   await ProjectListing.Project_search(ProjectName_Batch_1);
   await browser.sleep(5000)
@@ -117,7 +117,51 @@ When('{string} enters source as {string} and alert state as {string}', async fun
     throw "User is not able to enter source and alert state"
   }
 });
+Then('{string} selects the severity level as {string}', async function (userRole, Severity) {
+  try {
+    await element(by.xpath('//span[text()="' + Severity + '"]')).click();
+  } catch (error) {
+    await console.log("Feature name : Saved Filters " + userRole + " and Action  : Selecting The Severity Level")
+    await console.log(error);
+    throw "Unable to select the severity level";
+  }
 
+});
+
+Then('{string} assigns to selected Name as {string}', async function (userRole, AssignedName) {
+  try {
+    await element(by.xpath('//label[text()="Assigned To"]')).click();
+    await element(by.xpath('//span[text()="' + AssignedName + '"]')).click();
+
+  } catch (error) {
+    await console.log("Feature name : Saved Filters " + userRole + " and Action  : Assigning to the selected Name")
+    await console.log(error);
+    throw "Unable to Assign the selected Name";
+  }
+});
+
+Then('{string} clicks on severity dropdown', async function (userRole) {
+  try {
+    await browser.sleep(5000);
+    await element(by.xpath('//label[text()="Alert Severity"]//following::span[@class="smo-multiselect-trigger-icon smo-clickable smo smo-expand-more-alt chevron-icon"]')).click();
+  } catch (error) {
+    await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on Severity DropDown")
+    await console.log(error);
+    throw "Unable to clicks on the severity DropDown";
+  }
+});
+
+
+Then('{string} assigns to selected group as {string}', async function (userRole, AssignedGroup) {
+  try {
+    await element(by.xpath('//label[text()="Assigned Group"]')).click();
+    await element(by.xpath('//span[text()="' + AssignedGroup + '"]')).click();
+  } catch (error) {
+    await console.log("Feature name : Saved Filters " + userRole + " and Action  : Assigning to the Selected Group")
+    await console.log(error);
+    throw "Unable to Assign the Selected Group";
+  }
+});
 When('{string} enters alert state as {string}', async function (userRole, AlertState) {
   try {
     await browser.sleep(5000);
@@ -152,8 +196,52 @@ When('{string} clicks on Save filter button', async function (userRole) {
   }
 });
 
+When('{string} clicks on source type dropdown', async function (userRole) {
+  try {
+    await element(by.xpath('//label[text()="Source"]')).click();
+  } catch (error) {
+    await console.log(error)
+    throw "user is unable to clicks on source type dropdown"
+  }
+});
+When('{string} select the {string} checkbox from the list', async function (userRole, sourcename) {
+  try {
+    await element(by.xpath('//span[text()="' + sourcename + '"]')).click();
+    await browser.sleep(3000)
+  } catch (error) {
 
+    await console.log(error)
+    throw "user is unable to clicks checkbox from the list"
+  }
+});
+Then('{string} verifies the status column status as {string}', async function (userName, state1) {
 
+  try {
+    var myElement = element(by.xpath('//span[text()="No data available"]'));
+    myElement.isPresent().then(async function (elm) {
+      if (elm) {
+        await console.log('No data Available');
+      } else {
+        var stateText = await element(by.xpath("//label[contains(@class,'smo-inputtext smo-placeholder dropdown-label-ms smo-dropdown-label ng-star-inserted')]")).getText()
+        await expect(stateText).equal(state1);
+      }
+    });
+
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userName + " and Scenario name : apply the saved filter")
+    await console.log(error)
+    throw "displaying wrong data1"
+  }
+});
+When('{string} select all the checkbox from the list', async function (userRole) {
+  try {
+    await element(by.xpath('//span[text()="Select All"]')).click();
+  } catch (error) {
+
+    await console.log(error)
+    throw "user is unable to clicks on checkbox from the list"
+  }
+});
 When('{string} enters filter name as {string} and Description as {string}', async function (userRole, FilterName, FilterDescription) {
   try {
     await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(async function () {

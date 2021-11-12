@@ -146,7 +146,7 @@ Feature:  Dashboard
 
           When "Admin" navigate to dashboard section
           And "admin" moves to the dashboard frame
-          And "admin" gets device name from the widget
+          And "admin" gets device name from the widget for project id as "<projectId>"
           Then "Admin" clicks on a device name
           And "Admin" verifies Title of popup should be "Alert details of <Device name>"
           And "Admin" verifies left side should include label "MTBF for Top Alerts"
@@ -155,5 +155,5 @@ Feature:  Dashboard
           And "admin" verifies the MTBF calculation result
           When "Admin" comes out of the dashboard frame
           Examples:
-               | Severity | source     |
-               | Critical | Solarwinds |
+               | Severity | source     | projectId |
+               | Critical | Solarwinds | 1519      |

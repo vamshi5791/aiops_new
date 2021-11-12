@@ -79,35 +79,35 @@ export let config: Config = {
 
     //MS5
 
-    '../Features/LogIn/LogIn_Admin.feature',
-    '../Features/TeamsExternalTeams/TeamsExternalTeams.feature',
-    '../Features/SNOWDescription/SNOWDescription.feature',
-    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesAdmin.feature',
-    '../Features/RecommendedResolutionsAutomatedOrManual/RecommendedResolutionsAutomatedOrManual.feature',
-    '../Features/DefaultTemplateForTicketCreateAdmin/DefaultTemplateForTicketCreateAdmin.feature',
-    '../Features/DefaultTemplateForTicketReassignment/DefaultTemplateForTicketReassignment.feature',
+    // '../Features/LogIn/LogIn_Admin.feature',
+    // '../Features/TeamsExternalTeams/TeamsExternalTeams.feature',
+    // '../Features/SNOWDescription/SNOWDescription.feature',
+    // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesAdmin.feature',
+    // '../Features/RecommendedResolutionsAutomatedOrManual/RecommendedResolutionsAutomatedOrManual.feature',
+    // '../Features/DefaultTemplateForTicketCreateAdmin/DefaultTemplateForTicketCreateAdmin.feature',
+    // '../Features/DefaultTemplateForTicketReassignment/DefaultTemplateForTicketReassignment.feature',
 
-    '../Features/AutocloseAndFlap/AutocloseAndFlap.feature',
-    '../Features/OrderOfSeverity/OrderOfSeverity.feature',
-    '../Features/IndicatorForFlappingSurgeIncompleteCorrelationError/IndicatorForFlappingSurgeIncompleteCorrelationError.feature',
-    '../Features/LoanDepot/LoanDepot.feature',
+    // '../Features/AutocloseAndFlap/AutocloseAndFlap.feature',
+    // '../Features/OrderOfSeverity/OrderOfSeverity.feature',
+    // '../Features/IndicatorForFlappingSurgeIncompleteCorrelationError/IndicatorForFlappingSurgeIncompleteCorrelationError.feature',
+    // '../Features/LoanDepot/LoanDepot.feature',
 
-    '../Features/BusinessTimezoneInAllRules/BusinessTimezoneInAllRules.feature',//passed
-    '../Features/CustomFieldsInAlertIndex/CustomFieldsInAlertIndex.feature',//passed
-    '../Features/TicketTemplateM5/TicketTemplate.feature',//passed
-    '../Features/AdvancedFilterM5/AdvancedFilter.feature',//passed
-    '../Features/ITSMConfigurations/ITSMConfigurations.feature',//passed
+    // '../Features/BusinessTimezoneInAllRules/BusinessTimezoneInAllRules.feature',//passed
+    // '../Features/CustomFieldsInAlertIndex/CustomFieldsInAlertIndex.feature',//passed
+    // '../Features/TicketTemplateM5/TicketTemplate.feature',//passed
+    // '../Features/AdvancedFilterM5/AdvancedFilter.feature',//passed
+    // '../Features/ITSMConfigurations/ITSMConfigurations.feature',//passed
 
-    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesSupportEngineer.feature',
+    // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesSupportEngineer.feature',
 
-    '../Features/LogIn/LogIn_IE.feature',
-    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesIE.feature',
-    '../Features/Logout/LogOut.feature',
+    // '../Features/LogIn/LogIn_IE.feature',
+    // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesIE.feature',
+    // '../Features/Logout/LogOut.feature',
 
     '../Features/LogIn/LogIn_ITOps_Visitor.feature',
     '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesVisitor.feature',
     '../Features/TeamsExternalTeams/TeamsExternalTeamsVisitor.feature',
-    '../Features/Logout/LogOut.feature',
+    // '../Features/Logout/LogOut.feature',
 
   ],
   cucumberOpts: {

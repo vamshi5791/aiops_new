@@ -2,7 +2,6 @@ import { Given, When, Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { AlertConsoleTableData } from "../../PageObjects/AlertConsoleTableData";
-let objAlertsTableData = new AlertConsoleTableData();
 var EC = browser.ExpectedConditions;
 let objAlerts = new AlertsPage();
 
@@ -15,9 +14,7 @@ configure({
     categories: { default: { appenders: ["Error"], level: "all" } }
 });
 var EC = browser.ExpectedConditions;
-var expect = chai.expect;
-var testAlertState;
-var testSource;
+
 
 
 

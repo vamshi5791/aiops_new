@@ -13,19 +13,17 @@ var expect = chai.expect;
 let objAlerts = new AlertsPage();
 let objectDashboard = new Dashboard();
 let objApiRabbitMQ = new ApiRabbitMQ()
-var TestCount;
 var MTBFdata;
 var alertData;
-var TotalCount = 1;
 
 
 //ITOPS Dashboard - verify Top 10 Alerts widget
 
 When('{string} navigate to dashboard section', async function (string) {
   try {
-    // await browser.sleep(15000)
     await browser.wait(EC.visibilityOf(objectDashboard.btnDashboard), 10000);
     await browser.wait(EC.elementToBeClickable(objectDashboard.btnDashboard), 10000);
+    await browser.wait(EC.presenceOf(objectDashboard.btnDashboard), 10000);
     await objectDashboard.clickOnDashboard()
   } catch (error) {
     console.log("Navigating to dashboard section")
@@ -452,10 +450,10 @@ Then('{string} verifies column headings should be {string}, {string}, {string}',
     throw "Source device mapping is not available in the dashboard"
   }
 });
-When('{string} gets device name from the widget', async function (string) {
+When('{string} gets device name from the widget for project id as {string}', async function (string, projectId) {
   try {
     await objectDashboard.btnHostName.getText().then(async function (deviceName) {
-      MTBFdata = await objectDashboard.deviceAvailability("1519", deviceName);
+      MTBFdata = await objectDashboard.deviceAvailability(projectId, deviceName);
     });
   } catch (error) {
     await browser.switchTo().defaultContent();

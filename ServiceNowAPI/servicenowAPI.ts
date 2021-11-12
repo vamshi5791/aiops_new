@@ -69,7 +69,7 @@ export class ServiceNowAPI {
                 console.log(error);
             });
     }
-    async updateTicketToResolved(sys_id: string, State: string, category: string, subCategory: string, closeCode: string, closeNote: string,shortDesc:string="IB testing") {
+    async updateTicketToResolved(sys_id: string, State: string, category: string, subCategory: string, closeCode: string, closeNote: string, shortDesc: string = "IB testing") {
         var bodyString = JSON.parse(emptyString);
         bodyString.incident_state = state_value[State];
         bodyString.category = category;
@@ -115,8 +115,7 @@ export class ServiceNowAPI {
             });
         return new_inc_number;
     }
-    // For Assignment Group Get Method 
-    async assignmentGroup(assGroupId: string) {
+    async assignmentGroup(assGroupId: string, methodId: string = "verify") {
         const m_url = ServiceNowURL + '/api/now/v1/table/sys_user_group/' + assGroupId;
         await fetch(m_url, {
             method: "GET",
@@ -127,13 +126,24 @@ export class ServiceNowAPI {
         })
             .then(response => response.json())
             .then(resp => {
-                objectString.assignment_group_name = resp.result.name;
+                if (methodId === "verify") {
+                    objectString.assignment_group_name = resp.result.name;
+                } else {
+                    objectString = JSON.parse(emptyString);
+                    objectString.assignment_group_name = resp.result.name;
+                    customJson = objectString;
+                }
             });
+        if (methodId === "verify") {
+        } else {
+            return customJson;
+        }
     }
 
     //For Assigned To Get Method
+    // assignedToUserId
 
-    async assignedTo(assignToId: string) {
+    async assignedTo(assignToId: string, methodId: string = "verify") {
         const asgTo_url = ServiceNowURL + '/api/now/v1/table/sys_user/' + assignToId;
         await fetch(asgTo_url, {
             method: "GET",
@@ -144,10 +154,43 @@ export class ServiceNowAPI {
         })
             .then(response => response.json())
             .then(resp => {
-                objectString.assigned_to = resp.result.name;
+                if (methodId === "verify") {
+                    objectString.assigned_to = resp.result.name;
+                } else {
+                    objectString = JSON.parse(emptyString);
+                    objectString.assigned_to = resp.result.name;
+                    customJson = objectString;
+                }
             })
+        if (methodId === "verify") {
+        } else {
+            return customJson;
 
+        }
     }
+    async assignTo(sys_id: string, AssignToName: string, AssignToGroup: string) {
+        var bodyString = JSON.parse(emptyString);
+        bodyString.assignment_group = AssignToGroup;
+        bodyString.assigned_to = AssignToName;
+        const data_body = JSON.stringify(bodyString);
+        let this_url = ServiceNowURL + '/api/now/v1/table/incident/' + sys_id + "?sysparm_exclude_ref_link=true"
+        await fetch(this_url, {
+            method: "PUT",
+            body: data_body,
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "Authorization": `Basic ${base64.encode(`${ServiceNowUserName}:${ServiceNowPassword}`)}`
+            }
+        }).then(response => response.json())
+            .then(resp => {
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+
+
 
     //updating urgency in service now
 

@@ -1,6 +1,6 @@
 
-import { Given, When, Then, Before, After, Status } from "cucumber"
-import { browser, element, by, ExpectedConditions, WebElement, protractor } from "protractor"
+import { When, Then } from "cucumber"
+import { browser, element, by, protractor } from "protractor"
 import chai from "chai";
 import { Tickets } from "../../PageObjects/Tickets";
 import { ServiceNowAPI } from '../../ServiceNowAPI/servicenowAPI';
@@ -13,9 +13,7 @@ var ticketNumber;
 var systemID;
 let objTicketsConsole = new Tickets();
 let ticketStatus;
-var serviceNowTicketNumber;
 var ticketCommentsInServiceNow;
-var TicketNumberFromAlertConsole;
 const logger = getLogger();
 configure({
     appenders: { Error: { type: "file", filename: "logs/logs.log" } },
@@ -71,7 +69,7 @@ Then('{string} verifies the ticket id', async function (string) {
     } catch (error) {
         logger.error("error message")
         console.log(error)
-        throw "verifying the ticket id"
+        throw "ticket id not available in ticket details page"
     }
 });
 Then('{string} verifies the close icon after ticket id', async function (string) {
@@ -118,14 +116,14 @@ When('{string} get the ticket number from ticket console', async function (strin
 });
 When('{string} updates the ticket in service now state as {string}, category as {string}, subcategory as {string}, close code as {string}, Enter close note as {string} and update {string}', async function (string, state, category, subCategory, closeCode, closeNote, ShortDescription) {
     try {
-      resultState = await objServiceNow.apiServiceNow(ticketNumber)
-      systemID = resultState.sys_id;
-      await objServiceNow.updateTicketToResolved(systemID, state, category, subCategory, closeCode, closeNote, ShortDescription)
+        resultState = await objServiceNow.apiServiceNow(ticketNumber)
+        systemID = resultState.sys_id;
+        await objServiceNow.updateTicketToResolved(systemID, state, category, subCategory, closeCode, closeNote, ShortDescription)
     } catch (error) {
-      await console.log(error)
-      throw "unable to change ticket state in service now"
+        await console.log(error)
+        throw "unable to change ticket state in service now"
     }
-  });
+});
 
 Then('{string} update the impact status to {string} and urgency status to {string} in service now', async function (string, urgencyStatus, impactStatus) {
     try {
@@ -253,8 +251,6 @@ When('{string} gives right click on the ticket id and click on the Open link in 
 
 When('{string} verifies comments in ITSM updated by {string} for {string}', async function (string, UpdatedBy, TicketNumber) {
     try {
-        // await console.log("===============")
-        // await console.log("===============" + ticketNumber)
         resultState = await objServiceNow.apiServiceNow(TicketNumber)
         systemID = resultState.sys_id;
         var datavaar = await objServiceNow.ActivitiesLog(systemID)
@@ -264,21 +260,19 @@ When('{string} verifies comments in ITSM updated by {string} for {string}', asyn
     } catch (error) {
         logger.error("error message")
         console.log(error)
-        throw ""
+        throw "comments updated by " + UpdatedBy + " not updated in service now"
     }
 })
 When('{string} verifies comments in ITSM assigned by {string} for {string}', async function (string, UpdatedBy, TicketNumber) {
     try {
-        // await console.log("===============" + ticketNumber)
         resultState = await objServiceNow.apiServiceNow(TicketNumber)
         systemID = resultState.sys_id;
         var activeLogData = await objServiceNow.ActivitiesLog(systemID)
         await expect(activeLogData.new).to.include("Updated By: " + UpdatedBy + "\n\nAssigned")
-        logger.info("verifying ticket console")
     } catch (error) {
         logger.error("error message")
         console.log(error)
-        throw ""
+        throw "comments updated by " + UpdatedBy + " not updated in service now"
     }
 })
 When('{string} verifies comments in ITSM resolved by {string} for {string}', async function (string, UpdatedBy, TicketNumber) {
@@ -288,11 +282,10 @@ When('{string} verifies comments in ITSM resolved by {string} for {string}', asy
         var datavaar = await objServiceNow.ActivitiesLog(systemID)
         await console.log(datavaar)
         await expect(datavaar.new).to.include("Updated By: " + UpdatedBy + "\n\nClosed")
-        logger.info("verifying ticket console")
     } catch (error) {
         logger.error("error message")
         console.log(error)
-        throw ""
+        throw "comments updated by " + UpdatedBy + " not updated in service now"
     }
 })
 When('{string} verifies search box is available to perform search operation', async function (string) {
@@ -360,17 +353,4 @@ When('{string} ticket {string} in {string} by changing state as {string}, catego
         logger.error('');
     }
 });
-
-// Then('{string} gets the ticket number from alert console', async function (string) {
-//     try {
-//       await objAlerts.txtTicket.getText().then(async function (TxtTicketNumber) {
-//         await console.log(TxtTicketNumber);
-//         TicketNumberFromAlertConsole = TxtTicketNumber;
-//       });
-//       await objAlerts.Alert_Search(TicketNumberFromAlertConsole);
-//     }
-//     catch (error) {
-//       throw "User unable to get the ticket number"
-//     }
-//   });
 

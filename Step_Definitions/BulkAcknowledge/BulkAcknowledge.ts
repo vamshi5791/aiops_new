@@ -1,14 +1,9 @@
 import { Given, When, Then, Before, After, Status } from "cucumber"
 import { browser, element, by, ExpectedConditions, WebElement, protractor } from "protractor"
-import chai from "chai";
-import { InfrastructurePage } from "../../PageObjects/InfrastructurePage";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 
 var EC = browser.ExpectedConditions;
-var expect = chai.expect;
-let objInfrastructurePage = new InfrastructurePage();
 let objAlerts = new AlertsPage();
-
 
 Given('User clicks on alert cluster', async function () {
   try {
