@@ -238,13 +238,11 @@ When('{string} gives right click on the ticket id and click on the Open link in 
     }
 })
 
-When('{string} verifies comments in ITSM updated by {string} for {string}', async function (string, UpdatedBy, TicketNumber) {
+When('{string} verifies comments in ITSM updated by {string} for TicketNumber', async function (string, UpdatedBy) {
     try {
-        resultState = await objServiceNow.apiServiceNow(TicketNumber)
-        systemID = resultState.sys_id;
-        var datavaar = await objServiceNow.ActivitiesLog(systemID)
-        await console.log(datavaar)
-        await expect(datavaar.new).to.include("Hold By: " + UpdatedBy)
+        await browser.wait(EC.visibilityOf(element(by.className("font-text ng-star-inserted"))), 60000);
+        var holdBy = await element(by.xpath("//span[@class='font-text ng-star-inserted']")).getText();
+        await expect(holdBy).to.include("Hold By: " + UpdatedBy)
         logger.info("verifying ticket console")
     } catch (error) {
         logger.error("error message")

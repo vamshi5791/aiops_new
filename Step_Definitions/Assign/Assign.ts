@@ -14,6 +14,7 @@ var EC = browser.ExpectedConditions;
 var TestTeamMember;
 var resultState;
 let TicketNumber;
+var systemID;
 When('{string} clicks on ticket number {string} from state column of a ticket', async function (UserRole, TicketNumber) {
   try {
     await objAlerts.clickOnTicketNumber(TicketNumber)
@@ -466,5 +467,28 @@ Then('{string} verifies Short description of the ticket should be as defined in 
     throw "short description of the ticket is not same as defined in template"
   }
 });
+
+Then('{string} enters the ticket number in search box', async function (string) {
+  try {
+    await browser.wait(EC.visibilityOf(element(by.className('filter smo smo-filter'))), 10000);
+    await objAlerts.Alert_Search(TicketNumber);
+  } catch (error) {
+    console.log(error)
+    throw "Admin Unable to enter ticket number in search box"
+  }
+})
+
+When('{string} ticket number in {string} by changing state as {string}, category as {string}, subcategory as {string}, close code as {string}, Enter close note as {string}', async function (string, string2, state, category, subcategory, closeCode, closeNote) {
+  try {
+    await console.log(TicketNumber, state, category, subcategory, closeCode, closeNote)
+    resultState = await objServiceNow.apiServiceNow(TicketNumber)
+    systemID = resultState.sys_id;
+    await objServiceNow.updateTicketToResolved(systemID, state, category, subcategory, closeCode, closeNote)
+  } catch (error) {
+    console.log(error)
+    throw "Admin Unable to Change Status to Resolve in ServiceNow"
+  }
+});
+
 
 

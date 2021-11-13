@@ -545,3 +545,18 @@ Then('{string} verifies if any {string} message is displayed', async function (u
     throw "Field changes are not saved successfully"
   }
 });
+
+// custom fields in alert index
+
+Then('{string} Verifies CustomIndex alert has data {string} for it', async function (string, CustomData) {
+  try {
+    var customData = await element(by.xpath(" //div[normalize-space()='High']")).getText();
+    await expect(customData).to.include(CustomData)
+    await console.log(customData);
+  } catch (error) {
+    console.log(error)
+    throw "Admin Unable to verifies CustomIndex alert"
+  }
+
+});
+

@@ -35,15 +35,13 @@ Feature: Parallel Actions On Tickets
         And "Admin" gets the ticket number from alert console
         And "admin" enters the ticket number in search box
         When "Closing" ticket number in "service now" by changing state as "Resolved", category as "Skype for Business", subcategory as "Conference Call", close code as "Monitoring Incident", Enter close note as "USTIB"
-        And "admin" clicks on Alerts page
-        And "admin" enters the ticket number in search box
         And Admin click on state
         And "admin" clicks on "Hold" button
         Then "Admin" verifies if "<ErrorMessage>" message is displayed
         Examples:
-            | ProjectName     | IncidentId | ErrorMessage          |
-            | Automation_01M3 | INC0825323 | Ticket(s) Hold failed |
-
+            | ErrorMessage          |
+            | Ticket(s) Hold failed |
+    
     Scenario Outline: Verify Closing ticket in Service now and do hold from  ticket console fastly within seconds
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter

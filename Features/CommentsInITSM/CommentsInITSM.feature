@@ -26,17 +26,25 @@ Feature: Comments in ITSM
             | Group            | SuccessMessage                | TeamMember      | TicketNumber |
             | Visibility - UST | Tickets assigned successfully | Amjathsha Abdul | INC0825300   |
 
-    Scenario Outline: Verify comments in ITSM when user performed hold
+   Scenario Outline: Verify comments in ITSM when user performed hold
 
+        When "ITOps_Admin" navigates to ITOps home page
+        And "Admin" enters project name in project search field and click on enter
+        And "admin" clicks on project name
+        When "admin" navigates to Tickets page
+
+        When "Admin" clicks on quick filter
+        And "admin" selects filter by status type as "Assigned"
+        When "Admin" get the ticket number from ticket console
         And Admin click on state in ticket console
         And "admin" clicks on "Hold" button
         Then "Admin" verifies if "<SuccessMessage>" message is displayed
-
-        Then "admin" verifies comments in ITSM updated by "itops_admin" for "<TicketNumber>"
+        When "Admin" clicks on the ticket number in ticket console
+        Then "Admin" verifies comments in ITSM updated by "itops_admin" for TicketNumber
 
         Examples:
-            | NodeName             | SuccessMessage                | TicketNumber |
-            | IAMLWLCPRDDC1-LD6-RP | Ticket(s) holded successfully | INC0826605   |
+            | SuccessMessage                |
+            | Ticket(s) holded successfully |
 
     Scenario Outline: Verify comments in ITSM when user performed resolve
 

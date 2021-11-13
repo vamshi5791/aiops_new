@@ -547,5 +547,21 @@
         "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
         "Resource Type": "Console",
         "Alert time": ""
+    },
+    "CustomfieldsChannel": {
+        "Alert Name": "BSNL11",
+        "Alert Message": "Stock Support has Ended abnormally",
+        "Alert Severity": "Warning",
+        "Service Name": "fail",
+        "Node Name": "IAMNSBC1",
+        "NodeIP Address": "12.44.55.11",
+        "Object Type": "Access Point",
+        "ObjectName": "ObjName",
+        "ObjectStatus": "down",
+        "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+        "Resource Type": "Console",
+        "Site": "New York",
+        "Alert time": "",
+        "Alert priority": "High"
     }
 }
