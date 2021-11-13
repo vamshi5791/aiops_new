@@ -12,6 +12,7 @@ Feature: Alerts moved to ticketed
         When "Admin" verifies newly added field is available in the display configuration
         When "Admin" navigates to Alerts section to verify the console
         Then "Admin" verifies the "<IndexName>" in alert console
+        Then "Admin"
 
         Examples:
             | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | PolicyName | PolicyPrecedence | policyAtttribute    | PolicyValue | PolicyCreatedSuccessMessage  | IndexName       |
