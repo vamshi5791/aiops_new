@@ -48,6 +48,9 @@ export let config: Config = {
     '../Features/LogIn/LogIn_ITOps_Visitor.feature',
     '../Features/TicketListing/TicketListing_Visitor.feature',
     '../Features/TicketDetailsPage/TicketDetailsPage_visitor.feature',
+    
+    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesVisitor.feature',
+    '../Features/TeamsExternalTeams/TeamsExternalTeamsVisitor.feature',
     '../Features/Logout/LogOut.feature',
     // // //Engineer
 
@@ -55,6 +58,9 @@ export let config: Config = {
     '../Features/LogIn/LogIn_IE.feature',
     '../Features/TicketListing/TicketListing_IE.feature',
     '../Features/TicketDetailsPage/TicketDetailsPage_IE.feature',
+
+    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesIE.feature',
+    
     '../Features/Logout/LogOut.feature',
     // //Admin
     '../Features/LogIn/LogIn_Admin.feature',
@@ -99,17 +105,8 @@ export let config: Config = {
     '../Features/ITSMConfigurations/ITSMConfigurations.feature',//passed
 
     '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesSupportEngineer.feature',
-    '../Features/Logout/LogOut.feature',
-    // IE
-    '../Features/LogIn/LogIn_IE.feature',
-    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesIE.feature',
-    '../Features/Logout/LogOut.feature',
 
-    '../Features/LogIn/LogIn_ITOps_Visitor.feature',
-    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesVisitor.feature',
-    '../Features/TeamsExternalTeams/TeamsExternalTeamsVisitor.feature',
-    // '../Features/Logout/LogOut.feature',
-
+   
   ],
   cucumberOpts: {
 

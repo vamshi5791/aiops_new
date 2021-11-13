@@ -1,4 +1,4 @@
-@SmartDeskRolesPrivileges @Regression
+@SmartDeskRolesPrivileges @RecommendedResolutionsAutomatedorManual @Regression  @ITOps_Milestone_4 @ITOps_Admin
 
 Feature: Smart Desk - Roles/Privileges
 

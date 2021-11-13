@@ -335,7 +335,7 @@ Given('{string} verifies ticket is assigned to {string}', async function (string
 
 });
 
-Given('{string} verifies new ticket is assigned to group {string}', async function (string, AssignmentGroupId) {
+Given('{string} verifies new ticket is assigned to group in ServiceNow {string}', async function (string, AssignmentGroupId) {
   try {
 
     var AGID = await objServiceNowAPI.apiServiceNow(TicketNumberNew);

@@ -485,6 +485,7 @@ When('{string} ticket number in {string} by changing state as {string}, category
     systemID = resultState.sys_id;
     await objServiceNow.updateTicketToResolved(systemID, state, category, subcategory, closeCode, closeNote)
   } catch (error) {
+    console.log('Admin Unable to Change Status to Resolve in ServiceNow');
     console.log(error)
     throw "Admin Unable to Change Status to Resolve in ServiceNow"
   }

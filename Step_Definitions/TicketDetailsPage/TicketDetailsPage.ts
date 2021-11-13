@@ -335,9 +335,11 @@ When('{string} ticket {string} in {string} by changing state as {string}, catego
         resultState = await objServiceNow.apiServiceNow(ticketNumber)
         systemID = resultState.sys_id;
         await objServiceNow.updateTicketToResolved(systemID, state, category, subCategory, closeCode, closeNote)
-        logger.info('');
+        logger.info('Admin Update State AS Resolved and Check');
     } catch (error) {
-        logger.error('');
+        console.log(error)
+        logger.error('Admin Unable to access Service Now');
+        throw "Admin Unable to access Service Now"
     }
 });
 

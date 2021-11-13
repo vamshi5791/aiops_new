@@ -8,24 +8,27 @@ var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./PropertyFile/ConfigParam.properties');
 var token_URL = properties.get("main." + globalThis.environment + "_token_URL");
 var alertMapping_url = properties.get("main." + globalThis.environment + "_alertMapping");
-
+var Offline_Token = properties.get("main." + globalThis.environment + "_Offline_Token");
+var IHubComponent = properties.get("main." + globalThis.environment + "_IHubComponent");
+var USER_CustomReassignment = properties.get("main." + globalThis.environment + "_USER_CustomReassignment");
 var TemplateId;
 var accessToken;
 var QA_AccessTokenBody;
 export class ITOPS_APIs {
-    async HTTPchannelAlerts(nodeName: string = "", AlertSeverity: string = "Information",channelJson:string) {
+    async HTTPchannelAlerts(nodeName: string = "", AlertSeverity: string = "Information", channelJson: string) {
         var HttpAlertJson = JSON.parse(fs.readFileSync('JSONTestData/QueueChannel.json', 'utf-8'));
         var getHttpAlert = HttpAlertJson[channelJson];
         getHttpAlert['Node Name'] = nodeName;
         getHttpAlert['Alert Severity'] = AlertSeverity;
 
         var body_HttpAlert = JSON.stringify(getHttpAlert)
-        await fetch('https://smartops-qa01.eastus.cloudapp.azure.com/paas/itops/ihubcomponent/api/smartops/ihub/endpoint', {
+        var IHubComponent_url = IHubComponent + '/api/smartops/ihub/endpoint';
+        await fetch(IHubComponent_url, {
             method: "POST",
             headers: {
                 "Content-type": "application/json;charset=UTF-8",
                 "Organization-key": 1,
-                "offline-token": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhODdjYzgwOS02YTA1LTQyY2MtOTY3YS0zNjk3OGFjZGFkZTUifQ.eyJqdGkiOiI0YTU5MmY1Ni0zMDY2LTQ5N2EtOWVkYi05YTQwNDI1YzRjN2YiLCJleHAiOjAsIm5iZiI6MCwiaWF0IjoxNjMyMTQ0NTA1LCJpc3MiOiJodHRwczovL3NtYXJ0b3BzLXFhMDEuZWFzdHVzLmNsb3VkYXBwLmF6dXJlLmNvbS9wYWFzL2l0b3BzL2tleWNsb2FrL2F1dGgvcmVhbG1zL3VzdGdsb2JhbCIsImF1ZCI6Imh0dHBzOi8vc21hcnRvcHMtcWEwMS5lYXN0dXMuY2xvdWRhcHAuYXp1cmUuY29tL3BhYXMvaXRvcHMva2V5Y2xvYWsvYXV0aC9yZWFsbXMvdXN0Z2xvYmFsIiwic3ViIjoiYjdiYTUxZWUtOTMxZi00NzA4LTgzYjYtZmRkYTA3ODk1MDQxIiwidHlwIjoiT2ZmbGluZSIsImF6cCI6InNtYXJ0b3BzLWZyb250ZW5kIiwiYXV0aF90aW1lIjowLCJzZXNzaW9uX3N0YXRlIjoiYWVhNWRiM2EtMzY5My00NTU0LTliNjEtNzFiMGE1YzVkZDFhIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbInN5c3RlbV9mbG93X2V4ZWN1dG9yIiwib2ZmbGluZV9hY2Nlc3MiXX0sInJlc291cmNlX2FjY2VzcyI6eyJzbWFydG9wcy1mcm9udGVuZCI6eyJyb2xlcyI6WyJpbnZva2Utc3lzdGVtLWZsb3ciXX19LCJzY29wZSI6Im9mZmxpbmVfYWNjZXNzIn0.EtD0x9DEAD1UzsdPJx1IS3UV8JTtIOckCiU5mvtMEyA",
+                "offline-token": Offline_Token,
             },
             body: body_HttpAlert
         }).then(async response => {
@@ -54,9 +57,10 @@ export class ITOPS_APIs {
         return accessToken;
     }
     //Get All Templates of a Project
-    async getAllTemplates() {
+    async getAllTemplates(ProjectId) {
         const accessToken = await this.getAccessToken();
-        await fetch('https://smartops-qa01.eastus.cloudapp.azure.com/paas/itops/alertmapping/api/ticketTemplates/1519', {
+        var getAllTemplates_url = alertMapping_url + '/api/ticketTemplates/' + ProjectId;
+        await fetch(getAllTemplates_url, {
             method: 'GET',
             headers: {
                 "Content-type": "application/json;charset=UTF-8",
@@ -82,7 +86,8 @@ export class ITOPS_APIs {
     //Delete any Template USing TemplateId
     async deleteTemplate(TemplateId: string) {
         const accessToken = await this.getAccessToken();
-        await fetch(' https://smartops-qa01.eastus.cloudapp.azure.com/paas/itops/alertmapping/api/deleteTemplate', {
+        var deleteTemplate_url = alertMapping_url + '/api/deleteTemplate';
+        await fetch(deleteTemplate_url, {
             method: 'DELETE',
             headers: {
                 "Content-type": "application/json;charset=UTF-8",
@@ -109,14 +114,15 @@ export class ITOPS_APIs {
         getJsonTemplate['templateName'] = templateName;
         var body_CustomReassignmentTemplate = JSON.stringify(getJsonTemplate)
         const accessToken = await this.getAccessToken();
-        await fetch('https://smartops-qa01.eastus.cloudapp.azure.com/paas/itops/alertmapping/api/ticketTemplate', {
+        var CustomReassignmentTemplate_Url = alertMapping_url + '/api/ticketTemplate';
+        await fetch(CustomReassignmentTemplate_Url, {
             method: 'PUT',
             headers: {
                 "Content-type": "application/json;charset=UTF-8",
                 "Organization-name": "ustglobal",
                 "Organization-key": 1,
                 "Authorization": "Bearer " + accessToken,
-                "user": "u60967@ust-global.com"
+                "user": USER_CustomReassignment,
             },
             body: body_CustomReassignmentTemplate
         }).then(async response => {

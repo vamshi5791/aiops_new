@@ -36,7 +36,7 @@ Feature: Split functionality
 
     Scenario Outline: Verify the split functionality - New Ticket verification
 
-        When "Admin" verifies new ticket is assigned to group "<Assignment_group_id>"
+        When "Admin" verifies new ticket is assigned to group in ServiceNow "<Assignment_group_id>"
         And "Admin" verifies new ticket is assigned to "<Assigned_to_id>"
         And "Admin" verifies number of occurence is for "<TicketNumberOf2Alerts>" is "<occurence>"
 
@@ -77,7 +77,7 @@ Feature: Split functionality
 
     Scenario Outline: Verify the split functionality - New Ticket verification
 
-        When "Admin" verifies new ticket is assigned to group "<Assignment_group_id>"
+        When "Admin" verifies new ticket is assigned to group in ServiceNow "<Assignment_group_id>"
         And "Admin" verifies new ticket is assigned to "<Assigned_to_id>"
         And "Admin" verifies number of occurence is for "<TicketNumberOf2Alerts>" is "<occurence>"
 

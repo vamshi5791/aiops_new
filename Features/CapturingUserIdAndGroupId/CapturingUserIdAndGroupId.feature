@@ -1,4 +1,4 @@
-@CapturingUserIdAndGroupId
+@CapturingUserIdAndGroupId @ITOps_Milestone_4 @Regression @ITOps_Admin
 
 Feature: Capturing User Id and Group Id
 

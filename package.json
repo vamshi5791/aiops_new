@@ -18,7 +18,7 @@
     "callback-timeout": "^4.0.0",
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
-    "cucumber": "6.0.5",
+    "cucumber": "^6.0.5",
     "cucumber-html-reporter": "^5.2.0",
     "faker": "5.5.3",
     "jspdf": "^2.3.1",
