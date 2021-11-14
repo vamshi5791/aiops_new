@@ -1,16 +1,8 @@
-import { When, Then } from "cucumber"
+import { Then } from "cucumber"
 import { browser, element, by } from "protractor"
 import chai from "chai";
 var expect = chai.expect;
 var EC = browser.ExpectedConditions;
-
-//For Log File
-import { configure, getLogger } from "log4js";
-const logger = getLogger();
-configure({
-    appenders: { Error: { type: "file", filename: "logs/logs.log" } },
-    categories: { default: { appenders: ["Error"], level: "all" } }
-});
 
 
 Then('{string} will get an Error Message {string} while trying to do the hold after the resolved state updation from in service now', async function (string, errorMessage) {
@@ -22,7 +14,8 @@ Then('{string} will get an Error Message {string} while trying to do the hold af
             await expect(text).to.include(errorMessage);
         });
     } catch (error) {
-
+        await console.log(error)
+        throw "Admin unable to verify ticket is holded"
     }
 });
 

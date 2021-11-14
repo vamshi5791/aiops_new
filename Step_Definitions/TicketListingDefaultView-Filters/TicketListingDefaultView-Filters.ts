@@ -36,6 +36,7 @@ When('{string} clicks on  Quick Filter icon', async function (string) {
       } catch (error) {
       await console.log("Feature name : Ticket Listing Page DefaultView and filters and Action  : clicking on Quick filter icon")
       await console.log(error)
+      throw "User is not able to clicks on  Quick Filter icon"
     }
   });
 
@@ -45,7 +46,8 @@ When('{string} clicks on  Quick Filter icon', async function (string) {
       
       } catch(error){
         await console.log("Feature name : Ticket Listing Page DefaultView and filters and Action  : clicking on Assigned To Dropdown")
-        await console.log(error)
+        await console.log(error)      
+        throw "User is not able to clicks on Assigned To dropdown"
       }
       
   });
@@ -84,7 +86,8 @@ When('{string} clicks on  Quick Filter icon', async function (string) {
     
       } catch(error){
         await console.log("Feature name : Ticket Listing Page DefaultView and filters and Action  : clicking on Assigned Group Dropdown")
-        await console.log(error)
+        await console.log(error)      
+        throw "User is not able to clicks on Assigned Group dropdown"
     }
   });
 

@@ -69,7 +69,7 @@ Then('{string} verifies the close icon after ticket id', async function (string)
     } catch (error) {
         logger.error("error message")
         console.log(error)
-        throw "Close icon doesn't exist after ticket id"
+        throw "Admin unable to verifies the close icon after ticket id"
     }
 });
 
@@ -247,7 +247,7 @@ When('{string} verifies comments in ITSM updated by {string} for TicketNumber', 
     } catch (error) {
         logger.error("error message")
         console.log(error)
-        throw "comments updated by " + UpdatedBy + " not updated in service now"
+        throw "Admin unable to verifies comments in ITSM"
     }
 })
 When('{string} verifies comments in ITSM assigned by {string} for {string}', async function (string, UpdatedBy, TicketNumber) {
@@ -259,7 +259,7 @@ When('{string} verifies comments in ITSM assigned by {string} for {string}', asy
     } catch (error) {
         logger.error("error message")
         console.log(error)
-        throw "comments updated by " + UpdatedBy + " not updated in service now"
+        throw "Admin unable to verifies comments in ITSM"
     }
 })
 When('{string} verifies comments in ITSM resolved by {string} for {string}', async function (string, UpdatedBy, TicketNumber) {
@@ -272,7 +272,7 @@ When('{string} verifies comments in ITSM resolved by {string} for {string}', asy
     } catch (error) {
         logger.error("error message")
         console.log(error)
-        throw "comments updated by " + UpdatedBy + " not updated in service now"
+        throw "Admin unable to verifies comments in ITSM"
     }
 })
 When('{string} verifies search box is available to perform search operation', async function (string) {

@@ -1,45 +1,66 @@
-import { Given, When, Then } from "cucumber"
-import { browser, element, by } from "protractor"
+import { When, Then } from "cucumber"
+import { browser} from "protractor"
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 var EC = browser.ExpectedConditions;
 let objAlerts = new AlertsPage();
-import { configure, getLogger } from "log4js";
-const logger = getLogger();
-configure({
-    appenders: { Error: { type: "file", filename: "logs/logs.log" } },
-    categories: { default: { appenders: ["Error"], level: "all" } }
-});
 var EC = browser.ExpectedConditions;
 
-
-
-
 When('{string} verifies critical filter from dropdown', async function (string) {
-
-    await browser.wait(EC.visibilityOf(objAlerts.btnCritical), 10000);
+    try {
+        await browser.wait(EC.visibilityOf(objAlerts.btnCritical), 10000);
+    } catch (error) {
+        await console.log(error)
+        throw "Admin unable to verifies critical filter from dropdown"
+    }
 });
 
 
 When('{string} verifies major filter from dropdown', async function (string) {
-    await browser.wait(EC.visibilityOf(objAlerts.btnSelectMajor), 10000);
+    try {
+        await browser.wait(EC.visibilityOf(objAlerts.btnSelectMajor), 10000);
+    } catch (error) {
+        await console.log(error)
+        throw "Admin unable to verifies major filter from dropdown"
+    }
 });
-
 
 When('{string} verifies minor filter from dropdown', async function (string) {
-    await browser.wait(EC.visibilityOf(objAlerts.txtMinorFilterBySeverity), 10000);
-});
+    try {
+        await browser.wait(EC.visibilityOf(objAlerts.txtMinorFilterBySeverity), 10000);
 
+    } catch (error) {
+        await console.log(error)
+        throw "Admin unable to verifies minor filter from dropdown"
+    }
+});
 
 When('{string} verifies warning filter from dropdown', async function (string) {
-    await browser.wait(EC.visibilityOf(objAlerts.btnSelectWarning), 10000);
+    try {
+        await browser.wait(EC.visibilityOf(objAlerts.btnSelectWarning), 10000);
+
+    } catch (error) {
+        await console.log(error)
+        throw "Admin unable to verifies warning filter from dropdown"
+    }
 });
 
-
 When('{string} verifies ok filter from dropdown', async function (string) {
-    await browser.wait(EC.visibilityOf(objAlerts.txtOkFilterBySeverity), 10000);
+    try {
+        await browser.wait(EC.visibilityOf(objAlerts.txtOkFilterBySeverity), 10000);
+
+    } catch (error) {
+        await console.log(error)
+        throw "Admin unable to verifies ok filter from dropdown"
+    }
 });
 
 When('{string} verifies information filter from dropdown', async function (string) {
-    await browser.wait(EC.visibilityOf(objAlerts.txtInformationFilterBySeverity), 10000);
+    try {
+        await browser.wait(EC.visibilityOf(objAlerts.txtInformationFilterBySeverity), 10000);
+
+    } catch (error) {
+        await console.log(error)
+        throw "Admin unable to verifies information filter from dropdown"
+    }
 });
 

@@ -16,7 +16,7 @@ When('{string} clicks on external Teams', async function (string) {
         await browser.sleep(5000)
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to clicks on external Teams"
     }
 });
 
@@ -26,7 +26,7 @@ When('{string} selects source as {string} in external Teams', async function (st
         await objDisplayConfig.selectSource(SourceName)
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to selects source"
     }
 });
 When('{string} clicks on choose a group dropdown', async function (string) {
@@ -34,7 +34,7 @@ When('{string} clicks on choose a group dropdown', async function (string) {
         await objDisplayConfig.clickOnChooseGroup()
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to clicks on choose a group dropdown"
     }
 });
 When('{string} clicks on choose a group dropdown on assign to popup', async function (string) {
@@ -42,7 +42,7 @@ When('{string} clicks on choose a group dropdown on assign to popup', async func
         await element(by.xpath("//label[text()='Choose a Group*']")).click()
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to clicks on choose a group dropdown on assign to popup"
     }
 });
 When('{string} search for a group as {string} in external Teams', async function (string, GroupName) {
@@ -50,7 +50,7 @@ When('{string} search for a group as {string} in external Teams', async function
         await objDisplayConfig.searchForGroup(GroupName)
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to search for a group"
     }
 });
 When('{string} clicks on import button in external teams', async function (string) {
@@ -59,7 +59,7 @@ When('{string} clicks on import button in external teams', async function (strin
         await objDisplayConfig.clickOnImportGroup()
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to clicks on import button in external teams"
     }
 });
 
@@ -68,7 +68,7 @@ When('{string} verifies all the groups having {string} should be displayed', asy
         await objDisplayConfig.verifyingFields(FieldName)
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to verifies all the groups"
     }
 });
 
@@ -78,7 +78,7 @@ When('{string} selects group in external Teams {string}', async function (string
         await objDisplayConfig.selectGroup(GroupName)
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to selects group in external Teams"
     }
 });
 
@@ -89,7 +89,7 @@ When('{string} clicks on all groups dropdown', async function (string) {
         await objDisplayConfig.clickOnAllGroup()
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to clicks on all groups dropdown"
     }
 });
 
@@ -99,7 +99,7 @@ When('{string} searches for a group as {string} in external Teams', async functi
         await objDisplayConfig.searchForAllGroup(GroupName)
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to searches for a group"
     }
 });
 
@@ -109,7 +109,7 @@ When('{string} selects group in external Teams as {string}', async function (str
         await objDisplayConfig.selectGroup(GroupName)
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to selects group in external Teams"
     }
 });
 
@@ -121,7 +121,7 @@ Then('{string} verifies Search option to be available', async function (string) 
         });
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to verifies Search option to be available"
     }
 });
 
@@ -133,7 +133,7 @@ Then('{string} verifies Refresh option to be available', async function (string)
         });
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to verifies Refresh option to be available"
     }
 });
 Then('{string} verifies import button should not be available', async function (string) {
@@ -143,7 +143,7 @@ Then('{string} verifies import button should not be available', async function (
         });
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "verifies import button is available"
     }
 });
 
@@ -152,7 +152,7 @@ Then('{string} clicks on sort button', async function (string) {
         await objDisplayConfig.clickOnSort()
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to clicks on sort button"
     }
 });
 
@@ -161,7 +161,7 @@ Then('{string} searches for user in search box as {string}', async function (str
         await objDisplayConfig.searchForGroup(UserName)
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to  searches for user in search box"
     }
 });
 
@@ -172,7 +172,7 @@ Then('{string} verifies sort option to be available', async function (string) {
         });
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to verifies sort option to be available"
     }
 });
 
@@ -184,7 +184,7 @@ Then('{string} verifies Refresh option should not be available', async function 
         });
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "verifies Refresh option is available "
     }
 });
 
@@ -194,7 +194,7 @@ Then('{string} verifies user matching search should be displayed and his group a
         await objDisplayConfig.verifyingFields(UserName)
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to verifies user matching search should be displayed and his group"
     }
 });
 
@@ -206,15 +206,17 @@ Then('{string} selects {string} alert checkbox from pop up', async function (str
         await objDisplayConfig.splittingTickets(checkBoxNumber)
     } catch (error) {
         await console.log(error)
-        throw ""
+        throw "Admin unable to selects alert checkbox from pop up"
     }
 });
 
-When('{string} verifies groups shown in dropdown {string}, {string}', function (string, FirstGroup, SecondGroup) {
+When('{string} verifies groups shown in dropdown {string}, {string}',async function (string, FirstGroup, SecondGroup) {
     try {
-        objDisplayConfig.verifyingFields(FirstGroup)
-        objDisplayConfig.verifyingFields(SecondGroup)
+        await objDisplayConfig.verifyingFields(FirstGroup)
+        await objDisplayConfig.verifyingFields(SecondGroup)
     } catch (error) {
+       await console.log(error);
+        throw "Admin unable to verifies groups shown in dropdown"
 
     }
 });

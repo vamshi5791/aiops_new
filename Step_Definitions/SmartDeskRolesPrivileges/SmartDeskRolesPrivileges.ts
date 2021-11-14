@@ -18,14 +18,19 @@ let objAlerts = new AlertsPage();
 let objSeverityMapping = new SeverityMapping();
 let objProjectListing = new ProjectListingPage();
 let objInfrastructurePage = new InfrastructurePage();
-var Global_ProjectName;
 
 
 
 When('{string} enters {string} as {string} in project search field and click on enter', async function (userRole, string, ProjectName) {
+try {
     await objProjectListing.Project_search(ProjectName);
     await browser.sleep(5000)
     // TestProjectName = ProjectName_Batch_2;
+} catch (error) {
+  await console.log(error)
+  throw "Admin unable to enters project name in project search field"
+}
+
 });
 
 

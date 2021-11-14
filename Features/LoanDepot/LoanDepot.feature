@@ -1,3 +1,5 @@
+@LoanDepot @Regression @ITOps_Admin
+
 Feature: Loan Depot
 
     Scenario Outline: Verify the correlation and severity rules work as expected for loan Depot

@@ -1,32 +1,42 @@
 import { When } from "cucumber"
-import { browser } from "protractor"
 import { Tickets } from "../../PageObjects/Tickets";
-
 var objTickets = new Tickets();
-var EC = browser.ExpectedConditions;
 
 
-import { configure, getLogger } from "log4js";
-const logger = getLogger();
-configure({
-    appenders: { Error: { type: "file", filename: "logs/logs.log" } },
-    categories: { default: { appenders: ["Error"], level: "all" } }
-});
-
-
-When('{string} clicks on filter by priority dropdown', async function (string) {
+When('{string} clicks on filter by priority dropdown', async function (string) {  
+    try {
     await objTickets.FilterByPriorityDropdown();
+      
+      } catch (error) {
+        await console.log(error)
+        throw "Admin unable to clicks on filter by priority dropdown"
+      }
 });
 
-When('{string} clicks on quick filter dropdown', async function (string) {
+When('{string} clicks on quick filter dropdown', async function (string) {  
+    try {
     await objTickets.FilterByStatusTypeDrp();
+      } catch (error) {
+        await console.log(error)
+        throw "Admin unable to clicks on quick filter dropdown"
+      }
 });
 
-
-When('Admin selects critical filter', async function () {
+When('Admin selects critical filter', async function () {  
+    try {
     await objTickets.Critical();
+      } catch (error) {
+        await console.log(error)
+        throw "Admin unable to Admin selects critical filter"
+      }
 });
 
-When('Admin selects high filter', async function () {
+When('Admin selects high filter', async function () {  
+    try {
     await objTickets.High();
+      
+      } catch (error) {
+        await console.log(error)
+        throw "Admin unable to Admin selects high filter"
+      }
 });

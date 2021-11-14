@@ -19,6 +19,8 @@ Then('{string} verifies recommended resolution should be available', async funct
             expect(select).to.be.true;
         })
     } catch (error) {
+        console.log(error)
+        throw "Admin unable to verifies recommended resolution should be available"
 
     }
 });
@@ -29,6 +31,8 @@ Then('{string} verifies recommended resolution should not be available', async f
             expect(select).to.be.false;
         })
     } catch (error) {
+        console.log(error)
+        throw "Recommended resolution is available"
 
     }
 });
@@ -38,6 +42,8 @@ Then('{string} verifies no recommended resolution available should be shown', as
             expect(select).to.be.true;
         })
     } catch (error) {
+        console.log(error)
+        throw "recommended resolution available "
 
     }
 });
@@ -48,7 +54,7 @@ Then('{string} Recommended Resolutions section shows - TICKET ID RESOLUTION, RES
         })
     } catch (error) {
         console.log(error)
-        throw ""
+        throw "Admin unable to verify recommended Resolutions section shows - TICKET ID"
     }
     try {
         await objRecommendedResolution.txtResolution.isPresent().then(function (select) {
@@ -56,7 +62,7 @@ Then('{string} Recommended Resolutions section shows - TICKET ID RESOLUTION, RES
         })
     } catch (error) {
         console.log(error)
-        throw ""
+        throw "Admin unable to verify recommended Resolutions section shows - RESOLUTION"
     }
     try {
         await objRecommendedResolution.txtResolutionQuality.isPresent().then(function (select) {
@@ -64,7 +70,7 @@ Then('{string} Recommended Resolutions section shows - TICKET ID RESOLUTION, RES
         })
     } catch (error) {
         console.log(error)
-        throw ""
+        throw "Admin unable to verify recommended Resolutions section shows - RESOLUTION QUALITY"
     }
 });
 
@@ -74,14 +80,16 @@ Then('{string} verifies Resolve and Cancel button to be available with Resolve a
             expect(select).to.be.true;
         })
     } catch (error) {
-
+        console.log(error)
+        throw "Admin unable to verifies Resolve and Cancel button to be available with Resolve as selected by default"
     }
     try {
         await objRecommendedResolution.btnCancel.isPresent().then(function (select) {
             expect(select).to.be.true;
         })
     } catch (error) {
-
+        console.log(error)
+        throw "Admin unable to verifies Resolve and Cancel button to be available with Resolve as selected by default"
     }
 });
 
@@ -92,7 +100,8 @@ Then('{string} verifies Ticket ID, Resolution selected and its Resolution qualit
             expect(select).to.be.true;
         })
     } catch (error) {
-
+        console.log(error)
+        throw "Admin unable to verifies Ticket ID, Resolution selected and its Resolution quality should be shown "
     }
 });
 
@@ -107,7 +116,7 @@ Then('Admin click on state in details page', async function (string) {
         await element(by.xpath("//div[@class='button-icon button-icon-sm']//span")).click()
     } catch (error) {
         console.log(error)
-        throw ""
+        throw "Admin unable to click on state in details page"
     }
 });
 
@@ -117,7 +126,7 @@ Then('{string} clicks on {string} button in ticket details page', function (stri
         element(by.xpath("//div[text()='" + Status + "']")).click()
     } catch (error) {
         console.log(error)
-        throw ""
+        throw "Admin unable to clicks on status button in ticket details page"
     }
 
 });
@@ -127,7 +136,7 @@ When('{string} clicks on ticket id in recommended resolution section', async fun
         await objRecommendedResolution.clickOnTicketId()
     } catch (error) {
         console.log(error)
-        throw ""
+        throw "Admin unable to clicks on ticket id in recommended resolution section"
     }
 });
 
@@ -139,7 +148,7 @@ Then('{string} verifies ticket resolution popup', async function (string) {
         })
     } catch (error) {
         console.log(error)
-        throw ""
+        throw "Admin unable to verifies ticket resolution popup "
     }
 });
 
@@ -151,7 +160,7 @@ Then('{string} verifies resolve button is enabled', async function (string) {
         })
     } catch (error) {
         console.log(error)
-        throw ""
+        throw "Admin unable to verifies resolve button is enabled"
     }
 });
 
@@ -163,7 +172,7 @@ Then('{string} verifies automated Radio button is disabled and Manual option is 
         })
     } catch (error) {
         console.log(error)
-        throw ""
+        throw "Admin unable to verifies automated Radio button is disabled and Manual option is selected by default"
     }
     try {
         await objRecommendedResolution.btnManual.isPresent().then(function (select) {
@@ -171,7 +180,7 @@ Then('{string} verifies automated Radio button is disabled and Manual option is 
         })
     } catch (error) {
         console.log(error)
-        throw ""
+        throw "Admin unable to verifies automated Radio button is disabled and Manual option is selected by default"
     }
 });
 
@@ -182,7 +191,8 @@ Then('{string} verifies created ticket in alert console', async function (string
             expect(select).to.be.true;
         });
     } catch (error) {
-
+        console.log(error)
+        throw "Admin unable to verifies created ticket in alert console"
     }
 });
 
@@ -190,7 +200,8 @@ Then('{string} deletes {string} template using template name {string}', async fu
     try {
         await objITOpsApi.deleteTemplate(TemplateName)
     } catch (error) {
-
+        console.log(error)
+        throw "Admin unable to deletes custom template using template name"
     }
 });
 
@@ -198,7 +209,8 @@ Then('{string} creates {string} template {string} for project id as {string}', a
     try {
         await objITOpsApi.CustomReassignmentTemplate(ProjectId, TemplateName)
     } catch (error) {
-
+        console.log(error)
+        throw "Admin unable to creates custom template for project id "
     }
 });
 Then('{string} Verifies after reassignment threshold it should be assigned to the default group mentioned in the project configuration page as {string}', async function (string, Group) {
@@ -206,6 +218,7 @@ Then('{string} Verifies after reassignment threshold it should be assigned to th
         await browser.wait(EC.visibilityOf(element(by.xpath("//div[text()='ASSIGNED TO']"))), 50000);
         await browser.wait(EC.visibilityOf(element(by.xpath("//div[text()='" + Group + " (Group)']"))), 50000);
     } catch (error) {
-
+        console.log(error)
+        throw "Admin unable to Verifies after reassignment threshold it should be assigned to the default group mentioned in the project configuration page"
     }
 }); 

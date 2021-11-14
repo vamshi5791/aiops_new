@@ -118,7 +118,7 @@ When('{string} verify the Alert time {string}', async function (string, AlertTim
     }
     catch (error) {
         await console.log(error)
-        throw "verify the Business timeZone"
+        throw "Admin unable to verify the Alert time"
     }
 });
 

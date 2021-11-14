@@ -1,14 +1,7 @@
 import { When, Then } from "cucumber"
-import { browser, element, by } from "protractor"
-import chai from "chai";
-import { ProjectConfiguration } from "../../PageObjects/ProjectConfiguration";
+import { browser} from "protractor"
 import { TicketDetailsPage } from "../../PageObjects/TicketDetailsPage";
-
-let objProjectConfig = new ProjectConfiguration();
 let objTicketDetailsPage = new TicketDetailsPage();
-
-var EC = browser.ExpectedConditions;
-var expect = chai.expect;
 
 When('{string} clicks on status tab drop down', async function (string) {
     try {
@@ -19,15 +12,12 @@ When('{string} clicks on status tab drop down', async function (string) {
         await console.log(error)
         throw "User is not able to click on dropdown button"
     }
-
 });
 
 When('{string} selects resolve from dropdown', async function (userRole) {
-
     try{
      await objTicketDetailsPage.resolveOption.click();
      await browser.sleep(1000);
-
     }
     catch (error) {
         await console.log(error)
@@ -57,6 +47,6 @@ Then('{string} click on resolve button', async function (userRole) {
        }
        catch (error) {
            await console.log(error)
-           throw "User is not able to enter closure note"
+           throw "User is not able to click on resolve button"
        }
 });

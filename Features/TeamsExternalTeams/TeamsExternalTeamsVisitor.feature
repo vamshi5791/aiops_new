@@ -1,4 +1,4 @@
-@TeamsExternalTeams @Regression
+@TeamsExternalTeams @Regression @MileStone4 @ItOpsVisitor
 
 Feature: Teams > External Teams
 
