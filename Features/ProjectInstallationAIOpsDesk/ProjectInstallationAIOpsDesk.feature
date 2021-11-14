@@ -6,8 +6,8 @@ Feature: Project installation - Additions to AIOps Resolve/Desk
     Scenario Outline: Verify entering correct ticket configuration for Desk/Resolve project - required for installing the project successfully
         When "ITOps_Admin" navigates to ITOps home page
         And "Admin" enters project name as "<ProjectName>"
-        And "Installation_Engineer" clicks dot menu icon
-        And "Installation_Engineer" clicks edit Project
+        And "Admin" clicks dot menu icon
+        And "Admin" clicks edit Project
         And  "Admin" clicks on Project Configuration Page
         When "Admin" clicks on Ticket Dump Configuration
         And "Admin" enters Ticket Dump Source Hostname as "<Hostname>"

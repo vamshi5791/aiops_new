@@ -28,17 +28,17 @@ Feature: Loan Depot
 
 Scenario Outline: Verify adding External format API to have business time alert in ES with value true or false
 
-    When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
-    And "admin" clicks on Alerts page
-    And "admin" enters "NodeName" and clicks on enter "<NodeName>"
-    And Admin gets the alertId
-
-
     When "Admin" sends "1" new Http alerts with out "<WithOutNodeName>", "<AlertSeverity>", "<channelJson>"
-    And "admin" clicks on Alerts page
-    And Admin gets the alertId
-    And "admin" enters alertId "alertId" and clicks on enter
-
+        And "admin" clicks on Alerts page
+        And Admin gets the alertId
+        And "admin" enters alertId "alertId" and clicks on enter
+        And "Admin" verify BusinessTimeAlert in ES "false"
+       
+        When "Admin" sends "1" new Http alerts with "<NodeName>", "<AlertSeverity>", "<channelJson>"
+        And "admin" clicks on Alerts page
+        And "admin" enters "NodeName" and clicks on enter "<NodeName>"
+        And Admin gets the alertId
+        And "Admin" verify BusinessTimeAlert in ES "true"
 
     Examples:
         | ProjectName     | AlertName | ChannelName | channelJson       | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 | BusinessTimeZone | AlertTime   | WithOutNodeName |

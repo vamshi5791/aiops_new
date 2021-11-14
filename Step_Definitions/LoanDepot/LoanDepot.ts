@@ -1,12 +1,17 @@
 import { Given, When, Then, Before, After, Status } from "cucumber"
 import { browser, element, by, ExpectedConditions, WebElement, protractor } from "protractor"
 import chai from "chai";
+import { InfrastructurePage } from "../../PageObjects/InfrastructurePage";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
 import { ITOPS_APIs } from "../../ITOPS_Apis/ItopsApis";
+import { ApiKibana } from "../../KibanaApi/KibanaApi";
+import { throws } from "assert";
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
+let objInfrastructurePage = new InfrastructurePage();
 let objAlerts = new AlertsPage();
 var objITOps_API = new ITOPS_APIs();
+var objAPIKibana = new ApiKibana();
 var alertId
 
 
@@ -95,11 +100,12 @@ When('{string} verify the Business timeZone {string}', async function (string, B
     try {
         var businessTimezone = await element(by.xpath("//div[text()='businessTimezone']/following-sibling::div")).getText();
         await expect(businessTimezone).to.include(BusinessTimeZone)
-        console.log("LineNO90", businessTimezone)
+        var businessTimeResponse = await objAPIKibana.businessTime(1519, alertId)
+        await expect(businessTimeResponse.businessTimezone).to.include(BusinessTimeZone)
     }
     catch (error) {
         await console.log(error)
-        throw "invalid Business timeZone"
+        throw "verify the Business timeZone"
     }
 });
 
@@ -115,4 +121,15 @@ When('{string} verify the Alert time {string}', async function (string, AlertTim
         throw "verify the Business timeZone"
     }
 });
+
+Then('{string} verify BusinessTimeAlert in ES {string}', async function (string,TimeAlert) {
+    try {
+        var businessTimeResponse = await objAPIKibana.businessTime(1519, alertId)
+        await expect(businessTimeResponse.businessTimeAlert).to.include(TimeAlert)
+    } catch (error) {
+        console.log(error);
+        throw "Admin Unable to verify BusinessTimeAlert in ES"
+
+    }
+})
 
