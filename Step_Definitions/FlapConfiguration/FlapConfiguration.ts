@@ -85,3 +85,16 @@ Given('Admin verifies correlation error indicator',async function () {
 
     }
 });
+
+//Surge indicator
+
+Then('{string} verifies Surge indicator', async function () {
+    await browser.wait(EC.visibilityOf(element(by.xpath("//span[contains(text(),'SURGE')]"))), 60000);
+    try {
+
+    } catch (error) {
+        console.log(error);
+        throw "Admin Unable to Verify Surge indicator / No Surge indicator Found"
+
+    }
+});

@@ -67,20 +67,20 @@ Feature: Indicator for flapping cluster/surge cluster/incomplete correlation err
             | AutoIB_Resolve | Alert1    | Solarwinds1 | QueueChannel | AUMECO-50A-SBC1 | RecoveryPolicy | TimeErrorJson |
 
 
-# Scenario Outline: Surge Indicator
+    Scenario Outline: Surge Indicator
 
-#     When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-#     When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-#     When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-#     When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-#     When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-#     When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-#     When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-#     And "admin" clicks on Alerts page
-#     And "admin" enters "AlertName" and clicks on enter "<AlertName>"
-#     And Admin verifies Surge indicator
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "5" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        And "admin" clicks on Alerts page
+        And "admin" enters "AlertName" and clicks on enter "<AlertName>"
+        And "Admin" verifies Surge indicator
 
 
-#     Examples:
-#         | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 |
-#         | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | AUMECO-50A-SBC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. |
+        Examples:
+            | ProjectName    | AlertName | ChannelName | channelJson  | NodeName        |
+            | Auto_01Resolve | Alert1    | Solarwinds  | QueueChannel | AUMECO-50A-SBC1 |
