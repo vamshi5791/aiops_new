@@ -90,6 +90,9 @@ export class DisplayConfiguration {
     await browser.wait(EC.visibilityOf(element(by.xpath("//input[@placeholder='Search']"))), 100000);
   }
   async clickOnImportGroup() {
+    await browser.wait(EC.visibilityOf(this.btnImportGroup), 50000);
+    await browser.wait(EC.presenceOf(this.btnImportGroup), 50000);
+    await browser.wait(EC.elementToBeClickable(this.btnImportGroup), 50000);
     await this.btnImportGroup.click()
   }
   async verifyingFields(FieldName) {

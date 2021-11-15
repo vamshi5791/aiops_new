@@ -84,7 +84,7 @@ Feature: Ticket Details page
         And "admin" verifies the Assigned to in ticket details page with the assignment Group and assigned To in the servicenow ticket "itops_admin"
         When "Admin" clicks on the ticket number in ticket console
         Then "admin" verifies the page must have "Similar Tickets"
-        
+
 
         Examples:
             | TicketNumber |
@@ -193,14 +193,26 @@ Feature: Ticket Details page
 
     Scenario Outline: Similar ticket details from ticket details page - AIOps Desk/Resolve
 
+        When "Admin" navigates to ITOps home page
+        And "Admin" enters "project name" as "<ProjectName>" in project search field and click on enter
+        And "Admin" clicks on project name "<ProjectName>"
         When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         When "admin" navigates to Tickets page
         And "Admin" enters "NodeName" and clicks on enter "<NewNodeName>"
+        When "Admin" get the ticket number from ticket console
+        When "admin" updates the ticket in service now state as "Open", category as "Skype for Business", subcategory as "Conference Call", close code as "Monitoring Incident", Enter close note as "USTIB" and update "<ShortDescription>"
+        And Admin click on state in ticket console
+        Then "Admin" verifies recommended resolution should be available
         When "Admin" clicks on the ticket number in ticket console
         Then "admin" verifies the page must have "Similar Tickets"
         Then "admin" verifies similar tickets tab has "TICKET ID" and "TITLE"
+        And "admin" verifies similar ticket pop-up must appear with ticket id, description, match score
         When "Admin" gives right click on the ticket id and click on the Open link in new tabS
+        And "admin" clicks on ticket id from similar tickets
+        Then "admin" verifies Closure note, long description
+        Then "admin" verifies cancel button and close button
+
 
         Examples:
-            | ProjectName   | ChannelName | channelJson      | NodeName      | Toaster                       | SuccessMessage               | Group            | TeamMember      | NewNodeName     |
-            | Automation_M3 | Solarwinds  | alertNameChannel | IAMCTUFPRDDC1 | Tickets assigned successfully | Ticket resolved successfully | Visibility - UST | Amjathsha Abdul | IAMCFSCPRDDC1-1 |
+            | ProjectName | ChannelName | channelJson      | NodeName      | Toaster                       | SuccessMessage               | Group            | TeamMember      | NewNodeName     |
+            | Auto_01Desk | Solarwinds  | alertNameChannel | IAMCTUFPRDDC1 | Tickets assigned successfully | Ticket resolved successfully | Visibility - UST | Amjathsha Abdul | IAMCFSCPRDDC1-1 |

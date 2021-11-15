@@ -18,8 +18,8 @@ Feature: Teams > External Teams
         Then "Admin" verifies if "<SuccessMessage>" message is displayed
 
         Examples:
-            | GroupName      | SuccessMessage      |
-            | ITOpsPTTesting | No users to import. |
+            | GroupName      | SuccessMessage              |
+            | ITOpsPTTesting | Users imported successfully |
 
     Scenario Outline: Verify the imported section in External teams for ITOps admin
 

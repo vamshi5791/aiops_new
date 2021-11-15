@@ -46,7 +46,7 @@ export class Tickets {
         await this.btnFilterByStatusTypeDropDown.click()
         drp.selectByVisibleText(Status)
     }
-    async clickOnTicketNumber() {
+    async clickOnTicketNumberInTicketConsole() {
         await this.btnTicketNumber.click()
     }
     async clickOnTicketPage() {

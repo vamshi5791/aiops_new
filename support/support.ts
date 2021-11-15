@@ -10,7 +10,7 @@ export class support {
     await browser.wait(EC.elementToBeClickable(element(by.xpath("//span[text()='" + DropdownValue + "']"))), 10000);
     await element(by.xpath("//span[text()='" + DropdownValue + "']")).click();
   }
-  async CheckBox(value: string) {
+  async clickOnCheckBoxUsingText(value: string) {
     await browser.wait(EC.visibilityOf(element(by.xpath("//label[text()='" + value + "']"))), 10000);
     await browser.wait(EC.presenceOf(element(by.xpath("//label[text()='" + value + "']"))), 10000);
     await browser.wait(EC.elementToBeClickable(element(by.xpath("//label[text()='" + value + "']"))), 10000);

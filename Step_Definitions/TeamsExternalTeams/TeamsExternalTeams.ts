@@ -55,7 +55,7 @@ When('{string} search for a group as {string} in external Teams', async function
 });
 When('{string} clicks on import button in external teams', async function (string) {
     try {
-        await browser.sleep(2000)
+        
         await objDisplayConfig.clickOnImportGroup()
     } catch (error) {
         await console.log(error)

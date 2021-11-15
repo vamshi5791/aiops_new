@@ -539,6 +539,7 @@ Then('{string} verifies if any {string} message is displayed', async function (u
     myElement.isPresent().then(async function (elm) {
       if (elm) {
         await browser.wait(EC.elementToBeClickable(element(by.xpath("//span[text()='Cancel']"))), 10000);
+        await browser.wait(EC.presenceOf(element(by.xpath("//span[text()='Cancel']"))), 10000);
         await element(by.xpath("//span[text()='Cancel']")).click();
       }
     });

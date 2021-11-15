@@ -29,7 +29,7 @@ var expect = chai.expect;
 Then('{string} clicks on the ticket number in ticket console', async function (string) {
 
     try {
-        await objTicketsConsole.clickOnTicketNumber()
+        await objTicketsConsole.clickOnTicketNumberInTicketConsole()
         logger.info("clicking on the ticket number in ticket console")
     } catch (error) {
         logger.error("error message")

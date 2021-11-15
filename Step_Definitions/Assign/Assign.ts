@@ -38,7 +38,7 @@ When('{string} clicks on assign option from state drop down as {string}', async 
 When('{string} clicks on {string} radio button', async function (UserRole, RadioButton) {
   try {
     await browser.wait(EC.elementToBeClickable(element(by.xpath("//label[text()='" + RadioButton + "']"))), 100000);
-    await objsupport.CheckBox(RadioButton)
+    await objsupport.clickOnCheckBoxUsingText(RadioButton)
   } catch (error) {
     await console.log("Action Name : clicking on individual radio button")
     await console.log(error)
@@ -173,7 +173,7 @@ When('{string} clicks on refresh button in alert console', async function (strin
 
 When('{string} clicks on {string} button', async function (string, Status) {
   try {
-     await browser.sleep(2000)
+    await browser.sleep(2000)
     await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="' + Status + '"]'))), 50000);
     await browser.wait(EC.elementToBeClickable(element(by.xpath('//span[text()="' + Status + '"]'))), 50000);
     await objAlerts.clickOnUpdateStatus(Status)
@@ -492,4 +492,13 @@ When('{string} ticket number in {string} by changing state as {string}, category
 });
 
 
-
+When('{string} verifies ticket status as {string} {string}', async function (string, Status, ByWhom) {
+  try {
+    await browser.wait(EC.visibilityOf(element(by.xpath('//label[text()="' + Status + '"]'))), 50000);
+    await browser.wait(EC.visibilityOf(element(by.xpath('//dev[text()="' + ByWhom + '"]'))), 50000);
+  } catch (error) {
+    await console.log("Action Name : verifying ticket status")
+    await console.log(error)
+    throw "ticket status not updated in alert console"
+  }
+});

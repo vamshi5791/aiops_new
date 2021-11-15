@@ -17,7 +17,7 @@ Given('User clicks on alert cluster', async function () {
 
 Given('User selects select all check box', async function () {
   try {
-    await objAlerts.Checkbox();
+    await objAlerts.allAlertsCheckboxInClusterPopup();
 
   } catch (error) {
     await console.log("Action Name : selects select all check box ")

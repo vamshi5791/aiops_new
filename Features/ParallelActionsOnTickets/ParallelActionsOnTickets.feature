@@ -22,9 +22,12 @@ Feature: Parallel Actions On Tickets
         And "admin" selects user from the team member drop down as "<Group>", "<TeamMember>"
         And "admin" clicks on assign button on the popup
         Then "Admin" verifies if "<ErrorMessage>" message is displayed
+        And "admin" clicks on Alerts page
+        And "admin" enters the ticket number in search field
+        Then "admin" verifies ticket status as "closed" "By system"
         Examples:
-            | ProjectName     | IncidentId | ErrorMessage                | Group            | TeamMember      |
-            | Automation_01M3 | INC0820381 | Ticket(s) Assignment failed | Visibility - UST | Amjathsha Abdul |
+            | IncidentId | ErrorMessage                | Group            | TeamMember      |
+            | INC0820381 | Ticket(s) Assignment failed | Visibility - UST | Amjathsha Abdul |
 
     Scenario Outline: Verify closing tickets in service now and perform hold from ITOps alert console fastly within seconds
 
@@ -41,7 +44,7 @@ Feature: Parallel Actions On Tickets
         Examples:
             | ErrorMessage          |
             | Ticket(s) Hold failed |
-    
+
     Scenario Outline: Verify Closing ticket in Service now and do hold from  ticket console fastly within seconds
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter

@@ -11,7 +11,7 @@ Feature: Smart Desk - Roles/Privileges
         When "Admin" clicks on quick filter
         And "admin" selects filter by status type as "Assigned"
         And Admin click on state in ticket console
-        Then "Admin" verifies recommended resolution should not be available
+        Then "Admin" verifies recommended resolution should be available
 
         When "user" clicks on logout button
         When user enters Username as "Itops_engineer", Password as "qa123" and clicks on Login button
@@ -192,25 +192,24 @@ Feature: Smart Desk - Roles/Privileges
             | ProjectName | ShortDescription                                  |
             | Auto_01Desk | Solarwinds] Restore the deleted article in system |
 
-    # Scenario Outline: Verify Manual Resolving of a ticket via Ticket Details page >  Recommended Resolutions
+    Scenario Outline: Verify Manual Resolving of a ticket via Ticket Details page >  Recommended Resolutions
 
-    #     When "admin" navigates to Tickets page
-    #     When "Admin" clicks on quick filter
-    #     And "admin" selects filter by status type as "Assigned"
+        When "admin" navigates to Tickets page
+        When "Admin" clicks on quick filter
+        And "admin" selects filter by status type as "Assigned"
 
-    #     When "Admin" get the ticket number from ticket console
-    #     And "admin" enters the ticket number in search field
-    #     When "admin" updates the ticket in service now state as "New", category as "Skype for Business", subcategory as "Conference Call", close code as "Monitoring Incident", Enter close note as "USTIB" and update "<ShortDescription>"
-    #     When "Admin" clicks on the ticket number in ticket console
-    #     And "admin" clicks on ticket id in recommended resolution section
-    #     And "admin" clicks on "Resolve" button
-    #     And "admin" clicks on "Resolve" button
+        When "Admin" get the ticket number from ticket console
+        And "admin" enters the ticket number in search field
+        When "admin" updates the ticket in service now state as "New", category as "Skype for Business", subcategory as "Conference Call", close code as "Monitoring Incident", Enter close note as "USTIB" and update "<ShortDescription>"
+        When "Admin" clicks on the ticket number in ticket console
+        And "admin" clicks on ticket id in recommended resolution section
+        And "admin" clicks on "Resolve" button
+        And "admin" clicks on "Resolve" button
+        Then "Admin" verifies if any "<SuccessMessage>" message is displayed
 
-    #     Then "Admin" verifies if any "<SuccessMessage>" message is displayed
-
-    #     Examples:
-    #         | ProjectName | ResolveNote | SuccessMessage               | ShortDescription                                  |
-    #         | Auto_01Desk | IBUST       | Ticket resolved successfully | Solarwinds] Restore the deleted article in system |
+        Examples:
+            | ProjectName | ResolveNote | SuccessMessage               | ShortDescription                                  |
+            | Auto_01Desk | IBUST       | Ticket resolved successfully | Solarwinds] Restore the deleted article in system |
 
 
 

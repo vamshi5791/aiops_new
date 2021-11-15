@@ -370,7 +370,7 @@ export class ProjectConfiguration {
     }
 
     async Role(Role) {
-        await drp.CheckBox(Role)
+        await drp.clickOnCheckBoxUsingText(Role)
     }
     async AddUserDetails() {
         await this.btnAddUserDetails.click()

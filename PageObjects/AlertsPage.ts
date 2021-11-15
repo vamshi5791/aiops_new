@@ -158,7 +158,7 @@ export class AlertsPage {
   async Source() {
     await this.drpSource.click();
   }
-  async AutoRefresh(Minutes) {
+  async  AutoRefresh(Minutes) {
     await this.drpSource.sendKeys(Minutes);
   }
 
@@ -520,7 +520,7 @@ export class AlertsPage {
   async Cluster() {
     await this.btnCluster.click();
   }
-  async Checkbox() {
+  async allAlertsCheckboxInClusterPopup() {
     await this.btnCheckbox.click();
   }
   async cancel() {

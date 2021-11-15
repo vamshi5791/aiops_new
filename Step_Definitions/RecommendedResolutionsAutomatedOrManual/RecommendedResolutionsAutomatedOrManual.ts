@@ -110,8 +110,8 @@ Then('{string} verifies Ticket ID, Resolution selected and its Resolution qualit
 
 Then('Admin click on state in details page', async function (string) {
     try {
-        await browser.sleep(4000)
         await browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='button-icon button-icon-sm']//span"))), 50000);
+        await browser.wait(EC.presenceOf(element(by.xpath("//div[@class='button-icon button-icon-sm']//span"))), 50000);
         await browser.wait(EC.elementToBeClickable(element(by.xpath("//div[@class='button-icon button-icon-sm']//span"))), 50000);
         await element(by.xpath("//div[@class='button-icon button-icon-sm']//span")).click()
     } catch (error) {

@@ -105,17 +105,4 @@ When('{string} selects Critical', async function (userName) {
     }
 });
 
-When('{string} enters  auto refresh in {string} minutes', async function (userName, Minutes) {
-    try {
-        await browser.sleep(5000)
-        // await objAlerts.AutoRefresh.clear();
-        await objAlerts.AutoRefresh(Minutes);
-        logger.info("enters  auto refresh in {string} minutes")
-    } catch (error) {
-        logger.error("error message")
-        await console.log("Action Name : enters  auto refresh")
-        await console.log(error)
-        throw "Admin unable to enters  auto refresh"
-    }
-});
 
