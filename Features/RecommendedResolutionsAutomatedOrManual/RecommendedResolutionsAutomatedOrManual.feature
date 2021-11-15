@@ -13,13 +13,22 @@ Feature: Smart Desk - Roles/Privileges
         And Admin click on state in ticket console
         Then "Admin" verifies recommended resolution should be available
 
+        When "Admin" navigates to ITOps home page
+        And "Admin" enters "project name" as "Auto_01Resolve" in project search field and click on enter
+        And "Admin" clicks on project name "Auto_01Resolve"
+        When "admin" navigates to Tickets page
+        When "Admin" clicks on quick filter
+        And "admin" selects filter by status type as "Assigned"
+        And Admin click on state in ticket console
+        Then "Admin" verifies recommended resolution should be available
+
         When "user" clicks on logout button
         When user enters Username as "Itops_engineer", Password as "qa123" and clicks on Login button
         Then ITOps home page is displayed
 
         When "Admin" navigates to ITOps home page
-        And "Admin" enters "project name" as "<ProjectName>" in project search field and click on enter
-        And "Admin" clicks on project name "<ProjectName>"
+        And "Admin" enters "project name" as "Auto_01Resolve" in project search field and click on enter
+        And "Admin" clicks on project name "Auto_01Resolve"
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
         And "admin" selects filter by status type as "Assigned"
@@ -38,13 +47,24 @@ Feature: Smart Desk - Roles/Privileges
         And "admin" selects filter by status type as "Assigned"
         And Admin click on state in ticket console
         Then "Admin" verifies ticket status in alert console as "Recommended R..."
-        When "user" clicks on logout button
+
+        When "Admin" navigates to ITOps home page
+        And "Admin" enters "project name" as "Auto_01Resolve" in project search field and click on enter
+        And "Admin" clicks on project name "Auto_01Resolve"
+        When "admin" navigates to Tickets page
+        When "Admin" clicks on quick filter
+        And "admin" selects filter by status type as "Assigned"
+        And Admin click on state in ticket console
+        Then "Admin" verifies recommended resolution should be available
+
         Examples:
             | ProjectName |
             | Auto_01Desk |
 
 
     Scenario Outline: Verify Recommended Resolutions from Ticket listing is shown only for tickets in on hold/Assigned/Resolved tickets AIOps Desk/Resolve project
+
+        When "user" clicks on logout button
 
         When user enters Username as "Itops_admin", Password as "qa123" and clicks on Login button
         Then ITOps home page is displayed
@@ -187,6 +207,7 @@ Feature: Smart Desk - Roles/Privileges
         And "admin" verifies resolve button is enabled
         And "admin" clicks on "Resolve" button
         And "admin" verifies automated Radio button is disabled and Manual option is selected by default
+        And "admin" verifies resolution for the selected ticket is shown as closure note
         And "Admin" clicks on cancel button
         Examples:
             | ProjectName | ShortDescription                                  |

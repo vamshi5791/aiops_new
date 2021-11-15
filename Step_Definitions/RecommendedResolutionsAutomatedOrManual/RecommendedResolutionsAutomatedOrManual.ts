@@ -219,6 +219,15 @@ Then('{string} Verifies after reassignment threshold it should be assigned to th
         await browser.wait(EC.visibilityOf(element(by.xpath("//div[text()='" + Group + " (Group)']"))), 50000);
     } catch (error) {
         console.log(error)
-        throw "Admin unable to Verifies after reassignment threshold it should be assigned to the default group mentioned in the project configuration page"
+        throw "Admin unable to Verify after reassignment threshold it should be assigned to the default group mentioned in the project configuration page"
     }
 }); 
+
+Then('{string} verifies resolution for the selected ticket is shown as closure note', async function (string) {
+    try {
+        await browser.wait(EC.visibilityOf(element(by.xpath("//b[text()='Closure Note: ']"))), 50000);
+    } catch (error) {
+        console.log(error)
+        throw "resolution for the selected ticket is not shown as closure note"
+    }
+})
