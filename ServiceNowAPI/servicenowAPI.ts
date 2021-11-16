@@ -4,6 +4,7 @@ var emptyString = '{}';
 var objectString;
 var customJson;
 var FirstOccurence;
+var NoOfOccurenceData;
 var state_value = { "New": "1", "Active": "2", "Awaiting Problem": "3", "Awaiting Change": "8", "Awaiting User Info": "4", "Awaiting Customer IT": "5", "Resolved": "6", "Awaiting Vendor": "11", "On Hold": "12" }
 var base64 = require('base-64');
 var activityJsonResult;
@@ -34,8 +35,8 @@ export class ServiceNowAPI {
                 let ResultJSON = result.records[0]
                 var NoOfOccurence = ResultJSON.description.replace('Number of occurences:', '|');
                 NoOfOccurence = NoOfOccurence.split('|')[1]
-                NoOfOccurence = NoOfOccurence.replace('First occurrence');
-                NoOfOccurence = NoOfOccurence[0];
+                NoOfOccurence = NoOfOccurence.split('First occurrence');
+                NoOfOccurenceData = NoOfOccurence[0];
                 FirstOccurence = NoOfOccurence[1]
                 objectString = JSON.parse(emptyString);
                 objectString.short_description = ResultJSON.short_description;
@@ -44,7 +45,7 @@ export class ServiceNowAPI {
                 objectString.assignment_group_id = ResultJSON.assignment_group;
                 objectString.assigned_to_id = ResultJSON.assigned_to;
                 objectString.close_notes = ResultJSON.close_notes;
-                objectString.NoOfOccurence = NoOfOccurence;
+                objectString.NoOfOccurence = NoOfOccurenceData;
                 objectString.FirstOccurence = FirstOccurence;
                 customJson = objectString;
 
@@ -244,5 +245,28 @@ export class ServiceNowAPI {
             })
         return activityJsonResult;
     }
+
+    async updateCategoryAndShortDescr(sys_id: string, category: string, shortDesc: string = "IB testing") {
+
+        var bodyString = JSON.parse(emptyString);
+        bodyString.category = category;
+        bodyString.short_description = shortDesc;
+        const data_body = JSON.stringify(bodyString);
+        let this_url = ServiceNowURL + '/api/now/v1/table/incident/' + sys_id + "?sysparm_exclude_ref_link=true"
+        await fetch(this_url, {
+            method: "PUT",
+            body: data_body,
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "Authorization": `Basic ${base64.encode(`${ServiceNowUserName}:${ServiceNowPassword}`)}`
+            }
+        }).then(response => response.json())
+            .then(resp => {
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
 
 }

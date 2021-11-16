@@ -343,3 +343,13 @@ When('{string} ticket {string} in {string} by changing state as {string}, catego
     }
 });
 
+When('{string} updates the ticket in service now category as {string}, Short Description as {string} and update', async function (string, category, ShortDescription) {
+    try {
+        resultState = await objServiceNow.apiServiceNow(ticketNumber)
+        systemID = resultState.sys_id;
+        await objServiceNow.updateCategoryAndShortDescr(systemID, category, ShortDescription)
+    } catch (error) {
+        await console.log(error)
+        throw "unable to change ticket state in service now"
+    }
+});

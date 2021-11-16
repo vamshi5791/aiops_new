@@ -533,7 +533,7 @@ Then('{string} verifies Description should include details of the down alert usi
 
 Then('{string} verifies First occurrence in Description should be alert created time of {string} alert', async function (string, Occurrence) {
   try {
-    await element(by.partialLinkText('First occurrence:"' + resultState.FirstOccurence + '"')).isPresent().then(function (select) {
+    await element(by.xpath('//div[text()="First occurrence"'+resultState.FirstOccurence+'"]')).isPresent().then(function (select) {
       expect(select).to.be.true;
     });
   } catch (error) {

@@ -150,7 +150,7 @@ Feature: Smart Desk - Roles/Privileges
         When "Admin" clicks on quick filter
         And "admin" selects filter by status type as "Assigned"
         When "Admin" get the ticket number from ticket console
-        When "admin" updates the ticket in service now state as "Open", category as "Skype for Business", subcategory as "Conference Call", close code as "Monitoring Incident", Enter close note as "USTIB" and update "<ShortDescription>"
+        When "admin" updates the ticket in service now category as "Skype for Business", Short Description as "<ShortDescription>" and update
         And Admin click on state in ticket console
         Then "Admin" verifies recommended resolution should be available
         When "Admin" clicks on the ticket number in ticket console
@@ -200,7 +200,7 @@ Feature: Smart Desk - Roles/Privileges
 
         When "Admin" get the ticket number from ticket console
         And "admin" enters the ticket number in search field
-        When "admin" updates the ticket in service now state as "Open", category as "Skype for Business", subcategory as "Conference Call", close code as "Monitoring Incident", Enter close note as "USTIB" and update "<ShortDescription>"
+        When "admin" updates the ticket in service now category as "Skype for Business", Short Description as "<ShortDescription>" and update
         When "Admin" clicks on the ticket number in ticket console
         And "admin" clicks on ticket id in recommended resolution section
         Then "admin" verifies ticket resolution popup
@@ -221,10 +221,11 @@ Feature: Smart Desk - Roles/Privileges
 
         When "Admin" get the ticket number from ticket console
         And "admin" enters the ticket number in search field
-        When "admin" updates the ticket in service now state as "New", category as "Skype for Business", subcategory as "Conference Call", close code as "Monitoring Incident", Enter close note as "USTIB" and update "<ShortDescription>"
+        When "admin" updates the ticket in service now category as "Skype for Business", Short Description as "<ShortDescription>" and update
         When "Admin" clicks on the ticket number in ticket console
         And "admin" clicks on ticket id in recommended resolution section
         And "admin" clicks on "Resolve" button
+    
         And "admin" clicks on "Resolve" button
         Then "Admin" verifies if any "<SuccessMessage>" message is displayed
 
