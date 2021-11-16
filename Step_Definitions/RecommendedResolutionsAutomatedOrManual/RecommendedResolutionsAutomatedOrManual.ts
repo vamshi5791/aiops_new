@@ -105,9 +105,6 @@ Then('{string} verifies Ticket ID, Resolution selected and its Resolution qualit
     }
 });
 
-
-
-
 Then('Admin click on state in details page', async function (string) {
     try {
         await browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='button-icon button-icon-sm']//span"))), 50000);
@@ -167,23 +164,13 @@ Then('{string} verifies resolve button is enabled', async function (string) {
 
 Then('{string} verifies automated Radio button is disabled and Manual option is selected by default', async function (string) {
     try {
-        await objRecommendedResolution.btnAutomated.isPresent().then(function (select) {
-            expect(select).to.be.true;
-        })
+        var el = element(by.xpath("//input[@value='automate']"));
+        await expect(el.getAttribute('disabled')).toEqual('disabled');
     } catch (error) {
         console.log(error)
-        throw "Admin unable to verifies automated Radio button is disabled and Manual option is selected by default"
-    }
-    try {
-        await objRecommendedResolution.btnManual.isPresent().then(function (select) {
-            expect(select).to.be.true;
-        })
-    } catch (error) {
-        console.log(error)
-        throw "Admin unable to verifies automated Radio button is disabled and Manual option is selected by default"
+        throw "automated Radio button is enabled"
     }
 });
-
 
 Then('{string} verifies created ticket in alert console', async function (string) {
     try {
@@ -221,7 +208,7 @@ Then('{string} Verifies after reassignment threshold it should be assigned to th
         console.log(error)
         throw "Admin unable to Verify after reassignment threshold it should be assigned to the default group mentioned in the project configuration page"
     }
-}); 
+});
 
 Then('{string} verifies resolution for the selected ticket is shown as closure note', async function (string) {
     try {

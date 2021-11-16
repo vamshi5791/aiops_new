@@ -353,3 +353,87 @@ When('{string} updates the ticket in service now category as {string}, Short Des
         throw "unable to change ticket state in service now"
     }
 });
+
+
+When('{string} verifies similar ticket pop-up must appear with ticket id, description, match score', async function (string) {
+    try {
+        //ticket id in similar ticket 
+        await element(by.xpath("//div[text()='Similar Tickets']//following::td[contains(@class,'alert-table-text ticket-no-width')]")).isPresent().then(function (select) {
+            expect(select).to.be.true;
+        });
+    } catch (error) {
+        await console.log(error)
+        throw "ticket id tab doesn't exist in similar ticket"
+    }
+    try {
+        //title in similar ticket 
+        await element(by.xpath("//div[text()='Similar Tickets']//following::td[contains(@class,'alert-table-text ticket-des-width')]")).isPresent().then(function (select) {
+            expect(select).to.be.true;
+        });
+    } catch (error) {
+        await console.log(error)
+        throw "title tab doesn't exist in similar ticket"
+    }
+    try {
+        // Match score in similar ticket 
+        await element(by.xpath("//div[text()='Similar Tickets']//following::td[contains(@class,'alert-table-text score-width')]")).isPresent().then(function (select) {
+            expect(select).to.be.true;
+        });
+    } catch (error) {
+        await console.log(error)
+        throw "Match score tab doesn't exist in similar ticket"
+    }
+});
+
+When('{string} clicks on ticket id from similar tickets', async function (string) {
+    try {
+        await element(by.xpath("//div[text()='Similar Tickets']//following::td[contains(@class,'alert-table-text ticket-no-width')]")).click()
+
+    } catch (error) {
+        await console.log(error)
+        throw "unable to click on ticket id from similar tickets"
+    }
+});
+
+When('{string} verifies Closure note, long description', async function (string) {
+    try {
+        await element(by.xpath("//div[@class='closure-note ng-star-inserted']")).isPresent().then(function (select) {
+            expect(select).to.be.true;
+        });
+    } catch (error) {
+        await console.log(error)
+        throw "closure note doesn't exist"
+    }
+    try {
+        await element(by.xpath("//div[text()='Restore the deleted article Article is related to Rolex watch']")).isPresent().then(function (select) {
+            expect(select).to.be.true;
+        });
+    } catch (error) {
+        await console.log(error)
+        throw "Long description doesn't exist"
+    }
+});
+
+
+When('{string} verifies cancel button and close button', async function (string) {
+    try {
+        await element(by.xpath("//span[text()='Cancel']")).isPresent().then(function (select) {
+            expect(select).to.be.true;
+        });
+    } catch (error) {
+        await console.log(error)
+        throw "Cancel button doesn't exist"
+    }
+    try {
+        await element(by.xpath("//a[@role='button']//span")).isPresent().then(function (select) {
+            expect(select).to.be.true;
+        });
+    } catch (error) {
+        await console.log(error)
+        throw "close button doesn't exist"
+    }
+});
+
+
+
+

@@ -225,13 +225,14 @@ Feature: Smart Desk - Roles/Privileges
         When "Admin" clicks on the ticket number in ticket console
         And "admin" clicks on ticket id in recommended resolution section
         And "admin" clicks on "Resolve" button
-    
+        And "admin" verifies closure note editable
+        And "admin" enters closure note on ticket resolution popup as "<ClosureNote>"
         And "admin" clicks on "Resolve" button
         Then "Admin" verifies if any "<SuccessMessage>" message is displayed
 
         Examples:
-            | ProjectName | ResolveNote | SuccessMessage               | ShortDescription                                  |
-            | Auto_01Desk | IBUST       | Ticket resolved successfully | Solarwinds] Restore the deleted article in system |
+            | ClosureNote | SuccessMessage               | ShortDescription                                  |
+            | IBUST       | Ticket resolved successfully | Solarwinds] Restore the deleted article in system |
 
 
 

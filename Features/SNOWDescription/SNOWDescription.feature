@@ -8,21 +8,20 @@ Feature: The 1st Alert which is eligible for ticketing should be considered as S
         And "Admin" enters project name in project search field and click on enter
         And "Admin" clicks on project name
 
-        #When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         And "admin" clicks on Alerts page
-        #And "admin" enters "Node Name" and clicks on enter "<NodeName>"
-        #And Admin click on state
-        #And "Admin" verifies the options for the tickets in alert store must have "Close", "Close"
-        #When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJsonDownAlert>", "<NodeName>"
-        # And "admin" clicks on Alerts page
+        And "admin" enters "Node Name" and clicks on enter "<NodeName>"
+        And Admin click on state
+        And "Admin" verifies the options for the tickets in alert store must have "Close", "Close"
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJsonDownAlert>", "<NodeName>"
+        And "admin" clicks on Alerts page
         And "admin" enters "Node Name" and clicks on enter "<NodeName>"
         And "Admin" gets the ticket number from alert console
         Then "admin" verifies ticket Short description should include details of the down alert as "<ShortDescription>"
-        #Then "admin" verifies Description should include details of the down alert using "<AlertName>"
+        Then "admin" verifies Description should include details of the down alert using "<AlertName>"
         And "Admin" clicks on the ticket number
-        Then "admin" verifies First occurrence in Description should be alert created time of "3rd" alert
         Then "admin" verifies No of occurrence in Description should be the total no of alerts in cluster "<NoOfOccurrence>"
-        And "admin" verifies the Activity section of the ticket using "<UPAlertName>"
+        And "admin" verifies the Activity section of the ticket using "<ShortDescription>"
         Examples:
             | ProjectName     | AlertName | ChannelName | channelJson          | NodeName        | channelJsonDownAlert   | ShortDescription                 | NoOfOccurrence | UPAlertName |
             | Automation_01M3 | AlertIB   | Solarwinds  | QueueChannelUpAlerts | AUSYGR-00A-SSC2 | QueueChannelDownAlerts | [ Solarwinds ] Sample Down Alert | 3              | AlertIBUp   |

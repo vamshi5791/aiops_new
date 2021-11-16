@@ -530,19 +530,6 @@ Then('{string} verifies Description should include details of the down alert usi
   }
 });
 
-
-Then('{string} verifies First occurrence in Description should be alert created time of {string} alert', async function (string, Occurrence) {
-  try {
-    await element(by.xpath('//div[text()="First occurrence"'+resultState.FirstOccurence+'"]')).isPresent().then(function (select) {
-      expect(select).to.be.true;
-    });
-  } catch (error) {
-    console.log(error)
-    throw "First occurrence in Description "
-  }
-});
-
-
 Then('{string} verifies No of occurrence in Description should be the total no of alerts in cluster {string}', async function (string, NoOfOccurrence) {
   try {
     await expect(resultState.NoOfOccurence).to.include(NoOfOccurrence);
@@ -552,11 +539,9 @@ Then('{string} verifies No of occurrence in Description should be the total no o
   }
 });
 
-Then('{string} verifies the Activity section of the ticket using {string}', async function (string, AlertName) {
+Then('{string} verifies the Activity section of the ticket using {string}', async function (string, ShortDescription) {
   try {
-    resultState = await objServiceNow.ActivitiesLog(TicketNumber)
-    await console.log(resultState)
-    await expect(resultState.NoOfOccurence).to.include(AlertName);
+    await expect(resultState.short_description).to.include(ShortDescription);
   } catch (error) {
     console.log(error)
     throw "wrong No of occurrence in Description"

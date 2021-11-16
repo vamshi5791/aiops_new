@@ -146,12 +146,46 @@ Then('verify UI should show chips with filter condition with close option', asyn
 });
 Then('{string} verifies the {string}{string} severity dropdown option as {string}', async function (userRole, indexValue, string, dropDownOption) {
   try {
-    var text = await element(by.xpath('(//li[@class="smo-multiselect-item smo-corner-all smo-drop-down-with-color-badge smo-multiselect-item-ms"])[' + indexValue + ']')).getText();
+    var text = await element(by.xpath('(//span[@class="ng-star-inserted"])[' + indexValue + ']')).getText();
     await console.log("severity level selected should be " + text);
     await expect(text).equal(dropDownOption);
   } catch (error) {
     await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to add some more severity conditions")
     await console.log(error);
+    var myElement = element(by.xpath("//span[text()='Cancel']"));
+    myElement.isPresent().then(async function (elm) {
+      if (elm) {
+        await browser.wait(EC.elementToBeClickable(element(by.xpath("//span[text()='Cancel']"))), 10000);
+        await browser.wait(EC.presenceOf(element(by.xpath("//span[text()='Cancel']"))), 10000);
+        await element(by.xpath("//span[text()='Cancel']")).click();
+      }
+    });
     throw "Invalid Sequence"
   }
+});
+
+When('{string} clicks on severity label', async function (userRole) {
+
+  try {
+    await element(by.xpath('//span[text()="All"]')).click();
+  } catch (error) {
+    await console.log(error);
+    throw "Unable to clicks on severity level"
+  }
+
+})
+
+Then('{string} verifies the {string}{string} severity option as {string}', async function (userRole, indexValue, string, Option) {
+
+  try {
+    var text = await element(by.xpath("//a[contains(@class,'variable-option pointer')][" + indexValue + "]")).getText();
+    await console.log("severity level selected should be " + text);
+    await expect(text).equal(Option);
+  } catch (error) {
+    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify that Itops_admin is able to add some more severity conditions")
+    await console.log(error);
+    await browser.switchTo().defaultContent();
+    throw "Invalid Sequence"
+  }
+
 });

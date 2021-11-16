@@ -109,30 +109,6 @@ Then('Admin verifies group name is stored in ticket store {string}', async funct
 
 });
 
-
-
-Then('Admin verifies ticket status in alert store is {string}', async function (string) {
-
-});
-
-Then('Admin verifies ticket status in ticket store is {string}', async function (string) {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
-});
-
-
-When('{string} verifies ticket is assigned to group NinetyOne NOC {string} {string}', async function (string, string2, string3) {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
-});
-
-
-When('{string} verifies ticket is assigned to ITOPS Virtual Engineer {string} {string}', async function (string, string2, string3) {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
-});
-
-
 Given('{string} changes the assign to and assign to group from ITSM {string},{string}', async function (string, AssignTo, AssignToGroup) {
     var resultState = await objServiceNowAPI.apiServiceNow('INC0823356')
     var systemID = resultState.sys_id;
@@ -170,6 +146,8 @@ Given('{string} verifies new ticket is assigned to {string}', async function (st
         await console.log(error)
         throw "Admin unable to verifies to which new ticket is assigned"
     }
-
-
 });
+
+When('{string} waits {string} minute to  complete the Reassignment',async function (string, string2) {
+    await browser.sleep(60000)
+  });

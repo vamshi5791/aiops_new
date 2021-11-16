@@ -35,7 +35,7 @@ export class ServiceNowAPI {
                 let ResultJSON = result.records[0]
                 var NoOfOccurence = ResultJSON.description.replace('Number of occurences:', '|');
                 NoOfOccurence = NoOfOccurence.split('|')[1]
-                NoOfOccurence = NoOfOccurence.split('First occurrence');
+                NoOfOccurence = NoOfOccurence.split('First occurrence:');
                 NoOfOccurenceData = NoOfOccurence[0];
                 FirstOccurence = NoOfOccurence[1]
                 objectString = JSON.parse(emptyString);

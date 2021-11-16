@@ -398,3 +398,15 @@ Then('{string} verifies No of days ago the conversation section was added should
     throw "description section not found"
   }
 });
+
+Then('{string} verifies make sure the Assigned to tab is present', async function (string) {
+
+  try {
+    await element(by.className('assign-ticket-section')).isPresent().then(function (select) {
+      expect(select).to.be.true;
+    });
+  } catch (error) {
+    console.log(error)
+    throw "assigned to tab doesn't exist"
+  }
+});
