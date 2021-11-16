@@ -41,6 +41,14 @@ When('{string} clicks on confirm', async function (string) {
     } catch (error) {
         await console.log("Action Name : clicks on confirm ")
         await console.log(error)
+        var myElement = element(by.xpath("//span[text()='Cancel']"));
+        myElement.isPresent().then(async function (elm) {
+            if (elm) {
+                await browser.wait(EC.elementToBeClickable(element(by.xpath("//span[text()='Cancel']"))), 10000);
+                await browser.wait(EC.presenceOf(element(by.xpath("//span[text()='Cancel']"))), 10000);
+                await element(by.xpath("//span[text()='Cancel']")).click();
+            }
+        });
         throw "Admin unable to clicks on confirm "
     }
 

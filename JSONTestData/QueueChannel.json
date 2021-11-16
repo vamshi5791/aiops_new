@@ -14,8 +14,8 @@
         "Alert time": ""
     },
     "QueueChannelUpAlerts": {
-        "Alert Name": "AlertIB",
-        "Alert Message": "Sample Alert",
+        "Alert Name": "Alert1",
+        "Alert Message": "Sample Up Alert",
         "Alert Severity": "Major",
         "Service Name": "Node Down",
         "Node Name": "CNHKGG-00A-SSC1",
@@ -28,8 +28,8 @@
         "Alert time": ""
     },
     "QueueChannelDownAlerts": {
-        "Alert Name": "AlertIB",
-        "Alert Message": "Sample Alert",
+        "Alert Name": "Alert1",
+        "Alert Message": "Sample Down Alert",
         "Alert Severity": "Major",
         "Service Name": "Node Down",
         "Node Name": "CNHKGG-00A-SSC1",

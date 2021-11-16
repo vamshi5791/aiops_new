@@ -356,7 +356,6 @@ Then('{string} gets the ticket number from alert console', async function (strin
     await objAlerts.txtTicket.getText().then(async function (TxtTicketNumber) {
       TicketNumber = TxtTicketNumber;
     });
-    await console.log("line no - 351", TicketNumber);
     await console.log(TicketNumber);
   }
   catch (error) {
@@ -508,5 +507,58 @@ When('{string} verifies ticket status as {string} {string}', async function (str
     await console.log("Action Name : verifying ticket status")
     await console.log(error)
     throw "ticket status not updated in alert console"
+  }
+});
+Then('{string} verifies ticket Short description should include details of the down alert as {string}', async function (string, ShortDescription) {
+  try {
+    resultState = await objServiceNow.apiServiceNow(TicketNumber)
+    await console.log(resultState)
+    await expect(resultState.short_description).to.include(ShortDescription);
+  } catch (error) {
+    console.log(error)
+    throw "ticket Short description not included in details of the down alert"
+  }
+});
+
+
+Then('{string} verifies Description should include details of the down alert using {string}', async function (string, AlertName) {
+  try {
+    await expect(resultState.short_description).to.include(AlertName);
+  } catch (error) {
+    console.log(error)
+    throw "ticket description not included in details of the down alert"
+  }
+});
+
+
+Then('{string} verifies First occurrence in Description should be alert created time of {string} alert', async function (string, Occurrence) {
+  try {
+    await element(by.partialLinkText('First occurrence:"' + resultState.FirstOccurence + '"')).isPresent().then(function (select) {
+      expect(select).to.be.true;
+    });
+  } catch (error) {
+    console.log(error)
+    throw "First occurrence in Description "
+  }
+});
+
+
+Then('{string} verifies No of occurrence in Description should be the total no of alerts in cluster {string}', async function (string, NoOfOccurrence) {
+  try {
+    await expect(resultState.NoOfOccurence).to.include(NoOfOccurrence);
+  } catch (error) {
+    console.log(error)
+    throw "wrong No of occurrence in Description"
+  }
+});
+
+Then('{string} verifies the Activity section of the ticket using {string}', async function (string, AlertName) {
+  try {
+    resultState = await objServiceNow.ActivitiesLog(TicketNumber)
+    await console.log(resultState)
+    await expect(resultState.NoOfOccurence).to.include(AlertName);
+  } catch (error) {
+    console.log(error)
+    throw "wrong No of occurrence in Description"
   }
 });

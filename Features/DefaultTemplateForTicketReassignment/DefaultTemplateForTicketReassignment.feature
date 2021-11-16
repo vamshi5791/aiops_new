@@ -34,17 +34,14 @@ Feature: Default template for ticket reassignment
 
 
 
-    Scenario Outline: Verify the behavior if no default template is present for reassignment
+    Scenario Outline: Make sure that if a custom template is present it must override the default template for reassignement
 
         When "admin" creates "reassignment" template "<TemplateName>" for project id as "<ProjectId>"
-
         When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<FirstResourceName>"
         When "admin" clicks on Alerts page
         When "Admin" enters "NodeName" and clicks on enter "<FirstResourceName>"
         Then "admin" verifies created ticket in alert console
-
         And "admin" deletes "reassignment" template using template name "<TemplateName>"
-
         When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<SecondResourceName>"
         When "admin" clicks on Alerts page
         When "Admin" enters "NodeName" and clicks on enter "<SecondResourceName>"
@@ -53,25 +50,18 @@ Feature: Default template for ticket reassignment
             | ProjectName    | ChannelName | channelJson               | FirstResourceName | SecondResourceName | TemplateName               | ProjectId |
             | Auto_01Resolve | Forescout   | ForescoutWithMessageandIP | ZACTHS-03A-SSA1   | AUSYCT-28A-FPA1    | CustomReassignmentTemplate | 1677      |
 
-
     Scenario Outline: Verify the behavior if no default template is present for reassignment
-
 
         When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<FirstResourceName>"
         When "admin" clicks on Alerts page
         When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
-
         Then "admin" creates "reassignment" template "<TemplateName>" for project id as "<ProjectId>"
         And "admin" deletes "reassignment" template using template name "<TemplateName>"
         Examples:
             | ProjectName    | ChannelName | channelJson               | FirstResourceName | TemplateName               | ProjectId |
             | Auto_01Resolve | Forescout   | ForescoutWithMessageandIP | ZACTHS-03A-SSA1   | CustomReassignmentTemplate | 1677      |
 
-
-
-
     Scenario Outline: Verify the behavior if default template has no reassignment group mentioned in the reassignment template
-
 
         When "Admin" sends "1" new "Forescout" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<FirstResourceName>"
         When "admin" clicks on Alerts page
