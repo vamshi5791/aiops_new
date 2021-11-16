@@ -55,6 +55,14 @@ When('{string} selects user from the team member drop down as {string}, {string}
   } catch (error) {
     await console.log("Action Name : selecting user from the team member drop down")
     await console.log(error)
+    var myElement = element(by.xpath("//span[@class='smo smo-close-black-alt']"));
+    myElement.isPresent().then(async function (elm) {
+      if (elm) {
+        await browser.wait(EC.elementToBeClickable(element(by.xpath("//span[@class='smo smo-close-black-alt']"))), 10000);
+        await browser.wait(EC.presenceOf(element(by.xpath("//span[@class='smo smo-close-black-alt']"))), 10000);
+        await element(by.xpath("//span[@class='smo smo-close-black-alt']")).click();
+      }
+    });
     throw "unable to select user from team member drop down"
   }
 });

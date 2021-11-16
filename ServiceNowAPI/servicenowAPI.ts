@@ -3,7 +3,7 @@ var arr_state = { "1": "New", "2": "Active", "3": "Awaiting Problem", "8": "Awai
 var emptyString = '{}';
 var objectString;
 var customJson;
-
+var FirstOccurence;
 var state_value = { "New": "1", "Active": "2", "Awaiting Problem": "3", "Awaiting Change": "8", "Awaiting User Info": "4", "Awaiting Customer IT": "5", "Resolved": "6", "Awaiting Vendor": "11", "On Hold": "12" }
 var base64 = require('base-64');
 var activityJsonResult;
@@ -33,8 +33,10 @@ export class ServiceNowAPI {
 
                 let ResultJSON = result.records[0]
                 var NoOfOccurence = ResultJSON.description.replace('Number of occurences:', '|');
-                NoOfOccurence = NoOfOccurence.replace('First occurrence', '|');
                 NoOfOccurence = NoOfOccurence.split('|')[1]
+                NoOfOccurence = NoOfOccurence.replace('First occurrence');
+                NoOfOccurence = NoOfOccurence[0];
+                FirstOccurence = NoOfOccurence[1]
                 objectString = JSON.parse(emptyString);
                 objectString.short_description = ResultJSON.short_description;
                 objectString.state = arr_state[ResultJSON.state];
@@ -43,7 +45,7 @@ export class ServiceNowAPI {
                 objectString.assigned_to_id = ResultJSON.assigned_to;
                 objectString.close_notes = ResultJSON.close_notes;
                 objectString.NoOfOccurence = NoOfOccurence;
-
+                objectString.FirstOccurence = FirstOccurence;
                 customJson = objectString;
 
             });

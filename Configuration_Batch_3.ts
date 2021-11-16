@@ -63,11 +63,11 @@ export let config: Config = {
     
     // '../Features/Logout/LogOut.feature',
     // // //Admin
-    // '../Features/LogIn/LogIn_Admin.feature',
-    // '../Features/TicketDetailsPage/TicketDetailsPage.feature',
-    // '../Features/CommentsInITSM/CommentsInITSM.feature',
-    // '../Features/SearchTicketListing/SearchTicketListing.feature',
-    // '../Features/Validation - WhileSelfGroupAndIndividualAssignment/SelfGroupAndIndividualAssignment.feature',
+    '../Features/LogIn/LogIn_Admin.feature',
+    '../Features/TicketDetailsPage/TicketDetailsPage.feature',
+    '../Features/CommentsInITSM/CommentsInITSM.feature',
+    '../Features/SearchTicketListing/SearchTicketListing.feature',
+    '../Features/Validation - WhileSelfGroupAndIndividualAssignment/SelfGroupAndIndividualAssignment.feature',
 
 
     // '../Features/AdvancedFilterM4/AdvancedFilterM4.feature',

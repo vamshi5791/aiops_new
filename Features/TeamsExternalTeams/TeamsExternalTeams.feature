@@ -23,8 +23,7 @@ Feature: Teams > External Teams
 
     Scenario Outline: Verify the imported section in External teams for ITOps admin
 
-
-        And "Admin" navigate to Configuration section
+        When "Admin" navigate to Configuration section
         And "Admin" clicks on external Teams
 
         And "admin" clicks on all groups dropdown
@@ -33,7 +32,7 @@ Feature: Teams > External Teams
 
         Then "Admin" verifies Search option to be available
         And "Admin" verifies Refresh option to be available
-        And "Admin" clicks on sort button
+        Then "Admin" verifies the all team member names are in alphabetical
         Then "Admin" searches for user in search box as "<UserName>"
         And "Admin" navigate to Configuration section
 
@@ -49,11 +48,11 @@ Feature: Teams > External Teams
         And "Admin" verifies user matching search should be displayed and his group also should be shown "<UserName>", "<Group>"
 
         Examples:
-            | GroupName                 | UserName          |
-            | UST - Enterprise Security | Chandranhari Nair |
+            | GroupName    | UserName          |
+            | ITOpsTesting | Chandranhari Nair |
 
 
-    Scenario Outline: Verify the imported section in External teams for ITOps admin
+    Scenario Outline: Verify that only imported groups and its users should be available in assign dropdowns.
 
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter

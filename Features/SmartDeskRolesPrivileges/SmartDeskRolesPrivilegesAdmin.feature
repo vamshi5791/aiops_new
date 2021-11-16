@@ -17,8 +17,12 @@ Feature: Smart Desk - Roles/Privileges
         When "Admin" clicks on the ticket number in ticket console
         When "Admin" navigate to Configuration section
         Then "Admin" able to access configuration section
+        And "admin" clicks on choose a group dropdown
+        And "admin" search for a group as "ITOps" in external Teams
+        And "Admin" verifies all the groups having "ITOpsPTTesting" should be displayed
+        And "Admin" selects group in external Teams "<GroupName>"
         Then "Admin" verifies import button to be enabled on selecting source and group
         And "Admin" verifies Refresh option to be available
         Examples:
-            | ProjectName |
-            | Auto_01Desk |
+            | ProjectName | GroupName      |
+            | Auto_01Desk | ITOpsPTTesting |

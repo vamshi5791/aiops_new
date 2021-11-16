@@ -55,7 +55,7 @@ When('{string} search for a group as {string} in external Teams', async function
 });
 When('{string} clicks on import button in external teams', async function (string) {
     try {
-        
+
         await objDisplayConfig.clickOnImportGroup()
     } catch (error) {
         await console.log(error)
@@ -210,13 +210,35 @@ Then('{string} selects {string} alert checkbox from pop up', async function (str
     }
 });
 
-When('{string} verifies groups shown in dropdown {string}, {string}',async function (string, FirstGroup, SecondGroup) {
+When('{string} verifies groups shown in dropdown {string}, {string}', async function (string, FirstGroup, SecondGroup) {
     try {
         await objDisplayConfig.verifyingFields(FirstGroup)
         await objDisplayConfig.verifyingFields(SecondGroup)
     } catch (error) {
-       await console.log(error);
+        await console.log(error);
         throw "Admin unable to verifies groups shown in dropdown"
 
     }
 });
+
+Then('{string} verifies the all team member names are in alphabetical', async function (string) {
+    try {
+        var teamMembers, sortMembers;
+        var teamArray = new Array(), sortArray = new Array();
+        for (let i = 1; i <= 6; i++) {
+            sortMembers = await element(by.xpath('//div[contains(@class,"group-member-details ng-star-inserted")][' + i + ']')).getText();
+            await console.log("All team members in the group " + sortMembers);
+            sortArray[i] = sortMembers;
+        }
+        for (let i = 1; i <= 6; i++) {
+            teamMembers = await element(by.xpath('//div[contains(@class,"group-member-details ng-star-inserted")][' + i + ']')).getText();
+            await console.log("All team members in the group " + teamMembers);
+            teamArray[i] = teamMembers;
+        }
+        await expect(sortArray).to.equal(teamArray);
+        await expect(sortMembers).to.equal(teamMembers);
+    } catch (error) {
+        console.log(error);
+        throw "all team members are not in alphabetical order"
+    }
+})
