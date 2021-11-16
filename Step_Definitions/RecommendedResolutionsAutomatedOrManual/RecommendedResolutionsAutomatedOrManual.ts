@@ -212,7 +212,11 @@ Then('{string} Verifies after reassignment threshold it should be assigned to th
 
 Then('{string} verifies resolution for the selected ticket is shown as closure note', async function (string) {
     try {
-        await browser.wait(EC.visibilityOf(element(by.xpath("//b[text()='Closure Note: ']"))), 50000);
+        var resolutionData = await element(by.xpath("//div[text()='Recommended Resolution']//following::td[contains(@class,'alert-table-text ticket-des-width')]")).getText()
+        await console.log(resolutionData)
+        var resolutionDataOnClosureNote = await element(by.xpath("//span[@class='ticket-title']")).getText()
+        await console.log(resolutionDataOnClosureNote)
+        await expect(resolutionData).to.include(resolutionDataOnClosureNote)
     } catch (error) {
         console.log(error)
         throw "resolution for the selected ticket is not shown as closure note"

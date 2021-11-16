@@ -27,28 +27,27 @@ Feature: The 1st Alert which is eligible for ticketing should be considered as S
             | Automation_01M3 | AlertIB   | Solarwinds  | QueueChannelUpAlerts | AUSYGR-00A-SSC2 | QueueChannelDownAlerts | [ Solarwinds ] Sample Down Alert | 3              | AlertIBUp   |
 
 
-# Scenario Outline: Verify first ticket eligible for ticketing only is included SNOW description while creating a ticket - 3rd ack alert moves to ticketing.
+    Scenario Outline: Verify first ticket eligible for ticketing only is included SNOW description while creating a ticket - 3rd ack alert moves to ticketing.
 
 
-#     When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-#     And "admin" clicks on Alerts page
-#     And "admin" enters "Node Name" and clicks on enter "<NodeName>"
-#     And Admin click on state
-#     And "Admin" verifies the options for the tickets in alert store must have "Acknowledge", "Acknowledge"
-#     When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-#     And "admin" clicks on Alerts page
-#     And "admin" enters "Node Name" and clicks on enter "<NodeName>"
-#     And "Admin" gets the ticket number from alert console
-#     Then "admin" verifies ticket Short description should include details of the down alert as "<ShortDescription>"
-#     Then "admin" verifies Description should include details of the down alert using "<AlertName>"
-#     And "Admin" clicks on the ticket number
-#     Then "admin" verifies First occurrence in Description should be alert created time of "3rd" alert
-#     Then "admin" verifies No of occurrence in Description should be the total no of alerts in cluster "<NoOfOccurrence>"
-#     And "admin" verifies the Activity section of the ticket using "<UPAlertName>"
+        When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        And "admin" clicks on Alerts page
+        And "admin" enters "Node Name" and clicks on enter "<NodeName>"
+        And Admin click on state
+        And "Admin" verifies the options for the tickets in alert store must have "Acknowledge", "Acknowledge"
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        And "admin" clicks on Alerts page
+        And "admin" enters "Node Name" and clicks on enter "<NodeName>"
+        And "Admin" gets the ticket number from alert console
+        Then "admin" verifies ticket Short description should include details of the down alert as "<ShortDescription>"
+        Then "admin" verifies Description should include details of the down alert using "<AlertName>"
+        And "Admin" clicks on the ticket number
+        Then "admin" verifies No of occurrence in Description should be the total no of alerts in cluster "<NoOfOccurrence>"
+        And "admin" verifies the Activity section of the ticket using "<UPAlertName>"
 
-#     Examples:
-#        | ProjectName  | AlertName | ChannelName | channelJson  | NodeName        | ShortDescription | NoOfOccurrence | UPAlertName |
-#        | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | GBPRCR-00A-FPA1 | Sample Alert     | 3              | Alert1      |
+        Examples:
+            | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | ShortDescription | NoOfOccurrence | UPAlertName |
+            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | GBPRCR-00A-FPA1 | Sample Alert     | 3              | Alert1      |
 
 
 # Scenario Outline: Verify during cluster split, split should not be successful if the new cluster or old cluster has only up alerts.

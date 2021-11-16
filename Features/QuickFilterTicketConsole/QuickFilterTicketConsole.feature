@@ -10,23 +10,29 @@ Feature:  Verify Quick filter on Ticket Console and order of ticket state
         And "Admin" enters project name in project search field and click on enter
         And "admin" clicks on project name
         When "admin" navigates to Tickets page
-        And "Admin" clicks on advanced filter icon
+        And "admin" verify QuickFilter is present on ticket listing page
+        And "admin" Clear the existing filters
+        And "Admin" clicks on Quick filter icon
         When "Admin" clicks on quick filter dropdown
         And "admin" selects filter by status type as "On Hold"
         And "admin" selects filter by status type as "Resolved"
         And "Admin" clicks on filter by priority dropdown
-        And Admin selects critical filter
-        And Admin selects high filter
+        And Admin selects moderate filter
+        And Admin selects Low filter
+        And "Admin" removes the Ticket "RemoveTicketPriority"
+        And "Admin" removes the Ticket "RemoveTicketState"
         And "Admin" enters "TicketNumber" and clicks on enter "<TicketNumber>"
         And "ITOps_Admin" clicks on remove all button
-        When "Admin" clicks on quick filter
+        And "Admin" clicks on Quick filter icon
+        When "Admin" clicks on quick filter dropdown
+        And "Admin" verifies the "2""nd" quick filter Option as "Open"
+        And "Admin" verifies the "4""th" quick filter Option as "Assigned"
+        And "Admin" verifies the "6""th" quick filter Option as "On Hold"
+        And "Admin" verifies the "8""th" quick filter Option as "Resolved"
         And "admin" selects filter by status type as "On Hold"
-        And "Admin" clicks on filter by priority dropdown
-        And Admin selects critical filter
-
-
+        And "Admin" enters "TicketNumber" and clicks on enter "<TicketNumberOnHold>"
 
         Examples:
-            | TicketNumber |
-            | INC0822555   |
+            | TicketNumber | RemoveTicketPriority | RemoveTicketState | TicketNumberOnHold |
+            | INC0831771   | 4 - Low              | Resolved          | INC0831771         |
 
