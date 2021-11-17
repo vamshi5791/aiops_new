@@ -19,7 +19,7 @@ When('{string} enters {string} as {string} in project search field and click on 
 When('{string} clicks on project name {string}', async function (userRole, ProjectName) {
     try {
         //this wait time is mandatory
-        await browser.sleep(5000);
+        await browser.sleep(10000);
         await browser.wait(EC.elementToBeClickable(element(by.xpath('//h3[text()=" ' + ProjectName + ' "]'))), 100000);
         await objProjectListing.selectProject(ProjectName);
     } catch (error) {

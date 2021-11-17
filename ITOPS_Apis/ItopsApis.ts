@@ -136,4 +136,34 @@ export class ITOPS_APIs {
         })
     }
 
+    //Update Default Template with assignment_group_id
+    async updateDefaultTemplate(assignment_group_id: string = 'ee199611db12e4104d2e62cb139619ee', ProjectId: string = '1677') {
+        const accessToken = await this.getAccessToken();
+        var bodyTemplate = await this.getAllTemplates(ProjectId)
+        var assignment_group = bodyTemplate.templateDefault.templateMapping[1].values[0];
+        assignment_group.fieldValue = assignment_group_id;
+        bodyTemplate = JSON.stringify(bodyTemplate.templateDefault)
+        const updateTemplateDfu = alertMapping_url + '/api/updateTicketTemplate';
+        await fetch(updateTemplateDfu, {
+            method: 'PUT',
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "Organization-name": "ustglobal",
+                "Organization-key": 1,
+                "Authorization": "Bearer " + accessToken,
+                "user": USER_CustomReassignment
+            },
+            body: bodyTemplate,
+        }).then(async response => {
+            try {
+                const data = await response.json()
+                //console.log('response data?', data)
+            } catch (error) {
+                console.log('Error happened here!')
+                console.error(error)
+            }
+        })
+
+    }
+
 }

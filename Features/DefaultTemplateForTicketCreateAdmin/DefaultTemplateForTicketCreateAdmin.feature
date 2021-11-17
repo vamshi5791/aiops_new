@@ -14,10 +14,19 @@ Feature: Default template for ticket create
         When "Admin" sends "3" new "verba" alerts with "<ProjectName>", "<VerbaChannelName>", "<VerbaChannelJson>", "<NodeName>"
         And "admin" clicks on Alerts page
         And "admin" enters "Node Name" and clicks on enter "<NodeName>"
+
+        #Split and verify the ticket creation
+        And "admin" clicks on the cluster count for the ticketed alert from previous step
+        And "Admin" selects "1" alert checkbox from pop up
+        #And "Admin" selects "2" alert checkbox from pop up
+        And "Admin" selects create ticket from pop up
+        And "Admin" clicks on confirm
+        Then "Admin" verifies if "<SuccessMessage>" message is displayed
+
         Then "admin" verifies created ticket in alert console
         Examples:
             | ProjectName    | ChannelName | channelJson  | NodeName        | VerbaChannelName | VerbaChannelJson  | VerbaNodeName   |
-            | Auto_01Resolve | Solarwinds  | QueueChannel | ZACTHS-03A-SSA1 | VerbaNew         | VerbaWitNoMessage | AUSYGR-00A-SSC2 |
+            | Auto_01Resolve | Solarwinds  | QueueChannel | GBLNGS-08A-SUA2 | VerbaNew         | VerbaWitNoMessage | AUSYGR-00A-SSC2 |
 
 
     Scenario Outline: Make sure that ticket creeation occurss aftere edit and saving the default template
@@ -31,6 +40,8 @@ Feature: Default template for ticket create
         And "admin" enters "Node Name" and clicks on enter "<FirstResourceName>"
         Then "admin" verifies created ticket in alert console
 
+        Then "admin" Edit the default template and change the assignment group "<assignment group_Id>"
+
         When "Admin" sends "1" new "Forescout" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<SecondResourceName>"
 
         And "admin" clicks on Alerts page
@@ -38,5 +49,5 @@ Feature: Default template for ticket create
         Then "admin" verifies created ticket in alert console
 
         Examples:
-            | ProjectName    | ChannelName | channelJson               | FirstResourceName | SecondResourceName |
-            | Auto_01Resolve | Forescout   | ForescoutWithMessageandIP | ZACTHS-03A-SSA1   | AUSYCT-28A-FPA1    |
+            | ProjectName    | ChannelName | channelJson               | FirstResourceName | SecondResourceName | assignment group_Id              |
+            | Auto_01Resolve | Forescout   | ForescoutWithMessageandIP | ZACTHS-03A-SSA1   | AUSYCT-28A-FPA1    | ee199611db12e4104d2e62cb139619ee |

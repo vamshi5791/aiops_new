@@ -1,7 +1,9 @@
 import { When, Then } from "cucumber"
 import { browser} from "protractor"
 import { TicketDetailsPage } from "../../PageObjects/TicketDetailsPage";
+import { ITOPS_APIs } from "../../ITOPS_Apis/ItopsApis";
 let objTicketDetailsPage = new TicketDetailsPage();
+let objITOpsApi = new ITOPS_APIs(); 
 
 When('{string} clicks on status tab drop down', async function (string) {
     try {
@@ -49,4 +51,14 @@ Then('{string} click on resolve button', async function (userRole) {
            await console.log(error)
            throw "User is not able to click on resolve button"
        }
+});
+
+
+Then('{string} Edit the default template and change the assignment group {string}',async function(string,ass_group_id){
+try {
+    await objITOpsApi.updateDefaultTemplate(ass_group_id)
+} catch (error) {
+    console.log(error);
+    throw "Admin unable to Edit the default template and change the assignment group"
+}
 });
