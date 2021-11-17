@@ -28,7 +28,7 @@ Feature: Default template for ticket reassignment
         And "admin" clicks on "Hold" button
         Then "Admin" verifies if "<HoldSuccessMessage>" message is displayed
         And "Admin" gets the ticket number
-       
+       Then "Admin" verifies comments in ITSM updated by "itops_admin" for TicketNumber
 
         And Admin click on state
         And "admin" clicks on "Close" button
