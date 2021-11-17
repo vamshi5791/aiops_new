@@ -27,6 +27,15 @@ Feature: Default template for ticket reassignment
         And Admin click on state
         And "admin" clicks on "Hold" button
         Then "Admin" verifies if "<HoldSuccessMessage>" message is displayed
+        And "Admin" gets the ticket number
+       
+
+        And Admin click on state
+        And "admin" clicks on "Close" button
+        When "admin" enters closure note as "<ClosureNote>" and click on Ok
+        Then "Admin" verifies if "<SuccessMessage>" message is displayed
+        Then "admin" verifies comments in ITSM resolved by "itops_admin" for "<TicketNumber>"
+
 
         Examples:
             | ProjectName    | Group            | ChannelName | channelJson  | NodeName        | VerbaChannelName | VerbaChannelJson  | VerbaNodeName | AssignSuccessMessage          | HoldSuccessMessage            | CloseSuccessMessage           | TemplateName               | ProjectId |

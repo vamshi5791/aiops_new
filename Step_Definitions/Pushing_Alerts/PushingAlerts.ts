@@ -28,6 +28,8 @@ var ShortDescription;
 var TicketNumber1;
 var TicketNumberNew;
 var ShortDescriptionServiceNow;
+var resultState;
+var systemID;
 
 
 Then('enter alertname in search box and verify alert details {string}', async function (AlertName) {
@@ -410,3 +412,16 @@ Then('{string} verifies make sure the Assigned to tab is present', async functio
     throw "assigned to tab doesn't exist"
   }
 });
+
+When('{string} verifies comments in ITSM resolved by {string} for {string}', async function (string, UpdatedBy, Ticket) {
+  try {
+      resultState = await objServiceNowAPI.apiServiceNow(TicketNumber)
+      systemID = resultState.sys_id;
+      var datavaar = await objServiceNowAPI.ActivitiesLog(systemID)
+      await console.log(datavaar)
+      await expect(datavaar.new).to.include("Updated By: " + UpdatedBy + "\n\nClosed")
+  } catch (error) {
+      console.log(error)
+      throw "Admin unable to verifies comments in ITSM"
+  }
+})

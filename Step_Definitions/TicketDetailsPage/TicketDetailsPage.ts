@@ -262,19 +262,7 @@ When('{string} verifies comments in ITSM assigned by {string} for {string}', asy
         throw "Admin unable to verifies comments in ITSM"
     }
 })
-When('{string} verifies comments in ITSM resolved by {string} for {string}', async function (string, UpdatedBy, TicketNumber) {
-    try {
-        resultState = await objServiceNow.apiServiceNow(TicketNumber)
-        systemID = resultState.sys_id;
-        var datavaar = await objServiceNow.ActivitiesLog(systemID)
-        await console.log(datavaar)
-        await expect(datavaar.new).to.include("Updated By: " + UpdatedBy + "\n\nClosed")
-    } catch (error) {
-        logger.error("error message")
-        console.log(error)
-        throw "Admin unable to verifies comments in ITSM"
-    }
-})
+
 When('{string} verifies search box is available to perform search operation', async function (string) {
     try {
         await element(by.xpath("//input[@placeholder='Search']")).isPresent().then(function (select) {
