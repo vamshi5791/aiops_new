@@ -386,7 +386,6 @@ Then('{string} verifies ticket is assigned ITOps to a team member {string}', asy
 
 Then('{string} verifies ticket is assigned to self {string}', async function (string, string2) {
   try {
-    // await expect(resultState.state).to.include('Active');
   } catch (error) {
     await console.log("Action Name : verifying ticket is assigned ITOps to self")
     await console.log(error)
@@ -426,7 +425,6 @@ Then('{string} verifies state of ticket should be Resolved', async function (str
 When('{string} clicks on assign button on the popup', async function (string) {
 
   try {
-    // await browser.sleep(5000)
     await browser.wait(EC.visibilityOf(objAlerts.btnAssignButtonOnPopUp), 50000);
     await browser.wait(EC.elementToBeClickable(objAlerts.btnAssignButtonOnPopUp), 50000);
     await objAlerts.clickOnAssignButtonOnPopUp()

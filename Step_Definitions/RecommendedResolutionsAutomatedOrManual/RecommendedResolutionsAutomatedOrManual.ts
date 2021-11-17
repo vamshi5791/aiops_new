@@ -81,7 +81,7 @@ Then('{string} verifies Resolve and Cancel button to be available with Resolve a
         })
     } catch (error) {
         console.log(error)
-        throw "Admin unable to verifies Resolve and Cancel button to be available with Resolve as selected by default"
+        throw "Resolve button not available"
     }
     try {
         await objRecommendedResolution.btnCancel.isPresent().then(function (select) {
@@ -89,7 +89,15 @@ Then('{string} verifies Resolve and Cancel button to be available with Resolve a
         })
     } catch (error) {
         console.log(error)
-        throw "Admin unable to verifies Resolve and Cancel button to be available with Resolve as selected by default"
+        throw "Cancel button not available"
+    }
+    try {
+        await element(by.xpath('//span[@class="ticket-title"]//following::span[@class="match-score"]')).isPresent().then(function (select) {
+            expect(select).to.be.true;
+        })
+    } catch (error) {
+        console.log(error)
+        throw "Resolve button not selected by default"
     }
 });
 
@@ -179,7 +187,7 @@ Then('{string} verifies created ticket in alert console', async function (string
         });
     } catch (error) {
         console.log(error)
-        throw "Admin unable to verifies created ticket in alert console"
+        throw "ticket not created"
     }
 });
 
@@ -222,3 +230,14 @@ Then('{string} verifies resolution for the selected ticket is shown as closure n
         throw "resolution for the selected ticket is not shown as closure note"
     }
 })
+
+Then('{string} verifies that ticket should not be created in alert console', async function (string) {
+    try {
+        await element(by.xpath("//span[contains(text(),'INC')]")).isPresent().then(function (select) {
+            expect(select).to.be.false;
+        });
+    } catch (error) {
+        console.log(error)
+        throw "ticket got created "
+    }
+});

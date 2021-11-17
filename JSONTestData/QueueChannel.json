@@ -563,5 +563,19 @@
         "Site": "New York",
         "Alert time": "",
         "Alert priority": "High"
+    },
+    "SnowAckAlert": {
+        "Alert Name": "Alert1",
+        "Alert Message": "Third Down Alert",
+        "Alert Severity": "Major",
+        "Service Name": "Node Down",
+        "Node Name": "CNHKGG-00A-SSC1",
+        "NodeIP Address": "123.45.67",
+        "Object Type": "Access Point",
+        "ObjectName": "NewObject",
+        "ObjectStatus": "down",
+        "Alert Details URL": "https://GalacticStar405.abc.app.com:443/Orion/NetPerfMon/NodeDetails.aspx?NetObject=N:4049",
+        "Resource Type": "Console",
+        "Alert time": ""
     }
 }
