@@ -41,7 +41,7 @@ export let config: Config = {
   specs: [
     //MS4
     // //support engineer
-    '../Features/LogIn/LogIn_Admin.feature',
+    //'../Features/LogIn/LogIn_Admin.feature',
     // '../Features/SupportEngineerInfrastructureSection/SupportEngineerInfrastructureSection.feature',
     // '../Features/Logout/LogOut.feature',
     // // // //Visitor
@@ -87,11 +87,11 @@ export let config: Config = {
  
     '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/TeamsExternalTeams/TeamsExternalTeams.feature',
-    '../Features/SNOWDescription/SNOWDescription.feature',
+    //'../Features/SNOWDescription/SNOWDescription.feature',
     // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesAdmin.feature',
     // '../Features/RecommendedResolutionsAutomatedOrManual/RecommendedResolutionsAutomatedOrManual.feature',
     // '../Features/DefaultTemplateForTicketCreateAdmin/DefaultTemplateForTicketCreateAdmin.feature',
-    // '../Features/DefaultTemplateForTicketReassignment/DefaultTemplateForTicketReassignment.feature',
+     '../Features/DefaultTemplateForTicketReassignment/DefaultTemplateForTicketReassignment.feature',
 
     // '../Features/AutocloseAndFlap/AutocloseAndFlap.feature',
     // '../Features/OrderOfSeverity/OrderOfSeverity.feature',

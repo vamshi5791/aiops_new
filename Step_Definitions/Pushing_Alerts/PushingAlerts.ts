@@ -415,13 +415,28 @@ Then('{string} verifies make sure the Assigned to tab is present', async functio
 
 When('{string} verifies comments in ITSM resolved by {string} for {string}', async function (string, UpdatedBy, Ticket) {
   try {
-      resultState = await objServiceNowAPI.apiServiceNow(TicketNumber)
-      systemID = resultState.sys_id;
-      var datavaar = await objServiceNowAPI.ActivitiesLog(systemID)
-      await console.log(datavaar)
-      await expect(datavaar.new).to.include("Updated By: " + UpdatedBy + "\n\nClosed")
+    resultState = await objServiceNowAPI.apiServiceNow(TicketNumber)
+    systemID = resultState.sys_id;
+    var datavaar = await objServiceNowAPI.ActivitiesLog(systemID)
+    await console.log(datavaar)
+    await expect(datavaar.new).to.include("Updated By: " + UpdatedBy + "\n\nClosed")
   } catch (error) {
-      console.log(error)
-      throw "Admin unable to verifies comments in ITSM"
+    console.log(error)
+    throw "Admin unable to verifies comments in ITSM"
+  }
+})
+
+
+Then('{string} verifies updated ticket data in activity session in snow', async function (string) {
+  try {
+    var AGID = await objServiceNowAPI.apiServiceNow(TicketNumber);
+    await objServiceNowAPI.assignmentGroup(AGID.assignment_group_id);
+    await browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='second-row ng-star-inserted']"))), 60000);
+    var AssignmentGroupId = await element(by.xpath("//div[@class='second-row ng-star-inserted']")).getText();
+    await expect(AGID.assignment_group_name+'  (Group)').to.include(AssignmentGroupId);
+  } catch (error) {
+    console.log(error);
+    throw "Admin Unable to Verifiy updated ticket data in activity session in snow"
+
   }
 })
