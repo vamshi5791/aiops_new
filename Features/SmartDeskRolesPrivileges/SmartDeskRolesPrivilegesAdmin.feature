@@ -13,6 +13,7 @@ Feature: Smart Desk - Roles/Privileges
         Then "Admin" verifies that the widget "Mean Time To Repair" is available in the dashboard
         Then "Admin" verifies that the widget "Resolution SLA" is available in the dashboard
         When "Admin" comes out of the dashboard frame
+        And "admin" verifies infrastructure page should not be available
         When "admin" navigates to Tickets page
         When "Admin" clicks on the ticket number in ticket console
         When "Admin" navigate to Configuration section

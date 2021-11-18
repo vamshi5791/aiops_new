@@ -6,7 +6,9 @@ let objDisplayConfig = new DisplayConfiguration();
 var EC = browser.ExpectedConditions;
 var fs = require('fs');
 var expect = chai.expect;
-
+var sortMembersFromTicketConsole;
+var teamMembers, sortMembers;
+var teamArray = new Array(), sortArray = new Array();
 
 When('{string} clicks on external Teams', async function (string) {
     try {
@@ -242,3 +244,69 @@ Then('{string} verifies the all team member names are in alphabetical', async fu
         throw "all team members are not in alphabetical order"
     }
 })
+
+
+Then('{string} gets all the members from selected group', async function (string) {
+    try {
+
+        for (let i = 1; i <= 4; i++) {
+            sortMembers = await element(by.xpath('//div[contains(@class,"group-member-details ng-star-inserted")][' + i + ']')).getText();
+            await console.log(sortMembers);
+            sortArray[i] = sortMembers;
+        }
+    } catch (error) {
+        console.log(error);
+        throw "all team members are not in alphabetical order"
+    }
+})
+
+Then('{string} verifies Member drop should contains only users list who are having access to selected group name', async function (string) {
+    try {
+        for (let i = 1; i <= 4; i++) {
+            sortMembersFromTicketConsole = await element(by.xpath('(//li[@class="smo-dropdown-item smo-dropdown-item-ms"])[' + i + ']')).getText();
+            await console.log(sortMembersFromTicketConsole);
+            await expect(sortMembersFromTicketConsole).to.equal(sortArray[i]);
+        }
+    } catch (error) {
+
+        console.log(error)
+        throw "Member dropdown should not contains only users list who are having access to selected group name"
+    }
+});
+
+Then('{string} gets all the groups dropdown', async function (string) {
+    try {
+
+        for (let i = 1; i <= 33; i++) {
+            sortMembers = await element(by.xpath('(//li[@class="smo-dropdown-item smo-dropdown-item-ms"])[' + i + ']')).getText();
+            await console.log(sortMembers);
+            sortArray[i] = sortMembers;
+        }
+    } catch (error) {
+        console.log(error);
+        throw "all team members are not in alphabetical order"
+    }
+})
+Then('{string} verifies group drop down should contains imported groups through external teams option', async function (string) {
+    try {
+        for (let i = 1; i <= 33; i++) {
+            sortMembersFromTicketConsole = await element(by.xpath('(//li[@class="smo-dropdown-item smo-dropdown-item-ms"])[' + i + ']')).getText();
+            await console.log(sortMembersFromTicketConsole);
+            await expect(sortMembersFromTicketConsole).to.equal(sortArray[i]);
+        }
+    } catch (error) {
+        console.log(error)
+        throw "group drop down should not contains imported groups through external teams option"
+    }
+});
+
+When('{string} clicks on choose a team member dropdown', async function (UserRole) {
+    try {
+        await browser.wait(EC.elementToBeClickable(element(by.xpath("//label[text()='Choose a Team member*']//following::span"))), 50000);
+        await element(by.xpath("//label[text()='Choose a Team member*']//following::span")).click();
+    } catch (error) {
+        await console.log("Action Name : selecting user from the team member drop down")
+        await console.log(error)
+        throw "unable to select user from team member drop down"
+    }
+});

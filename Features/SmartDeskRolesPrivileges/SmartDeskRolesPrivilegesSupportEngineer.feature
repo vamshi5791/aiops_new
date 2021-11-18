@@ -35,10 +35,9 @@ Feature: Smart Desk - Roles/Privileges
         Then "SupportEngineer" verifies if "<ResolveSuccessMessage>" message is displayed
         When "SupportEngineer" clicks on the ticket number in ticket console
         And "SupportEngineer" verifies infrastructure page should not be available
-        When "SupportEngineer" navigate to Configuration section
         Then "SupportEngineer" able to access configuration section
-        Then "SupportEngineer" verifies import button to be enabled on selecting source and group
-        And "SupportEngineer" verifies Refresh option to be available
+        When "SupportEngineer" navigate to Configuration section
+        Then "SupportEngineer" verifies import button should not be available
 
         Examples:
             | ProjectName | SuccessMessage                | Group            | TeamMember      | HoldSuccessMessage            | ResolveSuccessMessage        |

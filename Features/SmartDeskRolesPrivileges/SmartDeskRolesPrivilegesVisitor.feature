@@ -14,6 +14,8 @@ Feature: Smart Desk - Roles/Privileges
         Then "Itops_visitor" verifies that the widget "Resolution SLA" is available in the dashboard page
         When "Itops_visitor" comes out of the dashboard frame
         Then "Itops_visitor" able to access configuration section
+        When "Itops_visitor" navigate to Configuration section
+        Then "Itops_visitor" verifies import button should not be available
         And "Itops_visitor" verifies infrastructure page should not be available
 
         Examples:

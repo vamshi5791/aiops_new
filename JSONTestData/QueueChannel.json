@@ -14,7 +14,7 @@
         "Alert time": ""
     },
     "QueueChannelUpAlerts": {
-        "Alert Name": "AlertIB",
+        "Alert Name": "Alert1",
         "Alert Message": "Sample Up Alert",
         "Alert Severity": "Major",
         "Service Name": "Node Down",
@@ -28,7 +28,7 @@
         "Alert time": ""
     },
     "QueueChannelDownAlerts": {
-        "Alert Name": "AlertIB",
+        "Alert Name": "Alert1",
         "Alert Message": "Sample Down Alert",
         "Alert Severity": "Major",
         "Service Name": "Node Down",
