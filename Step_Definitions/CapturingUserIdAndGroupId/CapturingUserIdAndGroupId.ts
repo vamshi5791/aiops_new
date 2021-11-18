@@ -148,6 +148,6 @@ Given('{string} verifies new ticket is assigned to {string}', async function (st
     }
 });
 
-When('{string} waits {string} minute to  complete the Reassignment',async function (string, string2) {
+When('{string} waits {string} minute',async function (string, string2) {
     await browser.sleep(60000)
   });

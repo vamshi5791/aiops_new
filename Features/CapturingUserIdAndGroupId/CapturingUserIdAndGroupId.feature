@@ -32,12 +32,11 @@ Feature: Capturing User Id and Group Id
 
         When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         And "admin" clicks on Alerts page
-
-        And "Admin" waits "1" minute to  complete the Reassignment
-        And "Admin" waits "1" minute to  complete the Reassignment
-        And "Admin" waits "1" minute to  complete the Reassignment
-        And "Admin" waits "1" minute to  complete the Reassignment
-        And "Admin" waits "1" minute to  complete the Reassignment
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
         And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And "Admin" gets the ticket number generated
 
