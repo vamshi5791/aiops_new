@@ -16,7 +16,6 @@ Feature: Smart Desk - Roles/Privileges
         And "admin" verifies infrastructure page should not be available
         When "admin" navigates to Tickets page
         When "Admin" clicks on the ticket number in ticket console
-
         When "Admin" navigate to Configuration section
         Then "Admin" able to access configuration section
         And "Admin" clicks on external Teams
@@ -27,9 +26,9 @@ Feature: Smart Desk - Roles/Privileges
         And "Admin" selects group in external Teams "<GroupName>"
         Then "Admin" verifies import button to be enabled on selecting source and group
         And "admin" clicks on all groups dropdown
-        And "admin" searches for a group as "<GroupName>" in external Teams
-        And "Admin" selects group in external Teams as "<GroupName>"
+        And "admin" searches for a group as "<GroupNameInAll>" in external Teams
+        And "Admin" selects group in external Teams as "<GroupNameInAll>"
         And "Admin" verifies Refresh option to be available
         Examples:
-            | ProjectName | GroupName                     |
-            | Auto_01Desk | UST - REFM TVM Admin Security |
+            | ProjectName | GroupName             | GroupNameInAll                |
+            | Auto_01Desk | UST - Helpdesk/L1 CAB | UST - REFM TVM Admin Security |

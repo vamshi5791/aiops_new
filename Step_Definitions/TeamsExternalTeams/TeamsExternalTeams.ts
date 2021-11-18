@@ -227,12 +227,16 @@ Then('{string} verifies the all team member names are in alphabetical', async fu
     try {
         var teamMembers, sortMembers;
         var teamArray = new Array(), sortArray = new Array();
-        for (let i = 1; i <= 6; i++) {
+        var MemberCount;
+        element.all(by.xpath('//div[contains(@class,"group-member-details ng-star-inserted")]')).count().then(function (MemberCount) {
+            console.log("count of classes:" + MemberCount);
+        });
+        for (let i = 1; i <= MemberCount; i++) {
             sortMembers = await element(by.xpath('//div[contains(@class,"group-member-details ng-star-inserted")][' + i + ']')).getText();
             await console.log("All team members in the group " + sortMembers);
             sortArray[i] = sortMembers;
         }
-        for (let i = 1; i <= 6; i++) {
+        for (let i = 1; i <= MemberCount; i++) {
             teamMembers = await element(by.xpath('//div[contains(@class,"group-member-details ng-star-inserted")][' + i + ']')).getText();
             await console.log("All team members in the group " + teamMembers);
             teamArray[i] = teamMembers;
@@ -248,8 +252,11 @@ Then('{string} verifies the all team member names are in alphabetical', async fu
 
 Then('{string} gets all the members from selected group', async function (string) {
     try {
-
-        for (let i = 1; i <= 4; i++) {
+        var GroupCount;
+        element.all(by.xpath('//div[contains(@class,"group-member-details ng-star-inserted")]')).count().then(function (GroupCount) {
+            console.log("count of classes:" + GroupCount);
+        });
+        for (let i = 1; i <= GroupCount; i++) {
             sortMembers = await element(by.xpath('//div[contains(@class,"group-member-details ng-star-inserted")][' + i + ']')).getText();
             await console.log(sortMembers);
             sortArray[i] = sortMembers;
@@ -262,7 +269,11 @@ Then('{string} gets all the members from selected group', async function (string
 
 Then('{string} verifies Member drop should contains only users list who are having access to selected group name', async function (string) {
     try {
-        for (let i = 1; i <= 4; i++) {
+        var GroupCount;
+        element.all(by.xpath('(//li[@class="smo-dropdown-item smo-dropdown-item-ms"])')).count().then(function (GroupCount) {
+            console.log("count of classes:" + GroupCount);
+        });
+        for (let i = 1; i <= GroupCount; i++) {
             sortMembersFromTicketConsole = await element(by.xpath('(//li[@class="smo-dropdown-item smo-dropdown-item-ms"])[' + i + ']')).getText();
             await console.log(sortMembersFromTicketConsole);
             await expect(sortMembersFromTicketConsole).to.equal(sortArray[i]);
@@ -276,8 +287,11 @@ Then('{string} verifies Member drop should contains only users list who are havi
 
 Then('{string} gets all the groups dropdown', async function (string) {
     try {
-
-        for (let i = 1; i <= 33; i++) {
+        var GroupCount;
+        element.all(by.xpath('(//li[@class="smo-dropdown-item smo-dropdown-item-ms"])')).count().then(function (GroupCount) {
+            console.log("count of classes:" + GroupCount);
+        });
+        for (let i = 1; i <= GroupCount; i++) {
             sortMembers = await element(by.xpath('(//li[@class="smo-dropdown-item smo-dropdown-item-ms"])[' + i + ']')).getText();
             await console.log(sortMembers);
             sortArray[i] = sortMembers;
@@ -289,7 +303,11 @@ Then('{string} gets all the groups dropdown', async function (string) {
 })
 Then('{string} verifies group drop down should contains imported groups through external teams option', async function (string) {
     try {
-        for (let i = 1; i <= 33; i++) {
+        var GroupCount;
+        element.all(by.xpath('(//li[@class="smo-dropdown-item smo-dropdown-item-ms"])')).count().then(function (GroupCount) {
+            console.log("count of classes:" + GroupCount);
+        });
+        for (let i = 1; i <= GroupCount; i++) {
             sortMembersFromTicketConsole = await element(by.xpath('(//li[@class="smo-dropdown-item smo-dropdown-item-ms"])[' + i + ']')).getText();
             await console.log(sortMembersFromTicketConsole);
             await expect(sortMembersFromTicketConsole).to.equal(sortArray[i]);

@@ -69,9 +69,9 @@ export class DisplayConfiguration {
     await element(by.xpath('//span[text()="' + Source + '"]')).click();
   }
   async selectGroup(Group) {
-    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="' + Group + '"]'))), 100000);
-    await browser.wait(EC.presenceOf(element(by.xpath('//span[text()="' + Group + '"]'))), 100000);
-    await element(by.xpath('//span[text()="' + Group + '"]')).click();
+    await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="' + Group + ' "]'))), 100000);
+    await browser.wait(EC.presenceOf(element(by.xpath('//span[text()="' + Group + ' "]'))), 100000);
+    await element(by.xpath('//span[text()="' + Group + ' "]')).click();
   }
   async clickOnRefresh() {
     await this.btnRefresh.click();
