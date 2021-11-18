@@ -7,24 +7,6 @@ var moment = require("moment");
 
 //screenshots for scenarios
 
-// After(async function (scenario) {
-
-//   if (scenario.result.status === Status.FAILED) {
-//     const screenshot = await browser.takeScreenshot();
-
-//     this.attach(screenshot, "image/png");
-
-//   }
-//   else
-//     if (scenario.result.status === Status.PASSED) {
-//       if (properties.get('main.Required_screenshot') == true) {
-//         const screenshot = await browser.takeScreenshot();
-
-//         this.attach(screenshot, "image/png");
-//       }
-//     }
-
-// });
 After(async function (scenario) {
 
   if (scenario.result.status === Status.FAILED) {

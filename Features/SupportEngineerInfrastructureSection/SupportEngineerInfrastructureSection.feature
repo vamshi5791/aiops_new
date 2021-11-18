@@ -1,8 +1,8 @@
-@TicketDetailsPage @ITOps_suport_engineer @Regression
+@InfrastructureSection @ITOps_suport_engineer @Regression
 
 Feature: Support Engineer to Infrastructure Section/Configuration Section/Alert Console
 
-    Scenario: verify support engineer user having view access to infrastructure section/Configuration section - AI Resolve
+    Scenario Outline: verify support engineer user having view access to infrastructure section/Configuration section - AI Resolve
 
         When "suport_engineer" navigates to ITOps home page
         And "suport_engineer" enters project name in project search field and click on enter

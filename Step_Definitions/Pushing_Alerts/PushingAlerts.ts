@@ -433,10 +433,44 @@ Then('{string} verifies updated ticket data in activity session in snow', async 
     await objServiceNowAPI.assignmentGroup(AGID.assignment_group_id);
     await browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='second-row ng-star-inserted']"))), 60000);
     var AssignmentGroupId = await element(by.xpath("//div[@class='second-row ng-star-inserted']")).getText();
-    await expect(AGID.assignment_group_name+'  (Group)').to.include(AssignmentGroupId);
+    await expect(AGID.assignment_group_name + '  (Group)').to.include(AssignmentGroupId);
   } catch (error) {
     console.log(error);
-    throw "Admin Unable to Verifiy updated ticket data in activity session in snow"
+    throw "Admin Unable to Verify updated ticket data in activity session in snow"
+
+  }
+})
+
+Then('{string} verifies the ticket title is same as Short description in ServiceNow {string}', async function (string, DescTicketNumber) {
+  try {
+    var ResultJson = await objServiceNowAPI.apiServiceNow(DescTicketNumber);
+    ShortDescriptionServiceNow = ResultJson.short_description
+    await expect(ShortDescription).to.include(ShortDescriptionServiceNow);
+  } catch (error) {
+
+  }
+})
+Then('{string} verifies the description is same as in the Description in servicenow {string}', async function (string, DescTicketNumber) {
+  try {
+    await browser.wait(EC.presenceOf(element(by.xpath('//div[text()="Description"]'))), 100000);
+    var myData = await element(by.xpath('//div[@role="content"]')).getText();
+    await console.log(myData);
+    resultState = await objServiceNowAPI.apiServiceNow(DescTicketNumber)
+    let actualData = resultState.description;
+    await expect(actualData).to.equal(myData);
+  } catch (error) {
+    await console.log("actual data and expected data are not equal");
+    await console.log(error);
+    throw "actual data and expected data are not equal"
+  }
+})
+
+Then('{string} verifies make sure the conversation is same as in the comments in the activity section in servicenow {string}', async function (string, DescTicketNumber) {
+  try {
+
+  } catch (error) {
+    console.log(error);
+    throw "Admin Unable to Verify updated ticket data in activity session in snow"
 
   }
 })

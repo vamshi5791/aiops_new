@@ -34,78 +34,66 @@ export let config: Config = {
   onPrepare: async function () {
     await browser.waitForAngularEnabled(false);
     await browser.manage().window().maximize();
-    await browser.manage().timeouts().implicitlyWait(80000);
+    await browser.manage().timeouts().implicitlyWait(50000);
     globalThis.environment = browser.params.env;
     globalThis.BrowserMode = args.Options;
   },
   specs: [
     //MS4
     // //support engineer
-    //'../Features/LogIn/LogIn_Admin.feature',
+    // '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/SupportEngineerInfrastructureSection/SupportEngineerInfrastructureSection.feature',
+    // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesSupportEngineer.feature',
     // '../Features/Logout/LogOut.feature',
     // // // //Visitor
     // '../Features/LogIn/LogIn_ITOps_Visitor.feature',
     // '../Features/TicketListing/TicketListing_Visitor.feature',
     // '../Features/TicketDetailsPage/TicketDetailsPage_visitor.feature',
-    
     // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesVisitor.feature',
     // '../Features/TeamsExternalTeams/TeamsExternalTeamsVisitor.feature',
     // '../Features/Logout/LogOut.feature',
-    // // // //Engineer
-
     // // // //IE
     // '../Features/LogIn/LogIn_IE.feature',
     // '../Features/TicketListing/TicketListing_IE.feature',
     // '../Features/TicketDetailsPage/TicketDetailsPage_IE.feature',
-
     // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesIE.feature',
-    
     // '../Features/Logout/LogOut.feature',
-    // // //Admin
+    //Admin
     // '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/TicketDetailsPage/TicketDetailsPage.feature',
     // '../Features/CommentsInITSM/CommentsInITSM.feature',
     // '../Features/SearchTicketListing/SearchTicketListing.feature',
     // '../Features/Validation - WhileSelfGroupAndIndividualAssignment/SelfGroupAndIndividualAssignment.feature',
-
-
     // '../Features/AdvancedFilterM4/AdvancedFilterM4.feature',
     // '../Features/DownloadReport/DownloadReport.feature',
     // '../Features/AlertStore/AlertStore.feature',
     // '../Features/VirtualEngineerQueue/VirtualEngineerQueue.feature',
     // '../Features/CapturingUserIdAndGroupId/CapturingUserIdAndGroupId.feature',
     // '../Features/QuickFilterTicketConsole/QuickFilterTicketConsole.feature',
-
     // '../Features/TicketListing/TicketListing.feature',
-
-
     // '../Features/ParallelActionsOnTickets/ParallelActionsOnTickets.feature',
     // '../Features/ProjectInstallationAIOpsDesk/ProjectInstallationAIOpsDesk.feature',
     // '../Features/Logout/LogOut.feature',
     // //MS5
- 
-    '../Features/LogIn/LogIn_Admin.feature',
+    // '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/TeamsExternalTeams/TeamsExternalTeams.feature',
     //'../Features/SNOWDescription/SNOWDescription.feature',
-    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesAdmin.feature',
+    // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesAdmin.feature',
     // '../Features/RecommendedResolutionsAutomatedOrManual/RecommendedResolutionsAutomatedOrManual.feature',
     // '../Features/DefaultTemplateForTicketCreateAdmin/DefaultTemplateForTicketCreateAdmin.feature',
     //  '../Features/DefaultTemplateForTicketReassignment/DefaultTemplateForTicketReassignment.feature',
-
     // '../Features/AutocloseAndFlap/AutocloseAndFlap.feature',
     // '../Features/OrderOfSeverity/OrderOfSeverity.feature',
     // '../Features/IndicatorForFlappingSurgeIncompleteCorrelationError/IndicatorForFlappingSurgeIncompleteCorrelationError.feature',
     // '../Features/LoanDepot/LoanDepot.feature',
-
     // '../Features/BusinessTimezoneInAllRules/BusinessTimezoneInAllRules.feature',//passed
     // '../Features/CustomFieldsInAlertIndex/CustomFieldsInAlertIndex.feature',//passed
     // '../Features/TicketTemplateM5/TicketTemplate.feature',//passed
     // '../Features/AdvancedFilterM5/AdvancedFilter.feature',//passed
     // '../Features/ITSMConfigurations/ITSMConfigurations.feature',//passed
 
-    // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesSupportEngineer.feature',
-   
+
+
   ],
   cucumberOpts: {
 

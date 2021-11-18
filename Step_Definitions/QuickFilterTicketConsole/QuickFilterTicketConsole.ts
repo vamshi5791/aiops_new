@@ -99,8 +99,12 @@ When('{string} clicks on Quick filter icon', async function (userRole) {
 
 // When "Admin" clicks on quick filter dropdown
 When('{string} clicks on quick filter dropdown', async function (string) {
-  await objTickets.FilterByStatusTypeDrp();
-
+  try {
+    await objTickets.FilterByStatusTypeDrp();
+  } catch (error) {
+    console.log(error)
+    throw "unable to click on quick filter dropdown"
+  }
 });
 
 //And "admin" selects filter by status type "On Hold"
@@ -117,7 +121,13 @@ When('{string} selects filter by status type {string}', async function (string, 
 
 // And "Admin" clicks on filter by priority dropdown
 When('{string} clicks on filter by priority dropdown', async function (string) {
-  await objTickets.FilterByPriorityDropdown();
+
+  try {
+    await objTickets.FilterByPriorityDropdown();
+  } catch (error) {
+    console.log(error)
+    throw "unable to click on filter by priority dropdown"
+  }
 });
 
 //And Admin selects moderate filter
@@ -152,18 +162,6 @@ When('{string} closes the quick filter drop down', async function (userRole) {
   }
 })
 
-// Then "admin" verifies created ticket in alert console
-
-Then('{string} verifies created ticket in alert console', async function (string) {
-  try {
-    await element(by.xpath("//span[contains(text(),'INC')]")).isPresent().then(function (select) {
-      expect(select).to.be.true;
-    });
-  } catch (error) {
-
-  }
-});
-
 //And "Admin" verifies the selected filters "On Hold" are present in chip
 Then('{string} verifies the selected filters {string} are present in chip', async function (userRole, filter) {
   try {
@@ -188,53 +186,7 @@ When('{string} removes the Ticket {string}', async function (userRole, priority)
   }
 })
 
-// And "Admin" enters "TicketNumber" and clicks on enter "<ResolvedTicketNum>"
-When('{string} enters {string} and clicks on enter {string}', async function (string, SearchData, SearchAlertData) {
-  try {
-    //failed step
-    await browser.sleep(2000)
-    await browser.wait(EC.visibilityOf(element(by.className('filter smo smo-filter'))), 10000);
-    await element(by.xpath('//input[@placeholder="Search"]')).clear();
-    await objAlerts.Alert_Search(SearchAlertData);
-  } catch (error) {
-    await console.log("Feature Name : Search Functionality : Alert Page - Entering " + SearchData + " in search field box")
-    await console.log(error);
-    throw "User not able to enter in search box field in alert page"
-  }
-});
-
-//When "ITOps_Admin" clicks on remove all button
-When('{string} clicks on remove all button', async function (userRole) {
-  try {
-    await browser.wait(EC.elementToBeClickable(element(by.xpath('//a[text()="Remove All"]'))), 60000);
-    await objAlerts.selectRemoveAllConditions();
-
-  }
-  catch (error) {
-    await console.log("Feature name : Advanced Filters " + userRole + " and Scenario name : Verify user is able to perform search operations on entire alert console after removing filters.")
-    await console.log(error)
-    throw "User is not able to clicks on remove all button"
-  }
-
-});
-
-//And "Admin" clicks on Quick filter icon
-
-When('{string} clicks on Quick filter icon', async function (userRole) {
-  try {
-    await browser.wait(EC.presenceOf(element(by.className('filter smo smo-filter'))), 100000);
-    await browser.wait(EC.elementToBeClickable(element(by.className('filter smo smo-filter'))), 100000);
-    await browser.wait(EC.visibilityOf(element(by.className('filter smo smo-filter'))), 100000);
-    await objAlerts.AdvanceFilter();
-  } catch (error) {
-    await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicking on Advanced filter icon")
-    await console.log(error)
-  }
-});
-
 //Then "admin" clicks on the filter by status type dropdown
-
-
 When('{string} clicks on the filter by status type dropdown', async function (userRole) {
   try {
     await element(by.xpath('//span[contains(@class,"smo-multiselect-trigger-icon smo-clickable")]')).click();
@@ -257,17 +209,6 @@ When('{string} verifies the {string}{string} quick filter Option as {string}', a
     throw "Invalid Sequence"
   }
 })
-// And "admin" selects filter by status type as "On Hold"
-When('{string} selects filter by status type as {string}', async function (string, Status) {
-  try {
-    await browser.sleep(2000);
-    await objTicketsConsole.clickOnFilterByStatusTypeDropDown(Status)
-    await browser.sleep(1000)
-  } catch (error) {
-    console.log(error)
-    throw Status + " option not found in dropdown"
-  }
-});
 
 // And "admin" clicks on the filter by priority type dropdown
 Then('{string} clicks on the filter by priority type dropdown', async function (userRole) {

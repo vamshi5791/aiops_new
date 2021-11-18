@@ -14,11 +14,8 @@ Feature: Default template for ticket create
         When "Admin" sends "3" new "verba" alerts with "<ProjectName>", "<VerbaChannelName>", "<VerbaChannelJson>", "<NodeName>"
         And "admin" clicks on Alerts page
         And "admin" enters "Node Name" and clicks on enter "<NodeName>"
-
-        #Split and verify the ticket creation
         And "admin" clicks on the cluster count for the ticketed alert from previous step
         And "Admin" selects "1" alert checkbox from pop up
-        #And "Admin" selects "2" alert checkbox from pop up
         And "Admin" selects create ticket from pop up
         And "Admin" clicks on confirm
         Then "Admin" verifies if "<SuccessMessage>" message is displayed

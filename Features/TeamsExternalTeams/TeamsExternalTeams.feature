@@ -29,7 +29,8 @@ Feature: Teams > External Teams
         And "admin" clicks on all groups dropdown
         And "admin" searches for a group as "<GroupName>" in external Teams
         And "Admin" selects group in external Teams as "<GroupName>"
-
+        And "Admin" clicks on sort button
+        And "Admin" clicks on sort button
         Then "Admin" verifies Search option to be available
         And "Admin" verifies Refresh option to be available
         Then "Admin" verifies the all team member names are in alphabetical
@@ -48,12 +49,16 @@ Feature: Teams > External Teams
         And "Admin" verifies user matching search should be displayed and his group also should be shown "<UserName>", "<Group>"
 
         Examples:
-            | GroupName    | UserName          |
-            | ITOpsTesting | Chandranhari Nair |
+            | GroupName          | UserName        |
+            | UST - Poland Asset | Karolina Dworak |
 
 
     Scenario Outline: Verify that only imported groups and its users should be available in assign dropdowns.
-
+        
+        And "Admin" navigate to Configuration section
+        And "Admin" clicks on external Teams
+        And "admin" clicks on all groups dropdown
+        And "admin" gets all the groups dropdown
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
         And "admin" selects filter by status type as "Assigned"
@@ -61,7 +66,7 @@ Feature: Teams > External Teams
         And "admin" clicks on "Assign" button
         And "admin" clicks on "Individual" radio button
         And "admin" clicks on choose a group dropdown on assign to popup
-        And "Admin" verifies groups shown in dropdown "UST - Enterprise Security", "Visibility - UST"
+        Then "Admin" verifies group drop down should contains imported groups through external teams option
         And "Admin" clicks on cancel button
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
@@ -70,7 +75,7 @@ Feature: Teams > External Teams
         And "admin" clicks on "Assign" button
         And "admin" clicks on "Group" radio button
         And "admin" clicks on choose a group dropdown on assign to popup
-        And "Admin" verifies groups shown in dropdown "UST - Enterprise Security", "Visibility - UST"
+        Then "Admin" verifies group drop down should contains imported groups through external teams option
         And "Admin" clicks on cancel button
 
         Examples:

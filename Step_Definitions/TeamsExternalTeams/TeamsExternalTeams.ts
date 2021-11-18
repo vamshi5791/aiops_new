@@ -77,7 +77,9 @@ When('{string} verifies all the groups having {string} should be displayed', asy
 
 When('{string} selects group in external Teams {string}', async function (string, GroupName) {
     try {
-        await objDisplayConfig.selectGroup(GroupName)
+        await browser.wait(EC.visibilityOf(element(by.xpath('//span[text()="' + GroupName + '"]'))), 100000);
+        await browser.wait(EC.presenceOf(element(by.xpath('//span[text()="' + GroupName + '"]'))), 100000);
+        await element(by.xpath('//span[text()="' + GroupName + '"]')).click();
     } catch (error) {
         await console.log(error)
         throw "Admin unable to selects group in external Teams"
@@ -212,17 +214,6 @@ Then('{string} selects {string} alert checkbox from pop up', async function (str
     }
 });
 
-When('{string} verifies groups shown in dropdown {string}, {string}', async function (string, FirstGroup, SecondGroup) {
-    try {
-        await objDisplayConfig.verifyingFields(FirstGroup)
-        await objDisplayConfig.verifyingFields(SecondGroup)
-    } catch (error) {
-        await console.log(error);
-        throw "Admin unable to verifies groups shown in dropdown"
-
-    }
-});
-
 Then('{string} verifies the all team member names are in alphabetical', async function (string) {
     try {
         var teamMembers, sortMembers;
@@ -281,6 +272,14 @@ Then('{string} verifies Member drop should contains only users list who are havi
     } catch (error) {
 
         console.log(error)
+        var myElement = element(by.xpath("//span[text()='Cancel']"));
+        myElement.isPresent().then(async function (elm) {
+            if (elm) {
+                await browser.wait(EC.elementToBeClickable(element(by.xpath("//span[text()='Cancel']"))), 10000);
+                await browser.wait(EC.presenceOf(element(by.xpath("//span[text()='Cancel']"))), 10000);
+                await element(by.xpath("//span[text()='Cancel']")).click();
+            }
+        });
         throw "Member dropdown should not contains only users list who are having access to selected group name"
     }
 });
@@ -298,6 +297,14 @@ Then('{string} gets all the groups dropdown', async function (string) {
         }
     } catch (error) {
         console.log(error);
+        var myElement = element(by.xpath("//span[text()='Cancel']"));
+        myElement.isPresent().then(async function (elm) {
+            if (elm) {
+                await browser.wait(EC.elementToBeClickable(element(by.xpath("//span[text()='Cancel']"))), 10000);
+                await browser.wait(EC.presenceOf(element(by.xpath("//span[text()='Cancel']"))), 10000);
+                await element(by.xpath("//span[text()='Cancel']")).click();
+            }
+        });
         throw "all team members are not in alphabetical order"
     }
 })
@@ -314,6 +321,14 @@ Then('{string} verifies group drop down should contains imported groups through 
         }
     } catch (error) {
         console.log(error)
+        var myElement = element(by.xpath("//span[text()='Cancel']"));
+        myElement.isPresent().then(async function (elm) {
+            if (elm) {
+                await browser.wait(EC.elementToBeClickable(element(by.xpath("//span[text()='Cancel']"))), 10000);
+                await browser.wait(EC.presenceOf(element(by.xpath("//span[text()='Cancel']"))), 10000);
+                await element(by.xpath("//span[text()='Cancel']")).click();
+            }
+        });
         throw "group drop down should not contains imported groups through external teams option"
     }
 });
