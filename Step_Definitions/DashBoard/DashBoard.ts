@@ -179,7 +179,7 @@ When('{string} selects Alert State as {string}', async function (string, AlertSt
 Then('{string} verifies that the widget {string} is available in the dashboard', async function (string, WidgetTitle) {
 
   try {
-    await element(by.xpath('//div[@aria-label="Panel header title item Alerts Clusters - Open Vs Closed"]')).isPresent().then(function (select) {
+    await element(by.xpath("//span[text()='" + WidgetTitle + "']")).isPresent().then(function (select) {
       expect(select).to.be.true;
     });
   } catch (error) {
@@ -224,12 +224,12 @@ Then('{string} verifies the date filter is {string} by default', async function 
 
 Then('{string} verifies the total alert count', async function (string) {
 
-  try { 
-    await console.log("''''''''''''''''''''''''''''''''",this.tableRowCount)
-    var openalerts =  this.tableRowCount;
-    await console.log("''''''''''''''''''''''''''''''''",openalerts)
-    await console.log("''''''''''''''''''''''''''''''''",typeof(openalerts))
-    await browser.wait(EC.visibilityOf(element(by.partialLinkText("'"+openalerts+"'"))));
+  try {
+    await console.log("''''''''''''''''''''''''''''''''", this.tableRowCount)
+    var openalerts = this.tableRowCount;
+    await console.log("''''''''''''''''''''''''''''''''", openalerts)
+    await console.log("''''''''''''''''''''''''''''''''", typeof (openalerts))
+    await browser.wait(EC.visibilityOf(element(by.partialLinkText("'" + openalerts + "'"))));
   } catch (error) {
     await browser.switchTo().defaultContent();
     console.log("verifying the total alert count")
@@ -313,7 +313,7 @@ Then('{string} verifies that Hours selection option is present in the widget', a
 
 Then('{string} verifies the dropdown has {string} to {string} numbers', async function (string, string2, string3) {
   try {
-    var myElement =  element(by.id('comboA'));
+    var myElement = element(by.id('comboA'));
     await browser.executeScript("arguments[0].scrollIntoView();", myElement.getWebElement());
     await element(by.id('comboA')).click();
     await browser.wait(EC.visibilityOf(element(by.xpath('//option[text()="1"]'))));

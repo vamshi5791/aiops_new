@@ -16,14 +16,20 @@ Feature: Smart Desk - Roles/Privileges
         And "admin" verifies infrastructure page should not be available
         When "admin" navigates to Tickets page
         When "Admin" clicks on the ticket number in ticket console
+
         When "Admin" navigate to Configuration section
         Then "Admin" able to access configuration section
+        And "Admin" clicks on external Teams
+        Then "admin" verifies import button before selecting source and group should be disabled
+        And "admin" selects source as "Service Now" in external Teams
         And "admin" clicks on choose a group dropdown
-        And "admin" search for a group as "ITOps" in external Teams
-        And "Admin" verifies all the groups having "ITOpsPTTesting" should be displayed
+        And "admin" search for a group as "UST" in external Teams
         And "Admin" selects group in external Teams "<GroupName>"
         Then "Admin" verifies import button to be enabled on selecting source and group
+        And "admin" clicks on all groups dropdown
+        And "admin" searches for a group as "<GroupName>" in external Teams
+        And "Admin" selects group in external Teams as "<GroupName>"
         And "Admin" verifies Refresh option to be available
         Examples:
-            | ProjectName | GroupName      |
-            | Auto_01Desk | ITOpsPTTesting |
+            | ProjectName | GroupName                     |
+            | Auto_01Desk | UST - REFM TVM Admin Security |

@@ -88,10 +88,10 @@ export let config: Config = {
     '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/TeamsExternalTeams/TeamsExternalTeams.feature',
     //'../Features/SNOWDescription/SNOWDescription.feature',
-    // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesAdmin.feature',
+    '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesAdmin.feature',
     // '../Features/RecommendedResolutionsAutomatedOrManual/RecommendedResolutionsAutomatedOrManual.feature',
     // '../Features/DefaultTemplateForTicketCreateAdmin/DefaultTemplateForTicketCreateAdmin.feature',
-     '../Features/DefaultTemplateForTicketReassignment/DefaultTemplateForTicketReassignment.feature',
+    //  '../Features/DefaultTemplateForTicketReassignment/DefaultTemplateForTicketReassignment.feature',
 
     // '../Features/AutocloseAndFlap/AutocloseAndFlap.feature',
     // '../Features/OrderOfSeverity/OrderOfSeverity.feature',
