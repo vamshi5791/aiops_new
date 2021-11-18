@@ -3,11 +3,14 @@ import { browser, element, by } from "protractor"
 import chai from "chai";
 import { DisplayConfiguration } from "../../PageObjects/DisplayConfiguration";
 import { AlertsPage } from "../../PageObjects/AlertsPage";
+import { ITOPS_APIs } from "../../ITOPS_Apis/ItopsApis";
 let objAlerts = new AlertsPage();
 var EC = browser.ExpectedConditions;
 var expect = chai.expect;
 let objDisplayConfig = new DisplayConfiguration();
 var TestSource;
+var objITOPSAPIs = new ITOPS_APIs();
+
 
 // 1. Verify whether ITOps_admin is able to view display configuration settings
 
@@ -560,4 +563,13 @@ Then('{string} Verifies CustomIndex alert has data {string} for it', async funct
   }
 
 });
+
+When('{string} add a new field to index Using API {string},{string},{string}', async function (string, IndexName, Property, Label) {
+  try {
+    await objITOPSAPIs.customFieldIndex(IndexName, Property, Label)
+  } catch (error) {
+    console.log(error)
+    throw "Admin Unable To add a new field to index Using API"
+  }
+})
 

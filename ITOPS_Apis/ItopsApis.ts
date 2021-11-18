@@ -13,7 +13,8 @@ var IHubComponent = properties.get("main." + globalThis.environment + "_IHubComp
 var USER_CustomReassignment = properties.get("main." + globalThis.environment + "_USER_CustomReassignment");
 var TemplateId;
 var accessToken;
-var QA_AccessTokenBody;
+var AccessTokenBodyValue = properties.get("main." + globalThis.environment + "_AccessTokenBody");
+var customFieldIndexBody;
 export class ITOPS_APIs {
     async HTTPchannelAlerts(nodeName: string = "", AlertSeverity: string = "Information", channelJson: string) {
         var HttpAlertJson = JSON.parse(fs.readFileSync('JSONTestData/QueueChannel.json', 'utf-8'));
@@ -49,7 +50,7 @@ export class ITOPS_APIs {
             headers: {
                 "Content-type": "application/json;charset=UTF-8",
             },
-            body: QA_AccessTokenBody,
+            body: AccessTokenBodyValue,
         }).then(response => response.json())
             .then(resp => {
                 accessToken = resp.access_token;
@@ -164,6 +165,34 @@ export class ITOPS_APIs {
             }
         })
 
+    }
+
+    //new field to index
+
+    async customFieldIndex(indexName: string, property: string, label: string) {
+        const accessToken = await this.getAccessToken();
+        customFieldIndexBody = { "indexName": indexName, "property": property, "label": label, "type": "keyword" };
+        customFieldIndexBody = JSON.stringify(customFieldIndexBody);
+        var customFieldIndex_url = alertMapping_url + '/api/addFieldToIndex';
+        await fetch(customFieldIndex_url, {
+            method: 'PUT',
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "Organization-name": "ustglobal",
+                "Organization-key": 1,
+                "Authorization": "Bearer " + accessToken,
+                "user": "smartops"
+            },
+            body: customFieldIndexBody,
+        }).then(async response => {
+            try {
+                const data = await response.json()
+                //console.log('response data?', data)
+            } catch (error) {
+                console.log('Error happened here!')
+                console.error(error)
+            }
+        })
     }
 
 }
