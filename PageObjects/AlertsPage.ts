@@ -100,6 +100,9 @@ export class AlertsPage {
   btnDownloadAlertReport = element(by.className('smo smo-download-alt download-icon cursor-pointer'));
   txtInformationStripColour = element(by.xpath("//div[contains(@class,'highlight bg-information')]"));
   txtMajorStripColour = element(by.xpath("//div[contains(@class,'highlight bg-major')]"));
+  txtCriticalStripColour = element(by.xpath("//div[contains(@class,'highlight bg-critical')]"));
+  txtWarningStripColour = element(by.xpath("//div[contains(@class,'highlight bg-warning')]"));
+  // txtUnknownStripColour = element(by.xpath("//div[contains(@class,'highlight bg-major')]"));
   btnClusterCount = element(by.xpath("//span[contains(@class,'cluster-badge-icon smo')]"));
   btnCancelInClustetPopup = element(by.className("smo-overlaypanel-close-icon smo smo-close-black-alt"));
   chkIncludeToday = element(by.className("smo-widget smo-corner-all smo-state-default smo-chkbox-box smo-chkbox-sm"));

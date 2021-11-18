@@ -20,7 +20,38 @@ When('{string} verifies the severity strip color', async function (string) {
   }
 });
 
+When('{string} verifies the Warning severity strip color', async function (string) {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.txtWarningStripColour), 50000);
+  }
+  catch (error) {
+    console.log("Action Name : verifies the severity strip color")
+    console.log(error)
+    throw "Strip colour not updated"
+  }
+});
 
+When('{string} verifies the Critical severity strip color', async function (string) {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.txtCriticalStripColour), 50000);
+  }
+  catch (error) {
+    console.log("Action Name : verifies the severity strip color")
+    console.log(error)
+    throw "Strip colour not updated"
+  }
+});
+
+// When('{string} verifies the Warning severity strip color', async function (string) {
+//   try {
+//     await browser.wait(EC.visibilityOf(objAlerts.txtWarningStripColour), 50000);
+//   }
+//   catch (error) {
+//     console.log("Action Name : verifies the severity strip color")
+//     console.log(error)
+//     throw "Strip colour not updated"
+//   }
+// });
 
 When('{string} verifies the ticket number', async function (string) {
 

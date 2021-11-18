@@ -86,9 +86,16 @@ Feature: Auto close and Flap
         When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryJson>", "<NodeName>"
 
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        And Admin verifies flap Indicator
+
         When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson1>", "<NodeName>"
+        And "admin" verifies the Warning severity strip color
         When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson2>", "<NodeName>"
+        And "admin" verifies the Critical severity strip color
         When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson3>", "<NodeName>"
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryJson>", "<NodeName>"
+        Then Admin verifies cluster got closed
 
 
         Examples:
@@ -109,10 +116,15 @@ Feature: Auto close and Flap
 
         And "admin" clicks on Alerts page
         And "admin" enters "NodeName" and clicks on enter "<NodeName>"
-       Then "admin" verifies created ticket in alert console
+        Then "admin" verifies created ticket in alert console
 
-
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        And verify cluster size must be "<size>"
+        And Admin click on state
+        And Admin verifies Close state
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryJson>", "<NodeName>"
+        And "Admin" gets the ticket number generated
 
         Examples:
-            | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 | channelJson1  | channelJson2  | channelJson3  |
-            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | CNHKGG-00A-SSC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. | QueueChannel5 | QueueChannel6 | QueueChannel7 |
+            | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson   | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 | channelJson1  | channelJson2  | channelJson3  | size |
+            | Automation_01M3 | Alert1    | Solarwinds  | QueueChannel | CNHKGG-00A-SSC1 | RecoveryPolicy | 2                        | 3                 | Auto Closure Conditions Saved. | QueueChannel5 | QueueChannel6 | QueueChannel7 | 6    |
