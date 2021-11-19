@@ -13,7 +13,11 @@ var IHubComponent = properties.get("main." + globalThis.environment + "_IHubComp
 var USER_CustomReassignment = properties.get("main." + globalThis.environment + "_USER_CustomReassignment");
 var TemplateId;
 var accessToken;
+var resolutions;
+var objectString;
+var emptyString = '{}';
 var AccessTokenBodyValue = properties.get("main." + globalThis.environment + "_AccessTokenBody");
+var RecommendationResolution = properties.get('main.' + globalThis.environment + '_RecommendationResolutions');
 var customFieldIndexBody;
 export class ITOPS_APIs {
     async HTTPchannelAlerts(nodeName: string = "", AlertSeverity: string = "Information", channelJson: string) {
@@ -194,5 +198,39 @@ export class ITOPS_APIs {
             }
         })
     }
-
+    async RecommenededResolution(projectId: string, ticketNumber: string) {
+        const accessToken = await this.getAccessToken();
+        var RecommendationResolution_url = RecommendationResolution + '/api/getRecommendations';
+        let body = {
+            "output": [
+                "similar_tickets",
+                "resolutions"
+            ],
+            "category": "Skype for Business",
+            "projectId": projectId,
+            "shortDescription": "[solarwinds] Restore the deleted article in system",
+            "ticketNumber": ticketNumber
+        }
+        let body_String = JSON.stringify(body)
+        await fetch(RecommendationResolution_url, {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "Organization-name": "ustglobal",
+                "Organization-key": 1,
+                "Authorization": "Bearer " + accessToken,
+            },
+            body: body_String
+        }).then(response => response.json())
+            .then(resp => {
+                objectString = JSON.parse(emptyString);
+                for (let index = 0; index < resp.resolutions.length; index++) {
+                    objectString['ticket_id' + index] = resp.resolutions[index].ticket_id;
+                    objectString['resolution' + index] = resp.resolutions[index].resolution;
+                    objectString['resolution_quality' + index] = resp.resolutions[index].resolution_quality;
+                }
+                resolutions = objectString;
+            })
+        return resolutions
+    }
 }

@@ -157,11 +157,11 @@ Feature: Smart Desk - Roles/Privileges
 
         Then "admin" Recommended Resolutions section shows - TICKET ID RESOLUTION, RESOLUTION QUALITY
         And "admin" verifies Resolve and Cancel button to be available with Resolve as selected by default
-        And "Admin" verifies Ticket ID, Resolution selected and its Resolution quality should be shown
+        And "Admin" verifies Ticket ID, Resolution selected and its Resolution quality should be shown on top for "<ProjectId>"
 
         Examples:
-            | ProjectName | IncidentId | StatusInAlert | ShortDescription                                  |
-            | Auto_01Desk | INC0820381 | Resolved      | Solarwinds] Restore the deleted article in system |
+            | ProjectName | IncidentId | StatusInAlert | ShortDescription                                  | ProjectId |
+            | Auto_01Desk | INC0820381 | Resolved      | Solarwinds] Restore the deleted article in system | 1676      |
 
     Scenario Outline: Verify Recommended Resolutions shown in ticket listing page for tickets in Resolved status having Resolutions previously
 

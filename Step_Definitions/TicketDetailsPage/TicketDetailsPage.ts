@@ -5,6 +5,8 @@ import chai from "chai";
 import { Tickets } from "../../PageObjects/Tickets";
 import { ServiceNowAPI } from '../../ServiceNowAPI/servicenowAPI';
 import { AlertsPage } from "../../PageObjects/AlertsPage";
+import { ITOPS_APIs } from "../../ITOPS_Apis/ItopsApis";
+let objITopsApi = new ITOPS_APIs();
 let objAlerts = new AlertsPage();
 import { configure, getLogger } from "log4js";
 let objServiceNow = new ServiceNowAPI();
@@ -434,6 +436,25 @@ When('{string} verifies cancel button and close button', async function (string)
     }
 });
 
-
+When('{string} verifies Ticket ID, Resolution selected and its Resolution quality should be shown on top for {string}', async function (userRole, projectId) {
+    try {
+        await element(by.xpath("(//table[@class='undefined'])[2]")).getText().then(async (tabledata) => {
+            console.log(tabledata);
+            var readTableData = JSON.stringify(tabledata);
+            readTableData = readTableData.split('\\n').join('|')
+            readTableData = readTableData.split('"').join('')
+            var d = readTableData.split('|')
+            console.log('line182', d)
+            var data = await objITopsApi.RecommenededResolution(projectId, ticketNumber)
+            data = Object.values(data);
+            console.log("************************", data)
+            await expect(d).to.equal(data);
+        })
+    } catch (error) {
+        console.log("Unable to get the data");
+        console.log(error);
+        throw "Unable Get the data"
+    }
+})
 
 

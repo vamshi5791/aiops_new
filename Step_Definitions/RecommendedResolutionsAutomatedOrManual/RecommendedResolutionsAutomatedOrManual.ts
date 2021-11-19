@@ -102,17 +102,6 @@ Then('{string} verifies Resolve and Cancel button to be available with Resolve a
 });
 
 
-Then('{string} verifies Ticket ID, Resolution selected and its Resolution quality should be shown', function (string) {
-    try {
-        element(by.className("alert-list-row ng-star-inserted")).isPresent().then(function (select) {
-            expect(select).to.be.true;
-        })
-    } catch (error) {
-        console.log(error)
-        throw "Admin unable to verifies Ticket ID, Resolution selected and its Resolution quality should be shown "
-    }
-});
-
 Then('Admin click on state in details page', async function (string) {
     try {
         await browser.wait(EC.visibilityOf(element(by.xpath("//div[@class='button-icon button-icon-sm']//span"))), 50000);
