@@ -20,14 +20,24 @@ Feature: Indicator for flapping cluster/surge cluster/incomplete correlation err
         When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryJson>", "<NodeName>"
         When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryJson>", "<NodeName>"
-
         And "admin" clicks on Alerts page
         And "admin" enters "AlertName" and clicks on enter "<AlertName>"
         And Admin verifies flap Indicator
-
-
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
         And "Admin" gets the ticket number
-        And Verify the comment in the closure note "Ticket closed on recovery alert and duting flap event total 3 has occured"
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryJson>", "<NodeName>"
+        Then Admin verifies cluster got closed
+        When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryJson>", "<NodeName>"
+        When "Admin" sends "3" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryJson>", "<NodeName>"
+        When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryJson>", "<NodeName>"
+        When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryJson>", "<NodeName>"
+        And Admin verifies flap Indicator
 
         Examples:
             | ProjectName     | AlertName | ChannelName | channelJson  | NodeName        | RecoveryJson | valueForAutoCloseCluster | TimeIntervalInMin | SuccessMessage                 |

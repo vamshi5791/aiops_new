@@ -47,13 +47,13 @@ When('Admin gets the alertId', async function () {
 
 });
 
-Given('{string} selects bussiness timezone as {string}', async function (string, timeZone) {
+Given('{string} selects business timezone as {string}', async function (string, timeZone) {
     try {
         await element(by.xpath("//div[text()='BUSINESS TIMEZONE']//following::span[contains(@class,'smo-dropdown-trigger-icon smo-clickable')]")).click()
         await element(by.xpath("//span[text()='" + timeZone + "']")).click();
     } catch (error) {
         console.log(error)
-        throw "Invaild bussiness timezone Selected"
+        throw "Invalid business timezone Selected"
     }
 
 });
@@ -122,7 +122,7 @@ When('{string} verify the Alert time {string}', async function (string, AlertTim
     }
 });
 
-Then('{string} verify BusinessTimeAlert in ES {string}', async function (string,TimeAlert) {
+Then('{string} verify BusinessTimeAlert in ES {string}', async function (string, TimeAlert) {
     try {
         var businessTimeResponse = await objAPIKibana.businessTime(1519, alertId)
         await expect(businessTimeResponse.businessTimeAlert).to.include(TimeAlert)
@@ -132,4 +132,62 @@ Then('{string} verify BusinessTimeAlert in ES {string}', async function (string,
 
     }
 })
+Then('{string} verifies changes in dump with new records or change in existing records in dump gets added to the project ES, support-ticrr {string}, {string}, {string}', async function (string, project_id, ticket_summary, area) {
+    try {
+        var ticrrArea = await objAPIKibana.supportTicrr(project_id, ticket_summary)
+        await expect(ticrrArea.area).to.include(area)
+    } catch (error) {
+        console.log(error);
+        throw "Admin Unable to verify BusinessTimeAlert in ES"
+
+    }
+})
+
+
+
+///////////////////
+
+
+// Entering alert name in search box field
+
+
+//admin verifies the DataSource data
+When('{string} verifies the data source data in alert console {string}', async function (userRole, ProjectId) {
+    try {
+        var myText = await element(by.xpath('//div[text()="Data Source"]//following-sibling::div[@class="padding-left-10 padding-right-10 font-bold text-on-expand ng-star-inserted"]')).getText();
+        var DataSourceResponse = await objAPIKibana.businessTime(ProjectId, alertId)
+        await expect(DataSourceResponse.dataSource).to.include(myText);
+    } catch (error) {
+        await console.log("Admin not verifies the data source data in alert console")
+        await console.log(error)
+        throw "Admin not verifies the data source data in alert console"
+    }
+})
+
+When('{string} verifies the DataPoint response in alert console {string}', async function (userRole, ProjectId) {
+    try {
+        var dataPointResponse = await element(by.xpath('//div[text()="Data Point"]//following-sibling::div[@class="padding-left-10 padding-right-10 font-bold text-on-expand ng-star-inserted"]')).getText();
+        var DataPointRes = await objAPIKibana.businessTime(ProjectId, alertId)
+        await expect(DataPointRes.dataPoint).to.include(dataPointResponse);
+    } catch (error) {
+        await console.log("Admin not verifies the DataPoint response in alert console")
+        await console.log(error)
+        throw "Admin not verifies the DataPoint response in alert console"
+
+    }
+})
+
+//admin verifies the business Time Zone in alert console
+When('{string} verifies the business Time Zone in alert console {string}', async function (userRole, ProjectId) {
+    try {
+        var myTime = await element(by.xpath('//div[text()="businessTimezone"]//following-sibling::div[@class="padding-left-10 padding-right-10 font-bold text-on-expand ng-star-inserted"]')).getText();
+        var businessTimeResponse = await objAPIKibana.businessTime(ProjectId, alertId)
+        await expect(businessTimeResponse.businessTimezone).to.include(myTime)
+    } catch (error) {
+        await console.log("Admin not verifies the business Time Zone in alert console");
+        await console.log(error);
+        throw "Admin not verifies the business Time Zone in alert console"
+    }
+})
+
 

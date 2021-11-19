@@ -10,6 +10,7 @@ var alertsResponse;
 var firstTicketNumber;
 var assignedGroup1;
 var businessTime;
+var TiccrElement;
 export class ApiKibana {
 
 
@@ -192,5 +193,22 @@ export class ApiKibana {
                 console.log(businessTime)
             })
         return businessTime
+    }
+    async supportTicrr(projectID: string, ticket_summary: string) {
+        const supportTicrrUrl = KibanaAPI_URL + + '?path=/support-ticrr-' + projectID + '/_search&method=POST';
+        await fetch(supportTicrrUrl, {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "Authorization": `Basic ${base64.encode(`${Kibana_UserID}:${Kibana_Password}`)}`,
+                "kbn-xsrf": true
+            },
+            body: '{ "query": { "match": { "ticket_summary": "' + ticket_summary + '" } } }'
+        }).then(response => response.json())
+            .then(resp => {
+                var result = resp.hits.hits
+                TiccrElement = result[0]._source.area
+            })
+        return TiccrElement
     }
 }

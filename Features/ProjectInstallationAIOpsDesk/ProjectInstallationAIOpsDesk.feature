@@ -22,12 +22,9 @@ Feature: Project installation - Additions to AIOps Resolve/Desk
         And "Admin" enters Long Description column name in dump file as "<LongDescription>"
         And "Admin" clicks on Save button in Ticket Dump Configuration page
         Then Success message "<Toaster>" must be shown for "Ticket Dump Configuration"
+        When "Admin" verifies changes in dump with new records or change in existing records in dump gets added to the project ES, support-ticrr "<project_id>", "<ticket_summary >", "<area>"
 
-
-
-        # And From Project configuration, enter the Ticket dump configurations and click on Save.
-        # Then Enter harrod's dump configuration details of project configuration and install the project.
         Examples:
-            | ProjectName   | Hostname                                              | FilePath                                                       | SourceUserName    | SourcePassword | TicketNumberColumnName | WorkNotesColumnName | ShortDescriptionColumnName | CategoryColumnName | SubCategoryColumnName | LongDescription | Toaster                        |
-            | Automation_M3 | smartops-k8s-dev-ftp-server.eastus.cloudapp.azure.com | /home/smartops-ftp-user/supportPWF/tickets_harrods_2020_v6.csv | smartops-ftp-user | Value1         | TicketId               | ResolutionNote      | Subject                    | Category Tier 1    | Category Tier 2       | Description     | Project Configurations Updated |
+            | ProjectName   | Hostname                                              | FilePath                                                       | project_id | area               | ticket_summary                        | SourceUserName    | SourcePassword | TicketNumberColumnName | WorkNotesColumnName | ShortDescriptionColumnName | CategoryColumnName | SubCategoryColumnName | LongDescription | Toaster                        |
+            | Automation_M3 | smartops-k8s-dev-ftp-server.eastus.cloudapp.azure.com | /home/smartops-ftp-user/supportPWF/tickets_harrods_2020_v6.csv | 1677       | Skype for Business | Restore the deleted article in system | smartops-ftp-user | Value1         | TicketId               | ResolutionNote      | Subject                    | Category Tier 1    | Category Tier 2       | Description     | Project Configurations Updated |
 
