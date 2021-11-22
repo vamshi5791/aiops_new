@@ -41,7 +41,7 @@ export let config: Config = {
   specs: [
     //MS4
     // //support engineer
-    // '../Features/LogIn/LogIn_Admin.feature',
+    '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/SupportEngineerInfrastructureSection/SupportEngineerInfrastructureSection.feature',
     // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesSupportEngineer.feature',
     // '../Features/Logout/LogOut.feature',
@@ -68,7 +68,7 @@ export let config: Config = {
     // '../Features/DownloadReport/DownloadReport.feature',
     // '../Features/AlertStore/AlertStore.feature',
     // '../Features/VirtualEngineerQueue/VirtualEngineerQueue.feature',
-    // '../Features/CapturingUserIdAndGroupId/CapturingUserIdAndGroupId.feature',
+    '../Features/CapturingUserIdAndGroupId/CapturingUserIdAndGroupId.feature',
     // '../Features/QuickFilterTicketConsole/QuickFilterTicketConsole.feature',
     // '../Features/TicketListing/TicketListing.feature',
     // '../Features/ParallelActionsOnTickets/ParallelActionsOnTickets.feature',

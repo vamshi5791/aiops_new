@@ -19,6 +19,7 @@ var emptyString = '{}';
 var AccessTokenBodyValue = properties.get("main." + globalThis.environment + "_AccessTokenBody");
 var RecommendationResolution = properties.get('main.' + globalThis.environment + '_RecommendationResolutions');
 var customFieldIndexBody;
+
 export class ITOPS_APIs {
     async HTTPchannelAlerts(nodeName: string = "", AlertSeverity: string = "Information", channelJson: string) {
         var HttpAlertJson = JSON.parse(fs.readFileSync('JSONTestData/QueueChannel.json', 'utf-8'));
@@ -75,10 +76,15 @@ export class ITOPS_APIs {
             }
         }).then(async response => {
             try {
-                const data = await response.json()
+                const data = await response.json();
+                objectString = JSON.parse(emptyString);
                 for (let index = 0; index < data.templates.length; index++) {
-                    if (data.templates[index].templateName === 'CustomReassignmentTemplate')
-                        TemplateId = data.templates[index].templateId
+                    if (data.templates[index].templateName === 'CustomReassignmentTemplate') {
+                        objectString.TemplateId = data.templates[index].templateId
+                    }
+                    if (data.templates[index].templateName === 'defaultReassignmentTemplate') {
+                        objectString.templateDefault = data.templates[index].templateId
+                    }
                 }
                 console.log('response data?', data)
             } catch (error) {
@@ -232,5 +238,36 @@ export class ITOPS_APIs {
                 resolutions = objectString;
             })
         return resolutions
+    }
+
+    //Creating Default Template For Reassignment Group
+
+    async DefaultReassignmentTemplate(projectId, templateName: string) {
+        var TemplateJson = JSON.parse(fs.readFileSync('JSONTestData/QueueChannel.json', 'utf-8'));
+        var getJsonTemplate = TemplateJson['DefaultReassignmentTemplate'];
+        getJsonTemplate['projectId'] = projectId;
+        getJsonTemplate['templateName'] = templateName;
+        var body_DefaultReassignmentTemplate = JSON.stringify(getJsonTemplate)
+        const accessToken = await this.getAccessToken();
+        var DefaultReassignmentTemplate_Url = alertMapping_url + '/api/ticketTemplate';
+        await fetch(DefaultReassignmentTemplate_Url, {
+            method: 'PUT',
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "Organization-name": "ustglobal",
+                "Organization-key": 1,
+                "Authorization": "Bearer " + accessToken,
+                "user": USER_CustomReassignment
+            },
+            body: body_DefaultReassignmentTemplate
+        }).then(async response => {
+            try {
+                const data = await response.json()
+                console.log('response data?', data)
+            } catch (error) {
+                console.log('Error happened here!')
+                console.error(error)
+            }
+        })
     }
 }

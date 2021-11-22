@@ -197,6 +197,16 @@ Then('{string} creates {string} template {string} for project id as {string}', a
         throw "Admin unable to creates custom template for project id "
     }
 });
+
+Then('{string} creates {string} template {string} for project id as {string} without user and group ID', async function (string, reassignment, TemplateName, ProjectId) {
+    try {
+        await objITOpsApi.DefaultReassignmentTemplate(ProjectId, TemplateName)
+    } catch (error) {
+        console.log(error)
+        throw "Admin unable to creates custom template for project id "
+    }
+});
+
 Then('{string} Verifies after reassignment threshold it should be assigned to the default group mentioned in the project configuration page as {string}', async function (string, Group) {
     try {
         await browser.wait(EC.visibilityOf(element(by.xpath("//div[text()='ASSIGNED TO']"))), 50000);

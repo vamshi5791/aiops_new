@@ -7,15 +7,20 @@ Feature: Default template for ticket reassignment
         When "Admin" navigates to ITOps home page
         And "Admin" enters "project name" as "<ProjectName>" in project search field and click on enter
         And "Admin" clicks on project name "<ProjectName>"
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "admin" clicks on Alerts page
+        When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
+        Then "admin" verifies created ticket in alert console
+        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        When "admin" clicks on Alerts page
+        When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
+        Then "admin" verifies created ticket in alert console
         When "admin" creates "reassignment" template "<TemplateName>" for project id as "<ProjectId>"
-        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-        When "admin" clicks on Alerts page
-        When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
-        Then "admin" verifies created ticket in alert console
-        When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-        When "admin" clicks on Alerts page
-        When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
-        Then "admin" verifies created ticket in alert console
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
         When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
         When "admin" clicks on Alerts page
         When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
@@ -57,25 +62,39 @@ Feature: Default template for ticket reassignment
 
     Scenario Outline: Verify the behavior if no default template is present for reassignment
 
+        When "admin" creates "reassignment" template "<TemplateName>" for project id as "<ProjectId>"
         When "Admin" sends "1" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<FirstResourceName>"
         When "admin" clicks on Alerts page
         When "Admin" enters "NodeName" and clicks on enter "<NodeName>"
-        Then "admin" creates "reassignment" template "<TemplateName>" for project id as "<ProjectId>"
+        Then "admin" verifies created ticket in alert console
         And "admin" deletes "reassignment" template using template name "<TemplateName>"
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        Then "Admin" Verifies after reassignment threshold it should be assigned to the default group mentioned in the project configuration page as "<Group>"
         Examples:
-            | ProjectName    | ChannelName | channelJson               | FirstResourceName | TemplateName               | ProjectId |
-            | Auto_01Resolve | Forescout   | ForescoutWithMessageandIP | ZACTHS-03A-SSA1   | CustomReassignmentTemplate | 1677      |
+            | ProjectName    | ChannelName | channelJson               | FirstResourceName | TemplateName               | ProjectId | Group        |
+            | Auto_01Resolve | Forescout   | ForescoutWithMessageandIP | ZACTHS-03A-SSA1   | CustomReassignmentTemplate | 1677      | ITOpsTesting |
 
     Scenario Outline: Verify the behavior if default template has no reassignment group mentioned in the reassignment template
 
         When "Admin" sends "1" new "Forescout" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<FirstResourceName>"
         When "admin" clicks on Alerts page
         When "Admin" enters "NodeName" and clicks on enter "<FirstResourceName>"
+        Then "admin" verifies created ticket in alert console
+        When "admin" creates "Default" template "<TemplateName>" for project id as "<ProjectId>" without user and group ID
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
+        And "Admin" waits "1" minute
         And "Admin" clicks on the ticket number
         Then "Admin" Verifies after reassignment threshold it should be assigned to the default group mentioned in the project configuration page as "<Group>"
         Examples:
-            | ProjectName    | ChannelName | channelJson               | FirstResourceName | Group        |
-            | Auto_01Resolve | Forescout   | ForescoutWithMessageandIP | ZACTHS-03A-SSA1   | ITOpsTesting |
+            | ProjectName    | ChannelName | channelJson               | FirstResourceName | Group        | TemplateName                |
+            | Auto_01Resolve | Forescout   | ForescoutWithMessageandIP | ZACTHS-03A-SSA1   | ITOpsTesting | DefaultReassignmentTemplate |
 
 
 
