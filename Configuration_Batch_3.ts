@@ -41,11 +41,11 @@ export let config: Config = {
   specs: [
     //MS4
     // //support engineer
-    '../Features/LogIn/LogIn_Admin.feature',
+    // '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/SupportEngineerInfrastructureSection/SupportEngineerInfrastructureSection.feature',
     // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesSupportEngineer.feature',
     // '../Features/Logout/LogOut.feature',
-    // // // //Visitor
+    // // // // //Visitor
     // '../Features/LogIn/LogIn_ITOps_Visitor.feature',
     // '../Features/TicketListing/TicketListing_Visitor.feature',
     // '../Features/TicketDetailsPage/TicketDetailsPage_visitor.feature',
@@ -58,8 +58,9 @@ export let config: Config = {
     // '../Features/TicketDetailsPage/TicketDetailsPage_IE.feature',
     // '../Features/SmartDeskRolesPrivileges/SmartDeskRolesPrivilegesIE.feature',
     // '../Features/Logout/LogOut.feature',
+
     //Admin
-    // '../Features/LogIn/LogIn_Admin.feature',
+    '../Features/LogIn/LogIn_Admin.feature',
     // '../Features/TicketDetailsPage/TicketDetailsPage.feature',
     // '../Features/CommentsInITSM/CommentsInITSM.feature',
     // '../Features/SearchTicketListing/SearchTicketListing.feature',

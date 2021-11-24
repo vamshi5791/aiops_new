@@ -99,7 +99,7 @@ Feature: Capturing User Id and Group Id
         And "Admin" clicks on the ticket number
         Then "Admin" verifies Ticket should be assigned to group "<Group>"
 
-        And "Admin" gets the base ticket number generated
+        And "Admin" gets the base ticket number
         Then Admin verifies user name is stored in alert store "<userName>"
         Then Admin verifies group name is stored in alert store "<groupName>"
 
