@@ -11,6 +11,10 @@ Feature: Acknowledge Alert Processing
         And verify cluster size must be "<size>"
         And Admin click on state
         And "admin" clicks on "Acknowledge" button
+        And Admin verifies Acknowledge state
+        And Admin click on state
+        And Admin verifies Resolve state
+
 
         Examples:
             | ProjectName     | AlertName | size | ChannelName | channelJson  | NodeName        |
@@ -23,8 +27,12 @@ Feature: Acknowledge Alert Processing
         And "admin" clicks on Alerts page
         And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And verify cluster size must be "<size>"
+        And "admin" verifies the Warning severity strip color
+        And Admin click on state
+        And Admin verifies Hold state
+        And Admin verifies Assign state
 
 
         Examples:
             | ProjectName     | AlertName | size | ChannelName | channelJson  | NodeName        |
-            | Automation_01M3 | Alert1    | 3    | Solarwinds  | QueueChannel | USNYFA-37A-SBC1 |
+            | Automation_01M3 | Alert1    | 3    | Solarwinds  | QueueChannel5 | USNYFA-37A-SBC1 |

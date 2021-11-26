@@ -10,8 +10,12 @@ Feature: Verify the bulk acknowledgement in alert console
         Given User clicks on alert cluster
         Given User selects select all check box
         Given User clicks on cancel
+        And "Admin" clicks on three dots button
+        And "Admin" clicks on Acknowledge
         And Admin click on state
-        And "admin" clicks on "Acknowledge" button
+        And Admin verifies Resolve state
+        # And Admin click on state
+        # And "admin" clicks on "Acknowledge" button
 
 
         Examples:

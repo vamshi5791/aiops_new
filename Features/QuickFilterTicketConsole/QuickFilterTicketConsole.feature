@@ -35,7 +35,7 @@ Feature:  Verify Quick filter on Ticket Console and order of ticket state
         And "Admin" clicks on Quick filter icon
         Then "admin" clicks on the filter by status type dropdown
         And "Admin" verifies the "2""nd" quick filter Option as "Open"
-        And "Admin" verifies the "4""th" quick filter Option as "Assigned"
+        And "Admin" verifies the "4""th" quick filter Option as "Active"
         And "Admin" verifies the "6""th" quick filter Option as "On Hold"
         And "Admin" verifies the "8""th" quick filter Option as "Resolved"
         And "admin" selects filter by status type as "On Hold"

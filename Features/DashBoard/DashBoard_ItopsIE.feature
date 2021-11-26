@@ -6,7 +6,8 @@ Feature: Login persona functionalities of Installation Engineer
         When "Installation_Engineer" navigates to ITOps home page
         And "Installation_Engineer" enters project name in project search field and click on enter
         And "Installation_Engineer" clicks on project name
-        And "Installation_Engineer" unable to access dashboard
+        And "Installation_Engineer" unable to access "Dashboard"
+        And "Installation_Engineer" unable to access "Automation"
         Examples:
             | ProjectName      |
             | Automation_IB_24 |

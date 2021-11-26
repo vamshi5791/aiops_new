@@ -239,6 +239,40 @@ Then('Admin verifies Hold state', async function () {
   }
 });
 
+Then('Admin verifies Assign state', async function () {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.btnAssign), 10000);
+  }
+  catch (error) {
+    await console.log("Action Name : Admin Verifying alerts moved to ticketed ")
+    await console.log(error)
+    throw "User is not able to verifies Assign state"
+  }
+});
+
+Then('Admin verifies Active state', async function () {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.btnActive), 10000);
+  }
+  catch (error) {
+    await console.log("Action Name : Admin Verifying alerts moved to ticketed ")
+    await console.log(error)
+    throw "User is not able to verifies Active state"
+  }
+});
+
+
+Then('Admin verifies Resolve state', async function () {
+  try {
+    await browser.wait(EC.visibilityOf(objAlerts.btnResolve), 10000);
+  }
+  catch (error) {
+    await console.log("Action Name : Admin Verifying alerts moved to ticketed ")
+    await console.log(error)
+    throw "User is not able to verifies resolve state"
+  }
+});
+
 Then('Admin verifies Close state', async function () {
   try {
     await browser.wait(EC.visibilityOf(objAlerts.btnClose), 50000);

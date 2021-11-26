@@ -31,6 +31,15 @@ export class Dashboard {
     async clickOnSource(Source: string) {
         await this.txtSource.sendKeys(Source)
     }
+
+    async menuTabs(Tabs:string){
+        await  element(by.xpath('//a[text()="'+Tabs+'"]')).isPresent().then(async function (visible){
+            await expect(visible).to.be.false;
+        })
+    }
+
+
+
     async getCountFromDashBoard() {
         await element(by.xpath('//div[text()="1iam network - bgp neighbor down - critical"]//following::td')).getText().then(async function (text) {
             console.log(text)

@@ -47,6 +47,16 @@ When('{string} selects the ticket {string}, state as {string}, category as {stri
     throw "unable to change ticket state in service now"
   }
 });
+When('{string} selects the ticket {string}, state as {string}, close code as {string}, Enter close note as {string} and update', async function (string, TicketNumber, state,closeCode, closeNote) {
+  try {
+    resultState = await objServiceNow.apiServiceNow(TicketNumber)
+    systemID = resultState.sys_id;
+    await objServiceNow.updateTicketToResolved2(systemID, state, closeCode, closeNote)
+  } catch (error) {
+    await console.log(error)
+    throw "unable to change ticket state in service now"
+  }
+});
 
 When('{string} Search in ticket Console after {string} minutes', async function (string, string2) {
   //instead of waiting for 6 minutes , verification steps are written after all the ITSM scenarios 

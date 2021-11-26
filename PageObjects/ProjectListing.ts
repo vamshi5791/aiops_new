@@ -1,7 +1,8 @@
 import { ElementFinder, element, by, promise, browser, protractor } from "protractor";
 var EC = browser.ExpectedConditions;
 var fs = require('fs');
-
+import chai from "chai";
+var expect = chai.expect;
 export class ProjectListingPage {
   txtsearch = element(by.xpath('//input[@placeholder="Search"]'));
   btnClickOnCreateProject = element(by.xpath('//span[text()="Create New Project"]'));
@@ -16,7 +17,21 @@ export class ProjectListingPage {
   btnClosePopUp = element(by.xpath('//div[@class="smo-toast-message smo-shadow ng-trigger ng-trigger-messageState smo-toast-shadow-sm smo-toast-message-success-sm smo-toast-message-success"]//following::a'));
   btnHomePage = element(by.className('smartops-logo-img'));
   btnDisable = element(by.xpath('//a[@class="smo-menuitem-link smo-state-disabled smo-menuitem-link-sm ng-star-inserted"]'))
-  
+  dropdownIncidentStatus = element(by.xpath('//label[text()=" Incident Status"]//following::span[contains(@class,"smo-multiselect-trigger-icon smo-clickable smo smo-expand-more-alt chevron-icon")]'))
+
+
+
+  async IncidentDropDownOption(option: string) {
+    await element(by.xpath('//span[text()="' + option + '"]')).isDisplayed().then(async function(isVisible){
+      await expect(isVisible).to.be.true;
+    })
+
+  }
+
+  async selectedIncidentDropDownOption(option: string) {
+    await element(by.xpath('//span[text()="' + option + '"]')).click();
+
+  }
   async Project_search(ProjectName: string) {
     await this.txtsearch.clear();
     await this.txtsearch.sendKeys(ProjectName);

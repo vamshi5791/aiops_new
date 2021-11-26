@@ -70,6 +70,7 @@ export class AlertsPage {
   btnState = element(by.xpath('//span[text()="State/Action"]//following::span[@class="smo-dropdown-trigger-icon smo-clickable smo smo-expand-more-alt chevron-icon"]'))
   btnAcknowledge = element(by.xpath('//span[text()="Acknowledge"]'))
   btnHold = element(by.xpath('//span[text()="Hold"]'));
+  btnResolve = element(by.xpath('//span[text()="Resolve"]'));
   btnClose = element(by.xpath('//span[text()="Close"]'));
   txtTicket = element(by.xpath('//span[@class="cursor-pt ng-star-inserted"]'))
   txtShortDescription = element(by.xpath('//div[@class="ticket-title"]'))
@@ -85,6 +86,7 @@ export class AlertsPage {
 
   btnStatusDropdown = element(by.className('button-icon button-icon-sm'));
   btnAssign = element(by.xpath('//span[text()="Assign"]'))
+  btnActive = element(by.xpath('//span[text()="Active"]'))
   btnRefresh = element(by.className('smo-btn-icon-col d-flex align-items-center smo smo-refresh-alt btn-icon smo-clickable ng-star-inserted'));
   btnAssigned = element(by.xpath('//label[text()="assigned"]'))
   btnAlertCheckBox = element(by.xpath('//smo-check-box[@class="ng-untouched ng-pristine ng-valid"]'))

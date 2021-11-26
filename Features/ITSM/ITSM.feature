@@ -21,10 +21,21 @@ Feature: ITSM
         When "ITOps_Admin" selects the ticket "<IncidentId>" and change the state to "On Hold"
         When "admin" login in to service now and search for the incident id as "<IncidentId>"
         Then "admin" verifies state of ticket should be "On Hold"
-        When "admin" navigates to Tickets page
-        And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
-        And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
+        When "Admin" clicks on Alerts page
+        And "Admin" clicks on advanced filter icon
+        And "Admin" clicks on incident status dropdown
+        And "Admin" verifies the dropdown values as "Open"
+        And "Admin" verifies the dropdown values as "Active"
+        And "Admin" verifies the dropdown values as "On Hold"
+        And "Admin" verifies the dropdown values as "Resolved"
+        And "Admin" clicks on "On Hold" option from the list of options
+        And "Admin" clicks on apply button
+        # And "Admin" verifies corresponding ticket should be showned in the filter results "On Hold"
+        # When "admin" navigates to Tickets page
+        # And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
+        # And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
         Then "admin" verifies Corresponding ticket should be shown in filter results with status as "<StatusInAlert>"
+
 
         Examples:
             | ProjectName     | IncidentId | StatusInAlert |
@@ -35,9 +46,18 @@ Feature: ITSM
         When "ITOps_Admin" selects the ticket "<IncidentId>" and change the state to "Awaiting Change"
         When "admin" login in to service now and search for the incident id as "<IncidentId>"
         Then "admin" verifies state of ticket should be "Awaiting Change"
-        When "admin" navigates to Tickets page
-        And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
-        And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
+        When "Admin" clicks on Alerts page
+        And "Admin" clicks on advanced filter icon
+        And "Admin" clicks on incident status dropdown
+        And "Admin" verifies the dropdown values as "Open"
+        And "Admin" verifies the dropdown values as "Active"
+        And "Admin" verifies the dropdown values as "On Hold"
+        And "Admin" verifies the dropdown values as "Resolved"
+        And "Admin" clicks on "On Hold" option from the list of options
+        And "Admin" clicks on apply button
+        # When "admin" navigates to Tickets page
+        # And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
+        # And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
         Then "admin" verifies Corresponding ticket should be shown in filter results with status as "<StatusInAlert>"
 
         Examples:
@@ -48,9 +68,18 @@ Feature: ITSM
         When "ITOps_Admin" selects the ticket "<IncidentId>" and change the state to "Awaiting Customer IT"
         When "admin" login in to service now and search for the incident id as "<IncidentId>"
         Then "admin" verifies state of ticket should be "Awaiting Customer IT"
-        When "admin" navigates to Tickets page
-        And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
-        And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
+        When "Admin" clicks on Alerts page
+        And "Admin" clicks on advanced filter icon
+        And "Admin" clicks on incident status dropdown
+        And "Admin" verifies the dropdown values as "Open"
+        And "Admin" verifies the dropdown values as "Active"
+        And "Admin" verifies the dropdown values as "On Hold"
+        And "Admin" verifies the dropdown values as "Resolved"
+        And "Admin" clicks on "On Hold" option from the list of options
+        And "Admin" clicks on apply button
+        # When "admin" navigates to Tickets page
+        # And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
+        # And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
         Then "admin" verifies Corresponding ticket should be shown in filter results with status as "<StatusInAlert>"
 
         Examples:
@@ -61,9 +90,18 @@ Feature: ITSM
         When "ITOps_Admin" selects the ticket "<IncidentId>" and change the state to "Awaiting Problem"
         When "admin" login in to service now and search for the incident id as "<IncidentId>"
         Then "admin" verifies state of ticket should be "Awaiting Problem"
-        When "admin" navigates to Tickets page
-        And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
-        And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
+        When "Admin" clicks on Alerts page
+        And "Admin" clicks on advanced filter icon
+        And "Admin" clicks on incident status dropdown
+        And "Admin" verifies the dropdown values as "Open"
+        And "Admin" verifies the dropdown values as "Active"
+        And "Admin" verifies the dropdown values as "On Hold"
+        And "Admin" verifies the dropdown values as "Resolved"
+        And "Admin" clicks on "On Hold" option from the list of options
+        And "Admin" clicks on apply button
+        # When "admin" navigates to Tickets page
+        # And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
+        # And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
         Then "admin" verifies Corresponding ticket should be shown in filter results with status as "<StatusInAlert>"
 
         Examples:
@@ -75,9 +113,18 @@ Feature: ITSM
         When "ITOps_Admin" selects the ticket "<IncidentId>" and change the state to "Awaiting User Info"
         When "admin" login in to service now and search for the incident id as "<IncidentId>"
         Then "admin" verifies state of ticket should be "Awaiting User Info"
-        When "admin" navigates to Tickets page
-        And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
-        And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
+        When "Admin" clicks on Alerts page
+        And "Admin" clicks on advanced filter icon
+        And "Admin" clicks on incident status dropdown
+        And "Admin" verifies the dropdown values as "Open"
+        And "Admin" verifies the dropdown values as "Active"
+        And "Admin" verifies the dropdown values as "On Hold"
+        And "Admin" verifies the dropdown values as "Resolved"
+        And "Admin" clicks on "On Hold" option from the list of options
+        And "Admin" clicks on apply button
+        # When "admin" navigates to Tickets page
+        # And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
+        # And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
         Then "admin" verifies Corresponding ticket should be shown in filter results with status as "<StatusInAlert>"
 
         Examples:
@@ -89,9 +136,18 @@ Feature: ITSM
         When "ITOps_Admin" selects the ticket "<IncidentId>" and change the state to "Awaiting Vendor"
         When "admin" login in to service now and search for the incident id as "<IncidentId>"
         Then "admin" verifies state of ticket should be "Awaiting Vendor"
-        When "admin" navigates to Tickets page
-        And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
-        And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
+        When "Admin" clicks on Alerts page
+        And "Admin" clicks on advanced filter icon
+        And "Admin" clicks on incident status dropdown
+        And "Admin" verifies the dropdown values as "Open"
+        And "Admin" verifies the dropdown values as "Active"
+        And "Admin" verifies the dropdown values as "On Hold"
+        And "Admin" verifies the dropdown values as "Resolved"
+        And "Admin" clicks on "On Hold" option from the list of options
+        And "Admin" clicks on apply button
+        # When "admin" navigates to Tickets page
+        # And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
+        # And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
         Then "admin" verifies Corresponding ticket should be shown in filter results with status as "<StatusInAlert>"
 
         Examples:
@@ -111,6 +167,9 @@ Feature: ITSM
         Examples:
             | ProjectName     | IncidentId | StatusInAlert |
             | Automation_01M3 | INC0820381 | Assigned      |
+
+
+
 
     Scenario Outline: Verify closing a ticket from ticketed state as resolved in service now is reflected back in ITOps
 
@@ -178,3 +237,33 @@ Feature: ITSM
         And "admin" enters "Ticket number" in ticket console and clicks on enter
         And "admin" verifies ticket number in alert console
 
+    Scenario Outline: Verify resolving a ticket from Active state as resolved in Service now is reflected back in ITOps
+        When "ITOps_Admin" selects the ticket "<IncidentId>", state as "Resolved", close code as "Monitoring Incident", Enter close note as "USTIB" and update
+        When "admin" login in to service now and search for the incident id as "<IncidentId>"
+        Then "admin" verifies state of ticket should be "Resolved"
+        #code for 3rd step line number 36
+        When "Admin" clicks on Alerts page
+        And "Admin" clicks on advanced filter icon
+        And "Admin" clicks on incident status dropdown
+        And "Admin" verifies the dropdown values as "Open"
+        And "Admin" verifies the dropdown values as "Active"
+        And "Admin" verifies the dropdown values as "On Hold"
+        And "Admin" verifies the dropdown values as "Resolved"
+        And "Admin" clicks on "Resolved" option from the list of options
+        And "Admin" clicks on apply button
+        And Admin click on state
+        And "admin" clicks on "Close" button
+        When "admin" enters closure note as "<ClosureNote>" and click on Ok
+        Then "Admin" verifies if "<SuccessMessage>" message is displayed
+
+        # When "ITOps_Admin" selects the ticket "<IncidentId>" and change the state to "Active"
+        # When "admin" login in to service now and search for the incident id as "<IncidentId>"
+        # Then "admin" verifies state of ticket should be "Active"
+        # When "admin" navigates to Tickets page
+        # And "admin" enters "Ticket number" and clicks on enter "<IncidentId>"
+        # And "admin" clicks on ticket number "<IncidentId>" from state column of a ticket
+        Then "admin" verifies Corresponding ticket should be shown in filter results with status as "<StatusInAlert>"
+
+        Examples:
+            | ProjectName     | IncidentId | StatusInAlert | SuccessMessage                | ClosureNote     |
+            | Automation_01M3 | INC0820381 | Resolved      | Alerts(s) closed successfully | Automation Test |

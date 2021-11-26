@@ -23,7 +23,7 @@ Feature: Alerts moved to ticketed
         And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And verify cluster size must be "<size>"
         And Admin click on state
-        And Admin verifies Hold state
+        And Admin verifies Assign state
         And "Admin" clicks on the ticket number
         Then "Admin" verifies Ticket should be assigned to group "<Group>"
         Then "Admin" verifies Ticket should be assigned to TeamMember "<TeamMember>"
@@ -54,6 +54,36 @@ Feature: Alerts moved to ticketed
             | ProjectName     | AlertName | size | ChannelName | channelJson  | NodeName        |
             | Automation_01M3 | Alert1    | 5    | Solarwinds  | QueueChannel | AUMECO-50A-AOB1 |
 
+    Scenario Outline: Verify Admin able to push one recovery alert and 2 acknowledge alert within 30 mins
+
+        When "Admin" sends "1" new "Recovery" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryChannelJson>", "<NodeName>"
+        When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<SolarwindsChannelJson>", "<NodeName>"
+        And "Admin" clicks on Alerts page
+        And "admin" enters "NodeName" and clicks on enter "<NodeName>"
+        And verify cluster size must be "<size>"
+
+        Examples:
+            | ProjectName     | AlertName | size | ChannelName | SolarwindsChannelJson | RecoveryChannelJson | NodeName        |
+            | Automation_01M3 | Alert1    | 3    | Solarwinds  | QueueChannel          | RecoveryPolicy      | BWGAFG-01A-RVG1 |
+
+    Scenario Outline: Verify Admin able to push one more acknowledge alert within 30 mins
+
+        When "Admin" sends "1" new "solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
+        And "Admin" clicks on Alerts page
+        And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
+        And verify cluster size must be "<size>"
+        And Admin click on state
+        And Admin verifies Assign state
+        And "Admin" clicks on the ticket number
+        Then "Admin" verifies Ticket should be assigned to group "<Group>"
+        Then "Admin" verifies Ticket should be assigned to TeamMember "<TeamMember>"
+
+        Examples:
+            | ProjectName     | AlertName | size | ChannelName | channelJson  | Group                             | TeamMember              | NodeName        |
+            | Automation_01M3 | Alert1    | 4    | Solarwinds  | QueueChannel | NinetyOne Infrastructure Networks | ITOps Virtual  Engineer | BWGAFG-01A-RVG1 |
+
+
+
     Scenario Outline: Verify sending 2 alerts first and another alert after 2 minutes
 
         When "Admin" sends "2" new "solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
@@ -83,11 +113,17 @@ Feature: Alerts moved to ticketed
         And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And verify cluster size must be "<NewClusterSize>"
         And Admin click on state
+        And "admin" clicks on "Assign" button
+        And "admin" clicks on "Individual" radio button
+        And "admin" selects user from the team member drop down as "<Group>", "<TeamMember>"
+        And "admin" clicks on assign button on the popup
+        Then "Admin" verifies if "<Toaster>" message is displayed
+        And Admin click on state
         And "Admin" clicks on "Hold" button
 
         Examples:
-            | ProjectName     | AlertName | size | NewClusterSize | ChannelName | channelJson  | NodeName        |
-            | Automation_01M3 | Alert1    | 2    | 3              | Solarwinds  | QueueChannel | CNHKIF-36A-SSC1 |
+            | ProjectName     | AlertName | size | NewClusterSize | ChannelName | channelJson  | NodeName        | Group            | TeamMember      | Toaster                       |
+            | Automation_01M3 | Alert1    | 2    | 3              | Solarwinds  | QueueChannel | CNHKIF-36A-SSC1 | Visibility - UST | Amjathsha Abdul | Tickets assigned successfully |
 
     Scenario Outline: Verify sending 3 solarwinds alerts within 30 minutes
 
@@ -96,8 +132,9 @@ Feature: Alerts moved to ticketed
         And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And verify cluster size must be "<size>"
         And Admin click on state
-        And Admin verifies Hold state
-        And Admin verifies Close state
+        And Admin verifies Assign state
+        And Admin verifies Active state
+
 
         Examples:
             | ProjectName     | AlertName | size | ChannelName | channelJson  | NodeName        |
@@ -123,7 +160,8 @@ Feature: Alerts moved to ticketed
         And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
         And verify cluster size must be "<size>"
         And Admin click on state
-        And Admin verifies Hold state
+        And Admin verifies Assign state
+        And Admin verifies Active state
         And "Admin" clicks on the ticket number
         Then "Admin" verifies Ticket should be assigned to group "<Group>"
         Then "Admin" verifies Ticket should be assigned to TeamMember "<TeamMember>"
@@ -143,32 +181,4 @@ Feature: Alerts moved to ticketed
         Examples:
             | ProjectName     | AlertName | size | ChannelName | channelJson  | NodeName        |
             | Automation_01M3 | Alert1    | 4    | Solarwinds  | QueueChannel | ZAPRMP-00A-FPA2 |
-
-    Scenario Outline: Verify Admin able to push one recovery alert and 2 acknowledge alert within 30 mins
-
-        When "Admin" sends "1" new "Recovery" alerts with "<ProjectName>", "<ChannelName>", "<RecoveryChannelJson>", "<NodeName>"
-        When "Admin" sends "2" new "Solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<SolarwindsChannelJson>", "<NodeName>"
-        And "Admin" clicks on Alerts page
-        And "admin" enters "NodeName" and clicks on enter "<NodeName>"
-        And verify cluster size must be "<size>"
-
-        Examples:
-            | ProjectName     | AlertName | size | ChannelName | SolarwindsChannelJson | RecoveryChannelJson | NodeName        |
-            | Automation_01M3 | Alert1    | 3    | Solarwinds  | QueueChannel          | RecoveryPolicy      | BWGAFG-01A-RVG1 |
-
-    Scenario Outline: Verify Admin able to push one more acknowledge alert within 30 mins
-
-        When "Admin" sends "1" new "solarwinds" alerts with "<ProjectName>", "<ChannelName>", "<channelJson>", "<NodeName>"
-        And "Admin" clicks on Alerts page
-        And "Admin" enters "NodeName" and clicks on enter "<NodeName>"
-        And verify cluster size must be "<size>"
-        And Admin click on state
-        And Admin verifies Hold state
-        And "Admin" clicks on the ticket number
-        Then "Admin" verifies Ticket should be assigned to group "<Group>"
-        Then "Admin" verifies Ticket should be assigned to TeamMember "<TeamMember>"
-
-        Examples:
-            | ProjectName     | AlertName | size | ChannelName | channelJson  | Group                             | TeamMember              | NodeName        |
-            | Automation_01M3 | Alert1    | 4    | Solarwinds  | QueueChannel | NinetyOne Infrastructure Networks | ITOps Virtual  Engineer | BWGAFG-01A-RVG1 |
 
