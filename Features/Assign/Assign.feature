@@ -16,6 +16,11 @@ Feature: Assign
         And "admin" selects user from the team member drop down as "<Group>", "<TeamMember>"
         And "admin" clicks on assign button
         Then "Admin" verifies if "<SuccessMessage>" message is displayed
+        And Admin click on state
+        And Admin verifies Assign state
+        And Admin verifies Hold state
+        And Admin verifies Resolve state
+        And Admin verifies Active state
         Then "admin" Verifies the Alert console for the particular ticket
 
         Examples:
@@ -167,6 +172,9 @@ Feature: Assign
         And "admin" clicks on assign button
         Then "Admin" verifies if "<SuccessMessage>" message is displayed
         Then "admin" verifies Ticket should be assigned to group "<Group>"
+        And Admin click on state
+        And Admin verifies Assign state
+        And Admin verifies Hold state
         Examples:
             | Group            | TicketNumber | SuccessMessage                |
             | Visibility - UST | INC0820489   | Tickets assigned successfully |
@@ -182,6 +190,11 @@ Feature: Assign
         Then "Admin" verifies if "<SuccessMessage>" message is displayed
         Then "admin" verifies Ticket should be assigned to group "<Group>"
         Then "admin" verifies Ticket should be assigned to TeamMember "<TeamMember>"
+        And Admin click on state
+        And Admin verifies Assign state
+        And Admin verifies Hold state
+        And Admin verifies Resolve state
+
 
         Examples:
             | Group                 | TicketNumber | SuccessMessage                | TeamMember       |
@@ -211,6 +224,10 @@ Feature: Assign
         And "admin" clicks on assign button
         Then "Admin" verifies if "<SuccessMessage>" message is displayed
         Then "admin" verifies Ticket should be assigned to group "<Group>"
+        And Admin click on state
+        And Admin verifies Assign state
+        And Admin verifies Hold state
+        
         Examples:
             | Group            | TicketNumber | SuccessMessage                |
             | Visibility - UST | INC0820489   | Tickets assigned successfully |

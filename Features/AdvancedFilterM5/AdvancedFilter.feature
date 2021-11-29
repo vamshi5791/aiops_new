@@ -9,18 +9,23 @@ Feature:  Advanced Filters
         And "Admin" clicks on project name
         And "Admin" clicks on Alerts page
         And "Admin" clicks on advanced filter icon
-        And "Admin" enters alert state as "<Alert_State>"
+        When "Admin" clicks on alert state dropdown
+        And "Admin" selects alert state dropdown option as "Open"
         And "Admin" clicks on apply button
         Then "Admin" verifies the status column as "<Alert_State>"
         And "Admin" clicks on advanced filter icon
-        When "Admin" enters alert state as "<Alert_State2>"
+        When "Admin" clicks on alert state dropdown
+        And "Admin" selects alert state dropdown option as "Active"
+        And "Admin" selects alert state dropdown option as "On Hold"
         And "Admin" clicks on apply button
-        Then "Admin" verifies the status column as "<Alert_State2>"
+        Then "Admin" verifies the status column as "<Alert_State3>"
         And "Admin" clicks on advanced filter icon
-        When "Admin" enters alert state as "<Alert_State4>"
+        When "Admin" clicks on alert state dropdown
+        And "Admin" selects alert state dropdown option as "Resolved"
         And "Admin" clicks on apply button
         Then "Admin" verifies the status column as "<Alert_State4>"
 
+
         Examples:
             | AdvancedFilters  | SourceAndResource    | StateAndStatus   | DataAndTime   | Alert_State | Alert_State2 | Alert_State3 | Alert_State4 |
-            | Advanced Filters | Source and Resources | State and Status | Date and Time | Open        | Assigned     | On Hold      | Closed       |
+            | Advanced Filters | Source and Resources | State and Status | Date and Time | Open        | Active       | On Hold      | Resolved     |

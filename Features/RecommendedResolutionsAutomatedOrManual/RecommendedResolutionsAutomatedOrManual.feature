@@ -9,7 +9,7 @@ Feature: Smart Desk - Roles/Privileges
         And "Admin" clicks on project name "<ProjectName>"
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
-        And "admin" selects filter by status type as "Assigned"
+        And "admin" selects filter by status type as "Active"
         And Admin click on state in ticket console
         Then "Admin" verifies recommended resolution should be available
 
@@ -18,7 +18,7 @@ Feature: Smart Desk - Roles/Privileges
         And "Admin" clicks on project name "Auto_01Resolve"
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
-        And "admin" selects filter by status type as "Assigned"
+        And "admin" selects filter by status type as "Active"
         And Admin click on state in ticket console
         Then "Admin" verifies recommended resolution should be available
 
@@ -31,7 +31,7 @@ Feature: Smart Desk - Roles/Privileges
         And "Admin" clicks on project name "Auto_01Resolve"
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
-        And "admin" selects filter by status type as "Assigned"
+        And "admin" selects filter by status type as "Active"
         And Admin click on state in ticket console
         Then "Admin" verifies recommended resolution should be available
 
@@ -44,7 +44,7 @@ Feature: Smart Desk - Roles/Privileges
         And "Admin" clicks on project name "<ProjectName>"
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
-        And "admin" selects filter by status type as "Assigned"
+        And "admin" selects filter by status type as "Active"
         And Admin click on state in ticket console
         Then "Admin" verifies ticket status in alert console as "Recommended R..."
 
@@ -53,7 +53,7 @@ Feature: Smart Desk - Roles/Privileges
         And "Admin" clicks on project name "Auto_01Resolve"
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
-        And "admin" selects filter by status type as "Assigned"
+        And "admin" selects filter by status type as "Active"
         And Admin click on state in ticket console
         Then "Admin" verifies recommended resolution should be available
 
@@ -81,7 +81,7 @@ Feature: Smart Desk - Roles/Privileges
 
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
-        And "admin" selects filter by status type as "Assigned"
+        And "admin" selects filter by status type as "Active"
         And Admin click on state in ticket console
         Then "Admin" verifies recommended resolution should be available
 
@@ -117,7 +117,7 @@ Feature: Smart Desk - Roles/Privileges
 
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
-        And "admin" selects filter by status type as "Assigned"
+        And "admin" selects filter by status type as "Active"
         And Admin click on state in ticket console
         Then "Admin" verifies recommended resolution should not be available
 
@@ -148,7 +148,7 @@ Feature: Smart Desk - Roles/Privileges
 
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
-        And "admin" selects filter by status type as "Assigned"
+        And "admin" selects filter by status type as "Active"
         When "Admin" get the ticket number from ticket console
         When "admin" updates the ticket in service now category as "Skype for Business", Short Description as "<ShortDescription>" and update
         And Admin click on state in ticket console
@@ -170,7 +170,7 @@ Feature: Smart Desk - Roles/Privileges
         And "Admin" clicks on project name "<ProjectName>"
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
-        And "admin" selects filter by status type as "Assigned"
+        And "admin" selects filter by status type as "Active"
         When "Admin" get the ticket number from ticket console
         When "admin" updates the ticket in service now category as "Skype for Business", Short Description as "<ShortDescription>" and update
         And Admin click on state in ticket console
@@ -199,7 +199,7 @@ Feature: Smart Desk - Roles/Privileges
 
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
-        And "admin" selects filter by status type as "Assigned"
+        And "admin" selects filter by status type as "Active"
 
         When "Admin" get the ticket number from ticket console
         And "admin" enters the ticket number in search field
@@ -220,7 +220,7 @@ Feature: Smart Desk - Roles/Privileges
 
         When "admin" navigates to Tickets page
         When "Admin" clicks on quick filter
-        And "admin" selects filter by status type as "Assigned"
+        And "admin" selects filter by status type as "Active"
 
         When "Admin" get the ticket number from ticket console
         And "admin" enters the ticket number in search field

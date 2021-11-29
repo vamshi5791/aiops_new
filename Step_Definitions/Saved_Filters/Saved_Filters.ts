@@ -538,3 +538,21 @@ Then('verify Expand button should be present for each saved filter', async funct
   await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
   await browser.wait(EC.visibilityOf(objAlerts.btnAdvanceFilter), 10000);
 });
+
+When('{string} clicks on alert state dropdown', async function (userRole) {
+  try {
+    await objAlerts.dropdownAlertState.click();
+  } catch (error) {
+    await console.log("Feature name : Saved Filters " + userRole + " and Action  : clicks on alert state dropdown")
+    await console.log(error)
+  }
+});
+
+When('{string} selects alert state dropdown option as {string}', async function (userRole, dropdownOption) {
+  try {
+    await objAlerts.SelectingAlertStateDropdownOptions(dropdownOption);
+  } catch (error) {
+    await console.log(error);
+    throw "User is unable selects alert state dropdown option as " + dropdownOption
+  }
+})

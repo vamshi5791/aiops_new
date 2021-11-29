@@ -24,7 +24,7 @@ Feature: Parallel Actions On Tickets
         Then "Admin" verifies if "<ErrorMessage>" message is displayed
         And "admin" clicks on Alerts page
         And "admin" enters the ticket number in search field
-        Then "admin" verifies ticket status as "closed" "By system"
+        Then "admin" verifies ticket status as "Resolved" "By system"
         Examples:
             | IncidentId | ErrorMessage                | Group            | TeamMember      |
             | INC0820381 | Ticket(s) Assignment failed | Visibility - UST | Amjathsha Abdul |

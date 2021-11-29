@@ -132,6 +132,15 @@ export class AlertsPage {
   btnVerba = element(by.xpath('//span[text()="Verba"]'));
   btnCritical = element(by.xpath('//span[text()="Critical"]'));
   txtAutoRefresh = element(by.xpath('//input[@class="time-interval smo-inputtext numberField alert-search smo-input-padding smo-input-padding-sm ng-pristine ng-valid ui-inputtext ui-corner-all ui-state-default smo-widget smo-state-filled border-radius-sm smo-inputtext-small ng-touched"]'))
+  dropdownAlertState = element(by.xpath('//label[text()="Alert State"]//following::span[@class="smo-multiselect-trigger-icon smo-clickable smo smo-expand-more-alt chevron-icon"]'))
+
+
+  
+  async SelectingAlertStateDropdownOptions(options: string) {
+    await element(by.xpath('//span[text()="' + options + '"]')).click();
+  }
+
+
 
   async ClusterType() {
     await this.btnClusterType.click();
@@ -163,7 +172,7 @@ export class AlertsPage {
   async Source() {
     await this.drpSource.click();
   }
-  async  AutoRefresh(Minutes) {
+  async AutoRefresh(Minutes) {
     await this.drpSource.sendKeys(Minutes);
   }
 
